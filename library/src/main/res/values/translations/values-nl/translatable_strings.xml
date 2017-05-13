@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="muzei_settings">Muzei Instellingen</string>
+    <!-- Sharing wallpaper from Muzei -->
+    <string name="share_text">Mijn achtergrond voor vandaag is %1$s door %2$s, van %3$s. \nVerkrijg het nu bij %4$s</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Thuis</string>
+    <string name="section_icons">Iconen</string>
+    <string name="section_apply">Toepassen</string>
+    <string name="section_wallpapers">Achtergronden</string>
+    <string name="section_icon_request">Iconen Aanvragen</string>
+    <string name="section_donate">Doneer</string>
+    <string name="section_about">Over de app</string>
+    <!-- Wallpapers Activity -->
+    <string name="title_activity_detailed_wallpaper">Achtergronden bekijker</string>
+    <!-- Muzei Stuff -->
+    <string name="refresh_only_on_wifi">Ververs alleen met WiFi.</string>
+    <string name="refresh_only_on_wifi_summary">Ververs achtergronden alleen wanneer het toestel is verbonden met WiFi.</string>
+    <string name="refresh_wallpapers_every">Ververs achtergronden…</string>
+    <string name="every_x">Elke %1$s</string>
+    <string name="sure_to_exit">Sluiten</string>
+    <string name="sure_to_exit_content">Wil je de instellingen opslaan voordat je afsluit?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nee</string>
+    <string name="seconds">Seconden</string>
+    <string name="minutes">Minuten</string>
+    <string name="hours">Uren</string>
+    <string name="days">Dagen</string>
+    <string name="weeks">Weken</string>
+    <string name="months">Maanden</string>
+    <string name="muzei_info">Let op: Deze instelling kan het update gedrag van de achtergronden beïnvloeden.</string>
+    <string name="share">Deel</string>
+    <string name="send_email">Stuur email</string>
+    <!-- Strings for Dropdown Menu & Requests -->
+    <string name="share_title">Deel via</string>
+    <string name="send_title">Verstuur via</string>
+    <!-- LauncherNotInstalled Dialog -->
+    <string name="lni_content">%1$s is momenteel niet geïnstalleerd op je apparaat.\nZou je het willen installeren vanuit de Google Play Store?</string>
+    <string name="cm_dialog_content">%1$s is onderdeel van CyanogenMod (gebaseerde) roms.\nZou je het willen installeren op uw apparaat?</string>
+    <string name="gnl_title">Google Now Launcher is NIET Compatibel</string>
+    <string name="gnl_content">Google Now Launcher is NIET compatibel met icon packs. Geef om die reden alsjeblieft geen lage beoordeling. Er is wel een manier, door middel van een andere app, waarop het mogelijk is iconen te vervangen in Google Now Launcher. Zou je die app willen downloaden?</string>
+    <string name="lg_dialog_content">Het spijt ons, maar LG Home app is exclusief voor LG apparaten en kan daarom niet worden gedownload in de Google Play Store.</string>
+    <!-- Changelog Dialog Content -->
+    <string name="changelog_dialog_title">Veranderingen</string>
+    <string name="default_new_version_title">Update</string>
+    <string name="empty_changelog">Lege veranderingen</string>
+    <string name="great">Tof</string>
+    <string name="changelog_neutral_text">Check nieuwe iconen</string>
+    <!-- Wallpapers Stuff -->
+    <string name="no_conn_title">Geen connectie gevonden</string>
+    <string name="download">Download</string>
+    <string name="wallpaper_downloaded">Achtergrond is gedownload naar: %1$s</string>
+    <string name="wallpaper_by">Door: %1$s</string>
+    <string name="apply">Toepassen</string>
+    <string name="save">Opslaan</string>
+    <string name="downloading_wallpaper">Deze achtergrond aan het downloaden…</string>
+    <string name="setting_wall_title">Deze achtergrond instellen voor jouw %1$s…</string>
+    <string name="preparing_wallpaper">Achtergrond voorbereiden voor bijsnijden…</string>
+    <string name="download_takes_longer">Dit duurt langer dan verwacht. U mag blijven wachten of deze opdracht annuleren.</string>
+    <string name="set_as_wall_done">Achtergrond toegepast!</string>
+    <string name="error">Fout</string>
+    <string name="confirm_apply">Weet je zeker dat je deze achtergrond wilt toepassen op jouw toestel?</string>
+    <string name="refreshing_walls">Achtegronden lijst herladen…</string>
+    <string name="retry">Probeer nog een keer</string>
+    <string name="wallpaper_author_title">Auteur</string>
+    <string name="wallpaper_dimensions_title">Dimensies</string>
+    <string name="wallpaper_copyright_title">Copyright</string>
+    <string name="settings_saved">Instellingen opgeslagen. Achtergrond veranderd elke %1$s.</string>
+    <!-- License Check Dialog -->
+    <string name="license_failed_title">Tot hier en niet verder!</string>
+    <string name="license_success_title">Licentie Check Gelukt</string>
+    <string name="exit">Sluiten</string>
+    <!-- Some texts for Dialogs and Cards -->
+    <string name="close">Sluiten</string>
+    <string name="crop">Bijsnijden</string>
+    <string name="advice">Advies</string>
+    <string name="dontshow">Niet meer laten zien</string>
+    <string name="rate">Beoordelen</string>
+    <string name="set_wall_to">Stel achtergrond in naar…</string>
+    <string name="home_screen">Thuisscherm</string>
+    <string name="lock_screen">Vergrendelscherm</string>
+    <string name="home_lock_screens">Thuis- en vergrendelschermen</string>
+    <string name="crop_and_set_as">Snij achtergrond bij en stel in als…</string>
+    <!-- Requests -->
+    <string name="select_all">Selecteer alles</string>
+    <string name="no_selected_apps_title">Geen geselecteerde apps</string>
+    <string name="no_selected_apps_content">U heeft geen enkele app geselecteerd om aan te vragen. Selecteer een paar apps voordat u weer op de FAB tikt.</string>
+    <string name="apps_limit_dialog">Sorry, maar u mag maar %1$s apps selecteren.</string>
+    <string name="apps_limit_dialog_more">Sorry, maar het is alleen mogelijk om %1$s apps aan te vragen op dit moment.</string>
+    <string name="apps_limit_dialog_day">Sorry, maar iconen aanvragen mag alleen elke %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Het is weer mogelijk iconen aan te vragen in %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Het is weer mogelijk iconen aan te vragen in minder dan een minuut.</string>
+    <!-- Icon search -->
+    <string name="search_icons">Zoek iconen…</string>
+    <string name="search_x">Zoek %1$s…</string>
+    <string name="requests_error">Het ging fout tijdens het laden van de apps.\nKlik hier om het opnieuw te proberen.</string>
+    <string name="building_request_dialog">Aanvraag bestanden maken…</string>
+    <string name="loading_apps">Wacht alsjeblieft tot alle apps zijn geladen, nog een paar seconden…</string>
+    <string name="loading_icons">Iconen laden…</string>
+    <string name="choose">Kies</string>
+    <!--SETTINGS-->
+    <string name="title_settings">Instellingen</string>
+    <string name="pref_header_ui">GI</string>
+    <string name="pref_title_anims">Animaties inschakelen</string>
+    <string name="pref_summary_anims">Dit kan vertraging opleveren op sommige toestellen</string>
+    <string name="pref_title_wall_header">Schakel gebruik van achtergrond als Toolbar kop in</string>
+    <string name="pref_summary_wall_header">Je huidige achtergrond zal te zien zijn in de app Toolbar.</string>
+    <string name="pref_header_storage">Opslag</string>
+    <string name="pref_title_low_data_usage">Verminder data verbruik</string>
+    <string name="pref_summary_low_data_usage">App zal achtergrond voorbeelden laden in lagere resolutie om data verbruik te verminderen.</string>
+    <string name="pref_title_cache">Verwijder app cache en data</string>
+    <string name="pref_summary_cache">Dit zal de app cache en voorkeuren verwijderen.\nHuidige cache
+grootte: %1$s</string>
+    <string name="pref_title_wsl">Achtergronden download locatie</string>
+    <string name="pref_summary_wsl">Verander de locatie om achtergronden op te slaan.\nHuidige
+locatie: %1$s</string>
+    <string name="pref_header_launcher_icon">Launcher icoon</string>
+    <string name="pref_title_launcher_icon">Verberg launcher icoon</string>
+    <string name="pref_summary_launcher_icon">Wanneer geselecteerd, wordt het launcher icoon verborgen.</string>
+    <string name="clearcache_dialog_content">Weet je zeker dat je de voorkeuren en cache wilt
+verwijderen? Toegepaste iconen blijven onaangeroerd.</string>
+    <string name="hideicon_dialog_title">Waarschuwing!</string>
+    <string name="hideicon_dialog_content">Weet je zeker dat je het app icoon wilt verbergen in uw launcher?
+\nDe app kan onverwachts worden afgesloten en notificaties worden compleet uitgeschakeld.\nJe kunt bij veelgestelde vragen lezen hoe je de icoon weer terug kan krijgen.</string>
+    <string name="prefs_notifs_title">Notificaties</string>
+    <string name="pref_title_enable_notifs">Schakel notificaties in</string>
+    <string name="pref_summary_enable_notifs">Verkrijg notificaties over nieuwe achtergronden en ontwikkelingsnieuws.</string>
+    <string name="pref_title_enable_notifs_led">Schakel notificatie LED in</string>
+    <string name="pref_title_enable_notifs_sound">Schakel notificatie geluid in</string>
+    <string name="pref_title_enable_notifs_vibration">Schakel notificatie trilling in</string>
+    <string name="launcher_icon_restored">%1$s launcher icoon is teruggeplaatst</string>
+    <string name="launcher_icon_no_restored">%1$s launcher icoon is al zichtbaar</string>
+    <string name="launcher_icon_restorer_error">Er is een probleem met de code van %1$s. Contacteer alsjeblieft de ontwikkelaar.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Icoon Herstel Widget</string>
+    <string name="clock_widget_title">Analoge klok</string>
+    <string name="faqs_section">FAQ</string>
+    <string name="dashboard_author_copyright">Ik ben een 20-jarige enthousiaste Android ontwikkelaar en de ontwikkelaar van het dashboard.\n\nVanuit Colombia voor de wereld gedeeld onder de CreativeCommons Attribution-ShareAlike licentie. \nCopyright © 2017.</string>
+    <string name="allan_description">Eerst een icoon pakket maker, daarna een themer en nu ook een ontwikkelaar.\nIk heb op onderdelen geholpen met de dashboard ontwikkeling.</string>
+    <string name="fork_on_github">Fork op GitHub</string>
+    <string name="visit_website">Website</string>
+    <string name="more_apps">Meer apps</string>
+    <string name="more_apps_long">Bekijk mijn andere apps in de Google Play Store.</string>
+    <string name="implemented_libraries">Geïmplementeerde \'libraries\'</string>
+    <string name="contributors">Ontwikkelings Bijdragers</string>
+    <string name="sherry_title">Dank aan Sherry Sabatine</string>
+    <string name="sherry_dialog">Dankzij haar is IconShowcase gratis en open source</string>
+    <string name="follow_her">Volg haar</string>
+    <string name="ui_design">UI Ontwerp Bijdragers</string>
+    <string name="donate">Steun ontwikkeling</string>
+    <string name="donate_summary">Als u vindt dat Jahir Fiquitiva wat geld verdient door dit geweldige dashboard te ontwikkelen.</string>
+    <string name="report_bugs">Rapporteer bugs</string>
+    <string name="report_bugs_summary">Rapporteer bugs of verzoek nieuwe functies</string>
+    <string name="join_community">Sluit je aan bij de Google Plus community</string>
+    <string name="join_community_summary">Mocht je vragen of hulp nodig hebben, de IconShowcase 
+community op Google Plus is hiervoor geschikt.</string>
+    <string name="saving_wallpaper">Achtergrond opslaan…</string>
+    <string name="refresh">Ververs</string>
+    <!-- Messages shown when using LicenseChecker -->
+    <string name="unknown">Onbekend</string>
+    <string name="license_failed">Sorry, maar we hebben gedetecteerd dat je licentie voor %1$s niet geldig. %2$s Als je denkt dat dit bericht niet klopt, probeer het dan later opnieuw. Zo niet, alsjeblieft %3$s download de app dan uit een legitieme store.</string>
+    <string name="license_failed_extra">Dit is ook mogelijk omdat je piraten apps gebruikt, of specifiek: \'%1$s\' app.</string>
+    <!-- Please keep this phrase in lowercase unless grammatically required by your language -->
+    <string name="license_failed_extra_sec">verwijder alle piraten apps en</string>
+    <string name="license_error">Sorry, er was een fout tijdens het controleren van de licentie.</string>
+    <string name="license_success">Dank u voor het downloaden van %1$s. Als u dit leuk vindt, vergeet dan niet om dit te beoordelen op de Google Play Store.</string>
+    <string name="apply_advice">"Als de door jou gebruikte launcher hier niet tussen staat, kun je mogelijk via de launcher instellingen de iconen selecteren. Niet alle launchers ondersteunen namelijk direct selecteren. "</string>
+    <string name="walls_advice">Tik op een achtergrond om het in FullScreen te bekijken.\nHoud ingedrukt om het direct toe te passen op je thuisscherm.</string>
+    <string name="zooper_section_title">Zooper Setup</string>
+    <string name="zooper_download_dialog_title">Download van</string>
+    <string name="install_apps">Installeer apps</string>
+    <string name="install_apps_content">U moet deze apps installeren als u wilt dat de Zooper widgets goed werken. Tik er één om te installeren.</string>
+    <string name="install_kustom_apps_content">Je moet deze apps installeren om Kustom goed te laten werken. Tik er één om te installeren.</string>
+    <string name="install_assets">Installeer benodigdheden</string>
+    <string name="open">Open</string>
+    <string name="assets_installed">Benodigdheden zijn al geïnstalleerd</string>
+    <string name="apps_installed">Apps zijn al geïnstalleerd</string>
+    <string name="copying_assets">Bestanden kopiëren naar ZooperWidget/%1$s</string>
+    <string name="icon_pack_in_numbers">Icon Pack in nummers</string>
+    <string name="themed_icons">Meer dan %1$s icons.</string>
+    <string name="available_wallpapers">Ongeveer %1$s beschikbare achtergronden.</string>
+    <string name="included_widgets">Meer dan %1$s inbegrepen widgets.</string>
+    <string name="icons">Iconen</string>
+    <string name="md_storage_perm_error">U heeft deze toestemming niet gegeven: \"Lees Extern Geheugen\" aan %1$s, die nodig is om deze actie te voltooien.</string>
+    <string name="new_folder">Nieuwe map</string>
+    <string name="new_folder_hint">Map naam</string>
+    <string name="new_folder_title">Creëer een nieuwe map</string>
+    <string name="new_folder_content">Type de nieuwe map naam, alsjeblieft.</string>
+    <string name="wait_for_walls">Wacht alsjeblieft tot het achtergrond voorbeeld verschijnt…</string>
+    <string name="translators">Vertalers</string>
+    <string name="more">Meer</string>
+    <string name="columns">Kolom nummer</string>
+    <string name="columns_desc">Selecteer het aantal kolommen dat u wilt zien in deze sectie:</string>
+    <string-array name="columns_options" tools:ignore="InconsistentArrays">
+        <item>Portret: 1 / Landschap: 3</item>
+        <item>Portret: 2 / Landschap: 4</item>
+        <item>Portret: 3 / Landschap: 5</item>
+    </string-array>
+    <string-array name="questions">
+        <item>Hoe gebruik ik de Icon Pack?</item>
+        <item>Hoe pas ik de Icon Pack toe?</item>
+        <item>Hoe bekijk ik alle inbegrepen iconen?</item>
+        <item>Hoe vervang ik bepaalde iconen met alternatieven?</item>
+        <item>Hoe vraag ik niet-gethematiseerde iconen aan?</item>
+        <item>Na een herstart van mijn toestel, is het iconen pakket niet meer toegepast. De iconen zijn herstelt naar standaard.</item>
+        <item>Waarom zien de iconen er niet scherp uit op mijn apparaat?</item>
+        <item>Ik zie een icoon voor een app bij de inbegrepen iconen, maar hij wordt niet toegepast.</item>
+        <item>Hoe verberg ik de app icoon in de launcher?</item>
+        <item>Hoe open ik de app als de icoon is verborgen in de launcher?</item>
+        <item>Hoe maak ik de verborgen app icoon weer zichtbaar in de launcher?</item>
+        <item>Waarom heeft de app toestemming nodig om de inhoud van het geheugen te bewerken of te verwijderen?</item>
+        <item>Waarom heeft de app toegang nodig tot het hele netwerk?</item>
+        <item>Waarom heeft de app toestemming nodig om verbindingen te zien?</item>
+        <item>Waarom heeft de app toestemming nodig om een achtergrond in te stellen?</item>
+        <item>Waarom heeft de app toestemming nodig om de achtergrond grootte te veranderen?</item>
+        <item>Waarom heeft de app toestemming nodig om te zorgen dat de telefoon niet in slaapmodus gaat?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>U heeft een launcher nodig met Icon Pack ondersteuning.
+Bekijk de Google Play Store beschrijving voor ondersteunde launchers.
+Als u niet zeker bent welke launcher u moet gebruiken, ga dan naar de \"Toepassen\" sectie
+en kies er een uit de lijst.</item>
+        <item>Veeg de NavigationDrawer vanuit links, en ga naar de \"Toepassen\" sectie, of ga terug naar de thuis sectie van de app, en tik op de Floating Action Button.
+Kies een launcher waarop je de iconen wilt toepassen.
+Als je launcher niet in de lijst staat, maar wel compatibel is
+(kijk in de Google Play Store voor een lijst met ondersteunde launchers),
+dan kun je het zelf toepassen vanuit de launcher instellingen.</item>
+        <item>Veeg de NavigationDrawer vanuit links, en ga naar de \"Toepassen\" sectie, of ga terug naar de thuis sectie van de app, en tik op de knop die zegt \"Iconen\".</item>
+        <item>Het ligt er aan welke launcher je gebruikt. Niet iedere launcher ondersteunt iconen bewerking.
+Maar bij de meeste kun je de iconen bewerken door er lang op te drukken of er dubbel op te tikken.</item>
+        <item>Veeg de NavigationDrawer vanuit links, en ga naar de \"Iconen Aanvragen\" sectie.</item>
+        <item>Dit gebeurt omdat het iconen pakket is verplaatst naar een SD kaart, je zal het moeten installeren in het 
+interne geheugen.</item>
+        <item>Het probleem kan komen door de launcher die je gebruikt, met grote resoluties.
+Je kunt dit oplossen door de icoon grootte te verhogen naar 115 - 120%.
+Of probeer een andere launcher te gebruiken.</item>
+        <item>Vraag iconen aan</item>
+        <item>Veeg de NavigationDrawer vanuit links, en ga naar de \"Instellingen\" sectie.
+Schakel dan de \"Verberg icoon in launcher\" optie in.</item>
+        <item>Ga naar je thuisscherm en creëer een widget voor de app met de naam \"Icon Restorer\".</item>
+        <item>Veeg de NavigationDrawer vanuit links, en ga naar de \"Instellingen\" sectie.
+Schakel de \"Verberg icoon in launcher\" optie uit.</item>
+        <item>Het is nodig om iconen aanvragen data en bestanden te schrijven, achtergronden op te slaan en de download locatie te veranderen.</item>
+        <item>Het is nodig om cloud gebaseerde achtergronden te laden en te downloaden.</item>
+        <item>Het is nodig om te controleren of je apparaat internet verbinding heeft.</item>
+        <item>Het is nodig om een achtergrond direct vanuit de app in te stellen.</item>
+        <item>Het is nodig om de achtergrond bij te stellen naar je scherm resolutie.</item>
+        <item>Het is nodig voor Muzei Live Wallpaper.</item>
+    </string-array>
+    <string name="no_apply_tab">Contacteer de ontwikkelaar, want het ziet er naar uit dat er iets mist in de app.</string>
+    <!--No Theme Engine Dialog-->
+    <string name="NTED_title">Oh Nee!</string>
+    <string name="NTED_message">Het lijkt er op dat we geen theme engine konden vinden op je apparaat. Als je weet dat je er wel één hebt, open die dan alsjeblieft en ga vanaf daar verder. Als je er geen heeft, kun je een ROM installeren die CyanogenMod of Layers theming ondersteunt en hun instructies volgen.</string>
+    <string name="tap_to_download">%1$s\nDruk op de kaart om het te downloaden.</string>
+    <string name="tap_to_open">%1$s\nDruk op de kaart om de app te openen</string>
+    <string name="donations_error_title">Donaties niet beschikbaar</string>
+    <string name="donations_error_content">Je apparaat ondersteunt geen in-app aankopen.\nDit kan worden veroorzaakt door een oude Google Play Store app, of omdat het niet beschikbaar is in dit land.</string>
+    <string name="no_launcher_intent">Direct toepassen is niet mogelijk voor deze launcher. Stel de icon handmatig in, via de launcher instellingen.</string>
+</resources>

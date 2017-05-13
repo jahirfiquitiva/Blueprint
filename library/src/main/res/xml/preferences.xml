@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:key="preferences">
+
+    <PreferenceCategory
+            android:key="uiPreferences"
+            android:title="@string/pref_header_ui">
+
+        <SwitchPreference
+                android:defaultValue="true"
+                android:key="animations"
+                android:persistent="true"
+                android:summary="@string/pref_summary_anims"
+                android:title="@string/pref_title_anims"/>
+
+        <SwitchPreference
+                android:defaultValue="true"
+                android:key="wallHeader"
+                android:persistent="true"
+                android:summary="@string/pref_summary_wall_header"
+                android:title="@string/pref_title_wall_header"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_header_storage">
+
+        <!--
+        <SwitchPreference
+                android:key="lowDataUsage"
+                android:persistent="true"
+                android:defaultValue="true"
+                android:title="@string/pref_title_low_data_usage"
+                android:summary="@string/pref_summary_low_data_usage"/>
+                -->
+
+        <Preference
+                android:key="clearData"
+                android:persistent="true"
+                android:summary="@string/pref_summary_cache"
+                android:title="@string/pref_title_cache"/>
+
+        <Preference
+                android:key="wallsSaveLocation"
+                android:persistent="true"
+                android:summary="@string/pref_summary_wsl"
+                android:title="@string/pref_title_wsl"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="launcherIconPreference"
+            android:title="@string/pref_header_launcher_icon">
+
+        <SwitchPreference
+                android:defaultValue="false"
+                android:key="launcherIcon"
+                android:persistent="true"
+                android:summary="@string/pref_summary_launcher_icon"
+                android:title="@string/pref_title_launcher_icon"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

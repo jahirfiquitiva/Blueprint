@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="muzei_settings">Настройки Muzei</string>
+    <!-- Sharing wallpaper from Muzei -->
+    <string name="share_text">Мои обои на сегодня %1$s Автор: %2$s, из %3$s.\nПолучить сейчас: %4$s</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Главная</string>
+    <string name="section_icons">Иконки</string>
+    <string name="section_apply">Применить</string>
+    <string name="section_wallpapers">Обои</string>
+    <string name="section_icon_request">Запрос иконок</string>
+    <string name="section_donate">Пожертвования</string>
+    <string name="section_about">О приложении</string>
+    <!-- Wallpapers Activity -->
+    <string name="title_activity_detailed_wallpaper">Просмотр обоев</string>
+    <!-- Muzei Stuff -->
+    <string name="refresh_only_on_wifi">Обновлять только по WiFi</string>
+    <string name="refresh_only_on_wifi_summary">Обновлять обои только при подключении по WiFi.</string>
+    <string name="refresh_wallpapers_every">Обновляю обои…</string>
+    <string name="every_x">Раз в %1$s</string>
+    <string name="sure_to_exit">Выход</string>
+    <string name="sure_to_exit_content">Сохранить настройки перед выходом?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="seconds">Секунды</string>
+    <string name="minutes">Минуты</string>
+    <string name="hours">Часы</string>
+    <string name="days">Дни</string>
+    <string name="weeks">Недели</string>
+    <string name="months">Месяцы</string>
+    <string name="muzei_info">Примечание: Эти настройки могут повлиять на поведение обновления обоев.</string>
+    <string name="share">Поделиться</string>
+    <string name="send_email">Отправить email</string>
+    <!-- Strings for Dropdown Menu & Requests -->
+    <string name="share_title">Поделиться с помощью</string>
+    <string name="send_title">Отправить с помощью</string>
+    <!-- LauncherNotInstalled Dialog -->
+    <string name="lni_content">%1$s не установлен на Вашем устройстве.\nХотите установить из Google Play Store?</string>
+    <string name="cm_dialog_content">%1$s является частью CyanogenMod (на основе) ROM.\nВы хотите
+установить его на ваше устройство?</string>
+    <string name="gnl_title">Google Now Launcher не поддерживается</string>
+    <string name="gnl_content">Google Now  не поддерживает иконпаки. Совсем! Пожалуйста, не ставьте данному иконпаку негативный отзыв. Существует альтернативный метод, но с использование стороннего приложения. Вы хотите его скачать?</string>
+    <string name="lg_dialog_content">К сожалению, LG Home является приложением смартфонов LG, и его нельзя скачать с Google Play Store.</string>
+    <!-- Changelog Dialog Content -->
+    <string name="changelog_dialog_title">Изменения</string>
+    <string name="default_new_version_title">Обновление</string>
+    <string name="empty_changelog">Пусто</string>
+    <string name="great">Отлично</string>
+    <string name="changelog_neutral_text">Проверьте новые иконки</string>
+    <!-- Wallpapers Stuff -->
+    <string name="no_conn_title">Нет соединения с сетью интернет</string>
+    <string name="download">Скачать</string>
+    <string name="wallpaper_downloaded">Обои загружены в: %1$s</string>
+    <string name="wallpaper_by">От: %1$s</string>
+    <string name="apply">Применить</string>
+    <string name="save">Сохранить</string>
+    <string name="downloading_wallpaper">Загрузка обоев…</string>
+    <string name="setting_wall_title">Установка обоев %1$s…</string>
+    <string name="preparing_wallpaper">Выполняется кадрирование обоев…</string>
+    <string name="download_takes_longer">Это занимает больше времени, чем ожидалось. Подождите или отмените данное действие.</string>
+    <string name="set_as_wall_done">Обои установлены!</string>
+    <string name="error">Ошибка</string>
+    <string name="confirm_apply">Вы уверены, что хотите установить эти обои?</string>
+    <string name="refreshing_walls">Список обоев обновляется…</string>
+    <string name="retry">Повторить</string>
+    <string name="wallpaper_author_title">Автор</string>
+    <string name="wallpaper_dimensions_title">Размеры</string>
+    <string name="wallpaper_copyright_title">Права на использование</string>
+    <string name="settings_saved">Настройки сохранены. Обои будут меняться каждые %1$s.</string>
+    <!-- License Check Dialog -->
+    <string name="license_failed_title">Лицензия не подтверждена!</string>
+    <string name="license_success_title">Лицензия подтверждена</string>
+    <string name="exit">Выход</string>
+    <!-- Some texts for Dialogs and Cards -->
+    <string name="close">Закрыть</string>
+    <string name="crop">Обрезать</string>
+    <string name="advice">Совет</string>
+    <string name="dontshow">Не показывать снова</string>
+    <string name="rate">Оценить</string>
+    <string name="set_wall_to">Установить как обои…</string>
+    <string name="home_screen">Главный экран</string>
+    <string name="lock_screen">Экран блокировки</string>
+    <string name="home_lock_screens">На оба экрана</string>
+    <string name="crop_and_set_as">Обрезать обои и установить как…</string>
+    <!-- Requests -->
+    <string name="select_all">Выбрать все</string>
+    <string name="no_selected_apps_title">Нет выбранных приложений</string>
+    <string name="no_selected_apps_content">Вы не отметили ни одного приложения для запроса иконок. Пожалуйста выберите приложения и попробуйте снова.</string>
+    <string name="apps_limit_dialog">Извините, но вы можете выбрать %1$s приложение(-ий) для запроса иконок.</string>
+    <string name="apps_limit_dialog_more">Извините, но сейчас вы можете выбрать только %1$s приложение(-ий) для запроса иконок.</string>
+    <string name="apps_limit_dialog_day">Простите, но вы можете запросить замену иконок один раз в %1$s</string>
+    <string name="apps_limit_dialog_day_extra">Снова запросить замену иконок вы сможете через %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Снова запросить замену иконок вы сможете, менее чем через минуту</string>
+    <!-- Icon search -->
+    <string name="search_icons">Поиск иконок…</string>
+    <string name="search_x">Поиск %1$s…</string>
+    <string name="requests_error">Ошибка загрузки списка приложений.\nНажмите здесь, чтобы повторить попытку.</string>
+    <string name="building_request_dialog">Создание списка файлов необходимых для замены иконок…</string>
+    <string name="loading_apps">Пожалуйста, подождите пока списов приложений подгружается. Это может занять на несколько секунд больше времени…</string>
+    <string name="loading_icons">Загрузка иконок…</string>
+    <string name="choose">Выбрать</string>
+    <!--SETTINGS-->
+    <string name="title_settings">Настройки</string>
+    <string name="pref_header_ui">Пользовательский интерфейс</string>
+    <string name="pref_title_anims">Включить анимации</string>
+    <string name="pref_summary_anims">Может вызвать глюки на некоторых девайсах</string>
+    <string name="pref_title_wall_header">Использовать обои в Toolbar\'е</string>
+    <string name="pref_summary_wall_header">Ваши текущие обои будут показаны в Toolbar\'е</string>
+    <string name="pref_header_storage">Память</string>
+    <string name="pref_title_low_data_usage">Сократить использование данных</string>
+    <string name="pref_summary_low_data_usage">Приложение будет загружать более низкое разрешение обоев для предварительного просмотра, чтобы уменьшить объем передаваемых данных.</string>
+    <string name="pref_title_cache">Очистить кеш и файлы</string>
+    <string name="pref_summary_cache">Это удалит кэш и настройки приложения.\nТекущий размер кэша: %1$s</string>
+    <string name="pref_title_wsl">Папка сохранения обоев</string>
+    <string name="pref_summary_wsl">Сменить папку для сохранения обоев. \nТекущая папка: %1$s</string>
+    <string name="pref_header_launcher_icon">Отображение иконки приложения в ланчере</string>
+    <string name="pref_title_launcher_icon">Скрыть иконку из ланчера</string>
+    <string name="pref_summary_launcher_icon">Если включено, - иконка будет скрыта</string>
+    <string name="clearcache_dialog_content">Вы уверены, что хотите удалить данные приложения, кэш и настройки? Это не затронет примененные иконки</string>
+    <string name="hideicon_dialog_title">Предупреждение!</string>
+    <string name="hideicon_dialog_content">Вы уверены, что хотите скрыть значок приложения из вашего ланчера?\nПриложение может неожиданно закрыться, также будут полностью отключены уведомления.\nТакже, вы можете прочитать часто задаваемые вопросы, чтобы узнать, как восстановить иконку в меню приложений.</string>
+    <string name="prefs_notifs_title">Уведомления</string>
+    <string name="pref_title_enable_notifs">Включить уведомления</string>
+    <string name="pref_summary_enable_notifs">Получать уведомления о новых обоях и новостях приложения</string>
+    <string name="pref_title_enable_notifs_led">Включить LED-уведомления</string>
+    <string name="pref_title_enable_notifs_sound">Включить звук уведомления</string>
+    <string name="pref_title_enable_notifs_vibration">Включить вибрацию при уведомлении</string>
+    <string name="launcher_icon_restored">%1$s иконка приложения восстановлена</string>
+    <string name="launcher_icon_no_restored">%1$s иконка приложения уже восстановлена</string>
+    <string name="launcher_icon_restorer_error">Ошибка приложения в %1$s. Пожалуйста, обратитесь к разработчику.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Восстановить иконку в меню</string>
+    <string name="clock_widget_title">Аналоговые часы</string>
+    <string name="faqs_section">ЧАВо?</string>
+    <string name="dashboard_author_copyright">Я 20-ти летний Android разработчик и создатель этой прекрасной оболочки для иконпака.\n\nИз Колумбии с любовью, под лицензией CreativeCommons Attribution-ShareAlike License.\nCopyright © 2017.</string>
+    <string name="allan_description">В начале создатель иконпаков, затем дизайна для Themer; а теперь - разработчик.\nЯ помог развивать эту оболочку.</string>
+    <string name="fork_on_github">Fork on GitHub</string>
+    <string name="visit_website">Сайт</string>
+    <string name="more_apps">Еще приложения</string>
+    <string name="more_apps_long">Посмотрите другие приложения, котрые я опубликовал в Google Play Store.</string>
+    <string name="implemented_libraries">Включенные библиотеки</string>
+    <string name="contributors">Соавторы</string>
+    <string name="sherry_title">Спасибо Sherry Sabatine</string>
+    <string name="sherry_dialog">Спасибо ей за то, что IconShowcase открыт для использования. (OpenSource)</string>
+    <string name="follow_her">Подписаться на нее</string>
+    <string name="ui_design">Соавторы UI Design</string>
+    <string name="donate">Поддержать разработчика</string>
+    <string name="donate_summary">Если вы думаете, что Jahir Fiquitiva заслуживает, чтобы заработать немного денег за разработку этой удивительной оболочки.</string>
+    <string name="report_bugs">Сообщить об ошибке</string>
+    <string name="report_bugs_summary">Сообщить об ошибке или запросить новую фичу</string>
+    <string name="join_community">Вступить в сообщество Google Plus</string>
+    <string name="join_community_summary">Если Вам нужна помощь или возникли вопросы касательно IconShowcase, то сообщество на Google Plus отличное место для Вас.</string>
+    <string name="saving_wallpaper">Сохраняю обои…</string>
+    <string name="refresh">Обновить</string>
+    <!-- Messages shown when using LicenseChecker -->
+    <string name="unknown">неизвестное</string>
+    <string name="license_failed">Извините, но мы обнаружили, что ваша лицензия на %1$s не является действительной. %2$s Если вы думаете, что это ошибка, пожалуйста, повторите попытку позже. В противном случае, пожалуйста, %3$s скачайте приложение из магазина приложений.</string>
+    <string name="license_failed_extra">Это также может быть связано с тем, что вы используете пиратские приложения или, в частности, приложение %1$s</string>
+    <!-- Please keep this phrase in lowercase unless grammatically required by your language -->
+    <string name="license_failed_extra_sec">Удалить все пиратские приложения и</string>
+    <string name="license_error">К сожалению, произошла ошибка при проверке лицензии.</string>
+    <string name="license_success">Спасибо за установку %1$s. Если Вам нравится приложение, не забудьте оценить его в Google Play Store, а так же оставить свой отзыв.</string>
+    <string name="apply_advice">Если вашего ланчера, нет в списке, вы должны применить пакет значков непосредственно из настроек вашего текущего ланчера.\nНекоторые ланчеры не поддерживают замену иконок.</string>
+    <string name="walls_advice">Нажмите - для просмотра на весь экран.\nДлительное нажатие - для быстрой установки фоновым рисунком</string>
+    <string name="zooper_section_title">Настройки Zooper</string>
+    <string name="zooper_download_dialog_title">Скачать из</string>
+    <string name="install_apps">Установить приложения</string>
+    <string name="install_apps_content">Вам необходимо установить эти приложения для работы Zooper виджетов. Выберите, чтобы установить.</string>
+    <string name="install_kustom_apps_content">Вам необходимо установить эти приложения для работы дополнений Kustom. Выберите, чтобы установить.</string>
+    <string name="install_assets">Установить дополнения</string>
+    <string name="open">Открыть</string>
+    <string name="assets_installed">Дополнения уже установлены</string>
+    <string name="apps_installed">Приложения уже установлены</string>
+    <string name="copying_assets">Копирую файлы в ZooperWidget/%1$s</string>
+    <string name="icon_pack_in_numbers">Иконпак в цифрах</string>
+    <string name="themed_icons">Включено более %1$s иконок.</string>
+    <string name="available_wallpapers">Доступно %1$s обоев для скачивания.</string>
+    <string name="included_widgets">Еще %1$s виджетов для Zopper.</string>
+    <string name="icons">Иконки</string>
+    <string name="md_storage_perm_error">Вы не предоставили разрешение  \"Чтение внешнего накопителя\" для %1$s, которое необходимо для выполнения этого действия.</string>
+    <string name="new_folder">Новая папка</string>
+    <string name="new_folder_hint">Название папки</string>
+    <string name="new_folder_title">Создать новую папку</string>
+    <string name="new_folder_content">Укажите название папки</string>
+    <string name="wait_for_walls">Пожалуйста, подождите, пока не появится предпросмотр обоев…</string>
+    <string name="translators">Переводчики</string>
+    <string name="more">Больше</string>
+    <string name="columns">Количество столбцов</string>
+    <string name="columns_desc">Выберите количество столбцов, которые вы хотите видеть в этом разделе:</string>
+    <string-array name="columns_options" tools:ignore="InconsistentArrays">
+        <item>По вертикали: 1 / По горизонтали: 3</item>
+        <item>По вертикали: 2 / По горизонтали: 4</item>
+        <item>По вертикали: 3 / По горизонтали: 5</item>
+    </string-array>
+    <string-array name="questions">
+        <item>Как использовать иконпак?</item>
+        <item>Как применить иконпак?</item>
+        <item>Как посмотреть, какие иконки доступны?</item>
+        <item>Как самостоятельно сменить некоторые иконки на другие?</item>
+        <item>Как отправить запрос на иконки, которые не сменились автоматически?</item>
+        <item>После перезагрузки, иконпак сбрасывается (не применяется) или отображаются стандартные иконки.</item>
+        <item>Почему иконки выглядят нечетким на моем устройстве?</item>
+        <item>В списке иконок я вижу значок для приложения \"ABC\", но значок не применяется.</item>
+        <item>Как скрыть иконку приложения из моего ланчера?</item>
+        <item>Как открыть приложение после того, как его иконка была скрыта из ланчера?</item>
+        <item>Как снова включить иконку приложения в моем ланчере?</item>
+        <item>Почему приложению необходимо получить разрешение на изменение или удаление содержимого памяти моего устройства?</item>
+        <item>Почему приложению необходимо получить разрешение на полный доступ к сети?</item>
+        <item>Почему приложению необходимо получить разрешение на просмотр сетевых подключений?</item>
+        <item>Почему приложению нужно разрешение на установку обоев?</item>
+        <item>Почему приложению необходимо получить разрешение на изменение размера картинки?</item>
+        <item>Почему приложению необходимо получить разрешение на отключение спящего режима?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Вам нужен ланчер с поддержкой смены иконок (иконпаков).
+Проверьте описание поддерживаемых ланчеров в Google Play.
+Если вы не уверены, какой ланчер вы хотите использовать, просто зайдите в раздел \"Применить\" и выберите один из списка.</item>
+        <item>Потяните панель навигации слева, и перейдите к пункту \"Применить\", или вернитесь на главную, а затем нажмите на кнопку действий внизу (если доступно).
+Выберите ланчер к которому вы хотите применить иконки.
+Если вашего ланчера нет в списке, но этот иконпак совместим с ним (смотри описание в Google Play для списка поддерживаемых ланчеров), то вы можете применить его вручную из настроек вашего ланчера.</item>
+        <item>Потяните панель навигации слева, и перейдите к пункту \"Иконки\", или вернитесь на главную, а затем нажмите на кнопку с надписью \"Иконки\".</item>
+        <item>Это зависит от ланчера, который вы используете. Не каждый ланчер поддерживает ручное редактирование иконок.
+Но, в большинстве из них, вы можете изменить иконку с помощью длинного или двойного нажатия по ней.</item>
+        <item>Потяните панель навигации слева, и перейдите к пункту \"Запрос иконок\"</item>
+        <item>Так случилось, потому что иконпак был перенесен на SD-карту; вы должны установить его во внутреннюю память.</item>
+        <item>Проблема может возникнуть из-за ланчера, который вы используете; при работе с большим разрешением.
+Вы можете исправить это за счет увеличения размера иконок до 115 - 120 %.
+Или попробуйте использовать другой ланчер.</item>
+        <item>Отправить запрос иконок</item>
+        <item>Потяните панель навигации слева, и перейдите к пункту  \"Настройки\".
+Затем включите опцию \"Скрыть иконку приложения\".</item>
+        <item>Создайте на рабочем столе виджет, который называется \"Восстановить иконку в меню\".</item>
+        <item>Потяните панель навигации слева, и перейдите к пункту  \"Настройки\".
+Затем выключите опцию \"Скрыть иконку приложения\".</item>
+        <item>Разрешение необходимо, чтобы создать файлы необходимые для \"Запроса иконок\", а также, чтобы иметь возможность сохранить или установить обои, и для смены папки сохранения обоев.</item>
+        <item>Разрешение необходимо, чтобы иметь возможность загружать обои из облака (интернета).</item>
+        <item>Разрешение необходимо, чтобы проверить, подключено ли устройство к Интернету.</item>
+        <item>Разрешение необходимо, чтобы иметь возможность применять обои непосредственно из приложения.</item>
+        <item>Разрешение необходимо, чтобы иметь возможность регулировать размеры обоев на основе разрешения экрана.</item>
+        <item>Разрешение необходимо для поддержки Muzei Live Wallpaper.</item>
+    </string-array>
+    <string name="no_apply_tab">Обратитесь к разработчику (по email), кажется он что-то провтыкал :)</string>
+    <!--No Theme Engine Dialog-->
+    <string name="NTED_title">Упс!</string>
+    <string name="NTED_message">Похоже, что мы не в состоянии найти theme engine на вашем телефоне. Если вы знаете, что он у вас есть, пожалуйста, откройте его и продолжайте оттуда. Если у вас его нет, пожалуйста, скачайте ROM, который его поддерживает либо установите CyanogenMod или layers theming и следуйте их указаниям.</string>
+    <string name="tap_to_download">%1$s\nНажмите здесь, чтобы загрузить приложение.</string>
+    <string name="tap_to_open">%1$s\nНажмите здесь, чтобы открыть приложение.</string>
+    <string name="donations_error_title">Пожертвования недоступны</string>
+    <string name="donations_error_content">Устройство не поддерживает Покупки в приложении.\nЭто может быть потому, что вам необходимо обновить ваш Google Play Store, или потому, что вы живете в стране, где Покупки в приложении отключены.</string>
+    <string name="no_launcher_intent">Невозможно применить для этого ланчера. Пожалуйста, выберите пакет значков вручную, из в настроек вашего ланчера.</string>
+</resources>

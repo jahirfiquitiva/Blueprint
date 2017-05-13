@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="muzei_settings">Muzei Postavke</string>
+    <!-- Sharing wallpaper from Muzei -->
+    <string name="share_text">Moja pozadina za danas je %1$s do %2$s, sniženo sa %3$s. Preuzmi sada za %4$s</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Početna</string>
+    <string name="section_icons">Ikone</string>
+    <string name="section_apply">Primijeni</string>
+    <string name="section_wallpapers">Pozadine</string>
+    <string name="section_icon_request">Zahtjev ikona</string>
+    <string name="section_donate">Doniraj</string>
+    <string name="section_about">O aplikaciji</string>
+    <!-- Wallpapers Activity -->
+    <string name="title_activity_detailed_wallpaper">Preglednik pozadine</string>
+    <!-- Muzei Stuff -->
+    <string name="refresh_only_on_wifi">Osvježi samo preko WiFi-a.</string>
+    <string name="refresh_only_on_wifi_summary">Osvježi pozadinu samo kada je uređaj povezan na WiFi mrežu.</string>
+    <string name="refresh_wallpapers_every">Osvježi pozadine…</string>
+    <string name="every_x">Svakih %1$s</string>
+    <string name="sure_to_exit">Izlaz</string>
+    <string name="sure_to_exit_content">Želite li spremiti promjene prije izlaza?</string>
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="seconds">Sekunde</string>
+    <string name="minutes">Minuta</string>
+    <string name="hours">Sati</string>
+    <string name="days">Dana</string>
+    <string name="weeks">Tjedana</string>
+    <string name="months">Mjeseci</string>
+    <string name="muzei_info">Obavijest: Ove postavke mogu utjecat na ponašanje pozadina.</string>
+    <string name="share">Podijeli</string>
+    <string name="send_email">Pošalji email</string>
+    <!-- Strings for Dropdown Menu & Requests -->
+    <string name="share_title">Podijeli sa</string>
+    <string name="send_title">Pošalji sa</string>
+    <!-- LauncherNotInstalled Dialog -->
+    <string name="lni_content">%1$s trenutno nije instalirano na vašem uređaju.\nDali želite instalirati sa Google Play Trgovine?</string>
+    <string name="cm_dialog_content">%1$s je dio CyanogenMod (baziranih) romova.n\Dali želite instalirati na vaš uređaj?</string>
+    <string name="gnl_title">Google Now Launcher NIJE podržan</string>
+    <string name="gnl_content">Google Now Launcher NIJE podržan sa niti jednim Ikon Packom. Molimo nemojte ocijeniti Ikon Pack negativno iz tog razloga. Postoji drugi način koji možete pokušati, ali zahtjeva korištenje vanjske aplikacije. Dali želite preuzeti?</string>
+    <string name="lg_dialog_content">Žao nam je, LG Home aplikacija je ekskluzivna za LG uređaje, iz tog razloga ne može biti preuzeta sa Google Play trgovine.</string>
+    <!-- Changelog Dialog Content -->
+    <string name="changelog_dialog_title">Izmjene</string>
+    <string name="default_new_version_title">Ažuriraj</string>
+    <string name="empty_changelog">Prazne Izmjene</string>
+    <string name="great">Odlično</string>
+    <string name="changelog_neutral_text">Provjeri nove ikone</string>
+    <!-- Wallpapers Stuff -->
+    <string name="no_conn_title">Veza nije pronađena</string>
+    <string name="download">Preuzmi</string>
+    <string name="wallpaper_downloaded">Pozadina je skinuta na: %1$s</string>
+    <string name="wallpaper_by">Sa: %1$s</string>
+    <string name="apply">Primijeni</string>
+    <string name="save">Pohrani</string>
+    <string name="downloading_wallpaper">Preuzimanje pozadine…</string>
+    <string name="setting_wall_title">Primjenjivanje pozadine na vaš %1$s…</string>
+    <string name="preparing_wallpaper">Pozadina se priprema za obradu….</string>
+    <string name="download_takes_longer">Ovo traje više nego očekivano. Možete pričekati ili otkazati ovu radnju.</string>
+    <string name="set_as_wall_done">Pozadina postavljena!</string>
+    <string name="error">Greška</string>
+    <string name="confirm_apply">Jeste li sigurni da želite primijeniti ovu pozadinu na vaš uređaj?</string>
+    <string name="refreshing_walls">Osvježavanje liste pozadina…</string>
+    <string name="retry">Pokušaj ponovno</string>
+    <string name="wallpaper_author_title">Autor</string>
+    <string name="wallpaper_dimensions_title">Dimenzije</string>
+    <string name="wallpaper_copyright_title">Zaštičena prava</string>
+    <string name="settings_saved">Postavke su spremljene. Pozadina će se promijeniti svakih %1$s.</string>
+    <!-- License Check Dialog -->
+    <string name="license_failed_title">You shall not pass!</string>
+    <string name="license_success_title">Provjera licence uspješna</string>
+    <string name="exit">Izađi</string>
+    <!-- Some texts for Dialogs and Cards -->
+    <string name="close">Zatvori</string>
+    <string name="crop">Izreži</string>
+    <string name="advice">Savjet</string>
+    <string name="dontshow">Ne prikazuj ponovno</string>
+    <string name="rate">Ocijeni</string>
+    <string name="set_wall_to">Postavi pozadinu kao…</string>
+    <string name="home_screen">Početni zaslon</string>
+    <string name="lock_screen">Zaslon zaključavanja</string>
+    <string name="home_lock_screens">Početni i zaslon zaključavanja</string>
+    <string name="crop_and_set_as">Izreši sliku i postavi kao…</string>
+    <!-- Requests -->
+    <string name="select_all">Označi sve</string>
+    <string name="no_selected_apps_title">Nema odabranih aplikacija</string>
+    <string name="no_selected_apps_content">Niste odabrali niti jednu aplikaciju na zahtjev. Označite neke prije ponovne primjene.</string>
+    <string name="apps_limit_dialog">Žao nam je, dozvoljena je samo %1$s aplikacija na zahtjev.</string>
+    <string name="apps_limit_dialog_more">Ispričavamo se, ali dopušteno vam je zatražiti još %1$s aplikacija za sada.</string>
+    <string name="apps_limit_dialog_day">Žao nam je, dozvoljeno je zatražiti samo jedan ikon pack svakih %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Moći ćete ponovno zatražiti ikone, za %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Moći će te zatražiti još ikona ponovno, za manje od minutu.</string>
+    <!-- Icon search -->
+    <string name="search_icons">Tražim ikone…</string>
+    <string name="search_x">Traženje %1$s…</string>
+    <string name="requests_error">Došlo je do pogreške prilikom učitavanja aplikacije.\nPritisnite ovdje za ponovni pokušaj</string>
+    <string name="building_request_dialog">Preuzimam zatražene datoteke…</string>
+    <string name="loading_apps">Molimo pričekajte dok se aplikacije učitaju, potrajati će još nekoliko sekundi…</string>
+    <string name="loading_icons">Učitavanje ikona…</string>
+    <string name="choose">Odaberi</string>
+    <!--SETTINGS-->
+    <string name="title_settings">Postavke</string>
+    <string name="pref_header_ui">Operativni sustav</string>
+    <string name="pref_title_anims">Omogući animacije</string>
+    <string name="pref_summary_anims">Ovo može utjecati na brzinu vašeg uređaja.</string>
+    <string name="pref_title_wall_header">Omogući primjenu pozadine u postavkama apl.</string>
+    <string name="pref_summary_wall_header">Vaša trenutna pozadina će biti prikazana u postavkama aplikacije.</string>
+    <string name="pref_header_storage">Pohrana</string>
+    <string name="pref_title_low_data_usage">Smanji korištenje podataka</string>
+    <string name="pref_summary_low_data_usage">Aplikacija će učitati slike manje veličine kako bi smanjili korištenje podataka.</string>
+    <string name="pref_title_cache">Očisti privremenu memoriju i podatke aplikacije</string>
+    <string name="pref_summary_cache">Ovo će obrisati privremenu memoriju i postavke. \nTrenutna veličina priv. memorije: %1$s</string>
+    <string name="pref_title_wsl">Lokacija za preuzimanje pozadina</string>
+    <string name="pref_summary_wsl">Promijenite lokaciju preuzetih pozadina.\nTrenutna lokacija: %1$s</string>
+    <string name="pref_header_launcher_icon">Ikona pokretača</string>
+    <string name="pref_title_launcher_icon">Sakrij ikonu pokretača</string>
+    <string name="pref_summary_launcher_icon">Ako primijenite, ikona pokretača će biti skrivena.</string>
+    <string name="clearcache_dialog_content">Jeste li sigurni da želite izbrisati podatke, priv. memoriju i postavke aplikacije? Primijenjene ikone neće bit zahvaćene.</string>
+    <string name="hideicon_dialog_title">Oprez!</string>
+    <string name="hideicon_dialog_content">Dali ste sigurni da želite sakriti ikonu u launcheru? \nAplikacija bi se mogla zatvoriti neočekivano i notifikacije bi bile nedostupne. \nMožda želite pročitati FAQ kako bi naučili kako ju prikazati ponovno, prije nego ju sakrijete.</string>
+    <string name="prefs_notifs_title">Obavijesti</string>
+    <string name="pref_title_enable_notifs">Omogući obavijesti</string>
+    <string name="pref_summary_enable_notifs">"Primajte obavijesti o novim pozadinama i vijestima o razvoju. "</string>
+    <string name="pref_title_enable_notifs_led">Omogući LED lampicu za obavijesti</string>
+    <string name="pref_title_enable_notifs_sound">Uključi zvuk notifikacija</string>
+    <string name="pref_title_enable_notifs_vibration">Omogući vibraciju za obavijesti</string>
+    <string name="launcher_icon_restored">%1$s ikona pokretača je ponovno vidljiva</string>
+    <string name="launcher_icon_no_restored">%1$s ikona launchera je već prikazana</string>
+    <string name="launcher_icon_restorer_error">Postoji problem sa kodom %1$s. Molimo kontaktirajte developera.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Widget za ponovan prikaz ikona</string>
+    <string name="clock_widget_title">Analogni sat</string>
+    <string name="faqs_section">Česta pitanja</string>
+    <string name="dashboard_author_copyright">Ja sam 20-godišnji Android razvojni programer i developer ove aplikacije.\n\nPodijeljeno iz Kolumbije na svijetu, pod CreativeCommons pravom i licencom za podijelu. Copyright © 2017.</string>
+    <string name="allan_description">Prvo kreator ikon packa, onda themer; sada i programer.\nJa sam pomogao s dijelom razvoja ove nadzorne ploče.</string>
+    <string name="fork_on_github">Fork on GitHub</string>
+    <string name="visit_website">Web stranica</string>
+    <string name="more_apps">Više aplikacija</string>
+    <string name="more_apps_long">Pogledaj moje ostale aplikacije u Google Play trgovini.</string>
+    <string name="implemented_libraries">Primjenjene postavke</string>
+    <string name="contributors">Suradnici u razvoju</string>
+    <string name="sherry_title">Hvala Sherry Sabatine</string>
+    <string name="sherry_dialog">Zahvaljujuči njoj, IconShowcase je besplatan za svakoga.</string>
+    <string name="follow_her">Prati ju</string>
+    <string name="ui_design">Kolaboracije dizajnera</string>
+    <string name="donate">Podrži development</string>
+    <string name="donate_summary">Ako mislite da je Jahir Fiquitiva zaslužio nešto novca za razvoj ovog dashboarda.</string>
+    <string name="report_bugs">Prijavi greške</string>
+    <string name="report_bugs_summary">Prijavi greške ili zatraži nove opcije.</string>
+    <string name="join_community">Učlani se u Google Plus društvo</string>
+    <string name="join_community_summary">Ako trebate pomoć ili imate pitanja, IconShowcase zajednica na Google Plusu je dobro mjesto za provjeriti.</string>
+    <string name="saving_wallpaper">Spremanje pozadine…</string>
+    <string name="refresh">Osvježi</string>
+    <!-- Messages shown when using LicenseChecker -->
+    <string name="unknown">Nepoznato</string>
+    <string name="license_failed">Oprostite, primjetili smo da vaša licenca aplikacije %1$s nije valjana. %2$s Ako mislite da je ovo greška pokušajte ponovno kasnije. Ili skinite %3$s sa Google Play Trgovine.</string>
+    <string name="license_failed_extra">Ovo može biti jer koristite nelegalnu aplikaciju, ili možda: \'%1$s\' aplikaciju.</string>
+    <!-- Please keep this phrase in lowercase unless grammatically required by your language -->
+    <string name="license_failed_extra_sec">uklonite sve nelegalne aplikacije</string>
+    <string name="license_error">Oprostite, došlo je do pogreške u provjeri vaše licence.</string>
+    <string name="license_success">Hvala na preuzimanju %1$s. Ako vam se sviđa, nemojte zaboraviti ocijeniti i napisati osvrt na Google Play trgovini.</string>
+    <string name="apply_advice">Ako pokretač koji koristite nije na popisu, morate primijeniti paket ikona izravno iz postavki pokretača.\nNeki pokretači ne podržavaju izravnu primjenu.</string>
+    <string name="walls_advice">Jednostavno pritisnite sliku da bi ju vidjeli preko cijelog zaslona.\nDugo pritisnite da biste ju primijeniti izravno na početni zaslon.</string>
+    <string name="zooper_section_title">Zooper postavljanje</string>
+    <string name="zooper_download_dialog_title">Preuzeto iz</string>
+    <string name="install_apps">Instaliraj aplikacije</string>
+    <string name="install_apps_content">"Morate instalirati ove aplikacije za Zooper widget da bi radili ispravno. Pritisnite jednom da ga instalirate.
+"</string>
+    <string name="install_kustom_apps_content">Morate instalirati ove aplikacije za Kustom dodatke da bi radili ispravno. Pritisnite jednom da ga instalirate.</string>
+    <string name="install_assets">Instaliraj dodatke.</string>
+    <string name="open">Otvori</string>
+    <string name="assets_installed">Dodaci već instalirani.</string>
+    <string name="apps_installed">Aplikacije su već instalirane</string>
+    <string name="copying_assets">Kopiram podatke u ZoperWidget/%1$s</string>
+    <string name="icon_pack_in_numbers">Paket ikona u brojevima</string>
+    <string name="themed_icons">Preko %1$s dostupnih ikona.</string>
+    <string name="available_wallpapers">Oko %1$s dostupnih pozadina.</string>
+    <string name="included_widgets">Više od %1$s dostupnih widgeta.</string>
+    <string name="icons">Ikone</string>
+    <string name="md_storage_perm_error">Niste odobrili \"Read External Storage\" dopuštenje za %1$s, koje je potrebno za dovršetak ove akcije.</string>
+    <string name="new_folder">Nova mapa</string>
+    <string name="new_folder_hint">Naziv mape</string>
+    <string name="new_folder_title">Stvori novu mapu</string>
+    <string name="new_folder_content">Upišite naziv nove mape, molimo.</string>
+    <string name="wait_for_walls">Molimo pričekajte dok se ne pojavi pregled pozadine…</string>
+    <string name="translators">Prevoditelji</string>
+    <string name="more">Više</string>
+    <string name="columns">Broj stupaca</string>
+    <string name="columns_desc">Odaberite količinu stupaca koje želite vidjeti u ovom odjeljku:</string>
+    <string-array name="columns_options" tools:ignore="InconsistentArrays">
+        <item>Portret: 1 / Vodoravno: 3</item>
+        <item>Portret: 2 / Vodoravno: 4</item>
+        <item>Portret: 3 / Vodoravno: 5</item>
+    </string-array>
+    <string-array name="questions">
+        <item>Kako koristiti paket ikona?</item>
+        <item>Kako primijeniti paket ikona?</item>
+        <item>"Kako vidjeti sve dostupne ikone?
+"</item>
+        <item>Kako zamijeniti određene ikone s alternativnima?</item>
+        <item>"Kako zatražiti nedostupne ikone?
+"</item>
+        <item>Nakon ponovnog pokretanja mog uređaja, ikon paket više nije primijenjen. Ikone su vraćene u
+zadane postavke.</item>
+        <item>Zašto ikone izgledaju pikselizirano na mojem uređaju?</item>
+        <item>Vidim ikonu za X aplikaciju u priloženim ikonama, ali ikona se ne primjenjuje.</item>
+        <item>Kako sakriti ikonu aplikacije iz pokretača?</item>
+        <item>"Kako otvoriti aplikaciju nakon sto je ikona aplikacije skrivena?
+"</item>
+        <item>Kako prikazati ikonu aplikacije u launcheru ponovno?</item>
+        <item>Zašto aplikacija treba dopuštenje za izmjenu ili brisanje sadržaja mog uređaja?</item>
+        <item>Zašto aplikacija treba dozvolu za puni pristup mreži?</item>
+        <item>Zašto aplikacija treba dozvolu za pregled mreža?</item>
+        <item>Zašto aplikacija treba dozvolu za primjenu pozadine?</item>
+        <item>Zašto aplikacija treba dozvolu za izmjenu veličine pozadine?</item>
+        <item>Zašto aplikacija treba dozvolu za spriječavanje zaključavanja uređaja?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Trebate luncher s podrškom za Ikon Paket.
+Provjerite Google Play Store opic za podržane launchere.
+Ako niste sigurni koji launcher trebate koristiti, samo idite na \"Apply\" odjeljak, a zatim
+odaberite jednoga iz popisa.</item>
+        <item>Pomaknite NavigationDrawer s lijeve strane, i idite na \"Apply\" dio, ili se vratite na glavni odjeljak aplikacije, a zatim  odaberite plutajući Action Button.
+Odaberite launcher na koji želite primijeniti ikone.
+Ako vaš launcher nije naveden, a ovaj ikon paket je kompatibilan s njim
+(Vidi na Google opisu Trgovini Play za popis podržanih launchera),
+možete ga primijeniti ručno iz postavki launchera.</item>
+        <item>Pomaknite NavigationDrawer s lijeve strane, i idite na odjeljak \"ikone\", ili se vratite na glavni odjeljak aplikacije, a zatim dodirnite gumb na kojem piše \"Ikone\".</item>
+        <item>"
+To ovisi o launcheru koji koristite. Pojedini launcheri ne podržavaju uređivanje ikona.
+No, u većini njih, možete urediti ikone dugim pritiskom ikone ili duplim dodirom."</item>
+        <item>Pomaknite izbornik s lijeve strane, i odberite odjeljak \"zahtjevi\".</item>
+        <item>To se dogodilo jer je ikon paket je premještena na SD karticu, trebali biste ga instalirati u
+internu memoriju uređaja.</item>
+        <item>Problem može doći s launcherom koji koristite, pri korištenju večih rezolucija.
+Možete ga popraviti povećanjem veličine ikona na 115 - 120%.
+Ili pokušajte koristiti drugi launcher.</item>
+        <item>Pošalji zahtjev za ikone.</item>
+        <item>Pokrenite izbornik s lijeve strane, i idite na odjeljak \"Postavke\".
+Zatim odaberite opciju \"sakriti ikonu od launchera\".</item>
+        <item>Idite na početni zaslon, a zatim stvorite widget za aplikaciju imena \"IconRestorer\".</item>
+        <item>Odaberite izbornik s lijeve strane, i idite na odjeljak \"Postavke\".
+Zatim isključite opciju \"sakrij ikonu odlaunchera\".</item>
+        <item>Ovo je potrebno kako bi mogli pisati zahtjeve ikona i datoteke, kao i za spremanje pozadina, te za mogućnost promjene lokacije za preuzimanje pozadina.</item>
+        <item>To je potrebno da bi imali mogućnost primjeniti i preuzimati pozadinske slike iz oblaka.</item>
+        <item>To je potrebno radi provjere dali vaš uređaj ima pristup internetu.</item>
+        <item>Potrebno je primijeniti pozadinu direktno iz aplikacije.</item>
+        <item>Potrebno je za podešavanje dimenzija pozadine zasnovanih na razlučivosti vašeg zaslona.</item>
+        <item>Potrebno je Muzei Live Pozadini.</item>
+    </string-array>
+    <string name="no_apply_tab">Kontaktirajte razvojnog programera zato što nešto fali u aplikaciji.</string>
+    <!--No Theme Engine Dialog-->
+    <string name="NTED_title">Uh Oh!</string>
+    <string name="NTED_message">Čini se da ne možemo pronaći theme engine na vašem telefonu. Ako znate da imate, otvorite ga i nastavite od tamo. Ako nemate, molim vas instalirajte ROM koji podržava bilo CyanogenMod ili Layers teme i slijedite njihove upute.</string>
+    <string name="tap_to_download">%1$s\nPritisnite ovu karticu za preuzimanje.</string>
+    <string name="tap_to_open">%1$s\nPritisnite ovu karticu za otvaranje aplikacije.</string>
+    <string name="donations_error_title">Donacije nisu dostupne</string>
+    <string name="donations_error_content">Vaš uređaj ne podržava izravne kupnje u aplikacijama.\nTo može biti zato što vam je potrebno ažuriranje Google Play Store aplikacije, ili zato što živite u zemlji gdje je naplata aplikacija onemogućena.</string>
+    <string name="no_launcher_intent">Izravana primjena neuspjela za ovaj launcher. Molimo primjenite icon pack ručno, u postavkama launchera.</string>
+</resources>

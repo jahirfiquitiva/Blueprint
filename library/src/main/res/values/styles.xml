@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+
+<resources>
+
+    <style name="Toolbar.Popup.AppCompat" parent="Theme.AppCompat.Light"/>
+
+    <style name="Toolbar.AppCompat.Responsive.Light" parent="AppTheme.Base">
+        <item name="android:textColorPrimary">@color/toolbar_text_light</item>
+        <item name="android:textColorSecondary">@color/toolbar_text_light</item>
+        <item name="colorControlHighlight">@color/toolbar_text_light</item>
+    </style>
+
+    <style name="Toolbar.AppCompat.Responsive.Dark" parent="AppTheme.Base.Dark">
+        <item name="android:textColorPrimary">@color/toolbar_text_dark</item>
+        <item name="android:textColorSecondary">@color/toolbar_text_dark</item>
+        <item name="colorControlHighlight">@color/toolbar_text_dark</item>
+    </style>
+
+    <style name="Responsive.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="maxButtonHeight">48dp</item>
+        <item name="android:paddingLeft">@dimen/toolbar_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/toolbar_horizontal_padding</item>
+        <item name="contentInsetStart">@dimen/first_keyline</item>
+    </style>
+
+    <style name="Responsive.Toolbar.Button.Navigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">48dp</item>
+    </style>
+
+    <style name="Responsive.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+    </style>
+
+    <style name="Responsive.ActionMode" parent="Widget.AppCompat.ActionMode">
+        <!--
+        <item name="android:paddingLeft">@dimen/toolbar_horizontal_padding</item>
+        -->
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">@dimen/toolbar_horizontal_padding</item>
+    </style>
+
+    <style name="Responsive.ActionButton.CloseMode" parent="Widget.AppCompat.ActionButton.CloseMode">
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:minWidth">48dp</item>
+    </style>
+
+    <style name="CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">@dimen/cards_spacing</item>
+        <item name="android:paddingRight">@dimen/cards_spacing</item>
+        <item name="android:paddingTop">@dimen/cards_spacing</item>
+        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ZooperCardContent" parent="android:Widget">
+        <item name="android:paddingLeft">@dimen/cards_spacing</item>
+        <item name="android:paddingRight">@dimen/cards_spacing</item>
+        <item name="android:paddingTop">@dimen/cards_spacing</item>
+        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+    </style>
+
+    <style name="AboutContent" parent="android:Widget">
+        <item name="android:paddingLeft">@dimen/card_little_margin</item>
+        <item name="android:paddingRight">@dimen/card_little_margin</item>
+        <item name="android:paddingTop">@dimen/cards_spacing</item>
+        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ListsContent" parent="android:Widget">
+        <item name="android:paddingLeft">@dimen/card_little_margin</item>
+        <item name="android:paddingRight">@dimen/card_little_margin</item>
+        <item name="android:paddingTop">@dimen/card_little_margin</item>
+        <item name="android:paddingBottom">@dimen/card_little_margin</item>
+    </style>
+
+    <style name="PreviewContent" parent="android:Widget">
+        <item name="android:paddingLeft">@dimen/icons_preview_row</item>
+        <item name="android:paddingRight">@dimen/icons_preview_row</item>
+        <item name="android:paddingTop">@dimen/cards_spacing</item>
+        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+    </style>
+
+    <style name="HomeCardContent" parent="android:Widget">
+        <item name="android:paddingLeft">@dimen/welcome_card_content_padding</item>
+        <item name="android:paddingRight">@dimen/welcome_card_content_padding</item>
+        <item name="android:paddingTop">@dimen/cards_spacing</item>
+        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ToolbarTitleWithShadow" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="ToolbarSubtitleWithShadow" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="DrawerTextsWithShadow">
+        <item name="android:textSize">@dimen/material_drawer_account_header_text</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+</resources>

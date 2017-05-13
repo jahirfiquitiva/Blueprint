@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string-array name="wall_options">
+        <item>@string/home_screen</item>
+        <item>@string/lock_screen</item>
+        <item>@string/home_lock_screens</item>
+    </string-array>
+
+    <string name="dashboard_author_name">Jahir Fiquitiva</string>
+    <string name="dashboard_author_photo" formatted="false" tools:ignore="TypographyDashes">https://github.com/jahirfiquitiva/Website-Resources/raw/master/myself/me-square-white.png</string>
+    <string name="dashboard_author_banner" formatted="false" tools:ignore="TypographyDashes">https://github.com/jahirfiquitiva/Website-Resources/raw/master/myself/BannerM.png</string>
+    <string name="dashboard_author_website">https://www.jahirfiquitiva.me/</string>
+    <string name="dashboard_author_gplus">https://www.google.com/+JahirFiquitivaJDev</string>
+    <string name="dashboard_author_insta">http://instagram.com/jahirfiquitiva</string>
+    <string name="dashboard_name">IconShowcase</string>
+    <string name="dashboard_github">https://github.com/jahirfiquitiva/IconShowcase-Dashboard</string>
+    <string name="app_version">v %1$s</string>
+    <string name="section_kustom">Kustom</string>
+
+    <string name="allan_photo" formatted="false" tools:ignore="TypographyDashes">https://raw.githubusercontent.com/AllanWang/Pitched-Wallpapers/master/Material_Glass_Storage/pitchedapps.jpg</string>
+    <string name="allan_banner" formatted="false" tools:ignore="TypographyDashes">https://raw.githubusercontent.com/AllanWang/Pitched-Wallpapers/master/Material_Glass_Storage/banner.jpg</string>
+    <string name="allan_github">https://github.com/AllanWang</string>
+    <string name="allan_gplus">https://plus.google.com/+AllanWPitchedApps</string>
+    <string name="allan_play">https://play.google.com/store/apps/dev?id=9057916668129524571</string>
+
+    <string name="zooper_app">Zooper Widget Pro</string>
+    <string name="mu_app">Media Utilities</string>
+    <string name="kolorette_app">Kolorette</string>
+
+    <string name="materialdialogs_author">Aidan Follestad</string>
+    <string name="materialdialogs_web">https://github.com/afollestad/material-dialogs</string>
+    <string name="materialdialogs_name">Material Dialogs</string>
+
+    <string name="materialdrawer_author">Mike Penz</string>
+    <string name="materialdrawer_web">https://github.com/mikepenz/MaterialDrawer</string>
+    <string name="materialdrawer_name">MaterialDrawer</string>
+
+    <string name="sectioned_rv_web">https://github.com/afollestad/sectioned-recyclerview</string>
+    <string name="sectioned_rv_name">Sectioned RecyclerView</string>
+
+    <string name="splitbtns_web">https://github.com/afollestad/polar-dashboard/blob/master/app/src/main/java/com/afollestad/polar/views/SplitButtonsLayout.java</string>
+    <string name="splitbtns_name">SplitButtonsLayout</string>
+
+    <string name="glide_name">Glide</string>
+    <string name="glide_web">https://github.com/bumptech/glide</string>
+
+    <string name="rv_fast_scroller_web">https://github.com/plusCubed/recycler-fast-scroll</string>
+    <string name="rv_fast_scroller_name">RecyclerView FastScroller</string>
+
+    <string name="muzei_api_name">Muzei API</string>
+    <string name="muzei_api_web">https://github.com/romannurik/muzei/wiki/API</string>
+
+    <string name="circleiv_name">CircleImageView</string>
+    <string name="circleiv_web">https://github.com/hdodenhof/CircleImageView</string>
+
+    <string name="okhttp">OkHttp</string>
+    <string name="okhttp_web">http://square.github.io/okhttp/</string>
+
+    <string name="counter_fab">CounterFab</string>
+    <string name="counter_fab_web">https://github.com/andremion/CounterFab</string>
+
+    <string name="rob_beane">Rob Beane</string>
+    <string name="tim_bremer">Tim Bremer</string>
+    <string name="steve_albright">Steve Albright</string>
+    <string name="karim">Karim Abou Zeid</string>
+    <string name="sherry_link">https://plus.google.com/+SherrySabatine</string>
+    <string name="patryk">Patryk Goworowski</string>
+    <string name="josh_gray">Josh Gray</string>
+    <string name="kevin">Kevin Aguilar</string>
+    <string name="anthony">Anthony Nguyen</string>
+    <string name="patrick">Patrick Jung</string>
+    <string name="james">James Fenn</string>
+    <string name="alexandre">Alexandre Piveteau</string>
+    <string name="heinrich">Heinrich Reimer</string>
+    <string name="ahmed">Ahmed Rizwan</string>
+    <string name="joaquin">Joaquin Cuitiño</string>
+    <string name="allan">Allan Wang \u2022 Pitched Apps</string>
+    <string name="sherry">Sherry Sabatine</string>
+
+    <string-array name="contributors_names">
+        <item>@string/joaquin</item>
+        <item>@string/patrick</item>
+        <item>@string/steve_albright</item>
+        <item>@string/ahmed</item>
+        <item>@string/heinrich</item>
+        <item>@string/james</item>
+        <item>@string/alexandre</item>
+        <item>Krystian Drożdżyński</item>
+        <item>@string/materialdialogs_author</item>
+        <item>@string/materialdrawer_author</item>
+    </string-array>
+
+    <string-array name="contributors_links">
+        <item>https://plus.google.com/+JoaquinCuitiñoF/posts</item>
+        <item>https://plus.google.com/+PatrickJung42/posts</item>
+        <item>https://plus.google.com/111777412946608276908/auto</item>
+        <item>https://plus.google.com/+AhmedRizwan/posts</item>
+        <item>https://plus.google.com/+HeinrichReimer/posts</item>
+        <item>https://plus.google.com/+JamesFennJAFFA2157/posts</item>
+        <item>https://plus.google.com/+AlexandrePiveteau/posts</item>
+        <item>https://goo.gl/G4bVnV</item>
+        <item>http://www.aidanfollestad.com/</item>
+        <item>http://portfolio.mikepenz.com/</item>
+    </string-array>
+
+    <string-array name="ui_collaborators_names">
+        <item>@string/patryk</item>
+        <item>@string/kevin</item>
+        <item>@string/anthony</item>
+        <item>@string/tim_bremer</item>
+        <item>@string/josh_gray</item>
+        <item>@string/rob_beane</item>
+        <item>@string/karim</item>
+    </string-array>
+
+    <string-array name="ui_collaborators_links">
+        <item>https://plus.google.com/109304801957014561872/posts</item>
+        <item>https://plus.google.com/+KevinAguilarC/posts</item>
+        <item>https://plus.google.com/111080505870850761155/posts</item>
+        <item>https://plus.google.com/114641367439276138127/posts</item>
+        <item>https://plus.google.com/+JoshGray1789/posts</item>
+        <item>https://plus.google.com/111678887963556771807/posts</item>
+        <item>https://plus.google.com/103202379000002144026/posts</item>
+    </string-array>
+
+    <string-array name="translators_names">
+        <item>@string/sherry</item>
+        <item>@string/patrick</item>
+        <item>@string/patryk</item>
+        <item>@string/kevin</item>
+        <item>@string/anthony</item>
+        <item>Eduardo Pratti</item>
+        <item>Maximilian Keppeler</item>
+        <item>Rami Debab</item>
+        <item>@string/heinrich</item>
+        <item>Fladir Reis</item>
+        <item>Tijmen Ennik</item>
+        <item>Julian Ostarek</item>
+        <item>Jacek Kazimierowicz</item>
+        <item>Davide Della Giustina</item>
+        <item>Framo Dev</item>
+        <item>Maximilian Jarchow</item>
+        <item>Randle P</item>
+        <item>Chebeto Sanchez</item>
+        <item>Danet Mickael</item>
+        <item>Otto Werse</item>
+        <item>Redi Tafani</item>
+        <item>Stefano Trevisani</item>
+        <item>TyronTM</item>
+        <item>Sandivisi Aditya</item>
+        <item>Sven R.</item>
+        <item>Runar Olsen</item>
+        <item>Morshedul Alam</item>
+        <item>Diaulhaq Fakhran</item>
+        <item>Ivan Krušlin</item>
+        <item>Brandon Aguilar</item>
+        <item>Ivan Tevano</item>
+        <item>Didier Sinmian</item>
+        <item>Mularush Seven</item>
+        <item>Danish Ansari</item>
+        <item>Lo Scienzo</item>
+        <item>coccco28</item>
+    </string-array>
+
+    <string-array name="libs_names">
+        <item>@string/dashboard_name</item>
+        <item>@string/materialdialogs_name</item>
+        <item>@string/materialdrawer_name</item>
+        <item>@string/okhttp</item>
+        <item>@string/glide_name</item>
+        <item>@string/rv_fast_scroller_name</item>
+        <item>@string/sectioned_rv_name</item>
+        <item>@string/circleiv_name</item>
+        <item>@string/counter_fab</item>
+        <item>@string/muzei_api_name</item>
+        <item>@string/splitbtns_name</item>
+    </string-array>
+
+    <string-array name="libs_links">
+        <item>@string/dashboard_github</item>
+        <item>@string/materialdialogs_web</item>
+        <item>@string/materialdrawer_web</item>
+        <item>@string/okhttp_web</item>
+        <item>@string/glide_web</item>
+        <item>@string/rv_fast_scroller_web</item>
+        <item>@string/sectioned_rv_web</item>
+        <item>@string/circleiv_web</item>
+        <item>@string/counter_fab_web</item>
+        <item>@string/muzei_api_web</item>
+        <item>@string/splitbtns_web</item>
+    </string-array>
+
+    <string name="google_plus">Google+</string>
+    <string name="youtube">YouTube</string>
+    <string name="twitter">Twitter</string>
+    <string name="play_store">Play Store</string>
+    <string name="facebook">Facebook</string>
+    <string name="github">GitHub</string>
+
+    <string-array name="zooper_download_dialog_options">
+        <item>@string/play_store</item>
+        <item>Amazon App Store</item>
+    </string-array>
+
+    <string name="clearcache_dialog_title">@string/pref_title_cache</string>
+    <string name="md_error_label">@string/error</string>
+
+    <string-array name="credits_drawables">
+        <item>ic_award</item>
+        <item>ic_code</item>
+        <item>ic_design</item>
+        <item>ic_translate</item>
+        <item>ic_libraries</item>
+    </string-array>
+
+    <string-array name="more_credits_titles">
+        <item>@string/sherry_title</item>
+        <item>@string/contributors</item>
+        <item>@string/ui_design</item>
+        <item>@string/translators</item>
+        <item>@string/implemented_libraries</item>
+    </string-array>
+
+</resources>

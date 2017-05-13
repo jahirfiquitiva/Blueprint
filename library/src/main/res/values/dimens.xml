@@ -1,0 +1,79 @@
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+
+<resources>
+
+    <dimen name="cards_padding">16dp</dimen>
+    <dimen name="cards_elevation">2dp</dimen>
+    <dimen name="cards_margin">8dp</dimen>
+    <dimen name="cards_spacing">12dp</dimen>
+
+    <dimen name="cards_super_small_margin">4dp</dimen>
+
+    <dimen name="cards_content_margin_small">16dp</dimen>
+    <dimen name="cards_content_margin_mini">12dp</dimen>
+    <dimen name="cards_content_margin_s">10dp</dimen>
+
+    <dimen name="card_corner_radius">2dp</dimen>
+    <dimen name="grid_padding_vertical">8dp</dimen>
+    <dimen name="card_little_margin">6dp</dimen>
+
+    <dimen name="launchers_icons_padding">8dp</dimen>
+
+    <dimen name="lists_padding">8dp</dimen>
+
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="mini_fab_right_margin">24dp</dimen>
+    <dimen name="mini_fab_space">8dp</dimen>
+
+    <dimen name="toolbar_expanded">256dp</dimen>
+    <integer name="toolbar_elevation">4</integer>
+    <dimen name="tabs_contentInset">72dp</dimen>
+
+    <dimen name="dividers_height">1dp</dimen>
+
+    <dimen name="icons_preview_row">12dp</dimen>
+    <dimen name="welcome_card_content_padding">12dp</dimen>
+
+    <dimen name="credits_headers">96dp</dimen>
+    <dimen name="credits_photo_margin">48dp</dimen>
+    <dimen name="credits_photo_size">96dp</dimen>
+
+    <dimen name="app_card_icon_size">48dp</dimen>
+
+    <!-- Dimensions for some dialogs -->
+    <dimen name="dialog_margin">24dp</dimen>
+    <dimen name="dialog_margin_bottom">16dp</dimen>
+    <dimen name="dialog_icon_size">120dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Splash screen dimens -->
+    <dimen name="splash_logo_bottom">16dp</dimen>
+    <dimen name="splash_brand_bottom">48dp</dimen>
+
+    <dimen name="first_keyline">16dp</dimen>
+    <dimen name="second_keyline">72dp</dimen>
+    <dimen name="toolbar_horizontal_padding">4dp</dimen>
+
+</resources>

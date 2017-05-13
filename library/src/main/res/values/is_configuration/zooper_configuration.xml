@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!-- These texts are shown in Zooper -->
+    <string name="zooper_pack_name">@string/app_name</string>
+    <string name="zooper_pack_desc">Cool widgets.</string>
+    <string name="zooper_pack_author">@string/iconpack_author_name</string>
+
+    <!-- If set to 0, the user will not be allowed to save the templates you provide -->
+    <integer name="zooper_pack_allowsave">1</integer>
+
+    <!-- This is the icon that will be shown in Zooper -->
+    <drawable name="zooper_pack_icon">@drawable/ic_na_launcher</drawable>
+
+    <!--
+    If you include Zooper widgets, do any of them need MediaUtilities to work properly?
+    True, means yes.
+    False, means no.
+    -->
+    <bool name="mu_needed">false</bool>
+
+    <!--
+    If you include Zooper widgets, do any of them need Kolorette to work properly?
+    True, means yes.
+    False, means no.
+    -->
+    <bool name="kolorette_needed">false</bool>
+
+    <!--
+    Do you want the Zooper widgets previews background to be removed?
+    This may result in showing some incorrect previews.
+    True, means yes.
+    False, means no.
+    -->
+    <bool name="remove_zooper_previews_background">true</bool>
+
+    <!--
+    Setup the columns amount you want in different sections
+    -->
+    <!-- PHONES - PORTRAIT MODE -->
+    <integer name="zooper_kustom_columns_normal_portrait">2</integer>
+    <!-- PHONES - LANDSCAPE MODE -->
+    <integer name="zooper_kustom_columns_normal_landscape">4</integer>
+    <!-- TABLETS - PORTRAIT MODE -->
+    <integer name="zooper_kustom_columns_tablet_portrait">4</integer>
+    <!-- TABLETS - LANDSCAPE MODE -->
+    <integer name="zooper_kustom_columns_tablet_landscape">6</integer>
+
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="48dp"
+        android:height="48dp"
+        android:viewportWidth="48"
+        android:viewportHeight="48">
+
+    <path
+            android:fillColor="#F5F5F5"
+            android:pathData="M24,2 C36.1503,2,46,11.8497,46,24 C46,36.1503,36.1503,46,24,46
+C11.8497,46,2,36.1503,2,24 C2,11.8497,11.8497,2,24,2 Z"/>
+    <path
+            android:fillColor="@color/light_theme_accent"
+            android:pathData="M31.8,15.1 L16.2,15.1 C15,15.1,14,16.1,14,17.3 L14,30.6
+C14,31.8,15,32.8,16.2,32.8 L20.6,32.8 L20.6,30.6 L16.2,30.6 L16.2,19.6
+L31.8,19.6 L31.8,30.7 L27.4,30.7 L27.4,32.9 L31.8,32.9 C33,32.9,34,31.9,34,30.7
+L34,17.3 C34,16.1,33,15.1,31.8,15.1 Z M24,21.8 L19.6,26.2 L22.9,26.2 L22.9,32.9
+L25.1,32.9 L25.1,26.2 L28.4,26.2 L24,21.8 Z"/>
+</vector>
