@@ -25,14 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <jahirfiquitiva.iconshowcase.views.SquaredImageView
+    <jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
             android:id="@+id/wall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription, UnusedAttribute"/>
 
-    <jahirfiquitiva.iconshowcase.views.SquaredImageView
+    <jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
             android:id="@+id/preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

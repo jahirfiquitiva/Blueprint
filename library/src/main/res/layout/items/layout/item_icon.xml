@@ -18,7 +18,7 @@
   ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
   -->
 
-<jahirfiquitiva.iconshowcase.views.SquaredImageView
+<jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/icon_img"

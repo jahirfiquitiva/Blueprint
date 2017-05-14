@@ -28,7 +28,6 @@ import android.widget.LinearLayout;
 
 import jahirfiquitiva.libs.iconshowcase.R;
 
-
 /**
  * @author Aidan Follestad (afollestad)
  */

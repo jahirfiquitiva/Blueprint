@@ -25,10 +25,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import jahirfiquitiva.libs.iconshowcase.R;
 import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences;
-
-import jahirfiquitiva.libs.iconshowcase.R;
 
 public class LauncherIconRestorerActivity extends AppCompatActivity {
 
@@ -43,12 +42,11 @@ public class LauncherIconRestorerActivity extends AppCompatActivity {
                 getResources().getString(R.string.main_activity_name);
         try {
             className = Class.forName(componentNameString);
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             componentNameString = getResources().getString(R.string.main_activity_fullname);
             try {
                 className = Class.forName(componentNameString);
-            } catch (ClassNotFoundException ex) {
-                //Do nothing
+            } catch (Exception ignored) {
             }
         }
         if (className != null) {

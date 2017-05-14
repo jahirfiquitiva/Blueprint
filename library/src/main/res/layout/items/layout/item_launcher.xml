@@ -18,7 +18,7 @@
   ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
   -->
 
-<jahirfiquitiva.iconshowcase.views.IconShowcaseCardView
+<jahirfiquitiva.libs.iconshowcase.ui.views.IconShowcaseCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <jahirfiquitiva.iconshowcase.views.SquaredImageView
+        <jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
                 android:id="@+id/launcherIcon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -62,4 +62,4 @@
 
     </LinearLayout>
 
-</jahirfiquitiva.iconshowcase.views.IconShowcaseCardView>
+</jahirfiquitiva.libs.iconshowcase.ui.views.IconShowcaseCardView>

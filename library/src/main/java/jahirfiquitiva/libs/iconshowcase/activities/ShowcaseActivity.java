@@ -20,15 +20,20 @@
 package jahirfiquitiva.libs.iconshowcase.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
+import jahirfiquitiva.libs.iconshowcase.R;
 import jahirfiquitiva.libs.iconshowcase.activities.base.ThemedActivity;
 
 public class ShowcaseActivity extends ThemedActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.showcase_activity);
+    }
+
+    protected Bundle getInitialConfiguration() {
+        return null;
     }
 
 }

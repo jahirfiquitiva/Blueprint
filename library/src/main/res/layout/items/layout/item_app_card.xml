@@ -53,7 +53,7 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
-        <jahirfiquitiva.iconshowcase.views.SquaredImageView
+        <jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
                 android:id="@+id/home_card_image"
                 android:layout_width="@dimen/app_card_icon_size"
                 android:layout_height="@dimen/app_card_icon_size"

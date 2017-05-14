@@ -158,3 +158,9 @@ artifacts {
 //    task.from variant.javaCompile.destinationDir
 //    artifacts.add('archives', task);
 //}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xbootclasspath/a:" + System.properties.get("java.home") + "/lib/rt.jar"
+    }
+}

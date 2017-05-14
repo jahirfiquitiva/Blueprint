@@ -16,7 +16,7 @@
   ~ Special thanks to the project contributors and collaborators
   ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
   -->
-<ca.allanwang.capsule.library.custom.CapsuleCoordinatorLayout
+<android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -25,7 +25,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-    <jahirfiquitiva.iconshowcase.views.FixedElevationAppBarLayout
+    <jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                 app:tabTextColor="?attr/tabsNormalTextColor"
                 tools:ignore="NewApi,RtlSymmetry,UnusedAttribute"/>
 
-    </jahirfiquitiva.iconshowcase.views.FixedElevationAppBarLayout>
+    </jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout>
 
     <FrameLayout
             android:id="@+id/main"
@@ -114,7 +114,7 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <jahirfiquitiva.iconshowcase.views.CounterFab
+    <jahirfiquitiva.libs.iconshowcase.ui.views.CounterFab
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,4 +125,4 @@
             app:fabSize="normal"
             app:rippleColor="@color/semitransparent_white"/>
 
-</ca.allanwang.capsule.library.custom.CapsuleCoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>

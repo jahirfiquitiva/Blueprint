@@ -18,14 +18,305 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="jahirfiquitiva.libs.iconshowcase">
 
-          package="jahirfiquitiva.libs.iconshowcase"
->
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
-    <application android:allowBackup="true"
-                 android:label="@string/app_name"
-                 android:supportsRtl="true"
-    >
+    <supports-screens
+            android:anyDensity="true"
+            android:largeScreens="true"
+            android:normalScreens="true"
+            android:resizeable="true"
+            android:smallScreens="true"
+            android:xlargeScreens="true"/>
+
+    <application
+            android:allowBackup="true"
+            android:largeHeap="true"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:ignore="AllowBackup,UnusedAttribute">
+
+        <uses-library
+                android:name="com.sec.android.app.multiwindow"
+                android:required="false"/>
+
+        <meta-data
+                android:name="com.sec.android.support.multiwindow"
+                android:value="true"/>
+        <meta-data
+                android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W"
+                android:value="632.0dip"/>
+        <meta-data
+                android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H"
+                android:value="598.0dip"/>
+        <meta-data
+                android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W"
+                android:value="632.0dip"/>
+        <meta-data
+                android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H"
+                android:value="598.0dip"/>
+        <meta-data
+                android:name="com.lge.support.SPLIT_WINDOW"
+                android:value="true"/>
+
+        <!--
+        <activity
+                android:name=".activities.base.LaunchActivity"
+                android:noHistory="true"/> -->
+
+        <!-- Icons -->
+        <activity
+                android:name=".activities.ShowcaseActivity"
+                android:label="@string/app_name">
+
+            <!-- TODO: CAREFUL! DO NOT REMOVE THE THINGS BELOW -->
+            <intent-filter tools:ignore="GoogleAppIndexingDeepLinkError,GoogleAppIndexingUrlError,
+                GoogleAppIndexingWarning">
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SET_WALLPAPER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.OPENABLE"/>
+
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.OPENABLE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <!-- ADW Launcher -->
+            <intent-filter>
+                <action android:name="org.adw.launcher.THEMES"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.adw.launcher.icons.ACTION_PICK_ICON"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Apex Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.anddoes.launcher.THEME"/>
+            </intent-filter>
+            <!-- Atom Launcher -->
+            <intent-filter>
+                <action android:name="com.dlto.atom.launcher.THEME"/>
+            </intent-filter>
+            <!-- GO Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.gau.go.launcherex.theme"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.gau.go.launcherex.theme"/>
+                <action android:name="com.zeroteam.zerolauncher.theme"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.gau.go.launcherex.theme"/>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.THEME_SCENE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- LauncherPro / Holo -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="com.fede.launcher.THEME_ICONPACK"/>
+            </intent-filter>
+            <!-- Next Launcher -->
+            <intent-filter>
+                <action android:name="com.gtp.nextlauncher.theme"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Nine Launcher -->
+            <intent-filter>
+                <action android:name="com.gridappsinc.launcher.theme.apk_action"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Nova Launcher-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.teslacoilsw.launcher.THEME"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.novalauncher.THEME"/>
+                <category android:name="com.novalauncher.category.CUSTOM_ICON_PICKER"/>
+            </intent-filter>
+            <!-- LG Home -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.lge.launcher2.THEME"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Smart Launcher -->
+            <intent-filter>
+                <action android:name="ginlemon.smartlauncher.THEMES"/>
+                <action android:name="ginlemon.smartlauncher.BUBBLESTYLE"/>
+                <action android:name="ginlemon.smartlauncher.BUBBLEICONS"/>
+                <action android:name="ginlemon.smartlauncher.CLOCKS"/>
+                <action android:name="ginlemon.smartlauncher.CLOCKFONTS"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Solo Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="home.solo.launcher.free.THEMES"/>
+                <action android:name="home.solo.launcher.free.ACTION_ICON"/>
+            </intent-filter>
+            <!-- Sony Launcher -->
+            <intent-filter>
+                <action android:name="com.sonymobile.home.ICON_PACK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- TSF Shell -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.tsf.shell.themes"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Turbo Launcher -->
+            <intent-filter>
+                <action android:name="com.phonemetra.turbo.launcher.THEMES"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.phonemetra.turbo.launcher.icons.ACTION_PICK_ICON"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Xperia Home Launcher -->
+            <intent-filter>
+                <action android:name="com.sonymobile.home.ICON_PACK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Random launchers -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="org.adw.launcher.THEMES"/>
+                <action android:name="mobi.bbase.ahome.THEME"/>
+                <action android:name="com.rogro.GDE.THEME.1"/>
+                <action android:name="com.android.dxtop.launcher.THEME"/>
+
+                <category android:name="com.fede.launcher.THEME_ICONPACK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.adw.launcher.icons.ACTION_PICK_ICON"/>
+                <action android:name="mobi.bbase.ahome.THEME"/>
+                <action android:name="com.rogro.GDE.THEME.1"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="cdproductions.crazyicons.TWO"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Theme Manager -->
+            <intent-filter>
+                <action android:name="com.daeva112.manager.MAIN"/>
+
+                <category android:name="com.daeva112.manager.THEME"/>
+            </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.INFO"/>
+            </intent-filter>
+
+        </activity>
+
+        <!-- Wallpapers Activities
+        <activity
+                android:name=".activities.WallpaperViewerActivity"
+                android:label="@string/title_activity_detailed_wallpaper"
+                android:theme="@style/AppTheme"/>
+        <activity
+                android:name=".activities.AltWallpaperViewerActivity"
+                android:label="@string/title_activity_detailed_wallpaper"
+                android:theme="@style/AppTheme"/>
+        <activity
+                android:name=".activities.MuzeiSettings"
+                android:exported="true"
+                android:label="@string/muzei_settings"
+                android:theme="@style/AppTheme.LaunchScreen"/> -->
+
+
+        <!-- WIDGETS -->
+        <!-- Icon restorer Widget -->
+        <receiver
+                android:name=".widgets.IconRestorerWidget"
+                android:icon="@drawable/splash_screen_icon"
+                android:label="@string/iconrestorer_widget_title">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/icon_restorer_widget_provider"/>
+        </receiver>
+
+        <activity
+                android:name=".activities.LauncherIconRestorerActivity"
+                android:excludeFromRecents="true"
+                android:label="@string/app_name"
+                android:noHistory="true"
+                android:theme="@style/EmptyActivity"/>
+
+        <!-- Clock Widget -->
+        <receiver
+                android:name=".widgets.ClockWidget"
+                android:label="@string/clock_widget_title">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.appwidget.oldName"
+                    android:value="com.android.deskclock.AnalogAppWidgetProvider"/>
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/clock_widget_provider"/>
+        </receiver>
 
     </application>
 

@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <jahirfiquitiva.iconshowcase.views.FixedElevationAppBarLayout
+    <jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:clipChildren="false"
@@ -43,7 +43,7 @@
                 android:popupTheme="@style/Toolbar.Popup.AppCompat"
                 app:layout_scrollFlags="enterAlways"/>
 
-    </jahirfiquitiva.iconshowcase.views.FixedElevationAppBarLayout>
+    </jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
             android:id="@+id/content"

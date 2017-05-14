@@ -19,7 +19,7 @@
   ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
   -->
 
-<jahirfiquitiva.iconshowcase.views.IconShowcaseCardView
+<jahirfiquitiva.libs.iconshowcase.ui.views.IconShowcaseCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -80,7 +80,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 tools:text="I am a graphic designer, I love Android, and obviously, this awesome dashboard."/>
 
-        <jahirfiquitiva.iconshowcase.views.SplitButtonsLayout
+        <jahirfiquitiva.libs.iconshowcase.ui.layouts.SplitButtonsLayout
                 android:id="@+id/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,4 +95,4 @@
 
     </RelativeLayout>
 
-</jahirfiquitiva.iconshowcase.views.IconShowcaseCardView>
+</jahirfiquitiva.libs.iconshowcase.ui.views.IconShowcaseCardView>
