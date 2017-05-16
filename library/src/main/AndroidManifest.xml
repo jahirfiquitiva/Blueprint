@@ -45,7 +45,6 @@
             android:allowBackup="true"
             android:largeHeap="true"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,UnusedAttribute">
 
         <uses-library
@@ -79,7 +78,8 @@
         <!-- Icons -->
         <activity
                 android:name=".activities.ShowcaseActivity"
-                android:label="@string/app_name">
+                android:label="@string/app_name"
+                android:windowSoftInputMode="stateHidden">
 
             <!-- TODO: CAREFUL! DO NOT REMOVE THE THINGS BELOW -->
             <intent-filter tools:ignore="GoogleAppIndexingDeepLinkError,GoogleAppIndexingUrlError,

@@ -92,6 +92,9 @@ dependencies {
     compile "com.android.support:design:${ANDROID_SUPPORT}"
     compile "com.android.support:customtabs:${ANDROID_SUPPORT}"
 
+    // Themes Manager
+    compile "com.afollestad:aesthetic:${AESTHETIC}"
+
     // Material Dialogs
     compile "com.afollestad.material-dialogs:core:${MATERIAL_DIALOGS}"
 

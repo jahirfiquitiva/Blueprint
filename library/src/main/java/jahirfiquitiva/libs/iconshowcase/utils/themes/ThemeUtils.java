@@ -17,7 +17,7 @@
  * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.utils;
+package jahirfiquitiva.libs.iconshowcase.utils.themes;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,7 +26,10 @@ import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.StyleRes;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import java.util.Calendar;
 
@@ -68,56 +71,56 @@ public class ThemeUtils {
         return coloredNavbar;
     }
 
-    public static void setThemeTo(Activity activity) {
+    public static void setThemeTo(@NonNull AppCompatActivity activity) {
         int enterAnimation = android.R.anim.fade_in;
         int exitAnimation = android.R.anim.fade_out;
         activity.overridePendingTransition(enterAnimation, exitAnimation);
-
         final Preferences prefs = new Preferences(activity);
         int prefTheme = prefs.getTheme();
+        activity.setTheme(getTheme(prefTheme));
+        setNavbarColorTo(activity, prefs.hasColoredNavbar());
+    }
 
+    @StyleRes
+    public static int getTheme(int prefTheme) {
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
         switch (prefTheme) {
             default:
             case LIGHT:
-                activity.setTheme(R.style.AppTheme);
-                break;
+                return R.style.AppTheme;
             case DARK:
-                activity.setTheme(R.style.AppThemeDark);
-                break;
+                return R.style.AppThemeDark;
             case AMOLED:
-                activity.setTheme(R.style.AppThemeAmoled);
-                break;
+                return R.style.AppThemeAmoled;
             case AUTO_DARK:
-                if (timeOfDay >= 7 && timeOfDay < 20) {
-                    activity.setTheme(R.style.AppTheme);
-                    currentTheme = LIGHT;
-                } else {
-                    activity.setTheme(R.style.AppThemeDark);
-                    currentTheme = DARK;
-                }
-                break;
+                return timeOfDay >= 7 && timeOfDay < 19 ? R.style.AppTheme : R.style.AppThemeDark;
             case AUTO_AMOLED:
-                if (timeOfDay >= 7 && timeOfDay < 20) {
-                    activity.setTheme(R.style.AppTheme);
-                    currentTheme = LIGHT;
-                } else {
-                    activity.setTheme(R.style.AppThemeAmoled);
-                    currentTheme = AMOLED;
-                }
-                break;
+                return timeOfDay >= 7 && timeOfDay < 19 ? R.style.AppTheme : R.style.AppThemeAmoled;
         }
-        setNavbarColorTo(activity, prefs.hasColoredNavbar());
     }
 
-    private static void setNavbarColorTo(Activity activity, boolean colorEnabled) {
+    private static void setNavbarColorTo(@NonNull AppCompatActivity activity,
+                                         boolean colorEnabled) {
         coloredNavbar = colorEnabled;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return;
         activity.getWindow().setNavigationBarColor(colorEnabled ? isDarkTheme() ?
                 ContextCompat.getColor(activity, R.color.dark_theme_navigation_bar) :
                 ContextCompat.getColor(activity, R.color.light_theme_navigation_bar) :
                 ContextCompat.getColor(activity, android.R.color.black));
+    }
+
+    public static void setStatusBarModeTo(@NonNull AppCompatActivity activity, boolean lightMode) {
+        final View view = activity.getWindow().getDecorView();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int flags = view.getSystemUiVisibility();
+            if (lightMode) {
+                flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            } else {
+                flags &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            }
+            view.setSystemUiVisibility(flags);
+        }
     }
 
     public static void restartActivity(Activity activity) {

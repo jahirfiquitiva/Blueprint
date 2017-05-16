@@ -20,37 +20,28 @@
 package jahirfiquitiva.libs.iconshowcase.activities.base;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
+import android.support.annotation.Nullable;
+import android.support.annotation.StyleRes;
+
+import com.afollestad.aesthetic.Aesthetic;
 
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences;
 
-public class ThemedActivity extends AppCompatActivity {
-
-    private boolean mLastTheme;
-    private boolean mLastNavBar;
-
+public class AestheticThemedActivity extends AestheticThemedBaseActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        ThemeUtils.setThemeTo(this);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mLastTheme != ThemeUtils.isDarkTheme() ||
-                mLastNavBar != ThemeUtils.hasColoredNavbar()) {
-            ThemeUtils.restartActivity(this);
+        if (Aesthetic.isFirstTime()) {
+            Aesthetic.get()
+                    .activityTheme(getDefaultTheme())
+                    .apply();
         }
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mLastTheme = ThemeUtils.isDarkTheme();
-        mLastNavBar = ThemeUtils.hasColoredNavbar();
+    @StyleRes
+    private int getDefaultTheme() {
+        Preferences mPrefs = new Preferences(this);
+        return ThemeUtils.getTheme(mPrefs.getTheme());
     }
-
 }

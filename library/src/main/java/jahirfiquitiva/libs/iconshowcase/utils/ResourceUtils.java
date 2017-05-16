@@ -21,6 +21,7 @@ package jahirfiquitiva.libs.iconshowcase.utils;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ArrayRes;
 import android.support.annotation.BoolRes;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
@@ -69,6 +70,14 @@ public class ResourceUtils {
             return context.getResources().getInteger(res);
         } catch (Exception e) {
             return -1;
+        }
+    }
+
+    public static String[] getStringArray(Context context, @ArrayRes int res) {
+        try {
+            return context.getResources().getStringArray(res);
+        } catch (Exception e) {
+            return new String[]{};
         }
     }
 }

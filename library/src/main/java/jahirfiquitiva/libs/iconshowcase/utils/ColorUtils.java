@@ -19,11 +19,15 @@
 
 package jahirfiquitiva.libs.iconshowcase.utils;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.FloatRange;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 
 import java.util.Collections;
@@ -68,7 +72,7 @@ public class ColorUtils {
     }
 
     @ColorInt
-    private static int shiftColor(@ColorInt int color, @FloatRange(from = 0.0f, to = 2.0f) float
+    public static int shiftColor(@ColorInt int color, @FloatRange(from = 0.0f, to = 2.0f) float
             by) {
         if (by == 1f) return color;
         int alpha = Color.alpha(color);
@@ -76,6 +80,11 @@ public class ColorUtils {
         Color.colorToHSV(color, hsv);
         hsv[2] *= by; // value component
         return (alpha << 24) + (0x00ffffff & Color.HSVToColor(hsv));
+    }
+
+    @ColorInt
+    public static int stripAlpha(@ColorInt int color) {
+        return Color.rgb(Color.red(color), Color.green(color), Color.blue(color));
     }
 
     @ColorInt
@@ -162,20 +171,43 @@ public class ColorUtils {
         return darkTheme ? R.color.dark_theme_accent : R.color.light_theme_accent;
     }
 
+    @ColorInt
     public static int getMaterialPrimaryTextColor(boolean darkTheme) {
         return darkTheme ? Color.parseColor("#ffffffff") : Color.parseColor("#de000000");
     }
 
+    @ColorInt
     public static int getMaterialSecondaryTextColor(boolean darkTheme) {
         return darkTheme ? Color.parseColor("#b3ffffff") : Color.parseColor("#8a000000");
     }
 
-    public static int getMaterialTertiaryColor(boolean darkTheme) {
+    @ColorInt
+    public static int getMaterialDisabledHintTextColor(boolean darkTheme) {
         return darkTheme ? Color.parseColor("#80ffffff") : Color.parseColor("#61000000");
     }
 
+    @ColorInt
     public static int getMaterialDividerColor(boolean darkTheme) {
         return darkTheme ? Color.parseColor("#1fffffff") : Color.parseColor("#1f000000");
+    }
+
+    @ColorInt
+    public static int getMaterialActiveIconsColor(boolean darkTheme) {
+        return darkTheme ? Color.parseColor("#ffffffff") : Color.parseColor("#8a000000");
+    }
+
+    @ColorInt
+    public static int getMaterialInactiveIconsColor(boolean darkTheme) {
+        return darkTheme ? Color.parseColor("#80ffffff") : Color.parseColor("#61000000");
+    }
+
+    @SuppressLint("PrivateResource")
+    @ColorInt
+    public static int getDefaultRippleColor(@NonNull Context context, boolean useDarkRipple) {
+        // Light ripple is actually translucent black, and vice versa
+        return ContextCompat.getColor(
+                context, useDarkRipple ? R.color.ripple_material_light : R.color
+                        .ripple_material_dark);
     }
 
 }

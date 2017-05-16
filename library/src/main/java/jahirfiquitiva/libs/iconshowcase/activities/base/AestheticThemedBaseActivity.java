@@ -20,37 +20,27 @@
 package jahirfiquitiva.libs.iconshowcase.activities.base;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 
-import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
+import com.afollestad.aesthetic.Aesthetic;
 
-public class ThemedActivity extends AppCompatActivity {
-
-    private boolean mLastTheme;
-    private boolean mLastNavBar;
-
+public class AestheticThemedBaseActivity extends AppCompatActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        ThemeUtils.setThemeTo(this);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Aesthetic.attach(this);
         super.onCreate(savedInstanceState);
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (mLastTheme != ThemeUtils.isDarkTheme() ||
-                mLastNavBar != ThemeUtils.hasColoredNavbar()) {
-            ThemeUtils.restartActivity(this);
-        }
+        Aesthetic.resume(this);
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mLastTheme = ThemeUtils.isDarkTheme();
-        mLastNavBar = ThemeUtils.hasColoredNavbar();
+    protected void onPause() {
+        Aesthetic.pause(this);
+        super.onPause();
     }
-
 }
