@@ -193,7 +193,7 @@ public class Preferences {
     }
 
     public int getTheme() {
-        return getPrefs().getInt(THEME, ResourceUtils.getInteger(context, R.integer.app_theme)-1);
+        return getPrefs().getInt(THEME, ResourceUtils.getInteger(context, R.integer.app_theme) - 1);
     }
 
     public void setColoredNavbar(boolean colored) {

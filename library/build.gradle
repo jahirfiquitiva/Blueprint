@@ -19,10 +19,11 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+apply from: '../dependencies.gradle'
 
 android {
-    compileSdkVersion Integer.parseInt(project.TARGET_SDK)
-    buildToolsVersion project.BUILD_TOOLS
+    compileSdkVersion versions.targetSdk
+    buildToolsVersion versions.buildTools
 
     lintOptions {
         abortOnError false
@@ -31,19 +32,21 @@ android {
     }
 
     dexOptions {
-        javaMaxHeapSize "1536m"
+        preDexLibraries false
+        javaMaxHeapSize "2g"
     }
 
     defaultConfig {
-        minSdkVersion Integer.parseInt(project.MIN_SDK)
-        targetSdkVersion Integer.parseInt(project.TARGET_SDK)
-        versionCode Integer.parseInt(project.VERSION_CODE)
-        versionName project.VERSION_NAME
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
         vectorDrawables.useSupportLibrary = true
         consumerProguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
 
     compileOptions {
+        incremental true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -64,6 +67,7 @@ android {
                     'src/main/res/drawable/app',
                     'src/main/res/drawable/clock_widget',
                     'src/main/res/drawable/launchers_icons',
+                    'src/main/res/drawable/shortcuts',
                     'src/main/res/drawable/splash_screens',
                     'src/main/res/drawable/ui',
                     'src/main/res/layout',
@@ -80,58 +84,63 @@ android {
             ]
         }
     }
-
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Android Support Libraries
-    compile "com.android.support:support-v13:${ANDROID_SUPPORT}"
-    compile "com.android.support:appcompat-v7:${ANDROID_SUPPORT}"
-    compile "com.android.support:recyclerview-v7:${ANDROID_SUPPORT}"
-    compile "com.android.support:cardview-v7:${ANDROID_SUPPORT}"
-    compile "com.android.support:gridlayout-v7:${ANDROID_SUPPORT}"
-    compile "com.android.support:palette-v7:${ANDROID_SUPPORT}"
-    compile "com.android.support:design:${ANDROID_SUPPORT}"
-    compile "com.android.support:customtabs:${ANDROID_SUPPORT}"
+    compile 'com.android.support:support-v13:' + versions.supportLibs
+    compile 'com.android.support:appcompat-v7:' + versions.supportLibs
+    compile 'com.android.support:recyclerview-v7:' + versions.supportLibs
+    compile 'com.android.support:cardview-v7:' + versions.supportLibs
+    compile 'com.android.support:gridlayout-v7:' + versions.supportLibs
+    compile 'com.android.support:palette-v7:' + versions.supportLibs
+    compile 'com.android.support:design:' + versions.supportLibs
+    compile 'com.android.support:customtabs:' + versions.supportLibs
 
     // Themes Manager
-    compile "com.afollestad:aesthetic:${AESTHETIC}"
+    compile 'com.afollestad:aesthetic:' + versions.aesthetic
 
     // Material Dialogs
-    compile "com.afollestad.material-dialogs:core:${MATERIAL_DIALOGS}"
+    compile 'com.afollestad.material-dialogs:core:' + versions.materialDialogs
 
     // Navigation
-    compile "com.aurelhubert:ahbottomnavigation:${BOTTOM_BAR}"
-    compile("com.mikepenz:materialdrawer:${MATERIAL_DRAWER}@aar") {
+    compile 'com.aurelhubert:ahbottomnavigation:' + versions.ahBottomBar
+    compile('com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar') {
         transitive = true
     }
 
     // OkHttp
-    compile "com.squareup.okhttp3:okhttp:${OKHTTP}"
+    compile 'com.squareup.okhttp3:okhttp:' + versions.okhttp
 
     // Glide Image Loading
-    compile "com.github.bumptech.glide:glide:${GLIDE}"
+    compile 'com.github.bumptech.glide:glide:' + versions.glide
 
     // RecyclerView Fast Scroller
-    compile "com.github.plusCubed:recycler-fast-scroll:${RECYCLERVIEW_FAST_SCROLL}"
+    compile 'com.github.plusCubed:recycler-fast-scroll:' + versions.recyclerViewFastScroll
 
     // Icon Requests Tool
-    compile "com.github.AllanWang:Icon-Request-Tool:${ICON_REQUEST_TOOL}"
+    compile 'com.github.AllanWang:Icon-Request-Tool:' + versions.iconRequestTool
 
     //Circular ImageView
-    compile "com.github.hdodenhof:CircleImageView:${CIRCLE_IMAGEVIEW}"
+    compile 'com.github.hdodenhof:CircleImageView:' + versions.circleImageView
 
     // In-App Purchases
-    compile "com.anjlab.android.iab.v3:library:${IAP}"
+    compile 'com.anjlab.android.iab.v3:library:' + versions.iaps
 
     // Muzei API
     //noinspection GradleDynamicVersion
-    compile "com.google.android.apps.muzei:muzei-api:${MUZEI_API}"
+    compile 'com.google.android.apps.muzei:muzei-api:' + versions.muzeiApi
 
     // License Checker
-    compile "com.github.javiersantos:PiracyChecker:${CHECKER}"
+    compile 'com.github.javiersantos:PiracyChecker:' + versions.checker
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.contains("lint") || task.name.contains("test")) {
+        task.enabled = false;
+    }
 }
 
 // build a jar with source files

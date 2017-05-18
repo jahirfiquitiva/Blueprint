@@ -16,7 +16,7 @@
   ~ Special thanks to the project contributors and collaborators
   ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
   -->
-<android.support.design.widget.CoordinatorLayout
+<jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -141,4 +141,4 @@
             app:fabSize="normal"
             app:rippleColor="@color/semitransparent_white"/>
 
-</android.support.design.widget.CoordinatorLayout>
+</jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout>

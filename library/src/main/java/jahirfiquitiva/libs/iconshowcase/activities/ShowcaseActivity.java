@@ -20,6 +20,9 @@
 package jahirfiquitiva.libs.iconshowcase.activities;
 
 import android.app.WallpaperManager;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -29,6 +32,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,21 +76,64 @@ public class ShowcaseActivity extends ThemedActivity {
 
     private long currentItemId = -1;
 
+    private String shortcut;
+    private String pubKey;
+    private boolean withLicenseChecker;
+    private boolean allowAmazonInstalls;
+    private boolean checkLPF;
+    private boolean checkStores;
+    private int picker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initStatusBar(false);
         prefs = new Preferences(this);
         setContentView(R.layout.activity_showcase);
+
+        boolean openWallpapers = false;
+
+        Bundle config = getInitialConfiguration();
+        if (config != null) {
+            shortcut = config.getString("shortcut");
+            openWallpapers = config.getBoolean("open_wallpapers", false) ||
+                    (shortcut != null && shortcut.equals("wallpapers_shortcut"));
+            withLicenseChecker = config.getBoolean("enableLicenseCheck", false);
+            allowAmazonInstalls = config.getBoolean("enableAmazonInstalls", false);
+            checkLPF = config.getBoolean("checkLPF", false);
+            checkStores = config.getBoolean("checkStores", false);
+            pubKey = config.getString("googlePubKey");
+            picker = config.getInt("picker");
+        }
+
         initToolbar();
         initBottomBar();
         initFAB();
         initCollapsingToolbar();
-        performBottomBarClick(0);
+        performBottomBarClick((int) (openWallpapers ? DrawerItem.WALLPAPERS.getId()
+                : DrawerItem.HOME.getId()));
         // initDrawer(savedInstanceState);
     }
 
     protected Bundle getInitialConfiguration() {
         return null;
+    }
+
+    private void initStatusBar(boolean on) {
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            if (Build.VERSION.SDK_INT >= 19) {
+                Window win = getWindow();
+                WindowManager.LayoutParams winParams = win.getAttributes();
+                if (on) {
+                    winParams.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+                } else {
+                    winParams.flags &= ~WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+                }
+                win.setAttributes(winParams);
+            }
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
     }
 
     private void initToolbar() {
@@ -105,8 +154,12 @@ public class ShowcaseActivity extends ThemedActivity {
         if (bottomBar == null) return;
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams)
                 fab.getLayoutParams();
+        params.leftMargin = CoreUtils.convertDpToPx(this, 16);
+        params.rightMargin = CoreUtils.convertDpToPx(this, 16);
+        params.bottomMargin = CoreUtils.convertDpToPx(this, 16) + bottomBar.getHeight();
+        /*
         params.setMargins(params.leftMargin, params.topMargin, params.rightMargin,
-                params.bottomMargin + bottomBar.getHeight());
+                params.bottomMargin + bottomBar.getHeight()); */
         fab.setLayoutParams(params);
     }
 
@@ -114,45 +167,19 @@ public class ShowcaseActivity extends ThemedActivity {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomBar.setOnNavigationItemSelectedListener(
                 item -> {
-                    long id = -1;
-                    if (item.getItemId() == R.id.home) {
-                        id = 0;
-                    } else if (item.getItemId() == R.id.previews) {
-                        id = 1;
-                    } else if (item.getItemId() == R.id.wallpapers) {
-                        id = 2;
-                    } else if (item.getItemId() == R.id.apply) {
-                        id = 3;
-                    } else if (item.getItemId() == R.id.requests) {
-                        id = 4;
+                    long id = getItemId(item.getItemId());
+                    if (id != -1) {
+                        clickDrawerItem(id);
+                        return true;
                     } else {
                         return false;
                     }
-                    clickDrawerItem(id);
-                    return true;
                 });
     }
 
     private void performBottomBarClick(int id) {
         if (bottomBar == null) return;
-        int itemId = -1;
-        switch (id) {
-            case 0:
-                itemId = R.id.home;
-                break;
-            case 1:
-                itemId = R.id.previews;
-                break;
-            case 2:
-                itemId = R.id.wallpapers;
-                break;
-            case 3:
-                itemId = R.id.apply;
-                break;
-            case 4:
-                itemId = R.id.requests;
-                break;
-        }
+        int itemId = getItemId(id);
         if (itemId != -1) {
             bottomBar.setSelectedItemId(itemId);
             /*
@@ -169,7 +196,30 @@ public class ShowcaseActivity extends ThemedActivity {
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
         ImageView wallpaper = (ImageView) findViewById(R.id.toolbarHeader);
         WallpaperManager wManager = WallpaperManager.getInstance(this);
-        wallpaper.setImageDrawable(wManager.getFastDrawable());
+        if ((picker == 0) && (shortcut == null || shortcut.length() < 1)) {
+            Drawable wall = null;
+            if (prefs != null && prefs.getWallpaperAsToolbarHeaderEnabled()) {
+                if (wManager != null) {
+                    wall = wManager.getFastDrawable();
+                }
+            } else {
+                String picName = ResourceUtils.getString(this, R.string.toolbar_picture);
+                if (picName.length() > 0) {
+                    try {
+                        wall = IconUtils.getDrawableWithName(this, picName);
+                    } catch (Exception ignored) {
+                    }
+                }
+            }
+            if (wall != null) {
+                wallpaper.setAlpha(0.95f);
+                wallpaper.setImageDrawable(wall);
+                wallpaper.setVisibility(View.VISIBLE);
+            } else {
+                ImageView gradient = (ImageView) findViewById(R.id.toolbarGradient);
+                gradient.setVisibility(View.GONE);
+            }
+        }
     }
 
     private void initDrawer(Bundle savedInstance) {
@@ -247,7 +297,6 @@ public class ShowcaseActivity extends ThemedActivity {
                 .withShowDrawerUntilDraggedOpened(true)
                 .withSavedInstance(savedInstance);
 
-
         drawerBuilder.build();
     }
 
@@ -317,6 +366,28 @@ public class ShowcaseActivity extends ThemedActivity {
                     Toast.makeText(view.getContext(), "Creating request", Toast.LENGTH_SHORT)
                             .show());
         }
+    }
+
+    private int getItemId(int id) {
+        int itemId = -1;
+        switch (id) {
+            case 0:
+                itemId = R.id.home;
+                break;
+            case 1:
+                itemId = R.id.previews;
+                break;
+            case 2:
+                itemId = R.id.wallpapers;
+                break;
+            case 3:
+                itemId = R.id.apply;
+                break;
+            case 4:
+                itemId = R.id.requests;
+                break;
+        }
+        return itemId;
     }
 
 }

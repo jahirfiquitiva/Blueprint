@@ -22,6 +22,9 @@ package jahirfiquitiva.libs.iconshowcase.utils;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
+import static android.util.TypedValue.applyDimension;
+
 public class CoreUtils {
 
     public static String getAppVersion(Context context) {
@@ -47,6 +50,10 @@ public class CoreUtils {
             installed = false;
         }
         return installed;
+    }
+
+    public static int convertDpToPx(Context context, float dp) {
+        return (int) applyDimension(COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
 }

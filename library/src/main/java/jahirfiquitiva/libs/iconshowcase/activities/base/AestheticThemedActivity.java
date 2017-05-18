@@ -25,16 +25,18 @@ import android.support.annotation.StyleRes;
 
 import com.afollestad.aesthetic.Aesthetic;
 
-import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences;
+import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
 
 public class AestheticThemedActivity extends AestheticThemedBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Aesthetic.isFirstTime()) {
+            int theme = getDefaultTheme();
             Aesthetic.get()
-                    .activityTheme(getDefaultTheme())
+                    .activityTheme(theme)
+                    .isDark(theme == ThemeUtils.DARK || theme == ThemeUtils.AMOLED)
                     .apply();
         }
     }

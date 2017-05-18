@@ -35,32 +35,32 @@ import java.io.FileOutputStream;
 
 public class IconUtils {
 
-    public static Bitmap getBitmapWithName(Context context, String iconName) {
-        return getBitmapDrawableWithName(context, iconName).getBitmap();
+    public static Bitmap getBitmapWithName(Context context, String name) {
+        return getBitmapDrawableWithName(context, name).getBitmap();
     }
 
-    public static BitmapDrawable getBitmapDrawableWithName(Context context, String iconName) {
+    public static BitmapDrawable getBitmapDrawableWithName(Context context, String name) {
         try {
             return (BitmapDrawable) ResourcesCompat.getDrawable(context.getResources(),
-                    getIconResourceWithName(context, iconName), null);
+                    getIconResourceWithName(context, name), null);
         } catch (Exception e) {
-            throw new Resources.NotFoundException("Icon with name \'" + iconName + "\' could not " +
+            throw new Resources.NotFoundException("Icon with name \'" + name + "\' could not " +
                     "be found");
         }
     }
 
-    public static Drawable getDrawableWithName(Context context, String iconName) {
+    public static Drawable getDrawableWithName(Context context, String name) {
         try {
-            return ContextCompat.getDrawable(context, getIconResourceWithName(context, iconName));
+            return ContextCompat.getDrawable(context, getIconResourceWithName(context, name));
         } catch (Exception e) {
-            throw new Resources.NotFoundException("Icon with name \'" + iconName + "\' could not " +
+            throw new Resources.NotFoundException("Icon with name \'" + name + "\' could not " +
                     "be found");
         }
     }
 
-    private static int getIconResourceWithName(Context context, String iconName) {
+    private static int getIconResourceWithName(Context context, String name) {
         int res = context.getResources()
-                .getIdentifier(iconName, "drawable", context.getPackageName());
+                .getIdentifier(name, "drawable", context.getPackageName());
         if (res != 0) {
             return res;
         } else {
