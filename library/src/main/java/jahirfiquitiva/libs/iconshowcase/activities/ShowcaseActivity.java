@@ -26,7 +26,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -151,23 +150,25 @@ public class ShowcaseActivity extends ThemedActivity {
 
     private void initFAB() {
         fab = (CounterFab) findViewById(R.id.fab);
+        /*
         if (bottomBar == null) return;
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams)
                 fab.getLayoutParams();
         params.leftMargin = CoreUtils.convertDpToPx(this, 16);
         params.rightMargin = CoreUtils.convertDpToPx(this, 16);
-        params.bottomMargin = CoreUtils.convertDpToPx(this, 16) + bottomBar.getHeight();
-        /*
+        params.bottomMargin = CoreUtils.convertDpToPx(this, 16) +
+                getResources().getDimensionPixelSize(R.dimen.bottom_navigation_height);
         params.setMargins(params.leftMargin, params.topMargin, params.rightMargin,
-                params.bottomMargin + bottomBar.getHeight()); */
+                params.bottomMargin + bottomBar.getHeight());
         fab.setLayoutParams(params);
+        */
     }
 
     private void initBottomBar() {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomBar.setOnNavigationItemSelectedListener(
                 item -> {
-                    long id = getItemId(item.getItemId());
+                    long id = getItemId(item.getItemId(), true);
                     if (id != -1) {
                         clickDrawerItem(id);
                         return true;
@@ -179,7 +180,7 @@ public class ShowcaseActivity extends ThemedActivity {
 
     private void performBottomBarClick(int id) {
         if (bottomBar == null) return;
-        int itemId = getItemId(id);
+        int itemId = getItemId(id, false);
         if (itemId != -1) {
             bottomBar.setSelectedItemId(itemId);
             /*
@@ -192,6 +193,8 @@ public class ShowcaseActivity extends ThemedActivity {
     }
 
     private void initCollapsingToolbar() {
+        coordinatorLayout = (CustomCoordinatorLayout) findViewById(R.id.mainCoordinatorLayout);
+        coordinatorLayout.setScrollAllowed(false);
         appBarLayout = (FixedElevationAppBarLayout) findViewById(R.id.appBar);
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
         ImageView wallpaper = (ImageView) findViewById(R.id.toolbarHeader);
@@ -368,24 +371,38 @@ public class ShowcaseActivity extends ThemedActivity {
         }
     }
 
-    private int getItemId(int id) {
+    private int getItemId(int id, boolean fromListener) {
         int itemId = -1;
-        switch (id) {
-            case 0:
-                itemId = R.id.home;
-                break;
-            case 1:
-                itemId = R.id.previews;
-                break;
-            case 2:
-                itemId = R.id.wallpapers;
-                break;
-            case 3:
-                itemId = R.id.apply;
-                break;
-            case 4:
-                itemId = R.id.requests;
-                break;
+        if (fromListener) {
+            if (id == R.id.home) {
+                itemId = 0;
+            } else if (id == R.id.previews) {
+                itemId = 1;
+            } else if (id == R.id.wallpapers) {
+                itemId = 2;
+            } else if (id == R.id.apply) {
+                itemId = 3;
+            } else if (id == R.id.requests) {
+                itemId = 4;
+            }
+        } else {
+            switch (id) {
+                case 0:
+                    itemId = R.id.home;
+                    break;
+                case 1:
+                    itemId = R.id.previews;
+                    break;
+                case 2:
+                    itemId = R.id.wallpapers;
+                    break;
+                case 3:
+                    itemId = R.id.apply;
+                    break;
+                case 4:
+                    itemId = R.id.requests;
+                    break;
+            }
         }
         return itemId;
     }

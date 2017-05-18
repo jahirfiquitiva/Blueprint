@@ -75,5 +75,6 @@
     <dimen name="first_keyline">16dp</dimen>
     <dimen name="second_keyline">72dp</dimen>
     <dimen name="toolbar_horizontal_padding">4dp</dimen>
+    <dimen name="fab_with_bottom_bar_margin">72dp</dimen>
 
 </resources>

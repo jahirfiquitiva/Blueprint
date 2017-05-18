@@ -78,7 +78,6 @@ android {
                     'src/main/res/layout/widgets',
                     'src/main/res/values',
                     'src/main/res/values/icon_pack',
-                    'src/main/res/values/is_configuration',
                     'src/main/res/values/private-values',
                     'src/main/res/values/translations'
             ]

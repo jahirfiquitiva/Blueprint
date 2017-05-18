@@ -135,15 +135,39 @@
 
     <!-- These arrays are for the list of apps or links in main section. -->
     <string-array name="home_list_titles">
+        <item>Title</item>
+        <item>Title2</item>
+        <item>Title3</item>
+        <item>Title4</item>
+        <item>Title5</item>
+        <item>Title6</item>
     </string-array>
 
     <string-array name="home_list_descriptions">
+        <item>Desc</item>
+        <item>Desc2</item>
+        <item>Desc3</item>
+        <item>Desc4</item>
+        <item>Desc5</item>
+        <item>Desc6</item>
     </string-array>
 
     <string-array name="home_list_icons">
+        <item>ic_na_launcher</item>
+        <item>ic_na_launcher</item>
+        <item>ic_na_launcher</item>
+        <item>ic_na_launcher</item>
+        <item>ic_na_launcher</item>
+        <item>ic_na_launcher</item>
     </string-array>
 
     <string-array name="home_list_links">
+        <item>https://github.com/jahirfiquitiva/IconShowcase</item>
+        <item>https://github.com/jahirfiquitiva/IconShowcase</item>
+        <item>https://github.com/jahirfiquitiva/IconShowcase</item>
+        <item>https://github.com/jahirfiquitiva/IconShowcase</item>
+        <item>https://github.com/jahirfiquitiva/IconShowcase</item>
+        <item>https://github.com/jahirfiquitiva/IconShowcase</item>
     </string-array>
 
 

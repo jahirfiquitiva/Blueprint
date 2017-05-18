@@ -79,8 +79,7 @@ android {
                     'src/main/res/drawable/ui',
                     'src/main/res/layout',
                     'src/main/res/values',
-                    'src/main/res/values/icon_pack',
-                    'src/main/res/values/is_configuration'
+                    'src/main/res/values/icon_pack'
             ]
         }
     }
