@@ -22,7 +22,6 @@ package jahirfiquitiva.libs.iconshowcase.widgets;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -47,7 +46,7 @@ public class IconRestorerWidget extends AppWidgetProvider {
                         "LauncherIconRestorerActivity.class"));
 
                 RemoteViews views = new RemoteViews(context.getPackageName(),
-                        R.layout.icon_restorer_widget);
+                        R.layout.widget_icon_restorer);
 
                 views.setOnClickPendingIntent(R.id.appWidget, PendingIntent.getActivity(
                         context, 0, intent, 0));
@@ -70,7 +69,7 @@ public class IconRestorerWidget extends AppWidgetProvider {
         if (AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(action)) {
 
             RemoteViews views = new RemoteViews(context.getPackageName(),
-                    R.layout.icon_restorer_widget);
+                    R.layout.widget_icon_restorer);
 
             Intent restore = new Intent(context, LauncherIconRestorerActivity.class);
 

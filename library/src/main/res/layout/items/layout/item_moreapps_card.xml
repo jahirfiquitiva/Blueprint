@@ -31,7 +31,7 @@
         tools:ignore="Overdraw">
 
     <TextView
-            android:id="@+id/more_apps_text"
+            android:id="@+id/more_apps_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"

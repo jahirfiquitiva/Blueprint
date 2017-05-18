@@ -26,7 +26,6 @@
     <string name="theme_description">IconShowcase is a Material Design based Icon Pack dashboard template. Free and open source.</string>
 
     <!-- Muzei Stuff -->
-    <string name="artsource_name">@string/app_name</string>
     <string name="artsource_desc">Some cool wallpapers</string>
 
     <string name="wallpapers_json_link">https://github.com/jahirfiquitiva/Website-Resources/raw/master/iconshowcase/iconshowcase.json</string>
@@ -53,6 +52,7 @@
     <string name="main_activity_name">HomeActivity</string>
     <string name="main_activity_fullname">com.packagename.appname.HomeActivity</string>
 
+
     <!-- SOME INFO ABOUT YOU, TO BE USED IN THE APP AND SOME LAUNCHERS -->
     <string name="iconpack_author_name">Your Name</string>
     <string name="iconpack_author_photo" formatted="false" tools:ignore="TypographyDashes">https://lh3.googleusercontent.com/-0mdcClKXlgM/AAAAAAAAAAI/AAAAAAAAAAA/xgdLWeAg7pM/s120-c/photo.jpg</string>
@@ -70,16 +70,5 @@
     <!-- Previews Pictures Names -->
     <string name="theme_preview1">preview1</string>
     <string name="theme_preview2">preview2</string>
-
-    <!-- These things are needed for some launchers (Feel free to edit, though is not needed) -->
-    <string name="theme_title">@string/app_name</string>
-    <string name="theme_name">@string/theme_title</string>
-    <string name="developer_name">@string/iconpack_author_name</string>
-    <string name="developerName">@string/developer_name</string>
-    <string name="theme_author">@string/developer_name</string>
-    <string name="authorName">@string/developer_name</string>
-    <string name="authorLink">@string/iconpack_author_website</string>
-    <string name="theme_info">@string/theme_description</string>
-    <string name="theme_ad_msg">@string/theme_description</string>
 
 </resources>

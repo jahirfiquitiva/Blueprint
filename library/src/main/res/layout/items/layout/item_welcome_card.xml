@@ -77,7 +77,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/faqs_section"
+                    android:text="@string/section_help"
                     android:textColor="?attr/colorAccent"/>
 
             <android.support.v7.widget.AppCompatButton

@@ -92,6 +92,7 @@
     <color name="md_dialog_content_light">@color/secondary_text_light</color>
     <color name="card_light_background">#ffffff</color>
     <color name="drawable_tint_light">#8a000000</color>
+    <color name="inactive_drawable_tint_light">#61000000</color>
     <color name="light_bg">#fafafa</color>
     <color name="snackbar_light">#fafafa</color>
     <color name="launcher_tint_light">@color/drawable_tint_light</color>
@@ -111,6 +112,7 @@
     <color name="md_dialog_content_dark">@color/secondary_text_dark</color>
     <color name="card_dark_background">#424242</color>
     <color name="drawable_tint_dark">@android:color/white</color>
+    <color name="inactive_drawable_tint_dark">#80ffffff</color>
     <color name="dark_bg">#303030</color>
     <color name="snackbar_dark">#424242</color>
     <color name="launcher_tint_dark">@color/drawable_tint_dark</color>
@@ -135,5 +137,6 @@
     <color name="semitransparent_black">#66000000</color>
     <color name="drawable_base_tint">#8a000000</color>
     <color name="muzei_color">@color/primary</color>
+    <color name="active_icon_tint">#8a000000</color>
 
 </resources>

@@ -32,6 +32,9 @@
     <string name="section_icon_request">Icon request</string>
     <string name="section_donate">Donate</string>
     <string name="section_about">About the app</string>
+    <string name="section_help">Help</string>
+    <string name="section_zooper">Zooper Setup</string>
+    <string name="section_widgets">Widgets</string>
 
     <!-- Wallpapers Activity -->
     <string name="title_activity_detailed_wallpaper">Wallpaper viewer</string>
@@ -202,9 +205,6 @@
     <string name="iconrestorer_widget_title">Icon Restorer Widget</string>
     <string name="clock_widget_title">Analog Clock</string>
 
-    <!-- This means Frequently Asked Questions, just in case you didn't know -->
-    <string name="faqs_section">FAQs</string>
-
     <string name="dashboard_author_copyright">I am a 20-year-old Android development enthusiast and the developer of the dashboard.\n\nShared from Colombia to the world, under CreativeCommons Attribution-ShareAlike License.\nCopyright © 2017.</string>
 
     <string name="allan_description">First an icon pack creator, then a themer; now also a developer.\nI have helped with part of this dashboard\'s development.</string>
@@ -242,10 +242,9 @@
     <string name="license_failed_extra_sec">remove all pirate apps and</string>
     <string name="license_error">Sorry, there was an error while checking your license. Please try again later.</string>
     <string name="license_success">Thank you for downloading %1$s. If you like it, do not forget to rate it and write a review in the Google Play Store.</string>
-    <string name="apply_advice">If the launcher you use, is not listed here, you must apply the icon pack directly from the launcher settings.\nSome launchers do not support direct apply.</string>
-    <string name="walls_advice">Simple press a wallpaper to view it in FullScreen.\nLong press to apply it directly to your home screen.</string>
+    <string name="apply_advice">If the launcher you use is not listed here, you must apply the icon pack directly from the launcher settings.\nSome launchers do not support direct apply.</string>
+    <string name="walls_advice">Tap a wallpaper to view it, and long press to apply it.</string>
 
-    <string name="zooper_section_title">Zooper Setup</string>
     <string name="zooper_download_dialog_title">Download from</string>
 
     <string name="install_apps">Install apps</string>

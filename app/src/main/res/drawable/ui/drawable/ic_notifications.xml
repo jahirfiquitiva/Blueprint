@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportHeight="24"
+        android:viewportWidth="24">
+
+    <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M20.4,2H3.6C2.7,2,2,2.7,2,3.6v16.8C2,21.3,2.7,22,3.6,22h16.8c0.9,0,1.6-0.7,1.6-1.6V3.6C22,2.7,21.3,2,20.4,2
+z M3.7,12.1l0.9-0.4L5,10.8l0.4,0.9l0.9,0.4l-0.9,0.4L5,13.4l-0.4-0.9L3.7,12.1z
+M8.4,19l-1.1-2.4l-2.3-1l2.4-1.1l1.1-2.4l1.1,2.4 l2.4,1.1l-2.4,1.1L8.4,19z
+M12.3,19.4l-0.4,0.9l-0.4-0.9L10.6,19l0.9-0.4l0.4-0.9l0.4,0.9l0.9,0.4L12.3,19.4z"/>
+</vector>

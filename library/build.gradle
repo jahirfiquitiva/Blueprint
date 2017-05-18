@@ -30,6 +30,10 @@ android {
         disable 'MissingTranslation'
     }
 
+    dexOptions {
+        javaMaxHeapSize "1536m"
+    }
+
     defaultConfig {
         minSdkVersion Integer.parseInt(project.MIN_SDK)
         targetSdkVersion Integer.parseInt(project.TARGET_SDK)
@@ -98,7 +102,8 @@ dependencies {
     // Material Dialogs
     compile "com.afollestad.material-dialogs:core:${MATERIAL_DIALOGS}"
 
-    // Material Drawer
+    // Navigation
+    compile "com.aurelhubert:ahbottomnavigation:${BOTTOM_BAR}"
     compile("com.mikepenz:materialdrawer:${MATERIAL_DRAWER}@aar") {
         transitive = true
     }

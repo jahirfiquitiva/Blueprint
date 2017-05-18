@@ -157,11 +157,6 @@ public class ColorUtils {
     }
 
     @ColorRes
-    public static int getIconsColor(boolean dark) {
-        return dark ? R.color.drawable_tint_dark : R.color.drawable_tint_light;
-    }
-
-    @ColorRes
     public static int getToolbarTextColor(boolean darkTheme) {
         return darkTheme ? R.color.toolbar_text_dark : R.color.toolbar_text_light;
     }

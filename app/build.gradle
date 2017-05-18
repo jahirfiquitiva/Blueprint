@@ -30,6 +30,16 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        disable 'MissingTranslation'
+    }
+
+    dexOptions {
+        javaMaxHeapSize "1536m"
+    }
+
     defaultConfig {
         applicationId "${project.APP_GROUP}." + project.APP_ID.toLowerCase() + ".demo"
         minSdkVersion Integer.parseInt(project.MIN_SDK)

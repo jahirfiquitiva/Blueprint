@@ -29,6 +29,7 @@
         <item name="colorPrimary">@color/light_theme_primary</item>
         <item name="colorPrimaryDark">@color/light_theme_primary_dark</item>
         <item name="colorAccent">@color/light_theme_accent</item>
+        <item name="colorControlHighlight">#42000000</item>
 
         <item name="android:textColor">@color/primary_text_light</item>
         <item name="android:textColorPrimary">@color/primary_text_light</item>
@@ -42,8 +43,10 @@
         <item name="md_neutral_color">@color/md_button_text_light</item>
         <item name="md_background_color">@color/md_background_color_light</item>
 
+        <item name="cardBackgroundColor">@color/card_light_background</item>
         <item name="cardColorBackground">@color/card_light_background</item>
-        <item name="drawablesTintColor">@color/drawable_tint_light</item>
+        <item name="activeDrawablesTintColor">@color/drawable_tint_light</item>
+        <item name="inactiveDrawablesTintColor">@color/inactive_drawable_tint_light</item>
         <item name="fabTintColor">@color/fab_background_tint_light_theme</item>
         <item name="toolbarTextColor">@color/toolbar_text_light</item>
         <item name="tabsIndicatorColor">@color/tabs_indicator_light</item>
@@ -61,19 +64,11 @@
         <item name="actionBarPopupTheme">@style/Toolbar.Popup.AppCompat</item>
     </style>
 
-    <style name="AppTheme.Base.Amoled" parent="AppTheme.Base.Dark">
-        <item name="cardColorBackground">@android:color/black</item>
-        <item name="android:windowBackground">@android:color/black</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Clear</item>
-        <item name="material_drawer_background">#212121</item>
-        <item name="md_background_color">#212121</item>
-        <item name="fabTintColor">@color/dark_theme_accent</item>
-    </style>
-
     <style name="AppTheme.Base.Dark" parent="MaterialDrawerTheme">
         <item name="colorPrimary">@color/dark_theme_primary</item>
         <item name="colorPrimaryDark">@color/dark_theme_primary_dark</item>
         <item name="colorAccent">@color/dark_theme_accent</item>
+        <item name="colorControlHighlight">#42ffffff</item>
 
         <item name="android:textColor">@color/primary_text_dark</item>
         <item name="android:textColorPrimary">@color/primary_text_dark</item>
@@ -87,8 +82,10 @@
         <item name="md_neutral_color">@color/md_button_text_dark</item>
         <item name="md_background_color">@color/md_background_color_dark</item>
 
+        <item name="cardBackgroundColor">@color/card_dark_background</item>
         <item name="cardColorBackground">@color/card_dark_background</item>
-        <item name="drawablesTintColor">@color/drawable_tint_dark</item>
+        <item name="activeDrawablesTintColor">@color/drawable_tint_dark</item>
+        <item name="inactiveDrawablesTintColor">@color/inactive_drawable_tint_dark</item>
         <item name="fabTintColor">@color/fab_background_tint_dark_theme</item>
         <item name="toolbarTextColor">@color/toolbar_text_dark</item>
         <item name="tabsIndicatorColor">@color/tabs_indicator_dark</item>
@@ -106,9 +103,12 @@
         <item name="actionBarPopupTheme">@style/Toolbar.Popup.AppCompat</item>
     </style>
 
-    <style name="ThemeOverlay.AppCompat.Clear" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="android:windowBackground">@color/clear_bg</item>
-        <item name="android:colorBackground">@color/clear_bg</item>
+    <style name="AppTheme.Base.Amoled" parent="AppTheme.Base.Dark">
+        <item name="cardColorBackground">@android:color/black</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="material_drawer_background">#212121</item>
+        <item name="md_background_color">#212121</item>
+        <item name="fabTintColor">@color/dark_theme_accent</item>
     </style>
 
     <style name="AppTheme.SplashScreen" parent="AppTheme.Base.LightLaunchScreen"/>

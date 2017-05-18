@@ -35,7 +35,9 @@
         <!-- Default color of cardview background. -->
         <attr name="cardColorBackground" format="color"/>
         <!-- Color to tint drawables. -->
-        <attr name="drawablesTintColor" format="color"/>
+        <attr name="activeDrawablesTintColor" format="color"/>
+        <!-- Color to tint drawables. -->
+        <attr name="inactiveDrawablesTintColor" format="color"/>
         <!-- Color to tint fabs. -->
         <attr name="fabTintColor" format="color"/>
         <!-- Custom toolbar theme. -->

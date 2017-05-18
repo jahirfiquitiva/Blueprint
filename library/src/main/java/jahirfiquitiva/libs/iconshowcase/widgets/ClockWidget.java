@@ -56,7 +56,7 @@ public class ClockWidget extends AppWidgetProvider {
         if (AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(action)) {
 
             RemoteViews views = new RemoteViews(context.getPackageName(),
-                    R.layout.clock_widget);
+                    R.layout.widget_clock);
 
             Intent clockAppIntent = new Intent();
 
