@@ -53,8 +53,9 @@
     <!-- App theme
     1. Light
     2. Dark
-    3. Clear
-    4. Auto (Light in the morning & Dark in the night)
+    3. Amoled
+    4. AutoDark (Light in the morning & Dark in the night)
+    5. AutoAmoled (Light in the morning & Amoled in the night)
     -->
     <integer name="app_theme">1</integer>
 
@@ -70,7 +71,7 @@
     True, means yes.
     False, means no.
     -->
-    <bool name="light_statusbar_in_splash_screen">true</bool>
+    <bool name="light_status_bar_in_splash_screen">true</bool>
 
 
     <!-- /*/*/*/*/*/*/*/*/*/*/*/*/ DONATIONS CONFIGURATION /*/*/*/*/*/*/*/*/*/*/*/*/ -->

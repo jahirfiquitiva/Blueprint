@@ -23,12 +23,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleRes;
 
-import com.afollestad.aesthetic.Aesthetic;
+// import com.afollestad.aesthetic.Aesthetic;
 
 import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences;
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
 
-public class AestheticThemedActivity extends AestheticThemedBaseActivity {
+public class AestheticThemedActivity { /* } extends AestheticThemedBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,4 +46,5 @@ public class AestheticThemedActivity extends AestheticThemedBaseActivity {
         Preferences mPrefs = new Preferences(this);
         return ThemeUtils.getTheme(mPrefs.getTheme());
     }
+    */
 }

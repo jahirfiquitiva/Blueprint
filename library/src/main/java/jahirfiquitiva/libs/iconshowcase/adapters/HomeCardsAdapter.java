@@ -44,7 +44,7 @@ public class HomeCardsAdapter extends RecyclerView.Adapter<HomeCardsHolders.Extr
     @Override
     public HomeCardsHolders.ExtraCardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_app_card, parent, false);
+                .inflate(R.layout.item_home_extra_card, parent, false);
         return new HomeCardsHolders.ExtraCardHolder(view);
     }
 

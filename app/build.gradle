@@ -48,16 +48,16 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode versions.versionCode
         versionName versions.versionName
-        jackOptions {
-            enabled true
-        }
+        // jackOptions {
+           // enabled true
+        // }
     }
 
-    compileOptions {
-        incremental true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+    // compileOptions {
+        // incremental true
+        // sourceCompatibility JavaVersion.VERSION_1_8
+        // targetCompatibility JavaVersion.VERSION_1_8
+    // }
 
     buildTypes {
         release {

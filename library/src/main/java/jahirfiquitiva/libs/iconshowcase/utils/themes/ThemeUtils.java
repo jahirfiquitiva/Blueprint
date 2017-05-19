@@ -29,11 +29,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.StyleRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import java.util.Calendar;
 
 import jahirfiquitiva.libs.iconshowcase.R;
+import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences;
 
 @SuppressWarnings("ResourceAsColor")
@@ -76,15 +80,15 @@ public class ThemeUtils {
         int exitAnimation = android.R.anim.fade_out;
         activity.overridePendingTransition(enterAnimation, exitAnimation);
         final Preferences prefs = new Preferences(activity);
-        int prefTheme = prefs.getTheme();
-        activity.setTheme(getTheme(prefTheme));
+        activity.setTheme(getTheme(prefs.getTheme()));
         setNavbarColorTo(activity, prefs.hasColoredNavbar());
     }
 
     @StyleRes
     public static int getTheme(int prefTheme) {
         Calendar c = Calendar.getInstance();
-        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+        int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
+        Log.d(CoreUtils.LOG_TAG, "Setting theme with id: " + prefTheme);
         switch (prefTheme) {
             default:
             case LIGHT:
@@ -94,9 +98,9 @@ public class ThemeUtils {
             case AMOLED:
                 return R.style.AppThemeAmoled;
             case AUTO_DARK:
-                return timeOfDay >= 7 && timeOfDay < 19 ? R.style.AppTheme : R.style.AppThemeDark;
+                return hourOfDay >= 7 && hourOfDay < 19 ? R.style.AppTheme : R.style.AppThemeDark;
             case AUTO_AMOLED:
-                return timeOfDay >= 7 && timeOfDay < 19 ? R.style.AppTheme : R.style.AppThemeAmoled;
+                return hourOfDay >= 7 && hourOfDay < 19 ? R.style.AppTheme : R.style.AppThemeAmoled;
         }
     }
 
@@ -104,10 +108,32 @@ public class ThemeUtils {
                                          boolean colorEnabled) {
         coloredNavbar = colorEnabled;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return;
-        activity.getWindow().setNavigationBarColor(colorEnabled ? isDarkTheme() ?
-                ContextCompat.getColor(activity, R.color.dark_theme_navigation_bar) :
-                ContextCompat.getColor(activity, R.color.light_theme_navigation_bar) :
-                ContextCompat.getColor(activity, android.R.color.black));
+        activity.getWindow().setNavigationBarColor(
+                getCurrentTheme() == AMOLED
+                        ? ResourceUtils.getColor(activity, android.R.color.black)
+                        : colorEnabled
+                        ? getCurrentTheme() == DARK
+                        ? ResourceUtils.getColor(activity, R.color.dark_theme_navigation_bar)
+                        : ResourceUtils.getColor(activity, R.color.light_theme_navigation_bar)
+                        : ResourceUtils.getColor(activity, android.R.color.black));
+    }
+
+    public static void setStatusBarModeTo(@NonNull AppCompatActivity activity) {
+        boolean lightStatusBar = false;
+        switch (ThemeUtils.getCurrentTheme()) {
+            case ThemeUtils.LIGHT:
+                lightStatusBar = ColorUtils.isLightColor(
+                        ResourceUtils.getColor(activity, R.color.light_theme_primary_dark));
+                break;
+            case ThemeUtils.DARK:
+                lightStatusBar = ColorUtils.isLightColor(
+                        ResourceUtils.getColor(activity, R.color.dark_theme_primary_dark));
+                break;
+            case ThemeUtils.AMOLED:
+                lightStatusBar = false;
+                break;
+        }
+        setStatusBarModeTo(activity, lightStatusBar);
     }
 
     public static void setStatusBarModeTo(@NonNull AppCompatActivity activity, boolean lightMode) {

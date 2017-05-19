@@ -22,10 +22,15 @@ package jahirfiquitiva.libs.iconshowcase.utils;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 import static android.util.TypedValue.applyDimension;
 
 public class CoreUtils {
+
+    public static final String LOG_TAG = "IconShowcase";
 
     public static String getAppVersion(Context context) {
         try {
@@ -53,7 +58,15 @@ public class CoreUtils {
     }
 
     public static int convertDpToPx(Context context, float dp) {
-        return (int) applyDimension(COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+        return (int) applyDimension(COMPLEX_UNIT_DIP, dp, context.getResources()
+                .getDisplayMetrics());
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
 }

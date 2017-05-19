@@ -29,7 +29,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="@dimen/icons_preview_row"
         android:layout_marginRight="@dimen/icons_preview_row"
-        android:layout_marginTop="@dimen/tool_bar_top_padding"
+        android:layout_marginTop="@dimen/status_bar_height"
         android:gravity="center"
         app:alignmentMode="alignBounds"
         app:orientation="horizontal">

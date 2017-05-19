@@ -19,21 +19,27 @@
 
 package jahirfiquitiva.libs.iconshowcase.fragments;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import jahirfiquitiva.libs.iconshowcase.R;
 import jahirfiquitiva.libs.iconshowcase.adapters.HomeCardsAdapter;
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard;
+import jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView;
+import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
 
 public class HomeFragment extends Fragment {
     @Nullable
@@ -47,7 +53,11 @@ public class HomeFragment extends Fragment {
     }
 
     private void initRV(@NonNull View view) {
-        RecyclerView rv = (RecyclerView) view.findViewById(R.id.home_rv);
+        EmptyViewRecyclerView rv = (EmptyViewRecyclerView) view.findViewById(R.id.home_rv);
+        rv.setEmptyView(view.findViewById(R.id.empty_view));
+        rv.setLoadingView(view.findViewById(R.id.loading_view));
+        rv.setTextView((TextView) view.findViewById(R.id.empty_text));
+        rv.setState(EmptyViewRecyclerView.STATE_LOADING);
         ArrayList<HomeCard> cards = new ArrayList<>();
         String[] titles = ResourceUtils.getStringArray(getContext(), R.array.home_list_titles);
         String[] descriptions = ResourceUtils.getStringArray(getContext(),
@@ -60,7 +70,15 @@ public class HomeFragment extends Fragment {
                 cards.add(new HomeCard(getContext(), titles[i], descriptions[i], urls[i],
                         icons[i]));
             }
-            rv.setAdapter(new HomeCardsAdapter(getContext(), cards));
         }
+        rv.setLayoutManager(new LinearLayoutManager(
+                getContext(), LinearLayoutManager.VERTICAL, false));
+        DividerItemDecoration decoration = new DividerItemDecoration(getContext(),
+                DividerItemDecoration.VERTICAL);
+        decoration.setDrawable(new ColorDrawable(
+                ColorUtils.getMaterialDividerColor(ThemeUtils.isDarkTheme())));
+        rv.addItemDecoration(decoration);
+        rv.setAdapter(new HomeCardsAdapter(getContext(), cards));
+        rv.setState(EmptyViewRecyclerView.STATE_NORMAL);
     }
 }

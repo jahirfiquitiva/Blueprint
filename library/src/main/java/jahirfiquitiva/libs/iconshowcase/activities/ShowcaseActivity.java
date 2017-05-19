@@ -24,29 +24,25 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.mikepenz.materialdrawer.AccountHeader;
-import com.mikepenz.materialdrawer.AccountHeaderBuilder;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 
 import jahirfiquitiva.libs.iconshowcase.R;
 import jahirfiquitiva.libs.iconshowcase.activities.base.ThemedActivity;
+import jahirfiquitiva.libs.iconshowcase.callbacks.CollapsingToolbarCallback;
 import jahirfiquitiva.libs.iconshowcase.models.DrawerItem;
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout;
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout;
@@ -59,8 +55,27 @@ import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences;
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.themes.TintUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.themes.ToolbarThemer;
 
-import static android.support.v4.widget.TextViewCompat.setTextAppearance;
+/*
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+*/
+
+/*
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+*/
 
 public class ShowcaseActivity extends ThemedActivity {
 
@@ -132,19 +147,25 @@ public class ShowcaseActivity extends ThemedActivity {
                 win.setAttributes(winParams);
             }
             getWindow().setStatusBarColor(Color.TRANSPARENT);
+            ThemeUtils.setStatusBarModeTo(this, false);
         }
     }
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu_main);
-        toolbar.setOnMenuItemClickListener(item -> {
-            int i = item.getItemId();
-            if (i == R.id.changelog) {
-                showChangelog();
-                return true;
+        ToolbarThemer.tintToolbar(toolbar,
+                ColorUtils.getMaterialActiveIconsColor(ThemeUtils.isDarkTheme()));
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int i = item.getItemId();
+                if (i == R.id.changelog) {
+                    showChangelog();
+                    return true;
+                }
+                return false;
             }
-            return false;
         });
     }
 
@@ -167,13 +188,16 @@ public class ShowcaseActivity extends ThemedActivity {
     private void initBottomBar() {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomBar.setOnNavigationItemSelectedListener(
-                item -> {
-                    long id = getItemId(item.getItemId(), true);
-                    if (id != -1) {
-                        clickDrawerItem(id);
-                        return true;
-                    } else {
-                        return false;
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        long id = getItemId(item.getItemId(), true);
+                        if (id != -1) {
+                            clickDrawerItem(id);
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
                 });
     }
@@ -194,9 +218,19 @@ public class ShowcaseActivity extends ThemedActivity {
 
     private void initCollapsingToolbar() {
         coordinatorLayout = (CustomCoordinatorLayout) findViewById(R.id.mainCoordinatorLayout);
-        coordinatorLayout.setScrollAllowed(false);
         appBarLayout = (FixedElevationAppBarLayout) findViewById(R.id.appBar);
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
+        collapsingToolbar.setExpandedTitleColor(ResourceUtils.getColor(this,
+                android.R.color.transparent));
+        collapsingToolbar.setCollapsedTitleTextColor(
+                ColorUtils.getMaterialPrimaryTextColor(ThemeUtils.isDarkTheme()));
+        final AppCompatActivity activity = this;
+        appBarLayout.addOnOffsetChangedListener(new CollapsingToolbarCallback() {
+            @Override
+            public void onVerticalOffsetChanged(AppBarLayout appBar, int verticalOffset) {
+                ToolbarThemer.updateToolbarColors(activity, toolbar, verticalOffset);
+            }
+        });
         ImageView wallpaper = (ImageView) findViewById(R.id.toolbarHeader);
         WallpaperManager wManager = WallpaperManager.getInstance(this);
         if ((picker == 0) && (shortcut == null || shortcut.length() < 1)) {
@@ -226,6 +260,7 @@ public class ShowcaseActivity extends ThemedActivity {
     }
 
     private void initDrawer(Bundle savedInstance) {
+        /*
         AccountHeaderBuilder accountHeaderBuilder = new AccountHeaderBuilder().withActivity(this);
         accountHeaderBuilder.withHeaderBackground(R.drawable.drawer_header);
         if (ResourceUtils.getBoolean(this, R.bool.with_drawer_texts)) {
@@ -254,11 +289,14 @@ public class ShowcaseActivity extends ThemedActivity {
                 .withDelayOnDrawerClose(-1)
                 .withShowDrawerOnFirstLaunch(true);
 
-        drawerBuilder.withOnDrawerItemClickListener((view, position, drawerItem) -> {
-            if (drawerItem != null) {
-                clickDrawerItem(drawerItem.getIdentifier());
+        drawerBuilder.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            @Override
+            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                if (drawerItem != null) {
+                    clickDrawerItem(drawerItem.getIdentifier());
+                }
+                return false;
             }
-            return false;
         });
 
         DrawerItem home = DrawerItem.HOME;
@@ -301,6 +339,7 @@ public class ShowcaseActivity extends ThemedActivity {
                 .withSavedInstance(savedInstance);
 
         drawerBuilder.build();
+        */
     }
 
     private void clickDrawerItem(long id) {
@@ -320,6 +359,9 @@ public class ShowcaseActivity extends ThemedActivity {
                                 ? R.string.app_name
                                 : DrawerItem.getItemWithId(id).getText()));
             }
+            if (coordinatorLayout != null) {
+                coordinatorLayout.setScrollAllowed(id == DrawerItem.HOME.getId());
+            }
             loadFragment(DrawerItem.getItemWithId(id));
             Toast.makeText(this, DrawerItem.getItemWithId(id).toString(), Toast.LENGTH_SHORT)
                     .show();
@@ -329,14 +371,12 @@ public class ShowcaseActivity extends ThemedActivity {
     }
 
     private void loadFragment(DrawerItem item) {
-        Fragment newFragment = item.getFragment();
-        if (newFragment == null) return;
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragments_container,
-                item.getFragment(), item.getStringId());
+        fragmentTransaction.replace(R.id.fragments_container, item.getFragment(),
+                item.getStringId());
         if (prefs != null && prefs.getAnimationsEnabled()) {
             fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-                    android.R.anim.fade_out);
+                    android.R.anim.fade_out, android.R.anim.fade_in, android.R.anim.fade_out);
         }
         fragmentTransaction.commit();
     }
@@ -354,7 +394,7 @@ public class ShowcaseActivity extends ThemedActivity {
     public void changeFABAction(boolean home) {
         if (fab == null) return;
         fab.setImageDrawable(TintUtils.createTintedDrawable(
-                IconUtils.getDrawableWithName(this, home ? "ic_rate" : "ic_email"),
+                IconUtils.getDrawableWithName(this, home ? "ic_rate" : "ic_send"),
                 ColorUtils.getMaterialActiveIconsColor(
                         !ColorUtils.isLightColor(
                                 ContextCompat.getColor(this,
@@ -362,12 +402,22 @@ public class ShowcaseActivity extends ThemedActivity {
                                                 R.color.dark_theme_accent,
                                                 R.color.light_theme_accent))))));
         if (home) {
-            fab.setOnClickListener(view -> NetworkUtils.openLink(view.getContext(),
-                    NetworkUtils.PLAY_STORE_LINK_PREFIX + CoreUtils.getAppPackageName(this)));
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    NetworkUtils.openLink(view.getContext(),
+                            NetworkUtils.PLAY_STORE_LINK_PREFIX +
+                                    CoreUtils.getAppPackageName(view.getContext()));
+                }
+            });
         } else {
-            fab.setOnClickListener(view ->
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                     Toast.makeText(view.getContext(), "Creating request", Toast.LENGTH_SHORT)
-                            .show());
+                            .show();
+                }
+            });
         }
     }
 

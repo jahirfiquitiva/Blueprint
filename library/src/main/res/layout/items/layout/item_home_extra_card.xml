@@ -20,7 +20,7 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/home_card"
+        android:id="@+id/home_extra_card"
         style="@style/HomeCardContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         tools:ignore="Overdraw">
 
     <TextView
-            android:id="@+id/home_card_text"
+            android:id="@+id/home_extra_card_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
@@ -41,7 +41,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
 
     <LinearLayout
-            android:id="@+id/home_card_sub_layout"
+            android:id="@+id/home_extra_card_sub_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -54,13 +54,13 @@
             android:paddingRight="16dp">
 
         <jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
-                android:id="@+id/home_card_image"
+                android:id="@+id/home_extra_card_image"
                 android:layout_width="@dimen/app_card_icon_size"
                 android:layout_height="@dimen/app_card_icon_size"
                 tools:ignore="ContentDescription"/>
 
         <TextView
-                android:id="@+id/home_card_description"
+                android:id="@+id/home_extra_card_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

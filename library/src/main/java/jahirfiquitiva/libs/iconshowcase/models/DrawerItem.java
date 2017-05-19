@@ -20,10 +20,12 @@
 package jahirfiquitiva.libs.iconshowcase.models;
 
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 
 import jahirfiquitiva.libs.iconshowcase.R;
+import jahirfiquitiva.libs.iconshowcase.fragments.EmptyFragment;
 import jahirfiquitiva.libs.iconshowcase.fragments.HomeFragment;
 
 public enum DrawerItem {
@@ -71,12 +73,14 @@ public enum DrawerItem {
         return icon;
     }
 
+    @NonNull
     public Fragment getFragment() {
         switch ((int) getId()) {
             case 0:
                 return new HomeFragment();
+            default:
+                return new EmptyFragment();
         }
-        return null;
     }
 
     @Override

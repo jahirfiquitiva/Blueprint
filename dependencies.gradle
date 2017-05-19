@@ -27,7 +27,7 @@ ext.versions = [
         buildTools            : '25.0.3',
         versionCode           : 200,
         versionName           : '2.0.0',
-        gradlePlugin          : '2.3.2',
+        gradlePlugin          : '2.3.2', //'3.0.0-alpha1',
         libPubPlugin          : '1.5',
         // Libraries versions
         supportLibs           : '25.3.1',

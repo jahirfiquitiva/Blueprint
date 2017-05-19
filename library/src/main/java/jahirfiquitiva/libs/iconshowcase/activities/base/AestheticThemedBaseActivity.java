@@ -23,9 +23,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.afollestad.aesthetic.Aesthetic;
+// import com.afollestad.aesthetic.Aesthetic;
 
-public class AestheticThemedBaseActivity extends AppCompatActivity {
+public class AestheticThemedBaseActivity { /* extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         Aesthetic.attach(this);
@@ -43,4 +43,5 @@ public class AestheticThemedBaseActivity extends AppCompatActivity {
         Aesthetic.pause(this);
         super.onPause();
     }
+    */
 }

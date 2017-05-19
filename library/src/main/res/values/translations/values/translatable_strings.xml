@@ -144,8 +144,6 @@
 
     <string name="requests_error">There was an error loading apps to request.\nPress here to retry.</string>
     <string name="building_request_dialog">Building request files…</string>
-    <string name="loading_apps">Please wait until the apps load, it will take a few seconds more…</string>
-    <string name="loading_icons">Loading icons…</string>
 
     <string name="choose">Choose</string>
 
@@ -362,5 +360,15 @@
     <string name="donations_error_content">Your device doesn\'t support In App Billing.\nThis could be because you need to update your Google Play Store application, or because you live in a country where In App Billing is disabled.</string>
 
     <string name="no_launcher_intent">Direct apply could not be completed for this launcher. Please apply the icon pack manually, in launcher settings.</string>
+
+    <string name="loading_request_apps">Please wait until the apps load, it will take a few seconds more…</string>
+    <string name="loading_icons">Loading icons…</string>
+    <string name="loading_wallpapers">Loading wallpapers…</string>
+    <string name="loading_widgets">Loading widgets…</string>
+    <string name="loading_section">Loading content…</string>
+    <string name="empty_section">This is an empty section.</string>
+    <string name="no_connection">Connection was not reliable to load the content. Please check it and try again later.</string>
+    <string name="no_results">The icon you were looking for could not be found.</string>
+    <string name="no_favorites">You don\'t have any favorites yet.</string>
 
 </resources>

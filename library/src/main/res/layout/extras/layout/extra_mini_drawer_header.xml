@@ -38,9 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/tool_bar_top_padding"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/status_bar_height"
             android:gravity="center_vertical"
             android:orientation="vertical">
 

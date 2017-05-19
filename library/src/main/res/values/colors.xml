@@ -36,7 +36,7 @@
     <color name="tabs_normal_text_light">@color/secondary_text_light</color>
     <color name="tabs_selected_text_light">@color/primary_text_light</color>
     <color name="splash_light_background">@color/light_bg</color>
-    <color name="splash_light_statusbar">@color/light_theme_primary_dark</color>
+    <color name="splash_light_status_bar">@color/light_theme_primary_dark</color>
 
     <!-- DARK THEME COLORS -->
     <color name="dark_theme_primary">#212121</color>
@@ -54,7 +54,10 @@
     <color name="tabs_normal_text_dark">@color/secondary_text_dark</color>
     <color name="tabs_selected_text_dark">@color/primary_text_dark</color>
     <color name="splash_dark_background">@color/dark_bg</color>
-    <color name="splash_dark_statusbar">@color/dark_theme_primary_dark</color>
+    <color name="splash_dark_status_bar">@color/dark_theme_primary_dark</color>
+
+    <!-- COLOR SHOWN IN MUZEI APP -->
+    <color name="muzei_color">@color/light_theme_accent</color>
 
     <!-- COLORS FOR INSTALLED LAUNCHERS -->
     <color name="action_launcher_color">#f44336</color>
@@ -136,7 +139,6 @@
     <color name="white_highlight">#66ffffff</color>
     <color name="semitransparent_black">#66000000</color>
     <color name="drawable_base_tint">#8a000000</color>
-    <color name="muzei_color">@color/primary</color>
     <color name="active_icon_tint">#8a000000</color>
 
 </resources>

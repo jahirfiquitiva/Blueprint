@@ -19,6 +19,8 @@
 
 <resources>
 
+    <dimen name="status_bar_height">0dp</dimen>
+
     <dimen name="cards_padding">16dp</dimen>
     <dimen name="cards_elevation">2dp</dimen>
     <dimen name="cards_margin">8dp</dimen>
@@ -73,7 +75,7 @@
     <dimen name="splash_brand_bottom">48dp</dimen>
 
     <dimen name="first_keyline">16dp</dimen>
-    <dimen name="second_keyline">72dp</dimen>
+    <dimen name="second_keyline">16dp</dimen> <!-- If using Drawer, set this to 72dp -->
     <dimen name="toolbar_horizontal_padding">4dp</dimen>
     <dimen name="fab_with_bottom_bar_margin">72dp</dimen>
 

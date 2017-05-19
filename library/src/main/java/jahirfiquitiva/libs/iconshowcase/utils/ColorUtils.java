@@ -31,6 +31,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import jahirfiquitiva.libs.iconshowcase.R;
@@ -148,12 +149,14 @@ public class ColorUtils {
 
     private static Palette.Swatch getPaletteSwatch(List<Palette.Swatch> swatches) {
         if (swatches == null) return null;
-        return Collections.max(swatches,
-                (opt1, opt2) -> {
-                    int a = opt1 == null ? 0 : opt1.getPopulation();
-                    int b = opt2 == null ? 0 : opt2.getPopulation();
-                    return a - b;
-                });
+        return Collections.max(swatches, new Comparator<Palette.Swatch>() {
+            @Override
+            public int compare(Palette.Swatch opt1, Palette.Swatch opt2) {
+                int a = opt1 != null ? opt1.getPopulation() : 0;
+                int b = opt2 != null ? opt2.getPopulation() : 0;
+                return a - b;
+            }
+        });
     }
 
     @ColorRes

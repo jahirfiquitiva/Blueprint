@@ -56,6 +56,9 @@
     <color name="splash_dark_background">@color/dark_bg</color>
     <color name="splash_dark_statusbar">@color/dark_theme_primary_dark</color>
 
+    <!-- COLOR SHOWN IN MUZEI APP -->
+    <color name="muzei_color">@color/light_theme_accent</color>
+
     <!-- COLORS FOR INSTALLED LAUNCHERS -->
     <color name="action_launcher_color">#f44336</color>
     <color name="adw_launcher_color">#2196f3</color>
@@ -136,7 +139,6 @@
     <color name="white_highlight">#66ffffff</color>
     <color name="semitransparent_black">#66000000</color>
     <color name="drawable_base_tint">#8a000000</color>
-    <color name="muzei_color">@color/primary</color>
     <color name="active_icon_tint">#8a000000</color>
 
 </resources>

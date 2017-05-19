@@ -140,7 +140,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:layout_marginTop="@dimen/materialize_statusbar"
+                android:layout_marginTop="@dimen/status_bar_height"
                 android:background="@android:color/transparent"
                 android:transitionName="actionBar"
                 android:theme="@style/Toolbar.AppCompat.Responsive.Light"

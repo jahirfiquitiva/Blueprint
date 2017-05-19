@@ -37,8 +37,8 @@
 -dontwarn okio.**
 -dontwarn okhttp3.**
 -dontwarn retrofit2.**
--dontwarn java.lang.invoke.**
--dontwarn **$$Lambda$*
+# -dontwarn java.lang.invoke.**
+# -dontwarn **$$Lambda$*
 
 -dontwarn
 -ignorewarnings

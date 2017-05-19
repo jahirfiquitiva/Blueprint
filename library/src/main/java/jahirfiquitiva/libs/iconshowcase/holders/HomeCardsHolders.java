@@ -46,14 +46,19 @@ public class HomeCardsHolders {
 
         public ExtraCardHolder(View itemView) {
             super(itemView);
-            this.root = (LinearLayout) itemView.findViewById(R.id.more_apps);
-            this.title = (TextView) itemView.findViewById(R.id.more_apps_title);
-            this.description = (TextView) itemView.findViewById(R.id.more_apps_description);
-            this.icon = (ImageView) itemView.findViewById(R.id.more_apps_icon);
+            this.root = (LinearLayout) itemView.findViewById(R.id.home_extra_card);
+            this.title = (TextView) itemView.findViewById(R.id.home_extra_card_title);
+            this.description = (TextView) itemView.findViewById(R.id.home_extra_card_description);
+            this.icon = (ImageView) itemView.findViewById(R.id.home_extra_card_image);
         }
 
-        public void setItem(HomeCard item) {
-            root.setOnClickListener(view -> launchIntent(view.getContext(), item));
+        public void setItem(final HomeCard item) {
+            root.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    launchIntent(view.getContext(), item);
+                }
+            });
             title.setText(item.getTitle());
             description.setText(item.getDescription());
             icon.setImageDrawable(item.getIcon());

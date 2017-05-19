@@ -45,11 +45,11 @@ android {
         consumerProguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
 
-    compileOptions {
-        incremental true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+    // compileOptions {
+    // incremental true
+    // sourceCompatibility JavaVersion.VERSION_1_8
+    // targetCompatibility JavaVersion.VERSION_1_8
+    // }
 
     buildTypes {
         release {
@@ -99,16 +99,16 @@ dependencies {
     compile 'com.android.support:customtabs:' + versions.supportLibs
 
     // Themes Manager
-    compile 'com.afollestad:aesthetic:' + versions.aesthetic
+    // compile 'com.afollestad:aesthetic:' + versions.aesthetic
 
     // Material Dialogs
     compile 'com.afollestad.material-dialogs:core:' + versions.materialDialogs
 
     // Navigation
-    compile 'com.aurelhubert:ahbottomnavigation:' + versions.ahBottomBar
-    compile('com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar') {
-        transitive = true
-    }
+    // compile 'com.aurelhubert:ahbottomnavigation:' + versions.ahBottomBar
+    // compile('com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar') {
+        // transitive = true
+    // }
 
     // OkHttp
     compile 'com.squareup.okhttp3:okhttp:' + versions.okhttp
@@ -175,8 +175,8 @@ artifacts {
 //    artifacts.add('archives', task);
 //}
 
-gradle.projectsEvaluated {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs << "-Xbootclasspath/a:" + System.properties.get("java.home") + "/lib/rt.jar"
-    }
-}
+//gradle.projectsEvaluated {
+//    tasks.withType(JavaCompile) {
+//        options.compilerArgs << "-Xbootclasspath/a:" + System.properties.get("java.home") + "/lib/rt.jar"
+//    }
+//}
