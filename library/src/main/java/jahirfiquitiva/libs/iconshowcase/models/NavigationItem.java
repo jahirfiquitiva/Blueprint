@@ -28,10 +28,10 @@ import jahirfiquitiva.libs.iconshowcase.R;
 import jahirfiquitiva.libs.iconshowcase.fragments.EmptyFragment;
 import jahirfiquitiva.libs.iconshowcase.fragments.HomeFragment;
 
-public enum DrawerItem {
+public enum NavigationItem {
 
     HOME("Home", 0, R.string.section_home, R.drawable.ic_home),
-    PREVIEW("Previews", 1, R.string.section_icons, R.drawable.ic_previews),
+    PREVIEWS("Previews", 1, R.string.section_icons, R.drawable.ic_previews),
     WALLPAPERS("Wallpapers", 2, R.string.section_wallpapers, R.drawable.ic_wallpapers),
     APPLY("Apply", 3, R.string.section_apply, R.drawable.ic_apply),
     REQUESTS("Requests", 4, R.string.section_icon_request, R.drawable.ic_request),
@@ -48,7 +48,7 @@ public enum DrawerItem {
     @DrawableRes
     private int icon;
 
-    DrawerItem(String stringId, long id, @StringRes int text, @DrawableRes int icon) {
+    NavigationItem(String stringId, long id, @StringRes int text, @DrawableRes int icon) {
         this.stringId = stringId;
         this.id = id;
         this.text = text;
@@ -85,11 +85,11 @@ public enum DrawerItem {
 
     @Override
     public String toString() {
-        return "DrawerItem: [StringId: " + getStringId() + ", Id: " + getId() + "]";
+        return "NavigationItem: [StringId: " + getStringId() + ", Id: " + getId() + "]";
     }
 
-    public static DrawerItem getItemWithId(String id) {
-        for (DrawerItem item : values()) {
+    public static NavigationItem getItemWithId(String id) {
+        for (NavigationItem item : values()) {
             if (item.getStringId().equalsIgnoreCase(id)) {
                 return item;
             }
@@ -98,8 +98,8 @@ public enum DrawerItem {
                 "defined.");
     }
 
-    public static DrawerItem getItemWithId(long id) {
-        for (DrawerItem item : values()) {
+    public static NavigationItem getItemWithId(long id) {
+        for (NavigationItem item : values()) {
             if (item.getId() == id) {
                 return item;
             }

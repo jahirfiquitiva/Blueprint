@@ -80,7 +80,8 @@ public class ThemeUtils {
         int exitAnimation = android.R.anim.fade_out;
         activity.overridePendingTransition(enterAnimation, exitAnimation);
         final Preferences prefs = new Preferences(activity);
-        activity.setTheme(getTheme(prefs.getTheme()));
+        currentTheme = prefs.getTheme();
+        activity.setTheme(getTheme(currentTheme));
         setNavbarColorTo(activity, prefs.hasColoredNavbar());
     }
 
@@ -88,7 +89,6 @@ public class ThemeUtils {
     public static int getTheme(int prefTheme) {
         Calendar c = Calendar.getInstance();
         int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
-        Log.d(CoreUtils.LOG_TAG, "Setting theme with id: " + prefTheme);
         switch (prefTheme) {
             default:
             case LIGHT:
@@ -119,20 +119,9 @@ public class ThemeUtils {
     }
 
     public static void setStatusBarModeTo(@NonNull AppCompatActivity activity) {
-        boolean lightStatusBar = false;
-        switch (ThemeUtils.getCurrentTheme()) {
-            case ThemeUtils.LIGHT:
-                lightStatusBar = ColorUtils.isLightColor(
-                        ResourceUtils.getColor(activity, R.color.light_theme_primary_dark));
-                break;
-            case ThemeUtils.DARK:
-                lightStatusBar = ColorUtils.isLightColor(
-                        ResourceUtils.getColor(activity, R.color.dark_theme_primary_dark));
-                break;
-            case ThemeUtils.AMOLED:
-                lightStatusBar = false;
-                break;
-        }
+        boolean lightStatusBar = ColorUtils.isLightColor(
+                AttributeExtractor.getPrimaryDarkColorFrom(activity));
+        Log.d(CoreUtils.LOG_TAG, "Light status bar? " + lightStatusBar);
         setStatusBarModeTo(activity, lightStatusBar);
     }
 

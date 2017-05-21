@@ -39,8 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:title="@string/app_name"
-                android:theme="@style/Toolbar.AppCompat.Responsive.Light"
-                android:popupTheme="@style/Toolbar.Popup.AppCompat"
+                android:theme="?attr/toolbarTheme"
+                app:popupTheme="?attr/actionBarPopupTheme"
                 app:layout_scrollFlags="enterAlways"/>
 
     </jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout>

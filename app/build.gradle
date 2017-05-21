@@ -18,16 +18,17 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply from: '../dependencies.gradle'
 
 android {
-    compileSdkVersion versions.targetSdk
+    compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
 
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             output.outputFile = new File(output.outputFile.parent,
-                    versions.appId + "-v${variant.versionName}.apk")
+                    versions.appId + "-v${variant.versionName}-${variant.name}.apk")
         }
     }
 
@@ -35,6 +36,7 @@ android {
         abortOnError false
         checkReleaseBuilds false
         disable 'MissingTranslation'
+        disable 'GoogleAppIndexingWarning'
     }
 
     dexOptions {
@@ -48,9 +50,6 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode versions.versionCode
         versionName versions.versionName
-        // jackOptions {
-           // enabled true
-        // }
     }
 
     // compileOptions {
@@ -69,7 +68,8 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = [
+            java.srcDirs += 'src/main/kotlin'
+            res.srcDirs += [
                     'src/main/res',
                     'src/main/res/drawable',
                     'src/main/res/drawable/app',
@@ -77,7 +77,6 @@ android {
                     'src/main/res/drawable/launchers_icons',
                     'src/main/res/drawable/shortcuts',
                     'src/main/res/drawable/ui',
-                    'src/main/res/layout',
                     'src/main/res/values',
                     'src/main/res/values/icon_pack'
             ]
@@ -87,11 +86,14 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    // IconShowcase
     compile project(':library')
+    // Kotlin
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre7:' + versions.kotlin
 }
 
 tasks.whenTaskAdded { task ->
     if (task.name.contains("lint") || task.name.contains("test")) {
-        task.enabled = false;
+        task.enabled = false
     }
 }

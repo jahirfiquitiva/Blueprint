@@ -143,9 +143,9 @@
                 android:layout_marginTop="@dimen/status_bar_height"
                 android:background="@android:color/transparent"
                 android:transitionName="actionBar"
-                android:theme="@style/Toolbar.AppCompat.Responsive.Light"
+                android:theme="?attr/toolbarTheme"
+                app:popupTheme="?attr/actionBarPopupTheme"
                 app:contentInsetStart="@dimen/second_keyline"
-                app:popupTheme="@style/Toolbar.Popup.AppCompat"
                 tools:ignore="UnusedAttribute"/>
 
     </FrameLayout>

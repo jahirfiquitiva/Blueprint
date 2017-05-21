@@ -19,11 +19,7 @@
   -->
 
 <resources>
-
     <!-- Splash screen dimens -->
     <dimen name="splash_logo_bottom">48dp</dimen>
-
-    <dimen name="icons_preview_row">36dp</dimen>
-    <dimen name="welcome_card_content_padding">48dp</dimen>
-
+    <dimen name="toolbar_expanded">128dp</dimen>
 </resources>

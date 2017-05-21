@@ -23,7 +23,7 @@ import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 
-import jahirfiquitiva.libs.iconshowcase.utils.core.AttributeExtractor;
+import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor;
 
 public class IconShowcaseCardView extends CardView {
 

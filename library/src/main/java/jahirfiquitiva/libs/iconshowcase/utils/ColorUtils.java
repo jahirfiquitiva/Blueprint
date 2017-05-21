@@ -29,6 +29,7 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
+import android.util.Log;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -98,6 +99,18 @@ public class ColorUtils {
         return shiftColor(color, 1.1f);
     }
 
+    public static boolean isDarkColor(Bitmap bitmap) {
+        return !isLightColor(bitmap);
+    }
+
+    public static boolean isDarkColor(Palette palette) {
+        return !isLightColor(palette);
+    }
+
+    public static boolean isDarkColor(@ColorInt int color) {
+        return !isLightColor(color);
+    }
+
     public static boolean isLightColor(Bitmap bitmap) {
         Palette palette = Palette.from(bitmap).generate();
         if (palette.getSwatches().size() > 0) {
@@ -111,6 +124,7 @@ public class ColorUtils {
     }
 
     public static boolean isLightColor(@ColorInt int color) {
+        Log.d(CoreUtils.LOG_TAG, "Checking color: " + String.format("#%06X", 0xFFFFFF & color));
         return getColorDarkness(color) < 0.475;
     }
 

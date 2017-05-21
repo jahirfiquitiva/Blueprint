@@ -46,10 +46,10 @@ public class HomeCardsHolders {
 
         public ExtraCardHolder(View itemView) {
             super(itemView);
-            this.root = (LinearLayout) itemView.findViewById(R.id.home_extra_card);
-            this.title = (TextView) itemView.findViewById(R.id.home_extra_card_title);
-            this.description = (TextView) itemView.findViewById(R.id.home_extra_card_description);
-            this.icon = (ImageView) itemView.findViewById(R.id.home_extra_card_image);
+            this.root = itemView.findViewById(R.id.home_extra_card);
+            this.title = itemView.findViewById(R.id.home_extra_card_title);
+            this.description = itemView.findViewById(R.id.home_extra_card_description);
+            this.icon = itemView.findViewById(R.id.home_extra_card_image);
         }
 
         public void setItem(final HomeCard item) {

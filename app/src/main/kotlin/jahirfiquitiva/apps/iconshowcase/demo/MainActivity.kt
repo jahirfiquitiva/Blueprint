@@ -17,65 +17,45 @@
  * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.apps.iconshowcase.demo;
+package jahirfiquitiva.apps.iconshowcase.demo
 
-import android.os.Bundle;
+import android.os.Bundle
+import jahirfiquitiva.libs.iconshowcase.activities.base.LaunchActivity
 
-import jahirfiquitiva.libs.iconshowcase.activities.base.LaunchActivity;
+class MainActivity:LaunchActivity() {
 
-public class MainActivity extends LaunchActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
-    @Override
-    protected Class getFirebaseClass() {
-        return null; // FirebaseService.class;
+    override fun getFirebaseClass():Class<*> {
+        return super.getFirebaseClass()
     }
 
-    @Override
-    protected boolean enableDonations() {
-        return false;
+    override fun enableDonations():Boolean {
+        return false
     }
 
-    @Override
-    protected boolean enableGoogleDonations() {
-        return false;
-    }
-
-    @Override
-    protected boolean enablePayPalDonations() {
-        return false;
-    }
-
-    @Override
-    protected boolean enableLicCheck() {
+    override fun enableLicCheck():Boolean {
         // TODO: Make sure you set this to true if you want to check license.
-        return !BuildConfig.DEBUG;
+        return ! BuildConfig.DEBUG
     }
 
-    @Override
-    protected boolean enableAmazonInstalls() {
-        return false;
+    override fun enableAmazonInstalls():Boolean {
+        return false
     }
 
-    @Override
-    protected boolean checkLPF() {
+    override fun checkLPF():Boolean {
         // Check if LuckyPatcher, Uret Patcher, Freedom or CreeHack is installed
-        return true;
+        return true
     }
 
-    @Override
-    protected boolean checkStores() {
+    override fun checkStores():Boolean {
         // Check for third-party stores (like Aptoide, Blackmart, Mobogenie and others)
-        return true;
+        return true
     }
 
-    @Override
-    protected String licKey() {
-        return "insert_key_here";
+    override fun licKey():String {
+        return "insert_license_key_here"
     }
-
 }

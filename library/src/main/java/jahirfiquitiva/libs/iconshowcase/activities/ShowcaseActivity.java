@@ -21,6 +21,7 @@ package jahirfiquitiva.libs.iconshowcase.activities;
 
 import android.app.WallpaperManager;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -43,16 +45,18 @@ import android.widget.Toast;
 import jahirfiquitiva.libs.iconshowcase.R;
 import jahirfiquitiva.libs.iconshowcase.activities.base.ThemedActivity;
 import jahirfiquitiva.libs.iconshowcase.callbacks.CollapsingToolbarCallback;
-import jahirfiquitiva.libs.iconshowcase.models.DrawerItem;
+import jahirfiquitiva.libs.iconshowcase.models.NavigationItem;
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout;
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout;
 import jahirfiquitiva.libs.iconshowcase.ui.views.CounterFab;
 import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.IconUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.MenuUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.NetworkUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences;
+import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor;
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.themes.TintUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ToolbarThemer;
@@ -84,6 +88,7 @@ public class ShowcaseActivity extends ThemedActivity {
     private CollapsingToolbarLayout collapsingToolbar;
     private TabLayout tabs;
     private Toolbar toolbar;
+    private Menu toolbarMenu;
     private BottomNavigationView bottomBar;
     private CounterFab fab;
     private Preferences prefs;
@@ -124,8 +129,8 @@ public class ShowcaseActivity extends ThemedActivity {
         initBottomBar();
         initFAB();
         initCollapsingToolbar();
-        performBottomBarClick((int) (openWallpapers ? DrawerItem.WALLPAPERS.getId()
-                : DrawerItem.HOME.getId()));
+        navigateToItem((int) (openWallpapers ? NavigationItem.WALLPAPERS.getId()
+                : NavigationItem.HOME.getId()));
         // initDrawer(savedInstanceState);
     }
 
@@ -153,15 +158,16 @@ public class ShowcaseActivity extends ThemedActivity {
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.inflateMenu(R.menu.menu_main);
-        ToolbarThemer.tintToolbar(toolbar,
-                ColorUtils.getMaterialActiveIconsColor(ThemeUtils.isDarkTheme()));
+        toolbarMenu = toolbar.getMenu();
+        getMenuInflater().inflate(R.menu.menu_main, toolbarMenu);
+        ToolbarThemer.tintToolbar(toolbar, ColorUtils.getMaterialActiveIconsColor(
+                ColorUtils.isDarkColor(AttributeExtractor.getPrimaryColorFrom(this))));
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 int i = item.getItemId();
-                if (i == R.id.changelog) {
-                    showChangelog();
+                if (i == R.id.switch_theme) {
+                    switchTheme();
                     return true;
                 }
                 return false;
@@ -171,49 +177,24 @@ public class ShowcaseActivity extends ThemedActivity {
 
     private void initFAB() {
         fab = (CounterFab) findViewById(R.id.fab);
-        /*
-        if (bottomBar == null) return;
-        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams)
-                fab.getLayoutParams();
-        params.leftMargin = CoreUtils.convertDpToPx(this, 16);
-        params.rightMargin = CoreUtils.convertDpToPx(this, 16);
-        params.bottomMargin = CoreUtils.convertDpToPx(this, 16) +
-                getResources().getDimensionPixelSize(R.dimen.bottom_navigation_height);
-        params.setMargins(params.leftMargin, params.topMargin, params.rightMargin,
-                params.bottomMargin + bottomBar.getHeight());
-        fab.setLayoutParams(params);
-        */
     }
 
     private void initBottomBar() {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomBar.setBackground(new ColorDrawable(AttributeExtractor.getCardBgColorFrom(this)));
         bottomBar.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         long id = getItemId(item.getItemId(), true);
                         if (id != -1) {
-                            clickDrawerItem(id);
+                            navigateToItem(id);
                             return true;
                         } else {
                             return false;
                         }
                     }
                 });
-    }
-
-    private void performBottomBarClick(int id) {
-        if (bottomBar == null) return;
-        int itemId = getItemId(id, false);
-        if (itemId != -1) {
-            bottomBar.setSelectedItemId(itemId);
-            /*
-            View view = bottomBar.findViewById(itemId);
-            if (view != null) {
-                view.performClick();
-            }
-            */
-        }
     }
 
     private void initCollapsingToolbar() {
@@ -293,20 +274,20 @@ public class ShowcaseActivity extends ThemedActivity {
             @Override
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                 if (drawerItem != null) {
-                    clickDrawerItem(drawerItem.getIdentifier());
+                    navigateToItem(drawerItem.getIdentifier());
                 }
                 return false;
             }
         });
 
-        DrawerItem home = DrawerItem.HOME;
+        NavigationItem home = NavigationItem.HOME;
         drawerBuilder.addDrawerItems(
                 new PrimaryDrawerItem().withIdentifier(home.getId())
                         .withName(home.getText()).withIcon(home.getIcon())
                         .withIconTintingEnabled(true));
         for (String itemId : ResourceUtils.getStringArray(this, R.array.drawer_sections)) {
             try {
-                DrawerItem item = DrawerItem.getItemWithId(itemId);
+                NavigationItem item = NavigationItem.getItemWithId(itemId);
                 if (item.getIcon() != -1) {
                     drawerBuilder.addDrawerItems(
                             new PrimaryDrawerItem().withIdentifier(item.getId())
@@ -324,11 +305,11 @@ public class ShowcaseActivity extends ThemedActivity {
             }
         }
         drawerBuilder.addDrawerItems(new DividerDrawerItem());
-        DrawerItem about = DrawerItem.ABOUT;
+        NavigationItem about = NavigationItem.ABOUT;
         drawerBuilder.addDrawerItems(
                 new SecondaryDrawerItem().withIdentifier(about.getId())
                         .withName(about.getText()));
-        DrawerItem settings = DrawerItem.SETTINGS;
+        NavigationItem settings = NavigationItem.SETTINGS;
         drawerBuilder.addDrawerItems(
                 new SecondaryDrawerItem().withIdentifier(settings.getId())
                         .withName(settings.getText()));
@@ -342,35 +323,44 @@ public class ShowcaseActivity extends ThemedActivity {
         */
     }
 
-    private void clickDrawerItem(long id) {
-        if (currentItemId == id) return;
+    public void initTabs() {
+        tabs = (TabLayout) findViewById(R.id.tabs);
+        if (tabs == null) return;
+        // TODO: setup tabs
+    }
+
+    private void navigateToItem(long id) {
+        if (currentItemId == id || bottomBar == null) return;
         try {
             currentItemId = id;
-            changeFABVisibility(id == DrawerItem.HOME.getId() ||
-                    id == DrawerItem.REQUESTS.getId());
-            changeFABAction(id == DrawerItem.HOME.getId());
-            if (appBarLayout != null) {
-                appBarLayout.setExpanded(id == DrawerItem.HOME.getId(),
+            int itemId = getItemId((int) id, false);
+            if (itemId != -1) {
+                bottomBar.setSelectedItemId(itemId);
+            }
+            updateToolbarMenuItems(NavigationItem.getItemWithId(id));
+            changeFABVisibility(id == NavigationItem.HOME.getId() ||
+                    id == NavigationItem.REQUESTS.getId());
+            changeFABAction(id == NavigationItem.HOME.getId());
+            if (appBarLayout != null)
+                appBarLayout.setExpanded(id == NavigationItem.HOME.getId(),
                         prefs != null && prefs.getAnimationsEnabled());
-            }
-            if (collapsingToolbar != null) {
+            if (collapsingToolbar != null)
                 collapsingToolbar.setTitle(
-                        ResourceUtils.getString(this, id == DrawerItem.HOME.getId()
+                        ResourceUtils.getString(this, id == NavigationItem.HOME.getId()
                                 ? R.string.app_name
-                                : DrawerItem.getItemWithId(id).getText()));
-            }
-            if (coordinatorLayout != null) {
-                coordinatorLayout.setScrollAllowed(id == DrawerItem.HOME.getId());
-            }
-            loadFragment(DrawerItem.getItemWithId(id));
-            Toast.makeText(this, DrawerItem.getItemWithId(id).toString(), Toast.LENGTH_SHORT)
-                    .show();
+                                : NavigationItem.getItemWithId(id).getText()));
+            if (coordinatorLayout != null)
+                coordinatorLayout.setScrollAllowed(id == NavigationItem.HOME.getId());
+            if (tabs != null)
+                tabs.setVisibility(id == NavigationItem.PREVIEWS.getId()
+                        ? View.VISIBLE : View.GONE);
+            loadFragment(NavigationItem.getItemWithId(id));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void loadFragment(DrawerItem item) {
+    private void loadFragment(NavigationItem item) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragments_container, item.getFragment(),
                 item.getStringId());
@@ -381,8 +371,11 @@ public class ShowcaseActivity extends ThemedActivity {
         fragmentTransaction.commit();
     }
 
-    private void showChangelog() {
-        Toast.makeText(this, "Changelog", Toast.LENGTH_SHORT).show();
+    private void switchTheme() {
+        if (prefs == null) return;
+        int cTheme = prefs.getTheme();
+        prefs.setTheme(cTheme == 3 ? 1 : cTheme + 1);
+        ThemeUtils.restartActivity(this);
     }
 
     public void changeFABVisibility(boolean visible) {
@@ -419,6 +412,20 @@ public class ShowcaseActivity extends ThemedActivity {
                 }
             });
         }
+    }
+
+    private void updateToolbarMenuItems(NavigationItem item) {
+        if (toolbar == null || toolbarMenu == null) return;
+        MenuUtils.changeOptionVisibility(toolbarMenu, R.id.search, item == NavigationItem.PREVIEWS);
+        MenuUtils.changeOptionVisibility(toolbarMenu, R.id.select_all,
+                item == NavigationItem.REQUESTS);
+        MenuUtils.changeOptionVisibility(toolbarMenu, R.id.columns,
+                item == NavigationItem.WALLPAPERS);
+        MenuUtils.changeOptionVisibility(toolbarMenu, R.id.refresh,
+                item == NavigationItem.WALLPAPERS);
+        ToolbarThemer.tintToolbarMenu(toolbar, toolbarMenu,
+                ColorUtils.getMaterialActiveIconsColor(
+                        ColorUtils.isDarkColor(AttributeExtractor.getPrimaryColorFrom(this))));
     }
 
     private int getItemId(int id, boolean fromListener) {

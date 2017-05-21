@@ -48,7 +48,7 @@
         <item name="activeDrawablesTintColor">@color/drawable_tint_light</item>
         <item name="inactiveDrawablesTintColor">@color/inactive_drawable_tint_light</item>
         <item name="fabTintColor">@color/fab_background_tint_light_theme</item>
-        <item name="toolbarTextColor">@color/toolbar_text_light</item>
+        <item name="toolbarTheme">@style/Toolbar.AppCompat.Responsive.Light</item>
         <item name="tabsIndicatorColor">@color/tabs_indicator_light</item>
         <item name="tabsNormalTextColor">@color/tabs_normal_text_light</item>
         <item name="tabsSelectedTextColor">@color/tabs_selected_text_light</item>
@@ -61,7 +61,7 @@
         <item name="actionOverflowButtonStyle">@style/Responsive.ActionButton.Overflow</item>
 
         <item name="actionBarTheme">@style/Toolbar.AppCompat.Responsive.Light</item>
-        <item name="actionBarPopupTheme">@style/Toolbar.Popup.AppCompat</item>
+        <item name="actionBarPopupTheme">@style/Toolbar.Popup.AppCompat.Light</item>
     </style>
 
     <style name="AppTheme.Base.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -87,7 +87,7 @@
         <item name="activeDrawablesTintColor">@color/drawable_tint_dark</item>
         <item name="inactiveDrawablesTintColor">@color/inactive_drawable_tint_dark</item>
         <item name="fabTintColor">@color/fab_background_tint_dark_theme</item>
-        <item name="toolbarTextColor">@color/toolbar_text_dark</item>
+        <item name="toolbarTheme">@style/Toolbar.AppCompat.Responsive.Dark</item>
         <item name="tabsIndicatorColor">@color/tabs_indicator_dark</item>
         <item name="tabsNormalTextColor">@color/tabs_normal_text_dark</item>
         <item name="tabsSelectedTextColor">@color/tabs_selected_text_dark</item>
@@ -100,7 +100,7 @@
         <item name="actionOverflowButtonStyle">@style/Responsive.ActionButton.Overflow</item>
 
         <item name="actionBarTheme">@style/Toolbar.AppCompat.Responsive.Dark</item>
-        <item name="actionBarPopupTheme">@style/Toolbar.Popup.AppCompat</item>
+        <item name="actionBarPopupTheme">@style/Toolbar.Popup.AppCompat.Dark</item>
     </style>
 
     <color name="amoled_bg">#0f0f0f</color>

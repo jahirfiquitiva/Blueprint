@@ -21,7 +21,9 @@
 
 <resources>
 
-    <style name="Toolbar.Popup.AppCompat" parent="Theme.AppCompat.Light"/>
+    <style name="Toolbar.Popup.AppCompat.Light" parent="Theme.AppCompat.Light"/>
+
+    <style name="Toolbar.Popup.AppCompat.Dark" parent="Theme.AppCompat"/>
 
     <style name="Toolbar.AppCompat.Responsive.Light" parent="AppTheme.Base">
         <item name="android:textColorPrimary">@color/toolbar_text_light</item>

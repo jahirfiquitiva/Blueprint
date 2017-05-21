@@ -40,7 +40,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import jahirfiquitiva.libs.iconshowcase.R;
@@ -48,7 +47,6 @@ import jahirfiquitiva.libs.iconshowcase.callbacks.CollapsingToolbarCallback;
 import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils;
-import jahirfiquitiva.libs.iconshowcase.utils.core.AttributeExtractor;
 
 public class ToolbarThemer {
 
@@ -60,7 +58,9 @@ public class ToolbarThemer {
         if (ratio > 1) ratio = 1;
         else if (ratio < 0) ratio = 0;
         int rightIconsColor = ColorUtils.blendColors(defaultIconsColor,
-                ColorUtils.getMaterialActiveIconsColor(ThemeUtils.isDarkTheme()), (float) ratio);
+                ColorUtils.getMaterialActiveIconsColor(
+                        ColorUtils.isDarkColor(
+                                AttributeExtractor.getPrimaryColorFrom(activity))), (float) ratio);
         tintToolbar(toolbar, rightIconsColor);
         updateStatusBarStyle(activity, ratio > 0.7
                 ? CollapsingToolbarCallback.State.COLLAPSED
@@ -128,8 +128,8 @@ public class ToolbarThemer {
         // setOverflowButtonColor(toolbar, toolbarIconsColor);
     }
 
-    private static void tintToolbarMenu(@NonNull Toolbar toolbar, @NonNull Menu menu,
-                                        @ColorInt int iconsColor) {
+    public static void tintToolbarMenu(@NonNull Toolbar toolbar, @NonNull Menu menu,
+                                       @ColorInt int iconsColor) {
         // The collapse icon displays when action views are expanded (e.g. SearchView)
         try {
             final Field field = Toolbar.class.getDeclaredField("mCollapseIcon");
@@ -150,6 +150,7 @@ public class ToolbarThemer {
         }
 
         // Display icons for easy UI understanding
+        /*
         try {
             Class<?> MenuBuilder = menu.getClass();
             Method setOptionalIconsVisible = MenuBuilder.getDeclaredMethod
@@ -159,6 +160,7 @@ public class ToolbarThemer {
             setOptionalIconsVisible.invoke(menu, true);
         } catch (Exception ignored) {
         }
+        */
     }
 
     private static void setOverflowButtonColor(@NonNull final Toolbar toolbar,

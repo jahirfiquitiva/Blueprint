@@ -31,6 +31,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:' + versions.gradlePlugin
+		classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:' + versions.kotlin
         classpath 'com.github.dcendents:android-maven-gradle-plugin:' + versions.libPubPlugin
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -43,6 +44,7 @@ allprojects {
         jcenter()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        maven { url 'https://maven.google.com' }
     }
 }
 

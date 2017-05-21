@@ -96,10 +96,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:transitionName="actionBar"
-                    android:theme="@style/Toolbar.AppCompat.Responsive.Light"
+                    android:theme="?attr/toolbarTheme"
+                    app:popupTheme="?attr/actionBarPopupTheme"
                     app:contentInsetStart="@dimen/second_keyline"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="@style/Toolbar.Popup.AppCompat"
                     tools:ignore="UnusedAttribute"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>

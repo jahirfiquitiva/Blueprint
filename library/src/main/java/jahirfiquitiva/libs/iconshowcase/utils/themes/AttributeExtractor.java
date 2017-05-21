@@ -17,7 +17,7 @@
  * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.utils.core;
+package jahirfiquitiva.libs.iconshowcase.utils.themes;
 
 import android.content.Context;
 import android.content.res.TypedArray;

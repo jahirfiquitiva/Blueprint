@@ -23,11 +23,65 @@
       tools:context="jahirfiquitiva.iconshowcase.activities.ShowcaseActivity">
 
     <item
-            android:id="@+id/changelog"
-            android:icon="@drawable/ic_changes"
+            android:id="@+id/search"
+            android:icon="@drawable/ic_search"
+            android:title="@string/search_icons"
             android:orderInCategory="100"
-            android:title="@string/changelog_dialog_title"
+            app:actionViewClass="android.support.v7.widget.SearchView"
+            app:showAsAction="always|collapseActionView"
+            tools:ignore="AppCompatResource"/>
+
+    <item
+            android:id="@+id/select_all"
+            android:icon="@drawable/ic_select_all"
+            android:title="@string/select_all"
+            android:orderInCategory="200"
             app:showAsAction="always"
             tools:ignore="AppCompatResource"/>
+
+    <item
+            android:id="@+id/columns"
+            android:icon="@drawable/ic_columns"
+            android:title="@string/columns"
+            android:orderInCategory="300"
+            app:showAsAction="always"
+            tools:ignore="AppCompatResource"/>
+
+    <item
+            android:id="@+id/refresh"
+            android:icon="@drawable/ic_refresh"
+            android:title="@string/refresh"
+            android:orderInCategory="400"
+            app:showAsAction="always"
+            tools:ignore="AppCompatResource"/>
+
+    <item
+            android:id="@+id/help"
+            android:title="@string/section_help"
+            android:orderInCategory="500"
+            app:showAsAction="never"
+            tools:ignore="AppCompatResource"/>
+
+    <item
+            android:id="@+id/about"
+            android:title="@string/section_about"
+            android:orderInCategory="600"
+            app:showAsAction="never"
+            tools:ignore="AppCompatResource"/>
+
+    <item
+            android:id="@+id/settings"
+            android:title="@string/title_settings"
+            android:orderInCategory="700"
+            app:showAsAction="never"
+            tools:ignore="AppCompatResource"/>
+
+    <!-- TODO: DELETE THIS ITEM -->
+    <item
+            android:id="@+id/switch_theme"
+            android:title="Switch Theme"
+            android:orderInCategory="800"
+            app:showAsAction="never"
+            tools:ignore="AppCompatResource,HardcodedText"/>
 
 </menu>

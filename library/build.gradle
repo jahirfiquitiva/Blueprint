@@ -19,16 +19,18 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'kotlin-android'
 apply from: '../dependencies.gradle'
 
 android {
-    compileSdkVersion versions.targetSdk
+    compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
 
     lintOptions {
         abortOnError false
         checkReleaseBuilds false
         disable 'MissingTranslation'
+        disable 'GoogleAppIndexingWarning'
     }
 
     dexOptions {
@@ -61,7 +63,8 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = [
+            java.srcDirs += 'src/main/kotlin'
+            res.srcDirs += [
                     'src/main/res',
                     'src/main/res/drawable',
                     'src/main/res/drawable/app',
@@ -98,6 +101,9 @@ dependencies {
     compile 'com.android.support:design:' + versions.supportLibs
     compile 'com.android.support:customtabs:' + versions.supportLibs
 
+    // Kotlin
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre7:' + versions.kotlin
+
     // Themes Manager
     // compile 'com.afollestad:aesthetic:' + versions.aesthetic
 
@@ -105,10 +111,9 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:' + versions.materialDialogs
 
     // Navigation
-    // compile 'com.aurelhubert:ahbottomnavigation:' + versions.ahBottomBar
-    // compile('com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar') {
-        // transitive = true
-    // }
+    compile('com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar') {
+        transitive = true
+    }
 
     // OkHttp
     compile 'com.squareup.okhttp3:okhttp:' + versions.okhttp
@@ -138,7 +143,7 @@ dependencies {
 
 tasks.whenTaskAdded { task ->
     if (task.name.contains("lint") || task.name.contains("test")) {
-        task.enabled = false;
+        task.enabled = false
     }
 }
 

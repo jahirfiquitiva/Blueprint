@@ -42,15 +42,13 @@
         <attr name="fabTintColor" format="color"/>
         <!-- Custom toolbar theme. -->
         <attr name="toolbarTheme" format="reference"/>
-        <!-- Toolbar Text Color. -->
-        <attr name="toolbarTextColor" format="color"/>
+        <attr name="popUpTheme" format="reference"/>
         <!-- Tabs Indicator Color. -->
         <attr name="tabsIndicatorColor" format="color"/>
         <!-- Tabs Normal Text Color. -->
         <attr name="tabsNormalTextColor" format="color"/>
         <!-- Tabs Selected Text Color. -->
         <attr name="tabsSelectedTextColor" format="color"/>
-
     </declare-styleable>
 
 </resources>

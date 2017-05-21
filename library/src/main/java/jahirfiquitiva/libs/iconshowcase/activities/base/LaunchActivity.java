@@ -69,8 +69,6 @@ public class LaunchActivity extends ShowcaseActivity {
         */
 
         configuration.putBoolean("enableDonations", enableDonations());
-        configuration.putBoolean("enableGoogleDonations", enableGoogleDonations());
-        configuration.putBoolean("enablePayPalDonations", enablePayPalDonations());
         configuration.putBoolean("enableLicenseCheck", enableLicCheck());
         configuration.putBoolean("enableAmazonInstalls", enableAmazonInstalls());
         configuration.putBoolean("checkLPF", checkLPF());
@@ -114,14 +112,6 @@ public class LaunchActivity extends ShowcaseActivity {
     }
 
     protected boolean enableDonations() {
-        return false;
-    }
-
-    protected boolean enableGoogleDonations() {
-        return false;
-    }
-
-    protected boolean enablePayPalDonations() {
         return false;
     }
 
