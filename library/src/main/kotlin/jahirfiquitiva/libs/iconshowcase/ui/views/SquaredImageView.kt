@@ -17,11 +17,20 @@
  * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.models
+package jahirfiquitiva.libs.iconshowcase.ui.views
 
-import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.content.Context
+import android.util.AttributeSet
+import android.widget.ImageView
 
-data class HomeCard(val title:String, val description:String, val url:String,
-                    val icon:Drawable, val isAnApp:Boolean, val isInstalled:Boolean,
-                    val intent:Intent?)
+class SquaredImageView : ImageView {
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
+    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int)
+            : super(context, attributeSet, defStyleAttr)
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        setMeasuredDimension(widthMeasureSpec, widthMeasureSpec)
+    }
+}

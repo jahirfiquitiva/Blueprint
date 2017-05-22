@@ -24,38 +24,24 @@ import jahirfiquitiva.libs.iconshowcase.activities.base.LaunchActivity
 
 class MainActivity:LaunchActivity() {
 
-    override fun onCreate(savedInstanceState:Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    override fun enableDonations():Boolean = false
 
-    override fun getFirebaseClass():Class<*> {
-        return super.getFirebaseClass()
-    }
+    // TODO: Make sure you set this to true if you want to check license.
+    override fun enableLicCheck():Boolean = ! BuildConfig.DEBUG
 
-    override fun enableDonations():Boolean {
-        return false
-    }
+    override fun enableAmazonInstalls():Boolean = false
 
-    override fun enableLicCheck():Boolean {
-        // TODO: Make sure you set this to true if you want to check license.
-        return ! BuildConfig.DEBUG
-    }
+    // Check if LuckyPatcher, Uret Patcher, Freedom or CreeHack is installed
+    override fun checkLPF():Boolean = true
 
-    override fun enableAmazonInstalls():Boolean {
-        return false
-    }
+    // Check for third-party stores (like Aptoide, Blackmart, Mobogenie and others)
+    override fun checkStores():Boolean = true
 
-    override fun checkLPF():Boolean {
-        // Check if LuckyPatcher, Uret Patcher, Freedom or CreeHack is installed
-        return true
-    }
+    override fun licKey():String = "insert_license_key_here"
 
-    override fun checkStores():Boolean {
-        // Check for third-party stores (like Aptoide, Blackmart, Mobogenie and others)
-        return true
-    }
+    // Things that must stay in this file but you don't really need to edit:
 
-    override fun licKey():String {
-        return "insert_license_key_here"
-    }
+    override fun onCreate(savedInstanceState:Bundle?) = super.onCreate(savedInstanceState)
+
+    override fun getFirebaseClass():Class<*> = super.getFirebaseClass()
 }

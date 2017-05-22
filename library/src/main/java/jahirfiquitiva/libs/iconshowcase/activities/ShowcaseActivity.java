@@ -29,6 +29,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -129,8 +130,8 @@ public class ShowcaseActivity extends ThemedActivity {
         initBottomBar();
         initFAB();
         initCollapsingToolbar();
-        navigateToItem((int) (openWallpapers ? NavigationItem.WALLPAPERS.getId()
-                : NavigationItem.HOME.getId()));
+        navigateToItem(openWallpapers ? NavigationItem.WALLPAPERS.getId()
+                : NavigationItem.HOME.getId());
         // initDrawer(savedInstanceState);
     }
 
@@ -177,6 +178,12 @@ public class ShowcaseActivity extends ThemedActivity {
 
     private void initFAB() {
         fab = (CounterFab) findViewById(R.id.fab);
+        CoordinatorLayout.LayoutParams params =
+                (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+        int defMargin = CoreUtils.convertDpToPx(this, 16);
+        int bottomBarHeight = 0;// getResources().getDimensionPixelSize(R.dimen
+        // .materialize_toolbar);
+        params.setMargins(0, 0, defMargin, defMargin + bottomBarHeight);
     }
 
     private void initBottomBar() {
@@ -188,7 +195,7 @@ public class ShowcaseActivity extends ThemedActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         long id = getItemId(item.getItemId(), true);
                         if (id != -1) {
-                            navigateToItem(id);
+                            navigateToItem((int) id);
                             return true;
                         } else {
                             return false;
@@ -329,11 +336,11 @@ public class ShowcaseActivity extends ThemedActivity {
         // TODO: setup tabs
     }
 
-    private void navigateToItem(long id) {
+    private void navigateToItem(int id) {
         if (currentItemId == id || bottomBar == null) return;
         try {
             currentItemId = id;
-            int itemId = getItemId((int) id, false);
+            int itemId = getItemId(id, false);
             if (itemId != -1) {
                 bottomBar.setSelectedItemId(itemId);
             }
@@ -344,13 +351,16 @@ public class ShowcaseActivity extends ThemedActivity {
             if (appBarLayout != null)
                 appBarLayout.setExpanded(id == NavigationItem.HOME.getId(),
                         prefs != null && prefs.getAnimationsEnabled());
-            if (collapsingToolbar != null)
-                collapsingToolbar.setTitle(
-                        ResourceUtils.getString(this, id == NavigationItem.HOME.getId()
-                                ? R.string.app_name
-                                : NavigationItem.getItemWithId(id).getText()));
+            if (collapsingToolbar != null) {
+                NavigationItem item = NavigationItem.getItemWithId(id);
+                if (item != null) {
+                    collapsingToolbar.setTitle(
+                            ResourceUtils.getString(this, id == NavigationItem.HOME.getId()
+                                    ? R.string.app_name : item.getText()));
+                }
+            }
             if (coordinatorLayout != null)
-                coordinatorLayout.setScrollAllowed(id == NavigationItem.HOME.getId());
+                coordinatorLayout.setAllowScroll(id == NavigationItem.HOME.getId());
             if (tabs != null)
                 tabs.setVisibility(id == NavigationItem.PREVIEWS.getId()
                         ? View.VISIBLE : View.GONE);

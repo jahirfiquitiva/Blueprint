@@ -21,12 +21,10 @@ package jahirfiquitiva.libs.iconshowcase.utils;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.util.TypedValue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
-import static android.util.TypedValue.COMPLEX_UNIT_DIP;
-import static android.util.TypedValue.applyDimension;
 
 public class CoreUtils {
 
@@ -58,8 +56,8 @@ public class CoreUtils {
     }
 
     public static int convertDpToPx(Context context, float dp) {
-        return (int) applyDimension(COMPLEX_UNIT_DIP, dp, context.getResources()
-                .getDisplayMetrics());
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                context.getResources().getDisplayMetrics());
     }
 
     public static double round(double value, int places) {

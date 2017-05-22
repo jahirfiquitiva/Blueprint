@@ -36,12 +36,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Property;
-import android.view.View;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 
 /**
  * A {@link FloatingActionButton} subclass that shows a counter badge on right top corner.
+ *
  * @author André Mion (andremion)
  */
 public class CounterFab extends FloatingActionButton {
@@ -272,7 +272,8 @@ public class CounterFab extends FloatingActionButton {
 
         @Override
         public String toString() {
-            return CounterFab.class.getSimpleName() + "." + SavedState.class.getSimpleName() + "{"
+            return CounterFab.class.getSimpleName() + "." + SavedState.class
+                    .getSimpleName() + "{"
                     + Integer.toHexString(System.identityHashCode(this)) + " count=" + count + "}";
         }
     }

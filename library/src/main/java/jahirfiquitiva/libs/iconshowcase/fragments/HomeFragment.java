@@ -19,6 +19,7 @@
 
 package jahirfiquitiva.libs.iconshowcase.fragments;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -38,6 +39,9 @@ import jahirfiquitiva.libs.iconshowcase.adapters.HomeCardsAdapter;
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard;
 import jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView;
 import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.IconUtils;
+import jahirfiquitiva.libs.iconshowcase.utils.NetworkUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils;
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils;
 
@@ -58,6 +62,7 @@ public class HomeFragment extends Fragment {
         rv.setLoadingView(view.findViewById(R.id.loading_view));
         rv.setTextView((TextView) view.findViewById(R.id.empty_text));
         rv.setState(EmptyViewRecyclerView.STATE_LOADING);
+        rv.updateStateViews();
         ArrayList<HomeCard> cards = new ArrayList<>();
         String[] titles = ResourceUtils.getStringArray(getContext(), R.array.home_list_titles);
         String[] descriptions = ResourceUtils.getStringArray(getContext(),
@@ -67,8 +72,19 @@ public class HomeFragment extends Fragment {
         if (titles.length == descriptions.length && descriptions.length == icons.length
                 && icons.length == urls.length) {
             for (int i = 0; i < titles.length; i++) {
-                cards.add(new HomeCard(getContext(), titles[i], descriptions[i], urls[i],
-                        icons[i]));
+                String url = urls[i];
+                boolean isAnApp = url.toLowerCase().startsWith(NetworkUtils.PLAY_STORE_LINK_PREFIX);
+                boolean isInstalled = false;
+                Intent intent = null;
+                if (isAnApp) {
+                    String packageName = url.substring(url.lastIndexOf("="));
+                    isInstalled = CoreUtils.isAppInstalled(getContext(), packageName);
+                    intent = getContext().getPackageManager().getLaunchIntentForPackage
+                            (packageName);
+                }
+                cards.add(new HomeCard(titles[i], descriptions[i], urls[i],
+                        IconUtils.getDrawableWithName(getContext(), icons[i]), isAnApp,
+                        isInstalled, intent));
             }
         }
         rv.setLayoutManager(new LinearLayoutManager(
@@ -78,7 +94,8 @@ public class HomeFragment extends Fragment {
         decoration.setDrawable(new ColorDrawable(
                 ColorUtils.getMaterialDividerColor(ThemeUtils.isDarkTheme())));
         rv.addItemDecoration(decoration);
-        rv.setAdapter(new HomeCardsAdapter(getContext(), cards));
+        rv.setAdapter(new HomeCardsAdapter(cards));
         rv.setState(EmptyViewRecyclerView.STATE_NORMAL);
+        rv.updateStateViews();
     }
 }

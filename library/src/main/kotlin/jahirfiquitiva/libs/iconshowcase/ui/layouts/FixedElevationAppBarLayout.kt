@@ -17,11 +17,22 @@
  * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.models
+package jahirfiquitiva.libs.iconshowcase.ui.layouts
 
-import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.content.Context
+import android.support.design.widget.AppBarLayout
+import android.util.AttributeSet
+import jahirfiquitiva.libs.iconshowcase.R
+import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils
+import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 
-data class HomeCard(val title:String, val description:String, val url:String,
-                    val icon:Drawable, val isAnApp:Boolean, val isInstalled:Boolean,
-                    val intent:Intent?)
+class FixedElevationAppBarLayout : AppBarLayout {
+
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
+
+    val fElevation: Int = CoreUtils.convertDpToPx(context,
+            ResourceUtils.getInteger(context, R.integer.toolbar_elevation).toFloat())
+
+    override fun setElevation(elevation: Float) = super.setElevation(fElevation.toFloat())
+}

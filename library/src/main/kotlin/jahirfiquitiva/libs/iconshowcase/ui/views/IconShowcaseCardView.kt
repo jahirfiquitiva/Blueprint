@@ -17,11 +17,20 @@
  * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.models
+package jahirfiquitiva.libs.iconshowcase.ui.views
 
-import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.content.Context
+import android.support.v7.widget.CardView
+import android.util.AttributeSet
+import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor
 
-data class HomeCard(val title:String, val description:String, val url:String,
-                    val icon:Drawable, val isAnApp:Boolean, val isInstalled:Boolean,
-                    val intent:Intent?)
+class IconShowcaseCardView : CardView {
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
+    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int)
+            : super(context, attributeSet, defStyleAttr)
+
+    override fun setBackgroundColor(color: Int) {
+        super.setBackgroundColor(AttributeExtractor.getCardBgColorFrom(context))
+    }
+}
