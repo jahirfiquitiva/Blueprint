@@ -88,3 +88,9 @@ proguard/
 /build
 /captures
 /projectFilesBackup
+/reports
+/report
+reports
+report
+.report
+.reports
