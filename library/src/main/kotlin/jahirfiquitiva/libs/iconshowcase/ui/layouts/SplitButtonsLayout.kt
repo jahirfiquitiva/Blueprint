@@ -27,29 +27,29 @@ import android.widget.Button
 import android.widget.LinearLayout
 import jahirfiquitiva.libs.iconshowcase.R
 
-class SplitButtonsLayout : LinearLayout {
+class SplitButtonsLayout:LinearLayout {
 
-    var buttonCount: Int = 0
+    var buttonCount:Int = 0
 
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
-    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int)
-            : super(context, attributeSet, defStyleAttr)
+    constructor(context:Context):super(context)
+    constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet)
+    constructor(context:Context, attributeSet:AttributeSet, defStyleAttr:Int)
+            :super(context, attributeSet, defStyleAttr)
 
-    override fun setOrientation(orientation: Int) = super.setOrientation(HORIZONTAL)
+    override fun setOrientation(orientation:Int) = super.setOrientation(HORIZONTAL)
 
-    override fun setWeightSum(weightSum: Float) = super.setWeightSum(buttonCount.toFloat())
+    override fun setWeightSum(weightSum:Float) = super.setWeightSum(buttonCount.toFloat())
 
-    fun addButton(text: String, link: String) {
+    fun addButton(text:String, link:String) {
         if (hasAllButtons()) return
-        val nButton: Button =
+        val nButton:Button =
                 LayoutInflater.from(context).inflate(R.layout.item_credits_button, this,
                         false) as Button
-        val lParams: LayoutParams = LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1F)
+        val lParams:LayoutParams = LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1F)
         nButton.text = text
         nButton.tag = link
         addView(nButton, lParams)
     }
 
-    fun hasAllButtons(): Boolean = childCount == buttonCount
+    fun hasAllButtons():Boolean = childCount == buttonCount
 }

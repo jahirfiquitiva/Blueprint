@@ -188,12 +188,12 @@ public class Preferences {
         getPrefs().edit().putBoolean(MUZEI_REFRESH_ON_WIFI_ONLY, onWifiOnly).apply();
     }
 
-    public void setTheme(int theme) {
-        getPrefs().edit().putInt(THEME, theme).apply();
-    }
-
     public int getTheme() {
         return getPrefs().getInt(THEME, ResourceUtils.getInteger(context, R.integer.app_theme) - 1);
+    }
+
+    public void setTheme(int theme) {
+        getPrefs().edit().putInt(THEME, theme).apply();
     }
 
     public void setColoredNavbar(boolean colored) {

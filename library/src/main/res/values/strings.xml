@@ -49,8 +49,8 @@
     com.packagename.appname.Activity
     then write Activity
     -->
-    <string name="main_activity_name">HomeActivity</string>
-    <string name="main_activity_fullname">com.packagename.appname.HomeActivity</string>
+    <string name="main_activity_name">MainActivity</string>
+    <string name="main_activity_fullname">com.packagename.appname.MainActivity</string>
 
 
     <!-- SOME INFO ABOUT YOU, TO BE USED IN THE APP AND SOME LAUNCHERS -->

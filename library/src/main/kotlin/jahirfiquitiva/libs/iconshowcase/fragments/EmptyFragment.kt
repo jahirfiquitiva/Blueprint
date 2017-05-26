@@ -28,20 +28,20 @@ import android.widget.TextView
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView
 
-class EmptyFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+class EmptyFragment:Fragment() {
+    override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
+                              savedInstanceState:Bundle?):View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val content: View = inflater?.inflate(R.layout.section_empty, container, false) as View
+        val content:View = inflater?.inflate(R.layout.section_empty, container, false) as View
         initRV(content)
         return content
     }
 
-    private fun initRV(content: View) {
-        val emptyRecyclerView: EmptyViewRecyclerView =
+    private fun initRV(content:View) {
+        val emptyRecyclerView:EmptyViewRecyclerView =
                 content.findViewById(R.id.empty_rv) as EmptyViewRecyclerView
         emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)
         emptyRecyclerView.textView = content.findViewById(R.id.empty_text) as TextView?
-        emptyRecyclerView.emptyTextRes = R.string.empty_section
         emptyRecyclerView.state = EmptyViewRecyclerView.STATE_EMPTY
         emptyRecyclerView.updateStateViews()
     }

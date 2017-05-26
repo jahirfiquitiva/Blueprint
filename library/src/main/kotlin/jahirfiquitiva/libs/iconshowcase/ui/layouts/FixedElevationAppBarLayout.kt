@@ -26,13 +26,13 @@ import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 
-class FixedElevationAppBarLayout : AppBarLayout {
+class FixedElevationAppBarLayout:AppBarLayout {
 
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
+    constructor(context:Context):super(context)
+    constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet)
 
-    val fElevation: Int = CoreUtils.convertDpToPx(context,
+    val fElevation:Int = CoreUtils.convertDpToPx(context,
             ResourceUtils.getInteger(context, R.integer.toolbar_elevation).toFloat())
 
-    override fun setElevation(elevation: Float) = super.setElevation(fElevation.toFloat())
+    override fun setElevation(elevation:Float) = super.setElevation(fElevation.toFloat())
 }

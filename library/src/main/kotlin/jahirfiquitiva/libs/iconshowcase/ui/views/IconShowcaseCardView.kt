@@ -24,13 +24,13 @@ import android.support.v7.widget.CardView
 import android.util.AttributeSet
 import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor
 
-class IconShowcaseCardView : CardView {
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
-    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int)
-            : super(context, attributeSet, defStyleAttr)
+class IconShowcaseCardView:CardView {
+    constructor(context:Context):super(context)
+    constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet)
+    constructor(context:Context, attributeSet:AttributeSet, defStyleAttr:Int)
+            :super(context, attributeSet, defStyleAttr)
 
-    override fun setBackgroundColor(color: Int) {
+    override fun setBackgroundColor(color:Int) {
         super.setBackgroundColor(AttributeExtractor.getCardBgColorFrom(context))
     }
 }

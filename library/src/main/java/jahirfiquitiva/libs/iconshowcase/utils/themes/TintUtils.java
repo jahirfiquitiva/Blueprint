@@ -173,7 +173,8 @@ public class TintUtils {
                 },
                 new int[]{
                         // Radio button includes own alpha for disabled state
-                        ColorUtils.stripAlpha(ColorUtils.getMaterialDisabledHintTextColor(useDarker)),
+                        ColorUtils.stripAlpha(ColorUtils.getMaterialDisabledHintTextColor
+                                (useDarker)),
                         ColorUtils.getMaterialSecondaryTextColor(useDarker),
                         color
                 });

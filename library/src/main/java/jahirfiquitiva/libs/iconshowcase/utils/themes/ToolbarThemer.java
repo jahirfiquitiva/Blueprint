@@ -51,8 +51,9 @@ import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils;
 public class ToolbarThemer {
 
     public static void updateToolbarColors(@NonNull AppCompatActivity activity,
-                                           @NonNull Toolbar toolbar,
+                                           Toolbar toolbar,
                                            int offset) {
+        if (toolbar == null) return;
         final int defaultIconsColor = ResourceUtils.getColor(activity, android.R.color.white);
         double ratio = CoreUtils.round(offset / 255.0, 1);
         if (ratio > 1) ratio = 1;
@@ -128,8 +129,9 @@ public class ToolbarThemer {
         // setOverflowButtonColor(toolbar, toolbarIconsColor);
     }
 
-    public static void tintToolbarMenu(@NonNull Toolbar toolbar, @NonNull Menu menu,
+    public static void tintToolbarMenu(Toolbar toolbar, Menu menu,
                                        @ColorInt int iconsColor) {
+        if (toolbar == null || menu == null) return;
         // The collapse icon displays when action views are expanded (e.g. SearchView)
         try {
             final Field field = Toolbar.class.getDeclaredField("mCollapseIcon");

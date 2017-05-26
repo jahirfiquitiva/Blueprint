@@ -17,31 +17,22 @@
  * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.activities.base;
+package jahirfiquitiva.libs.iconshowcase.utils
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import jahirfiquitiva.libs.iconshowcase.R
 
-// import com.afollestad.aesthetic.Aesthetic;
+fun ViewGroup.inflate(layoutId:Int, attachToRoot:Boolean = false):View =
+        LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
 
-public class AestheticThemedBaseActivity { /* extends AppCompatActivity {
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Aesthetic.attach(this);
-        super.onCreate(savedInstanceState);
+fun ImageView.loadFromUrl(url:String) {
+    if (url.isEmpty()) {
+        Glide.with(context).load(R.drawable.ic_wallpapers).into(this)
+    } else {
+        Glide.with(context).load(url).into(this)
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Aesthetic.resume(this);
-    }
-
-    @Override
-    protected void onPause() {
-        Aesthetic.pause(this);
-        super.onPause();
-    }
-    */
 }

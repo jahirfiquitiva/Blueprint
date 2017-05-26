@@ -19,48 +19,12 @@
 
 package jahirfiquitiva.libs.iconshowcase.models
 
-import android.support.v4.app.Fragment
-import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.fragments.EmptyFragment
-import jahirfiquitiva.libs.iconshowcase.fragments.HomeFragment
-
-enum class NavigationItem(val stringId:String, val id:Int, val text:Int, val icon:Int) {
-    HOME("Home", 0, R.string.section_home, R.drawable.ic_home),
-    PREVIEWS("Previews", 1, R.string.section_icons, R.drawable.ic_previews),
-    WALLPAPERS("Wallpapers", 2, R.string.section_wallpapers, R.drawable.ic_wallpapers),
-    APPLY("Apply", 3, R.string.section_apply, R.drawable.ic_apply),
-    REQUESTS("Requests", 4, R.string.section_icon_request, R.drawable.ic_request),
-    ZOOPER("Zooper", 5, R.string.section_zooper, R.drawable.ic_zooper_kustom),
-    KUSTOM("Kustom", 6, R.string.section_kustom, R.drawable.ic_zooper_kustom),
-    FAQS("FAQs", 7, R.string.section_help, - 1),
-    ABOUT("About", 8, R.string.section_about, - 1),
-    SETTINGS("Settings", 9, R.string.title_settings, - 1);
-
-    fun getFragment():Fragment {
-        when (id) {
-            0 -> return HomeFragment()
-            else -> return EmptyFragment()
-        }
-    }
-
-    override fun toString():String {
-        return "NavigationItem: [StringId: $stringId, Id: $id]"
-    }
-
+data class NavigationItem(val tag:String, val id:Int, val title:Int, val icon:Int) {
     companion object {
-        @JvmStatic fun getItemWithId(id:Int):NavigationItem? {
-            values().forEach {
-                if (it.id == id) return it
-            }
-            return null
-        }
-
-        @JvmStatic fun getItemWithId(id:String):NavigationItem? {
-            values().forEach {
-                if (it.stringId == id) return it
-            }
-            return null
-        }
+        const val DEFAULT_HOME_POSITION = 0
+        const val DEFAULT_PREVIEWS_POSITION = 1
+        const val DEFAULT_WALLPAPERS_POSITION = 2
+        const val DEFAULT_APPLY_POSITION = 3
+        const val DEFAULT_REQUEST_POSITION = 4
     }
-
 }

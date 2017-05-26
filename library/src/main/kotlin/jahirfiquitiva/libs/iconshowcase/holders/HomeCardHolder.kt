@@ -31,21 +31,21 @@ import jahirfiquitiva.libs.iconshowcase.utils.NetworkUtils
 
 class HomeCardHolder {
 
-    class ExtraCardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val root: LinearLayout = itemView.findViewById(R.id.home_extra_card) as LinearLayout
-        val title: TextView = itemView.findViewById(R.id.home_extra_card_title) as TextView
-        val description: TextView = itemView.findViewById(R.id.home_extra_card_description)
+    class ExtraCardHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+        val root:LinearLayout = itemView.findViewById(R.id.home_extra_card) as LinearLayout
+        val title:TextView = itemView.findViewById(R.id.home_extra_card_title) as TextView
+        val description:TextView = itemView.findViewById(R.id.home_extra_card_description)
                 as TextView
-        val icon: ImageView = itemView.findViewById(R.id.home_extra_card_image) as ImageView
+        val icon:ImageView = itemView.findViewById(R.id.home_extra_card_image) as ImageView
 
-        fun setItem(item: HomeCard) {
+        fun setItem(item:HomeCard) {
             root.setOnClickListener { view -> launchIntent(view.context, item) }
             title.text = item.title
             description.text = item.description
             icon.setImageDrawable(item.icon)
         }
 
-        private fun launchIntent(context: Context, item: HomeCard) {
+        private fun launchIntent(context:Context, item:HomeCard) {
             when {
                 item.intent != null -> context.startActivity(item.intent)
                 else -> NetworkUtils.openLink(context, item.url)

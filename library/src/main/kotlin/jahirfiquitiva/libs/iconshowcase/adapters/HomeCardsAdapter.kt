@@ -27,18 +27,18 @@ import jahirfiquitiva.libs.iconshowcase.holders.HomeCardHolder
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard
 import java.util.*
 
-class HomeCardsAdapter(val cards: ArrayList<HomeCard>) :
+class HomeCardsAdapter(val cards:ArrayList<HomeCard>):
         RecyclerView.Adapter<HomeCardHolder.ExtraCardHolder>() {
 
-    override fun onBindViewHolder(holder: HomeCardHolder.ExtraCardHolder?, position: Int) {
+    override fun onBindViewHolder(holder:HomeCardHolder.ExtraCardHolder?, position:Int) {
         holder?.setItem(cards[position])
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?,
-                                    viewType: Int): HomeCardHolder.ExtraCardHolder =
+    override fun onCreateViewHolder(parent:ViewGroup?,
+                                    viewType:Int):HomeCardHolder.ExtraCardHolder =
             HomeCardHolder.ExtraCardHolder(
                     LayoutInflater.from(parent?.context)
                             .inflate(R.layout.item_home_extra_card, parent, false))
 
-    override fun getItemCount(): Int = cards.size
+    override fun getItemCount():Int = cards.size
 }

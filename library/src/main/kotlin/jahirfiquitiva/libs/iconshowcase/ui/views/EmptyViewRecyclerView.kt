@@ -29,19 +29,19 @@ import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
 
-class EmptyViewRecyclerView : RecyclerView {
-    var loadingView: View? = null
-    var emptyView: View? = null
-    var textView: TextView? = null
-    var loadingTextRes: Int = -1
-    var emptyTextRes: Int = -1
+class EmptyViewRecyclerView:RecyclerView {
+    var loadingView:View? = null
+    var emptyView:View? = null
+    var textView:TextView? = null
+    var loadingTextRes:Int = - 1
+    var emptyTextRes:Int = - 1
 
     var state = STATE_LOADING
 
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
-    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int)
-            : super(context, attributeSet, defStyleAttr)
+    constructor(context:Context):super(context)
+    constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet)
+    constructor(context:Context, attributeSet:AttributeSet, defStyleAttr:Int)
+            :super(context, attributeSet, defStyleAttr)
 
     fun updateStateViews() {
         when (state) {
@@ -49,7 +49,7 @@ class EmptyViewRecyclerView : RecyclerView {
                 loadingView?.visibility = VISIBLE
                 emptyView?.visibility = GONE
                 textView?.text = ResourceUtils.getString(context,
-                        if (loadingTextRes != -1) loadingTextRes else R.string.loading_section)
+                        if (loadingTextRes != - 1) loadingTextRes else R.string.loading_section)
                 visibility = GONE
             }
             STATE_NORMAL -> {
@@ -72,7 +72,7 @@ class EmptyViewRecyclerView : RecyclerView {
                 loadingView?.visibility = GONE
                 emptyView?.visibility = VISIBLE
                 textView?.text = ResourceUtils.getString(context,
-                        if (emptyTextRes != -1) emptyTextRes else R.string.empty_section)
+                        if (emptyTextRes != - 1) emptyTextRes else R.string.empty_section)
                 visibility = GONE
             }
         }
@@ -80,29 +80,29 @@ class EmptyViewRecyclerView : RecyclerView {
         textView?.visibility = if (state != STATE_NORMAL) VISIBLE else GONE
     }
 
-    internal val observer: RecyclerView.AdapterDataObserver = object : RecyclerView.AdapterDataObserver() {
+    internal val observer:RecyclerView.AdapterDataObserver = object:RecyclerView.AdapterDataObserver() {
         override fun onChanged() {
             super.onChanged()
             updateStateViews()
         }
 
-        override fun onItemRangeChanged(positionStart: Int, itemCount: Int) {
+        override fun onItemRangeChanged(positionStart:Int, itemCount:Int) {
             super.onItemRangeChanged(positionStart, itemCount)
             updateStateViews()
         }
 
-        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+        override fun onItemRangeInserted(positionStart:Int, itemCount:Int) {
             super.onItemRangeInserted(positionStart, itemCount)
             updateStateViews()
         }
 
-        override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+        override fun onItemRangeRemoved(positionStart:Int, itemCount:Int) {
             super.onItemRangeRemoved(positionStart, itemCount)
             updateStateViews()
         }
     }
 
-    override fun setAdapter(adapter: Adapter<*>?) {
+    override fun setAdapter(adapter:Adapter<*>?) {
         val oldAdapter = getAdapter()
         oldAdapter?.unregisterAdapterDataObserver(observer)
         super.setAdapter(adapter)

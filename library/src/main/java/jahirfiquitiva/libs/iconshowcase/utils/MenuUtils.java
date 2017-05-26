@@ -21,27 +21,30 @@ package jahirfiquitiva.libs.iconshowcase.utils;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MenuUtils {
-    public static void changeOptionVisibility(@NonNull Menu menu, int id, boolean visible) {
+    public static void changeOptionVisibility(Menu menu, int id, boolean visible) {
+        if (menu == null) return;
         MenuItem item = menu.findItem(id);
         item.setVisible(visible);
     }
 
-    public static void setOptionTitle(@NonNull Menu menu, int id, String title) {
+    public static void setOptionTitle(Menu menu, int id, String title) {
+        if (menu == null) return;
         MenuItem item = menu.findItem(id);
         item.setTitle(title);
     }
 
-    public static void setOptionIcon(@NonNull Menu menu, int id, @DrawableRes int iconRes) {
+    public static void setOptionIcon(Menu menu, int id, @DrawableRes int iconRes) {
+        if (menu == null) return;
         MenuItem item = menu.findItem(id);
         item.setIcon(iconRes);
     }
 
-    public static void setOptionIcon(@NonNull Menu menu, int id, Drawable icon) {
+    public static void setOptionIcon(Menu menu, int id, Drawable icon) {
+        if (menu == null) return;
         MenuItem item = menu.findItem(id);
         item.setIcon(icon);
     }
