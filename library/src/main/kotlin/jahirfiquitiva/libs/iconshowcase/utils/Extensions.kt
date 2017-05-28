@@ -14,12 +14,15 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.utils
 
+import android.graphics.drawable.Drawable
+import android.support.annotation.DrawableRes
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -35,4 +38,20 @@ fun ImageView.loadFromUrl(url:String) {
     } else {
         Glide.with(context).load(url).into(this)
     }
+}
+
+fun Menu.changeOptionVisibility(id:Int, visible:Boolean) {
+    findItem(id)?.isVisible = visible
+}
+
+fun Menu.setItemTitle(id:Int, title:String) {
+    findItem(id)?.title = title
+}
+
+fun Menu.setOptionIcon(id:Int, @DrawableRes iconRes:Int) {
+    findItem(id)?.setIcon(iconRes)
+}
+
+fun Menu.setOptionIcon(id:Int, iconRes:Drawable) {
+    findItem(id)?.icon = iconRes
 }

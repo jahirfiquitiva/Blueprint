@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.activities
@@ -27,8 +27,8 @@ import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.activities.base.InternalBaseShowcaseActivity
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
+import jahirfiquitiva.libs.iconshowcase.utils.Preferences
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
-import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences
 import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
 
@@ -63,7 +63,7 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
         bottomBar?.defaultBackgroundColor = AttributeExtractor.getCardBgColorFrom(this)
         bottomBar?.isBehaviorTranslationEnabled = false
         // if (fab != null)
-            // bottomBar?.manageFloatingActionButtonBehavior(fab)
+        // bottomBar?.manageFloatingActionButtonBehavior(fab)
         bottomBar?.accentColor = AttributeExtractor.getAccentColorFrom(this)
         bottomBar?.inactiveColor = ColorUtils.getMaterialInactiveIconsColor(
                 ThemeUtils.isDarkTheme())

@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.activities
@@ -31,12 +31,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.activities.base.InternalBaseShowcaseActivity
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
-import jahirfiquitiva.libs.iconshowcase.ui.views.CounterFab
-import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
-import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils
-import jahirfiquitiva.libs.iconshowcase.utils.IconUtils
-import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
-import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences
+import jahirfiquitiva.libs.iconshowcase.utils.*
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
 
 open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
@@ -100,9 +95,9 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
         val drawerBuilder = DrawerBuilder().withActivity(this)
         if (toolbar != null)
-            drawerBuilder.withToolbar(toolbar !!)
+            drawerBuilder.withToolbar(toolbar!!)
         drawerBuilder.withAccountHeader(accountHeader)
-                .withDelayOnDrawerClose(- 1)
+                .withDelayOnDrawerClose(-1)
                 .withShowDrawerOnFirstLaunch(true)
 
         drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
@@ -146,7 +141,7 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
     override fun onBackPressed() {
         if (currentItemId != 0) navigateToItem(getNavigationItems()?.get(0) as NavigationItem)
-        else if (drawer?.isDrawerOpen !!) drawer?.closeDrawer()
+        else if (drawer?.isDrawerOpen!!) drawer?.closeDrawer()
         else super.onBackPressed()
     }
 

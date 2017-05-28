@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.ui.views;
@@ -22,11 +22,7 @@ package jahirfiquitiva.libs.iconshowcase.ui.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.graphics.RectF;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build.VERSION;

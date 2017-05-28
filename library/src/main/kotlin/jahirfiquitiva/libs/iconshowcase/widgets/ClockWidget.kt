@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.widgets
@@ -51,7 +51,7 @@ class ClockWidget:AppWidgetProvider() {
             val rViews = RemoteViews(context?.packageName, R.layout.widget_clock)
             var intent:Intent? = Intent()
             packages.forEach breaker@ {
-                if (CoreUtils.isAppInstalled(context, it)) {
+                if (CoreUtils.isAppInstalled(context!!, it)) {
                     intent = pm?.getLaunchIntentForPackage(it)
                     if (intent != null) {
                         foundApp = true

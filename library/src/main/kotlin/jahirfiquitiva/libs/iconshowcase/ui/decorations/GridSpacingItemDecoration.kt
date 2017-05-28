@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.ui.decorations
@@ -28,7 +28,7 @@ class GridSpacingItemDecoration(private var spanCount:Int, private var spacing:I
     override fun getItemOffsets(outRect:Rect?, view:View?, parent:RecyclerView?,
                                 state:RecyclerView.State?) {
         super.getItemOffsets(outRect, view, parent, state)
-        val position = parent !!.getChildAdapterPosition(view)
+        val position = parent!!.getChildAdapterPosition(view)
         val column = position % spanCount
         if (includeEdge) {
             outRect?.left = spacing - column * spacing / spanCount // spacing - column * ((1f /

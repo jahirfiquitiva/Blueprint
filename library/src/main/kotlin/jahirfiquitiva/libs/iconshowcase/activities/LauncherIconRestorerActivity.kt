@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.activities
@@ -26,8 +26,8 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils
+import jahirfiquitiva.libs.iconshowcase.utils.Preferences
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
-import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences
 
 class LauncherIconRestorerActivity:AppCompatActivity() {
 
@@ -42,19 +42,19 @@ class LauncherIconRestorerActivity:AppCompatActivity() {
                 R.string.main_activity_name)
 
         try {
-            className = Class.forName(componentName);
+            className = Class.forName(componentName)
         } catch (e:Exception) {
             componentName = ResourceUtils.getString(this, R.string.main_activity_fullname)
             try {
-                className = Class.forName(componentName);
+                className = Class.forName(componentName)
             } catch (ignored:Exception) {
             }
         }
 
-        var content = ""
+        val content:String
         if (className != null) {
-            val component = ComponentName(packageName, componentName);
-            if (! prefs.launcherIconShown) {
+            val component = ComponentName(packageName, componentName)
+            if (!prefs.getLauncherIconShown()) {
                 prefs.setIconShown(true)
                 pm.setComponentEnabledSetting(component,
                         PackageManager.COMPONENT_ENABLED_STATE_ENABLED,

@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.widgets
@@ -49,7 +49,7 @@ class IconRestorerWidget:AppWidgetProvider() {
                 appWidgetManager?.updateAppWidget(it, rViews)
             } catch (e:Exception) {
                 Toast.makeText(context,
-                        ResourceUtils.getString(context, R.string.launcher_icon_restorer_error,
+                        ResourceUtils.getString(context!!, R.string.launcher_icon_restorer_error,
                                 ResourceUtils.getString(context, R.string.app_name)),
                         Toast.LENGTH_LONG).show()
             }

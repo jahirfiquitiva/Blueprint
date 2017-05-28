@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
 package jahirfiquitiva.libs.iconshowcase.activities.base
@@ -44,7 +44,6 @@ import jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.iconshowcase.ui.views.CounterFab
 import jahirfiquitiva.libs.iconshowcase.utils.*
-import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences
 import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
 import jahirfiquitiva.libs.iconshowcase.utils.themes.TintUtils
@@ -62,7 +61,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     var fab:CounterFab? = null
     var overlay:View? = null
     var sheet:View? = null
-    var currentItemId = - 1
+    var currentItemId = -1
 
     override fun onBackPressed() {
         if (currentItemId == 0)
@@ -81,7 +80,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         fab = findViewById(R.id.fab) as CounterFab
         overlay = findViewById(R.id.overlay)
         overlay?.background = ColorDrawable(ColorUtils.getOverlayColor(ThemeUtils.isDarkTheme()))
-        overlay?.setOnClickListener { view ->
+        overlay?.setOnClickListener { _ ->
             if (currentItemId == 0)
                 FabTransformation.with(fab).setOverlay(overlay).transformFrom(sheet)
         }
@@ -124,7 +123,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         toolbar = findViewById(R.id.toolbar) as Toolbar
         menu = toolbar?.menu
         menuInflater.inflate(R.menu.menu_main, menu)
-        ToolbarThemer.tintToolbar(toolbar, ColorUtils.getMaterialActiveIconsColor(
+        ToolbarThemer.tintToolbar(toolbar!!, ColorUtils.getMaterialActiveIconsColor(
                 ColorUtils.isDarkColor(AttributeExtractor.getPrimaryColorFrom(this))))
         // TODO: Add menu items click listener
     }
@@ -139,14 +138,14 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         val context = this
         appBarLayout?.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
             override fun onVerticalOffsetChanged(appBar:AppBarLayout?, verticalOffset:Int) {
-                ToolbarThemer.updateToolbarColors(context, toolbar, verticalOffset)
+                ToolbarThemer.updateToolbarColors(context, toolbar!!, verticalOffset)
             }
         })
         val wallpaper:ImageView? = findViewById(R.id.toolbarHeader) as ImageView
         val wallManager = WallpaperManager.getInstance(this)
         if (getPickerKey() == 0 && getShortcut().isEmpty()) {
             var drawable:Drawable? = null
-            if (prefs != null && prefs !!.wallpaperAsToolbarHeaderEnabled) {
+            if (prefs != null && prefs!!.getWallpaperAsToolbarHeaderEnabled()) {
                 drawable = wallManager?.fastDrawable
             } else {
                 val picName = ResourceUtils.getString(this, R.string.toolbar_picture)
@@ -177,7 +176,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
                     id == NavigationItem.DEFAULT_HOME_POSITION || id == NavigationItem.DEFAULT_REQUEST_POSITION)
             changeFABAction(id == NavigationItem.DEFAULT_HOME_POSITION)
             appBarLayout?.setExpanded(id == NavigationItem.DEFAULT_HOME_POSITION,
-                    prefs !!.animationsEnabled)
+                    prefs!!.getAnimationsEnabled())
             collapsingToolbar?.title = ResourceUtils.getString(this,
                     if (id == NavigationItem.DEFAULT_HOME_POSITION) R.string.app_name else item.title)
             coordinatorLayout?.allowScroll = id == NavigationItem.DEFAULT_HOME_POSITION
@@ -190,26 +189,20 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     }
 
     private fun updateToolbarMenuItems(item:NavigationItem) {
-        if (toolbar == null || menu == null) return
-        MenuUtils.changeOptionVisibility(menu, R.id.search,
+        menu?.changeOptionVisibility(R.id.search,
                 item.id == NavigationItem.DEFAULT_PREVIEWS_POSITION)
-        MenuUtils.changeOptionVisibility(menu, R.id.columns,
+        menu?.changeOptionVisibility(R.id.columns,
                 item.id == NavigationItem.DEFAULT_WALLPAPERS_POSITION)
-        MenuUtils.changeOptionVisibility(menu, R.id.refresh,
+        menu?.changeOptionVisibility(R.id.refresh,
                 item.id == NavigationItem.DEFAULT_WALLPAPERS_POSITION)
-        MenuUtils.changeOptionVisibility(menu, R.id.select_all,
+        menu?.changeOptionVisibility(R.id.select_all,
                 item.id == NavigationItem.DEFAULT_REQUEST_POSITION)
         ToolbarThemer.tintToolbarMenu(toolbar, menu,
                 ColorUtils.getMaterialActiveIconsColor(
                         ColorUtils.isDarkColor(AttributeExtractor.getPrimaryColorFrom(this))))
     }
 
-    fun changeFABVisibility(visible:Boolean) {
-        if (visible)
-            fab?.show()
-        else
-            fab?.hide()
-    }
+    fun changeFABVisibility(visible:Boolean) = if (visible) fab?.show() else fab?.hide()
 
     private fun changeFABAction(home:Boolean) {
         fab?.setImageDrawable(TintUtils.createTintedDrawable(
