@@ -105,7 +105,7 @@ dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib-jre7:' + versions.kotlin
 
     // Themes Manager
-    // compile 'com.afollestad:aesthetic:' + versions.aesthetic
+    compile 'com.github.afollestad:aesthetic:' + versions.aesthetic
 
     // Material Dialogs
     compile 'com.afollestad.material-dialogs:core:' + versions.materialDialogs
@@ -121,14 +121,31 @@ dependencies {
     // Glide Image Loading
     compile 'com.github.bumptech.glide:glide:' + versions.glide
 
+    // RecyclerView FastAdapter
+    compile('com.mikepenz:fastadapter:' + versions.fastAdapter + '@aar') {
+        transitive = true
+    }
+
     // RecyclerView Fast Scroller
     compile 'com.github.plusCubed:recycler-fast-scroll:' + versions.recyclerViewFastScroll
 
     // Icon Requests Tool
     compile 'com.github.AllanWang:Icon-Request-Tool:' + versions.iconRequestTool
 
-    //Circular ImageView
+    // Circular ImageView
     compile 'com.github.hdodenhof:CircleImageView:' + versions.circleImageView
+
+    // Better Bottom Bar
+    compile 'com.aurelhubert:ahbottomnavigation:' + versions.bottomBar
+
+    // FAB Transformation
+    compile 'konifar:fab-transformation:' + versions.fabTransformation
+
+    // Rotating text
+    compile 'com.sdsmdg.harjot:rotatingtext:' + versions.rotatingText
+	
+	// Subsampling ImageView
+	compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView
 
     // In-App Purchases
     compile 'com.anjlab.android.iab.v3:library:' + versions.iaps

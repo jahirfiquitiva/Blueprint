@@ -210,7 +210,7 @@
     <string name="fork_on_github">Fork on GitHub</string>
 
     <string name="visit_website">Website</string>
-    <string name="more_apps">More apps</string>
+    <string name="more_apps">More apps…</string>
     <string name="more_apps_long">Check the other apps I have published in Google Play Store.</string>
 
     <string name="implemented_libraries">Implemented libraries</string>
@@ -259,7 +259,7 @@
 
     <string name="icon_pack_in_numbers">Icon Pack in numbers</string>
     <string name="themed_icons">Over %1$s included icons.</string>
-    <string name="available_wallpapers">About %1$s available wallpapers.</string>
+    <string name="available_wallpapers">About %1$s wallpapers available.</string>
     <string name="included_widgets">More than %1$s included widgets.</string>
     <string name="icons">Icons</string>
 

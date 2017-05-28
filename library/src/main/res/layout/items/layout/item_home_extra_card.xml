@@ -21,37 +21,33 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/home_extra_card"
-        style="@style/HomeCardContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
         android:orientation="vertical"
         tools:ignore="Overdraw">
 
     <TextView
-            android:id="@+id/home_extra_card_title"
-            android:layout_width="wrap_content"
+            android:id="@+id/more_apps_section_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start|center_vertical"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:padding="@dimen/fab_margin"
+            android:visibility="visible"
+            android:clickable="false"
+            android:text="@string/more_apps"/>
 
     <LinearLayout
+            style="@style/HomeCardContent"
             android:id="@+id/home_extra_card_sub_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:clickable="false"
             android:gravity="center_vertical"
             android:minHeight="@dimen/md_listitem_height"
-            android:paddingBottom="4dp"
+            android:paddingBottom="@dimen/cards_super_small_margin"
             android:orientation="horizontal"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true">
 
         <jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
                 android:id="@+id/home_extra_card_image"
@@ -59,18 +55,31 @@
                 android:layout_height="@dimen/app_card_icon_size"
                 tools:ignore="ContentDescription"/>
 
-        <TextView
-                android:id="@+id/home_extra_card_description"
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:gravity="center_vertical"
-                android:lineSpacingMultiplier="1.2"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"/>
+                android:padding="@dimen/cards_content_margin_mini"
+                android:gravity="center_vertical">
 
+            <TextView
+                    android:id="@+id/home_extra_card_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    tools:text="Something"/>
+
+            <TextView
+                    android:id="@+id/home_extra_card_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.2"
+                    android:paddingTop="@dimen/grid_padding_vertical"
+                    tools:text="Something"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

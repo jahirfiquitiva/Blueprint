@@ -61,7 +61,8 @@ class HomeFragment:Fragment() {
         val urls = ResourceUtils.getStringArray(context, R.array.home_list_links)
         if (titles.size == descriptions.size && descriptions.size == icons.size
             && icons.size == urls.size) {
-            for (i in titles.indices) {
+            val maxSize = (if (titles.size > 4) 4 else titles.size) - 1
+            for (i in 0..maxSize) {
                 val url = urls[i]
                 val isAnApp = url.toLowerCase().startsWith(NetworkUtils.PLAY_STORE_LINK_PREFIX)
                 var isInstalled = false
@@ -78,10 +79,11 @@ class HomeFragment:Fragment() {
         }
 
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        val deco = DividerItemDecoration(context,DividerItemDecoration.VERTICAL)
-        deco.setDrawable(ColorDrawable(ColorUtils.getMaterialDividerColor(ThemeUtils.isDarkTheme())))
+        val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        deco.setDrawable(
+                ColorDrawable(ColorUtils.getMaterialDividerColor(ThemeUtils.isDarkTheme())))
         rv.addItemDecoration(deco)
-        rv.adapter=HomeCardsAdapter(cards)
+        rv.adapter = HomeCardsAdapter(cards)
         rv.state = EmptyViewRecyclerView.STATE_NORMAL
         rv.updateStateViews()
     }

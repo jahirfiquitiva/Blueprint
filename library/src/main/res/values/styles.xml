@@ -104,10 +104,7 @@
     </style>
 
     <style name="HomeCardContent" parent="android:Widget">
-        <item name="android:paddingLeft">@dimen/welcome_card_content_padding</item>
-        <item name="android:paddingRight">@dimen/welcome_card_content_padding</item>
-        <item name="android:paddingTop">@dimen/cards_spacing</item>
-        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+        <item name="android:padding">@dimen/fab_margin</item>
         <item name="android:orientation">vertical</item>
     </style>
 

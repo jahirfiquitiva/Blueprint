@@ -21,7 +21,7 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/infocard"
+        android:id="@+id/info_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="false">
@@ -37,20 +37,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="4dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="16dp">
+                android:padding="@dimen/cards_margin">
 
             <TextView
-                    android:id="@+id/welcomeTitle"
+                    android:id="@+id/welcome_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/welcome_title"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
 
             <TextView
-                    android:id="@+id/welcomeContent"
+                    android:id="@+id/welcome_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/cards_super_small_margin"
@@ -58,43 +55,14 @@
                     android:lineSpacingMultiplier="1.2"
                     android:text="@string/theme_description"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-                android:id="@+id/buttons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:paddingLeft="@dimen/cards_super_small_margin"
-                android:paddingStart="@dimen/cards_super_small_margin"
-                android:layout_below="@id/content"
-                android:orientation="horizontal"
-                tools:ignore="RtlSymmetry">
-
-            <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/faqs_button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
+            <TextView
+                    android:id="@+id/rotating_texts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/section_help"
-                    android:textColor="?attr/colorAccent"/>
-
-            <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/rate_button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rate"
-                    android:textColor="?attr/colorAccent"/>
-
-            <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/more_apps_button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/more_apps"
-                    android:textColor="?attr/colorAccent"/>
+                    android:layout_marginBottom="@dimen/cards_super_small_margin"
+                    android:layout_marginTop="@dimen/cards_content_margin_mini"
+                    android:lineSpacingMultiplier="1.2"
+                    android:visibility="gone"/>
 
         </LinearLayout>
 

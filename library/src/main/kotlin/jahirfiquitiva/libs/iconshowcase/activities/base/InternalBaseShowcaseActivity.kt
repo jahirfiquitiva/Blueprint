@@ -21,6 +21,7 @@ package jahirfiquitiva.libs.iconshowcase.activities.base
 
 import android.app.WallpaperManager
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
@@ -31,7 +32,9 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import com.konifar.fab_transformation.FabTransformation
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.iconshowcase.fragments.EmptyFragment
@@ -57,7 +60,65 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     var toolbar:Toolbar? = null
     var menu:Menu? = null
     var fab:CounterFab? = null
+    var overlay:View? = null
+    var sheet:View? = null
     var currentItemId = - 1
+
+    override fun onBackPressed() {
+        if (currentItemId == 0)
+            FabTransformation.with(fab).setOverlay(overlay).transformFrom(sheet)
+        else
+            super.onBackPressed()
+    }
+
+    fun initMainComponents() {
+        initToolbar()
+        initCollapsingToolbar()
+        initFAB()
+    }
+
+    private fun initFAB() {
+        fab = findViewById(R.id.fab) as CounterFab
+        overlay = findViewById(R.id.overlay)
+        overlay?.background = ColorDrawable(ColorUtils.getOverlayColor(ThemeUtils.isDarkTheme()))
+        overlay?.setOnClickListener { view ->
+            if (currentItemId == 0)
+                FabTransformation.with(fab).setOverlay(overlay).transformFrom(sheet)
+        }
+        sheet = findViewById(R.id.sheet)
+        val rateText = findViewById(R.id.action_rate) as TextView
+        rateText.setCompoundDrawables(
+                TintUtils.createTintedDrawable(
+                        IconUtils.getDrawableWithName(this, "ic_rate"),
+                        ColorUtils.getMaterialActiveIconsColor(ThemeUtils.isDarkTheme())),
+                null, null, null)
+        rateText.setOnClickListener {
+            NetworkUtils.openLink(this,
+                    NetworkUtils.PLAY_STORE_LINK_PREFIX + CoreUtils.getAppPackageName(this))
+        }
+        val shareText = findViewById(R.id.action_share) as TextView
+        shareText.setCompoundDrawables(
+                TintUtils.createTintedDrawable(
+                        IconUtils.getDrawableWithName(this, "ic_rate"),
+                        ColorUtils.getMaterialActiveIconsColor(ThemeUtils.isDarkTheme())),
+                null, null, null)
+        val donateText = findViewById(R.id.action_donate) as TextView
+        if (donationsEnabled()) {
+            donateText.setCompoundDrawables(
+                    TintUtils.createTintedDrawable(
+                            IconUtils.getDrawableWithName(this, "ic_rate"),
+                            ColorUtils.getMaterialActiveIconsColor(ThemeUtils.isDarkTheme())),
+                    null, null, null)
+        } else {
+            donateText.visibility = View.GONE
+        }
+        val helpText = findViewById(R.id.action_help) as TextView
+        helpText.setCompoundDrawables(
+                TintUtils.createTintedDrawable(
+                        IconUtils.getDrawableWithName(this, "ic_questions"),
+                        ColorUtils.getMaterialActiveIconsColor(ThemeUtils.isDarkTheme())),
+                null, null, null)
+    }
 
     open fun initToolbar() {
         toolbar = findViewById(R.id.toolbar) as Toolbar
@@ -65,9 +126,10 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         menuInflater.inflate(R.menu.menu_main, menu)
         ToolbarThemer.tintToolbar(toolbar, ColorUtils.getMaterialActiveIconsColor(
                 ColorUtils.isDarkColor(AttributeExtractor.getPrimaryColorFrom(this))))
+        // TODO: Add menu items click listener
     }
 
-    fun initCollapsingToolbar() {
+    private fun initCollapsingToolbar() {
         coordinatorLayout = findViewById(R.id.mainCoordinatorLayout) as CustomCoordinatorLayout
         appBarLayout = findViewById(R.id.appBar) as FixedElevationAppBarLayout
         collapsingToolbar = findViewById(R.id.collapsingToolbar) as CollapsingToolbarLayout
@@ -127,7 +189,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         return false
     }
 
-    fun updateToolbarMenuItems(item:NavigationItem) {
+    private fun updateToolbarMenuItems(item:NavigationItem) {
         if (toolbar == null || menu == null) return
         MenuUtils.changeOptionVisibility(menu, R.id.search,
                 item.id == NavigationItem.DEFAULT_PREVIEWS_POSITION)
@@ -149,21 +211,19 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
             fab?.hide()
     }
 
-    fun changeFABAction(home:Boolean) {
+    private fun changeFABAction(home:Boolean) {
         fab?.setImageDrawable(TintUtils.createTintedDrawable(
-                IconUtils.getDrawableWithName(this, if (home) "ic_rate" else "ic_send"),
+                IconUtils.getDrawableWithName(this, if (home) "ic_plus" else "ic_send"),
                 ColorUtils.getMaterialActiveIconsColor(
-                        ! ColorUtils.isLightColor(
+                        ColorUtils.isDarkColor(
                                 ContextCompat.getColor(this,
                                         ThemeUtils.darkOrLight(
                                                 R.color.dark_theme_accent,
                                                 R.color.light_theme_accent))))))
         if (home) {
             fab?.count = 0
-            fab?.setOnClickListener({ view ->
-                NetworkUtils.openLink(view.context,
-                        NetworkUtils.PLAY_STORE_LINK_PREFIX + CoreUtils.getAppPackageName(
-                                view.context))
+            fab?.setOnClickListener({
+                FabTransformation.with(fab).setOverlay(overlay).transformTo(sheet)
             })
         } else {
             fab?.setOnClickListener({ view ->

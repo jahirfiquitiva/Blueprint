@@ -20,25 +20,37 @@
 package jahirfiquitiva.libs.iconshowcase.adapters
 
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.holders.HomeCardHolder
+import jahirfiquitiva.libs.iconshowcase.holders.HomeCardsHolder
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard
+import jahirfiquitiva.libs.iconshowcase.utils.inflate
 import java.util.*
 
 class HomeCardsAdapter(val cards:ArrayList<HomeCard>):
-        RecyclerView.Adapter<HomeCardHolder.ExtraCardHolder>() {
+        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onBindViewHolder(holder:HomeCardHolder.ExtraCardHolder?, position:Int) {
-        holder?.setItem(cards[position])
+    override fun onBindViewHolder(holder:RecyclerView.ViewHolder?, position:Int) {
+        if (position < 0) return
+        if (holder is HomeCardsHolder.WelcomeCardHolder) {
+            holder.setInfo(0, 0, 0)
+        } else if (holder is HomeCardsHolder.ExtraCardHolder) {
+            holder.setItem(cards[position - 1], position == 1)
+        }
     }
 
     override fun onCreateViewHolder(parent:ViewGroup?,
-                                    viewType:Int):HomeCardHolder.ExtraCardHolder =
-            HomeCardHolder.ExtraCardHolder(
-                    LayoutInflater.from(parent?.context)
-                            .inflate(R.layout.item_home_extra_card, parent, false))
+                                    viewType:Int):RecyclerView.ViewHolder {
+        when (viewType) {
+            0 -> return HomeCardsHolder.WelcomeCardHolder(
+                    parent?.inflate(R.layout.item_welcome_card))
+            else -> return HomeCardsHolder.ExtraCardHolder(
+                    parent?.inflate(R.layout.item_home_extra_card))
+        }
+    }
 
-    override fun getItemCount():Int = cards.size
+    override fun getItemCount():Int = cards.size + 1
+
+    override fun getItemViewType(position:Int):Int = position
+
 }

@@ -19,30 +19,30 @@
 
 package jahirfiquitiva.libs.iconshowcase.activities
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v7.widget.Toolbar
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.activities.base.InternalBaseShowcaseActivity
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
-import jahirfiquitiva.libs.iconshowcase.ui.views.CounterFab
+import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
+import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 import jahirfiquitiva.libs.iconshowcase.utils.preferences.Preferences
 import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor
+import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
 
 open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
 
-    var bottomBar:BottomNavigationView? = null
+    var bottomBar:AHBottomNavigation? = null
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setupStatusBar(true)
         prefs = Preferences(this)
         setContentView(R.layout.activity_bottom_bar_showcase)
-        initToolbar()
-        initCollapsingToolbar()
+        initMainComponents()
         initBottomBar()
-        initFAB()
     }
 
     override fun initToolbar() {
@@ -58,22 +58,26 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
                 })
     }
 
-    fun initFAB() {
-        fab = findViewById(R.id.fab) as CounterFab
-    }
-
     private fun initBottomBar() {
-        bottomBar = findViewById(R.id.bottom_navigation) as BottomNavigationView
-        bottomBar?.background = ColorDrawable(AttributeExtractor.getCardBgColorFrom(this))
-        bottomBar?.setOnNavigationItemSelectedListener(
-                BottomNavigationView.OnNavigationItemSelectedListener {
-                    val id = 10 //getItemId(item.getItemId(), true)
-                    if (id >= 0) {
-                        return@OnNavigationItemSelectedListener navigateToItem(
-                                getNavigationItems()?.get(id) as NavigationItem)
-                    }
-                    return@OnNavigationItemSelectedListener false
-                })
+        bottomBar = findViewById(R.id.bottom_navigation) as AHBottomNavigation
+        bottomBar?.defaultBackgroundColor = AttributeExtractor.getCardBgColorFrom(this)
+        bottomBar?.isBehaviorTranslationEnabled = false
+        // if (fab != null)
+            // bottomBar?.manageFloatingActionButtonBehavior(fab)
+        bottomBar?.accentColor = AttributeExtractor.getAccentColorFrom(this)
+        bottomBar?.inactiveColor = ColorUtils.getMaterialInactiveIconsColor(
+                ThemeUtils.isDarkTheme())
+        bottomBar?.isForceTint = true
+        bottomBar?.titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
+        getNavigationItems()?.forEach {
+            bottomBar?.addItem(
+                    AHBottomNavigationItem(ResourceUtils.getString(this, it.title), it.icon))
+        }
+        bottomBar?.setOnTabSelectedListener { position, _ ->
+            return@setOnTabSelectedListener navigateToItem(
+                    getNavigationItems()?.get(position) as NavigationItem)
+        }
+        bottomBar?.setCurrentItem(0, true)
     }
 
     override fun getNavigationItems():Array<NavigationItem>? {

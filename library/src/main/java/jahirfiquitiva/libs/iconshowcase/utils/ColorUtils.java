@@ -29,7 +29,6 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
-import android.util.Log;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -124,8 +123,7 @@ public class ColorUtils {
     }
 
     public static boolean isLightColor(@ColorInt int color) {
-        Log.d(CoreUtils.LOG_TAG, "Checking color: " + String.format("#%06X", 0xFFFFFF & color));
-        return getColorDarkness(color) < 0.475;
+        return getColorDarkness(color) < 0.45;
     }
 
     private static double getColorDarkness(@ColorInt int color) {
@@ -222,4 +220,8 @@ public class ColorUtils {
                         .ripple_material_dark);
     }
 
+    @ColorInt
+    public static int getOverlayColor(boolean darkTheme) {
+        return darkTheme ? Color.parseColor("#40ffffff") : Color.parseColor("#4d000000");
+    }
 }

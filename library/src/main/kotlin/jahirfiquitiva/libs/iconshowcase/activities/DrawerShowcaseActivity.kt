@@ -48,10 +48,8 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
         setupStatusBar(true)
         prefs = Preferences(this)
         setContentView(R.layout.activity_drawer_showcase)
-        initToolbar()
-        initCollapsingToolbar()
+        initMainComponents()
         initDrawer(savedInstanceState)
-        initFAB()
     }
 
     override fun initToolbar() {
@@ -65,10 +63,6 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
                     }
                     return@OnMenuItemClickListener false
                 })
-    }
-
-    fun initFAB() {
-        fab = findViewById(R.id.fab) as CounterFab
     }
 
     fun initDrawer(savedInstance:Bundle?) {

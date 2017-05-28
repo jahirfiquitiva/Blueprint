@@ -36,7 +36,7 @@ public class ResourceUtils {
         return context.getResources().getString(res);
     }
 
-    public static String getString(Context context, @StringRes int res, Object... args) {
+    public static String getString(Context context, @StringRes int res, String... args) {
         return context.getResources().getString(res, args);
     }
 

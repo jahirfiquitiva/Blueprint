@@ -20,9 +20,9 @@
 package jahirfiquitiva.apps.iconshowcase.demo
 
 import android.os.Bundle
-import jahirfiquitiva.libs.iconshowcase.activities.DrawerShowcaseActivity
+import jahirfiquitiva.libs.iconshowcase.activities.BottomBarShowcaseActivity
 
-class MainActivity:DrawerShowcaseActivity() {
+class MainActivity:BottomBarShowcaseActivity() {
     override fun donationsEnabled():Boolean = false
     override fun getLicKey():String? = null
     override fun amazonInstallsEnabled():Boolean = false
