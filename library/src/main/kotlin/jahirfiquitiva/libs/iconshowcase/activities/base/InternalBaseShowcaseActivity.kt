@@ -23,18 +23,23 @@ import android.app.WallpaperManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.Toolbar
+import android.view.Gravity
 import android.view.Menu
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.konifar.fab_transformation.FabTransformation
+import com.mikepenz.materialdrawer.Drawer
+import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.iconshowcase.fragments.EmptyFragment
@@ -43,6 +48,7 @@ import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.iconshowcase.ui.views.CounterFab
+import jahirfiquitiva.libs.iconshowcase.ui.views.FilterDrawerItem
 import jahirfiquitiva.libs.iconshowcase.utils.*
 import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
@@ -61,13 +67,15 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     var fab:CounterFab? = null
     var overlay:View? = null
     var sheet:View? = null
+    var filtersDrawer:Drawer? = null
     var currentItemId = -1
 
     override fun onBackPressed() {
-        if (currentItemId == 0)
+        if (currentItemId == 0) {
             FabTransformation.with(fab).setOverlay(overlay).transformFrom(sheet)
-        else
+        } else {
             super.onBackPressed()
+        }
     }
 
     fun initMainComponents() {
@@ -166,12 +174,21 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         }
     }
 
+    fun initFiltersDrawer(savedInstance:Bundle) {
+        val filtersDrawerBuilder = DrawerBuilder().withActivity(this).withToolbar(toolbar!!)
+        getIconsFiltersList().forEach {
+            filtersDrawerBuilder.addDrawerItems(FilterDrawerItem().withName(it))
+        }
+        filtersDrawerBuilder.withDrawerGravity(Gravity.END).withSavedInstance(savedInstance)
+        filtersDrawer = filtersDrawerBuilder.build()
+    }
+
     fun navigateToItem(item:NavigationItem):Boolean {
         val id = item.id
         if (currentItemId == id) return false
         try {
             currentItemId = id
-            updateToolbarMenuItems(getNavigationItems()?.get(id) as NavigationItem)
+            updateToolbarMenuItems(getNavigationItems()[id])
             changeFABVisibility(
                     id == NavigationItem.DEFAULT_HOME_POSITION || id == NavigationItem.DEFAULT_REQUEST_POSITION)
             changeFABAction(id == NavigationItem.DEFAULT_HOME_POSITION)
@@ -182,6 +199,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
             coordinatorLayout?.allowScroll = id == NavigationItem.DEFAULT_HOME_POSITION
             tabs?.visibility = if (id == NavigationItem.DEFAULT_PREVIEWS_POSITION) View.VISIBLE else View.GONE
             changeFragment(getFragmentForNavigationItem(id))
+            lockFiltersDrawer(id == NavigationItem.DEFAULT_PREVIEWS_POSITION)
             return true
         } catch(ignored:Exception) {
         }
@@ -203,6 +221,13 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     }
 
     fun changeFABVisibility(visible:Boolean) = if (visible) fab?.show() else fab?.hide()
+
+    private fun lockFiltersDrawer(lock:Boolean) {
+        val drawerLayout = filtersDrawer?.drawerLayout
+        drawerLayout?.setDrawerLockMode(
+                if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
+                Gravity.END)
+    }
 
     private fun changeFABAction(home:Boolean) {
         fab?.setImageDrawable(TintUtils.createTintedDrawable(
@@ -231,6 +256,10 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
             NavigationItem.DEFAULT_HOME_POSITION -> return HomeFragment()
             else -> return EmptyFragment()
         }
+    }
+
+    private fun getIconsFiltersList():Array<String> {
+        return ResourceUtils.getStringArray(this, R.array.icon_filters)
     }
 
 }

@@ -19,6 +19,7 @@
 
 package jahirfiquitiva.libs.iconshowcase.utils
 
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
 import android.view.LayoutInflater
@@ -27,6 +28,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.target.BitmapImageViewTarget
 import jahirfiquitiva.libs.iconshowcase.R
 
 fun ViewGroup.inflate(layoutId:Int, attachToRoot:Boolean = false):View =
@@ -36,7 +39,7 @@ fun ImageView.loadFromUrl(url:String) {
     if (url.isEmpty()) {
         Glide.with(context).load(R.drawable.ic_wallpapers).into(this)
     } else {
-        Glide.with(context).load(url).into(this)
+        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(this)
     }
 }
 

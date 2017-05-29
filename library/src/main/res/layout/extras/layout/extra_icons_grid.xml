@@ -20,22 +20,27 @@
 
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/gridParent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/icons_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/iconsGrid"
+    <include layout="@layout/extra_empty_views"/>
+
+    <jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView
+            android:id="@+id/icons_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:overScrollMode="ifContentScrolls"
             android:paddingBottom="@dimen/grid_padding_vertical"
-            android:paddingTop="@dimen/grid_padding_vertical"/>
+            android:paddingTop="@dimen/grid_padding_vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.pluscubed.recyclerfastscroll.RecyclerFastScroller
-            android:id="@+id/rvFastScroller"
+            android:id="@+id/fast_scroller"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"

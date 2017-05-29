@@ -69,18 +69,17 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
                 ThemeUtils.isDarkTheme())
         bottomBar?.isForceTint = true
         bottomBar?.titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
-        getNavigationItems()?.forEach {
+        getNavigationItems().forEach {
             bottomBar?.addItem(
                     AHBottomNavigationItem(ResourceUtils.getString(this, it.title), it.icon))
         }
         bottomBar?.setOnTabSelectedListener { position, _ ->
-            return@setOnTabSelectedListener navigateToItem(
-                    getNavigationItems()?.get(position) as NavigationItem)
+            return@setOnTabSelectedListener navigateToItem(getNavigationItems()[position])
         }
         bottomBar?.setCurrentItem(0, true)
     }
 
-    override fun getNavigationItems():Array<NavigationItem>? {
+    override fun getNavigationItems():Array<NavigationItem> {
         return arrayOf(
                 NavigationItem("Home", NavigationItem.DEFAULT_HOME_POSITION, R.string.section_home,
                         R.drawable.ic_home),

@@ -112,7 +112,7 @@ open class BaseShowcaseActivity:ThemedActivity() {
     // Not really needed to override
     open fun getLicenseChecker():PiracyChecker? = null
 
-    open fun getNavigationItems():Array<NavigationItem>? = null
+    open fun getNavigationItems():Array<NavigationItem> = arrayOf()
 
     override fun onDestroy() {
         super.onDestroy()

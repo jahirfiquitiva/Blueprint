@@ -55,7 +55,7 @@ object IconUtils {
         }
     }
 
-    private fun getIconResourceWithName(context:Context, name:String):Int {
+    fun getIconResourceWithName(context:Context, name:String):Int {
         val res = context.resources.getIdentifier(name, "drawable", context.packageName)
         return if (res != 0) res else 0
     }

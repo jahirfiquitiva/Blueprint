@@ -32,15 +32,12 @@ class HomeCardsAdapter(val cards:ArrayList<HomeCard>):
 
     override fun onBindViewHolder(holder:RecyclerView.ViewHolder?, position:Int) {
         if (position < 0) return
-        if (holder is HomeCardsHolder.WelcomeCardHolder) {
-            holder.setInfo(0, 0, 0)
-        } else if (holder is HomeCardsHolder.ExtraCardHolder) {
+        if (holder is HomeCardsHolder.ExtraCardHolder) {
             holder.setItem(cards[position - 1], position == 1)
         }
     }
 
-    override fun onCreateViewHolder(parent:ViewGroup?,
-                                    viewType:Int):RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):RecyclerView.ViewHolder {
         when (viewType) {
             0 -> return HomeCardsHolder.WelcomeCardHolder(
                     parent?.inflate(R.layout.item_welcome_card))

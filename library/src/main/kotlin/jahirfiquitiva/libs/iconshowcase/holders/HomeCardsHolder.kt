@@ -22,30 +22,40 @@ package jahirfiquitiva.libs.iconshowcase.holders
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.view.animation.BounceInterpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.sdsmdg.harjot.rotatingtext.RotatingTextWrapper
+import com.sdsmdg.harjot.rotatingtext.models.Rotatable
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard
+import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
 import jahirfiquitiva.libs.iconshowcase.utils.NetworkUtils
+import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
+import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
 
 class HomeCardsHolder {
 
-    class WelcomeCardHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
-        // val rotatingTexts:RotatingTextWrapper = itemView?.findViewById(R.id.rotating_texts) as RotatingTextWrapper
+    class WelcomeCardHolder(itemView:View?, val icons:Int = 0, val wallpapers:Int = 0,
+                            val widgets:Int = 0):RecyclerView.ViewHolder(itemView) {
+        val rotatingTexts:RotatingTextWrapper = itemView?.findViewById(
+                R.id.rotating_texts) as RotatingTextWrapper
 
-        fun setInfo(icons:Int, wallpapers:Int, widgets:Int) {
-            /*
+        init {
             val context = rotatingTexts.context
             val rotatable:Rotatable = Rotatable(ColorUtils.getMaterialSecondaryTextColor(
                     ThemeUtils.isDarkTheme()), 1250,
                     ResourceUtils.getString(context, R.string.themed_icons, icons.toString()),
-                    ResourceUtils.getString(context, R.string.available_wallpapers, wallpapers.toString()),
+                    ResourceUtils.getString(context, R.string.available_wallpapers,
+                            wallpapers.toString()),
                     ResourceUtils.getString(context, R.string.included_widgets, widgets.toString()))
             rotatable.animationDuration = 500
             rotatable.interpolator = BounceInterpolator()
+            rotatable.size = 14F
             rotatingTexts.setContent("?", rotatable)
-            rotatingTexts.visibility = View.VISIBLE */
+            rotatingTexts.size = 14
+            rotatingTexts.visibility = View.VISIBLE
         }
     }
 

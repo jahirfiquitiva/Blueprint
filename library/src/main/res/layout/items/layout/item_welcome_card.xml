@@ -55,7 +55,7 @@
                     android:lineSpacingMultiplier="1.2"
                     android:text="@string/theme_description"/>
 
-            <TextView
+            <com.sdsmdg.harjot.rotatingtext.RotatingTextWrapper
                     android:id="@+id/rotating_texts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

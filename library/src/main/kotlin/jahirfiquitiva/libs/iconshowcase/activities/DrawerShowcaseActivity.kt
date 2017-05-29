@@ -102,10 +102,10 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
         drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
             return@withOnDrawerItemClickListener navigateToItem(
-                    getNavigationItems()?.get(drawerItem.identifier.toInt()) as NavigationItem)
+                    getNavigationItems()[drawerItem.identifier.toInt()])
         }
 
-        getNavigationItems()?.forEach {
+        getNavigationItems().forEach {
             drawerBuilder.addDrawerItems(
                     PrimaryDrawerItem().withIdentifier(it.id.toLong())
                             .withName(it.title)
@@ -124,7 +124,7 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
         // drawer?.setSelection(id)
     }
 
-    override fun getNavigationItems():Array<NavigationItem>? {
+    override fun getNavigationItems():Array<NavigationItem> {
         return arrayOf(
                 NavigationItem("Home", NavigationItem.DEFAULT_HOME_POSITION, R.string.section_home,
                         R.drawable.ic_home),
@@ -140,7 +140,7 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (currentItemId != 0) navigateToItem(getNavigationItems()?.get(0) as NavigationItem)
+        if (currentItemId != 0) navigateToItem(getNavigationItems()[0])
         else if (drawer?.isDrawerOpen!!) drawer?.closeDrawer()
         else super.onBackPressed()
     }
