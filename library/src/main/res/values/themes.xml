@@ -34,8 +34,8 @@
         <item name="android:textColor">@color/primary_text_light</item>
         <item name="android:textColorPrimary">@color/primary_text_light</item>
         <item name="android:textColorSecondary">@color/secondary_text_light</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:windowBackground">@color/light_bg</item>
+
         <item name="md_title_color">@color/md_dialog_title_light</item>
         <item name="md_content_color">@color/md_dialog_content_light</item>
         <item name="md_positive_color">@color/md_button_text_light</item>
@@ -44,14 +44,6 @@
         <item name="md_background_color">@color/md_background_color_light</item>
 
         <item name="cardBackgroundColor">@color/card_light_background</item>
-        <item name="cardColorBackground">@color/card_light_background</item>
-        <item name="activeDrawablesTintColor">@color/drawable_tint_light</item>
-        <item name="inactiveDrawablesTintColor">@color/inactive_drawable_tint_light</item>
-        <item name="fabTintColor">@color/fab_background_tint_light_theme</item>
-        <item name="toolbarTheme">@style/Toolbar.AppCompat.Responsive.Light</item>
-        <item name="tabsIndicatorColor">@color/tabs_indicator_light</item>
-        <item name="tabsNormalTextColor">@color/tabs_normal_text_light</item>
-        <item name="tabsSelectedTextColor">@color/tabs_selected_text_light</item>
 
         <item name="actionModeStyle">@style/Responsive.ActionMode</item>
         <item name="actionModeCloseButtonStyle">@style/Responsive.ActionButton.CloseMode</item>
@@ -73,8 +65,8 @@
         <item name="android:textColor">@color/primary_text_dark</item>
         <item name="android:textColorPrimary">@color/primary_text_dark</item>
         <item name="android:textColorSecondary">@color/secondary_text_dark</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="android:windowBackground">@color/dark_bg</item>
+
         <item name="md_title_color">@color/md_dialog_title_dark</item>
         <item name="md_content_color">@color/md_dialog_content_dark</item>
         <item name="md_positive_color">@color/md_button_text_dark</item>
@@ -83,14 +75,6 @@
         <item name="md_background_color">@color/md_background_color_dark</item>
 
         <item name="cardBackgroundColor">@color/card_dark_background</item>
-        <item name="cardColorBackground">@color/card_dark_background</item>
-        <item name="activeDrawablesTintColor">@color/drawable_tint_dark</item>
-        <item name="inactiveDrawablesTintColor">@color/inactive_drawable_tint_dark</item>
-        <item name="fabTintColor">@color/fab_background_tint_dark_theme</item>
-        <item name="toolbarTheme">@style/Toolbar.AppCompat.Responsive.Dark</item>
-        <item name="tabsIndicatorColor">@color/tabs_indicator_dark</item>
-        <item name="tabsNormalTextColor">@color/tabs_normal_text_dark</item>
-        <item name="tabsSelectedTextColor">@color/tabs_selected_text_dark</item>
 
         <item name="actionModeStyle">@style/Responsive.ActionMode</item>
         <item name="actionModeCloseButtonStyle">@style/Responsive.ActionButton.CloseMode</item>
@@ -108,11 +92,10 @@
     <style name="AppTheme.Base.Amoled" parent="AppTheme.Base.Dark">
         <item name="colorPrimary">#050505</item>
         <item name="colorPrimaryDark">@android:color/black</item>
-        <item name="cardColorBackground">#101010</item>
+        <item name="cardBackgroundColor">#101010</item>
         <item name="android:windowBackground">@color/amoled_bg</item>
         <!-- <item name="material_drawer_background">#212121</item> -->
         <item name="md_background_color">#050505</item>
-        <item name="fabTintColor">@color/dark_theme_accent</item>
     </style>
 
     <style name="AppTheme.SplashScreen" parent="AppTheme.Base.LightLaunchScreen"/>

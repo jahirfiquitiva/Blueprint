@@ -44,7 +44,6 @@ ext.versions = [
         circleImageView       : '7fd3573',
         bottomBar             : '2.0.6',
         fabTransformation     : '1.0.0',
-        rotatingText          : '1.0.1',
 		subsImageView		  : '3.6.0',
         iaps                  : '1.0.39',
         muzeiApi              : '2.0',

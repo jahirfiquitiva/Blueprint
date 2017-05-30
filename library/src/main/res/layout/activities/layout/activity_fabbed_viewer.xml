@@ -87,7 +87,7 @@
                 android:layout_gravity="end|bottom"
                 android:layout_marginEnd="@dimen/mini_fab_right_margin"
                 android:layout_marginRight="@dimen/mini_fab_right_margin"
-                app:backgroundTint="?attr/fabTintColor"
+                app:backgroundTint="?attr/colorAccent"
                 app:fabSize="mini"
                 app:rippleColor="@color/semitransparent_white"
                 app:srcCompat="@drawable/ic_save"/>
@@ -99,7 +99,7 @@
                 android:layout_gravity="end|bottom"
                 android:layout_marginEnd="@dimen/mini_fab_right_margin"
                 android:layout_marginRight="@dimen/mini_fab_right_margin"
-                app:backgroundTint="?attr/fabTintColor"
+                app:backgroundTint="?attr/colorAccent"
                 app:fabSize="mini"
                 app:rippleColor="@color/semitransparent_white"
                 app:srcCompat="@drawable/ic_check"/>
@@ -111,7 +111,7 @@
                 android:layout_gravity="end|bottom"
                 android:layout_marginEnd="@dimen/mini_fab_right_margin"
                 android:layout_marginRight="@dimen/mini_fab_right_margin"
-                app:backgroundTint="?attr/fabTintColor"
+                app:backgroundTint="?attr/colorAccent"
                 app:fabSize="mini"
                 app:rippleColor="@color/semitransparent_white"
                 app:srcCompat="@drawable/ic_info"/>
@@ -124,7 +124,7 @@
                 android:layout_marginBottom="@dimen/fab_margin"
                 android:layout_marginEnd="@dimen/fab_margin"
                 android:layout_marginRight="@dimen/fab_margin"
-                app:backgroundTint="?attr/fabTintColor"
+                app:backgroundTint="?attr/colorAccent"
                 app:fabSize="normal"
                 app:layout_anchorGravity="end|bottom"
                 app:rippleColor="@color/semitransparent_white"
@@ -137,7 +137,7 @@
             android:layout_height="?actionBarSize"
             android:background="@android:color/transparent"
             android:transitionName="actionBar"
-            android:theme="?attr/toolbarTheme"
+            android:theme="?attr/actionBarTheme"
             app:popupTheme="?attr/actionBarPopupTheme"
             app:contentInsetStart="@dimen/second_keyline"
             tools:ignore="UnusedAttribute"/>

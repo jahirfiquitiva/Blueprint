@@ -24,9 +24,6 @@
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="android:statusBarColor">@color/light_theme_primary_dark</item>
         <item name="android:navigationBarColor">@color/light_theme_navigation_bar</item>
-        <item name="activeDrawablesTintColor">@color/drawable_tint_light</item>
-        <item name="inactiveDrawablesTintColor">@color/inactive_drawable_tint_light</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
@@ -37,9 +34,6 @@
     <style name="AppThemeDark" parent="AppTheme.Base.Dark">
         <item name="android:statusBarColor">@color/dark_theme_primary_dark</item>
         <item name="android:navigationBarColor">@color/dark_theme_navigation_bar</item>
-        <item name="activeDrawablesTintColor">@color/drawable_tint_dark</item>
-        <item name="inactiveDrawablesTintColor">@color/inactive_drawable_tint_dark</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>

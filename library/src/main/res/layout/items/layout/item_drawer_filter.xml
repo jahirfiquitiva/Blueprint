@@ -29,25 +29,53 @@
         android:clipToPadding="false"
         android:descendantFocusability="blocksDescendants"
         android:focusable="true"
-        android:gravity="center_vertical"
-        tools:ignore="Overdraw">
+        android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/filter_name"
-            android:layout_width="0dip"
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:padding="@dimen/lists_padding"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            tools:text="Google"/>
+            android:paddingTop="@dimen/lists_padding"
+            android:paddingBottom="@dimen/lists_padding"
+            android:paddingLeft="@dimen/fab_margin"
+            android:paddingStart="@dimen/fab_margin"
+            android:paddingRight="@dimen/lists_padding"
+            android:paddingEnd="@dimen/lists_padding"
+            android:gravity="center_vertical"
+            tools:ignore="Overdraw">
 
-    <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/filter_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:padding="@dimen/lists_padding"/>
+        <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/filter_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingTop="@dimen/cards_super_small_margin"
+                    android:paddingBottom="@dimen/cards_super_small_margin"
+                    android:paddingStart="@dimen/lists_padding"
+                    android:paddingEnd="@dimen/lists_padding"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:background="#ffcdd2"
+                    tools:text="Google"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/filter_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"/>
+
+    </LinearLayout>
+
+    <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
 
 </LinearLayout>

@@ -20,14 +20,12 @@
 package jahirfiquitiva.libs.iconshowcase.activities
 
 import android.os.Bundle
-import android.support.v7.widget.Toolbar
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.activities.base.InternalBaseShowcaseActivity
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
-import jahirfiquitiva.libs.iconshowcase.utils.Preferences
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 import jahirfiquitiva.libs.iconshowcase.utils.themes.AttributeExtractor
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
@@ -39,31 +37,15 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setupStatusBar(true)
-        prefs = Preferences(this)
         setContentView(R.layout.activity_bottom_bar_showcase)
-        initMainComponents()
+        initMainComponents(savedInstanceState)
         initBottomBar()
-    }
-
-    override fun initToolbar() {
-        super.initToolbar()
-        toolbar?.setOnMenuItemClickListener(
-                Toolbar.OnMenuItemClickListener { item ->
-                    val i = item.itemId
-                    if (i == R.id.switch_theme) {
-                        // switchTheme()
-                        return@OnMenuItemClickListener true
-                    }
-                    return@OnMenuItemClickListener false
-                })
     }
 
     private fun initBottomBar() {
         bottomBar = findViewById(R.id.bottom_navigation) as AHBottomNavigation
         bottomBar?.defaultBackgroundColor = AttributeExtractor.getCardBgColorFrom(this)
         bottomBar?.isBehaviorTranslationEnabled = false
-        // if (fab != null)
-        // bottomBar?.manageFloatingActionButtonBehavior(fab)
         bottomBar?.accentColor = AttributeExtractor.getAccentColorFrom(this)
         bottomBar?.inactiveColor = ColorUtils.getMaterialInactiveIconsColor(
                 ThemeUtils.isDarkTheme())

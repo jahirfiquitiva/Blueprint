@@ -138,6 +138,11 @@
     <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
     <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
 
+
+    <!-- Icons filters -->
+    <string name="filter">Filter</string>
+    <string name="clear">Clear</string>
+
     <!-- Icon search -->
     <string name="search_icons">Search icons…</string>
     <string name="search_x">Search %1$s…</string>

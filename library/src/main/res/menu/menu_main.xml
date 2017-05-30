@@ -31,48 +31,57 @@
             app:showAsAction="always|collapseActionView"
             tools:ignore="AppCompatResource"/>
 
+    <!-- TODO: Change icon with filters icon -->
+    <item
+            android:id="@+id/filters"
+            android:icon="@drawable/ic_select_all"
+            android:title="@string/filter"
+            android:orderInCategory="200"
+            app:showAsAction="ifRoom"
+            tools:ignore="AppCompatResource"/>
+
     <item
             android:id="@+id/select_all"
             android:icon="@drawable/ic_select_all"
             android:title="@string/select_all"
-            android:orderInCategory="200"
-            app:showAsAction="always"
+            android:orderInCategory="300"
+            app:showAsAction="ifRoom"
             tools:ignore="AppCompatResource"/>
 
     <item
             android:id="@+id/columns"
             android:icon="@drawable/ic_columns"
             android:title="@string/columns"
-            android:orderInCategory="300"
-            app:showAsAction="always"
+            android:orderInCategory="400"
+            app:showAsAction="ifRoom"
             tools:ignore="AppCompatResource"/>
 
     <item
             android:id="@+id/refresh"
             android:icon="@drawable/ic_refresh"
             android:title="@string/refresh"
-            android:orderInCategory="400"
-            app:showAsAction="always"
+            android:orderInCategory="500"
+            app:showAsAction="ifRoom"
             tools:ignore="AppCompatResource"/>
 
     <item
             android:id="@+id/help"
             android:title="@string/section_help"
-            android:orderInCategory="500"
+            android:orderInCategory="600"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
     <item
             android:id="@+id/about"
             android:title="@string/section_about"
-            android:orderInCategory="600"
+            android:orderInCategory="700"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
     <item
             android:id="@+id/settings"
             android:title="@string/title_settings"
-            android:orderInCategory="700"
+            android:orderInCategory="800"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
@@ -80,7 +89,7 @@
     <item
             android:id="@+id/switch_theme"
             android:title="Switch Theme"
-            android:orderInCategory="800"
+            android:orderInCategory="900"
             app:showAsAction="never"
             tools:ignore="AppCompatResource,HardcodedText"/>
 

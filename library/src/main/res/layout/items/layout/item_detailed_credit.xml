@@ -48,7 +48,7 @@
                 android:layout_marginLeft="@dimen/cards_content_margin_small"
                 android:layout_marginRight="@dimen/cards_content_margin_small"
                 android:layout_marginTop="@dimen/credits_photo_margin"
-                app:civ_border_color="?attr/cardColorBackground"
+                app:civ_border_color="?attr/cardBackgroundColor"
                 app:civ_border_width="2dp"
                 tools:ignore="ContentDescription"/>
 

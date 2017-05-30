@@ -104,4 +104,53 @@ object IconUtils {
         }
     }
 
+
+    /**
+     * Icon names formatting made by Aidan Follestad (afollestad)
+     */
+    private val SPACE = 1
+    private val CAPS = 2
+    private val CAPS_LOCK = 3
+
+    fun formatText(text:String):String {
+        val sb = StringBuilder()
+        var underscoreMode = 0
+        var foundFirstLetter = false
+        var lastWasLetter = false
+        var index = 0
+        text.toCharArray().forEach {
+            if (Character.isLetterOrDigit(it)) {
+                if (underscoreMode == SPACE) {
+                    sb.append(" ")
+                    underscoreMode = CAPS
+                }
+                if (!foundFirstLetter && underscoreMode == CAPS) {
+                    sb.append(it)
+                } else {
+                    sb.append(
+                            if (index == 0 || underscoreMode > 1) Character.toUpperCase(it) else it)
+                }
+                if (underscoreMode < CAPS_LOCK) underscoreMode = 0
+                foundFirstLetter = true
+                lastWasLetter = true
+            } else if (it == '_') {
+                if (underscoreMode == CAPS_LOCK) {
+                    if (lastWasLetter) {
+                        underscoreMode = SPACE
+                    } else {
+                        sb.append(it)
+                        underscoreMode = 0
+                    }
+                } else {
+                    underscoreMode += 1
+                }
+                lastWasLetter = false
+            }
+            index += 1
+        }
+
+        return sb.toString()
+    }
+
+
 }

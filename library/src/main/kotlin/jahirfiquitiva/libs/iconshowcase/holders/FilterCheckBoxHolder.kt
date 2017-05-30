@@ -21,14 +21,27 @@ package jahirfiquitiva.libs.iconshowcase.holders
 
 import android.support.v7.widget.AppCompatCheckBox
 
-class FilterCheckBoxHolder(var checked:Boolean = false) {
+class FilterCheckBoxHolder {
 
-    fun setCheckedAndApplyTo(checked:Boolean, checkBox:AppCompatCheckBox) {
-        this.checked = checked
-        applyTo(checkBox)
+    var checkBox:AppCompatCheckBox? = null
+    var title:String = ""
+    var listener:StateChangeListener? = null
+
+    fun setup(checkBox:AppCompatCheckBox, title:String, listener:StateChangeListener?) {
+        if (this.checkBox != null) return
+        this.checkBox = checkBox
+        this.title = title
+        this.listener = listener
     }
 
-    fun applyTo(checkBox:AppCompatCheckBox) {
-        checkBox.isChecked = checked
+    fun apply(checked:Boolean, fireFiltersListener:Boolean = true) {
+        checkBox?.isChecked = checked
+        listener?.onStateChanged(checked, title, fireFiltersListener)
+    }
+
+    fun isChecked():Boolean = checkBox?.isChecked ?: false
+
+    interface StateChangeListener {
+        fun onStateChanged(checked:Boolean, title:String, fireFiltersListener:Boolean)
     }
 }

@@ -25,17 +25,9 @@
 
     <style name="Toolbar.Popup.AppCompat.Dark" parent="Theme.AppCompat"/>
 
-    <style name="Toolbar.AppCompat.Responsive.Light" parent="AppTheme.Base">
-        <item name="android:textColorPrimary">@color/toolbar_text_light</item>
-        <item name="android:textColorSecondary">@color/toolbar_text_light</item>
-        <item name="colorControlHighlight">@color/toolbar_text_light</item>
-    </style>
+    <style name="Toolbar.AppCompat.Responsive.Light" parent="AppTheme.Base"/>
 
-    <style name="Toolbar.AppCompat.Responsive.Dark" parent="AppTheme.Base.Dark">
-        <item name="android:textColorPrimary">@color/toolbar_text_dark</item>
-        <item name="android:textColorSecondary">@color/toolbar_text_dark</item>
-        <item name="colorControlHighlight">@color/toolbar_text_dark</item>
-    </style>
+    <style name="Toolbar.AppCompat.Responsive.Dark" parent="AppTheme.Base.Dark"/>
 
     <style name="Responsive.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="maxButtonHeight">48dp</item>

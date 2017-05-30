@@ -42,7 +42,7 @@
                 android:id="@+id/launcherIcon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?attr/cardColorBackground"
+                android:background="?attr/cardBackgroundColor"
                 android:padding="@dimen/launchers_icons_padding"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_na_launcher"

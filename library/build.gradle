@@ -140,9 +140,6 @@ dependencies {
 
     // FAB Transformation
     compile 'konifar:fab-transformation:' + versions.fabTransformation
-
-    // Rotating text
-    compile 'com.sdsmdg.harjot:rotatingtext:' + versions.rotatingText
 	
 	// Subsampling ImageView
 	compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView

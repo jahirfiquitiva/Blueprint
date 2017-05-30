@@ -25,7 +25,7 @@
         style="@style/CardContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/cardColorBackground"
+        android:background="?attr/cardBackgroundColor"
         tools:ignore="Overdraw">
 
     <TextView

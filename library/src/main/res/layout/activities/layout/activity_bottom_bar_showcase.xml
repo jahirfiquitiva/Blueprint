@@ -92,28 +92,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:transitionName="actionBar"
-                    android:theme="?attr/toolbarTheme"
+                    android:theme="?attr/actionBarTheme"
                     app:popupTheme="?attr/actionBarPopupTheme"
                     app:contentInsetStart="@dimen/second_keyline"
                     app:layout_collapseMode="pin"
                     tools:ignore="UnusedAttribute"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
-
-        <android.support.design.widget.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="?attr/colorPrimary"
-                android:visibility="gone"
-                app:tabContentStart="@dimen/tabs_contentInset"
-                app:tabGravity="fill"
-                app:tabIndicatorColor="?attr/tabsIndicatorColor"
-                app:tabMode="scrollable"
-                app:tabSelectedTextColor="?attr/tabsSelectedTextColor"
-                app:tabTextColor="?attr/tabsNormalTextColor"
-                tools:ignore="NewApi,RtlSymmetry,UnusedAttribute"/>
 
     </jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout>
 
@@ -147,7 +132,7 @@
             android:layout_marginEnd="@dimen/fab_margin"
             android:layout_marginBottom="@dimen/fab_with_bottom_bar_margin"
             android:visibility="gone"
-            app:backgroundTint="?attr/fabTintColor"
+            app:backgroundTint="?attr/colorAccent"
             app:fabSize="normal"
             app:rippleColor="@color/semitransparent_white"/>
 

@@ -64,7 +64,7 @@
                 android:layout_height="?actionBarSize"
                 android:layout_marginTop="@dimen/status_bar_height"
                 android:background="@android:color/transparent"
-                android:theme="?attr/toolbarTheme"
+                android:theme="?attr/actionBarTheme"
                 app:popupTheme="?attr/actionBarPopupTheme"
                 app:contentInsetStart="@dimen/second_keyline"/>
 
@@ -77,7 +77,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/iconsB"
             android:layout_gravity="center_vertical"
-            android:background="?attr/cardColorBackground"
+            android:background="?attr/cardBackgroundColor"
             android:minHeight="?actionBarSize"
             android:orientation="horizontal"
             tools:ignore="UnusedAttribute">
@@ -125,7 +125,7 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="center_vertical"
             android:layout_toStartOf="@id/iconsA"
-            android:background="?attr/cardColorBackground"
+            android:background="?attr/cardBackgroundColor"
             android:gravity="center_vertical"
             android:minHeight="?actionBarSize"
             android:orientation="horizontal"

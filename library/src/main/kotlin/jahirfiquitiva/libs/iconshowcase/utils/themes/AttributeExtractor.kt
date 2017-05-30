@@ -30,7 +30,7 @@ object AttributeExtractor {
     private val PRIMARY_DARK = intArrayOf(R.attr.colorPrimaryDark)
     private val PRIMARY = intArrayOf(R.attr.colorPrimary)
     private val ACCENT = intArrayOf(R.attr.colorAccent)
-    private val CARD_BG = intArrayOf(R.attr.cardColorBackground)
+    private val CARD_BG = intArrayOf(R.attr.cardBackgroundColor)
 
     /**
      * Extracts the colorPrimary color attribute of the passing Context's theme

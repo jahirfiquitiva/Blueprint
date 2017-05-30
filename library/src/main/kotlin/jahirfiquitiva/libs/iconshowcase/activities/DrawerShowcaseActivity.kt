@@ -22,7 +22,6 @@ package jahirfiquitiva.libs.iconshowcase.activities
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.widget.TextViewCompat
-import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
@@ -31,7 +30,10 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.activities.base.InternalBaseShowcaseActivity
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
-import jahirfiquitiva.libs.iconshowcase.utils.*
+import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
+import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils
+import jahirfiquitiva.libs.iconshowcase.utils.IconUtils
+import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
 
 open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
@@ -41,23 +43,9 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setupStatusBar(true)
-        prefs = Preferences(this)
         setContentView(R.layout.activity_drawer_showcase)
-        initMainComponents()
+        initMainComponents(savedInstanceState)
         initDrawer(savedInstanceState)
-    }
-
-    override fun initToolbar() {
-        super.initToolbar()
-        toolbar?.setOnMenuItemClickListener(
-                Toolbar.OnMenuItemClickListener { item ->
-                    val i = item.itemId
-                    if (i == R.id.switch_theme) {
-                        // switchTheme()
-                        return@OnMenuItemClickListener true
-                    }
-                    return@OnMenuItemClickListener false
-                })
     }
 
     fun initDrawer(savedInstance:Bundle?) {
@@ -94,8 +82,7 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
 
         val drawerBuilder = DrawerBuilder().withActivity(this)
-        if (toolbar != null)
-            drawerBuilder.withToolbar(toolbar!!)
+        if (getToolbar() != null) drawerBuilder.withToolbar(getToolbar()!!)
         drawerBuilder.withAccountHeader(accountHeader)
                 .withDelayOnDrawerClose(-1)
                 .withShowDrawerOnFirstLaunch(true)
@@ -121,7 +108,6 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
             drawerBuilder.withSavedInstance(savedInstance)
 
         drawer = drawerBuilder.build()
-        // drawer?.setSelection(id)
     }
 
     override fun getNavigationItems():Array<NavigationItem> {

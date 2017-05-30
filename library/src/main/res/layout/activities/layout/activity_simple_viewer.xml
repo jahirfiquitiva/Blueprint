@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:background="@android:color/transparent"
-                android:theme="?attr/toolbarTheme"
+                android:theme="?attr/actionBarTheme"
                 app:popupTheme="?attr/actionBarPopupTheme"
                 app:contentInsetStart="@dimen/second_keyline"/>
 
@@ -77,7 +77,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/iconsB"
             android:layout_gravity="center_vertical"
-            android:background="?attr/cardColorBackground"
+            android:background="?attr/cardBackgroundColor"
             android:minHeight="?actionBarSize"
             android:orientation="horizontal"
             tools:ignore="UnusedAttribute">
@@ -128,7 +128,7 @@
             android:layout_gravity="center_vertical"
             android:layout_toLeftOf="@id/iconsA"
             android:layout_toStartOf="@id/iconsA"
-            android:background="?attr/cardColorBackground"
+            android:background="?attr/cardBackgroundColor"
             android:gravity="center_vertical"
             android:minHeight="?actionBarSize"
             android:orientation="horizontal"
