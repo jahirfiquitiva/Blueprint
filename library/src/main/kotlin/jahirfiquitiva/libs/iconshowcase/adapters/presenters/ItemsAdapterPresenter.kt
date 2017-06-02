@@ -17,12 +17,13 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.holders.lists
+package jahirfiquitiva.libs.iconshowcase.adapters.presenters
 
-import jahirfiquitiva.libs.iconshowcase.models.Icon
-
-class Holder {
-    val iconsList = IconsList()
-
-    class IconsList:BaseListHolder<Icon>()
+interface ItemsAdapterPresenter<T> {
+    fun clearList()
+    fun addAll(items:ArrayList<T>)
+    fun clearAndAddAll(items:ArrayList<T>) {
+        clearList()
+        addAll(items)
+    }
 }

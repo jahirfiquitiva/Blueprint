@@ -109,8 +109,6 @@ abstract class BasicTaskLoader<T>(context:Context,
         // For something like a Cursor, you should close it here.
     }
 
-    abstract fun getTaskId():Int
-
     interface TaskListener {
         fun onTaskStarted()
     }

@@ -17,25 +17,18 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.callbacks
+package jahirfiquitiva.libs.iconshowcase.models.holders.lists
 
-import android.os.Bundle
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.Loader
+abstract class BaseListHolder<D> {
+    var list = ArrayList<D>()
 
-interface SimpleLoaderCallbacks<D>:LoaderManager.LoaderCallbacks<D> {
-    override fun onCreateLoader(id:Int, args:Bundle?):Loader<D> {
-        return buildLoader()
+    fun createList(newList:ArrayList<D>) {
+        list = newList
     }
 
-    override fun onLoaderReset(loader:Loader<D>?) {
-        // Do nothing
-    }
+    fun hasList():Boolean = list.isNotEmpty()
 
-    override fun onLoadFinished(loader:Loader<D>?, data:D) {
-        onDataLoadFinished(data)
+    fun clearList() {
+        list.clear()
     }
-
-    fun buildLoader():Loader<D>
-    fun onDataLoadFinished(data:D)
 }

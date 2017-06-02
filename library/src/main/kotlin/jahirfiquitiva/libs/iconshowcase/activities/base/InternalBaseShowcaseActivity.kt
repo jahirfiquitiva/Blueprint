@@ -41,12 +41,11 @@ import com.konifar.fab_transformation.FabTransformation
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.callbacks.CollapsingToolbarCallback
-import jahirfiquitiva.libs.iconshowcase.callbacks.SimpleLoaderCallbacks
+import jahirfiquitiva.libs.iconshowcase.ui.views.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.iconshowcase.fragments.EmptyFragment
 import jahirfiquitiva.libs.iconshowcase.fragments.HomeFragment
 import jahirfiquitiva.libs.iconshowcase.fragments.IconsFragment
-import jahirfiquitiva.libs.iconshowcase.holders.FilterCheckBoxHolder
+import jahirfiquitiva.libs.iconshowcase.models.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout
@@ -328,18 +327,6 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 
     private fun getIconsFiltersNames():Array<String> {
         return ResourceUtils.getStringArray(this, R.array.icon_filters)
-    }
-
-    fun <D> executeTask(id:Int, callback:SimpleLoaderCallbacks<D>) {
-        try {
-            supportLoaderManager.getLoader<D>(id).stopLoading()
-            supportLoaderManager.destroyLoader(id)
-        } catch (ignored:Exception) {
-        }
-        try {
-            supportLoaderManager.initLoader(id, null, callback)
-        } catch (ignored:Exception) {
-        }
     }
 
     fun getToolbar():Toolbar? = toolbar

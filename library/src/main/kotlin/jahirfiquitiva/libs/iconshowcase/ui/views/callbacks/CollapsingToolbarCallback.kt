@@ -17,7 +17,7 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.callbacks
+package jahirfiquitiva.libs.iconshowcase.ui.views.callbacks
 
 import android.support.design.widget.AppBarLayout
 

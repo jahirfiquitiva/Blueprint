@@ -37,7 +37,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.callbacks.CollapsingToolbarCallback
+import jahirfiquitiva.libs.iconshowcase.ui.views.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
 import jahirfiquitiva.libs.iconshowcase.utils.CoreUtils
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils

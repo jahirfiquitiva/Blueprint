@@ -30,8 +30,6 @@ import kotlin.collections.ArrayList
 class LoadIcons(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<Icon>>(context, listener) {
 
-    override fun getTaskId():Int = 0
-
     override fun loadInBackground():ArrayList<Icon> {
         val icons:ArrayList<Icon> = ArrayList()
         ResourceUtils.getStringArray(context, R.array.icon_filters).forEach {

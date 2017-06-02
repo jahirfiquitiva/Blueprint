@@ -29,7 +29,7 @@ import android.widget.TextView
 import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.holders.FilterCheckBoxHolder
+import jahirfiquitiva.libs.iconshowcase.models.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
 

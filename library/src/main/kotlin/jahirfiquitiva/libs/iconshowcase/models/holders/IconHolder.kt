@@ -17,7 +17,7 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.holders
+package jahirfiquitiva.libs.iconshowcase.models.holders
 
 import android.graphics.Bitmap
 import android.support.v7.widget.RecyclerView
@@ -32,13 +32,11 @@ import jahirfiquitiva.libs.iconshowcase.models.Icon
 class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
 
     var lastPosition = 0
-    var item:Icon? = null
     val icon = itemView?.findViewById(R.id.icon) as ImageView
 
-    fun bind(nItem:Icon, listener:(Icon) -> Unit) = with(itemView) {
-        item = nItem
+    fun bind(item:Icon, listener:(Icon) -> Unit) = with(itemView) {
         Glide.with(itemView?.context)
-                .load(item?.icon)
+                .load(item.icon)
                 .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(object:BitmapImageViewTarget(icon) {
@@ -54,7 +52,7 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
                         }
                     }
                 })
-        setOnClickListener { listener(item as Icon) }
+        setOnClickListener { listener(item) }
     }
 
     private fun clearAnimations() {

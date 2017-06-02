@@ -26,18 +26,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import jahirfiquitiva.libs.iconshowcase.R
+import jahirfiquitiva.libs.iconshowcase.fragments.presenters.BasicFragmentPresenter
 import jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView
 
-class EmptyFragment:Fragment() {
+open class EmptyFragment:Fragment(), BasicFragmentPresenter {
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val content:View = inflater?.inflate(R.layout.section_empty, container, false) as View
-        initRV(content)
+        initUI(content)
         return content
     }
 
-    private fun initRV(content:View) {
+    override fun initUI(content:View) {
         val emptyRecyclerView:EmptyViewRecyclerView =
                 content.findViewById(R.id.empty_rv) as EmptyViewRecyclerView
         emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)

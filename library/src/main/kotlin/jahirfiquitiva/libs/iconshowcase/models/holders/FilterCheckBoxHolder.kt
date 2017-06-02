@@ -17,7 +17,7 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.holders
+package jahirfiquitiva.libs.iconshowcase.models.holders
 
 import android.support.v7.widget.AppCompatCheckBox
 

@@ -17,18 +17,10 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.holders.lists
+package jahirfiquitiva.libs.iconshowcase.fragments.presenters
 
-abstract class BaseListHolder<D> {
-    var list = ArrayList<D>()
+import android.view.View
 
-    fun createList(newList:ArrayList<D>) {
-        list = newList
-    }
-
-    fun hasList():Boolean = list.isNotEmpty()
-
-    fun clearList() {
-        list.clear()
-    }
+interface BasicFragmentPresenter {
+    fun initUI(content:View)
 }

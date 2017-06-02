@@ -19,10 +19,10 @@
 
 package jahirfiquitiva.libs.iconshowcase.fragments
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.Loader
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -31,58 +31,67 @@ import android.view.ViewGroup
 import android.widget.TextView
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.adapters.HomeCardsAdapter
+import jahirfiquitiva.libs.iconshowcase.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard
+import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
+import jahirfiquitiva.libs.iconshowcase.tasks.BasicTaskLoader
+import jahirfiquitiva.libs.iconshowcase.tasks.LoadHomeCards
 import jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView
-import jahirfiquitiva.libs.iconshowcase.utils.*
+import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
+import jahirfiquitiva.libs.iconshowcase.utils.NetworkUtils
 import jahirfiquitiva.libs.iconshowcase.utils.themes.ThemeUtils
-import java.util.*
 
-class HomeFragment:Fragment() {
+class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
+
+    var rv:EmptyViewRecyclerView? = null
+
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val content = inflater?.inflate(R.layout.section_home, container, false) as View
-        initRV(content)
+        initUI(content)
         return content
     }
 
-    private fun initRV(content:View) {
-        val rv = content.findViewById(R.id.home_rv) as EmptyViewRecyclerView
-        rv.emptyView = content.findViewById(R.id.empty_view)
-        rv.textView = content.findViewById(R.id.empty_text) as TextView?
-        rv.updateState(EmptyViewRecyclerView.STATE_LOADING)
+    override fun onViewCreated(view:View?, savedInstanceState:Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        executeTask(context)
+    }
 
-        val cards = ArrayList<HomeCard>()
-        val titles = ResourceUtils.getStringArray(context, R.array.home_list_titles)
-        val descriptions = ResourceUtils.getStringArray(context,
-                R.array.home_list_descriptions)
-        val icons = ResourceUtils.getStringArray(context, R.array.home_list_icons)
-        val urls = ResourceUtils.getStringArray(context, R.array.home_list_links)
-        if (titles.size == descriptions.size && descriptions.size == icons.size
-            && icons.size == urls.size) {
-            val maxSize = (if (titles.size > 4) 4 else titles.size) - 1
-            for (i in 0..maxSize) {
-                val url = urls[i]
-                val isAnApp = url.toLowerCase().startsWith(NetworkUtils.PLAY_STORE_LINK_PREFIX)
-                var isInstalled = false
-                var intent:Intent? = null
-                if (isAnApp) {
-                    val packageName = url.substring(url.lastIndexOf("="))
-                    isInstalled = CoreUtils.isAppInstalled(context, packageName)
-                    intent = context.packageManager.getLaunchIntentForPackage(packageName)
-                }
-                cards.add(HomeCard(titles[i], descriptions[i], urls[i],
-                        IconUtils.getDrawableWithName(context, icons[i]), isAnApp,
-                        isInstalled, intent))
-            }
-        }
-
-        rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+    override fun initUI(content:View) {
+        rv = content.findViewById(R.id.home_rv) as EmptyViewRecyclerView
+        rv?.emptyView = content.findViewById(R.id.empty_view)
+        rv?.textView = content.findViewById(R.id.empty_text) as TextView?
+        rv?.updateState(EmptyViewRecyclerView.STATE_LOADING)
+        rv?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         deco.setDrawable(
                 ColorDrawable(ColorUtils.getMaterialDividerColor(ThemeUtils.isDarkTheme())))
-        rv.addItemDecoration(deco)
-        rv.adapter = HomeCardsAdapter(cards)
-        rv.updateState(EmptyViewRecyclerView.STATE_NORMAL)
+        rv?.addItemDecoration(deco)
+        rv?.adapter = HomeCardsAdapter { onItemClicked(it) }
+    }
+
+    override fun onItemClicked(item:Any) {
+        if (item is HomeCard) {
+            if (item.intent != null) context.startActivity(item.intent)
+            else NetworkUtils.openLink(context, item.url)
+        }
+    }
+
+    override fun getLoaderId():Int = NavigationItem.DEFAULT_HOME_POSITION
+
+    override fun buildLoader():Loader<ArrayList<HomeCard>> = LoadHomeCards(context,
+            object:BasicTaskLoader.TaskListener {
+                override fun onTaskStarted() {
+                    rv?.updateState(EmptyViewRecyclerView.STATE_LOADING)
+                }
+            })
+
+    override fun onDataLoadFinished(data:ArrayList<HomeCard>) {
+        val adapter = rv?.adapter
+        if (adapter is HomeCardsAdapter) {
+            adapter.clearAndAddAll(data)
+            rv?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
+        }
     }
 }

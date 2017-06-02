@@ -29,16 +29,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.activities.base.InternalBaseShowcaseActivity
 import jahirfiquitiva.libs.iconshowcase.adapters.IconsAdapter
-import jahirfiquitiva.libs.iconshowcase.callbacks.SimpleLoaderCallbacks
+import jahirfiquitiva.libs.iconshowcase.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.iconshowcase.models.Icon
+import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.tasks.BasicTaskLoader
 import jahirfiquitiva.libs.iconshowcase.tasks.LoadIcons
 import jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 
-class IconsFragment:Fragment() {
+class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<Icon>> {
 
     var recyclerView:EmptyViewRecyclerView? = null
     var fastScroller:RecyclerFastScroller? = null
@@ -48,36 +48,22 @@ class IconsFragment:Fragment() {
 
         super.onCreateView(inflater, container, savedInstanceState)
         val content = inflater?.inflate(R.layout.extra_icons_grid, container, false) as View
-        if (context is InternalBaseShowcaseActivity) {
-            (context as InternalBaseShowcaseActivity).executeTask(0,
-                    object:SimpleLoaderCallbacks<ArrayList<Icon>> {
-                        override fun buildLoader():Loader<ArrayList<Icon>> {
-                            return LoadIcons(context, object:BasicTaskLoader.TaskListener {
-                                override fun onTaskStarted() {
-                                    recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
-                                }
-                            })
-                        }
-
-                        override fun onDataLoadFinished(data:ArrayList<Icon>) {
-                            if (recyclerView?.adapter is IconsAdapter) {
-                                (recyclerView?.adapter as IconsAdapter).setItems(data)
-                            }
-                            recyclerView?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
-                        }
-                    })
-        }
-        initRV(content)
+        initUI(content)
         return content
     }
 
-    private fun initRV(content:View) {
+    override fun onViewCreated(view:View?, savedInstanceState:Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        executeTask(context)
+    }
+
+    override fun initUI(content:View) {
         recyclerView = content.findViewById(R.id.icons_grid) as EmptyViewRecyclerView
         fastScroller = content.findViewById(R.id.fast_scroller) as RecyclerFastScroller
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.textView = content.findViewById(R.id.empty_text) as TextView?
         recyclerView?.adapter = IconsAdapter {
-            onIconPressed(it)
+            onItemClicked(it)
         }
         val columns = ResourceUtils.getInteger(context, R.integer.icons_grid_width)
         recyclerView?.layoutManager = GridLayoutManager(context, columns,
@@ -85,8 +71,26 @@ class IconsFragment:Fragment() {
         recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
     }
 
-    private fun onIconPressed(icon:Icon) {
-        TODO("Not implemented yet")
+    override fun onItemClicked(item:Any) {
+        if (item is Icon) {
+            TODO("Not implemented yet")
+        }
+    }
+
+    override fun getLoaderId():Int = NavigationItem.DEFAULT_PREVIEWS_POSITION
+
+    override fun buildLoader():Loader<ArrayList<Icon>> = LoadIcons(context,
+            object:BasicTaskLoader.TaskListener {
+                override fun onTaskStarted() {
+                    recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
+                }
+            })
+
+    override fun onDataLoadFinished(data:ArrayList<Icon>) {
+        if (recyclerView?.adapter is IconsAdapter) {
+            (recyclerView?.adapter as IconsAdapter).setItems(data)
+        }
+        recyclerView?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
     }
 
 }

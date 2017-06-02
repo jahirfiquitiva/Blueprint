@@ -17,8 +17,24 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.holders.lists
+package jahirfiquitiva.libs.iconshowcase.adapters
 
-object ListsHolder {
-    val lists = Holder()
+import android.support.v7.widget.RecyclerView
+import jahirfiquitiva.libs.iconshowcase.adapters.presenters.ItemsAdapterPresenter
+
+abstract class BaseListAdapter<T>:RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemsAdapterPresenter<T> {
+
+    val list = ArrayList<T>()
+
+    override fun clearList() {
+        val size = itemCount
+        list.clear()
+        notifyItemRangeRemoved(0, size)
+    }
+
+    override fun addAll(items:ArrayList<T>) {
+        val prevSize = itemCount
+        list.addAll(items)
+        notifyItemRangeInserted(prevSize, items.size)
+    }
 }

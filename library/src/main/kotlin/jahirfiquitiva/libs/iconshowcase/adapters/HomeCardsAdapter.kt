@@ -22,18 +22,16 @@ package jahirfiquitiva.libs.iconshowcase.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.holders.HomeCardsHolder
+import jahirfiquitiva.libs.iconshowcase.models.holders.HomeCardsHolder
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard
 import jahirfiquitiva.libs.iconshowcase.utils.inflate
-import java.util.*
 
-class HomeCardsAdapter(val cards:ArrayList<HomeCard>):
-        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeCardsAdapter(val listener:(HomeCard) -> Unit):BaseListAdapter<HomeCard>() {
 
     override fun onBindViewHolder(holder:RecyclerView.ViewHolder?, position:Int) {
         if (position < 0) return
         if (holder is HomeCardsHolder.ExtraCardHolder) {
-            holder.setItem(cards[position - 1], position == 1)
+            holder.setItem(list[position - 1], position == 1, listener)
         }
     }
 
@@ -46,8 +44,7 @@ class HomeCardsAdapter(val cards:ArrayList<HomeCard>):
         }
     }
 
-    override fun getItemCount():Int = cards.size + 1
+    override fun getItemCount():Int = list.size + 1
 
     override fun getItemViewType(position:Int):Int = position
-
 }

@@ -17,9 +17,8 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.holders
+package jahirfiquitiva.libs.iconshowcase.models.holders
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
@@ -27,7 +26,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard
-import jahirfiquitiva.libs.iconshowcase.utils.NetworkUtils
 
 class HomeCardsHolder {
 
@@ -43,19 +41,13 @@ class HomeCardsHolder {
                 as TextView
         val icon:ImageView = itemView?.findViewById(R.id.home_extra_card_image) as ImageView
 
-        fun setItem(item:HomeCard, showSectionTitle:Boolean) {
+        fun setItem(item:HomeCard, showSectionTitle:Boolean, listener:(HomeCard) -> Unit)
+                = with(itemView) {
             sectionTitle.visibility = if (showSectionTitle) View.VISIBLE else View.GONE
-            root.setOnClickListener { view -> launchIntent(view.context, item) }
             title.text = item.title
             description.text = item.description
             icon.setImageDrawable(item.icon)
-        }
-
-        private fun launchIntent(context:Context, item:HomeCard) {
-            when {
-                item.intent != null -> context.startActivity(item.intent)
-                else -> NetworkUtils.openLink(context, item.url)
-            }
+            setOnClickListener { listener(item) }
         }
     }
 
