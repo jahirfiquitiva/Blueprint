@@ -50,8 +50,7 @@ class HomeFragment:Fragment() {
         val rv = content.findViewById(R.id.home_rv) as EmptyViewRecyclerView
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text) as TextView?
-        rv.state = EmptyViewRecyclerView.STATE_LOADING
-        rv.updateStateViews()
+        rv.updateState(EmptyViewRecyclerView.STATE_LOADING)
 
         val cards = ArrayList<HomeCard>()
         val titles = ResourceUtils.getStringArray(context, R.array.home_list_titles)
@@ -84,7 +83,6 @@ class HomeFragment:Fragment() {
                 ColorDrawable(ColorUtils.getMaterialDividerColor(ThemeUtils.isDarkTheme())))
         rv.addItemDecoration(deco)
         rv.adapter = HomeCardsAdapter(cards)
-        rv.state = EmptyViewRecyclerView.STATE_NORMAL
-        rv.updateStateViews()
+        rv.updateState(EmptyViewRecyclerView.STATE_NORMAL)
     }
 }

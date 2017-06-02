@@ -42,7 +42,6 @@ class EmptyFragment:Fragment() {
                 content.findViewById(R.id.empty_rv) as EmptyViewRecyclerView
         emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)
         emptyRecyclerView.textView = content.findViewById(R.id.empty_text) as TextView?
-        emptyRecyclerView.state = EmptyViewRecyclerView.STATE_EMPTY
-        emptyRecyclerView.updateStateViews()
+        emptyRecyclerView.updateState(EmptyViewRecyclerView.STATE_EMPTY)
     }
 }
