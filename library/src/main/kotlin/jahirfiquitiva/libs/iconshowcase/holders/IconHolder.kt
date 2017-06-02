@@ -35,9 +35,10 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
     var item:Icon? = null
     val icon = itemView?.findViewById(R.id.icon) as ImageView
 
-    fun bind(item:Icon, listener:(Icon) -> Unit) = with(itemView) {
+    fun bind(nItem:Icon, listener:(Icon) -> Unit) = with(itemView) {
+        item = nItem
         Glide.with(itemView?.context)
-                .load(item.icon)
+                .load(item?.icon)
                 .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(object:BitmapImageViewTarget(icon) {
@@ -53,7 +54,7 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
                         }
                     }
                 })
-        setOnClickListener { listener(item) }
+        setOnClickListener { listener(item as Icon) }
     }
 
     private fun clearAnimations() {

@@ -26,8 +26,15 @@ import jahirfiquitiva.libs.iconshowcase.holders.IconHolder
 import jahirfiquitiva.libs.iconshowcase.models.Icon
 import jahirfiquitiva.libs.iconshowcase.utils.inflate
 
-class IconsAdapter(val icons:ArrayList<Icon>,
-                   val listener:(Icon) -> Unit):RecyclerView.Adapter<IconHolder>() {
+class IconsAdapter(val listener:(Icon) -> Unit):RecyclerView.Adapter<IconHolder>() {
+
+    val icons:ArrayList<Icon> = ArrayList()
+
+    fun setItems(nIcons:ArrayList<Icon>) {
+        icons.clear()
+        icons.plus(nIcons)
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount():Int = icons.size
 

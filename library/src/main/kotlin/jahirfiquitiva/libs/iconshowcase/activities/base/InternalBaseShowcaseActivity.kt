@@ -42,8 +42,10 @@ import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.callbacks.CollapsingToolbarCallback
+import jahirfiquitiva.libs.iconshowcase.callbacks.SimpleLoaderCallbacks
 import jahirfiquitiva.libs.iconshowcase.fragments.EmptyFragment
 import jahirfiquitiva.libs.iconshowcase.fragments.HomeFragment
+import jahirfiquitiva.libs.iconshowcase.fragments.IconsFragment
 import jahirfiquitiva.libs.iconshowcase.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout
@@ -71,7 +73,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     private var sheet:View? = null
     private var filtersDrawer:Drawer? = null
     private var iconsFilters:ArrayList<String> = ArrayList()
-    internal var currentItemId = -1
+    internal var currentItemId = - 1
 
     var filtersListener:FiltersListener? = null
 
@@ -142,7 +144,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         toolbar = findViewById(R.id.toolbar) as Toolbar
         menu = toolbar?.menu
         menuInflater.inflate(R.menu.menu_main, menu)
-        ToolbarThemer.tintToolbar(toolbar!!, ColorUtils.getMaterialActiveIconsColor(
+        ToolbarThemer.tintToolbar(toolbar !!, ColorUtils.getMaterialActiveIconsColor(
                 ColorUtils.isDarkColor(AttributeExtractor.getPrimaryColorFrom(this))))
         toolbar?.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
@@ -168,14 +170,14 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         val context = this
         appBarLayout?.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
             override fun onVerticalOffsetChanged(appBar:AppBarLayout?, verticalOffset:Int) {
-                ToolbarThemer.updateToolbarColors(context, toolbar!!, verticalOffset)
+                ToolbarThemer.updateToolbarColors(context, toolbar !!, verticalOffset)
             }
         })
         val wallpaper:ImageView? = findViewById(R.id.toolbarHeader) as ImageView
         val wallManager = WallpaperManager.getInstance(this)
         if (getPickerKey() == 0 && getShortcut().isEmpty()) {
             var drawable:Drawable? = null
-            if (prefs != null && prefs!!.getWallpaperAsToolbarHeaderEnabled()) {
+            if (prefs != null && prefs !!.getWallpaperAsToolbarHeaderEnabled()) {
                 drawable = wallManager?.fastDrawable
             } else {
                 val picName = ResourceUtils.getString(this, R.string.toolbar_picture)
@@ -223,7 +225,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
                                 override fun onStateChanged(checked:Boolean, title:String,
                                                             fireFiltersListener:Boolean) {
                                     if (iconsFilters.contains(title)) {
-                                        if (!checked) {
+                                        if (! checked) {
                                             iconsFilters.remove(title)
                                             if (fireFiltersListener)
                                                 filtersListener?.onFiltersUpdated(iconsFilters)
@@ -256,7 +258,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
                     id == NavigationItem.DEFAULT_HOME_POSITION || id == NavigationItem.DEFAULT_REQUEST_POSITION)
             changeFABAction(id == NavigationItem.DEFAULT_HOME_POSITION)
             appBarLayout?.setExpanded(id == NavigationItem.DEFAULT_HOME_POSITION,
-                    prefs!!.getAnimationsEnabled())
+                    prefs !!.getAnimationsEnabled())
             collapsingToolbar?.title = ResourceUtils.getString(this,
                     if (id == NavigationItem.DEFAULT_HOME_POSITION) R.string.app_name else item.title)
             coordinatorLayout?.allowScroll = id == NavigationItem.DEFAULT_HOME_POSITION
@@ -319,12 +321,25 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     open fun getFragmentForNavigationItem(id:Int):Fragment {
         when (id) {
             NavigationItem.DEFAULT_HOME_POSITION -> return HomeFragment()
+            NavigationItem.DEFAULT_PREVIEWS_POSITION -> return IconsFragment()
             else -> return EmptyFragment()
         }
     }
 
     private fun getIconsFiltersNames():Array<String> {
         return ResourceUtils.getStringArray(this, R.array.icon_filters)
+    }
+
+    fun <D> executeTask(id:Int, callback:SimpleLoaderCallbacks<D>) {
+        try {
+            supportLoaderManager.getLoader<D>(id).stopLoading()
+            supportLoaderManager.destroyLoader(id)
+        } catch (ignored:Exception) {
+        }
+        try {
+            supportLoaderManager.initLoader(id, null, callback)
+        } catch (ignored:Exception) {
+        }
     }
 
     fun getToolbar():Toolbar? = toolbar

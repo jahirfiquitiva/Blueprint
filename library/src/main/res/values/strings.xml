@@ -71,4 +71,7 @@
     <string name="theme_preview1">preview1</string>
     <string name="theme_preview2">preview2</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

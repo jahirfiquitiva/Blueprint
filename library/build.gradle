@@ -140,9 +140,9 @@ dependencies {
 
     // FAB Transformation
     compile 'konifar:fab-transformation:' + versions.fabTransformation
-	
-	// Subsampling ImageView
-	compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView
+
+    // Subsampling ImageView
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView
 
     // In-App Purchases
     compile 'com.anjlab.android.iab.v3:library:' + versions.iaps
@@ -153,6 +153,7 @@ dependencies {
 
     // License Checker
     compile 'com.github.javiersantos:PiracyChecker:' + versions.checker
+    compile 'com.android.support:support-v4:25.3.1'
 }
 
 tasks.whenTaskAdded { task ->

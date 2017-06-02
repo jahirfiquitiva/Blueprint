@@ -9,7 +9,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONTITIONS OF ANY KINT, either express or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
@@ -19,21 +19,21 @@
 
 package jahirfiquitiva.libs.iconshowcase.tasks
 
-import android.content.AsyncTaskLoader
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.support.v4.content.AsyncTaskLoader
 
-abstract class BasicTaskLoader<T>(context:Context?,
-                                  val listener:TaskListener<T>? = null):
+@Suppress("LeakingThis")
+abstract class BasicTaskLoader<T>(context:Context,
+                                  val listener:TaskListener? = null):
         AsyncTaskLoader<T>(context) {
 
     val lastConfig = InterestingConfigChanges()
     var data:T? = null
 
     init {
-        @Suppress("LeakingThis")
         onContentChanged()
     }
 
@@ -53,8 +53,6 @@ abstract class BasicTaskLoader<T>(context:Context?,
         // At this point we can release the resources associated with 'oldTata' if needed.
         // Now that the new result is delivered, we know that it is no longer in use.
         if (oldTata != null) onReleaseResources(oldTata)
-        // Call listener method when task has been completed
-        listener?.onTaskCompleted(this)
     }
 
     /**
@@ -62,7 +60,7 @@ abstract class BasicTaskLoader<T>(context:Context?,
      */
     override fun onStartLoading() {
         // Call listener method when task has started
-        listener?.onTaskStarted(this)
+        listener?.onTaskStarted()
         // If we currently have a result available, deliver it immediately
         if (data != null) deliverResult(data as T)
         // Has something interesting in the configuration changed since we last built the data?
@@ -113,22 +111,21 @@ abstract class BasicTaskLoader<T>(context:Context?,
 
     abstract fun getTaskId():Int
 
-    interface TaskListener<T> {
-        fun onTaskStarted(task:BasicTaskLoader<T>)
-        fun onTaskCompleted(task:BasicTaskLoader<T>)
+    interface TaskListener {
+        fun onTaskStarted()
     }
 
     class InterestingConfigChanges {
         val lastConfiguration = Configuration()
-        var lastTensity:Int = 0
+        var lastDensity:Int = 0
 
         fun applyNewConfig(res:Resources):Boolean {
             val configChanges = lastConfiguration.updateFrom(res.configuration)
-            val densityChanged = lastTensity != res.displayMetrics.densityDpi
+            val densityChanged = lastDensity != res.displayMetrics.densityDpi
             if (densityChanged || (configChanges and
                     (ActivityInfo.CONFIG_LOCALE or ActivityInfo.CONFIG_UI_MODE
                             or ActivityInfo.CONFIG_SCREEN_LAYOUT)) != 0) {
-                lastTensity = res.displayMetrics.densityDpi
+                lastDensity = res.displayMetrics.densityDpi
                 return true
             }
             return false

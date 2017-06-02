@@ -33,8 +33,8 @@ class EmptyViewRecyclerView:RecyclerView {
     var loadingView:View? = null
     var emptyView:View? = null
     var textView:TextView? = null
-    var loadingTextRes:Int = -1
-    var emptyTextRes:Int = -1
+    var loadingTextRes:Int = - 1
+    var emptyTextRes:Int = - 1
 
     var state = STATE_LOADING
 
@@ -43,13 +43,18 @@ class EmptyViewRecyclerView:RecyclerView {
     constructor(context:Context, attributeSet:AttributeSet, defStyleAttr:Int)
             :super(context, attributeSet, defStyleAttr)
 
-    fun updateStateViews() {
+    fun updateState(nState:Int) {
+        state = nState
+        updateStateViews()
+    }
+
+    private fun updateStateViews() {
         when (state) {
             STATE_LOADING -> {
                 loadingView?.visibility = VISIBLE
                 emptyView?.visibility = GONE
                 textView?.text = ResourceUtils.getString(context,
-                        if (loadingTextRes != -1) loadingTextRes else R.string.loading_section)
+                        if (loadingTextRes != - 1) loadingTextRes else R.string.loading_section)
                 visibility = GONE
             }
             STATE_NORMAL -> {
@@ -60,19 +65,17 @@ class EmptyViewRecyclerView:RecyclerView {
                         emptyView?.visibility = GONE
                         visibility = VISIBLE
                     } else {
-                        state = STATE_EMPTY
-                        updateStateViews()
+                        updateState(STATE_EMPTY)
                     }
                 } else {
-                    state = STATE_LOADING
-                    updateStateViews()
+                    updateState(STATE_LOADING)
                 }
             }
             STATE_EMPTY -> {
                 loadingView?.visibility = GONE
                 emptyView?.visibility = VISIBLE
                 textView?.text = ResourceUtils.getString(context,
-                        if (emptyTextRes != -1) emptyTextRes else R.string.empty_section)
+                        if (emptyTextRes != - 1) emptyTextRes else R.string.empty_section)
                 visibility = GONE
             }
         }

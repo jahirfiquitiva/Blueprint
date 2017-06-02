@@ -27,7 +27,7 @@ import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 import java.util.*
 import kotlin.collections.ArrayList
 
-class LoadIcons(context:Context?, listener:TaskListener<ArrayList<Icon>>? = null):
+class LoadIcons(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<Icon>>(context, listener) {
 
     override fun getTaskId():Int = 0
