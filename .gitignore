@@ -76,7 +76,7 @@ proguard/
 #############################################################################
 
 .idea/
-!.idea/copyright
+!/.idea/copyright
 #gradle.properties
 *.iml
 =======
