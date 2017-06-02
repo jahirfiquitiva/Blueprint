@@ -22,28 +22,19 @@ package jahirfiquitiva.libs.iconshowcase.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.models.holders.IconHolder
 import jahirfiquitiva.libs.iconshowcase.models.Icon
+import jahirfiquitiva.libs.iconshowcase.models.holders.IconHolder
 import jahirfiquitiva.libs.iconshowcase.utils.inflate
 
-class IconsAdapter(val listener:(Icon) -> Unit):RecyclerView.Adapter<IconHolder>() {
-
-    val icons:ArrayList<Icon> = ArrayList()
-
-    fun setItems(nIcons:ArrayList<Icon>) {
-        icons.clear()
-        icons.plus(nIcons)
-        notifyDataSetChanged()
-    }
-
-    override fun getItemCount():Int = icons.size
+class IconsAdapter(val listener:(Icon) -> Unit):BaseListAdapter<Icon>() {
 
     override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):IconHolder {
         return IconHolder(parent?.inflate(R.layout.item_icon))
     }
 
-    override fun onBindViewHolder(holder:IconHolder?, position:Int) {
+    override fun onBindViewHolder(holder:RecyclerView.ViewHolder?, position:Int) {
         if (position < 0) return
-        holder?.bind(icons[position], listener)
+        if (holder is IconHolder)
+            holder.bind(list[position], listener)
     }
 }

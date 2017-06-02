@@ -26,6 +26,8 @@ abstract class BaseListAdapter<T>:RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
     val list = ArrayList<T>()
 
+    override fun getItemCount():Int = list.size
+
     override fun clearList() {
         val size = itemCount
         list.clear()

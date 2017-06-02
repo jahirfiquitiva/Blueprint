@@ -110,21 +110,6 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
         drawer = drawerBuilder.build()
     }
 
-    override fun getNavigationItems():Array<NavigationItem> {
-        return arrayOf(
-                NavigationItem("Home", NavigationItem.DEFAULT_HOME_POSITION, R.string.section_home,
-                        R.drawable.ic_home),
-                NavigationItem("Previews", NavigationItem.DEFAULT_PREVIEWS_POSITION,
-                        R.string.section_icons, R.drawable.ic_previews),
-                NavigationItem("Wallpapers", NavigationItem.DEFAULT_WALLPAPERS_POSITION,
-                        R.string.section_wallpapers, R.drawable.ic_wallpapers),
-                NavigationItem("Apply", NavigationItem.DEFAULT_APPLY_POSITION,
-                        R.string.section_apply, R.drawable.ic_apply),
-                NavigationItem("Requests", NavigationItem.DEFAULT_REQUEST_POSITION,
-                        R.string.section_icon_request, R.drawable.ic_request)
-                      )
-    }
-
     override fun onBackPressed() {
         if (currentItemId != 0) navigateToItem(getNavigationItems()[0])
         else if (drawer?.isDrawerOpen!!) drawer?.closeDrawer()

@@ -252,7 +252,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         if (currentItemId == id) return false
         try {
             currentItemId = id
-            updateToolbarMenuItems(getNavigationItems()[id])
+            updateToolbarMenuItems(item)
             changeFABVisibility(
                     id == NavigationItem.DEFAULT_HOME_POSITION || id == NavigationItem.DEFAULT_REQUEST_POSITION)
             changeFABAction(id == NavigationItem.DEFAULT_HOME_POSITION)
@@ -327,6 +327,21 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 
     private fun getIconsFiltersNames():Array<String> {
         return ResourceUtils.getStringArray(this, R.array.icon_filters)
+    }
+
+    override fun getNavigationItems():Array<NavigationItem> {
+        return arrayOf(
+                NavigationItem("Home", NavigationItem.DEFAULT_HOME_POSITION, R.string.section_home,
+                        R.drawable.ic_home),
+                NavigationItem("Previews", NavigationItem.DEFAULT_PREVIEWS_POSITION,
+                        R.string.section_icons, R.drawable.ic_previews),
+                NavigationItem("Wallpapers", NavigationItem.DEFAULT_WALLPAPERS_POSITION,
+                        R.string.section_wallpapers, R.drawable.ic_wallpapers),
+                NavigationItem("Apply", NavigationItem.DEFAULT_APPLY_POSITION,
+                        R.string.section_apply, R.drawable.ic_apply),
+                NavigationItem("Requests", NavigationItem.DEFAULT_REQUEST_POSITION,
+                        R.string.section_icon_request, R.drawable.ic_request)
+                      )
     }
 
     fun getToolbar():Toolbar? = toolbar

@@ -87,10 +87,11 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<Icon>> {
             })
 
     override fun onDataLoadFinished(data:ArrayList<Icon>) {
-        if (recyclerView?.adapter is IconsAdapter) {
-            (recyclerView?.adapter as IconsAdapter).setItems(data)
+        val adapter = recyclerView?.adapter
+        if (adapter is IconsAdapter) {
+            adapter.clearAndAddAll(data)
+            recyclerView?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
         }
-        recyclerView?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
     }
 
 }
