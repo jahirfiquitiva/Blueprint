@@ -21,30 +21,6 @@
 <!--suppress CheckTagEmptyBody -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <!-- Option to enable Log messages-->
-    <bool name="debugging">true</bool>
-
-    <!--
-    Main sections in the app.
-    The Home, donations, credits and settings, sections will be added automatically
-
-    Other possible tabs:
-    Previews, Wallpapers, Requests, Apply, FAQs, Zooper, Kustom
-
-    Make sure you add the tabs with the exact word as the options listed, with the proper caps as well
-    Make sure you have an Apply section!
-    Make sure you DO NOT translate the tabs names. They are already translated.
-    -->
-    <string-array name="drawer_sections">
-        <item>Previews</item>
-        <item>Wallpapers</item>
-        <item>Requests</item>
-        <item>Apply</item>
-        <item>FAQs</item>
-        <item>Zooper</item>
-        <item>Kustom</item>
-    </string-array>
-
     <!-- Specify splashscreen color
     Can be LightLaunchScreen or DarkLaunchScreen
     -->
@@ -90,20 +66,8 @@
         -->
     </string-array>
 
-    <!-- PAYPAL STUFF - SET BOTH STRINGS, OR IT WON'T WORK -->
-    <string name="paypal_email"></string>
-    <!-- Paypal currency code (ie USD, or CAD); make sure this is a valid code-->
-    <string name="paypal_currency_code"></string>
-
 
     <!-- /*/*/*/*/*/*/*/*/*/*/*/*/ HOME/MAIN SECTION CONFIGURATION /*/*/*/*/*/*/*/*/*/*/*/*/-->
-
-    <!--
-    Do you want the icons in toolbar to be randomized?
-    True, means yes.
-    False, means no.
-    -->
-    <bool name="shuffle_toolbar_icons">true</bool>
 
     <!--
     Do you want to let user see the device wallpaper in toolbar?
@@ -150,17 +114,10 @@
 
     <!--  /*/*/*/*/*/*/*/*/*/*/*/*/ ICONS/PREVIEWS SECTION CONFIGURATION /*/*/*/*/*/*/*/*/*/*/*/*/ -->
 
-    <!-- Show button in changelog to check new icons?
-        True, means yes.
-        False, means no.
-        -->
-    <bool name="show_check_new_icons_button">true</bool>
-
-    <!-- Do you want icons be sorted alphabetically and organized automatically, removing duplicates too?
-        True, means yes.
-        False, means no.
-        -->
-    <bool name="organize_icons_lists">true</bool>
+    <!-- Do you want the app to read the icons from res/xml/drawable.xml ? (true)
+           Or do you prefer the icons to be loaded from res/values/icon_pack.xml ? (false)
+    -->
+    <bool name="xml_drawable_enabled">true</bool>
 
     <!--
     Do you want the "ALL ICONS" tab to be generated automatically?

@@ -19,7 +19,6 @@
   -->
 
 <resources>
-
     <version>1</version>
 
     <category title="Latest"/>
@@ -67,5 +66,4 @@
     <item drawable="icons_everywhere"/>
     <item drawable="second_icon"/>
     <item drawable="this_is_an_icon"/>
-
 </resources>

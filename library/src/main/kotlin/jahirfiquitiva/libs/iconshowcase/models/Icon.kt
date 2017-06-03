@@ -21,4 +21,6 @@ package jahirfiquitiva.libs.iconshowcase.models
 
 import android.support.annotation.DrawableRes
 
-data class Icon(val name:String, @DrawableRes val icon:Int)
+data class Icon(val name:String, @DrawableRes val icon:Int):Comparable<Icon> {
+    override fun compareTo(other:Icon):Int = this.name.compareTo(other.name)
+}

@@ -41,18 +41,18 @@ abstract class BasicTaskLoader<T>(context:Context,
      * Called when there is new data to deliver to the client. The super class will take care of
      * delivering it. The implementation here just adds a little more logic.
      */
-    override fun deliverResult(newTata:T) {
+    override fun deliverResult(newData:T) {
         // An async query came in while the loader is stopped. We don't need the result.
-        if (isReset && newTata != null) onReleaseResources(newTata)
-        val oldTata = data
-        this.data = newTata
+        if (isReset && newData != null) onReleaseResources(newData)
+        val oldData = data
+        data = newData
         if (isStarted) {
             // If the Loader is currently started, we can immediately deliver its results
             super.deliverResult(data)
         }
-        // At this point we can release the resources associated with 'oldTata' if needed.
+        // At this point we can release the resources associated with 'oldData' if needed.
         // Now that the new result is delivered, we know that it is no longer in use.
-        if (oldTata != null) onReleaseResources(oldTata)
+        if (oldData != null) onReleaseResources(oldData)
     }
 
     /**
@@ -96,7 +96,7 @@ abstract class BasicTaskLoader<T>(context:Context,
         // At this point we can release the resources associated with 'data' if needed
         if (data != null) {
             onReleaseResources(data as T)
-            this.data = null
+            data = null
         }
     }
 

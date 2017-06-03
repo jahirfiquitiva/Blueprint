@@ -35,7 +35,7 @@ import jahirfiquitiva.libs.iconshowcase.fragments.presenters.ItemsFragmentPresen
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.tasks.BasicTaskLoader
-import jahirfiquitiva.libs.iconshowcase.tasks.LoadHomeCards
+import jahirfiquitiva.libs.iconshowcase.tasks.HomeCardsLoader
 import jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView
 import jahirfiquitiva.libs.iconshowcase.utils.ColorUtils
 import jahirfiquitiva.libs.iconshowcase.utils.NetworkUtils
@@ -80,7 +80,7 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 
     override fun getLoaderId():Int = NavigationItem.DEFAULT_HOME_POSITION
 
-    override fun buildLoader():Loader<ArrayList<HomeCard>> = LoadHomeCards(context,
+    override fun buildLoader():Loader<ArrayList<HomeCard>> = HomeCardsLoader(context,
             object:BasicTaskLoader.TaskListener {
                 override fun onTaskStarted() {
                     rv?.updateState(EmptyViewRecyclerView.STATE_LOADING)

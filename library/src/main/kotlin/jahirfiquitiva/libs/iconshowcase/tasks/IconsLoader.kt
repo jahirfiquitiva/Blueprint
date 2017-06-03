@@ -22,36 +22,27 @@ package jahirfiquitiva.libs.iconshowcase.tasks
 import android.content.Context
 import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.models.Icon
+import jahirfiquitiva.libs.iconshowcase.models.IconsCategory
 import jahirfiquitiva.libs.iconshowcase.utils.IconUtils
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
-import java.util.*
-import kotlin.collections.ArrayList
 
-class LoadIcons(context:Context, listener:TaskListener? = null):
-        BasicTaskLoader<ArrayList<Icon>>(context, listener) {
+class IconsLoader(context:Context, listener:TaskListener? = null):
+        BasicTaskLoader<ArrayList<IconsCategory>>(context, listener) {
 
-    override fun loadInBackground():ArrayList<Icon> {
-        val icons:ArrayList<Icon> = ArrayList()
+    override fun loadInBackground():ArrayList<IconsCategory> {
+        val categories:ArrayList<IconsCategory> = ArrayList()
         ResourceUtils.getStringArray(context, R.array.icon_filters).forEach {
-            var list:ArrayList<String> = ArrayList()
+            val icons:ArrayList<Icon> = ArrayList()
+            val list:ArrayList<String> = ArrayList()
             list.plus(ResourceUtils.getStringArray(context,
                     context.resources.getIdentifier(it, "array", context.packageName)))
-            list = sortIconsNames(list)
             list.forEach {
-                icons.plus(Icon(it, IconUtils.getIconResourceWithName(context, it)))
+                icons.plus(Icon(IconUtils.formatText(it),
+                        IconUtils.getIconResourceWithName(context, it)))
             }
+            categories.add(IconsCategory(it, IconUtils.sortIconsList(icons)))
         }
-        return icons
-    }
-
-    private fun sortIconsNames(icons:ArrayList<String>):ArrayList<String> {
-        icons.sort()
-        val noDuplicates:Set<String> = HashSet()
-        noDuplicates.plus(icons)
-        icons.clear()
-        icons.plus(noDuplicates)
-        icons.sort()
-        return icons
+        return categories
     }
 
 }

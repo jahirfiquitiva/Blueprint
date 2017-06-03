@@ -29,8 +29,10 @@ import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.FileProvider
 import android.support.v4.content.res.ResourcesCompat
+import jahirfiquitiva.libs.iconshowcase.models.Icon
 import java.io.File
 import java.io.FileOutputStream
+import java.util.*
 
 object IconUtils {
     fun getBitmapWithName(context:Context, name:String):Bitmap? = getBitmapDrawableWithName(context,
@@ -90,6 +92,16 @@ object IconUtils {
         return uri
     }
 
+    fun sortIconsList(icons:ArrayList<Icon>):ArrayList<Icon> {
+        icons.sort()
+        val noDuplicates:Set<Icon> = HashSet()
+        noDuplicates.plus(icons)
+        icons.clear()
+        icons.plus(noDuplicates)
+        icons.sort()
+        return icons
+    }
+
     private fun getUriFromResource(context:Context, resID:Int):Uri =
             Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
                       context.resources.getResourcePackageName(resID) + '/' +
@@ -124,7 +136,7 @@ object IconUtils {
                     sb.append(" ")
                     underscoreMode = CAPS
                 }
-                if (!foundFirstLetter && underscoreMode == CAPS) {
+                if (! foundFirstLetter && underscoreMode == CAPS) {
                     sb.append(it)
                 } else {
                     sb.append(

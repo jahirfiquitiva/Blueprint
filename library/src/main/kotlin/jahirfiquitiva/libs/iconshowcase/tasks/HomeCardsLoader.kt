@@ -28,7 +28,7 @@ import jahirfiquitiva.libs.iconshowcase.utils.IconUtils
 import jahirfiquitiva.libs.iconshowcase.utils.NetworkUtils
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 
-class LoadHomeCards(context:Context, listener:TaskListener? = null):
+class HomeCardsLoader(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<HomeCard>>(context, listener) {
 
     override fun loadInBackground():ArrayList<HomeCard> {

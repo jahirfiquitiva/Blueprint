@@ -45,7 +45,7 @@ import jahirfiquitiva.libs.iconshowcase.ui.views.callbacks.CollapsingToolbarCall
 import jahirfiquitiva.libs.iconshowcase.fragments.EmptyFragment
 import jahirfiquitiva.libs.iconshowcase.fragments.HomeFragment
 import jahirfiquitiva.libs.iconshowcase.fragments.IconsFragment
-import jahirfiquitiva.libs.iconshowcase.models.holders.FilterCheckBoxHolder
+import jahirfiquitiva.libs.iconshowcase.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout

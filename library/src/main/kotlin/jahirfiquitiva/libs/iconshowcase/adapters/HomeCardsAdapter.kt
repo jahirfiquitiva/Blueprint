@@ -22,7 +22,7 @@ package jahirfiquitiva.libs.iconshowcase.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.models.holders.HomeCardsHolder
+import jahirfiquitiva.libs.iconshowcase.holders.HomeCardsHolder
 import jahirfiquitiva.libs.iconshowcase.models.HomeCard
 import jahirfiquitiva.libs.iconshowcase.utils.inflate
 

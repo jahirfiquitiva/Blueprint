@@ -17,24 +17,6 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.adapters
+package jahirfiquitiva.libs.iconshowcase.models
 
-import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup
-import jahirfiquitiva.libs.iconshowcase.R
-import jahirfiquitiva.libs.iconshowcase.models.Icon
-import jahirfiquitiva.libs.iconshowcase.holders.IconHolder
-import jahirfiquitiva.libs.iconshowcase.utils.inflate
-
-class IconsAdapter(val listener:(Icon) -> Unit):BaseListAdapter<Icon>() {
-
-    override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):IconHolder {
-        return IconHolder(parent?.inflate(R.layout.item_icon))
-    }
-
-    override fun onBindViewHolder(holder:RecyclerView.ViewHolder?, position:Int) {
-        if (position < 0) return
-        if (holder is IconHolder)
-            holder.bind(list[position], listener)
-    }
-}
+data class IconsCategory(val title:String, val icons:ArrayList<Icon> = ArrayList())

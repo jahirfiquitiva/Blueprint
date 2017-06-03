@@ -17,8 +17,18 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.models.holders.lists
+package jahirfiquitiva.libs.iconshowcase.models.lists
 
-object ListsHolder {
-    val lists = Holder()
+abstract class BaseListHolder<D> {
+    var list = ArrayList<D>()
+
+    fun createList(newList:ArrayList<D>) {
+        list = newList
+    }
+
+    fun hasList():Boolean = list.isNotEmpty()
+
+    fun clearList() {
+        list.clear()
+    }
 }

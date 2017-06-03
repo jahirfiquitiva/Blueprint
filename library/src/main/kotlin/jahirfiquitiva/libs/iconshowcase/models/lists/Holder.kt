@@ -17,12 +17,12 @@
  *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
  */
 
-package jahirfiquitiva.libs.iconshowcase.models.holders.lists
+package jahirfiquitiva.libs.iconshowcase.models.lists
 
-import jahirfiquitiva.libs.iconshowcase.models.Icon
+import jahirfiquitiva.libs.iconshowcase.models.IconsCategory
 
 class Holder {
     val iconsList = IconsList()
 
-    class IconsList:BaseListHolder<Icon>()
+    class IconsList:BaseListHolder<IconsCategory>()
 }

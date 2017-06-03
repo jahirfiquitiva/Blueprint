@@ -32,13 +32,16 @@ import jahirfiquitiva.libs.iconshowcase.R
 import jahirfiquitiva.libs.iconshowcase.adapters.IconsAdapter
 import jahirfiquitiva.libs.iconshowcase.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.iconshowcase.models.Icon
+import jahirfiquitiva.libs.iconshowcase.models.IconsCategory
 import jahirfiquitiva.libs.iconshowcase.models.NavigationItem
 import jahirfiquitiva.libs.iconshowcase.tasks.BasicTaskLoader
-import jahirfiquitiva.libs.iconshowcase.tasks.LoadIcons
+import jahirfiquitiva.libs.iconshowcase.tasks.IconsLoader
+import jahirfiquitiva.libs.iconshowcase.tasks.XMLIconsLoader
 import jahirfiquitiva.libs.iconshowcase.ui.views.EmptyViewRecyclerView
+import jahirfiquitiva.libs.iconshowcase.utils.IconUtils
 import jahirfiquitiva.libs.iconshowcase.utils.ResourceUtils
 
-class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<Icon>> {
+class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>> {
 
     var recyclerView:EmptyViewRecyclerView? = null
     var fastScroller:RecyclerFastScroller? = null
@@ -69,6 +72,7 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<Icon>> {
         recyclerView?.layoutManager = GridLayoutManager(context, columns,
                 GridLayoutManager.VERTICAL, false)
         recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
+        fastScroller?.attachRecyclerView(recyclerView)
     }
 
     override fun onItemClicked(item:Any) {
@@ -79,17 +83,32 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<Icon>> {
 
     override fun getLoaderId():Int = NavigationItem.DEFAULT_PREVIEWS_POSITION
 
-    override fun buildLoader():Loader<ArrayList<Icon>> = LoadIcons(context,
-            object:BasicTaskLoader.TaskListener {
-                override fun onTaskStarted() {
-                    recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
-                }
-            })
+    override fun buildLoader():Loader<ArrayList<IconsCategory>> {
+        if (ResourceUtils.getBoolean(context, R.bool.xml_drawable_enabled)) {
+            return XMLIconsLoader(context,
+                    object:BasicTaskLoader.TaskListener {
+                        override fun onTaskStarted() {
+                            recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
+                        }
+                    })
+        } else {
+            return IconsLoader(context,
+                    object:BasicTaskLoader.TaskListener {
+                        override fun onTaskStarted() {
+                            recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
+                        }
+                    })
+        }
+    }
 
-    override fun onDataLoadFinished(data:ArrayList<Icon>) {
+    override fun onDataLoadFinished(data:ArrayList<IconsCategory>) {
         val adapter = recyclerView?.adapter
         if (adapter is IconsAdapter) {
-            adapter.clearAndAddAll(data)
+            val icons = ArrayList<Icon>()
+            data.forEach {
+                icons.addAll(it.icons)
+            }
+            adapter.clearAndAddAll(IconUtils.sortIconsList(icons))
             recyclerView?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
         }
     }
