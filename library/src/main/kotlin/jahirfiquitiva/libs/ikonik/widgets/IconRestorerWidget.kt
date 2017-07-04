@@ -27,6 +27,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.Toast
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.activities.LauncherIconRestorerActivity
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
 

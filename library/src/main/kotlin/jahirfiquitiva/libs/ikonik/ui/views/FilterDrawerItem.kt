@@ -28,6 +28,7 @@ import android.view.View
 import android.widget.TextView
 import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils

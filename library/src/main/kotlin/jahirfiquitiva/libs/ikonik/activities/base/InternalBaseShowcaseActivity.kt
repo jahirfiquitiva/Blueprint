@@ -40,6 +40,7 @@ import android.widget.Toast
 import com.konifar.fab_transformation.FabTransformation
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.fragments.EmptyFragment
 import jahirfiquitiva.libs.ikonik.fragments.HomeFragment
 import jahirfiquitiva.libs.ikonik.fragments.IconsFragment

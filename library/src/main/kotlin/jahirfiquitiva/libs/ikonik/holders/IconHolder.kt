@@ -26,6 +26,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.BitmapImageViewTarget
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.Icon
 
 class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {

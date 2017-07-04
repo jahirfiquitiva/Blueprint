@@ -26,6 +26,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.WindowManager
 import com.github.javiersantos.piracychecker.PiracyChecker
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.NavigationItem
 import jahirfiquitiva.libs.ikonik.utils.IntentUtils
 import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils

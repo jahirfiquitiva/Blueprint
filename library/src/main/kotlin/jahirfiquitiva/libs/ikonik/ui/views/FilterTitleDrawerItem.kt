@@ -23,6 +23,7 @@ import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
+import jahirfiquitiva.libs.ikonik.R
 
 class FilterTitleDrawerItem:BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
 

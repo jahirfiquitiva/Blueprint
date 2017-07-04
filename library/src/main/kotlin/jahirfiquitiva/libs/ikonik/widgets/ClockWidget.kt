@@ -26,6 +26,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 
 class ClockWidget:AppWidgetProvider() {

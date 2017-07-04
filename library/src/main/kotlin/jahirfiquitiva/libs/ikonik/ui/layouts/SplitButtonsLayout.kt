@@ -25,6 +25,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import jahirfiquitiva.libs.ikonik.R
 
 class SplitButtonsLayout:LinearLayout {
 

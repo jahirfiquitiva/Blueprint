@@ -22,6 +22,7 @@ package jahirfiquitiva.libs.ikonik.activities
 import android.os.Bundle
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.activities.base.InternalBaseShowcaseActivity
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils

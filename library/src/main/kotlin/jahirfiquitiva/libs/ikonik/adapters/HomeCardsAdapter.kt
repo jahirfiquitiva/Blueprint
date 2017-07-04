@@ -21,6 +21,7 @@ package jahirfiquitiva.libs.ikonik.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.holders.HomeCardsHolder
 import jahirfiquitiva.libs.ikonik.models.HomeCard
 import jahirfiquitiva.libs.ikonik.utils.inflate

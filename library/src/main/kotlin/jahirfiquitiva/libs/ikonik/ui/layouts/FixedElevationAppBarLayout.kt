@@ -22,6 +22,7 @@ package jahirfiquitiva.libs.ikonik.ui.layouts
 import android.content.Context
 import android.support.design.widget.AppBarLayout
 import android.util.AttributeSet
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
 

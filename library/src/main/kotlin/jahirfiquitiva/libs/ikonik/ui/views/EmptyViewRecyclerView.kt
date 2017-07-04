@@ -24,6 +24,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
 import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils

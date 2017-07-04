@@ -28,6 +28,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.adapters.HomeCardsAdapter
 import jahirfiquitiva.libs.ikonik.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.ikonik.models.HomeCard

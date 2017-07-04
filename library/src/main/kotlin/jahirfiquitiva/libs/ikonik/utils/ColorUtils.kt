@@ -28,7 +28,8 @@ import android.support.annotation.ColorRes
 import android.support.annotation.FloatRange
 import android.support.v4.content.ContextCompat
 import android.support.v7.graphics.Palette
-import java.util.*
+import jahirfiquitiva.libs.ikonik.R
+import java.util.Collections
 
 object ColorUtils {
 

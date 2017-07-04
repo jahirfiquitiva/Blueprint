@@ -36,12 +36,13 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.ui.views.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
 import java.lang.reflect.Field
-import java.util.*
+import java.util.ArrayList
 
 object ToolbarThemer {
     fun updateToolbarColors(activity:AppCompatActivity, toolbar:Toolbar, offset:Int) {

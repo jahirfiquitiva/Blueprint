@@ -36,6 +36,7 @@ import android.support.v4.view.ViewCompat
 import android.support.v7.widget.SwitchCompat
 import android.view.View
 import android.widget.*
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 
 /**

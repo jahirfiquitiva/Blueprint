@@ -28,6 +28,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import jahirfiquitiva.libs.ikonik.R
 
 fun ViewGroup.inflate(layoutId:Int, attachToRoot:Boolean = false):View =
         LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)

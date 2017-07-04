@@ -21,6 +21,7 @@ package jahirfiquitiva.libs.ikonik.tasks
 
 import android.content.Context
 import android.content.Intent
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.HomeCard
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 import jahirfiquitiva.libs.ikonik.utils.IconUtils

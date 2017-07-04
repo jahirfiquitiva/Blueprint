@@ -22,6 +22,7 @@ package jahirfiquitiva.libs.ikonik.utils
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Environment
+import jahirfiquitiva.libs.ikonik.R
 
 class Preferences(val context:Context) {
     private val PREFERENCES_NAME = "dashboard_preferences"

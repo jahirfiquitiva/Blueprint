@@ -20,6 +20,7 @@
 package jahirfiquitiva.libs.ikonik.tasks
 
 import android.content.Context
+import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.Icon
 import jahirfiquitiva.libs.ikonik.models.IconsCategory
 import jahirfiquitiva.libs.ikonik.utils.IconUtils
