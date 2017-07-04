@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~ Copyright (c) 2017. Jahir Fiquitiva
   ~
   ~ Licensed under the CreativeCommons Attribution-ShareAlike
   ~ 4.0 International License. You may not use this file except in compliance
@@ -15,7 +15,7 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
   -->
 
 <ca.allanwang.capsule.library.custom.CapsuleCoordinatorLayout
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout
+    <jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:clipChildren="false"
@@ -43,7 +43,7 @@
                 app:popupTheme="?attr/actionBarPopupTheme"
                 app:layout_scrollFlags="enterAlways"/>
 
-    </jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout>
+    </jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
             android:id="@+id/content"

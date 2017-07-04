@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~ Copyright (c) 2017. Jahir Fiquitiva
   ~
   ~ Licensed under the CreativeCommons Attribution-ShareAlike
   ~ 4.0 International License. You may not use this file except in compliance
@@ -15,127 +15,11 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
   -->
 
-<android.support.v7.widget.GridLayout
+<android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/iconsRow"
-        style="@style/PreviewContent"
+        android:id="@+id/toolbar_icons_grid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/icons_preview_row"
-        android:layout_marginRight="@dimen/icons_preview_row"
-        android:layout_marginTop="@dimen/status_bar_height"
-        android:gravity="center"
-        app:alignmentMode="alignBounds"
-        app:orientation="horizontal">
-
-    <ImageView
-            android:id="@+id/iconOne"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/lists_padding"
-            android:src="@drawable/ic_na_launcher"
-            android:visibility="invisible"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            tools:ignore="ContentDescription"/>
-
-    <ImageView
-            android:id="@+id/iconTwo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/lists_padding"
-            android:src="@drawable/ic_na_launcher"
-            android:visibility="invisible"
-            app:layout_column="1"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            tools:ignore="ContentDescription"/>
-
-    <ImageView
-            android:id="@+id/iconThree"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/lists_padding"
-            android:src="@drawable/ic_na_launcher"
-            android:visibility="invisible"
-            app:layout_column="2"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            tools:ignore="ContentDescription"/>
-
-    <ImageView
-            android:id="@+id/iconFour"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/lists_padding"
-            android:src="@drawable/ic_na_launcher"
-            android:visibility="invisible"
-            app:layout_column="3"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            tools:ignore="ContentDescription"/>
-
-    <ImageView
-            android:id="@+id/iconFive"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/lists_padding"
-            android:src="@drawable/ic_na_launcher"
-            android:visibility="gone"
-            app:layout_column="4"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            tools:ignore="ContentDescription"/>
-
-    <ImageView
-            android:id="@+id/iconSix"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/lists_padding"
-            android:src="@drawable/ic_na_launcher"
-            android:visibility="gone"
-            app:layout_column="5"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            tools:ignore="ContentDescription"/>
-
-    <ImageView
-            android:id="@+id/iconSeven"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/lists_padding"
-            android:src="@drawable/ic_na_launcher"
-            android:visibility="gone"
-            app:layout_column="6"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            tools:ignore="ContentDescription"/>
-
-    <ImageView
-            android:id="@+id/iconEight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/lists_padding"
-            android:src="@drawable/ic_na_launcher"
-            android:visibility="gone"
-            app:layout_column="7"
-            app:layout_columnWeight="1"
-            app:layout_row="0"
-            tools:ignore="ContentDescription"/>
-
-</android.support.v7.widget.GridLayout>
+        android:layout_height="match_parent"/>

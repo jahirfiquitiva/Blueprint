@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~ Copyright (c) 2017. Jahir Fiquitiva
   ~
   ~ Licensed under the CreativeCommons Attribution-ShareAlike
   ~ 4.0 International License. You may not use this file except in compliance
@@ -15,7 +15,7 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
   -->
 
 <FrameLayout
@@ -25,14 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
+    <jahirfiquitiva.libs.ikonik.ui.views.SquaredImageView
             android:id="@+id/wall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription, UnusedAttribute"/>
 
-    <jahirfiquitiva.libs.iconshowcase.ui.views.SquaredImageView
+    <jahirfiquitiva.libs.ikonik.ui.views.SquaredImageView
             android:id="@+id/preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~ Copyright (c) 2017. Jahir Fiquitiva
   ~
   ~ Licensed under the CreativeCommons Attribution-ShareAlike
   ~ 4.0 International License. You may not use this file except in compliance
@@ -16,10 +16,10 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
   -->
 
-<jahirfiquitiva.libs.iconshowcase.ui.views.IconShowcaseCardView
+<jahirfiquitiva.libs.ikonik.ui.views.IconShowcaseCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -80,7 +80,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 tools:text="I am a graphic designer, I love Android, and obviously, this awesome dashboard."/>
 
-        <jahirfiquitiva.libs.iconshowcase.ui.layouts.SplitButtonsLayout
+        <jahirfiquitiva.libs.ikonik.ui.layouts.SplitButtonsLayout
                 android:id="@+id/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,4 +95,4 @@
 
     </RelativeLayout>
 
-</jahirfiquitiva.libs.iconshowcase.ui.views.IconShowcaseCardView>
+</jahirfiquitiva.libs.ikonik.ui.views.IconShowcaseCardView>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.  Jahir Fiquitiva
+ * Copyright (c) 2017. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -14,11 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- *   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+ * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
  */
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 apply from: './dependencies.gradle'
 
 buildscript {
@@ -31,7 +30,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:' + versions.gradlePlugin
-		classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:' + versions.kotlin
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:' + versions.kotlin
         classpath 'com.github.dcendents:android-maven-gradle-plugin:' + versions.libPubPlugin
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -43,7 +42,7 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
-        maven { url "https://jitpack.io" }
+        maven { url 'https://jitpack.io' }
         maven { url 'https://maven.google.com' }
     }
 }

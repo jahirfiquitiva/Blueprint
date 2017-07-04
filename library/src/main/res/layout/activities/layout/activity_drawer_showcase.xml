@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2017.  Jahir Fiquitiva
+  ~ Copyright (c) 2017. Jahir Fiquitiva
   ~
   ~ Licensed under the CreativeCommons Attribution-ShareAlike
   ~ 4.0 International License. You may not use this file except in compliance
@@ -14,9 +14,9 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~   https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
   -->
-<jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout
+<jahirfiquitiva.libs.ikonik.ui.layouts.CustomCoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -25,7 +25,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-    <jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout
+    <jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
-    </jahirfiquitiva.libs.iconshowcase.ui.layouts.FixedElevationAppBarLayout>
+    </jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout>
 
     <FrameLayout
             android:id="@+id/fragments_container"
@@ -102,7 +102,7 @@
             android:clipChildren="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <jahirfiquitiva.libs.iconshowcase.ui.views.CounterFab
+    <jahirfiquitiva.libs.ikonik.ui.views.CounterFab
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,4 +118,4 @@
             app:fabSize="normal"
             app:rippleColor="@color/semitransparent_white"/>
 
-</jahirfiquitiva.libs.iconshowcase.ui.layouts.CustomCoordinatorLayout>
+</jahirfiquitiva.libs.ikonik.ui.layouts.CustomCoordinatorLayout>
