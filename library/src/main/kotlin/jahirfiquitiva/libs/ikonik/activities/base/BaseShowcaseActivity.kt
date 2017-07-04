@@ -26,7 +26,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.WindowManager
 import com.github.javiersantos.piracychecker.PiracyChecker
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.NavigationItem
 import jahirfiquitiva.libs.ikonik.utils.IntentUtils
 import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
@@ -39,7 +38,7 @@ open class BaseShowcaseActivity:ThemedActivity() {
         val manager = supportFragmentManager.beginTransaction()
         if (cleanStack) clearBackStack()
         manager.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_popup_enter,
-                R.anim.abc_popup_exit)
+                                    R.anim.abc_popup_exit)
         manager.replace(R.id.fragments_container, f)
         manager.addToBackStack(null)
         manager.commit()

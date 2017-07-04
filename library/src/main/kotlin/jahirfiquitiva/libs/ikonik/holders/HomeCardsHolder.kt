@@ -24,7 +24,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.HomeCard
 
 class HomeCardsHolder {

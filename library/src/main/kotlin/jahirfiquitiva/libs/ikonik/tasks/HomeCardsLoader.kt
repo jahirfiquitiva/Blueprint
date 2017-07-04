@@ -21,7 +21,6 @@ package jahirfiquitiva.libs.ikonik.tasks
 
 import android.content.Context
 import android.content.Intent
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.HomeCard
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 import jahirfiquitiva.libs.ikonik.utils.IconUtils
@@ -35,7 +34,7 @@ class HomeCardsLoader(context:Context, listener:TaskListener? = null):
         val cards = ArrayList<HomeCard>()
         val titles = ResourceUtils.getStringArray(context, R.array.home_list_titles)
         val descriptions = ResourceUtils.getStringArray(context,
-                R.array.home_list_descriptions)
+                                                        R.array.home_list_descriptions)
         val icons = ResourceUtils.getStringArray(context, R.array.home_list_icons)
         val urls = ResourceUtils.getStringArray(context, R.array.home_list_links)
         if (titles.size == descriptions.size && descriptions.size == icons.size
@@ -52,8 +51,8 @@ class HomeCardsLoader(context:Context, listener:TaskListener? = null):
                     intent = context.packageManager.getLaunchIntentForPackage(packageName)
                 }
                 cards.add(HomeCard(titles[i], descriptions[i], urls[i],
-                        IconUtils.getDrawableWithName(context, icons[i]), isAnApp,
-                        isInstalled, intent))
+                                   IconUtils.getDrawableWithName(context, icons[i]), isAnApp,
+                                   isInstalled, intent))
             }
         }
         return cards

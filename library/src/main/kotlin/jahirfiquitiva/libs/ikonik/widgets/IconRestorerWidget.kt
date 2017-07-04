@@ -27,7 +27,6 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.Toast
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.activities.LauncherIconRestorerActivity
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
 
@@ -41,17 +40,19 @@ class IconRestorerWidget:AppWidgetProvider() {
                 intent.addCategory(Intent.CATEGORY_LAUNCHER)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 intent.component = ComponentName(context?.packageName,
-                        "LauncherIconRestorerActivity.class")
+                                                 "LauncherIconRestorerActivity.class")
                 val rViews:RemoteViews = RemoteViews(context?.packageName,
-                        R.layout.widget_icon_restorer)
+                                                     R.layout.widget_icon_restorer)
                 rViews.setOnClickPendingIntent(R.id.appWidget,
-                        PendingIntent.getActivity(context, 0, intent, 0))
+                                               PendingIntent.getActivity(context, 0, intent, 0))
                 appWidgetManager?.updateAppWidget(it, rViews)
             } catch (e:Exception) {
                 Toast.makeText(context,
-                        ResourceUtils.getString(context!!, R.string.launcher_icon_restorer_error,
-                                ResourceUtils.getString(context, R.string.app_name)),
-                        Toast.LENGTH_LONG).show()
+                               ResourceUtils.getString(context!!,
+                                                       R.string.launcher_icon_restorer_error,
+                                                       ResourceUtils.getString(context,
+                                                                               R.string.app_name)),
+                               Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -63,7 +64,7 @@ class IconRestorerWidget:AppWidgetProvider() {
             val rViews = RemoteViews(context?.packageName, R.layout.widget_icon_restorer)
             val restore:Intent = Intent(context, LauncherIconRestorerActivity::class.java)
             rViews.setOnClickPendingIntent(R.id.appWidget,
-                    PendingIntent.getActivity(context, 0, restore, 0))
+                                           PendingIntent.getActivity(context, 0, restore, 0))
             AppWidgetManager.getInstance(context)
                     .updateAppWidget(
                             intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS), rViews)

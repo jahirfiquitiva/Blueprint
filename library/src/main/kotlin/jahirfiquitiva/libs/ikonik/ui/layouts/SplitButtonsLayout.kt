@@ -25,7 +25,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import jahirfiquitiva.libs.ikonik.R
 
 class SplitButtonsLayout:LinearLayout {
 
@@ -44,7 +43,7 @@ class SplitButtonsLayout:LinearLayout {
         if (hasAllButtons()) return
         val nButton:Button =
                 LayoutInflater.from(context).inflate(R.layout.item_credits_button, this,
-                        false) as Button
+                                                     false) as Button
         val lParams:LayoutParams = LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1F)
         nButton.text = text
         nButton.tag = link

@@ -24,7 +24,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.fragments.presenters.BasicFragmentPresenter
 import jahirfiquitiva.libs.ikonik.ui.views.EmptyViewRecyclerView
 

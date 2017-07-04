@@ -26,7 +26,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 
 class ClockWidget:AppWidgetProvider() {
@@ -34,16 +33,16 @@ class ClockWidget:AppWidgetProvider() {
     override fun onReceive(context:Context?, intent:Intent?) {
         super.onReceive(context, intent)
         val packages:Array<String> = arrayOf("com.android.alarmclock",
-                "com.android.deskclock",
-                "com.google.android.deskclock",
-                "com.asus.alarmclock",
-                "com.asus.deskclock",
-                "com.htc.android.worldclock",
-                "com.lge.clock",
-                "com.motorola.blur.alarmclock",
-                "com.sec.android.app.clockpackage",
-                "com.sonyericsson.alarm",
-                "com.sonyericsson.organizer")
+                                             "com.android.deskclock",
+                                             "com.google.android.deskclock",
+                                             "com.asus.alarmclock",
+                                             "com.asus.deskclock",
+                                             "com.htc.android.worldclock",
+                                             "com.lge.clock",
+                                             "com.motorola.blur.alarmclock",
+                                             "com.sec.android.app.clockpackage",
+                                             "com.sonyericsson.alarm",
+                                             "com.sonyericsson.organizer")
         val action = intent?.action
         var foundApp = false
         val pm = context?.packageManager
@@ -61,7 +60,7 @@ class ClockWidget:AppWidgetProvider() {
             }
             if (foundApp) {
                 rViews.setOnClickPendingIntent(R.id.clockWidget,
-                        PendingIntent.getActivity(context, 0, intent, 0))
+                                               PendingIntent.getActivity(context, 0, intent, 0))
             }
             val ids = AppWidgetManager.getInstance(context)
                     .getAppWidgetIds(ComponentName(context, ClockWidget::class.java))

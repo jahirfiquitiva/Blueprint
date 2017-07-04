@@ -28,7 +28,6 @@ import android.support.annotation.ColorRes
 import android.support.annotation.FloatRange
 import android.support.v4.content.ContextCompat
 import android.support.v7.graphics.Palette
-import jahirfiquitiva.libs.ikonik.R
 import java.util.*
 
 object ColorUtils {
@@ -171,7 +170,7 @@ object ColorUtils {
     @ColorInt
     fun getDefaultRippleColor(context:Context, useDarkRipple:Boolean):Int =
             ContextCompat.getColor(context,
-                    if (useDarkRipple) R.color.ripple_material_light else R.color.ripple_material_dark)
+                                   if (useDarkRipple) R.color.ripple_material_light else R.color.ripple_material_dark)
 
     @ColorInt
     fun getOverlayColor(darkTheme:Boolean):Int =

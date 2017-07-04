@@ -21,7 +21,13 @@ package jahirfiquitiva.libs.ikonik.utils
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.support.annotation.*
+import android.support.annotation.ArrayRes
+import android.support.annotation.BoolRes
+import android.support.annotation.ColorInt
+import android.support.annotation.ColorRes
+import android.support.annotation.DrawableRes
+import android.support.annotation.IntegerRes
+import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
 
 object ResourceUtils {

@@ -20,7 +20,6 @@
 package jahirfiquitiva.libs.ikonik.tasks
 
 import android.content.Context
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.Icon
 import jahirfiquitiva.libs.ikonik.models.IconsCategory
 import jahirfiquitiva.libs.ikonik.utils.IconUtils
@@ -47,7 +46,8 @@ class XMLIconsLoader(context:Context, listener:TaskListener? = null):
                             if (category != null) {
                                 val iconName = parser.getAttributeValue(null, "drawable")
                                 category.icons.add(Icon(IconUtils.formatText(iconName),
-                                        IconUtils.getIconResourceWithName(context, iconName)))
+                                                        IconUtils.getIconResourceWithName(context,
+                                                                                          iconName)))
                             }
                     }
                 }

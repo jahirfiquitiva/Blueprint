@@ -28,8 +28,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.adapters.HomeCardsAdapter
 import jahirfiquitiva.libs.ikonik.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.ikonik.models.HomeCard
@@ -81,11 +79,12 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
     override fun getLoaderId():Int = NavigationItem.DEFAULT_HOME_POSITION
 
     override fun buildLoader():Loader<ArrayList<HomeCard>> = HomeCardsLoader(context,
-            object:BasicTaskLoader.TaskListener {
-                override fun onTaskStarted() {
-                    rv?.updateState(EmptyViewRecyclerView.STATE_LOADING)
-                }
-            })
+                                                                             object:BasicTaskLoader.TaskListener {
+                                                                                 override fun onTaskStarted() {
+                                                                                     rv?.updateState(
+                                                                                             EmptyViewRecyclerView.STATE_LOADING)
+                                                                                 }
+                                                                             })
 
     override fun onDataLoadFinished(data:ArrayList<HomeCard>) {
         val adapter = rv?.adapter

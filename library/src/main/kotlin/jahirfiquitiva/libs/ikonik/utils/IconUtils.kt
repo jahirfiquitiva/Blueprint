@@ -36,12 +36,13 @@ import java.util.*
 
 object IconUtils {
     fun getBitmapWithName(context:Context, name:String):Bitmap? = getBitmapDrawableWithName(context,
-            name)?.bitmap
+                                                                                            name)?.bitmap
 
     fun getBitmapDrawableWithName(context:Context, name:String):BitmapDrawable? {
         try {
             return ResourcesCompat.getDrawable(context.resources,
-                    getIconResourceWithName(context, name), null) as BitmapDrawable?
+                                               getIconResourceWithName(context, name),
+                                               null) as BitmapDrawable?
         } catch (e:Exception) {
             throw Resources.NotFoundException("Icon with name \'" + name + "\' could not " +
                                               "be found")
@@ -136,7 +137,7 @@ object IconUtils {
                     sb.append(" ")
                     underscoreMode = CAPS
                 }
-                if (! foundFirstLetter && underscoreMode == CAPS) {
+                if (!foundFirstLetter && underscoreMode == CAPS) {
                     sb.append(it)
                 } else {
                     sb.append(

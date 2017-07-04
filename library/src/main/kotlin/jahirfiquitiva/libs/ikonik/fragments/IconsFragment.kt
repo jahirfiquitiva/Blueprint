@@ -27,7 +27,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.adapters.IconsAdapter
 import jahirfiquitiva.libs.ikonik.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.ikonik.models.Icon

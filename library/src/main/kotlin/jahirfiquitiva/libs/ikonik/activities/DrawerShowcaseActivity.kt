@@ -27,9 +27,7 @@ import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.activities.base.InternalBaseShowcaseActivity
-import jahirfiquitiva.libs.ikonik.models.NavigationItem
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 import jahirfiquitiva.libs.ikonik.utils.IconUtils

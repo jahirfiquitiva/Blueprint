@@ -24,7 +24,6 @@ import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
 import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
@@ -33,8 +32,8 @@ class EmptyViewRecyclerView:RecyclerView {
     var loadingView:View? = null
     var emptyView:View? = null
     var textView:TextView? = null
-    var loadingTextRes:Int = - 1
-    var emptyTextRes:Int = - 1
+    var loadingTextRes:Int = -1
+    var emptyTextRes:Int = -1
 
     var state = STATE_LOADING
 
@@ -54,7 +53,7 @@ class EmptyViewRecyclerView:RecyclerView {
                 loadingView?.visibility = VISIBLE
                 emptyView?.visibility = GONE
                 textView?.text = ResourceUtils.getString(context,
-                        if (loadingTextRes != - 1) loadingTextRes else R.string.loading_section)
+                                                         if (loadingTextRes != -1) loadingTextRes else R.string.loading_section)
                 visibility = GONE
             }
             STATE_NORMAL -> {
@@ -75,7 +74,7 @@ class EmptyViewRecyclerView:RecyclerView {
                 loadingView?.visibility = GONE
                 emptyView?.visibility = VISIBLE
                 textView?.text = ResourceUtils.getString(context,
-                        if (emptyTextRes != - 1) emptyTextRes else R.string.empty_section)
+                                                         if (emptyTextRes != -1) emptyTextRes else R.string.empty_section)
                 visibility = GONE
             }
         }

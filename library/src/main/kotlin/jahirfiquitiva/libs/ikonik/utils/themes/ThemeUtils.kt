@@ -29,7 +29,6 @@ import android.support.annotation.StyleRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.Preferences
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils

@@ -40,8 +40,8 @@ class GlideConfiguration:GlideModule {
             lowRAMDevice = memInfo.lowMemory
         }
         builder?.setDecodeFormat(if (runsMinSDK)
-            if (lowRAMDevice) DecodeFormat.PREFER_RGB_565 else DecodeFormat.PREFER_ARGB_8888
-        else DecodeFormat.PREFER_RGB_565)
+                                     if (lowRAMDevice) DecodeFormat.PREFER_RGB_565 else DecodeFormat.PREFER_ARGB_8888
+                                 else DecodeFormat.PREFER_RGB_565)
     }
 
     override fun registerComponents(context:Context?, glide:Glide?) {

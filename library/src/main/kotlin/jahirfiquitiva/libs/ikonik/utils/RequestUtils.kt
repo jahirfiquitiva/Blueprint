@@ -21,5 +21,6 @@ package jahirfiquitiva.libs.ikonik.utils
 
 object RequestUtils {
     fun getProperText(original:String):String = original.replace("[^a-zA-Z0-9\\p{Z}]".toRegex(),
-            "").replace("\\p{Z}".toRegex(), "_")
+                                                                 "").replace("\\p{Z}".toRegex(),
+                                                                             "_")
 }

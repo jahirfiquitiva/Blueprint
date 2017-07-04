@@ -24,7 +24,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 import jahirfiquitiva.libs.ikonik.utils.Preferences
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
@@ -39,7 +38,7 @@ class LauncherIconRestorerActivity:AppCompatActivity() {
 
         val packageName = CoreUtils.getAppPackageName(this)
         var componentName = packageName + "." + ResourceUtils.getString(this,
-                R.string.main_activity_name)
+                                                                        R.string.main_activity_name)
 
         try {
             className = Class.forName(componentName)
@@ -57,17 +56,17 @@ class LauncherIconRestorerActivity:AppCompatActivity() {
             if (!prefs.getLauncherIconShown()) {
                 prefs.setIconShown(true)
                 pm.setComponentEnabledSetting(component,
-                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                        PackageManager.DONT_KILL_APP)
+                                              PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                                              PackageManager.DONT_KILL_APP)
                 content = ResourceUtils.getString(this, R.string.launcher_icon_restored,
-                        ResourceUtils.getString(this, R.string.app_name))
+                                                  ResourceUtils.getString(this, R.string.app_name))
             } else {
                 content = ResourceUtils.getString(this, R.string.launcher_icon_not_restored,
-                        ResourceUtils.getString(this, R.string.app_name))
+                                                  ResourceUtils.getString(this, R.string.app_name))
             }
         } else {
             content = ResourceUtils.getString(this, R.string.launcher_icon_restorer_error,
-                    ResourceUtils.getString(this, R.string.app_name))
+                                              ResourceUtils.getString(this, R.string.app_name))
         }
         if (content.isNotEmpty()) Toast.makeText(this, content, Toast.LENGTH_LONG).show()
         finish()

@@ -24,7 +24,6 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.AttrRes
 import android.support.annotation.ColorInt
 import android.util.TypedValue
-import jahirfiquitiva.libs.ikonik.R
 
 object AttributeExtractor {
     private val PRIMARY_DARK = intArrayOf(R.attr.colorPrimaryDark)
@@ -71,7 +70,7 @@ object AttributeExtractor {
     fun extractDrawable(context:Context, @AttrRes drawableAttributeId:Int):Drawable {
         val typedValue = TypedValue()
         val a = context.obtainStyledAttributes(typedValue.data,
-                intArrayOf(drawableAttributeId))
+                                               intArrayOf(drawableAttributeId))
         val drawable = a.getDrawable(0)
         a.recycle()
         return drawable

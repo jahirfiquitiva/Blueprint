@@ -22,7 +22,6 @@ package jahirfiquitiva.libs.ikonik.utils
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Environment
-import jahirfiquitiva.libs.ikonik.R
 
 class Preferences(val context:Context) {
     private val PREFERENCES_NAME = "dashboard_preferences"
@@ -46,28 +45,29 @@ class Preferences(val context:Context) {
 
 
     fun getPrefs():SharedPreferences = context.getSharedPreferences(PREFERENCES_NAME,
-            Context.MODE_PRIVATE)
+                                                                    Context.MODE_PRIVATE)
 
     fun isDashboardWorking():Boolean = getPrefs().getBoolean(WORKING_DASHBOARD, false)
 
     fun setDashboardWorking(enable:Boolean) = getPrefs().edit().putBoolean(WORKING_DASHBOARD,
-            enable).apply()
+                                                                           enable).apply()
 
     fun hasAskedPermissions():Boolean = getPrefs().getBoolean(ASKED_PERMISSIONS, false)
 
     fun setHasAskedPermissions(asked:Boolean) = getPrefs().edit().putBoolean(ASKED_PERMISSIONS,
-            asked).apply()
+                                                                             asked).apply()
 
     fun setIconShown(show:Boolean) = getPrefs().edit().putBoolean(LAUNCHER_ICON, show).apply()
 
     fun getLauncherIconShown():Boolean = getPrefs().getBoolean(LAUNCHER_ICON, true)
 
     fun getDownloadsFolder():String = getPrefs().getString(WALLS_DOWNLOAD_FOLDER,
-            ResourceUtils.getString(context, R.string.walls_save_location,
-                    Environment.getExternalStorageDirectory().absolutePath))
+                                                           ResourceUtils.getString(context,
+                                                                                   R.string.walls_save_location,
+                                                                                   Environment.getExternalStorageDirectory().absolutePath))
 
     fun setDownloadsFolder(folder:String) = getPrefs().edit().putString(WALLS_DOWNLOAD_FOLDER,
-            folder).apply()
+                                                                        folder).apply()
 
     fun setIfAppsToRequestLoaded(loaded:Boolean) = getPrefs().edit().putBoolean(
             APPS_TO_REQUEST_LOADED, loaded).apply()
@@ -77,12 +77,12 @@ class Preferences(val context:Context) {
     fun getWallsListLoaded():Boolean = getPrefs().getBoolean(WALLS_LIST_LOADED, false)
 
     fun setWallsListLoaded(loaded:Boolean) = getPrefs().edit().putBoolean(WALLS_LIST_LOADED,
-            loaded).apply()
+                                                                          loaded).apply()
 
     fun getSettingsModified():Boolean = getPrefs().getBoolean(SETTINGS_MODIFIED, false)
 
     fun setSettingsModified(loaded:Boolean) = getPrefs().edit().putBoolean(SETTINGS_MODIFIED,
-            loaded).apply()
+                                                                           loaded).apply()
 
     fun getAnimationsEnabled():Boolean = getPrefs().getBoolean(ANIMATIONS_ENABLED, true)
 
@@ -91,7 +91,7 @@ class Preferences(val context:Context) {
 
     fun getWallpaperAsToolbarHeaderEnabled():Boolean {
         val value = ResourceUtils.getBoolean(context,
-                R.bool.show_user_wallpaper_in_toolbar_by_default)
+                                             R.bool.show_user_wallpaper_in_toolbar_by_default)
         return getPrefs().getBoolean(WALLPAPER_AS_TOOLBAR_HEADER, value)
     }
 
@@ -110,34 +110,36 @@ class Preferences(val context:Context) {
             WALLS_DIALOG_DISMISSED, wallsDialogDismissed).apply()
 
     fun getWallsColumnsNumber():Int = getPrefs().getInt(WALLS_COLUMNS_NUMBER,
-            context.resources.getInteger(R.integer.wallpapers_grid_width))
+                                                        context.resources.getInteger(
+                                                                R.integer.wallpapers_grid_width))
 
     fun setWallsColumnsNumber(columnsNumber:Int) = getPrefs().edit().putInt(WALLS_COLUMNS_NUMBER,
-            columnsNumber).apply()
+                                                                            columnsNumber).apply()
 
     fun getVersionCode():Int = getPrefs().getInt(VERSION_CODE, 0)
 
     fun setVersionCode(versionCode:Int) = getPrefs().edit().putInt(VERSION_CODE,
-            versionCode).apply()
+                                                                   versionCode).apply()
 
     fun getMuzeiRefreshInterval():Int = getPrefs().getInt(MUZEI_REFRESH_INTERVAL, 10)
 
     fun setMuzeiRefreshInterval(interval:Int) = getPrefs().edit().putInt(MUZEI_REFRESH_INTERVAL,
-            interval).apply()
+                                                                         interval).apply()
 
     fun getMuzeiRefreshOnWiFiOnly():Boolean = getPrefs().getBoolean(MUZEI_REFRESH_ON_WIFI_ONLY,
-            false)
+                                                                    false)
 
     fun setMuzeiRefreshOnWiFiOnly(onWifiOnly:Boolean) = getPrefs().edit().putBoolean(
             MUZEI_REFRESH_ON_WIFI_ONLY, onWifiOnly).apply()
 
     fun getTheme():Int = getPrefs().getInt(THEME,
-            ResourceUtils.getInteger(context, R.integer.app_theme) - 1)
+                                           ResourceUtils.getInteger(context,
+                                                                    R.integer.app_theme) - 1)
 
     fun setTheme(theme:Int) = getPrefs().edit().putInt(THEME, theme).apply()
 
     fun setColoredNavbar(colored:Boolean) = getPrefs().edit().putBoolean(COLORED_NAVBAR,
-            colored).apply()
+                                                                         colored).apply()
 
     fun hasColoredNavbar():Boolean = getPrefs().getBoolean(COLORED_NAVBAR, true)
 

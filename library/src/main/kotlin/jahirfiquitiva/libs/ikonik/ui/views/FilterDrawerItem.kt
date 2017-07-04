@@ -31,7 +31,6 @@ import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.ikonik.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
-import jahirfiquitiva.libs.ikonik.R
 
 class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
 

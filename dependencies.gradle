@@ -33,7 +33,7 @@ ext.versions = [
         kotlin                : '1.1.3',
         // Libraries versions
         supportLibs           : '25.3.1',
-		supportLibsTest       : '26.+',
+        supportLibsTest       : '26.+',
         aesthetic             : '5b4fe7f',
         materialDialogs       : '9a175e3',
         materialDrawer        : '5.9.4',
@@ -45,7 +45,7 @@ ext.versions = [
         circleImageView       : '7fd3573',
         bottomBar             : '2.0.6',
         fabTransformation     : '1.0.0',
-		subsImageView		  : '3.6.0',
+        subsImageView         : '3.6.0',
         iaps                  : '1.0.39',
         muzeiApi              : '2.0',
         checker               : '1.1'

@@ -21,9 +21,8 @@ package jahirfiquitiva.libs.ikonik.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.models.Icon
 import jahirfiquitiva.libs.ikonik.holders.IconHolder
+import jahirfiquitiva.libs.ikonik.models.Icon
 import jahirfiquitiva.libs.ikonik.utils.inflate
 
 class IconsAdapter(val listener:(Icon) -> Unit):BaseListAdapter<Icon>() {

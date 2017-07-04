@@ -29,14 +29,13 @@ import android.support.annotation.CheckResult
 import android.support.annotation.ColorInt
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.TextInputEditText
-import android.support.v4.view.ViewCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.DrawableCompat
 import android.support.v4.view.TintableBackgroundView
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.SwitchCompat
 import android.view.View
 import android.widget.*
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 
 /**
@@ -109,14 +108,14 @@ object TintUtils {
                 // Ripples for the above views (e.g. when you tap and hold a switch or checkbox)
                 val rd = view.background as RippleDrawable
                 val unchecked = ContextCompat.getColor(view.context,
-                        if (isDark)
-                            R.color.ripple_material_dark
-                        else
-                            R.color.ripple_material_light)
+                                                       if (isDark)
+                                                           R.color.ripple_material_dark
+                                                       else
+                                                           R.color.ripple_material_light)
                 val checked = ColorUtils.adjustAlpha(color, 0.4f)
                 val sl = ColorStateList(
                         arrayOf(intArrayOf(-android.R.attr.state_activated,
-                                -android.R.attr.state_checked),
+                                           -android.R.attr.state_checked),
                                 intArrayOf(android.R.attr.state_activated),
                                 intArrayOf(android.R.attr.state_checked)),
                         intArrayOf(unchecked, checked, checked))
@@ -158,14 +157,14 @@ object TintUtils {
             @SuppressLint("PrivateResource")
             val d = createTintedDrawable(
                     ContextCompat.getDrawable(radioButton.context,
-                            R.drawable.abc_btn_radio_material), sl)
+                                              R.drawable.abc_btn_radio_material), sl)
             radioButton.buttonDrawable = d
         }
     }
 
     fun setTint(seekBar:SeekBar, @ColorInt color:Int, useDarker:Boolean) {
         val s1 = getDisabledColorStateList(color,
-                ColorUtils.getMaterialDisabledHintTextColor(useDarker))
+                                           ColorUtils.getMaterialDisabledHintTextColor(useDarker))
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             seekBar.thumbTintList = s1
             seekBar.progressTintList = s1
@@ -205,7 +204,7 @@ object TintUtils {
         val editTextColorStateList = ColorStateList(
                 arrayOf(intArrayOf(-android.R.attr.state_enabled),
                         intArrayOf(android.R.attr.state_enabled, -android.R.attr.state_pressed,
-                                -android.R.attr.state_focused), intArrayOf()),
+                                   -android.R.attr.state_focused), intArrayOf()),
                 intArrayOf(
                         ColorUtils.getMaterialDisabledHintTextColor(useDarker),
                         ColorUtils.getMaterialSecondaryTextColor(useDarker), color))
@@ -238,12 +237,12 @@ object TintUtils {
     }
 
     fun setTint(image:ImageView, @ColorInt color:Int) = image.setColorFilter(color,
-            PorterDuff.Mode.SRC_ATOP)
+                                                                             PorterDuff.Mode.SRC_ATOP)
 
     fun getDisabledColorStateList(@ColorInt normal:Int, @ColorInt disabled:Int):ColorStateList {
         return ColorStateList(
                 arrayOf(intArrayOf(-android.R.attr.state_enabled), intArrayOf(android.R.attr
-                        .state_enabled)),
+                                                                                      .state_enabled)),
                 intArrayOf(disabled, normal))
     }
 
@@ -273,7 +272,7 @@ object TintUtils {
             // FloatingActionButton doesn't support disabled state?
             sl = ColorStateList(
                     arrayOf(intArrayOf(-android.R.attr.state_pressed), intArrayOf(android.R
-                            .attr.state_pressed)),
+                                                                                          .attr.state_pressed)),
                     intArrayOf(color, pressed))
 
             val fab = view
@@ -288,7 +287,7 @@ object TintUtils {
                             intArrayOf(android.R.attr.state_enabled),
                             intArrayOf(android.R.attr.state_enabled, android.R.attr.state_pressed),
                             intArrayOf(android.R.attr.state_enabled,
-                                    android.R.attr.state_activated),
+                                       android.R.attr.state_activated),
                             intArrayOf(android.R.attr.state_enabled, android.R.attr.state_checked)),
                     intArrayOf(disabled, color, pressed, activated, activated))
         }

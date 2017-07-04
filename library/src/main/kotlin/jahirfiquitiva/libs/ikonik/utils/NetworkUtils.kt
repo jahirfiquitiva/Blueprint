@@ -66,7 +66,7 @@ object NetworkUtils {
         }
 
         CustomTabsClient.bindCustomTabsService(context, "com.android.chrome",
-                mCustomTabsServiceConnection)
+                                               mCustomTabsServiceConnection)
         customTabsIntent = CustomTabsIntent.Builder(mCustomTabsSession[0])
                 .setToolbarColor(AttributeExtractor.getPrimaryColorFrom(context))
                 .setShowTitle(true)

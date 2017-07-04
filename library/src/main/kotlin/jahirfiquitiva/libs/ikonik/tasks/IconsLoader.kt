@@ -20,7 +20,6 @@
 package jahirfiquitiva.libs.ikonik.tasks
 
 import android.content.Context
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.models.Icon
 import jahirfiquitiva.libs.ikonik.models.IconsCategory
 import jahirfiquitiva.libs.ikonik.utils.IconUtils
@@ -35,10 +34,11 @@ class IconsLoader(context:Context, listener:TaskListener? = null):
             val icons:ArrayList<Icon> = ArrayList()
             val list:ArrayList<String> = ArrayList()
             list.plus(ResourceUtils.getStringArray(context,
-                    context.resources.getIdentifier(it, "array", context.packageName)))
+                                                   context.resources.getIdentifier(it, "array",
+                                                                                   context.packageName)))
             list.forEach {
                 icons.plus(Icon(IconUtils.formatText(it),
-                        IconUtils.getIconResourceWithName(context, it)))
+                                IconUtils.getIconResourceWithName(context, it)))
             }
             categories.add(IconsCategory(it, IconUtils.sortIconsList(icons)))
         }

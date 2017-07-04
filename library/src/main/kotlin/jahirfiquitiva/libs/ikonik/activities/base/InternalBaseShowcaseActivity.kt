@@ -40,8 +40,6 @@ import android.widget.Toast
 import com.konifar.fab_transformation.FabTransformation
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.ui.views.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.ikonik.fragments.EmptyFragment
 import jahirfiquitiva.libs.ikonik.fragments.HomeFragment
 import jahirfiquitiva.libs.ikonik.fragments.IconsFragment
@@ -52,12 +50,18 @@ import jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.ikonik.ui.views.CounterFab
 import jahirfiquitiva.libs.ikonik.ui.views.FilterDrawerItem
 import jahirfiquitiva.libs.ikonik.ui.views.FilterTitleDrawerItem
-import jahirfiquitiva.libs.ikonik.utils.*
+import jahirfiquitiva.libs.ikonik.ui.views.callbacks.CollapsingToolbarCallback
+import jahirfiquitiva.libs.ikonik.utils.ColorUtils
+import jahirfiquitiva.libs.ikonik.utils.CoreUtils
+import jahirfiquitiva.libs.ikonik.utils.IconUtils
+import jahirfiquitiva.libs.ikonik.utils.NetworkUtils
+import jahirfiquitiva.libs.ikonik.utils.Preferences
+import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.ikonik.utils.changeOptionVisibility
 import jahirfiquitiva.libs.ikonik.utils.themes.AttributeExtractor
 import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
 import jahirfiquitiva.libs.ikonik.utils.themes.TintUtils
 import jahirfiquitiva.libs.ikonik.utils.themes.ToolbarThemer
-import org.w3c.dom.Text
 
 open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 

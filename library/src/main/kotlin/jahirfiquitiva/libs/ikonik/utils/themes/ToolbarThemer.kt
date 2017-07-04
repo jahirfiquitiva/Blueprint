@@ -36,7 +36,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.ui.views.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.ikonik.utils.ColorUtils
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
@@ -52,9 +51,11 @@ object ToolbarThemer {
             ratio = 1.0
         else if (ratio < 0) ratio = 0.0
         val rightIconsColor = ColorUtils.blendColors(defaultIconsColor,
-                ColorUtils.getMaterialActiveIconsColor(
-                        ColorUtils.isDarkColor(
-                                AttributeExtractor.getPrimaryColorFrom(activity))), ratio.toFloat())
+                                                     ColorUtils.getMaterialActiveIconsColor(
+                                                             ColorUtils.isDarkColor(
+                                                                     AttributeExtractor.getPrimaryColorFrom(
+                                                                             activity))),
+                                                     ratio.toFloat())
         tintToolbar(toolbar, rightIconsColor)
         updateStatusBarStyle(activity, if (ratio > 0.7)
             CollapsingToolbarCallback.State.COLLAPSED
@@ -178,7 +179,7 @@ object ToolbarThemer {
             field = cls.getDeclaredField("mSearchPlate")
             field.isAccessible = true
             TintUtils.setTintAuto(field.get(view) as View, tintColor, true,
-                    ColorUtils.isDarkColor(tintColor))
+                                  ColorUtils.isDarkColor(tintColor))
 
             field = cls.getDeclaredField("mSearchHintIcon")
             field.isAccessible = true

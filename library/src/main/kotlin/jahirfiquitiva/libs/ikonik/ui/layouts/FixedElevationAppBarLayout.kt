@@ -22,7 +22,6 @@ package jahirfiquitiva.libs.ikonik.ui.layouts
 import android.content.Context
 import android.support.design.widget.AppBarLayout
 import android.util.AttributeSet
-import jahirfiquitiva.libs.ikonik.R
 import jahirfiquitiva.libs.ikonik.utils.CoreUtils
 import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
 
@@ -32,7 +31,8 @@ class FixedElevationAppBarLayout:AppBarLayout {
     constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet)
 
     val fElevation:Int = CoreUtils.convertDpToPx(context,
-            ResourceUtils.getInteger(context, R.integer.toolbar_elevation).toFloat())
+                                                 ResourceUtils.getInteger(context,
+                                                                          R.integer.toolbar_elevation).toFloat())
 
     override fun setElevation(elevation:Float) = super.setElevation(fElevation.toFloat())
 }
