@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils
+package jahirfiquitiva.libs.blueprint.utils
 
 import android.content.ComponentName
 import android.content.Context
@@ -28,7 +28,7 @@ import android.support.customtabs.CustomTabsClient
 import android.support.customtabs.CustomTabsIntent
 import android.support.customtabs.CustomTabsServiceConnection
 import android.support.customtabs.CustomTabsSession
-import jahirfiquitiva.libs.ikonik.utils.themes.AttributeExtractor
+import jahirfiquitiva.libs.blueprint.utils.themes.AttributeExtractor
 
 object NetworkUtils {
     val PLAY_STORE_LINK_PREFIX = "https://play.google.com/store/apps/details?id="

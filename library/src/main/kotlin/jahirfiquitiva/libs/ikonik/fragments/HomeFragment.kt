@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.fragments
+package jahirfiquitiva.libs.blueprint.fragments
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -28,17 +28,17 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.adapters.HomeCardsAdapter
-import jahirfiquitiva.libs.ikonik.fragments.presenters.ItemsFragmentPresenter
-import jahirfiquitiva.libs.ikonik.models.HomeCard
-import jahirfiquitiva.libs.ikonik.models.NavigationItem
-import jahirfiquitiva.libs.ikonik.tasks.BasicTaskLoader
-import jahirfiquitiva.libs.ikonik.tasks.HomeCardsLoader
-import jahirfiquitiva.libs.ikonik.ui.views.EmptyViewRecyclerView
-import jahirfiquitiva.libs.ikonik.utils.ColorUtils
-import jahirfiquitiva.libs.ikonik.utils.NetworkUtils
-import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.adapters.HomeCardsAdapter
+import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
+import jahirfiquitiva.libs.blueprint.models.HomeCard
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.tasks.BasicTaskLoader
+import jahirfiquitiva.libs.blueprint.tasks.HomeCardsLoader
+import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
+import jahirfiquitiva.libs.blueprint.utils.ColorUtils
+import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
+import jahirfiquitiva.libs.blueprint.utils.themes.ThemeUtils
 
 class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 

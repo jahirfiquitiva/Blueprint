@@ -15,10 +15,10 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
-<jahirfiquitiva.libs.ikonik.ui.views.IconShowcaseCardView
+<jahirfiquitiva.libs.blueprint.ui.views.IconShowcaseCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -80,4 +80,4 @@
 
     </LinearLayout>
 
-</jahirfiquitiva.libs.ikonik.ui.views.IconShowcaseCardView>
+</jahirfiquitiva.libs.blueprint.ui.views.IconShowcaseCardView>

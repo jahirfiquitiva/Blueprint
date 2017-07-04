@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils
+package jahirfiquitiva.libs.blueprint.utils
 
 object IntentUtils {
     const val MARKET_URL = "https://play.google.com/store/apps/details?id="

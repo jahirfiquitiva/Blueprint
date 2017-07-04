@@ -14,15 +14,15 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils
+package jahirfiquitiva.libs.blueprint.utils
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Environment
-import jahirfiquitiva.libs.ikonik.R
+import jahirfiquitiva.libs.blueprint.R
 
 class Preferences(val context:Context) {
     private val PREFERENCES_NAME = "dashboard_preferences"

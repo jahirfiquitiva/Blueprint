@@ -14,17 +14,17 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.tasks
+package jahirfiquitiva.libs.blueprint.tasks
 
 import android.content.Context
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.models.Icon
-import jahirfiquitiva.libs.ikonik.models.IconsCategory
-import jahirfiquitiva.libs.ikonik.utils.IconUtils
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.models.Icon
+import jahirfiquitiva.libs.blueprint.models.IconsCategory
+import jahirfiquitiva.libs.blueprint.utils.IconUtils
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class IconsLoader(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<IconsCategory>>(context, listener) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 apply plugin: 'com.android.application'
@@ -80,7 +80,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    // IkoniK
+    // Blueprint
     compile project(path: ':library')
     // Kotlin
     compile 'org.jetbrains.kotlin:kotlin-stdlib:' + versions.kotlin

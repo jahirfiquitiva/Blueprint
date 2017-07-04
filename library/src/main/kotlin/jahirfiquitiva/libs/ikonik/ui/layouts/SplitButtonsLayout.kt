@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.ui.layouts
+package jahirfiquitiva.libs.blueprint.ui.layouts
 
 import android.content.Context
 import android.util.AttributeSet
@@ -25,7 +25,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import jahirfiquitiva.libs.ikonik.R
+import jahirfiquitiva.libs.blueprint.R
 
 class SplitButtonsLayout:LinearLayout {
 

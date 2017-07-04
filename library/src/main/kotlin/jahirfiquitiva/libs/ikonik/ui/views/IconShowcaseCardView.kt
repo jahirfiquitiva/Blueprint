@@ -14,15 +14,15 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.ui.views
+package jahirfiquitiva.libs.blueprint.ui.views
 
 import android.content.Context
 import android.support.v7.widget.CardView
 import android.util.AttributeSet
-import jahirfiquitiva.libs.ikonik.utils.themes.AttributeExtractor
+import jahirfiquitiva.libs.blueprint.utils.themes.AttributeExtractor
 
 class IconShowcaseCardView:CardView {
     constructor(context:Context):super(context)

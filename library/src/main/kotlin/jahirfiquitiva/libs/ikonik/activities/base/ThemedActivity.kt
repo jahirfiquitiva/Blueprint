@@ -14,15 +14,15 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.activities.base
+package jahirfiquitiva.libs.blueprint.activities.base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate
-import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
+import jahirfiquitiva.libs.blueprint.utils.themes.ThemeUtils
 
 open class ThemedActivity:AppCompatActivity() {
     var lastTheme = 0

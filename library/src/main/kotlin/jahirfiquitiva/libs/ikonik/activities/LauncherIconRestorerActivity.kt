@@ -14,20 +14,20 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.activities
+package jahirfiquitiva.libs.blueprint.activities
 
 import android.content.ComponentName
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.utils.CoreUtils
-import jahirfiquitiva.libs.ikonik.utils.Preferences
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.utils.CoreUtils
+import jahirfiquitiva.libs.blueprint.utils.Preferences
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class LauncherIconRestorerActivity:AppCompatActivity() {
 

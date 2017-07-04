@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.ui.views
+package jahirfiquitiva.libs.blueprint.ui.views
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -28,10 +28,10 @@ import android.view.View
 import android.widget.TextView
 import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.holders.FilterCheckBoxHolder
-import jahirfiquitiva.libs.ikonik.utils.ColorUtils
-import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
+import jahirfiquitiva.libs.blueprint.utils.ColorUtils
+import jahirfiquitiva.libs.blueprint.utils.themes.ThemeUtils
 
 class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
 

@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.holders
+package jahirfiquitiva.libs.blueprint.holders
 
 import android.graphics.Bitmap
 import android.support.v7.widget.RecyclerView
@@ -26,8 +26,8 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.BitmapImageViewTarget
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.models.Icon
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.models.Icon
 
 class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
 

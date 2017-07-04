@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.fragments
+package jahirfiquitiva.libs.blueprint.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -27,18 +27,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.adapters.IconsAdapter
-import jahirfiquitiva.libs.ikonik.fragments.presenters.ItemsFragmentPresenter
-import jahirfiquitiva.libs.ikonik.models.Icon
-import jahirfiquitiva.libs.ikonik.models.IconsCategory
-import jahirfiquitiva.libs.ikonik.models.NavigationItem
-import jahirfiquitiva.libs.ikonik.tasks.BasicTaskLoader
-import jahirfiquitiva.libs.ikonik.tasks.IconsLoader
-import jahirfiquitiva.libs.ikonik.tasks.XMLIconsLoader
-import jahirfiquitiva.libs.ikonik.ui.views.EmptyViewRecyclerView
-import jahirfiquitiva.libs.ikonik.utils.IconUtils
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.adapters.IconsAdapter
+import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
+import jahirfiquitiva.libs.blueprint.models.Icon
+import jahirfiquitiva.libs.blueprint.models.IconsCategory
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.tasks.BasicTaskLoader
+import jahirfiquitiva.libs.blueprint.tasks.IconsLoader
+import jahirfiquitiva.libs.blueprint.tasks.XMLIconsLoader
+import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
+import jahirfiquitiva.libs.blueprint.utils.IconUtils
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>> {
 

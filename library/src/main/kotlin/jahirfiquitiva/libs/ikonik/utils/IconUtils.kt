@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils
+package jahirfiquitiva.libs.blueprint.utils
 
 import android.content.ContentResolver
 import android.content.Context
@@ -29,7 +29,7 @@ import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.FileProvider
 import android.support.v4.content.res.ResourcesCompat
-import jahirfiquitiva.libs.ikonik.models.Icon
+import jahirfiquitiva.libs.blueprint.models.Icon
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*

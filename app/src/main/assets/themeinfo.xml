@@ -14,12 +14,12 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <!-- This is for Atom Launcher -->
 <themeInfo>
-    <packageName>jahirfiquitiva.apps.ikonik.demo</packageName>
+    <packageName>jahirfiquitiva.apps.blueprint.demo</packageName>
     <versionName>1.0</versionName>
     <versionCode>1</versionCode>
     <themeName>IconShowcase Dashboard</themeName>

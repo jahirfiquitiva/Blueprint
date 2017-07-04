@@ -14,17 +14,17 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.ui.layouts
+package jahirfiquitiva.libs.blueprint.ui.layouts
 
 import android.content.Context
 import android.support.design.widget.AppBarLayout
 import android.util.AttributeSet
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.utils.CoreUtils
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.utils.CoreUtils
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class FixedElevationAppBarLayout:AppBarLayout {
 

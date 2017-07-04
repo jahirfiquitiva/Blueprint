@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.widgets
+package jahirfiquitiva.libs.blueprint.widgets
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -27,9 +27,9 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.Toast
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.activities.LauncherIconRestorerActivity
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.activities.LauncherIconRestorerActivity
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class IconRestorerWidget:AppWidgetProvider() {
     override fun onUpdate(context:Context?, appWidgetManager:AppWidgetManager?,

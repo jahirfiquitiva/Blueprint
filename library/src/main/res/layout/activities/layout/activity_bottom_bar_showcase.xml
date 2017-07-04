@@ -14,9 +14,9 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
-<jahirfiquitiva.libs.ikonik.ui.layouts.CustomCoordinatorLayout
+<jahirfiquitiva.libs.blueprint.ui.layouts.CustomCoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -34,7 +34,7 @@
             android:clipToPadding="false"
             app:elevation="8dp"/>
 
-    <jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout
+    <jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
-    </jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout>
+    </jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout>
 
     <FrameLayout
             android:id="@+id/fragments_container"
@@ -120,7 +120,7 @@
             android:clickable="true"
             android:visibility="gone"/>
 
-    <jahirfiquitiva.libs.ikonik.ui.views.CounterFab
+    <jahirfiquitiva.libs.blueprint.ui.views.CounterFab
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -204,4 +204,4 @@
 
     </io.codetail.widget.RevealFrameLayout>
 
-</jahirfiquitiva.libs.ikonik.ui.layouts.CustomCoordinatorLayout>
+</jahirfiquitiva.libs.blueprint.ui.layouts.CustomCoordinatorLayout>

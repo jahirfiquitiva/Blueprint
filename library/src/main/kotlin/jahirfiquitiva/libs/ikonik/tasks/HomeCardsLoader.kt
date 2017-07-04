@@ -14,19 +14,19 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.tasks
+package jahirfiquitiva.libs.blueprint.tasks
 
 import android.content.Context
 import android.content.Intent
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.models.HomeCard
-import jahirfiquitiva.libs.ikonik.utils.CoreUtils
-import jahirfiquitiva.libs.ikonik.utils.IconUtils
-import jahirfiquitiva.libs.ikonik.utils.NetworkUtils
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.models.HomeCard
+import jahirfiquitiva.libs.blueprint.utils.CoreUtils
+import jahirfiquitiva.libs.blueprint.utils.IconUtils
+import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class HomeCardsLoader(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<HomeCard>>(context, listener) {

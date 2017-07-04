@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils
+package jahirfiquitiva.libs.blueprint.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -28,7 +28,7 @@ import android.support.annotation.ColorRes
 import android.support.annotation.FloatRange
 import android.support.v4.content.ContextCompat
 import android.support.v7.graphics.Palette
-import jahirfiquitiva.libs.ikonik.R
+import jahirfiquitiva.libs.blueprint.R
 import java.util.Collections
 
 object ColorUtils {

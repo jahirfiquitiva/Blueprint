@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils.themes
+package jahirfiquitiva.libs.blueprint.utils.themes
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -36,8 +36,8 @@ import android.support.v4.view.ViewCompat
 import android.support.v7.widget.SwitchCompat
 import android.view.View
 import android.widget.*
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.utils.ColorUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.utils.ColorUtils
 
 /**
  * @author Aidan Follestad (afollestad)

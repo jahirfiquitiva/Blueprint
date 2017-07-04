@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils.themes
+package jahirfiquitiva.libs.blueprint.utils.themes
 
 import android.app.Activity
 import android.content.Context
@@ -29,10 +29,10 @@ import android.support.annotation.StyleRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.utils.ColorUtils
-import jahirfiquitiva.libs.ikonik.utils.Preferences
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.utils.ColorUtils
+import jahirfiquitiva.libs.blueprint.utils.Preferences
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 import java.util.Calendar
 
 object ThemeUtils {

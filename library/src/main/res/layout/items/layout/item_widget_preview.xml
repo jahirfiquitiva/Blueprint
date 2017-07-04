@@ -15,7 +15,7 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <FrameLayout
@@ -25,14 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <jahirfiquitiva.libs.ikonik.ui.views.SquaredImageView
+    <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
             android:id="@+id/wall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription, UnusedAttribute"/>
 
-    <jahirfiquitiva.libs.ikonik.ui.views.SquaredImageView
+    <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
             android:id="@+id/preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

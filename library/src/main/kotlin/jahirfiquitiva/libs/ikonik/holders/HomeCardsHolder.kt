@@ -14,18 +14,18 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.holders
+package jahirfiquitiva.libs.blueprint.holders
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.models.HomeCard
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.models.HomeCard
 
 class HomeCardsHolder {
 

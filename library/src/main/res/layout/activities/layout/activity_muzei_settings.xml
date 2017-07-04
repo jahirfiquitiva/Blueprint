@@ -15,7 +15,7 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <ca.allanwang.capsule.library.custom.CapsuleCoordinatorLayout
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout
+    <jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:clipChildren="false"
@@ -43,7 +43,7 @@
                 app:popupTheme="?attr/actionBarPopupTheme"
                 app:layout_scrollFlags="enterAlways"/>
 
-    </jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout>
+    </jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
             android:id="@+id/content"

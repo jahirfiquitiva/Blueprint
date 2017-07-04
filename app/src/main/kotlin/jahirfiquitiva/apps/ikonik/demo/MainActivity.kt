@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.apps.ikonik.demo
+package jahirfiquitiva.apps.blueprint.demo
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

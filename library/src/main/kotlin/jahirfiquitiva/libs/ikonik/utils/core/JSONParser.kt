@@ -14,13 +14,13 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils.core
+package jahirfiquitiva.libs.blueprint.utils.core
 
 import android.content.Context
-import jahirfiquitiva.libs.ikonik.utils.NetworkUtils
+import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response

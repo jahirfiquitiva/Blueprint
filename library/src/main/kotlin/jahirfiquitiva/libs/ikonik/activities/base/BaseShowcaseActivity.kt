@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.activities.base
+package jahirfiquitiva.libs.blueprint.activities.base
 
 import android.content.Intent
 import android.graphics.Color
@@ -26,10 +26,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.WindowManager
 import com.github.javiersantos.piracychecker.PiracyChecker
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.models.NavigationItem
-import jahirfiquitiva.libs.ikonik.utils.IntentUtils
-import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.utils.IntentUtils
+import jahirfiquitiva.libs.blueprint.utils.themes.ThemeUtils
 
 open class BaseShowcaseActivity:ThemedActivity() {
 

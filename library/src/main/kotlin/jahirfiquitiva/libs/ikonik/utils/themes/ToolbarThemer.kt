@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils.themes
+package jahirfiquitiva.libs.blueprint.utils.themes
 
 import android.annotation.SuppressLint
 import android.graphics.PorterDuff
@@ -36,11 +36,11 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.ui.views.callbacks.CollapsingToolbarCallback
-import jahirfiquitiva.libs.ikonik.utils.ColorUtils
-import jahirfiquitiva.libs.ikonik.utils.CoreUtils
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
+import jahirfiquitiva.libs.blueprint.utils.ColorUtils
+import jahirfiquitiva.libs.blueprint.utils.CoreUtils
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 import java.lang.reflect.Field
 import java.util.ArrayList
 

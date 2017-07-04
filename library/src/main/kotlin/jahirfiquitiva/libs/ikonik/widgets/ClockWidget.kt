@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.widgets
+package jahirfiquitiva.libs.blueprint.widgets
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -26,8 +26,8 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.utils.CoreUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.utils.CoreUtils
 
 class ClockWidget:AppWidgetProvider() {
     @Suppress("NAME_SHADOWING")

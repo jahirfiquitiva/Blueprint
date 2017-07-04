@@ -14,7 +14,7 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <RelativeLayout
@@ -29,7 +29,7 @@
 
     <include layout="@layout/extra_empty_views"/>
 
-    <jahirfiquitiva.libs.ikonik.ui.views.EmptyViewRecyclerView
+    <jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
             android:id="@+id/appsToRequestList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

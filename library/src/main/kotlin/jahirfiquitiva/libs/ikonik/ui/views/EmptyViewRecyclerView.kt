@@ -14,20 +14,20 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.ui.views
+package jahirfiquitiva.libs.blueprint.ui.views
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.utils.ColorUtils
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
-import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.utils.ColorUtils
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.utils.themes.ThemeUtils
 
 class EmptyViewRecyclerView:RecyclerView {
     var loadingView:View? = null

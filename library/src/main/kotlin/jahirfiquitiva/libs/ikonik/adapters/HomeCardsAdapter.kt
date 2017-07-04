@@ -14,17 +14,17 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.adapters
+package jahirfiquitiva.libs.blueprint.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.holders.HomeCardsHolder
-import jahirfiquitiva.libs.ikonik.models.HomeCard
-import jahirfiquitiva.libs.ikonik.utils.inflate
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.holders.HomeCardsHolder
+import jahirfiquitiva.libs.blueprint.models.HomeCard
+import jahirfiquitiva.libs.blueprint.utils.inflate
 
 class HomeCardsAdapter(val listener:(HomeCard) -> Unit):BaseListAdapter<HomeCard>() {
 

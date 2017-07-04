@@ -14,11 +14,11 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="jahirfiquitiva.apps.ikonik.demo">
+          package="jahirfiquitiva.apps.blueprint.demo">
 
     <application
             android:allowBackup="true"

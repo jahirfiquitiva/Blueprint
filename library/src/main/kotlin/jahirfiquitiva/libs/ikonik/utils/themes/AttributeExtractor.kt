@@ -14,17 +14,17 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.utils.themes
+package jahirfiquitiva.libs.blueprint.utils.themes
 
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.annotation.AttrRes
 import android.support.annotation.ColorInt
 import android.util.TypedValue
-import jahirfiquitiva.libs.ikonik.R
+import jahirfiquitiva.libs.blueprint.R
 
 object AttributeExtractor {
     private val PRIMARY_DARK = intArrayOf(R.attr.colorPrimaryDark)

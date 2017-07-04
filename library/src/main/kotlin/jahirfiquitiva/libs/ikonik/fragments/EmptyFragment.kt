@@ -14,19 +14,19 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.fragments
+package jahirfiquitiva.libs.blueprint.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.fragments.presenters.BasicFragmentPresenter
-import jahirfiquitiva.libs.ikonik.ui.views.EmptyViewRecyclerView
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.fragments.presenters.BasicFragmentPresenter
+import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
 
 open class EmptyFragment:Fragment(), BasicFragmentPresenter {
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,

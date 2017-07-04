@@ -14,13 +14,13 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.adapters
+package jahirfiquitiva.libs.blueprint.adapters
 
 import android.support.v7.widget.RecyclerView
-import jahirfiquitiva.libs.ikonik.adapters.presenters.ItemsAdapterPresenter
+import jahirfiquitiva.libs.blueprint.adapters.presenters.ItemsAdapterPresenter
 
 abstract class BaseListAdapter<T>:RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemsAdapterPresenter<T> {
 

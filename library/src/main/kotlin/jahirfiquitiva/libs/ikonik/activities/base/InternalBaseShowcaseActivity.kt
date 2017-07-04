@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.activities.base
+package jahirfiquitiva.libs.blueprint.activities.base
 
 import android.app.WallpaperManager
 import android.graphics.Color
@@ -40,29 +40,29 @@ import android.widget.Toast
 import com.konifar.fab_transformation.FabTransformation
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.fragments.EmptyFragment
-import jahirfiquitiva.libs.ikonik.fragments.HomeFragment
-import jahirfiquitiva.libs.ikonik.fragments.IconsFragment
-import jahirfiquitiva.libs.ikonik.holders.FilterCheckBoxHolder
-import jahirfiquitiva.libs.ikonik.models.NavigationItem
-import jahirfiquitiva.libs.ikonik.ui.layouts.CustomCoordinatorLayout
-import jahirfiquitiva.libs.ikonik.ui.layouts.FixedElevationAppBarLayout
-import jahirfiquitiva.libs.ikonik.ui.views.CounterFab
-import jahirfiquitiva.libs.ikonik.ui.views.FilterDrawerItem
-import jahirfiquitiva.libs.ikonik.ui.views.FilterTitleDrawerItem
-import jahirfiquitiva.libs.ikonik.ui.views.callbacks.CollapsingToolbarCallback
-import jahirfiquitiva.libs.ikonik.utils.ColorUtils
-import jahirfiquitiva.libs.ikonik.utils.CoreUtils
-import jahirfiquitiva.libs.ikonik.utils.IconUtils
-import jahirfiquitiva.libs.ikonik.utils.NetworkUtils
-import jahirfiquitiva.libs.ikonik.utils.Preferences
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
-import jahirfiquitiva.libs.ikonik.utils.changeOptionVisibility
-import jahirfiquitiva.libs.ikonik.utils.themes.AttributeExtractor
-import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
-import jahirfiquitiva.libs.ikonik.utils.themes.TintUtils
-import jahirfiquitiva.libs.ikonik.utils.themes.ToolbarThemer
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.fragments.EmptyFragment
+import jahirfiquitiva.libs.blueprint.fragments.HomeFragment
+import jahirfiquitiva.libs.blueprint.fragments.IconsFragment
+import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.ui.layouts.CustomCoordinatorLayout
+import jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout
+import jahirfiquitiva.libs.blueprint.ui.views.CounterFab
+import jahirfiquitiva.libs.blueprint.ui.views.FilterDrawerItem
+import jahirfiquitiva.libs.blueprint.ui.views.FilterTitleDrawerItem
+import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
+import jahirfiquitiva.libs.blueprint.utils.ColorUtils
+import jahirfiquitiva.libs.blueprint.utils.CoreUtils
+import jahirfiquitiva.libs.blueprint.utils.IconUtils
+import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
+import jahirfiquitiva.libs.blueprint.utils.Preferences
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.utils.changeOptionVisibility
+import jahirfiquitiva.libs.blueprint.utils.themes.AttributeExtractor
+import jahirfiquitiva.libs.blueprint.utils.themes.ThemeUtils
+import jahirfiquitiva.libs.blueprint.utils.themes.TintUtils
+import jahirfiquitiva.libs.blueprint.utils.themes.ToolbarThemer
 
 open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 

@@ -14,12 +14,12 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.models.lists
+package jahirfiquitiva.libs.blueprint.models.lists
 
-import jahirfiquitiva.libs.ikonik.models.IconsCategory
+import jahirfiquitiva.libs.blueprint.models.IconsCategory
 
 class Holder {
     val iconsList = IconsList()

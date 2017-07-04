@@ -15,7 +15,7 @@
   ~ limitations under the License.
   ~
   ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <RelativeLayout
@@ -42,7 +42,7 @@
                 android:focusable="false"
                 android:gravity="center"/>
 
-        <jahirfiquitiva.libs.ikonik.ui.views.SquaredImageView
+        <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
                 android:id="@+id/wall"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

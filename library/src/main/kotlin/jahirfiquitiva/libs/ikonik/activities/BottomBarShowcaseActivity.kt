@@ -14,20 +14,20 @@
  * limitations under the License.
  *
  * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/IkoniK#special-thanks
+ * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.ikonik.activities
+package jahirfiquitiva.libs.blueprint.activities
 
 import android.os.Bundle
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
-import jahirfiquitiva.libs.ikonik.R
-import jahirfiquitiva.libs.ikonik.activities.base.InternalBaseShowcaseActivity
-import jahirfiquitiva.libs.ikonik.utils.ColorUtils
-import jahirfiquitiva.libs.ikonik.utils.ResourceUtils
-import jahirfiquitiva.libs.ikonik.utils.themes.AttributeExtractor
-import jahirfiquitiva.libs.ikonik.utils.themes.ThemeUtils
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseShowcaseActivity
+import jahirfiquitiva.libs.blueprint.utils.ColorUtils
+import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.utils.themes.AttributeExtractor
+import jahirfiquitiva.libs.blueprint.utils.themes.ThemeUtils
 
 open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
 
