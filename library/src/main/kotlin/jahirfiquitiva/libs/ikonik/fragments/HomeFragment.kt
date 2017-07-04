@@ -78,13 +78,13 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 
     override fun getLoaderId():Int = NavigationItem.DEFAULT_HOME_POSITION
 
-    override fun buildLoader():Loader<ArrayList<HomeCard>> = HomeCardsLoader(context,
-                                                                             object:BasicTaskLoader.TaskListener {
-                                                                                 override fun onTaskStarted() {
-                                                                                     rv?.updateState(
-                                                                                             EmptyViewRecyclerView.STATE_LOADING)
-                                                                                 }
-                                                                             })
+    override fun buildLoader():Loader<ArrayList<HomeCard>> =
+		HomeCardsLoader(context, object:BasicTaskLoader.TaskListener {
+									override fun onTaskStarted() {
+										rv?.updateState(
+												EmptyViewRecyclerView.STATE_LOADING)
+									}
+								})
 
     override fun onDataLoadFinished(data:ArrayList<HomeCard>) {
         val adapter = rv?.adapter
