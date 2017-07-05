@@ -17,20 +17,16 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.ui.views
+package jahirfiquitiva.libs.blueprint.extensions
 
-import android.content.Context
-import android.support.v7.widget.CardView
-import android.util.AttributeSet
-import jahirfiquitiva.libs.blueprint.extensions.getCardBackgroundColor
+import jahirfiquitiva.libs.blueprint.models.Icon
 
-class IconShowcaseCardView:CardView {
-    constructor(context:Context):super(context)
-    constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet)
-    constructor(context:Context, attributeSet:AttributeSet, defStyleAttr:Int)
-            :super(context, attributeSet, defStyleAttr)
-
-    override fun setBackgroundColor(color:Int) {
-        super.setBackgroundColor(context.getCardBackgroundColor())
-    }
+fun ArrayList<Icon>.sortIconsList():ArrayList<Icon> {
+    sort()
+    val noDuplicates:Set<Icon> = HashSet()
+    noDuplicates.plus(this)
+    clear()
+    plus(noDuplicates)
+    sort()
+    return this
 }

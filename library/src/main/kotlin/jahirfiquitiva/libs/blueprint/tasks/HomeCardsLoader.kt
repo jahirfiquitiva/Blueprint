@@ -26,8 +26,7 @@ import jahirfiquitiva.libs.blueprint.extensions.getDrawable
 import jahirfiquitiva.libs.blueprint.extensions.getStringArray
 import jahirfiquitiva.libs.blueprint.extensions.isAppInstalled
 import jahirfiquitiva.libs.blueprint.models.HomeCard
-import jahirfiquitiva.libs.blueprint.utils.CoreUtils
-import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
+import jahirfiquitiva.libs.blueprint.utils.PLAY_STORE_LINK_PREFIX
 
 class HomeCardsLoader(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<HomeCard>>(context, listener) {
@@ -44,7 +43,7 @@ class HomeCardsLoader(context:Context, listener:TaskListener? = null):
             val maxSize = (if (titles.size > 4) 4 else titles.size) - 1
             for (i in 0..maxSize) {
                 val url = urls[i]
-                val isAnApp = url.toLowerCase().startsWith(NetworkUtils.PLAY_STORE_LINK_PREFIX)
+                val isAnApp = url.toLowerCase().startsWith(PLAY_STORE_LINK_PREFIX)
                 var isInstalled = false
                 var intent:Intent? = null
                 if (isAnApp) {

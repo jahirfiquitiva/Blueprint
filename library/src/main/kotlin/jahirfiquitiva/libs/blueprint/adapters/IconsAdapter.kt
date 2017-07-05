@@ -22,9 +22,9 @@ package jahirfiquitiva.libs.blueprint.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.extensions.inflate
 import jahirfiquitiva.libs.blueprint.holders.IconHolder
 import jahirfiquitiva.libs.blueprint.models.Icon
-import jahirfiquitiva.libs.blueprint.utils.inflate
 
 class IconsAdapter(val listener:(Icon) -> Unit):BaseListAdapter<Icon>() {
     override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):IconHolder {

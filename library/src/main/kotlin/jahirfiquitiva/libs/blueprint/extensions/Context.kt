@@ -27,6 +27,7 @@ import android.graphics.drawable.Drawable
 import android.os.Looper
 import android.support.annotation.*
 import android.support.v4.content.ContextCompat
+import android.util.TypedValue
 import android.widget.Toast
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.utils.Konfigurations
@@ -50,6 +51,23 @@ fun Context.getDimensionPixelSize(@DimenRes id:Int):Int = resources.getDimension
 
 fun Context.getDrawable(@DrawableRes id:Int, fallback:Drawable? = null):Drawable? =
         if (id > 0) ContextCompat.getDrawable(this, id) else fallback
+
+@ColorInt
+fun Context.extractColor(attribute:IntArray):Int {
+    val typedValue = TypedValue()
+    val a = obtainStyledAttributes(typedValue.data, attribute)
+    val color = a.getColor(0, 0)
+    a.recycle()
+    return color
+}
+
+fun Context.extractDrawable(@AttrRes drawableAttributeId:Int):Drawable {
+    val typedValue = TypedValue()
+    val a = obtainStyledAttributes(typedValue.data, intArrayOf(drawableAttributeId))
+    val drawable = a.getDrawable(0)
+    a.recycle()
+    return drawable
+}
 
 fun Context.showToast(@StringRes textRes:Int, duration:Int = Toast.LENGTH_SHORT) {
     if (isOnMainThread()) {

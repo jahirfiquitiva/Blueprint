@@ -21,11 +21,15 @@ package jahirfiquitiva.libs.blueprint.tasks
 
 import android.content.Context
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.extensions.blueprintFormat
+import jahirfiquitiva.libs.blueprint.extensions.formatCorrectly
 import jahirfiquitiva.libs.blueprint.extensions.getIconResource
 import jahirfiquitiva.libs.blueprint.extensions.getStringArray
+import jahirfiquitiva.libs.blueprint.extensions.sortIconsList
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
-import jahirfiquitiva.libs.blueprint.utils.IconUtils
+import java.util.HashSet
+import kotlin.collections.ArrayList
 
 class IconsLoader(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<IconsCategory>>(context, listener) {
@@ -39,11 +43,11 @@ class IconsLoader(context:Context, listener:TaskListener? = null):
                     context.resources.getIdentifier(it, "array",
                                                     context.packageName)))
             list.forEach {
-                icons.plus(Icon(IconUtils.formatText(it), it.getIconResource(context)))
+                icons.plus(
+                        Icon(it.formatCorrectly().blueprintFormat(), it.getIconResource(context)))
             }
-            categories.add(IconsCategory(it, IconUtils.sortIconsList(icons)))
+            categories.add(IconsCategory(it, icons.sortIconsList()))
         }
         return categories
     }
-
 }

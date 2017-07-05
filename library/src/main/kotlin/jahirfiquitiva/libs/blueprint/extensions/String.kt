@@ -26,6 +26,9 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
+import jahirfiquitiva.libs.blueprint.utils.CAPS
+import jahirfiquitiva.libs.blueprint.utils.CAPS_LOCK
+import jahirfiquitiva.libs.blueprint.utils.SPACE
 
 fun String.getBitmap(context:Context):Bitmap? =
         this.getBitmapDrawable(context)?.bitmap
@@ -51,4 +54,49 @@ fun String.getDrawable(context:Context):Drawable {
 fun String.getIconResource(context:Context):Int {
     val res = context.resources.getIdentifier(this, "drawable", context.packageName)
     return if (res != 0) res else 0
+}
+
+fun String.formatCorrectly() =
+        replace("[^\\w\\s]+".toRegex(), " ").trim().replace(" +".toRegex(), " ").replace("\\p{Z}".toRegex(), "_")
+
+/**
+ * Kotlin port of the icon names formatting method made by Aidan Follestad (afollestad)
+ */
+fun String.blueprintFormat():String {
+    val sb = StringBuilder()
+    var underscoreMode = 0
+    var foundFirstLetter = false
+    var lastWasLetter = false
+    var index = 0
+    this.toCharArray().forEach {
+        if (Character.isLetterOrDigit(it)) {
+            if (underscoreMode == SPACE) {
+                sb.append(" ")
+                underscoreMode = CAPS
+            }
+            if (!foundFirstLetter && underscoreMode == CAPS) {
+                sb.append(it)
+            } else {
+                sb.append(
+                        if (index == 0 || underscoreMode > 1) Character.toUpperCase(it) else it)
+            }
+            if (underscoreMode < CAPS_LOCK) underscoreMode = 0
+            foundFirstLetter = true
+            lastWasLetter = true
+        } else if (it == '_') {
+            if (underscoreMode == CAPS_LOCK) {
+                if (lastWasLetter) {
+                    underscoreMode = SPACE
+                } else {
+                    sb.append(it)
+                    underscoreMode = 0
+                }
+            } else {
+                underscoreMode += 1
+            }
+            lastWasLetter = false
+        }
+        index += 1
+    }
+    return sb.toString()
 }

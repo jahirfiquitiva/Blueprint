@@ -33,13 +33,13 @@ import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.adapters.HomeCardsAdapter
 import jahirfiquitiva.libs.blueprint.extensions.getDividerColor
 import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
+import jahirfiquitiva.libs.blueprint.extensions.openLink
 import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.blueprint.models.HomeCard
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.tasks.BasicTaskLoader
 import jahirfiquitiva.libs.blueprint.tasks.HomeCardsLoader
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
-import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
 
 class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 
@@ -75,7 +75,9 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
     override fun onItemClicked(item:Any) {
         if (item is HomeCard) {
             if (item.intent != null) context.startActivity(item.intent)
-            else NetworkUtils.openLink(context, item.url)
+            else context.openLink(item.url,
+                                  if (context is ThemedActivity) (context as ThemedActivity).isDarkTheme()
+                                  else false)
         }
     }
 

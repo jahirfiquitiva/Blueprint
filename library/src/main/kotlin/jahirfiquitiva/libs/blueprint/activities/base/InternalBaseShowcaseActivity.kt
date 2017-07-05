@@ -52,9 +52,7 @@ import jahirfiquitiva.libs.blueprint.ui.views.CounterFab
 import jahirfiquitiva.libs.blueprint.ui.views.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.views.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
-import jahirfiquitiva.libs.blueprint.utils.IconUtils
-import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
-import jahirfiquitiva.libs.blueprint.utils.changeOptionVisibility
+import jahirfiquitiva.libs.blueprint.utils.PLAY_STORE_LINK_PREFIX
 
 open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 
@@ -122,7 +120,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
                 "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
         val rateItem:LinearLayout = findViewById(R.id.action_rate)
         rateItem.setOnClickListener {
-            NetworkUtils.openLink(this, NetworkUtils.PLAY_STORE_LINK_PREFIX + packageName)
+            openLink(PLAY_STORE_LINK_PREFIX + packageName, isDarkTheme())
         }
 
         val shareText:TextView = findViewById(R.id.action_share_text)
@@ -235,7 +233,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         getIconsFiltersNames().forEach {
             if (colorIndex >= colors.size) colorIndex = 0
             filtersDrawerBuilder.addDrawerItems(
-                    FilterDrawerItem().withName(IconUtils.formatText(it))
+                    FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
                             .withColor(Color.parseColor(colors[colorIndex]))
                             .withListener(object:FilterCheckBoxHolder.StateChangeListener {
                                 override fun onStateChanged(checked:Boolean, title:String,

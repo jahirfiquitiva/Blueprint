@@ -20,7 +20,7 @@
 package jahirfiquitiva.libs.blueprint.utils.core
 
 import android.content.Context
-import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
+import jahirfiquitiva.libs.blueprint.extensions.isConnected
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -29,7 +29,7 @@ import org.json.JSONObject
 object JSONParser {
     fun getJSONFromURL(context:Context, url:String):JSONObject? {
         try {
-            if (NetworkUtils.isConnected(context)) {
+            if (context.isConnected()) {
                 val client = OkHttpClient()
                 val request = Request.Builder().url(url).build()
                 var response:Response? = null

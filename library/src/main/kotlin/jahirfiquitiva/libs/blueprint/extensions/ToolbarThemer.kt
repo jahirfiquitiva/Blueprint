@@ -24,6 +24,7 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
+import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.DrawableCompat
 import android.support.v7.view.menu.ActionMenuItemView
 import android.support.v7.widget.ActionMenuView
@@ -35,6 +36,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
@@ -60,24 +62,23 @@ fun ThemedActivity.tintToolbar(toolbar:Toolbar, toolbarIconsColor:Int) {
         val v = toolbar.getChildAt(i)
 
         //Step 1 : Changing the color of back button (or open drawer button).
-        if (v is ImageButton) {
-            v.drawable.colorFilter = colorFilter
-        }
+        if (v is ImageButton) v.drawable.colorFilter = colorFilter
 
         if (v is ActionMenuView) {
-            for (j in 0..v.childCount - 1) {
-                //Step 2: Changing the color of any ActionMenuViews - icons that are not back
-                // button, nor text, nor overflow menu icon.
-                val innerView = v.getChildAt(j)
-                if (innerView is ActionMenuItemView) {
-                    for (k in 0..innerView.compoundDrawables.size - 1) {
-                        if (innerView.compoundDrawables[k] != null) {
-                            val finalK = k
-                            innerView.post { innerView.compoundDrawables[finalK].colorFilter = colorFilter }
+            //Step 2: Changing the color of any ActionMenuViews - icons that are not back
+            // button, nor text, nor overflow menu icon.
+            (0..v.childCount - 1)
+                    .map {
+                        v.getChildAt(it)
+                    }
+                    .filterIsInstance<ActionMenuItemView>()
+                    .forEach { innerView ->
+                        innerView.compoundDrawables.forEach {
+                            if (it != null) {
+                                innerView.post { it.colorFilter = colorFilter }
+                            }
                         }
                     }
-                }
-            }
         }
     }
 
@@ -97,8 +98,7 @@ fun ThemedActivity.tintToolbar(toolbar:Toolbar, toolbarIconsColor:Int) {
     setOverflowButtonColor(toolbar, toolbarIconsColor)
 }
 
-fun ThemedActivity.tintToolbarMenu(toolbar:Toolbar?, menu:Menu?,
-                                   @ColorInt iconsColor:Int) {
+fun ThemedActivity.tintToolbarMenu(toolbar:Toolbar?, menu:Menu?, @ColorInt iconsColor:Int) {
     if (toolbar == null || menu == null) return
     // The collapse icon displays when action views are expanded (e.g. SearchView)
     try {
@@ -151,8 +151,7 @@ private fun ThemedActivity.themeSearchView(tintColor:Int, view:SearchView) {
         val mSearchSrcTextView = mSearchSrcTextViewField.get(view) as EditText
         mSearchSrcTextView.setTextColor(tintColor)
         mSearchSrcTextView.setHintTextColor(getHintTextColor(isDarkTheme()))
-        // TODO: Fix
-        // TintUtils.setCursorTint(mSearchSrcTextView, tintColor)
+        setCursorTint(mSearchSrcTextView, tintColor)
 
         var field = cls.getDeclaredField("mSearchButton")
         tintImageView(view, field, tintColor)
@@ -163,12 +162,13 @@ private fun ThemedActivity.themeSearchView(tintColor:Int, view:SearchView) {
         field = cls.getDeclaredField("mVoiceButton")
         tintImageView(view, field, tintColor)
 
+        /* TODO: Fix if necessary
         field = cls.getDeclaredField("mSearchPlate")
         field.isAccessible = true
-        /* TODO: Fix
         TintUtils.setTintAuto(field.get(view) as View, tintColor, true,
                               ColorUtils.isDarkColor(tintColor))
                               */
+
         field = cls.getDeclaredField("mSearchHintIcon")
         field.isAccessible = true
         field.set(view, (field.get(view) as Drawable).tintWithColor(tintColor))
@@ -190,5 +190,27 @@ private fun tintImageView(target:Any, field:Field, tintColor:Int) {
     val imageView = field.get(target) as ImageView
     if (imageView.drawable != null) {
         imageView.setImageDrawable(imageView.drawable.tintWithColor(tintColor))
+    }
+}
+
+private fun setCursorTint(editText:EditText, @ColorInt color:Int) {
+    try {
+        val fCursorDrawableRes = TextView::class.java.getDeclaredField("mCursorDrawableRes")
+        fCursorDrawableRes.isAccessible = true
+        val mCursorDrawableRes = fCursorDrawableRes.getInt(editText)
+        val fEditor = TextView::class.java.getDeclaredField("mEditor")
+        fEditor.isAccessible = true
+        val editor = fEditor.get(editText)
+        val clazz = editor.javaClass
+        val fCursorDrawable = clazz.getDeclaredField("mCursorDrawable")
+        fCursorDrawable.isAccessible = true
+        val drawables = arrayOfNulls<Drawable>(2)
+        drawables[0] = ContextCompat.getDrawable(editText.context, mCursorDrawableRes)
+        drawables[0] = drawables[0]?.tintWithColor(color)
+        drawables[1] = ContextCompat.getDrawable(editText.context, mCursorDrawableRes)
+        drawables[1] = drawables[1]?.tintWithColor(color)
+        fCursorDrawable.set(editor, drawables)
+    } catch (e:Exception) {
+        e.printStackTrace()
     }
 }

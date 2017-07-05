@@ -17,18 +17,28 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.utils
+package jahirfiquitiva.libs.blueprint.extensions
 
-object IntentUtils {
-    const val MARKET_URL = "https://play.google.com/store/apps/details?id="
-    const val PLAY_STORE_INSTALLER = "com.google.android.feedback"
-    const val PLAY_STORE_PACKAGE = "com.android.vending"
-    const val ADW_ACTION = "org.adw.launcher.icons.ACTION_PICK_ICON"
-    const val TURBO_ACTION = "com.phonemetra.turbo.launcher.icons.ACTION_PICK_ICON"
-    const val NOVA_ACTION = "com.novalauncher.THEME"
-    const val APPLY_ACTION = "jahirfiquitiva.iconshowcase.APPLY_ACTION"
-    const val ICONS_PICKER = 1
-    const val IMAGE_PICKER = 2
-    const val WALLS_PICKER = 3
-    const val ICONS_APPLIER = 4
+import android.content.Context
+import android.util.Log
+import jahirfiquitiva.libs.blueprint.utils.LOG_TAG
+
+fun Context.printVerbose(verbose:String) {
+    Log.v(LOG_TAG, verbose)
+}
+
+fun Context.printDebug(debug:String) {
+    Log.d(LOG_TAG, debug)
+}
+
+fun Context.printInfo(info:String) {
+    Log.i(LOG_TAG, info)
+}
+
+fun Context.printWarning(warning:String) {
+    Log.w(LOG_TAG, warning)
+}
+
+fun Context.printError(error:String) {
+    Log.e(LOG_TAG, error)
 }

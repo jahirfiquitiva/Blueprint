@@ -17,29 +17,11 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.utils
+package jahirfiquitiva.libs.blueprint.extensions
 
 import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
-import android.view.LayoutInflater
 import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import jahirfiquitiva.libs.blueprint.R
-
-fun ViewGroup.inflate(layoutId:Int, attachToRoot:Boolean = false):View =
-        LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
-
-fun ImageView.loadFromUrl(url:String) {
-    if (url.isEmpty()) {
-        Glide.with(context).load(R.drawable.ic_wallpapers).into(this)
-    } else {
-        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(this)
-    }
-}
 
 fun Menu.changeOptionVisibility(id:Int, visible:Boolean) {
     findItem(id)?.isVisible = visible

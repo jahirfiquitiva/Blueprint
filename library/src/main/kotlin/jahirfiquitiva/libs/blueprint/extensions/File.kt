@@ -17,10 +17,17 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.utils
+package jahirfiquitiva.libs.blueprint.extensions
 
-object RequestUtils {
-    fun getProperText(original:String):String = original.replace("[^a-zA-Z0-9\\p{Z}]".toRegex(),
-                                                                 "").replace("\\p{Z}".toRegex(),
-                                                                             "_")
+import android.content.Context
+import android.net.Uri
+import android.support.v4.content.FileProvider
+import java.io.File
+
+fun File.getUri(context:Context):Uri? {
+    try {
+        return FileProvider.getUriForFile(context, context.packageName + ".fileProvider", this)
+    } catch (e:Exception) {
+        return null
+    }
 }

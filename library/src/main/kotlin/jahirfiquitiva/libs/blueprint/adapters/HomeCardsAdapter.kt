@@ -22,9 +22,9 @@ package jahirfiquitiva.libs.blueprint.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.extensions.inflate
 import jahirfiquitiva.libs.blueprint.holders.HomeCardsHolder
 import jahirfiquitiva.libs.blueprint.models.HomeCard
-import jahirfiquitiva.libs.blueprint.utils.inflate
 
 class HomeCardsAdapter(val listener:(HomeCard) -> Unit):BaseListAdapter<HomeCard>() {
 

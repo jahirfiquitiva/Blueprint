@@ -48,3 +48,21 @@ val DARK = 1
 val AMOLED = 2
 val AUTO_DARK = 3
 val AUTO_AMOLED = 4
+
+// Icon name formatting
+val SPACE = 1
+val CAPS = 2
+val CAPS_LOCK = 3
+
+// Intent related stuff
+val PLAY_STORE_LINK_PREFIX = "https://play.google.com/store/apps/details?id="
+val PLAY_STORE_INSTALLER = "com.google.android.feedback"
+val PLAY_STORE_PACKAGE = "com.android.vending"
+val ADW_ACTION = "org.adw.launcher.icons.ACTION_PICK_ICON"
+val TURBO_ACTION = "com.phonemetra.turbo.launcher.icons.ACTION_PICK_ICON"
+val NOVA_ACTION = "com.novalauncher.THEME"
+val APPLY_ACTION = "jahirfiquitiva.iconshowcase.APPLY_ACTION"
+val ICONS_PICKER = 1
+val IMAGE_PICKER = 2
+val WALLS_PICKER = 3
+val ICONS_APPLIER = 4

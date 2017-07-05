@@ -24,12 +24,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseShowcaseActivity
-import jahirfiquitiva.libs.blueprint.extensions.getInactiveIconsColor
-import jahirfiquitiva.libs.blueprint.extensions.getPrimaryDarkColor
-import jahirfiquitiva.libs.blueprint.extensions.isColorLight
-import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
-import jahirfiquitiva.libs.blueprint.extensions.setupStatusBarStyle
-import jahirfiquitiva.libs.blueprint.utils.themes.AttributeExtractor
+import jahirfiquitiva.libs.blueprint.extensions.*
 
 open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
 
@@ -46,9 +41,9 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
 
     private fun initBottomBar() {
         bottomBar = findViewById(R.id.bottom_navigation)
-        bottomBar?.defaultBackgroundColor = AttributeExtractor.getCardBgColorFrom(this)
+        bottomBar?.defaultBackgroundColor = getCardBackgroundColor()
         bottomBar?.isBehaviorTranslationEnabled = false
-        bottomBar?.accentColor = AttributeExtractor.getAccentColorFrom(this)
+        bottomBar?.accentColor = getAccentColor(isDarkTheme())
         bottomBar?.inactiveColor = getInactiveIconsColor(isDarkTheme())
         bottomBar?.isForceTint = true
         bottomBar?.titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE

@@ -36,6 +36,8 @@ fun Context.getAccentColor(isDarkTheme:Boolean):Int =
         getColorFromRes(
                 if (isDarkTheme) R.color.dark_theme_accent else R.color.light_theme_accent)
 
+fun Context.getCardBackgroundColor():Int = extractColor(intArrayOf(R.attr.cardBackgroundColor))
+
 fun Context.getPrimaryTextColor(isDarkTheme:Boolean):Int =
         if (isDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
 

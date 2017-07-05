@@ -31,6 +31,7 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.extensions.getBoolean
 import jahirfiquitiva.libs.blueprint.extensions.getInteger
+import jahirfiquitiva.libs.blueprint.extensions.sortIconsList
 import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
@@ -39,7 +40,6 @@ import jahirfiquitiva.libs.blueprint.tasks.BasicTaskLoader
 import jahirfiquitiva.libs.blueprint.tasks.IconsLoader
 import jahirfiquitiva.libs.blueprint.tasks.XMLIconsLoader
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
-import jahirfiquitiva.libs.blueprint.utils.IconUtils
 
 class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>> {
 
@@ -48,7 +48,6 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
 
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
-
         super.onCreateView(inflater, container, savedInstanceState)
         val content = inflater?.inflate(R.layout.extra_icons_grid, container, false) as View
         initUI(content)
@@ -110,7 +109,7 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
             data.forEach {
                 icons.addAll(it.icons)
             }
-            adapter.clearAndAddAll(IconUtils.sortIconsList(icons))
+            adapter.clearAndAddAll(icons.sortIconsList())
             recyclerView?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
         }
     }

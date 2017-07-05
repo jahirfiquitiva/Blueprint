@@ -22,6 +22,10 @@ package jahirfiquitiva.libs.blueprint.extensions
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import jahirfiquitiva.libs.blueprint.R
 
 fun View.isVisible() = visibility == View.VISIBLE
 
@@ -50,3 +54,11 @@ fun View.makeGone() {
 
 fun ViewGroup.inflate(layoutId:Int, attachToRoot:Boolean = false):View =
         LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
+
+fun ImageView.loadFromUrl(url:String) {
+    if (url.isEmpty()) {
+        Glide.with(context).load(R.drawable.ic_wallpapers).into(this)
+    } else {
+        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(this)
+    }
+}

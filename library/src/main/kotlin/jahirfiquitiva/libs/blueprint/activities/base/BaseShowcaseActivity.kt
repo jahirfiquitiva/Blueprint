@@ -25,7 +25,7 @@ import android.support.v4.app.FragmentManager
 import com.github.javiersantos.piracychecker.PiracyChecker
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
-import jahirfiquitiva.libs.blueprint.utils.IntentUtils
+import jahirfiquitiva.libs.blueprint.utils.*
 
 open class BaseShowcaseActivity:ThemedActivity() {
 
@@ -72,10 +72,9 @@ open class BaseShowcaseActivity:ThemedActivity() {
     fun getPickerKey():Int {
         if (intent != null && intent.action != null) {
             when (intent.action) {
-                IntentUtils.APPLY_ACTION -> return IntentUtils.ICONS_APPLIER
-                IntentUtils.ADW_ACTION, IntentUtils.TURBO_ACTION, IntentUtils.NOVA_ACTION -> return IntentUtils.ICONS_PICKER
-                Intent.ACTION_PICK, Intent.ACTION_GET_CONTENT -> return IntentUtils.IMAGE_PICKER
-                Intent.ACTION_SET_WALLPAPER -> return IntentUtils.WALLS_PICKER
+                APPLY_ACTION -> return ICONS_APPLIER
+                ADW_ACTION, TURBO_ACTION, NOVA_ACTION, Intent.ACTION_PICK, Intent.ACTION_GET_CONTENT -> return IMAGE_PICKER
+                Intent.ACTION_SET_WALLPAPER -> return WALLS_PICKER
                 else -> return 0
             }
         }

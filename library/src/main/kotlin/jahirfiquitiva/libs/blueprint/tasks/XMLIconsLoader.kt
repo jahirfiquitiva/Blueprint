@@ -21,10 +21,11 @@ package jahirfiquitiva.libs.blueprint.tasks
 
 import android.content.Context
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.extensions.blueprintFormat
+import jahirfiquitiva.libs.blueprint.extensions.formatCorrectly
 import jahirfiquitiva.libs.blueprint.extensions.getIconResource
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
-import jahirfiquitiva.libs.blueprint.utils.IconUtils
 import org.xmlpull.v1.XmlPullParser
 
 
@@ -43,12 +44,14 @@ class XMLIconsLoader(context:Context, listener:TaskListener? = null):
                         val tag = parser.name
                         if (tag == "category")
                             category = IconsCategory(
-                                    IconUtils.formatText(parser.getAttributeValue(null, "title")))
+                                    parser.getAttributeValue(null,
+                                                             "title").formatCorrectly().blueprintFormat())
                         else if (tag == "item")
                             if (category != null) {
                                 val iconName = parser.getAttributeValue(null, "drawable")
-                                category.icons.add(Icon(IconUtils.formatText(iconName),
-                                                        iconName.getIconResource(context)))
+                                category.icons.add(
+                                        Icon(iconName.formatCorrectly().blueprintFormat(),
+                                             iconName.getIconResource(context)))
                             }
                     }
                 }

@@ -19,7 +19,10 @@
 
 package jahirfiquitiva.libs.blueprint.extensions
 
+import android.content.ContentResolver
+import android.content.Context
 import android.graphics.Color
+import android.net.Uri
 import android.support.annotation.ColorInt
 import android.support.annotation.FloatRange
 
@@ -74,3 +77,9 @@ fun Int.getColorDarkness():Double {
     return 1 - (0.299 * Color.red(this) + 0.587 * Color.green(this) + 0.114 *
                 Color.blue(this)) / 255
 }
+
+fun Int.getUriFromResource(context:Context):Uri =
+        Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
+                  context.resources.getResourcePackageName(this) + '/' +
+                  context.resources.getResourceTypeName(this) + '/' +
+                  context.resources.getResourceEntryName(this))
