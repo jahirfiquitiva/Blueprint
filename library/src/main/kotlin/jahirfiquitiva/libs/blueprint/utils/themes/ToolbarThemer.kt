@@ -23,7 +23,7 @@ object ToolbarThemer {
     /* TODO: Fix
 
     fun updateToolbarColors(activity:AppCompatActivity, toolbar:Toolbar, offset:Int) {
-        val defaultIconsColor = ResourceUtils.getColor(activity, android.R.color.white)
+        val defaultIconsColor = activity.getColorFromRes(android.R.color.white)
         var ratio = CoreUtils.round(offset / 255.0, 1)
         if (ratio > 1)
             ratio = 1.0

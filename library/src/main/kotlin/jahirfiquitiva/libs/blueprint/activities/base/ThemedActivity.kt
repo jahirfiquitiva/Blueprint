@@ -31,38 +31,18 @@ open class ThemedActivity:AppCompatActivity() {
     var coloredNavbar = false
 
     override fun onCreate(savedInstanceState:Bundle?) {
-        Aesthetic.attach(this)
+        setCustomTheme()
         super.onCreate(savedInstanceState)
-        if (Aesthetic.isFirstTime()) {
-            Aesthetic.get()
-                    .colorPrimary(getPrimaryColor(usesDarkTheme))
-                    .colorPrimaryDark(getPrimaryDarkColor(usesDarkTheme))
-                    .colorAccent(getAccentColor(usesDarkTheme))
-                    .colorStatusBar(getAccentColor(usesDarkTheme))
-                    .lightStatusBarMode(
-                            if (getPrimaryDarkColor(usesDarkTheme).isColorLight())
-                                AutoSwitchMode.ON else AutoSwitchMode.OFF)
-                    .colorNavigationBar(navbarColor)
-                    .textColorPrimary(getPrimaryTextColor(usesDarkTheme))
-                    .textColorPrimaryInverse(getPrimaryTextColorInverse(usesLightTheme))
-                    .textColorSecondary(getSecondaryTextColor(usesDarkTheme))
-                    .textColorSecondaryInverse(getSecondaryTextColorInverse(usesLightTheme))
-                    .colorIconTitleActive(getActiveIconsColor(usesDarkTheme))
-                    .colorIconTitleInactive(getInactiveIconsColor(usesDarkTheme))
-                    .apply()
-        }
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
     }
 
     override fun onResume() {
         super.onResume()
-        Aesthetic.resume(this)
         if (lastTheme != konfigs.currentTheme || coloredNavbar != konfigs.hasColoredNavbar)
             restart()
     }
 
     override fun onPause() {
-        Aesthetic.pause(this)
         super.onPause()
     }
 

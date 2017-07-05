@@ -34,6 +34,7 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.konifar.fab_transformation.FabTransformation
 import com.mikepenz.materialdrawer.Drawer
@@ -51,10 +52,8 @@ import jahirfiquitiva.libs.blueprint.ui.views.CounterFab
 import jahirfiquitiva.libs.blueprint.ui.views.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.views.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
-import jahirfiquitiva.libs.blueprint.utils.CoreUtils
 import jahirfiquitiva.libs.blueprint.utils.IconUtils
 import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 import jahirfiquitiva.libs.blueprint.utils.changeOptionVisibility
 
 open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
@@ -70,7 +69,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     private var sheet:View? = null
     private var filtersDrawer:Drawer? = null
     private var iconsFilters:ArrayList<String> = ArrayList()
-    internal var currentItemId = -1
+    internal var currentItemId:Int = -1
 
     var filtersListener:FiltersListener? = null
 
@@ -86,6 +85,20 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         }
     }
 
+    override fun onSaveInstanceState(outState:Bundle?) {
+        outState?.putString("toolbarTitle", collapsingToolbar?.title.toString())
+        outState?.putInt("currentItemId", currentItemId)
+        outState?.putInt("pickerKey", picker)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        collapsingToolbar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
+        picker = savedInstanceState?.getInt("pickerKey") ?: 0
+        navigateToItem(getNavigationItems()[savedInstanceState?.getInt("currentItemId") ?: 0])
+    }
+
     fun initMainComponents(savedInstance:Bundle?) {
         initToolbar()
         initCollapsingToolbar()
@@ -96,37 +109,52 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     private fun initFAB() {
         fab = findViewById(R.id.fab)
         overlay = findViewById(R.id.overlay)
-        overlay?.background = ColorDrawable(getOverlayColor(usesDarkTheme))
+        overlay?.background = ColorDrawable(getOverlayColor(isDarkTheme()))
         overlay?.setOnClickListener { _ ->
-            if (currentItemId == 0)
-                FabTransformation.with(fab).setOverlay(overlay).transformFrom(sheet)
+            hideOverlay()
         }
         sheet = findViewById(R.id.sheet)
-        val rateText:TextView = findViewById(R.id.action_rate)
-        rateText.setCompoundDrawables(
-                "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor(usesDarkTheme)),
-                null, null, null)
-        rateText.setOnClickListener {
-            NetworkUtils.openLink(this,
-                                  NetworkUtils.PLAY_STORE_LINK_PREFIX + CoreUtils.getAppPackageName(
-                                          this))
+
+        val rateText:TextView = findViewById(R.id.action_rate_text)
+        rateText.setTextColor(getPrimaryTextColor(isDarkTheme()))
+        val rateIcon:ImageView = findViewById(R.id.action_rate_icon)
+        rateIcon.setImageDrawable(
+                "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
+        val rateItem:LinearLayout = findViewById(R.id.action_rate)
+        rateItem.setOnClickListener {
+            NetworkUtils.openLink(this, NetworkUtils.PLAY_STORE_LINK_PREFIX + packageName)
         }
-        val shareText:TextView = findViewById(R.id.action_share)
-        shareText.setCompoundDrawables(
-                "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor(usesDarkTheme)),
-                null, null, null)
-        val donateText:TextView = findViewById(R.id.action_donate)
-        if (donationsEnabled()) {
-            donateText.setCompoundDrawables(
-                    "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor(usesDarkTheme)),
-                    null, null, null)
-        } else {
-            donateText.visibility = View.GONE
+
+        val shareText:TextView = findViewById(R.id.action_share_text)
+        shareText.setTextColor(getPrimaryTextColor(isDarkTheme()))
+        val shareIcon:ImageView = findViewById(R.id.action_share_icon)
+        shareIcon.setImageDrawable(
+                "ic_share".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
+        val shareItem:LinearLayout = findViewById(R.id.action_share)
+        shareItem.setOnClickListener {
+            // TODO: Share intent
         }
-        val helpText:TextView = findViewById(R.id.action_help)
-        helpText.setCompoundDrawables(
-                "ic_questions".getDrawable(this).tintWithColor(getActiveIconsColor(usesDarkTheme)),
-                null, null, null)
+
+        val donateText:TextView = findViewById(R.id.action_donate_text)
+        donateText.setTextColor(getPrimaryTextColor(isDarkTheme()))
+        val donateIcon:ImageView = findViewById(R.id.action_donate_icon)
+        donateIcon.setImageDrawable(
+                "ic_donate".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
+        val donateItem:LinearLayout = findViewById(R.id.action_donate)
+        donateItem.makeVisibleIf(donationsEnabled())
+        donateItem.setOnClickListener {
+            // TODO: Init donations
+        }
+
+        val helpText:TextView = findViewById(R.id.action_help_text)
+        helpText.setTextColor(getPrimaryTextColor(isDarkTheme()))
+        val helpIcon:ImageView = findViewById(R.id.action_help_icon)
+        helpIcon.setImageDrawable(
+                "ic_questions".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
+        val helpItem:LinearLayout = findViewById(R.id.action_help)
+        helpItem.setOnClickListener {
+            // TODO: Switch to help section
+        }
     }
 
     open fun initToolbar() {
@@ -134,7 +162,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         menu = toolbar?.menu
         menuInflater.inflate(R.menu.menu_main, menu)
         toolbar?.let {
-            tintToolbar(it, getActiveIconsColorFor(getPrimaryColor(usesDarkTheme)))
+            tintToolbar(it, getActiveIconsColorFor(getPrimaryColor(isDarkTheme())))
         }
         toolbar?.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
@@ -155,7 +183,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         appBarLayout = findViewById(R.id.appBar)
         collapsingToolbar = findViewById(R.id.collapsingToolbar)
         collapsingToolbar?.setExpandedTitleColor(Color.TRANSPARENT)
-        collapsingToolbar?.setCollapsedTitleTextColor(getPrimaryTextColor(usesDarkTheme))
+        collapsingToolbar?.setCollapsedTitleTextColor(getPrimaryTextColor(isDarkTheme()))
         appBarLayout?.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
             override fun onVerticalOffsetChanged(appBar:AppBarLayout?, verticalOffset:Int) {
                 toolbar?.let { updateToolbarColorsHere(it, verticalOffset) }
@@ -163,12 +191,12 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         })
         val wallpaper:ImageView? = findViewById(R.id.toolbarHeader)
         val wallManager = WallpaperManager.getInstance(this)
-        if (getPickerKey() == 0 && getShortcut().isEmpty()) {
+        if (picker == 0 && getShortcut().isEmpty()) {
             var drawable:Drawable? = null
             if (konfigs.wallpaperAsToolbarHeaderEnabled) {
                 drawable = wallManager?.fastDrawable
             } else {
-                val picName = ResourceUtils.getString(this, R.string.toolbar_picture)
+                val picName = getString(R.string.toolbar_picture)
                 if (picName.isNotEmpty()) {
                     try {
                         drawable = picName.getDrawable(this)
@@ -178,10 +206,10 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
             }
             wallpaper?.alpha = .95f
             wallpaper?.setImageDrawable(drawable)
-            wallpaper?.visibility = View.VISIBLE
+            wallpaper?.makeVisible()
             if (wallpaper == null) {
                 val gradient:ImageView? = findViewById(R.id.toolbarGradient)
-                gradient?.visibility = View.GONE
+                gradient?.makeGone()
             }
         }
     }
@@ -203,7 +231,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         val listSize = getIconsFiltersNames().size
         var index = 0
         var colorIndex = 0
-        val colors = ResourceUtils.getStringArray(this, R.array.filters_colors)
+        val colors = getStringArray(R.array.filters_colors)
         getIconsFiltersNames().forEach {
             if (colorIndex >= colors.size) colorIndex = 0
             filtersDrawerBuilder.addDrawerItems(
@@ -247,10 +275,11 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
             changeFABAction(id == NavigationItem.DEFAULT_HOME_POSITION)
             appBarLayout?.setExpanded(id == NavigationItem.DEFAULT_HOME_POSITION,
                                       konfigs.animationsEnabled)
-            collapsingToolbar?.title = ResourceUtils.getString(this,
-                                                               if (id == NavigationItem.DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+            collapsingToolbar?.title = getString(
+                    if (id == NavigationItem.DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+            hideOverlay()
             coordinatorLayout?.allowScroll = id == NavigationItem.DEFAULT_HOME_POSITION
-            tabs?.visibility = if (id == NavigationItem.DEFAULT_PREVIEWS_POSITION) View.VISIBLE else View.GONE
+            tabs?.makeVisibleIf(id == NavigationItem.DEFAULT_PREVIEWS_POSITION)
             changeFragment(getFragmentForNavigationItem(id))
             lockFiltersDrawer(id != NavigationItem.DEFAULT_PREVIEWS_POSITION)
             return true
@@ -270,7 +299,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
                                      item.id == NavigationItem.DEFAULT_WALLPAPERS_POSITION)
         menu?.changeOptionVisibility(R.id.select_all,
                                      item.id == NavigationItem.DEFAULT_REQUEST_POSITION)
-        // ToolbarThemer.tintToolbarMenu(toolbar, menu, getActiveIconsColorFor(primaryColor))
+        tintToolbarMenu(toolbar, menu, getActiveIconsColorFor(getPrimaryColor(isDarkTheme())))
     }
 
     fun changeFABVisibility(visible:Boolean) = if (visible) fab?.show() else fab?.hide()
@@ -283,11 +312,9 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     }
 
     private fun changeFABAction(home:Boolean) {
-        /*
-        fab?.setImageDrawable(TintUtils.createTintedDrawable(
-                IconUtils.getDrawableWithName(this, if (home) "ic_plus" else "ic_send"),
-                getActiveIconsColorFor(accentColor)))
-                */
+        fab?.setImageDrawable(
+                (if (home) "ic_plus" else "ic_send").getDrawable(this)
+                        .tintWithColor(getActiveIconsColorFor(getAccentColor(isDarkTheme()))))
         if (home) {
             fab?.count = 0
             fab?.setOnClickListener({
@@ -310,7 +337,11 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     }
 
     private fun getIconsFiltersNames():Array<String> {
-        return ResourceUtils.getStringArray(this, R.array.icon_filters)
+        return getStringArray(R.array.icon_filters)
+    }
+
+    private fun hideOverlay() {
+        FabTransformation.with(fab).setOverlay(overlay).transformFrom(sheet)
     }
 
     override fun getNavigationItems():Array<NavigationItem> {

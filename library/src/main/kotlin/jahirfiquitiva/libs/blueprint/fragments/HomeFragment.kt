@@ -32,7 +32,7 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.adapters.HomeCardsAdapter
 import jahirfiquitiva.libs.blueprint.extensions.getDividerColor
-import jahirfiquitiva.libs.blueprint.extensions.usesDarkTheme
+import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.blueprint.models.HomeCard
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
@@ -67,7 +67,7 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
         val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         if (context is ThemedActivity)
             deco.setDrawable(ColorDrawable(context.getDividerColor(
-                    (context as ThemedActivity).usesDarkTheme)))
+                    (context as ThemedActivity).isDarkTheme())))
         rv?.addItemDecoration(deco)
         rv?.adapter = HomeCardsAdapter { onItemClicked(it) }
     }

@@ -18,6 +18,8 @@
  */
 package jahirfiquitiva.libs.blueprint.utils
 
+val LOG_TAG = "IconShowcase"
+
 // Shared Preferences
 val PREFERENCES_NAME = "dashboard_preferences"
 val APP_RUN_COUNT = "app_run_count"

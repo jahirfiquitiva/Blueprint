@@ -23,22 +23,22 @@ import android.content.Context
 import android.content.Intent
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.getDrawable
+import jahirfiquitiva.libs.blueprint.extensions.getStringArray
+import jahirfiquitiva.libs.blueprint.extensions.isAppInstalled
 import jahirfiquitiva.libs.blueprint.models.HomeCard
 import jahirfiquitiva.libs.blueprint.utils.CoreUtils
-import jahirfiquitiva.libs.blueprint.utils.IconUtils
 import jahirfiquitiva.libs.blueprint.utils.NetworkUtils
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class HomeCardsLoader(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<HomeCard>>(context, listener) {
 
     override fun loadInBackground():ArrayList<HomeCard> {
         val cards = ArrayList<HomeCard>()
-        val titles = ResourceUtils.getStringArray(context, R.array.home_list_titles)
-        val descriptions = ResourceUtils.getStringArray(context,
-                                                        R.array.home_list_descriptions)
-        val icons = ResourceUtils.getStringArray(context, R.array.home_list_icons)
-        val urls = ResourceUtils.getStringArray(context, R.array.home_list_links)
+        val titles = context.getStringArray(R.array.home_list_titles)
+        val descriptions = context.getStringArray(
+                R.array.home_list_descriptions)
+        val icons = context.getStringArray(R.array.home_list_icons)
+        val urls = context.getStringArray(R.array.home_list_links)
         if (titles.size == descriptions.size && descriptions.size == icons.size
             && icons.size == urls.size) {
             val maxSize = (if (titles.size > 4) 4 else titles.size) - 1
@@ -49,7 +49,7 @@ class HomeCardsLoader(context:Context, listener:TaskListener? = null):
                 var intent:Intent? = null
                 if (isAnApp) {
                     val packageName = url.substring(url.lastIndexOf("="))
-                    isInstalled = CoreUtils.isAppInstalled(context, packageName)
+                    isInstalled = context.isAppInstalled(packageName)
                     intent = context.packageManager.getLaunchIntentForPackage(packageName)
                 }
                 cards.add(HomeCard(titles[i], descriptions[i], urls[i],

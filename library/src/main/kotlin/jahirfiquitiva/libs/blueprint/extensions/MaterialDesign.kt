@@ -24,50 +24,50 @@ import android.graphics.Color
 import android.support.annotation.ColorInt
 import jahirfiquitiva.libs.blueprint.R
 
-fun Context.getPrimaryColor(usesDarkTheme:Boolean):Int =
+fun Context.getPrimaryColor(isDarkTheme:Boolean):Int =
         getColorFromRes(
-                if (usesDarkTheme) R.color.dark_theme_primary else R.color.light_theme_primary)
+                if (isDarkTheme) R.color.dark_theme_primary else R.color.light_theme_primary)
 
-fun Context.getPrimaryDarkColor(usesDarkTheme:Boolean):Int =
+fun Context.getPrimaryDarkColor(isDarkTheme:Boolean):Int =
         getColorFromRes(
-                if (usesDarkTheme) R.color.dark_theme_primary_dark else R.color.light_theme_primary_dark)
+                if (isDarkTheme) R.color.dark_theme_primary_dark else R.color.light_theme_primary_dark)
 
-fun Context.getAccentColor(usesDarkTheme:Boolean):Int =
+fun Context.getAccentColor(isDarkTheme:Boolean):Int =
         getColorFromRes(
-                if (usesDarkTheme) R.color.dark_theme_accent else R.color.light_theme_accent)
+                if (isDarkTheme) R.color.dark_theme_accent else R.color.light_theme_accent)
 
-fun Context.getPrimaryTextColor(usesDarkTheme:Boolean):Int =
-        if (usesDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
+fun Context.getPrimaryTextColor(isDarkTheme:Boolean):Int =
+        if (isDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
 
 fun Context.getPrimaryTextColorInverse(usesLightTheme:Boolean):Int =
         if (usesLightTheme) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
 
-fun Context.getSecondaryTextColor(usesDarkTheme:Boolean):Int =
-        if (usesDarkTheme) Color.parseColor("#b3ffffff") else Color.parseColor("#8a000000")
+fun Context.getSecondaryTextColor(isDarkTheme:Boolean):Int =
+        if (isDarkTheme) Color.parseColor("#b3ffffff") else Color.parseColor("#8a000000")
 
 fun Context.getSecondaryTextColorInverse(usesLightTheme:Boolean):Int =
         if (usesLightTheme) Color.parseColor("#b3ffffff") else Color.parseColor("#8a000000")
 
-fun Context.getDisabledTextColor(usesDarkTheme:Boolean):Int =
-        if (usesDarkTheme) Color.parseColor("#80ffffff") else Color.parseColor("#61000000")
+fun Context.getDisabledTextColor(isDarkTheme:Boolean):Int =
+        if (isDarkTheme) Color.parseColor("#80ffffff") else Color.parseColor("#61000000")
 
-fun Context.getHintTextColor(usesDarkTheme:Boolean):Int = getDisabledTextColor(usesDarkTheme)
+fun Context.getHintTextColor(isDarkTheme:Boolean):Int = getDisabledTextColor(isDarkTheme)
 
 @ColorInt
 fun Context.getDividerColor(forDarkTheme:Boolean) =
-        if (forDarkTheme) Color.parseColor("1f000000") else Color.parseColor("1fffffff")
+        if (forDarkTheme) Color.parseColor("#1f000000") else Color.parseColor("#1fffffff")
 
-fun Context.getActiveIconsColor(usesDarkTheme:Boolean):Int =
-        if (usesDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#8a000000")
+fun Context.getActiveIconsColor(isDarkTheme:Boolean):Int =
+        if (isDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#8a000000")
 
-fun Context.getInactiveIconsColor(usesDarkTheme:Boolean):Int = getDisabledTextColor(usesDarkTheme)
+fun Context.getInactiveIconsColor(isDarkTheme:Boolean):Int = getDisabledTextColor(isDarkTheme)
 
-fun Context.getRippleColor(usesDarkTheme:Boolean):Int =
+fun Context.getRippleColor(isDarkTheme:Boolean):Int =
         getColorFromRes(
-                if (usesDarkTheme) R.color.ripple_material_light else R.color.ripple_material_dark)
+                if (isDarkTheme) R.color.ripple_material_light else R.color.ripple_material_dark)
 
-fun Context.getOverlayColor(usesDarkTheme:Boolean):Int =
-        if (usesDarkTheme) Color.parseColor("#40ffffff") else Color.parseColor("#4d000000")
+fun Context.getOverlayColor(isDarkTheme:Boolean):Int =
+        if (isDarkTheme) Color.parseColor("#40ffffff") else Color.parseColor("#4d000000")
 
 fun Context.getPrimaryTextColorFor(@ColorInt color:Int):Int =
         if (color.isColorDark()) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")

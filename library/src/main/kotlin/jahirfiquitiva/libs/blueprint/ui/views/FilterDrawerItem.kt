@@ -33,7 +33,7 @@ import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.extensions.getDividerColor
 import jahirfiquitiva.libs.blueprint.extensions.makeGone
 import jahirfiquitiva.libs.blueprint.extensions.makeVisible
-import jahirfiquitiva.libs.blueprint.extensions.usesDarkTheme
+import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
 
 class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
@@ -81,7 +81,7 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
         val context = holder?.itemView?.context
         if (showDivider && context is ThemedActivity) {
             holder.divider?.background = ColorDrawable(
-                    context.getDividerColor(context.usesDarkTheme))
+                    context.getDividerColor(context.isDarkTheme()))
             holder.divider?.makeVisible()
         } else holder?.divider?.makeGone()
         checkBoxHolder = FilterCheckBoxHolder()

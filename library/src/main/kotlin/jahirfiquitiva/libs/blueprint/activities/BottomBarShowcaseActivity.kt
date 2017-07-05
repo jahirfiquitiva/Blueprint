@@ -25,9 +25,10 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseShowcaseActivity
 import jahirfiquitiva.libs.blueprint.extensions.getInactiveIconsColor
-import jahirfiquitiva.libs.blueprint.extensions.setupStatusBar
-import jahirfiquitiva.libs.blueprint.extensions.usesDarkTheme
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.extensions.getPrimaryDarkColor
+import jahirfiquitiva.libs.blueprint.extensions.isColorLight
+import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
+import jahirfiquitiva.libs.blueprint.extensions.setupStatusBarStyle
 import jahirfiquitiva.libs.blueprint.utils.themes.AttributeExtractor
 
 open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
@@ -36,7 +37,8 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        setupStatusBar(true)
+        picker = getPickerKey()
+        setupStatusBarStyle(true, getPrimaryDarkColor(isDarkTheme()).isColorLight())
         setContentView(R.layout.activity_bottom_bar_showcase)
         initMainComponents(savedInstanceState)
         initBottomBar()
@@ -47,17 +49,26 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
         bottomBar?.defaultBackgroundColor = AttributeExtractor.getCardBgColorFrom(this)
         bottomBar?.isBehaviorTranslationEnabled = false
         bottomBar?.accentColor = AttributeExtractor.getAccentColorFrom(this)
-        bottomBar?.inactiveColor = getInactiveIconsColor(usesDarkTheme)
+        bottomBar?.inactiveColor = getInactiveIconsColor(isDarkTheme())
         bottomBar?.isForceTint = true
         bottomBar?.titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
         getNavigationItems().forEach {
             bottomBar?.addItem(
-                    AHBottomNavigationItem(ResourceUtils.getString(this, it.title), it.icon))
+                    AHBottomNavigationItem(getString(it.title), it.icon))
         }
         bottomBar?.setOnTabSelectedListener { position, _ ->
             return@setOnTabSelectedListener navigateToItem(getNavigationItems()[position])
         }
         bottomBar?.setCurrentItem(0, true)
+    }
+
+    override fun onSaveInstanceState(outState:Bundle?) {
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        bottomBar?.setCurrentItem(savedInstanceState?.getInt("currentItemId", 0) ?: 0, true)
     }
 
 }

@@ -25,6 +25,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.extensions.makeVisibleIf
 import jahirfiquitiva.libs.blueprint.models.HomeCard
 
 class HomeCardsHolder {
@@ -41,7 +42,7 @@ class HomeCardsHolder {
 
         fun setItem(item:HomeCard, showSectionTitle:Boolean, listener:(HomeCard) -> Unit)
                 = with(itemView) {
-            sectionTitle?.visibility = if (showSectionTitle) View.VISIBLE else View.GONE
+            sectionTitle?.makeVisibleIf(showSectionTitle)
             title?.text = item.title
             description?.text = item.description
             icon?.setImageDrawable(item.icon)

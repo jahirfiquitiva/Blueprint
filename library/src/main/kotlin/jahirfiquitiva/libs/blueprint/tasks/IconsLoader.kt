@@ -22,22 +22,22 @@ package jahirfiquitiva.libs.blueprint.tasks
 import android.content.Context
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.getIconResource
+import jahirfiquitiva.libs.blueprint.extensions.getStringArray
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.utils.IconUtils
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class IconsLoader(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<IconsCategory>>(context, listener) {
 
     override fun loadInBackground():ArrayList<IconsCategory> {
         val categories:ArrayList<IconsCategory> = ArrayList()
-        ResourceUtils.getStringArray(context, R.array.icon_filters).forEach {
+        context.getStringArray(R.array.icon_filters).forEach {
             val icons:ArrayList<Icon> = ArrayList()
             val list:ArrayList<String> = ArrayList()
-            list.plus(ResourceUtils.getStringArray(context,
-                                                   context.resources.getIdentifier(it, "array",
-                                                                                   context.packageName)))
+            list.plus(context.getStringArray(
+                    context.resources.getIdentifier(it, "array",
+                                                    context.packageName)))
             list.forEach {
                 icons.plus(Icon(IconUtils.formatText(it), it.getIconResource(context)))
             }

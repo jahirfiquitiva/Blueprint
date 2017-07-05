@@ -20,35 +20,11 @@
 package jahirfiquitiva.libs.blueprint.utils
 
 import android.content.Context
-import android.content.pm.PackageManager
 import android.util.TypedValue
 import java.math.BigDecimal
 import java.math.RoundingMode
 
 object CoreUtils {
-    val LOG_TAG = "IconShowcase"
-
-    fun getAppVersion(context:Context):String {
-        try {
-            return context.packageManager.getPackageInfo(context.packageName, 0).versionName
-        } catch (e:Exception) {
-            return "Unknown"
-        }
-    }
-
-    fun getAppPackageName(context:Context):String = context.packageName
-
-    fun isAppInstalled(context:Context, packageName:String):Boolean {
-        val pm = context.packageManager
-        var installed = false
-        try {
-            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
-            installed = true
-        } catch (ignored:Exception) {
-        }
-        return installed
-    }
-
     fun convertDpToPx(context:Context, dp:Float):Int = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, dp,
             context.resources.displayMetrics).toInt()

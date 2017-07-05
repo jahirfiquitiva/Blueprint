@@ -27,8 +27,10 @@ import android.widget.TextView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.extensions.getSecondaryTextColor
-import jahirfiquitiva.libs.blueprint.extensions.usesDarkTheme
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
+import jahirfiquitiva.libs.blueprint.extensions.makeGone
+import jahirfiquitiva.libs.blueprint.extensions.makeVisible
+import jahirfiquitiva.libs.blueprint.extensions.makeVisibleIf
 
 class EmptyViewRecyclerView:RecyclerView {
     var loadingView:View? = null
@@ -52,19 +54,19 @@ class EmptyViewRecyclerView:RecyclerView {
     private fun updateStateViews() {
         when (state) {
             STATE_LOADING -> {
-                loadingView?.visibility = VISIBLE
-                emptyView?.visibility = GONE
-                textView?.text = ResourceUtils.getString(context,
-                                                         if (loadingTextRes != -1) loadingTextRes else R.string.loading_section)
-                visibility = GONE
+                loadingView?.makeVisible()
+                emptyView?.makeGone()
+                textView?.text = context.getString(
+                        if (loadingTextRes != -1) loadingTextRes else R.string.loading_section)
+                makeGone()
             }
             STATE_NORMAL -> {
                 if (adapter != null) {
                     val items = adapter.itemCount
                     if (items > 0) {
-                        loadingView?.visibility = GONE
-                        emptyView?.visibility = GONE
-                        visibility = VISIBLE
+                        loadingView?.makeGone()
+                        emptyView?.makeGone()
+                        makeVisible()
                     } else {
                         updateState(STATE_EMPTY)
                     }
@@ -73,17 +75,17 @@ class EmptyViewRecyclerView:RecyclerView {
                 }
             }
             STATE_EMPTY -> {
-                loadingView?.visibility = GONE
-                emptyView?.visibility = VISIBLE
-                textView?.text = ResourceUtils.getString(context,
-                                                         if (emptyTextRes != -1) emptyTextRes else R.string.empty_section)
-                visibility = GONE
+                loadingView?.makeGone()
+                emptyView?.makeVisible()
+                textView?.text = context.getString(
+                        if (emptyTextRes != -1) emptyTextRes else R.string.empty_section)
+                makeGone()
             }
         }
         if (context is ThemedActivity)
             textView?.setTextColor(context.getSecondaryTextColor(
-                    (context as ThemedActivity).usesDarkTheme))
-        textView?.visibility = if (state != STATE_NORMAL) VISIBLE else GONE
+                    (context as ThemedActivity).isDarkTheme()))
+        textView?.makeVisibleIf(state != STATE_NORMAL)
     }
 
     internal val observer:RecyclerView.AdapterDataObserver = object:RecyclerView.AdapterDataObserver() {

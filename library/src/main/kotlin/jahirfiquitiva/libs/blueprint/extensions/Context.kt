@@ -20,23 +20,27 @@
 package jahirfiquitiva.libs.blueprint.extensions
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Looper
-import android.support.annotation.ColorRes
-import android.support.annotation.DimenRes
-import android.support.annotation.DrawableRes
-import android.support.annotation.IntegerRes
-import android.support.annotation.StringRes
+import android.support.annotation.*
 import android.support.v4.content.ContextCompat
+import android.widget.Toast
+import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.utils.Konfigurations
 import jahirfiquitiva.libs.blueprint.utils.PREFERENCES_NAME
 
-fun Context.getStringFromRes(@StringRes stringRes:Int, fallback:String) =
+fun Context.getStringFromRes(@StringRes stringRes:Int, fallback:String):String =
         if (stringRes > 0) getString(stringRes) else fallback
 
+fun Context.getStringArray(@ArrayRes arrayRes:Int):Array<String> =
+        resources.getStringArray(arrayRes)
+
 fun Context.getColorFromRes(@ColorRes colorRes:Int) = ContextCompat.getColor(this, colorRes)
+
+fun Context.getBoolean(@BoolRes bool:Int) = resources.getBoolean(bool)
 
 fun Context.getInteger(@IntegerRes id:Int):Int = resources.getInteger(id)
 
@@ -46,6 +50,45 @@ fun Context.getDimensionPixelSize(@DimenRes id:Int):Int = resources.getDimension
 
 fun Context.getDrawable(@DrawableRes id:Int, fallback:Drawable? = null):Drawable? =
         if (id > 0) ContextCompat.getDrawable(this, id) else fallback
+
+fun Context.showToast(@StringRes textRes:Int, duration:Int = Toast.LENGTH_SHORT) {
+    if (isOnMainThread()) {
+        Toast.makeText(this, textRes, duration).show()
+    } else {
+        if (this is Activity)
+            runOnUiThread { Toast.makeText(this, textRes, duration).show() }
+    }
+}
+
+fun Context.showToast(text:String, duration:Int = Toast.LENGTH_SHORT) {
+    if (isOnMainThread()) {
+        Toast.makeText(this, text, duration).show()
+    } else {
+        if (this is Activity)
+            runOnUiThread { Toast.makeText(this, text, duration).show() }
+    }
+}
+
+fun Context.getAppName():String = getStringFromRes(R.string.app_name, "IconShowcase")
+
+fun Context.getAppVersion():String {
+    try {
+        return packageManager.getPackageInfo(packageName, 0).versionName
+    } catch (e:Exception) {
+        return "Unknown"
+    }
+}
+
+fun Context.isAppInstalled(packageName:String):Boolean {
+    val pm = packageManager
+    var installed = false
+    try {
+        pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+        installed = true
+    } catch (ignored:Exception) {
+    }
+    return installed
+}
 
 fun Context.isOnMainThread() = Looper.myLooper() == Looper.getMainLooper()
 

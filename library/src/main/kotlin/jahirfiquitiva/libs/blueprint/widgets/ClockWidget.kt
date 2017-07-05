@@ -27,7 +27,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.utils.CoreUtils
+import jahirfiquitiva.libs.blueprint.extensions.isAppInstalled
 
 class ClockWidget:AppWidgetProvider() {
     @Suppress("NAME_SHADOWING")
@@ -51,7 +51,8 @@ class ClockWidget:AppWidgetProvider() {
             val rViews = RemoteViews(context?.packageName, R.layout.widget_clock)
             var intent:Intent? = Intent()
             packages.forEach breaker@ {
-                if (CoreUtils.isAppInstalled(context!!, it)) {
+                val installed = context?.isAppInstalled(it) ?: false
+                if (installed) {
                     intent = pm?.getLaunchIntentForPackage(it)
                     if (intent != null) {
                         foundApp = true

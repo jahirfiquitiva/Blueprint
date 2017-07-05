@@ -36,13 +36,13 @@ import android.widget.EditText
 import android.widget.Toast
 import jahirfiquitiva.libs.blueprint.activities.base.BaseShowcaseActivity
 
-fun Activity.setupStatusBar(transparent:Boolean = false) {
+fun Activity.setupStatusBarStyle(translucent:Boolean = true, lightMode:Boolean = false) {
     if (Build.VERSION.SDK_INT >= 21) {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     }
     if (Build.VERSION.SDK_INT >= 19) {
         val params:WindowManager.LayoutParams = window.attributes
-        if (transparent) {
+        if (translucent) {
             params.flags = params.flags and WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS.inv()
         } else {
             params.flags = params.flags or WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
@@ -51,7 +51,7 @@ fun Activity.setupStatusBar(transparent:Boolean = false) {
     }
     if (Build.VERSION.SDK_INT >= 21) {
         window.statusBarColor = Color.TRANSPARENT
-        setStatusBarMode()
+        setStatusBarMode(lightMode)
     }
 }
 
@@ -82,22 +82,6 @@ fun Activity.restart() {
     intent.removeCategory(Intent.CATEGORY_LAUNCHER)
     startActivity(intent)
     finish()
-}
-
-fun Activity.showToast(@StringRes textRes:Int, duration:Int = Toast.LENGTH_SHORT) {
-    if (isOnMainThread()) {
-        Toast.makeText(this, textRes, duration).show()
-    } else {
-        runOnUiThread { Toast.makeText(this, textRes, duration).show() }
-    }
-}
-
-fun Activity.showToast(text:String, duration:Int = Toast.LENGTH_SHORT) {
-    if (isOnMainThread()) {
-        Toast.makeText(this, text, duration).show()
-    } else {
-        runOnUiThread { Toast.makeText(this, text, duration).show() }
-    }
 }
 
 fun Activity.showKeyboard(et:EditText) {

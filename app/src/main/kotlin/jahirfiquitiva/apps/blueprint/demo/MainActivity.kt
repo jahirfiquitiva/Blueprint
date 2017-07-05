@@ -21,13 +21,12 @@ package jahirfiquitiva.apps.blueprint.demo
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import jahirfiquitiva.libs.blueprint.activities.BottomBarShowcaseActivity
 
-class MainActivity:AppCompatActivity() {
-    /*
+class MainActivity:BottomBarShowcaseActivity() {
     override fun donationsEnabled():Boolean = false
     override fun getLicKey():String? = null
     override fun amazonInstallsEnabled():Boolean = false
-    */
 
     // Things that must stay in this file but you don't really need to edit:
     override fun onCreate(savedInstanceState:Bundle?) = super.onCreate(savedInstanceState)

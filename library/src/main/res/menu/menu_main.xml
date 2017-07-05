@@ -31,10 +31,9 @@
             app:showAsAction="always|collapseActionView"
             tools:ignore="AppCompatResource"/>
 
-    <!-- TODO: Change icon with filters icon -->
     <item
             android:id="@+id/filters"
-            android:icon="@drawable/ic_select_all"
+            android:icon="@drawable/ic_filter"
             android:title="@string/filter"
             android:orderInCategory="200"
             app:showAsAction="ifRoom"

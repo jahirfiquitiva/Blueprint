@@ -29,6 +29,8 @@ import android.view.ViewGroup
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.adapters.IconsAdapter
+import jahirfiquitiva.libs.blueprint.extensions.getBoolean
+import jahirfiquitiva.libs.blueprint.extensions.getInteger
 import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
@@ -38,7 +40,6 @@ import jahirfiquitiva.libs.blueprint.tasks.IconsLoader
 import jahirfiquitiva.libs.blueprint.tasks.XMLIconsLoader
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
 import jahirfiquitiva.libs.blueprint.utils.IconUtils
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>> {
 
@@ -67,7 +68,7 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
         recyclerView?.adapter = IconsAdapter {
             onItemClicked(it)
         }
-        val columns = ResourceUtils.getInteger(context, R.integer.icons_grid_width)
+        val columns = context.getInteger(R.integer.icons_grid_width)
         recyclerView?.layoutManager = GridLayoutManager(context, columns,
                                                         GridLayoutManager.VERTICAL, false)
         recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
@@ -83,7 +84,7 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
     override fun getLoaderId():Int = NavigationItem.DEFAULT_PREVIEWS_POSITION
 
     override fun buildLoader():Loader<ArrayList<IconsCategory>> {
-        if (ResourceUtils.getBoolean(context, R.bool.xml_drawable_enabled)) {
+        if (context.getBoolean(R.bool.xml_drawable_enabled)) {
             return XMLIconsLoader(context,
                                   object:BasicTaskLoader.TaskListener {
                                       override fun onTaskStarted() {

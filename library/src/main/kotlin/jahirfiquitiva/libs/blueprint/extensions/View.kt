@@ -23,6 +23,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+fun View.isVisible() = visibility == View.VISIBLE
+
+fun View.isInvisible() = visibility == View.INVISIBLE
+
+fun View.isGone() = visibility == View.GONE
+
 fun View.makeInvisibleIf(
         makeInvisible:Boolean) = if (makeInvisible) makeInvisible() else makeVisible()
 

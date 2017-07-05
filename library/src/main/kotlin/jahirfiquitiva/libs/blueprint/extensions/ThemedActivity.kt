@@ -32,51 +32,44 @@ fun ThemedActivity.setCustomTheme() {
     val enterAnimation = android.R.anim.fade_in
     val exitAnimation = android.R.anim.fade_out
     overridePendingTransition(enterAnimation, exitAnimation)
-    setTheme(customTheme)
-    setNavbarColor(navbarColor)
-    setCustomStatusBarMode()
+    setTheme(getCustomTheme())
+    setNavbarColor(getNavbarColor())
 }
 
-fun ThemedActivity.setCustomStatusBarMode() = setStatusBarMode(getPrimaryDarkColor(usesDarkTheme).isColorLight())
+fun ThemedActivity.isLightTheme():Boolean = !isDarkTheme()
 
-val ThemedActivity.usesLightTheme:Boolean
-    get() = !usesDarkTheme
-
-val ThemedActivity.usesDarkTheme:Boolean
-    get() {
-        val c = Calendar.getInstance()
-        val hourOfDay = c.get(Calendar.HOUR_OF_DAY)
-        when (konfigs.currentTheme) {
-            LIGHT -> return false
-            DARK, AMOLED -> return true
-            AUTO_DARK, AUTO_AMOLED -> return hourOfDay !in 7..18
-            else -> return false
-        }
+fun ThemedActivity.isDarkTheme():Boolean {
+    val c = Calendar.getInstance()
+    val hourOfDay = c.get(Calendar.HOUR_OF_DAY)
+    when (konfigs.currentTheme) {
+        LIGHT -> return false
+        DARK, AMOLED -> return true
+        AUTO_DARK, AUTO_AMOLED -> return hourOfDay !in 7..18
+        else -> return false
     }
+}
 
-val ThemedActivity.customTheme:Int
-    get() {
-        val c = Calendar.getInstance()
-        val hourOfDay = c.get(Calendar.HOUR_OF_DAY)
-        when (konfigs.currentTheme) {
-            LIGHT -> return R.style.AppTheme
-            DARK -> return R.style.AppThemeDark
-            AMOLED -> return R.style.AppThemeAmoled
-            AUTO_DARK -> return if (hourOfDay in 7..18) R.style.AppTheme else R.style.AppThemeDark
-            AUTO_AMOLED -> return if (hourOfDay in 7..18) R.style.AppTheme else R.style.AppThemeAmoled
-            else -> return R.style.AppTheme
-        }
+fun ThemedActivity.getCustomTheme():Int {
+    val c = Calendar.getInstance()
+    val hourOfDay = c.get(Calendar.HOUR_OF_DAY)
+    when (konfigs.currentTheme) {
+        LIGHT -> return R.style.AppTheme
+        DARK -> return R.style.AppThemeDark
+        AMOLED -> return R.style.AppThemeAmoled
+        AUTO_DARK -> return if (hourOfDay in 7..18) R.style.AppTheme else R.style.AppThemeDark
+        AUTO_AMOLED -> return if (hourOfDay in 7..18) R.style.AppTheme else R.style.AppThemeAmoled
+        else -> return R.style.AppTheme
     }
+}
 
-val ThemedActivity.navbarColor:Int
-    get() {
-        if (konfigs.currentTheme == AMOLED)
-            return getColorFromRes(android.R.color.black)
-        else if (konfigs.hasColoredNavbar)
-            if (konfigs.currentTheme == DARK)
-                return getColorFromRes(R.color.dark_theme_navigation_bar)
-            else
-                return getColorFromRes(R.color.light_theme_navigation_bar)
+fun ThemedActivity.getNavbarColor():Int {
+    if (konfigs.currentTheme == AMOLED)
+        return getColorFromRes(android.R.color.black)
+    else if (konfigs.hasColoredNavbar)
+        if (konfigs.currentTheme == DARK)
+            return getColorFromRes(R.color.dark_theme_navigation_bar)
         else
-            return getColorFromRes(android.R.color.black)
-    }
+            return getColorFromRes(R.color.light_theme_navigation_bar)
+    else
+        return getColorFromRes(android.R.color.black)
+}

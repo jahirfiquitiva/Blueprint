@@ -27,7 +27,6 @@ import android.widget.Toast
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.konfigs
 import jahirfiquitiva.libs.blueprint.utils.CoreUtils
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 class LauncherIconRestorerActivity:AppCompatActivity() {
 
@@ -36,14 +35,12 @@ class LauncherIconRestorerActivity:AppCompatActivity() {
         val pm = packageManager
         var className:Class<*>? = null
 
-        val packageName = CoreUtils.getAppPackageName(this)
-        var componentName = packageName + "." + ResourceUtils.getString(this,
-                                                                        R.string.main_activity_name)
+        var componentName = packageName + "." + getString(R.string.main_activity_name)
 
         try {
             className = Class.forName(componentName)
         } catch (e:Exception) {
-            componentName = ResourceUtils.getString(this, R.string.main_activity_fullname)
+            componentName = getString( R.string.main_activity_fullname)
             try {
                 className = Class.forName(componentName)
             } catch (ignored:Exception) {
@@ -58,15 +55,15 @@ class LauncherIconRestorerActivity:AppCompatActivity() {
                 pm.setComponentEnabledSetting(component,
                                               PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                                               PackageManager.DONT_KILL_APP)
-                content = ResourceUtils.getString(this, R.string.launcher_icon_restored,
-                                                  ResourceUtils.getString(this, R.string.app_name))
+                content = getString( R.string.launcher_icon_restored,
+                                                  getString( R.string.app_name))
             } else {
-                content = ResourceUtils.getString(this, R.string.launcher_icon_not_restored,
-                                                  ResourceUtils.getString(this, R.string.app_name))
+                content = getString( R.string.launcher_icon_not_restored,
+                                                  getString( R.string.app_name))
             }
         } else {
-            content = ResourceUtils.getString(this, R.string.launcher_icon_restorer_error,
-                                              ResourceUtils.getString(this, R.string.app_name))
+            content = getString( R.string.launcher_icon_restorer_error,
+                                              getString( R.string.app_name))
         }
         if (content.isNotEmpty()) Toast.makeText(this, content, Toast.LENGTH_LONG).show()
         finish()

@@ -20,11 +20,8 @@
 package jahirfiquitiva.libs.blueprint.activities.base
 
 import android.content.Intent
-import android.graphics.Color
-import android.os.Build
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.view.WindowManager
 import com.github.javiersantos.piracychecker.PiracyChecker
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
@@ -32,6 +29,7 @@ import jahirfiquitiva.libs.blueprint.utils.IntentUtils
 
 open class BaseShowcaseActivity:ThemedActivity() {
 
+    var picker:Int = 0
     var checker:PiracyChecker? = null
 
     fun changeFragment(f:Fragment, cleanStack:Boolean = false) {

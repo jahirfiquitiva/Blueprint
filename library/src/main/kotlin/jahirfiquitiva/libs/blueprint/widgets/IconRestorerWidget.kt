@@ -26,10 +26,9 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import android.widget.Toast
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.LauncherIconRestorerActivity
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
+import jahirfiquitiva.libs.blueprint.extensions.showToast
 
 class IconRestorerWidget:AppWidgetProvider() {
     override fun onUpdate(context:Context?, appWidgetManager:AppWidgetManager?,
@@ -48,12 +47,10 @@ class IconRestorerWidget:AppWidgetProvider() {
                                                PendingIntent.getActivity(context, 0, intent, 0))
                 appWidgetManager?.updateAppWidget(it, rViews)
             } catch (e:Exception) {
-                Toast.makeText(context,
-                               ResourceUtils.getString(context!!,
-                                                       R.string.launcher_icon_restorer_error,
-                                                       ResourceUtils.getString(context,
-                                                                               R.string.app_name)),
-                               Toast.LENGTH_LONG).show()
+                context?.let {
+                    it.showToast(it.getString(R.string.launcher_icon_restorer_error,
+                                              it.getString(R.string.app_name)))
+                }
             }
         }
     }

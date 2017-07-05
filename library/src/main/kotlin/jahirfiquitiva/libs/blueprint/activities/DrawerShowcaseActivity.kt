@@ -29,13 +29,8 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseShowcaseActivity
-import jahirfiquitiva.libs.blueprint.extensions.getAccentColor
-import jahirfiquitiva.libs.blueprint.extensions.getDrawable
-import jahirfiquitiva.libs.blueprint.extensions.setupStatusBar
-import jahirfiquitiva.libs.blueprint.extensions.usesDarkTheme
+import jahirfiquitiva.libs.blueprint.extensions.*
 import jahirfiquitiva.libs.blueprint.utils.CoreUtils
-import jahirfiquitiva.libs.blueprint.utils.IconUtils
-import jahirfiquitiva.libs.blueprint.utils.ResourceUtils
 
 open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
@@ -43,10 +38,19 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        setupStatusBar(true)
+        setupStatusBarStyle(true, getPrimaryDarkColor(isDarkTheme()).isColorLight())
         setContentView(R.layout.activity_drawer_showcase)
         initMainComponents(savedInstanceState)
         initDrawer(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState:Bundle?) {
+        val nOutState = drawer?.saveInstanceState(outState)
+        super.onSaveInstanceState(nOutState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
     }
 
     fun initDrawer(savedInstance:Bundle?) {
@@ -55,12 +59,11 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
         if (header != null) {
             accountHeaderBuilder.withHeaderBackground(header)
         } else {
-            accountHeaderBuilder.withHeaderBackground(getAccentColor(usesDarkTheme))
+            accountHeaderBuilder.withHeaderBackground(getAccentColor(isDarkTheme()))
         }
-        if (ResourceUtils.getBoolean(this, R.bool.with_drawer_texts)) {
-            accountHeaderBuilder.withSelectionFirstLine(
-                    ResourceUtils.getString(this, R.string.app_long_name))
-            accountHeaderBuilder.withSelectionSecondLine("v " + CoreUtils.getAppVersion(this))
+        if (getBoolean(R.bool.with_drawer_texts)) {
+            accountHeaderBuilder.withSelectionFirstLine(getString(R.string.app_long_name))
+            accountHeaderBuilder.withSelectionSecondLine("v " + getAppVersion())
         }
         accountHeaderBuilder.withProfileImagesClickable(false)
                 .withResetDrawerOnProfileListClick(false)
@@ -96,7 +99,7 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
             drawerBuilder.addDrawerItems(
                     PrimaryDrawerItem().withIdentifier(it.id.toLong())
                             .withName(it.title)
-                            .withIcon(ResourceUtils.getDrawable(this, it.icon))
+                            .withIcon(getDrawable(it.icon, null))
                             .withIconTintingEnabled(true))
         }
 

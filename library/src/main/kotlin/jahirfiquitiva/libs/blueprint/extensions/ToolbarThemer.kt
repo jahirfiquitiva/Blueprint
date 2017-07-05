@@ -47,7 +47,7 @@ fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, offset:Int) {
     if (ratio > 1) ratio = 1.0
     else if (ratio < 0) ratio = 0.0
     val rightIconsColor = defaultIconsColor.blendWith(
-            getActiveIconsColorFor(getPrimaryColor(usesDarkTheme)), ratio.toFloat())
+            getActiveIconsColorFor(getPrimaryColor(isDarkTheme())), ratio.toFloat())
     tintToolbar(toolbar, rightIconsColor)
     updateStatusBarStyle(
             if (ratio > 0.7) CollapsingToolbarCallback.State.COLLAPSED else CollapsingToolbarCallback.State.EXPANDED)
@@ -82,8 +82,8 @@ fun ThemedActivity.tintToolbar(toolbar:Toolbar, toolbarIconsColor:Int) {
     }
 
     // Step 3: Changing the color of title and subtitle.
-    toolbar.setTitleTextColor(getPrimaryTextColorFor(getPrimaryColor(usesDarkTheme)))
-    toolbar.setSubtitleTextColor(getSecondaryTextColorFor(getPrimaryColor(usesDarkTheme)))
+    toolbar.setTitleTextColor(getPrimaryTextColorFor(getPrimaryColor(isDarkTheme())))
+    toolbar.setSubtitleTextColor(getSecondaryTextColorFor(getPrimaryColor(isDarkTheme())))
 
     // Step 4: Tint toolbar menu.
     tintToolbarMenu(toolbar, toolbar.menu, toolbarIconsColor)
@@ -150,7 +150,7 @@ private fun ThemedActivity.themeSearchView(tintColor:Int, view:SearchView) {
         mSearchSrcTextViewField.isAccessible = true
         val mSearchSrcTextView = mSearchSrcTextViewField.get(view) as EditText
         mSearchSrcTextView.setTextColor(tintColor)
-        mSearchSrcTextView.setHintTextColor(getHintTextColor(usesDarkTheme))
+        mSearchSrcTextView.setHintTextColor(getHintTextColor(isDarkTheme()))
         // TODO: Fix
         // TintUtils.setCursorTint(mSearchSrcTextView, tintColor)
 
@@ -177,12 +177,13 @@ private fun ThemedActivity.themeSearchView(tintColor:Int, view:SearchView) {
     }
 }
 
-private fun ThemedActivity.updateStatusBarStyle(state:CollapsingToolbarCallback.State) =
-        if (state === CollapsingToolbarCallback.State.COLLAPSED) {
-            setCustomStatusBarMode()
-        } else {
-            setStatusBarMode()
-        }
+private fun ThemedActivity.updateStatusBarStyle(state:CollapsingToolbarCallback.State) {
+    if (state === CollapsingToolbarCallback.State.COLLAPSED) {
+        setStatusBarMode(getPrimaryDarkColor(isDarkTheme()).isColorLight())
+    } else {
+        setStatusBarMode()
+    }
+}
 
 private fun tintImageView(target:Any, field:Field, tintColor:Int) {
     field.isAccessible = true
