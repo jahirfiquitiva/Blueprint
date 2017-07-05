@@ -65,9 +65,10 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
         rv?.updateState(EmptyViewRecyclerView.STATE_LOADING)
         rv?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        if (context is ThemedActivity)
+        if (context is ThemedActivity) {
             deco.setDrawable(ColorDrawable(context.getDividerColor(
                     (context as ThemedActivity).isDarkTheme())))
+        }
         rv?.addItemDecoration(deco)
         rv?.adapter = HomeCardsAdapter { onItemClicked(it) }
     }

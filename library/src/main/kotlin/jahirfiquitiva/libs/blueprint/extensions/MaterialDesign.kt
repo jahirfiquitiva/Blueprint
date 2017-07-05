@@ -56,8 +56,8 @@ fun Context.getDisabledTextColor(isDarkTheme:Boolean):Int =
 fun Context.getHintTextColor(isDarkTheme:Boolean):Int = getDisabledTextColor(isDarkTheme)
 
 @ColorInt
-fun Context.getDividerColor(forDarkTheme:Boolean) =
-        if (forDarkTheme) Color.parseColor("#1f000000") else Color.parseColor("#1fffffff")
+fun Context.getDividerColor(isDarkTheme:Boolean) =
+        if (isDarkTheme) Color.parseColor("#1fffffff") else Color.parseColor("#1f000000")
 
 fun Context.getActiveIconsColor(isDarkTheme:Boolean):Int =
         if (isDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#8a000000")
