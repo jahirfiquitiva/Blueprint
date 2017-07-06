@@ -75,7 +75,7 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
 
     override fun bindView(holder:ViewHolder?, payloads:MutableList<Any>?) {
         super.bindView(holder, payloads)
-        nameHolder?.applyTo(holder?.title)
+        nameHolder.applyTo(holder?.title)
         holder?.title?.background = ColorDrawable(color)
         val context = holder?.itemView?.context
         if (showDivider && context is ThemedActivity) {

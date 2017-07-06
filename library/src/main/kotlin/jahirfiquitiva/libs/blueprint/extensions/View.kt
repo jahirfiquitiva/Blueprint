@@ -55,6 +55,26 @@ fun View.makeGone() {
 fun ViewGroup.inflate(layoutId:Int, attachToRoot:Boolean = false):View =
         LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
 
+fun View.updateLeftMargin(left:Int = -1) = updateMargins(left)
+
+fun View.updateTopMargin(top:Int = -1) = updateMargins(-1, top)
+
+fun View.updateRightMargin(right:Int = -1) = updateMargins(-1, -1, right)
+
+fun View.updateBottomMargin(bottom:Int = -1) = updateMargins(-1, -1, -1, bottom)
+
+fun View.updateMargins(left:Int = -1, top:Int = -1, right:Int = -1, bottom:Int = -1) {
+    if (layoutParams is ViewGroup.MarginLayoutParams) {
+        val p = layoutParams as ViewGroup.MarginLayoutParams
+        val newLeft = if (left >= 0) left else p.leftMargin
+        val newTop = if (top >= 0) top else p.topMargin
+        val newRight = if (right >= 0) right else p.rightMargin
+        val newBottom = if (bottom >= 0) bottom else p.bottomMargin
+        p.setMargins(newLeft, newTop, newRight, newBottom)
+        requestLayout()
+    }
+}
+
 fun ImageView.loadFromUrl(url:String) {
     if (url.isEmpty()) {
         Glide.with(context).load(R.drawable.ic_wallpapers).into(this)

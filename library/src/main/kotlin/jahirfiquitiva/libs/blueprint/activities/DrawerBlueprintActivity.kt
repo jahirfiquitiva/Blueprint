@@ -22,25 +22,22 @@ package jahirfiquitiva.libs.blueprint.activities
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.widget.TextViewCompat
+import android.view.View
 import android.widget.TextView
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseShowcaseActivity
+import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.extensions.*
-import jahirfiquitiva.libs.blueprint.utils.CoreUtils
 
-open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
+abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
 
     private lateinit var drawer:Drawer
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        setupStatusBarStyle(true, getPrimaryDarkColor(isDarkTheme()).isColorLight())
-        setContentView(R.layout.activity_drawer_showcase)
-        initMainComponents(savedInstanceState)
         initDrawer(savedInstanceState)
     }
 
@@ -54,6 +51,8 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
     }
 
     fun initDrawer(savedInstance:Bundle?) {
+        val v:View = findViewById(R.id.bottom_navigation)
+        v.makeGone()
         val accountHeaderBuilder = AccountHeaderBuilder().withActivity(this)
         val header:Drawable? = "drawer_header".getDrawable(this)
         if (header != null) {
@@ -82,7 +81,6 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
         TextViewCompat.setTextAppearance(drawerTitle, R.style.DrawerTextsWithShadow)
         TextViewCompat.setTextAppearance(drawerSubtitle, R.style.DrawerTextsWithShadow)
-
 
         val drawerBuilder = DrawerBuilder().withActivity(this)
         if (getToolbar() != null) drawerBuilder.withToolbar(getToolbar()!!)
@@ -118,5 +116,7 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
         else if (drawer.isDrawerOpen) drawer.closeDrawer()
         else super.onBackPressed()
     }
+
+    override fun hasBottomBar():Boolean = false
 
 }

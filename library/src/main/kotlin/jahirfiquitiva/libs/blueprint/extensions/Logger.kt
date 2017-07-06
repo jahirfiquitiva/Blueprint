@@ -42,3 +42,7 @@ fun Context.printWarning(warning:String) {
 fun Context.printError(error:String) {
     Log.e(LOG_TAG, error)
 }
+
+fun Context.printError(error:String, th:Throwable) {
+    Log.e(LOG_TAG, error, th)
+}

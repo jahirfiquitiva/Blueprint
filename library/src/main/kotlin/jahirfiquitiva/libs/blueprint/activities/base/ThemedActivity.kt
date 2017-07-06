@@ -22,11 +22,11 @@ package jahirfiquitiva.libs.blueprint.activities.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate
-import com.afollestad.aesthetic.Aesthetic
-import com.afollestad.aesthetic.AutoSwitchMode
-import jahirfiquitiva.libs.blueprint.extensions.*
+import jahirfiquitiva.libs.blueprint.extensions.konfigs
+import jahirfiquitiva.libs.blueprint.extensions.restart
+import jahirfiquitiva.libs.blueprint.extensions.setCustomTheme
 
-open class ThemedActivity:AppCompatActivity() {
+abstract class ThemedActivity:AppCompatActivity() {
     var lastTheme = 0
     var coloredNavbar = false
 
@@ -40,10 +40,6 @@ open class ThemedActivity:AppCompatActivity() {
         super.onResume()
         if (lastTheme != konfigs.currentTheme || coloredNavbar != konfigs.hasColoredNavbar)
             restart()
-    }
-
-    override fun onPause() {
-        super.onPause()
     }
 
     override fun onPostCreate(savedInstanceState:Bundle?) {

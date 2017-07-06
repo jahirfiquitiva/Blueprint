@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/fab_margin"
             android:layout_marginEnd="@dimen/fab_margin"
-            android:layout_marginBottom="@dimen/fab_with_bottom_bar_margin"
+            android:layout_marginBottom="@dimen/fab_margin"
             android:visibility="invisible"
             app:cardElevation="2dp">
 

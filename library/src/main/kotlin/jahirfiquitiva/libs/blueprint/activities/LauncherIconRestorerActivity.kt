@@ -26,7 +26,6 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.konfigs
-import jahirfiquitiva.libs.blueprint.utils.CoreUtils
 
 class LauncherIconRestorerActivity:AppCompatActivity() {
 
@@ -40,7 +39,7 @@ class LauncherIconRestorerActivity:AppCompatActivity() {
         try {
             className = Class.forName(componentName)
         } catch (e:Exception) {
-            componentName = getString( R.string.main_activity_fullname)
+            componentName = getString(R.string.main_activity_fullname)
             try {
                 className = Class.forName(componentName)
             } catch (ignored:Exception) {
@@ -55,15 +54,15 @@ class LauncherIconRestorerActivity:AppCompatActivity() {
                 pm.setComponentEnabledSetting(component,
                                               PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                                               PackageManager.DONT_KILL_APP)
-                content = getString( R.string.launcher_icon_restored,
-                                                  getString( R.string.app_name))
+                content = getString(R.string.launcher_icon_restored,
+                                    getString(R.string.app_name))
             } else {
-                content = getString( R.string.launcher_icon_not_restored,
-                                                  getString( R.string.app_name))
+                content = getString(R.string.launcher_icon_not_restored,
+                                    getString(R.string.app_name))
             }
         } else {
-            content = getString( R.string.launcher_icon_restorer_error,
-                                              getString( R.string.app_name))
+            content = getString(R.string.launcher_icon_restorer_error,
+                                getString(R.string.app_name))
         }
         if (content.isNotEmpty()) Toast.makeText(this, content, Toast.LENGTH_LONG).show()
         finish()

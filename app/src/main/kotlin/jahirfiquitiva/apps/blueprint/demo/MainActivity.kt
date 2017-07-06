@@ -20,10 +20,14 @@
 package jahirfiquitiva.apps.blueprint.demo
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import jahirfiquitiva.libs.blueprint.activities.BottomBarShowcaseActivity
+import com.github.javiersantos.piracychecker.PiracyChecker
+import jahirfiquitiva.libs.blueprint.activities.BottomBarBlueprintActivity
+import jahirfiquitiva.libs.blueprint.activities.DrawerBlueprintActivity
 
-class MainActivity:BottomBarShowcaseActivity() {
+class MainActivity:BottomBarBlueprintActivity() {
+
+    override fun getLicenseChecker():PiracyChecker? = null
+
     override fun donationsEnabled():Boolean = false
     override fun getLicKey():String? = null
     override fun amazonInstallsEnabled():Boolean = false

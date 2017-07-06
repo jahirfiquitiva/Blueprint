@@ -29,7 +29,7 @@ import jahirfiquitiva.libs.blueprint.extensions.konfigs
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.utils.*
 
-open class BaseShowcaseActivity:ThemedActivity() {
+abstract class BaseBlueprintActivity:ThemedActivity() {
 
     var picker:Int = 0
     var checker:PiracyChecker? = null
@@ -39,7 +39,7 @@ open class BaseShowcaseActivity:ThemedActivity() {
         picker = getPickerKey()
     }
 
-    fun changeFragment(f:Fragment, tag:String? = null, cleanStack:Boolean = false) {
+    internal fun changeFragment(f:Fragment, tag:String? = null, cleanStack:Boolean = false) {
         val manager = supportFragmentManager.beginTransaction()
         if (cleanStack) clearBackStack()
         if (konfigs.animationsEnabled)
@@ -51,7 +51,7 @@ open class BaseShowcaseActivity:ThemedActivity() {
         manager.commit()
     }
 
-    fun clearBackStack() {
+    internal fun clearBackStack() {
         val manager = supportFragmentManager
         if (manager.backStackEntryCount > 0) {
             val first = manager.getBackStackEntryAt(0)
@@ -65,12 +65,12 @@ open class BaseShowcaseActivity:ThemedActivity() {
         else super.onBackPressed()
     }
 
-    fun startLicenseCheck() {
+    internal fun startLicenseCheck() {
         checker = getLicenseChecker()
         checker?.start()
     }
 
-    fun getShortcut():String {
+    internal fun getShortcut():String {
         if (intent != null && intent.dataString != null && intent.dataString.contains(
                 "_shortcut")) {
             return intent.dataString
@@ -78,7 +78,7 @@ open class BaseShowcaseActivity:ThemedActivity() {
         return ""
     }
 
-    fun getPickerKey():Int {
+    internal fun getPickerKey():Int {
         if (intent != null && intent.action != null) {
             when (intent.action) {
                 APPLY_ACTION -> return ICONS_APPLIER
@@ -90,14 +90,14 @@ open class BaseShowcaseActivity:ThemedActivity() {
         return 0
     }
 
-    open fun donationsEnabled():Boolean = false
-    open fun amazonInstallsEnabled():Boolean = false
-    open fun getLicKey():String? = null
+    abstract fun donationsEnabled():Boolean
+    abstract fun amazonInstallsEnabled():Boolean
+    abstract fun getLicKey():String?
 
     // Not really needed to override
-    open fun getLicenseChecker():PiracyChecker? = null
+    abstract fun getLicenseChecker():PiracyChecker?
 
-    open fun getNavigationItems():Array<NavigationItem> = arrayOf()
+    abstract fun getNavigationItems():Array<NavigationItem>
 
     override fun onDestroy() {
         super.onDestroy()

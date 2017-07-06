@@ -26,15 +26,13 @@ import android.graphics.Color
 import android.os.Build
 import android.support.annotation.ColorInt
 import android.support.annotation.ColorRes
-import android.support.annotation.StringRes
 import android.support.design.widget.TextInputEditText
 import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.Toast
-import jahirfiquitiva.libs.blueprint.activities.base.BaseShowcaseActivity
+import jahirfiquitiva.libs.blueprint.activities.base.BaseBlueprintActivity
 
 fun Activity.setupStatusBarStyle(translucent:Boolean = true, lightMode:Boolean = false) {
     if (Build.VERSION.SDK_INT >= 21) {
@@ -117,7 +115,7 @@ fun ReleasesActivity.showChangelog(currVersion:Int, xmlRes:Int,
 }
 */
 
-fun BaseShowcaseActivity.isFirstRunEver():Boolean {
+fun BaseBlueprintActivity.isFirstRunEver():Boolean {
     try {
         val firstInstallTime = packageManager.getPackageInfo(packageName, 0).firstInstallTime
         val lastUpdateTime = packageManager.getPackageInfo(packageName, 0).lastUpdateTime

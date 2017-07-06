@@ -26,7 +26,6 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
-import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.Toolbar
@@ -54,12 +53,11 @@ import jahirfiquitiva.libs.blueprint.ui.views.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.blueprint.utils.*
 
-open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
+abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
     private lateinit var coordinatorLayout:CustomCoordinatorLayout
     private lateinit var appBarLayout:FixedElevationAppBarLayout
     private lateinit var collapsingToolbar:CollapsingToolbarLayout
-    private lateinit var tabs:TabLayout
     private lateinit var toolbar:Toolbar
     private lateinit var menu:Menu
     private lateinit var fab:CounterFab
@@ -71,8 +69,13 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 
     var filtersListener:FiltersListener? = null
 
+    abstract fun hasBottomBar():Boolean
+
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
+        setupStatusBarStyle(true, getPrimaryDarkColor(isDarkTheme()).isColorLight())
+        setContentView(R.layout.activity_blueprint)
+        initMainComponents(savedInstanceState)
     }
 
     override fun onBackPressed() {
@@ -91,17 +94,13 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     }
 
     override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
-        if (savedInstanceState == null) printError("0 SavedState is null D:") else printInfo(
-                "0 SavedState is not null :)")
         super.onRestoreInstanceState(savedInstanceState)
-        if (savedInstanceState == null) printError("1 SavedState is null D:") else printInfo(
-                "1 SavedState is not null :)")
         collapsingToolbar.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         picker = savedInstanceState?.getInt("pickerKey") ?: 0
         navigateToItem(getNavigationItems()[savedInstanceState?.getInt("currentItemId") ?: 0])
     }
 
-    fun initMainComponents(savedInstance:Bundle?) {
+    private fun initMainComponents(savedInstance:Bundle?) {
         initToolbar()
         initCollapsingToolbar()
         initFAB()
@@ -110,13 +109,19 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 
     private fun initFAB() {
         fab = findViewById(R.id.fab)
+        fab.updateBottomMargin(getDimensionPixelSize(
+                if (hasBottomBar()) R.dimen.fab_with_bottom_bar_margin else R.dimen.fab_margin))
+
         overlay = findViewById(R.id.overlay)
         overlay.background = ColorDrawable(getOverlayColor(isDarkTheme()))
         overlay.setOnClickListener { _ ->
             if (overlay.isVisible() && currentItemId == DEFAULT_HOME_POSITION)
                 hideOverlay()
         }
+
         sheet = findViewById(R.id.sheet)
+        sheet.updateBottomMargin(getDimensionPixelSize(
+                if (hasBottomBar()) R.dimen.fab_with_bottom_bar_margin else R.dimen.fab_margin))
 
         val rateText:TextView = findViewById(R.id.action_rate_text)
         rateText.setTextColor(getPrimaryTextColor(isDarkTheme()))
@@ -164,9 +169,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         toolbar = findViewById(R.id.toolbar)
         menu = toolbar.menu
         menuInflater.inflate(R.menu.menu_main, menu)
-        toolbar.let {
-            tintToolbar(it, getActiveIconsColorFor(getPrimaryColor(isDarkTheme())))
-        }
+        tintToolbar(toolbar, getActiveIconsColorFor(getPrimaryColor(isDarkTheme())))
         toolbar.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
                     val i = item.itemId
@@ -273,9 +276,11 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         try {
             currentItemId = id
             updateToolbarMenuItems(item)
+            hideOverlay()
             changeFABVisibility(
                     id == DEFAULT_HOME_POSITION || id == DEFAULT_REQUEST_POSITION)
             changeFABAction(id == DEFAULT_HOME_POSITION)
+            /*
             hideOverlay(object:FabTransformation.OnTransformListener {
                 override fun onStartTransform() {
                     // Do nothing
@@ -286,12 +291,11 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
                             id == DEFAULT_HOME_POSITION || id == DEFAULT_REQUEST_POSITION)
                     changeFABAction(id == DEFAULT_HOME_POSITION)
                 }
-            })
+            }) */
             appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, konfigs.animationsEnabled)
             collapsingToolbar.title = getString(
                     if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
             coordinatorLayout.allowScroll = id == DEFAULT_HOME_POSITION
-            tabs.makeVisibleIf(id == DEFAULT_PREVIEWS_POSITION)
             val rightItem = getNavigationItems()[id]
             changeFragment(getFragmentForNavigationItem(id), rightItem.tag)
             lockFiltersDrawer(id != DEFAULT_PREVIEWS_POSITION)
@@ -302,7 +306,11 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     }
 
     private fun hideOverlay(listener:FabTransformation.OnTransformListener? = null) {
-        FabTransformation.with(fab).setOverlay(overlay).setListener(listener).transformFrom(sheet)
+        try {
+            FabTransformation.with(fab).setOverlay(overlay).setListener(listener).transformFrom(
+                    sheet)
+        } catch(ignored:Exception) {
+        }
     }
 
     private fun updateToolbarMenuItems(item:NavigationItem) {

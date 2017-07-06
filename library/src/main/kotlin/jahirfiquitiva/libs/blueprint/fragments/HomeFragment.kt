@@ -44,6 +44,7 @@ import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
 class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 
     private lateinit var rv:EmptyViewRecyclerView
+    private lateinit var homeAdapter:HomeCardsAdapter
 
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
@@ -70,7 +71,9 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
                     (context as ThemedActivity).isDarkTheme())))
         }
         rv.addItemDecoration(deco)
-        rv.adapter = HomeCardsAdapter { onItemClicked(it) }
+        homeAdapter = HomeCardsAdapter { onItemClicked(it) }
+        rv.setHasFixedSize(true)
+        rv.adapter = homeAdapter
     }
 
     override fun onItemClicked(item:Any) {

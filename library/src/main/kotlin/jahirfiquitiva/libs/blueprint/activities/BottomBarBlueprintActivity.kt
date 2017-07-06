@@ -23,37 +23,41 @@ import android.os.Bundle
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseShowcaseActivity
-import jahirfiquitiva.libs.blueprint.extensions.*
+import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.extensions.getAccentColor
+import jahirfiquitiva.libs.blueprint.extensions.getCardBackgroundColor
+import jahirfiquitiva.libs.blueprint.extensions.getInactiveIconsColor
+import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
+import jahirfiquitiva.libs.blueprint.extensions.makeVisible
 
-open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
+abstract class BottomBarBlueprintActivity:InternalBaseBlueprintActivity() {
 
     private lateinit var bottomBar:AHBottomNavigation
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        setupStatusBarStyle(true, getPrimaryDarkColor(isDarkTheme()).isColorLight())
-        setContentView(R.layout.activity_bottom_bar_showcase)
-        initMainComponents(savedInstanceState)
         initBottomBar()
     }
 
     private fun initBottomBar() {
         bottomBar = findViewById(R.id.bottom_navigation)
-        bottomBar.defaultBackgroundColor = getCardBackgroundColor()
-        bottomBar.isBehaviorTranslationEnabled = false
-        bottomBar.accentColor = getAccentColor(isDarkTheme())
-        bottomBar.inactiveColor = getInactiveIconsColor(isDarkTheme())
-        bottomBar.isForceTint = true
-        bottomBar.titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
-        getNavigationItems().forEach {
-            bottomBar.addItem(
-                    AHBottomNavigationItem(getString(it.title), it.icon))
+        with(bottomBar) {
+            defaultBackgroundColor = getCardBackgroundColor()
+            isBehaviorTranslationEnabled = false
+            accentColor = getAccentColor(isDarkTheme())
+            inactiveColor = getInactiveIconsColor(isDarkTheme())
+            isForceTint = true
+            titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
+            getNavigationItems().forEach {
+                addItem(
+                        AHBottomNavigationItem(getString(it.title), it.icon))
+            }
+            setOnTabSelectedListener { position, _ ->
+                return@setOnTabSelectedListener navigateToItem(getNavigationItems()[position])
+            }
+            setCurrentItem(0, true)
+            makeVisible()
         }
-        bottomBar.setOnTabSelectedListener { position, _ ->
-            return@setOnTabSelectedListener navigateToItem(getNavigationItems()[position])
-        }
-        bottomBar.setCurrentItem(0, true)
     }
 
     override fun onSaveInstanceState(outState:Bundle?) {
@@ -64,5 +68,7 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         bottomBar.setCurrentItem(savedInstanceState?.getInt("currentItemId", 0) ?: 0, true)
     }
+
+    override fun hasBottomBar():Boolean = true
 
 }

@@ -77,7 +77,7 @@
 
         <!-- Icons -->
         <activity
-                android:name=".activities.base.InternalBaseShowcaseActivity"
+                android:name=".activities.base.InternalBaseBlueprintActivity"
                 android:label="@string/app_name"
                 android:windowSoftInputMode="stateHidden">
 
