@@ -89,8 +89,13 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
                 .withShowDrawerOnFirstLaunch(true)
 
         drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
-            return@withOnDrawerItemClickListener navigateToItem(
-                    getNavigationItems()[drawerItem.identifier.toInt()])
+            try {
+                val navigated = navigateToItem(getNavigationItems()[drawerItem.identifier.toInt()])
+                if (navigated) drawer.closeDrawer()
+                return@withOnDrawerItemClickListener navigated
+            } catch (ignored:Exception) {
+                return@withOnDrawerItemClickListener true
+            }
         }
 
         getNavigationItems().forEach {
