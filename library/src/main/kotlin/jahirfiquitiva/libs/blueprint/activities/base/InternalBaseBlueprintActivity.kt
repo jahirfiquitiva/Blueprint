@@ -64,10 +64,11 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private lateinit var overlay:View
     private lateinit var sheet:View
     private lateinit var filtersDrawer:Drawer
+
     private var iconsFilters:ArrayList<String> = ArrayList()
     internal var currentItemId:Int = -1
 
-    var filtersListener:FiltersListener? = null
+    internal var filtersListener:FiltersListener? = null
 
     abstract fun hasBottomBar():Boolean
 
@@ -192,7 +193,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         collapsingToolbar.setCollapsedTitleTextColor(getPrimaryTextColor(isDarkTheme()))
         appBarLayout.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
             override fun onVerticalOffsetChanged(appBar:AppBarLayout?, verticalOffset:Int) {
-                toolbar.let { updateToolbarColorsHere(it, verticalOffset) }
+                updateToolbarColorsHere(verticalOffset)
             }
         })
         val wallpaper:ImageView? = findViewById(R.id.toolbarHeader)
@@ -384,7 +385,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
     fun getToolbar():Toolbar? = toolbar
 
-    fun updateToolbarColorsHere(toolbar:Toolbar, offset:Int) = updateToolbarColors(toolbar, offset)
+    fun updateToolbarColorsHere(offset:Int) = updateToolbarColors(toolbar, offset)
 
     interface FiltersListener {
         fun onFiltersUpdated(filters:ArrayList<String>)

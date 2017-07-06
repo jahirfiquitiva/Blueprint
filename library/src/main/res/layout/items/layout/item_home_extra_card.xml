@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center_vertical"
-                android:padding="@dimen/cards_content_margin_mini"
+                android:padding="@dimen/cards_margin"
                 android:gravity="center_vertical">
 
             <TextView

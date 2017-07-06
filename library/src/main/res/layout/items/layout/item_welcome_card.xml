@@ -37,7 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/cards_margin">
+                android:paddingTop="@dimen/cards_margin"
+                android:paddingBottom="@dimen/cards_margin">
 
             <TextView
                     android:id="@+id/welcome_title"

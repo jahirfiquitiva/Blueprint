@@ -20,12 +20,10 @@
 package jahirfiquitiva.libs.blueprint.extensions
 
 import android.annotation.SuppressLint
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
+import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.drawable.DrawableCompat
 import android.support.v7.view.menu.ActionMenuItemView
 import android.support.v7.widget.ActionMenuView
 import android.support.v7.widget.AppCompatImageView
@@ -55,19 +53,17 @@ fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, offset:Int) {
             if (ratio > 0.7) CollapsingToolbarCallback.State.COLLAPSED else CollapsingToolbarCallback.State.EXPANDED)
 }
 
-fun ThemedActivity.tintToolbar(toolbar:Toolbar, toolbarIconsColor:Int) {
-    val colorFilter = PorterDuffColorFilter(toolbarIconsColor, PorterDuff.Mode.SRC_IN)
-
-    for (i in 0..toolbar.childCount - 1) {
+fun ThemedActivity.tintToolbar(toolbar:Toolbar, color:Int) {
+    (0..toolbar.childCount).forEach { i ->
         val v = toolbar.getChildAt(i)
 
         //Step 1 : Changing the color of back button (or open drawer button).
-        if (v is ImageButton) v.drawable.colorFilter = colorFilter
+        (v as? ImageButton)?.drawable?.tintWithColor(ColorStateList.valueOf(color))
 
         if (v is ActionMenuView) {
             //Step 2: Changing the color of any ActionMenuViews - icons that are not back
             // button, nor text, nor overflow menu icon.
-            (0..v.childCount - 1)
+            (0..v.childCount)
                     .map {
                         v.getChildAt(it)
                     }
@@ -75,7 +71,7 @@ fun ThemedActivity.tintToolbar(toolbar:Toolbar, toolbarIconsColor:Int) {
                     .forEach { innerView ->
                         innerView.compoundDrawables.forEach {
                             if (it != null) {
-                                innerView.post { it.colorFilter = colorFilter }
+                                innerView.post { it.tintWithColor(ColorStateList.valueOf(color)) }
                             }
                         }
                     }
@@ -86,19 +82,16 @@ fun ThemedActivity.tintToolbar(toolbar:Toolbar, toolbarIconsColor:Int) {
     toolbar.setTitleTextColor(getPrimaryTextColorFor(getPrimaryColor(isDarkTheme())))
     toolbar.setSubtitleTextColor(getSecondaryTextColorFor(getPrimaryColor(isDarkTheme())))
 
-    // Step 4: Tint toolbar menu.
-    tintToolbarMenu(toolbar, toolbar.menu, toolbarIconsColor)
+    // Step 4: Change the color of overflow menu icon.
+    toolbar.overflowIcon?.tintWithColor(ColorStateList.valueOf(color))
+    setOverflowButtonColor(toolbar, color)
 
-    // Step 5: Change the color of overflow menu icon.
-    var drawable = toolbar.overflowIcon
-    if (drawable != null) {
-        drawable = DrawableCompat.wrap(drawable)
-        toolbar.overflowIcon = drawable.tintWithColor(toolbarIconsColor)
-    }
-    setOverflowButtonColor(toolbar, toolbarIconsColor)
+    // Step 5: Tint toolbar menu.
+    tintToolbarMenu(toolbar, toolbar.menu, color)
 }
 
-fun ThemedActivity.tintToolbarMenu(toolbar:Toolbar?, menu:Menu?, @ColorInt iconsColor:Int) {
+fun ThemedActivity.tintToolbarMenu(toolbar:Toolbar?, menu:Menu?, @ColorInt iconsColor:Int,
+                                   forceShowIcons:Boolean = false) {
     if (toolbar == null || menu == null) return
     // The collapse icon displays when action views are expanded (e.g. SearchView)
     try {
@@ -111,7 +104,7 @@ fun ThemedActivity.tintToolbarMenu(toolbar:Toolbar?, menu:Menu?, @ColorInt icons
     }
 
     // Theme menu action views
-    for (i in 0..menu.size() - 1) {
+    (0 until menu.size()).forEach { i ->
         val item = menu.getItem(i)
         if (item.actionView is SearchView) {
             themeSearchView(iconsColor, item.actionView as SearchView)
@@ -119,16 +112,16 @@ fun ThemedActivity.tintToolbarMenu(toolbar:Toolbar?, menu:Menu?, @ColorInt icons
     }
 
     // Display icons for easy UI understanding
-    /*
-    try {
-        val MenuBuilder = menu.javaClass
-        val setOptionalIconsVisible = MenuBuilder.getDeclaredMethod("setOptionalIconsVisible",
-                Boolean::class.javaPrimitiveType)
-        if (!setOptionalIconsVisible.isAccessible) setOptionalIconsVisible.isAccessible = true
-        setOptionalIconsVisible.invoke(menu, true)
-    } catch (ignored:Exception) {
+    if (forceShowIcons) {
+        try {
+            val MenuBuilder = menu.javaClass
+            val setOptionalIconsVisible = MenuBuilder.getDeclaredMethod("setOptionalIconsVisible",
+                                                                        Boolean::class.javaPrimitiveType)
+            if (!setOptionalIconsVisible.isAccessible) setOptionalIconsVisible.isAccessible = true
+            setOptionalIconsVisible.invoke(menu, true)
+        } catch (ignored:Exception) {
+        }
     }
-    */
 }
 
 private fun setOverflowButtonColor(toolbar:Toolbar, @ColorInt color:Int) {
