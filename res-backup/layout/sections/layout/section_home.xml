@@ -18,33 +18,26 @@
   ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/icons_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <include layout="@layout/extra_empty_views"/>
 
     <jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
-            android:id="@+id/icons_grid"
+            android:id="@+id/home_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
+            android:clipChildren="false"
+            android:fitsSystemWindows="true"
+            android:scrollbars="none"
             android:overScrollMode="ifContentScrolls"
-            android:paddingBottom="@dimen/grid_padding_vertical"
-            android:paddingTop="@dimen/grid_padding_vertical"
+            android:paddingBottom="@dimen/fab_size_normal"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
-    <com.pluscubed.recyclerfastscroll.RecyclerFastScroller
-            android:id="@+id/fast_scroller"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="end"/>
 
 </RelativeLayout>

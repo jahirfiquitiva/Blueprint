@@ -38,9 +38,9 @@ class HomeCardsAdapter(val listener:(HomeCard) -> Unit):BaseListAdapter<HomeCard
     override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):RecyclerView.ViewHolder {
         when (viewType) {
             0 -> return HomeCardsHolder.WelcomeCardHolder(
-                    parent?.inflate(R.layout.item_welcome_card))
+                    parent?.inflate(R.layout.item_home_welcome_card))
             else -> return HomeCardsHolder.ExtraCardHolder(
-                    parent?.inflate(R.layout.item_home_extra_card))
+                    parent?.inflate(R.layout.item_home_app_card))
         }
     }
 

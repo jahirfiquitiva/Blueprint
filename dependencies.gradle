@@ -46,6 +46,7 @@ ext.versions = [
         bottomBar              : '2.0.6',
         fabTransformation      : '1.0.0',
         customFabTransformation: '59d2340',
+        chips                  : '1.0.8',
         subsImageView          : '3.6.0',
         iaps                   : '1.0.39',
         muzeiApi               : '2.0',

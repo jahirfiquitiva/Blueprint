@@ -18,33 +18,16 @@
   ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
-<RelativeLayout
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/icons_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
-    <include layout="@layout/extra_empty_views"/>
-
-    <jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
-            android:id="@+id/icons_grid"
+    <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:overScrollMode="ifContentScrolls"
-            android:paddingBottom="@dimen/grid_padding_vertical"
-            android:paddingTop="@dimen/grid_padding_vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <com.pluscubed.recyclerfastscroll.RecyclerFastScroller
-            android:id="@+id/fast_scroller"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="end"/>
-
-</RelativeLayout>
+</FrameLayout>

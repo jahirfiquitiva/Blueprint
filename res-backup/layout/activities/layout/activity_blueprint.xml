@@ -137,6 +137,6 @@
             app:fabSize="normal"
             app:rippleColor="@color/semitransparent_white"/>
 
-    <include layout="@layout/extra_reveal_card"/>
+    <include layout="@layout/extra_fab_card"/>
 
 </jahirfiquitiva.libs.blueprint.ui.layouts.CustomCoordinatorLayout>

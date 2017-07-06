@@ -18,12 +18,18 @@
   ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:height="24dp"
-        android:width="24dp"
-        android:viewportWidth="24"
-        android:viewportHeight="24">
-    <path
-            android:fillColor="#fff"
-            android:pathData="M20,6H10V12H8V4H14V0H6V6H4A2,2 0 0,0 2,8V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V8A2,2 0 0,0 20,6Z"/>
-</vector>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/appWidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/splash_screen_icon"
+            tools:ignore="ContentDescription"/>
+
+</LinearLayout>

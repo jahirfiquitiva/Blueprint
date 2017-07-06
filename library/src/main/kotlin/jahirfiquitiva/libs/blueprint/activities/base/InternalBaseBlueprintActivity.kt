@@ -159,7 +159,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         helpText.setTextColor(getPrimaryTextColor(isDarkTheme()))
         val helpIcon:ImageView = findViewById(R.id.action_help_icon)
         helpIcon.setImageDrawable(
-                "ic_questions".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
+                "ic_help".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
         val helpItem:LinearLayout = findViewById(R.id.action_help)
         helpItem.setOnClickListener {
             // TODO: Switch to help section
@@ -373,7 +373,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                 NavigationItem("Home", DEFAULT_HOME_POSITION, R.string.section_home,
                                R.drawable.ic_home),
                 NavigationItem("Previews", DEFAULT_PREVIEWS_POSITION,
-                               R.string.section_icons, R.drawable.ic_previews),
+                               R.string.section_icons, R.drawable.ic_icons_preview),
                 NavigationItem("Wallpapers", DEFAULT_WALLPAPERS_POSITION,
                                R.string.section_wallpapers, R.drawable.ic_wallpapers),
                 NavigationItem("Apply", DEFAULT_APPLY_POSITION,

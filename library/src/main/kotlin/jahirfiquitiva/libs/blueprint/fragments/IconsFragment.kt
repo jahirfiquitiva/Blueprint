@@ -49,7 +49,7 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val content = inflater?.inflate(R.layout.extra_icons_grid, container, false) as View
+        val content = inflater?.inflate(R.layout.section_icons_preview, container, false) as View
         initUI(content)
         return content
     }
