@@ -18,7 +18,7 @@
  */
 package jahirfiquitiva.libs.blueprint.utils
 
-val LOG_TAG = "IconShowcase"
+val LOG_TAG = "Blueprint"
 
 // Shared Preferences
 val PREFERENCES_NAME = "dashboard_preferences"
@@ -61,8 +61,15 @@ val PLAY_STORE_PACKAGE = "com.android.vending"
 val ADW_ACTION = "org.adw.launcher.icons.ACTION_PICK_ICON"
 val TURBO_ACTION = "com.phonemetra.turbo.launcher.icons.ACTION_PICK_ICON"
 val NOVA_ACTION = "com.novalauncher.THEME"
-val APPLY_ACTION = "jahirfiquitiva.iconshowcase.APPLY_ACTION"
+val APPLY_ACTION = "jahirfiquitiva.libs.blueprint.APPLY_ACTION"
 val ICONS_PICKER = 1
 val IMAGE_PICKER = 2
 val WALLS_PICKER = 3
 val ICONS_APPLIER = 4
+
+// Drawer Items
+val DEFAULT_HOME_POSITION = 0
+val DEFAULT_PREVIEWS_POSITION = 1
+val DEFAULT_WALLPAPERS_POSITION = 2
+val DEFAULT_APPLY_POSITION = 3
+val DEFAULT_REQUEST_POSITION = 4

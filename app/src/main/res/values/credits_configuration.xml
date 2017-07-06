@@ -23,7 +23,7 @@
 
     <string-array name="credits_banners" formatted="false" tools:ignore="TypographyDashes">
         <item>https://lh5.googleusercontent.com/-eAPognoXTwE/UYFKq101UyI/AAAAAAAABiY/REl1Ei8txP8/w1600-h900/default_cover_5_ff9ff46d48dc181084c9c23a120b68d8.jpg</item>
-        <item>https://github.com/jahirfiquitiva/IconShowcase/raw/master/library/src/main/res/drawable/designer/drawable-nodpi/drawer_header_light.png</item>
+        <item>https://github.com/jahirfiquitiva/Blueprint/raw/master/library/src/main/res/drawable/designer/drawable-nodpi/drawer_header_light.png</item>
     </string-array>
 
     <string-array name="credits_photos" formatted="false" tools:ignore="TypographyDashes">

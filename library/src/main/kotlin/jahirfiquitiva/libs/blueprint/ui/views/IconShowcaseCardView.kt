@@ -24,7 +24,7 @@ import android.support.v7.widget.CardView
 import android.util.AttributeSet
 import jahirfiquitiva.libs.blueprint.extensions.getCardBackgroundColor
 
-class IconShowcaseCardView:CardView {
+class BlueprintCardView:CardView {
     constructor(context:Context):super(context)
     constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet)
     constructor(context:Context, attributeSet:AttributeSet, defStyleAttr:Int)

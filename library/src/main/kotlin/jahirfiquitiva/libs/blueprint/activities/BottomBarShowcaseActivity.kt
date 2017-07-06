@@ -28,11 +28,10 @@ import jahirfiquitiva.libs.blueprint.extensions.*
 
 open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
 
-    var bottomBar:AHBottomNavigation? = null
+    private lateinit var bottomBar:AHBottomNavigation
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        picker = getPickerKey()
         setupStatusBarStyle(true, getPrimaryDarkColor(isDarkTheme()).isColorLight())
         setContentView(R.layout.activity_bottom_bar_showcase)
         initMainComponents(savedInstanceState)
@@ -41,20 +40,20 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
 
     private fun initBottomBar() {
         bottomBar = findViewById(R.id.bottom_navigation)
-        bottomBar?.defaultBackgroundColor = getCardBackgroundColor()
-        bottomBar?.isBehaviorTranslationEnabled = false
-        bottomBar?.accentColor = getAccentColor(isDarkTheme())
-        bottomBar?.inactiveColor = getInactiveIconsColor(isDarkTheme())
-        bottomBar?.isForceTint = true
-        bottomBar?.titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
+        bottomBar.defaultBackgroundColor = getCardBackgroundColor()
+        bottomBar.isBehaviorTranslationEnabled = false
+        bottomBar.accentColor = getAccentColor(isDarkTheme())
+        bottomBar.inactiveColor = getInactiveIconsColor(isDarkTheme())
+        bottomBar.isForceTint = true
+        bottomBar.titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
         getNavigationItems().forEach {
-            bottomBar?.addItem(
+            bottomBar.addItem(
                     AHBottomNavigationItem(getString(it.title), it.icon))
         }
-        bottomBar?.setOnTabSelectedListener { position, _ ->
+        bottomBar.setOnTabSelectedListener { position, _ ->
             return@setOnTabSelectedListener navigateToItem(getNavigationItems()[position])
         }
-        bottomBar?.setCurrentItem(0, true)
+        bottomBar.setCurrentItem(0, true)
     }
 
     override fun onSaveInstanceState(outState:Bundle?) {
@@ -63,7 +62,7 @@ open class BottomBarShowcaseActivity:InternalBaseShowcaseActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        bottomBar?.setCurrentItem(savedInstanceState?.getInt("currentItemId", 0) ?: 0, true)
+        bottomBar.setCurrentItem(savedInstanceState?.getInt("currentItemId", 0) ?: 0, true)
     }
 
 }

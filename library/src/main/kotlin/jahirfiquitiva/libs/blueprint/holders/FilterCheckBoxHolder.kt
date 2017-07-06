@@ -22,24 +22,22 @@ package jahirfiquitiva.libs.blueprint.holders
 import android.support.v7.widget.AppCompatCheckBox
 
 class FilterCheckBoxHolder {
-
-    var checkBox:AppCompatCheckBox? = null
-    var title:String = ""
-    var listener:StateChangeListener? = null
+    private lateinit var checkBox:AppCompatCheckBox
+    private lateinit var title:String
+    private var listener:StateChangeListener? = null
 
     fun setup(checkBox:AppCompatCheckBox, title:String, listener:StateChangeListener?) {
-        if (this.checkBox != null) return
         this.checkBox = checkBox
         this.title = title
         this.listener = listener
     }
 
     fun apply(checked:Boolean, fireFiltersListener:Boolean = true) {
-        checkBox?.isChecked = checked
+        checkBox.isChecked = checked
         listener?.onStateChanged(checked, title, fireFiltersListener)
     }
 
-    fun isChecked():Boolean = checkBox?.isChecked ?: false
+    fun isChecked():Boolean = checkBox.isChecked
 
     interface StateChangeListener {
         fun onStateChanged(checked:Boolean, title:String, fireFiltersListener:Boolean)

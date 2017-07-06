@@ -22,7 +22,7 @@
     <packageName>jahirfiquitiva.apps.blueprint.demo</packageName>
     <versionName>1.0</versionName>
     <versionCode>1</versionCode>
-    <themeName>IconShowcase Dashboard</themeName>
+    <themeName>Blueprint Dashboard</themeName>
     <!-- Default Component Color -->
     <themePointColor>#00b0ff</themePointColor>
     <themePreview img1="preview1"/>

@@ -36,14 +36,14 @@ import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.extensions.openLink
 import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.blueprint.models.HomeCard
-import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.tasks.BasicTaskLoader
 import jahirfiquitiva.libs.blueprint.tasks.HomeCardsLoader
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
 
 class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 
-    var rv:EmptyViewRecyclerView? = null
+    private lateinit var rv:EmptyViewRecyclerView
 
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
@@ -60,17 +60,17 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 
     override fun initUI(content:View) {
         rv = content.findViewById(R.id.home_rv)
-        rv?.emptyView = content.findViewById(R.id.empty_view)
-        rv?.textView = content.findViewById(R.id.empty_text)
-        rv?.updateState(EmptyViewRecyclerView.STATE_LOADING)
-        rv?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rv.emptyView = content.findViewById(R.id.empty_view)
+        rv.textView = content.findViewById(R.id.empty_text)
+        rv.updateState(EmptyViewRecyclerView.STATE_LOADING)
+        rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         if (context is ThemedActivity) {
             deco.setDrawable(ColorDrawable(context.getDividerColor(
                     (context as ThemedActivity).isDarkTheme())))
         }
-        rv?.addItemDecoration(deco)
-        rv?.adapter = HomeCardsAdapter { onItemClicked(it) }
+        rv.addItemDecoration(deco)
+        rv.adapter = HomeCardsAdapter { onItemClicked(it) }
     }
 
     override fun onItemClicked(item:Any) {
@@ -82,21 +82,21 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
         }
     }
 
-    override fun getLoaderId():Int = NavigationItem.DEFAULT_HOME_POSITION
+    override fun getLoaderId():Int = DEFAULT_HOME_POSITION
 
     override fun buildLoader():Loader<ArrayList<HomeCard>> =
             HomeCardsLoader(context, object:BasicTaskLoader.TaskListener {
                 override fun onTaskStarted() {
-                    rv?.updateState(
+                    rv.updateState(
                             EmptyViewRecyclerView.STATE_LOADING)
                 }
             })
 
     override fun onDataLoadFinished(data:ArrayList<HomeCard>) {
-        val adapter = rv?.adapter
+        val adapter = rv.adapter
         if (adapter is HomeCardsAdapter) {
             adapter.clearAndAddAll(data)
-            rv?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
+            rv.updateState(EmptyViewRecyclerView.STATE_NORMAL)
         }
     }
 }

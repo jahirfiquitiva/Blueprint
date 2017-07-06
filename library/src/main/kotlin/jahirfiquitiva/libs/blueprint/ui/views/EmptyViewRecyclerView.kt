@@ -33,9 +33,9 @@ import jahirfiquitiva.libs.blueprint.extensions.makeVisible
 import jahirfiquitiva.libs.blueprint.extensions.makeVisibleIf
 
 class EmptyViewRecyclerView:RecyclerView {
-    var loadingView:View? = null
-    var emptyView:View? = null
-    var textView:TextView? = null
+    lateinit var loadingView:View
+    lateinit var emptyView:View
+    lateinit var textView:TextView
     var loadingTextRes:Int = -1
     var emptyTextRes:Int = -1
 
@@ -54,9 +54,9 @@ class EmptyViewRecyclerView:RecyclerView {
     private fun updateStateViews() {
         when (state) {
             STATE_LOADING -> {
-                loadingView?.makeVisible()
-                emptyView?.makeGone()
-                textView?.text = context.getString(
+                loadingView.makeVisible()
+                emptyView.makeGone()
+                textView.text = context.getString(
                         if (loadingTextRes != -1) loadingTextRes else R.string.loading_section)
                 makeGone()
             }
@@ -64,8 +64,8 @@ class EmptyViewRecyclerView:RecyclerView {
                 if (adapter != null) {
                     val items = adapter.itemCount
                     if (items > 0) {
-                        loadingView?.makeGone()
-                        emptyView?.makeGone()
+                        loadingView.makeGone()
+                        emptyView.makeGone()
                         makeVisible()
                     } else {
                         updateState(STATE_EMPTY)
@@ -75,17 +75,17 @@ class EmptyViewRecyclerView:RecyclerView {
                 }
             }
             STATE_EMPTY -> {
-                loadingView?.makeGone()
-                emptyView?.makeVisible()
-                textView?.text = context.getString(
+                loadingView.makeGone()
+                emptyView.makeVisible()
+                textView.text = context.getString(
                         if (emptyTextRes != -1) emptyTextRes else R.string.empty_section)
                 makeGone()
             }
         }
         if (context is ThemedActivity)
-            textView?.setTextColor(context.getSecondaryTextColor(
+            textView.setTextColor(context.getSecondaryTextColor(
                     (context as ThemedActivity).isDarkTheme()))
-        textView?.makeVisibleIf(state != STATE_NORMAL)
+        textView.makeVisibleIf(state != STATE_NORMAL)
     }
 
     internal val observer:RecyclerView.AdapterDataObserver = object:RecyclerView.AdapterDataObserver() {

@@ -37,8 +37,7 @@ import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
 
 class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
-
-    var nameHolder:StringHolder? = null
+    private lateinit var nameHolder:StringHolder
     var listener:FilterCheckBoxHolder.StateChangeListener? = null
     var checkBoxHolder = FilterCheckBoxHolder()
     var showDivider = true
@@ -85,7 +84,7 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
             holder.divider?.makeVisible()
         } else holder?.divider?.makeGone()
         checkBoxHolder = FilterCheckBoxHolder()
-        checkBoxHolder.setup(holder?.checkBox!!, nameHolder?.text.toString(), listener)
+        checkBoxHolder.setup(holder?.checkBox!!, nameHolder.text.toString(), listener)
         holder.itemView?.setOnClickListener {
             checkBoxHolder.apply(!checkBoxHolder.isChecked())
         }

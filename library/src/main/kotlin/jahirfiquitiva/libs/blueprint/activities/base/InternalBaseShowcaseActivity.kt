@@ -52,20 +52,20 @@ import jahirfiquitiva.libs.blueprint.ui.views.CounterFab
 import jahirfiquitiva.libs.blueprint.ui.views.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.views.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
-import jahirfiquitiva.libs.blueprint.utils.PLAY_STORE_LINK_PREFIX
+import jahirfiquitiva.libs.blueprint.utils.*
 
 open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 
-    private var coordinatorLayout:CustomCoordinatorLayout? = null
-    private var appBarLayout:FixedElevationAppBarLayout? = null
-    private var collapsingToolbar:CollapsingToolbarLayout? = null
-    private var tabs:TabLayout? = null
-    private var toolbar:Toolbar? = null
-    private var menu:Menu? = null
-    private var fab:CounterFab? = null
-    private var overlay:View? = null
-    private var sheet:View? = null
-    private var filtersDrawer:Drawer? = null
+    private lateinit var coordinatorLayout:CustomCoordinatorLayout
+    private lateinit var appBarLayout:FixedElevationAppBarLayout
+    private lateinit var collapsingToolbar:CollapsingToolbarLayout
+    private lateinit var tabs:TabLayout
+    private lateinit var toolbar:Toolbar
+    private lateinit var menu:Menu
+    private lateinit var fab:CounterFab
+    private lateinit var overlay:View
+    private lateinit var sheet:View
+    private lateinit var filtersDrawer:Drawer
     private var iconsFilters:ArrayList<String> = ArrayList()
     internal var currentItemId:Int = -1
 
@@ -84,15 +84,19 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     }
 
     override fun onSaveInstanceState(outState:Bundle?) {
-        outState?.putString("toolbarTitle", collapsingToolbar?.title.toString())
+        outState?.putString("toolbarTitle", collapsingToolbar.title.toString())
         outState?.putInt("currentItemId", currentItemId)
         outState?.putInt("pickerKey", picker)
         super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
+        if (savedInstanceState == null) printError("0 SavedState is null D:") else printInfo(
+                "0 SavedState is not null :)")
         super.onRestoreInstanceState(savedInstanceState)
-        collapsingToolbar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
+        if (savedInstanceState == null) printError("1 SavedState is null D:") else printInfo(
+                "1 SavedState is not null :)")
+        collapsingToolbar.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         picker = savedInstanceState?.getInt("pickerKey") ?: 0
         navigateToItem(getNavigationItems()[savedInstanceState?.getInt("currentItemId") ?: 0])
     }
@@ -107,9 +111,10 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
     private fun initFAB() {
         fab = findViewById(R.id.fab)
         overlay = findViewById(R.id.overlay)
-        overlay?.background = ColorDrawable(getOverlayColor(isDarkTheme()))
-        overlay?.setOnClickListener { _ ->
-            hideOverlay()
+        overlay.background = ColorDrawable(getOverlayColor(isDarkTheme()))
+        overlay.setOnClickListener { _ ->
+            if (overlay.isVisible() && currentItemId == DEFAULT_HOME_POSITION)
+                hideOverlay()
         }
         sheet = findViewById(R.id.sheet)
 
@@ -157,16 +162,16 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
 
     open fun initToolbar() {
         toolbar = findViewById(R.id.toolbar)
-        menu = toolbar?.menu
+        menu = toolbar.menu
         menuInflater.inflate(R.menu.menu_main, menu)
-        toolbar?.let {
+        toolbar.let {
             tintToolbar(it, getActiveIconsColorFor(getPrimaryColor(isDarkTheme())))
         }
-        toolbar?.setOnMenuItemClickListener(
+        toolbar.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
                     val i = item.itemId
                     if (i == R.id.filters) {
-                        filtersDrawer?.openDrawer()
+                        filtersDrawer.openDrawer()
                         return@OnMenuItemClickListener true
                     } else if (i == R.id.switch_theme) {
                         // switchTheme()
@@ -180,11 +185,11 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
         coordinatorLayout = findViewById(R.id.mainCoordinatorLayout)
         appBarLayout = findViewById(R.id.appBar)
         collapsingToolbar = findViewById(R.id.collapsingToolbar)
-        collapsingToolbar?.setExpandedTitleColor(Color.TRANSPARENT)
-        collapsingToolbar?.setCollapsedTitleTextColor(getPrimaryTextColor(isDarkTheme()))
-        appBarLayout?.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
+        collapsingToolbar.setExpandedTitleColor(Color.TRANSPARENT)
+        collapsingToolbar.setCollapsedTitleTextColor(getPrimaryTextColor(isDarkTheme()))
+        appBarLayout.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
             override fun onVerticalOffsetChanged(appBar:AppBarLayout?, verticalOffset:Int) {
-                toolbar?.let { updateToolbarColorsHere(it, verticalOffset) }
+                toolbar.let { updateToolbarColorsHere(it, verticalOffset) }
             }
         })
         val wallpaper:ImageView? = findViewById(R.id.toolbarHeader)
@@ -218,7 +223,7 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
                 FilterTitleDrawerItem().withButtonListener(
                         object:FilterTitleDrawerItem.ButtonListener {
                             override fun onButtonPressed() {
-                                filtersDrawer?.drawerItems?.forEach {
+                                filtersDrawer.drawerItems?.forEach {
                                     if (it is FilterDrawerItem) {
                                         it.checkBoxHolder.apply(false, false)
                                     }
@@ -269,90 +274,102 @@ open class InternalBaseShowcaseActivity:BaseShowcaseActivity() {
             currentItemId = id
             updateToolbarMenuItems(item)
             changeFABVisibility(
-                    id == NavigationItem.DEFAULT_HOME_POSITION || id == NavigationItem.DEFAULT_REQUEST_POSITION)
-            changeFABAction(id == NavigationItem.DEFAULT_HOME_POSITION)
-            appBarLayout?.setExpanded(id == NavigationItem.DEFAULT_HOME_POSITION,
-                                      konfigs.animationsEnabled)
-            collapsingToolbar?.title = getString(
-                    if (id == NavigationItem.DEFAULT_HOME_POSITION) R.string.app_name else item.title)
-            hideOverlay()
-            coordinatorLayout?.allowScroll = id == NavigationItem.DEFAULT_HOME_POSITION
-            tabs?.makeVisibleIf(id == NavigationItem.DEFAULT_PREVIEWS_POSITION)
-            changeFragment(getFragmentForNavigationItem(id))
-            lockFiltersDrawer(id != NavigationItem.DEFAULT_PREVIEWS_POSITION)
+                    id == DEFAULT_HOME_POSITION || id == DEFAULT_REQUEST_POSITION)
+            changeFABAction(id == DEFAULT_HOME_POSITION)
+            hideOverlay(object:FabTransformation.OnTransformListener {
+                override fun onStartTransform() {
+                    // Do nothing
+                }
+
+                override fun onEndTransform() {
+                    changeFABVisibility(
+                            id == DEFAULT_HOME_POSITION || id == DEFAULT_REQUEST_POSITION)
+                    changeFABAction(id == DEFAULT_HOME_POSITION)
+                }
+            })
+            appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, konfigs.animationsEnabled)
+            collapsingToolbar.title = getString(
+                    if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+            coordinatorLayout.allowScroll = id == DEFAULT_HOME_POSITION
+            tabs.makeVisibleIf(id == DEFAULT_PREVIEWS_POSITION)
+            val rightItem = getNavigationItems()[id]
+            changeFragment(getFragmentForNavigationItem(id), rightItem.tag)
+            lockFiltersDrawer(id != DEFAULT_PREVIEWS_POSITION)
             return true
         } catch(ignored:Exception) {
         }
         return false
     }
 
+    private fun hideOverlay(listener:FabTransformation.OnTransformListener? = null) {
+        FabTransformation.with(fab).setOverlay(overlay).setListener(listener).transformFrom(sheet)
+    }
+
     private fun updateToolbarMenuItems(item:NavigationItem) {
-        menu?.changeOptionVisibility(R.id.search,
-                                     item.id == NavigationItem.DEFAULT_PREVIEWS_POSITION)
-        menu?.changeOptionVisibility(R.id.filters,
-                                     item.id == NavigationItem.DEFAULT_PREVIEWS_POSITION)
-        menu?.changeOptionVisibility(R.id.columns,
-                                     item.id == NavigationItem.DEFAULT_WALLPAPERS_POSITION)
-        menu?.changeOptionVisibility(R.id.refresh,
-                                     item.id == NavigationItem.DEFAULT_WALLPAPERS_POSITION)
-        menu?.changeOptionVisibility(R.id.select_all,
-                                     item.id == NavigationItem.DEFAULT_REQUEST_POSITION)
+        menu.changeOptionVisibility(R.id.search,
+                                    item.id == DEFAULT_PREVIEWS_POSITION)
+        menu.changeOptionVisibility(R.id.filters,
+                                    item.id == DEFAULT_PREVIEWS_POSITION)
+        menu.changeOptionVisibility(R.id.columns,
+                                    item.id == DEFAULT_WALLPAPERS_POSITION)
+        menu.changeOptionVisibility(R.id.refresh,
+                                    item.id == DEFAULT_WALLPAPERS_POSITION)
+        menu.changeOptionVisibility(R.id.select_all,
+                                    item.id == DEFAULT_REQUEST_POSITION)
         tintToolbarMenu(toolbar, menu, getActiveIconsColorFor(getPrimaryColor(isDarkTheme())))
     }
 
-    fun changeFABVisibility(visible:Boolean) = if (visible) fab?.show() else fab?.hide()
+    fun changeFABVisibility(visible:Boolean) = if (visible) fab.show() else fab.hide()
 
     private fun lockFiltersDrawer(lock:Boolean) {
-        val drawerLayout = filtersDrawer?.drawerLayout
+        val drawerLayout = filtersDrawer.drawerLayout
         drawerLayout?.setDrawerLockMode(
                 if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
                 Gravity.END)
     }
 
     private fun changeFABAction(home:Boolean) {
-        fab?.setImageDrawable(
+        fab.setImageDrawable(
                 (if (home) "ic_plus" else "ic_send").getDrawable(this)
                         .tintWithColor(getActiveIconsColorFor(getAccentColor(isDarkTheme()))))
         if (home) {
-            fab?.count = 0
-            fab?.setOnClickListener({
-                                        FabTransformation.with(fab).setOverlay(overlay).transformTo(
-                                                sheet)
-                                    })
+            fab.count = 0
+            fab.setOnClickListener({
+                                       FabTransformation.with(fab).setOverlay(overlay).transformTo(
+                                               sheet)
+                                   })
         } else {
-            fab?.setOnClickListener({ _ ->
-                                        showToast("Creating request")
-                                    })
+            fab.setOnClickListener({ _ ->
+                                       showToast("Creating request")
+                                   })
         }
     }
 
     open fun getFragmentForNavigationItem(id:Int):Fragment {
+        val frag:Fragment
         when (id) {
-            NavigationItem.DEFAULT_HOME_POSITION -> return HomeFragment()
-            NavigationItem.DEFAULT_PREVIEWS_POSITION -> return IconsFragment()
-            else -> return EmptyFragment()
+            DEFAULT_HOME_POSITION -> frag = HomeFragment()
+            DEFAULT_PREVIEWS_POSITION -> frag = IconsFragment()
+            else -> frag = EmptyFragment()
         }
+        return frag
     }
 
     private fun getIconsFiltersNames():Array<String> {
         return getStringArray(R.array.icon_filters)
     }
 
-    private fun hideOverlay() {
-        FabTransformation.with(fab).setOverlay(overlay).transformFrom(sheet)
-    }
-
     override fun getNavigationItems():Array<NavigationItem> {
         return arrayOf(
-                NavigationItem("Home", NavigationItem.DEFAULT_HOME_POSITION, R.string.section_home,
+                NavigationItem("Home", DEFAULT_HOME_POSITION, R.string.section_home,
                                R.drawable.ic_home),
-                NavigationItem("Previews", NavigationItem.DEFAULT_PREVIEWS_POSITION,
+                NavigationItem("Previews", DEFAULT_PREVIEWS_POSITION,
                                R.string.section_icons, R.drawable.ic_previews),
-                NavigationItem("Wallpapers", NavigationItem.DEFAULT_WALLPAPERS_POSITION,
+                NavigationItem("Wallpapers", DEFAULT_WALLPAPERS_POSITION,
                                R.string.section_wallpapers, R.drawable.ic_wallpapers),
-                NavigationItem("Apply", NavigationItem.DEFAULT_APPLY_POSITION,
+                NavigationItem("Apply", DEFAULT_APPLY_POSITION,
                                R.string.section_apply, R.drawable.ic_apply),
-                NavigationItem("Requests", NavigationItem.DEFAULT_REQUEST_POSITION,
+                NavigationItem("Requests", DEFAULT_REQUEST_POSITION,
                                R.string.section_icon_request, R.drawable.ic_request)
                       )
     }

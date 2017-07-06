@@ -35,16 +35,16 @@ import jahirfiquitiva.libs.blueprint.extensions.sortIconsList
 import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
-import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.tasks.BasicTaskLoader
 import jahirfiquitiva.libs.blueprint.tasks.IconsLoader
 import jahirfiquitiva.libs.blueprint.tasks.XMLIconsLoader
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_PREVIEWS_POSITION
 
 class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>> {
 
-    var recyclerView:EmptyViewRecyclerView? = null
-    var fastScroller:RecyclerFastScroller? = null
+    private lateinit var recyclerView:EmptyViewRecyclerView
+    private lateinit var fastScroller:RecyclerFastScroller
 
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
@@ -62,16 +62,16 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
     override fun initUI(content:View) {
         recyclerView = content.findViewById(R.id.icons_grid)
         fastScroller = content.findViewById(R.id.fast_scroller)
-        recyclerView?.emptyView = content.findViewById(R.id.empty_view)
-        recyclerView?.textView = content.findViewById(R.id.empty_text)
-        recyclerView?.adapter = IconsAdapter {
+        recyclerView.emptyView = content.findViewById(R.id.empty_view)
+        recyclerView.textView = content.findViewById(R.id.empty_text)
+        recyclerView.adapter = IconsAdapter {
             onItemClicked(it)
         }
         val columns = context.getInteger(R.integer.icons_grid_width)
-        recyclerView?.layoutManager = GridLayoutManager(context, columns,
-                                                        GridLayoutManager.VERTICAL, false)
-        recyclerView?.updateState(EmptyViewRecyclerView.STATE_LOADING)
-        fastScroller?.attachRecyclerView(recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(context, columns,
+                                                       GridLayoutManager.VERTICAL, false)
+        recyclerView.updateState(EmptyViewRecyclerView.STATE_LOADING)
+        fastScroller.attachRecyclerView(recyclerView)
     }
 
     override fun onItemClicked(item:Any) {
@@ -80,14 +80,14 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
         }
     }
 
-    override fun getLoaderId():Int = NavigationItem.DEFAULT_PREVIEWS_POSITION
+    override fun getLoaderId():Int = DEFAULT_PREVIEWS_POSITION
 
     override fun buildLoader():Loader<ArrayList<IconsCategory>> {
         if (context.getBoolean(R.bool.xml_drawable_enabled)) {
             return XMLIconsLoader(context,
                                   object:BasicTaskLoader.TaskListener {
                                       override fun onTaskStarted() {
-                                          recyclerView?.updateState(
+                                          recyclerView.updateState(
                                                   EmptyViewRecyclerView.STATE_LOADING)
                                       }
                                   })
@@ -95,7 +95,7 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
             return IconsLoader(context,
                                object:BasicTaskLoader.TaskListener {
                                    override fun onTaskStarted() {
-                                       recyclerView?.updateState(
+                                       recyclerView.updateState(
                                                EmptyViewRecyclerView.STATE_LOADING)
                                    }
                                })
@@ -103,14 +103,14 @@ class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>>
     }
 
     override fun onDataLoadFinished(data:ArrayList<IconsCategory>) {
-        val adapter = recyclerView?.adapter
+        val adapter = recyclerView.adapter
         if (adapter is IconsAdapter) {
             val icons = ArrayList<Icon>()
             data.forEach {
                 icons.addAll(it.icons)
             }
             adapter.clearAndAddAll(icons.sortIconsList())
-            recyclerView?.updateState(EmptyViewRecyclerView.STATE_NORMAL)
+            recyclerView.updateState(EmptyViewRecyclerView.STATE_NORMAL)
         }
     }
 

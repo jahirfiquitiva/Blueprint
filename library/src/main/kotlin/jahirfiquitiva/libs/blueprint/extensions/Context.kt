@@ -87,7 +87,7 @@ fun Context.showToast(text:String, duration:Int = Toast.LENGTH_SHORT) {
     }
 }
 
-fun Context.getAppName():String = getStringFromRes(R.string.app_name, "IconShowcase")
+fun Context.getAppName():String = getStringFromRes(R.string.app_name, "Blueprint")
 
 fun Context.getAppVersion():String {
     try {

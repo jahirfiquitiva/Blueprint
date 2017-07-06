@@ -34,7 +34,7 @@ import jahirfiquitiva.libs.blueprint.utils.CoreUtils
 
 open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
-    var drawer:Drawer? = null
+    private lateinit var drawer:Drawer
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
     }
 
     override fun onSaveInstanceState(outState:Bundle?) {
-        val nOutState = drawer?.saveInstanceState(outState)
+        val nOutState = drawer.saveInstanceState(outState)
         super.onSaveInstanceState(nOutState)
     }
 
@@ -115,7 +115,7 @@ open class DrawerShowcaseActivity:InternalBaseShowcaseActivity() {
 
     override fun onBackPressed() {
         if (currentItemId != 0) navigateToItem(getNavigationItems()[0])
-        else if (drawer?.isDrawerOpen!!) drawer?.closeDrawer()
+        else if (drawer.isDrawerOpen) drawer.closeDrawer()
         else super.onBackPressed()
     }
 

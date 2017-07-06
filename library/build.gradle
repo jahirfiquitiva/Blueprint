@@ -120,6 +120,7 @@ dependencies {
     compile 'com.aurelhubert:ahbottomnavigation:' + versions.bottomBar
     // FAB Transformation
     compile 'konifar:fab-transformation:' + versions.fabTransformation
+    // compile 'me.jahirfiquitiva:fab-transformation:' + versions.customFabTransformation
     // Subsampling ImageView
     compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView
     // In-App Purchases

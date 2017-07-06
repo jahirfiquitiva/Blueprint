@@ -19,12 +19,4 @@
 
 package jahirfiquitiva.libs.blueprint.models
 
-data class NavigationItem(val tag:String, val id:Int, val title:Int, val icon:Int) {
-    companion object {
-        const val DEFAULT_HOME_POSITION = 0
-        const val DEFAULT_PREVIEWS_POSITION = 1
-        const val DEFAULT_WALLPAPERS_POSITION = 2
-        const val DEFAULT_APPLY_POSITION = 3
-        const val DEFAULT_REQUEST_POSITION = 4
-    }
-}
+data class NavigationItem(val tag:String, val id:Int, val title:Int, val icon:Int)

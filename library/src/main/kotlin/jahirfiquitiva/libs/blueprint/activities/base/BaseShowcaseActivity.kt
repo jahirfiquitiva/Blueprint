@@ -20,10 +20,12 @@
 package jahirfiquitiva.libs.blueprint.activities.base
 
 import android.content.Intent
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import com.github.javiersantos.piracychecker.PiracyChecker
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.extensions.konfigs
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.utils.*
 
@@ -32,12 +34,19 @@ open class BaseShowcaseActivity:ThemedActivity() {
     var picker:Int = 0
     var checker:PiracyChecker? = null
 
-    fun changeFragment(f:Fragment, cleanStack:Boolean = false) {
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
+        picker = getPickerKey()
+    }
+
+    fun changeFragment(f:Fragment, tag:String? = null, cleanStack:Boolean = false) {
         val manager = supportFragmentManager.beginTransaction()
         if (cleanStack) clearBackStack()
-        manager.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_popup_enter,
-                                    R.anim.abc_popup_exit)
-        manager.replace(R.id.fragments_container, f)
+        if (konfigs.animationsEnabled)
+            manager.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out,
+                                        R.anim.abc_popup_enter, R.anim.abc_popup_exit)
+        if (tag != null) manager.replace(R.id.fragments_container, f, tag)
+        else manager.replace(R.id.fragments_container, f)
         manager.addToBackStack(null)
         manager.commit()
     }
@@ -94,6 +103,7 @@ open class BaseShowcaseActivity:ThemedActivity() {
         super.onDestroy()
         checker?.destroy()
         checker = null
+        clearBackStack()
     }
 
 }

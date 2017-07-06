@@ -40,14 +40,14 @@ class HomeCardsHolder {
         val description:TextView? = itemView?.findViewById(R.id.home_extra_card_description)
         val icon:ImageView? = itemView?.findViewById(R.id.home_extra_card_image)
 
-        fun setItem(item:HomeCard, showSectionTitle:Boolean, listener:(HomeCard) -> Unit)
-                = with(itemView) {
-            sectionTitle?.makeVisibleIf(showSectionTitle)
-            title?.text = item.title
-            description?.text = item.description
-            icon?.setImageDrawable(item.icon)
-            setOnClickListener { listener(item) }
-        }
+        fun setItem(item:HomeCard, showSectionTitle:Boolean, listener:(HomeCard) -> Unit) =
+                with(itemView) {
+                    sectionTitle?.makeVisibleIf(showSectionTitle)
+                    title?.text = item.title
+                    description?.text = item.description
+                    icon?.setImageDrawable(item.icon)
+                    setOnClickListener { listener(item) }
+                }
     }
 
 }

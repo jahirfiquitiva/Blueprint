@@ -21,9 +21,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!-- ShowcaseActivity Strings -->
-    <string name="app_name">IconShowcase</string>
-    <string name="app_long_name">IconShowcase Sample</string>
-    <string name="theme_description">IconShowcase is a Material Design based Icon Pack dashboard template. Free and open source.</string>
+    <string name="app_name">Blueprint</string>
+    <string name="app_long_name">Blueprint Sample</string>
+    <string name="theme_description">Blueprint is a Material Design based Icon Pack dashboard template. Free and open source.</string>
 
     <!-- Muzei Stuff -->
     <string name="artsource_desc">Some cool wallpapers</string>
@@ -34,15 +34,15 @@
     <string name="email_id">someone@email.com</string>
 
     <!-- Mail subjects for simple e-mail and requests e-mail -->
-    <string name="email_subject">IconShowcase</string>
-    <string name="request_title">IconShowcase Icon Request</string>
+    <string name="email_subject">Blueprint</string>
+    <string name="request_title">Blueprint Icon Request</string>
 
     <!-- This are the strings for the cards in the main screen -->
-    <string name="welcome_title">Welcome to IconShowcase</string>
+    <string name="welcome_title">Welcome to Blueprint</string>
 
     <!-- Strings for Wallpapers and Requests -->
-    <string name="request_save_location">%1$s/IconShowcase/Requests/</string>
-    <string name="walls_save_location">%1$s/IconShowcase/Wallpapers/</string>
+    <string name="request_save_location">%1$s/Blueprint/Requests/</string>
+    <string name="walls_save_location">%1$s/Blueprint/Wallpapers/</string>
 
     <!-- Launcher Activity Name
     if the activity is:
