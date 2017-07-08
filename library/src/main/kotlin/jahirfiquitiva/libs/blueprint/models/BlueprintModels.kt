@@ -21,8 +21,29 @@ package jahirfiquitiva.libs.blueprint.models
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.support.annotation.ColorInt
+import android.support.annotation.DrawableRes
 
 data class HomeItem(val title:String, val description:String, val url:String,
                     val icon:Drawable, val openIcon:Drawable?,
                     val isAnApp:Boolean, val isInstalled:Boolean,
                     val intent:Intent?)
+
+data class Icon(val name:String, @DrawableRes val icon:Int):Comparable<Icon> {
+    override fun compareTo(other:Icon):Int = this.name.compareTo(other.name)
+}
+
+data class IconsCategory(val title:String, val icons:ArrayList<Icon> = ArrayList())
+
+@Suppress("ArrayInDataClass")
+data class Launcher(val name:String, val packageNames:Array<String>, @ColorInt val color:Int,
+                    val isActuallySupported:Boolean = true) {
+    fun hasPackage(packageName:String):Boolean {
+        packageNames.forEach {
+            if (it.equals(packageName, true)) return true
+        }
+        return false
+    }
+}
+
+data class NavigationItem(val tag:String, val id:Int, val title:Int, val icon:Int)

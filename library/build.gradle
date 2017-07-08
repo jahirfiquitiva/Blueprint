@@ -127,7 +127,7 @@ dependencies {
     compile 'konifar:fab-transformation:' + versions.fabTransformation
     // compile 'me.jahirfiquitiva:fab-transformation:' + versions.customFabTransformation
     // Chips View
-    compile 'com.github.pchmn:MaterialChipsInput:' + versions.chips
+    compile 'me.jahirfiquitiva:MaterialChipsInput:' + versions.chips
     // Subsampling ImageView
     compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView
     // In-App Purchases

@@ -19,13 +19,20 @@
 
 package jahirfiquitiva.libs.blueprint.fragments.base
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.OnLifecycleEvent
 import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 
-abstract class BaseViewModelFragment:BaseSectionFragment(), ItemsFragmentPresenter {
+abstract class BaseViewModelFragment:BaseSectionFragment(), LifecycleObserver, ItemsFragmentPresenter {
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
     override fun onStart() {
         super.onStart()
         initViewModel()
-        setObservableToViewModel()
+        registerObserver()
         loadDataFromViewModel()
     }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    abstract override fun unregisterObserver()
 }

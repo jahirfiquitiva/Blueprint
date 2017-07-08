@@ -45,6 +45,8 @@
 
         <LinearLayout
                 android:orientation="horizontal"
+                android:layout_marginRight="@dimen/cards_margin"
+                android:layout_marginEnd="@dimen/cards_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:ignore="UselessParent">
@@ -73,6 +75,8 @@
                 android:id="@+id/widgets_chips"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/fab_margin"
+                android:layout_marginRight="@dimen/cards_margin"
+                android:layout_marginEnd="@dimen/cards_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

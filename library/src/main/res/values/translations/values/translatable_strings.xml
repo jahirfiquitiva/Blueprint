@@ -57,6 +57,7 @@
     <string name="muzei_info">Note: These settings may affect the update behavior of wallpapers.
     </string>
     <string name="share">Share</string>
+    <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
 
     <string name="send_email">Send email</string>
 
@@ -75,8 +76,9 @@
     <string name="cm_dialog_content">%1$s is part of CyanogenMod (based) roms.\nWould you like to
         install it on your device?
     </string>
-    <string name="gnl_title">Google Now Launcher is NOT Compatible</string>
-    <string name="gnl_content">Google Now Launcher is NOT compatible with ANY Icon Packs. Please do
+    <string name="no_compatible_launcher_title">This launcher is NOT Compatible</string>
+    <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs
+        and therefore you cannot use this icon pack with this launcher. Please do
         not rate the icon pack negatively for this reason. There is a solution that you can try for
         yourself, but it requires the use of an external app. Would you like to download it?
     </string>
@@ -365,6 +367,8 @@
     <!--No Theme Engine Dialog-->
     <string name="NTED_title">Uh Oh!</string>
     <string name="NTED_message">It seems like we aren\'t able to find a theme engine on your phone. If you know you have one, please open it and proceed from there. If you don\'t have one, please get a rom that supports either cyanogenmod or layers theming and follow their instructions.</string>
+    <string name="impossible_open_themes">Impossible to open themes app</string>
+    <string name="themes_app_not_installed">Themes app is not installed in this device</string>
 
     <string name="tap_to_download">%1$s\nTap this card to download it.</string>
     <string name="tap_to_open">%1$s\nTap this card to open the app.</string>

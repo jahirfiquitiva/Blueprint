@@ -18,7 +18,9 @@
  */
 package jahirfiquitiva.libs.blueprint.fragments
 
+import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
@@ -43,7 +45,7 @@ class IconsFragment:BaseViewModelFragment() {
         model = ViewModelProviders.of(this).get(IconItemViewModel::class.java)
     }
 
-    override fun setObservableToViewModel() {
+    override fun registerObserver() {
         model.items.observe(this, Observer<ArrayList<IconsCategory>> { data ->
             val adapter = rv.adapter
             if (adapter is IconsAdapter) {
@@ -55,6 +57,11 @@ class IconsFragment:BaseViewModelFragment() {
                 rv.state = EmptyViewRecyclerView.STATE_NORMAL
             }
         })
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    override fun unregisterObserver() {
+        model.items.removeObservers(this)
     }
 
     override fun loadDataFromViewModel() {

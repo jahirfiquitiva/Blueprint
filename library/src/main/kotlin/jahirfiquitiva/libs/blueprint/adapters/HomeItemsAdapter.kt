@@ -28,56 +28,59 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.*
 import jahirfiquitiva.libs.blueprint.holders.HomeItemsHolder
 import jahirfiquitiva.libs.blueprint.models.HomeItem
+import jahirfiquitiva.libs.blueprint.models.Launcher
 
-class HomeCardsAdapter(val context:Context,
+class HomeItemsAdapter(val context:Context,
                        val listener:(HomeItem) -> Unit,
                        val iconsAmount:Int = 0, val wallpapersAmount:Int = 0,
                        val zooperAmount:Int = 0,
                        val kustomAmount:Int = 0):BaseListAdapter<HomeItem>() {
 
-    var shouldShowApplyCard = true
+    var shouldShowApplyCard = false
     var firstLinkPosition = -1
-
-    init {
-        shouldShowApplyCard = !context.konfigs.isApplyCardDismissed
-    }
 
     override fun onBindViewHolder(holder:RecyclerView.ViewHolder?, position:Int) {
         if (position < 0) return
         try {
             if (shouldShowApplyCard && position == 0 &&
                 holder is HomeItemsHolder.ApplyCardHolder) {
-                holder.applyTitle?.setTextColor(context.getPrimaryTextColorFor(
-                        context.getAccentColor()))
-                holder.applyTitle?.text = context.getString(R.string.apply_title,
-                                                            context.getAppName())
-                holder.applyContent?.setTextColor(context.getPrimaryTextColorFor(
-                        context.getAccentColor()))
-                holder.applyContent?.text = context.getString(R.string.apply_content,
-                                                              context.getDefaultLauncher().name)
-                holder.dismissButton?.setTextColor(context.getPrimaryTextColorFor(
-                        context.getAccentColor()))
-                holder.dismissButton?.setOnClickListener {
-                    val anim = AnimationUtils.loadAnimation(context,
-                                                            android.R.anim.slide_out_right)
-                    anim.setAnimationListener(object:Animation.AnimationListener {
-                        override fun onAnimationRepeat(p0:Animation?) {
-                        }
+                val defLauncher:Launcher? = context.getDefaultLauncher()
+                val initCard = defLauncher?.isActuallySupported ?: false
+                if (initCard) {
+                    holder.applyTitle?.setTextColor(context.getPrimaryTextColorFor(
+                            context.getAccentColor()))
+                    holder.applyTitle?.text = context.getString(R.string.apply_title,
+                                                                context.getAppName())
+                    holder.applyContent?.setTextColor(context.getPrimaryTextColorFor(
+                            context.getAccentColor()))
+                    holder.applyContent?.text = context.getString(R.string.apply_content,
+                                                                  defLauncher?.name)
+                    holder.dismissButton?.setTextColor(context.getPrimaryTextColorFor(
+                            context.getAccentColor()))
+                    holder.dismissButton?.setOnClickListener {
+                        val anim = AnimationUtils.loadAnimation(context,
+                                                                android.R.anim.slide_out_right)
+                        anim.setAnimationListener(object:Animation.AnimationListener {
+                            override fun onAnimationRepeat(p0:Animation?) {
+                            }
 
-                        override fun onAnimationEnd(p0:Animation?) {
-                            context.konfigs.isApplyCardDismissed = true
-                            shouldShowApplyCard = false
-                            notifyItemRemoved(0)
-                            notifyDataSetChanged()
-                        }
+                            override fun onAnimationEnd(p0:Animation?) {
+                                context.konfigs.isApplyCardDismissed = true
+                                notifyItemRemoved(0)
+                                notifyDataSetChanged()
+                            }
 
-                        override fun onAnimationStart(p0:Animation?) {
-                        }
-                    })
-                    holder.itemView.startAnimation(anim)
+                            override fun onAnimationStart(p0:Animation?) {
+                            }
+                        })
+                        holder.itemView.startAnimation(anim)
+                    }
+                    holder.applyButton?.setTextColor(context.getPrimaryTextColorFor(
+                            context.getAccentColor()))
+                    holder.applyButton?.setOnClickListener {
+                        context.executeLauncherIntent(defLauncher?.name ?: "")
+                    }
                 }
-                holder.applyButton?.setTextColor(context.getPrimaryTextColorFor(
-                        context.getAccentColor()))
             } else if (holder is HomeItemsHolder.ChipsItemHolder) {
                 val labelColor = context.getPrimaryTextColor()
                 val chipsIconColor = context.getChipsIconsColor()
@@ -92,6 +95,7 @@ class HomeCardsAdapter(val context:Context,
                         "ic_icons_chip".getDrawable(context).tintWithColor(chipsIconColor))
                 holder.iconsChip?.setLabelColor(labelColor)
                 holder.iconsChip?.setChipBackgroundColor(chipsColor)
+                holder.iconsChip?.requestLayout()
 
                 holder.wallsChip?.makeVisibleIf(wallpapersAmount >= 0)
                 holder.wallsChip?.label = context.getString(R.string.available_wallpapers,
@@ -99,6 +103,7 @@ class HomeCardsAdapter(val context:Context,
                 holder.wallsChip?.setAvatarIcon(
                         "ic_wallpapers_chip".getDrawable(context).tintWithColor(chipsIconColor))
                 holder.wallsChip?.setChipBackgroundColor(chipsColor)
+                holder.wallsChip?.requestLayout()
 
                 holder.zooperChip?.makeVisibleIf(zooperAmount >= 0)
                 holder.zooperChip?.label = context.getString(R.string.included_zooper,
@@ -106,6 +111,7 @@ class HomeCardsAdapter(val context:Context,
                 holder.zooperChip?.setAvatarIcon(
                         "ic_zooper_chip".getDrawable(context).tintWithColor(chipsIconColor))
                 holder.zooperChip?.setChipBackgroundColor(chipsColor)
+                holder.zooperChip?.requestLayout()
 
                 holder.kustomChip?.makeVisibleIf(kustomAmount >= 0)
                 holder.kustomChip?.label = context.getString(R.string.included_kwgt,
@@ -113,6 +119,7 @@ class HomeCardsAdapter(val context:Context,
                 holder.kustomChip?.setAvatarIcon(
                         "ic_kustom_chip".getDrawable(context).tintWithColor(chipsIconColor))
                 holder.kustomChip?.setChipBackgroundColor(chipsColor)
+                holder.kustomChip?.requestLayout()
 
                 holder.widgetsChips?.makeVisibleIf(zooperAmount >= 0 && kustomAmount >= 0)
 

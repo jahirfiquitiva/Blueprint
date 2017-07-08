@@ -149,7 +149,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         shareFab.titleTextColor = getPrimaryTextColor()
         shareFab.rippleColor = getRippleColor()
         shareFab.setOnClickListener {
-            //TODO: Share intent 
+            shareText(getString(R.string.share_this_app, getAppName(),
+                                PLAY_STORE_LINK_PREFIX + packageName))
         }
 
         val donateFab:TitleFAB = findViewById(R.id.donate_fab)

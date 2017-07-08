@@ -19,9 +19,15 @@
 
 package jahirfiquitiva.libs.blueprint.fragments.presenters
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.OnLifecycleEvent
+
 interface ItemsFragmentPresenter:BasicFragmentPresenter {
     fun initViewModel()
-    fun setObservableToViewModel()
+    fun registerObserver()
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun unregisterObserver()
+
     fun loadDataFromViewModel()
     fun onItemClicked(item:Any)
 }

@@ -23,9 +23,6 @@
     <!-- Structure :
     Launcher Name|launcher.package.name
     -->
-
-    <string name="extraapp">com.momocode.shortcuts</string>
-
     <string-array name="launchers">
         <item>Action|com.actionlauncher.playstore</item>
         <item>ADW|org.adw.launcher</item>

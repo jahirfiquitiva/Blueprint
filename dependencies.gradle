@@ -48,7 +48,7 @@ ext.versions = [
         fabsMenu               : '1.0.3',
         fabTransformation      : '1.0.0',
         customFabTransformation: '59d2340',
-        chips                  : '1.0.8',
+        chips                  : '6988f83',
         subsImageView          : '3.6.0',
         iaps                   : '1.0.39',
         muzeiApi               : '2.0',

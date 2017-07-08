@@ -19,41 +19,59 @@
 
 package jahirfiquitiva.libs.blueprint.fragments
 
+import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.adapters.HomeCardsAdapter
+import jahirfiquitiva.libs.blueprint.adapters.HomeItemsAdapter
 import jahirfiquitiva.libs.blueprint.extensions.openLink
 import jahirfiquitiva.libs.blueprint.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.blueprint.models.HomeItem
+import jahirfiquitiva.libs.blueprint.models.viewmodels.HomeApplyCardViewModel
 import jahirfiquitiva.libs.blueprint.models.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
 
 class HomeFragment:BaseViewModelFragment() {
 
     private lateinit var model:HomeItemViewModel
+    private lateinit var applyCardModel:HomeApplyCardViewModel
     private lateinit var rv:EmptyViewRecyclerView
-    private lateinit var homeAdapter:HomeCardsAdapter
+    private lateinit var homeAdapter:HomeItemsAdapter
 
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(HomeItemViewModel::class.java)
+        applyCardModel = ViewModelProviders.of(this).get(HomeApplyCardViewModel::class.java)
     }
 
-    override fun setObservableToViewModel() {
+    override fun registerObserver() {
         model.items.observe(this, Observer<ArrayList<HomeItem>> { data ->
             try {
                 homeAdapter.clearAndAddAll(data)
                 rv.state = EmptyViewRecyclerView.STATE_NORMAL
             } catch (ignored:Exception) {
-                ignored.printStackTrace()
+            }
+        })
+        applyCardModel.items.observe(this, Observer<Boolean> { data ->
+            try {
+                homeAdapter.shouldShowApplyCard = data ?: false
+                homeAdapter.notifyDataSetChanged()
+            } catch (ignored:Exception) {
             }
         })
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    override fun unregisterObserver() {
+        model.items.removeObservers(this)
+        applyCardModel.items.removeObservers(this)
+    }
+
     override fun loadDataFromViewModel() {
         model.loadData(activity)
+        applyCardModel.loadData(activity)
     }
 
     override fun getContentLayout():Int = R.layout.section_home
@@ -64,7 +82,7 @@ class HomeFragment:BaseViewModelFragment() {
         rv.textView = content.findViewById(R.id.empty_text)
         rv.state = EmptyViewRecyclerView.STATE_LOADING
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        homeAdapter = HomeCardsAdapter(context, { onItemClicked(it) })
+        homeAdapter = HomeItemsAdapter(context, { onItemClicked(it) })
         rv.setHasFixedSize(true)
         rv.adapter = homeAdapter
     }

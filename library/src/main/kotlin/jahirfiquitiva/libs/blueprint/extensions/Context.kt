@@ -22,6 +22,7 @@ package jahirfiquitiva.libs.blueprint.extensions
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Looper
@@ -29,6 +30,7 @@ import android.support.annotation.*
 import android.support.v4.content.ContextCompat
 import android.util.TypedValue
 import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.utils.Konfigurations
 import jahirfiquitiva.libs.blueprint.utils.PREFERENCES_NAME
@@ -143,3 +145,21 @@ fun Context.hasWriteStoragePermission() =
 
 val Context.konfigs:Konfigurations
     get() = Konfigurations.newInstance(this)
+
+/**
+ * Wrapper function for the MaterialDialog adapterBuilder
+ * There is no need to call build() or show() as those are done by default
+ * @author Allan Wang
+ */
+inline fun Context.materialDialog(action:MaterialDialog.Builder.() -> Unit):MaterialDialog {
+    val builder = MaterialDialog.Builder(this)
+    builder.action()
+    return builder.show()
+}
+
+fun Context.shareText(text:String) {
+    val intent = Intent(Intent.ACTION_SEND)
+    intent.type = "text/plain"
+    intent.putExtra(Intent.EXTRA_TEXT, text)
+    startActivity(Intent.createChooser(intent, getString(R.string.share_title)))
+}

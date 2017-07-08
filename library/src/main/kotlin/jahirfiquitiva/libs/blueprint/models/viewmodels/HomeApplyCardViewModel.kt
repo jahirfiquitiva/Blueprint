@@ -17,6 +17,21 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.models
+package jahirfiquitiva.libs.blueprint.models.viewmodels
 
-data class IconsCategory(val title:String, val icons:ArrayList<Icon> = ArrayList())
+import android.content.Context
+import jahirfiquitiva.libs.blueprint.extensions.getDefaultLauncher
+import jahirfiquitiva.libs.blueprint.extensions.konfigs
+import jahirfiquitiva.libs.blueprint.models.Launcher
+
+class HomeApplyCardViewModel:BaseViewModel<Boolean>() {
+    override fun loadItems(context:Context):Boolean {
+        val defLauncher:Launcher? = context.getDefaultLauncher()
+        val initCard = defLauncher?.isActuallySupported ?: false
+        if (initCard) {
+            return !context.konfigs.isApplyCardDismissed
+        } else {
+            return false
+        }
+    }
+}
