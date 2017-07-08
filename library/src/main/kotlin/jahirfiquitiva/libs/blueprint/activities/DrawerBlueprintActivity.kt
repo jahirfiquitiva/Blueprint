@@ -31,6 +31,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.extensions.*
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
 
 abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
 
@@ -107,7 +108,6 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
         }
 
         drawerBuilder.withHasStableIds(true)
-                .withShowDrawerUntilDraggedOpened(true)
                 .withFireOnInitialOnClick(true)
 
         if (savedInstance != null)
@@ -117,9 +117,15 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
     }
 
     override fun onBackPressed() {
-        if (currentItemId != 0) navigateToItem(getNavigationItems()[0])
-        else if (drawer.isDrawerOpen) drawer.closeDrawer()
+        if (drawer.isDrawerOpen) drawer.closeDrawer()
+        else if (currentItemId != 0) navigateToItem(getNavigationItems()[0])
         else super.onBackPressed()
+    }
+
+    override fun navigateToItem(item:NavigationItem):Boolean {
+        val result = super.navigateToItem(item)
+        if (result) drawer.setSelection(item.id.toLong())
+        return result
     }
 
     override fun hasBottomBar():Boolean = false

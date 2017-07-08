@@ -68,8 +68,6 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
     internal var filtersListener:FiltersListener? = null
 
-    abstract fun hasBottomBar():Boolean
-
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setupStatusBarStyle(true, getPrimaryDarkColor().isColorLight())
@@ -78,6 +76,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     }
 
     override fun onBackPressed() {
+        if (currentItemId == DEFAULT_HOME_POSITION) super.clearBackStack()
         super.onBackPressed()
     }
 
@@ -142,7 +141,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                 "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor()))
         rateFab.titleTextColor = getPrimaryTextColor()
         rateFab.rippleColor = getRippleColor()
-        rateFab.setOnClickListener { openLink(PLAY_STORE_LINK_PREFIX + packageName ) }
+        rateFab.setOnClickListener { openLink(PLAY_STORE_LINK_PREFIX + packageName) }
 
         val shareFab:TitleFAB = findViewById(R.id.share_fab)
         shareFab.setImageDrawable(
@@ -281,7 +280,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         filtersDrawer = filtersDrawerBuilder.build()
     }
 
-    fun navigateToItem(item:NavigationItem):Boolean {
+    protected open fun navigateToItem(item:NavigationItem):Boolean {
         val id = item.id
         if (currentItemId == id) return false
         try {
@@ -331,8 +330,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     open fun getFragmentForNavigationItem(id:Int):Fragment {
         val frag:Fragment
         when (id) {
-            DEFAULT_HOME_POSITION -> frag = HomeFragment(this)
-            DEFAULT_PREVIEWS_POSITION -> frag = IconsFragment(this)
+            DEFAULT_HOME_POSITION -> frag = HomeFragment()
+            DEFAULT_PREVIEWS_POSITION -> frag = IconsFragment()
             else -> frag = EmptyFragment()
         }
         return frag

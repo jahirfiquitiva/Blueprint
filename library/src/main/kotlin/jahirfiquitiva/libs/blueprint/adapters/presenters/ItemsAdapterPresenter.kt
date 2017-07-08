@@ -22,7 +22,8 @@ package jahirfiquitiva.libs.blueprint.adapters.presenters
 interface ItemsAdapterPresenter<T> {
     fun clearList()
     fun addAll(items:ArrayList<T>)
-    fun clearAndAddAll(items:ArrayList<T>) {
+    fun clearAndAddAll(items:ArrayList<T>?) {
+        if (items == null) return
         clearList()
         addAll(items)
     }

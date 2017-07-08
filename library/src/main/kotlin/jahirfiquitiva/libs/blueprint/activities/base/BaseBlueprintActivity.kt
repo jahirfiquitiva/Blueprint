@@ -26,6 +26,7 @@ import android.support.v4.app.FragmentManager
 import com.github.javiersantos.piracychecker.PiracyChecker
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.konfigs
+import jahirfiquitiva.libs.blueprint.extensions.printInfo
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.utils.*
 
@@ -34,35 +35,35 @@ abstract class BaseBlueprintActivity:ThemedActivity() {
     var picker:Int = 0
     var checker:PiracyChecker? = null
 
+    abstract fun hasBottomBar():Boolean
+
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         picker = getPickerKey()
     }
 
-    internal fun changeFragment(f:Fragment, tag:String? = null, cleanStack:Boolean = false) {
+    internal fun changeFragment(f:Fragment, tag:String? = null) {
         val manager = supportFragmentManager.beginTransaction()
-        if (cleanStack) clearBackStack()
+        if (hasBottomBar()) clearBackStack()
         if (konfigs.animationsEnabled)
             manager.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out,
                                         R.anim.abc_popup_enter, R.anim.abc_popup_exit)
         if (tag != null) manager.replace(R.id.fragments_container, f, tag)
         else manager.replace(R.id.fragments_container, f)
-        manager.addToBackStack(null)
+        if (!hasBottomBar()) manager.addToBackStack(null)
         manager.commit()
     }
 
     internal fun clearBackStack() {
-        val manager = supportFragmentManager
-        if (manager.backStackEntryCount > 0) {
-            val first = manager.getBackStackEntryAt(0)
-            manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        try {
+            val manager = supportFragmentManager
+            if (manager.backStackEntryCount > 0) {
+                val first = manager.getBackStackEntryAt(0)
+                manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
+        } catch (e:Exception) {
+            e.printStackTrace()
         }
-    }
-
-    override fun onBackPressed() {
-        val manager = supportFragmentManager
-        if (manager.backStackEntryCount > 1) manager.popBackStack()
-        else super.onBackPressed()
     }
 
     internal fun startLicenseCheck() {

@@ -114,13 +114,3 @@ fun ReleasesActivity.showChangelog(currVersion:Int, xmlRes:Int,
     konfig.lastVersion = currVersion
 }
 */
-
-fun BaseBlueprintActivity.isFirstRunEver():Boolean {
-    try {
-        val firstInstallTime = packageManager.getPackageInfo(packageName, 0).firstInstallTime
-        val lastUpdateTime = packageManager.getPackageInfo(packageName, 0).lastUpdateTime
-        return firstInstallTime == lastUpdateTime
-    } catch (ignored:Exception) {
-    }
-    return false
-}

@@ -19,44 +19,9 @@
 
 package jahirfiquitiva.libs.blueprint.fragments.presenters
 
-import android.content.Context
-import android.os.Bundle
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.Loader
-import android.support.v7.app.AppCompatActivity
-
-interface ItemsFragmentPresenter<D>:BasicFragmentPresenter {
-
-    fun executeTask(context:Context) {
-        if (context is AppCompatActivity) {
-            try {
-                context.supportLoaderManager.getLoader<D>(getLoaderId()).stopLoading()
-                context.supportLoaderManager.destroyLoader(getLoaderId())
-            } catch (ignored:Exception) {
-            }
-            try {
-                context.supportLoaderManager.initLoader(getLoaderId(), null, getLoaderCallbacks())
-            } catch (ignored:Exception) {
-            }
-        }
-    }
-
-    private fun getLoaderCallbacks():LoaderManager.LoaderCallbacks<D> {
-        return object:LoaderManager.LoaderCallbacks<D> {
-            override fun onCreateLoader(id:Int, args:Bundle?):Loader<D> = buildLoader()
-
-            override fun onLoadFinished(loader:Loader<D>?, data:D) {
-                onDataLoadFinished(data)
-            }
-
-            override fun onLoaderReset(loader:Loader<D>?) {
-                // Do nothing
-            }
-        }
-    }
-
-    fun getLoaderId():Int
-    fun buildLoader():Loader<D>
-    fun onDataLoadFinished(data:D)
+interface ItemsFragmentPresenter:BasicFragmentPresenter {
+    fun initViewModel()
+    fun setObservableToViewModel()
+    fun loadDataFromViewModel()
     fun onItemClicked(item:Any)
 }

@@ -17,12 +17,15 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.extensions
+package jahirfiquitiva.libs.blueprint.fragments.base
 
-import android.content.Context
-import jahirfiquitiva.libs.blueprint.models.Launcher
+import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 
-// TODO: Make this return the actual default launcher
-fun Context.getDefaultLauncher():Launcher {
-    return Launcher("Cool Launcher")
+abstract class BaseViewModelFragment:BaseSectionFragment(), ItemsFragmentPresenter {
+    override fun onStart() {
+        super.onStart()
+        initViewModel()
+        setObservableToViewModel()
+        loadDataFromViewModel()
+    }
 }

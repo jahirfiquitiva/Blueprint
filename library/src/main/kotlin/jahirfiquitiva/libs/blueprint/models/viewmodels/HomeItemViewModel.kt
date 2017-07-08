@@ -17,7 +17,7 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.tasks
+package jahirfiquitiva.libs.blueprint.models.viewmodels
 
 import android.content.Context
 import android.content.Intent
@@ -25,16 +25,15 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.getDrawable
 import jahirfiquitiva.libs.blueprint.extensions.getStringArray
 import jahirfiquitiva.libs.blueprint.extensions.isAppInstalled
-import jahirfiquitiva.libs.blueprint.models.HomeCard
+import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.utils.PLAY_STORE_LINK_PREFIX
 
-class HomeCardsLoader(context:Context, listener:TaskListener? = null):
-        BasicTaskLoader<ArrayList<HomeCard>>(context, listener) {
+class HomeItemViewModel:BaseViewModel<ArrayList<HomeItem>>() {
 
-    override fun loadInBackground():ArrayList<HomeCard> {
-        val everything = ArrayList<HomeCard>()
-        val apps = ArrayList<HomeCard>()
-        val links = ArrayList<HomeCard>()
+    override fun loadItems(context:Context):ArrayList<HomeItem> {
+        val everything = ArrayList<HomeItem>()
+        val apps = ArrayList<HomeItem>()
+        val links = ArrayList<HomeItem>()
         val titles = context.getStringArray(R.array.home_list_titles)
         val descriptions = context.getStringArray(
                 R.array.home_list_descriptions)
@@ -53,7 +52,7 @@ class HomeCardsLoader(context:Context, listener:TaskListener? = null):
                     isInstalled = context.isAppInstalled(packageName)
                     intent = context.packageManager.getLaunchIntentForPackage(packageName)
                 }
-                val item = HomeCard(titles[i], descriptions[i], urls[i],
+                val item = HomeItem(titles[i], descriptions[i], urls[i],
                                     icons[i].getDrawable(context),
                                     (if (isAnApp)
                                         if (isInstalled) "ic_open_app" else "ic_download"
@@ -66,4 +65,5 @@ class HomeCardsLoader(context:Context, listener:TaskListener? = null):
         everything.addAll(links)
         return everything
     }
+
 }

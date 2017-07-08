@@ -90,6 +90,10 @@ dependencies {
     compile 'com.android.support:palette-v7:' + versions.supportLibsTest
     compile 'com.android.support:design:' + versions.supportLibsTest
     compile 'com.android.support:customtabs:' + versions.supportLibsTest
+    // Architecture Components
+    compile 'android.arch.lifecycle:runtime:' + versions.archComponents
+    compile 'android.arch.lifecycle:extensions:' + versions.archComponents
+    annotationProcessor 'android.arch.lifecycle:compiler:' + versions.archComponents
     // Kotlin
     compile 'org.jetbrains.kotlin:kotlin-stdlib:' + versions.kotlin
     // Themes Manager

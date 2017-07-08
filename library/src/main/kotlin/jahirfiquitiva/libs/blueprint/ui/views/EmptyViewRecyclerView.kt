@@ -20,6 +20,7 @@
 package jahirfiquitiva.libs.blueprint.ui.views
 
 import android.content.Context
+import android.support.annotation.IntDef
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
@@ -38,16 +39,15 @@ class EmptyViewRecyclerView:RecyclerView {
     var emptyTextRes:Int = -1
 
     var state = STATE_LOADING
+        set(@STATE value) {
+            field = value
+            updateStateViews()
+        }
 
     constructor(context:Context):super(context)
     constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet)
     constructor(context:Context, attributeSet:AttributeSet, defStyleAttr:Int)
             :super(context, attributeSet, defStyleAttr)
-
-    fun updateState(nState:Int) {
-        state = nState
-        updateStateViews()
-    }
 
     private fun updateStateViews() {
         when (state) {
@@ -66,10 +66,10 @@ class EmptyViewRecyclerView:RecyclerView {
                         emptyView?.makeGone()
                         makeVisible()
                     } else {
-                        updateState(STATE_EMPTY)
+                        state = STATE_EMPTY
                     }
                 } else {
-                    updateState(STATE_LOADING)
+                    state = STATE_LOADING
                 }
             }
             STATE_EMPTY -> {
@@ -119,4 +119,8 @@ class EmptyViewRecyclerView:RecyclerView {
         const val STATE_NORMAL = 1
         const val STATE_EMPTY = 2
     }
+
+    @Retention(AnnotationRetention.SOURCE)
+    @IntDef(STATE_EMPTY.toLong(), STATE_LOADING.toLong(), STATE_NORMAL.toLong())
+    annotation class STATE
 }

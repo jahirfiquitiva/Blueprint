@@ -22,7 +22,6 @@ package jahirfiquitiva.apps.blueprint.demo
 import android.os.Bundle
 import com.github.javiersantos.piracychecker.PiracyChecker
 import jahirfiquitiva.libs.blueprint.activities.BottomBarBlueprintActivity
-import jahirfiquitiva.libs.blueprint.activities.DrawerBlueprintActivity
 
 class MainActivity:BottomBarBlueprintActivity() {
 

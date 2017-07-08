@@ -33,6 +33,16 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.utils.Konfigurations
 import jahirfiquitiva.libs.blueprint.utils.PREFERENCES_NAME
 
+fun Context.isFirstRunEver():Boolean {
+    try {
+        val firstInstallTime = packageManager.getPackageInfo(packageName, 0).firstInstallTime
+        val lastUpdateTime = packageManager.getPackageInfo(packageName, 0).lastUpdateTime
+        return firstInstallTime == lastUpdateTime
+    } catch (ignored:Exception) {
+    }
+    return false
+}
+
 var isDarkContext = false
 
 val Context.usesLightTheme

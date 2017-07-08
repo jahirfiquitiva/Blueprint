@@ -31,7 +31,7 @@ import jahirfiquitiva.libs.blueprint.extensions.getActiveIconsColor
 import jahirfiquitiva.libs.blueprint.extensions.getSecondaryTextColor
 import jahirfiquitiva.libs.blueprint.extensions.makeVisibleIf
 import jahirfiquitiva.libs.blueprint.extensions.tintWithColor
-import jahirfiquitiva.libs.blueprint.models.HomeCard
+import jahirfiquitiva.libs.blueprint.models.HomeItem
 
 class HomeItemsHolder {
 
@@ -59,7 +59,7 @@ class HomeItemsHolder {
         val icon:ImageView? = itemView?.findViewById(R.id.home_app_link_image)
         val openIcon:ImageView? = itemView?.findViewById(R.id.home_app_link_open_icon)
 
-        fun setItem(item:HomeCard, showSectionTitle:Boolean, listener:(HomeCard) -> Unit) =
+        fun setItem(item:HomeItem, showSectionTitle:Boolean, listener:(HomeItem) -> Unit) =
                 with(itemView) {
                     sectionTitle?.makeVisibleIf(showSectionTitle)
                     if (showSectionTitle) {

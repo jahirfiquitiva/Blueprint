@@ -17,11 +17,23 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.fragments.presenters
+package jahirfiquitiva.libs.blueprint.fragments.base
 
+import android.arch.lifecycle.LifecycleFragment
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import jahirfiquitiva.libs.blueprint.extensions.inflate
+import jahirfiquitiva.libs.blueprint.fragments.presenters.BasicFragmentPresenter
 
-interface BasicFragmentPresenter {
-    fun getContentLayout():Int
-    fun initUI(content:View)
+abstract class BaseSectionFragment:LifecycleFragment(), BasicFragmentPresenter {
+    override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
+                              savedInstanceState:Bundle?):View? {
+        super.onCreateView(inflater, container, savedInstanceState)
+        container?.removeAllViews()
+        val content = container?.inflate(getContentLayout()) as View
+        initUI(content)
+        return content
+    }
 }

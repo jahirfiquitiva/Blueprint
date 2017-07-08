@@ -50,7 +50,7 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode versions.versionCode
         versionName versions.versionName
-		vectorDrawables.useSupportLibrary = true
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -69,7 +69,7 @@ android {
                     'src/main/res/drawable',
                     'src/main/res/drawable/app',
                     'src/main/res/drawable/clock_widget',
-					'src/main/res/drawable/icon_pack',
+                    'src/main/res/drawable/icon_pack',
                     'src/main/res/drawable/launchers_icons',
                     'src/main/res/drawable/shortcuts',
                     'src/main/res/drawable/ui',

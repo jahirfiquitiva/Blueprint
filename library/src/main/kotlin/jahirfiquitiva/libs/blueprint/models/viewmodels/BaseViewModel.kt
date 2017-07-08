@@ -17,12 +17,17 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.models
+package jahirfiquitiva.libs.blueprint.models.viewmodels
 
-import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
+import android.content.Context
 
-data class HomeCard(val title:String, val description:String, val url:String,
-                    val icon:Drawable, val openIcon:Drawable?,
-                    val isAnApp:Boolean, val isInstalled:Boolean,
-                    val intent:Intent?)
+abstract class BaseViewModel<T>:ViewModel() {
+    val items = MutableLiveData<T>()
+    fun loadData(context:Context) {
+        items.postValue(loadItems(context))
+    }
+
+    abstract protected fun loadItems(context:Context):T
+}

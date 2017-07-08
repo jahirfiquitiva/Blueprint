@@ -19,28 +19,19 @@
 
 package jahirfiquitiva.libs.blueprint.fragments
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.fragments.base.BaseSectionFragment
 import jahirfiquitiva.libs.blueprint.fragments.presenters.BasicFragmentPresenter
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
 
-open class EmptyFragment:Fragment(), BasicFragmentPresenter {
-    override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
-                              savedInstanceState:Bundle?):View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        val content:View = inflater?.inflate(R.layout.section_empty, container, false) as View
-        initUI(content)
-        return content
-    }
+open class EmptyFragment:BaseSectionFragment(), BasicFragmentPresenter {
+    override fun getContentLayout():Int = R.layout.section_empty
 
     override fun initUI(content:View) {
         val emptyRecyclerView:EmptyViewRecyclerView = content.findViewById(R.id.empty_rv)
         emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)
         emptyRecyclerView.textView = content.findViewById(R.id.empty_text)
-        emptyRecyclerView.updateState(EmptyViewRecyclerView.STATE_EMPTY)
+        emptyRecyclerView.state = EmptyViewRecyclerView.STATE_EMPTY
     }
 }

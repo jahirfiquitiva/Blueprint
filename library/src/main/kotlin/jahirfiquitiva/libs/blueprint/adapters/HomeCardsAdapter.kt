@@ -27,13 +27,13 @@ import android.view.animation.AnimationUtils
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.*
 import jahirfiquitiva.libs.blueprint.holders.HomeItemsHolder
-import jahirfiquitiva.libs.blueprint.models.HomeCard
+import jahirfiquitiva.libs.blueprint.models.HomeItem
 
 class HomeCardsAdapter(val context:Context,
-                       val listener:(HomeCard) -> Unit,
+                       val listener:(HomeItem) -> Unit,
                        val iconsAmount:Int = 0, val wallpapersAmount:Int = 0,
                        val zooperAmount:Int = 0,
-                       val kustomAmount:Int = 0):BaseListAdapter<HomeCard>() {
+                       val kustomAmount:Int = 0):BaseListAdapter<HomeItem>() {
 
     var shouldShowApplyCard = true
     var firstLinkPosition = -1

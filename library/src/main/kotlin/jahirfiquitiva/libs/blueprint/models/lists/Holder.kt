@@ -19,13 +19,13 @@
 
 package jahirfiquitiva.libs.blueprint.models.lists
 
-import jahirfiquitiva.libs.blueprint.models.HomeCard
+import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
 
 class Holder {
     val appsLinksList = AppsLinksList()
     val iconsList = IconsList()
 
-    class AppsLinksList:BaseListHolder<HomeCard>()
+    class AppsLinksList:BaseListHolder<HomeItem>()
     class IconsList:BaseListHolder<IconsCategory>()
 }

@@ -17,12 +17,12 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.extensions
+package jahirfiquitiva.libs.blueprint.models
 
-import android.content.Context
-import jahirfiquitiva.libs.blueprint.models.Launcher
+import android.content.Intent
+import android.graphics.drawable.Drawable
 
-// TODO: Make this return the actual default launcher
-fun Context.getDefaultLauncher():Launcher {
-    return Launcher("Cool Launcher")
-}
+data class HomeItem(val title:String, val description:String, val url:String,
+                    val icon:Drawable, val openIcon:Drawable?,
+                    val isAnApp:Boolean, val isInstalled:Boolean,
+                    val intent:Intent?)
