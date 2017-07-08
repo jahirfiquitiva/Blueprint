@@ -17,7 +17,7 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.ui.views
+package jahirfiquitiva.libs.blueprint.holders.items
 
 import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.RecyclerView
@@ -36,13 +36,11 @@ class FilterTitleDrawerItem:BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDra
 
     override fun getLayoutRes():Int = R.layout.item_drawer_filter_title
 
-    override fun getViewHolder(v:View?):ViewHolder = ViewHolder(v)
+    override fun getViewHolder(v:View):ViewHolder = ViewHolder(v)
 
     override fun getType():Int = R.id.filters_title
 
-    override fun failedToRecycle(holder:ViewHolder?):Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun failedToRecycle(holder:ViewHolder?):Boolean = false
 
     override fun isEnabled():Boolean = false
 
@@ -57,12 +55,11 @@ class FilterTitleDrawerItem:BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDra
         onPostBindView(this, holder?.itemView)
     }
 
-    class ViewHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
-        val button:AppCompatButton? = itemView?.findViewById(R.id.clear_filters)
+    class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+        val button:AppCompatButton? = itemView.findViewById(R.id.clear_filters)
     }
 
     interface ButtonListener {
         fun onButtonPressed()
     }
-
 }

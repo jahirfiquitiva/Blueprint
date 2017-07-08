@@ -23,5 +23,6 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 
 data class HomeCard(val title:String, val description:String, val url:String,
-                    val icon:Drawable, val isAnApp:Boolean, val isInstalled:Boolean,
+                    val icon:Drawable, val openIcon:Drawable?,
+                    val isAnApp:Boolean, val isInstalled:Boolean,
                     val intent:Intent?)

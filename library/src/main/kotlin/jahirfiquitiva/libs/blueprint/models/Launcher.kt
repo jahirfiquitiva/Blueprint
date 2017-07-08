@@ -17,15 +17,6 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.models.lists
+package jahirfiquitiva.libs.blueprint.models
 
-import jahirfiquitiva.libs.blueprint.models.HomeCard
-import jahirfiquitiva.libs.blueprint.models.IconsCategory
-
-class Holder {
-    val appsLinksList = AppsLinksList()
-    val iconsList = IconsList()
-
-    class AppsLinksList:BaseListHolder<HomeCard>()
-    class IconsList:BaseListHolder<IconsCategory>()
-}
+data class Launcher(val name:String, val packageName:String? = null)

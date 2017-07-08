@@ -22,9 +22,11 @@ package jahirfiquitiva.libs.blueprint.activities.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate
+import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.extensions.konfigs
 import jahirfiquitiva.libs.blueprint.extensions.restart
 import jahirfiquitiva.libs.blueprint.extensions.setCustomTheme
+import jahirfiquitiva.libs.blueprint.extensions.usesDarkTheme
 
 abstract class ThemedActivity:AppCompatActivity() {
     var lastTheme = 0
@@ -32,6 +34,7 @@ abstract class ThemedActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState:Bundle?) {
         setCustomTheme()
+        usesDarkTheme = isDarkTheme()
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
     }

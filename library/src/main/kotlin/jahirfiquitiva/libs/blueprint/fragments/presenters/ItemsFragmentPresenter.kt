@@ -29,13 +29,11 @@ interface ItemsFragmentPresenter<D>:BasicFragmentPresenter {
 
     fun executeTask(context:Context) {
         if (context is AppCompatActivity) {
-            /*
             try {
                 context.supportLoaderManager.getLoader<D>(getLoaderId()).stopLoading()
                 context.supportLoaderManager.destroyLoader(getLoaderId())
             } catch (ignored:Exception) {
             }
-            */
             try {
                 context.supportLoaderManager.initLoader(getLoaderId(), null, getLoaderCallbacks())
             } catch (ignored:Exception) {

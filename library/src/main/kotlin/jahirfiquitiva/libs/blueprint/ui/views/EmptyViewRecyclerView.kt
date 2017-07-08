@@ -25,17 +25,15 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.extensions.getSecondaryTextColor
-import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.extensions.makeGone
 import jahirfiquitiva.libs.blueprint.extensions.makeVisible
 import jahirfiquitiva.libs.blueprint.extensions.makeVisibleIf
 
 class EmptyViewRecyclerView:RecyclerView {
-    var loadingView:View?=null
-     var emptyView:View?=null
-     var textView:TextView?=null
+    var loadingView:View? = null
+    var emptyView:View? = null
+    var textView:TextView? = null
     var loadingTextRes:Int = -1
     var emptyTextRes:Int = -1
 
@@ -82,9 +80,7 @@ class EmptyViewRecyclerView:RecyclerView {
                 makeGone()
             }
         }
-        if (context is ThemedActivity)
-            textView?.setTextColor(context.getSecondaryTextColor(
-                    (context as ThemedActivity).isDarkTheme()))
+        textView?.setTextColor(context.getSecondaryTextColor())
         textView?.makeVisibleIf(state != STATE_NORMAL)
     }
 

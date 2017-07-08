@@ -60,6 +60,10 @@
 
     <string name="send_email">Send email</string>
 
+    <!-- Strings for home section -->
+    <string name="general_info">General information</string>
+    <string name="useful_links">Useful links</string>
+
     <!-- Strings for Dropdown Menu & Requests -->
     <string name="share_title">Share via</string>
     <string name="send_title">Send via</string>
@@ -105,6 +109,8 @@
     </string>
     <string name="refreshing_walls">Refreshing wallpapers list…</string>
     <string name="retry">Retry</string>
+    <string name="saving_wallpaper">Saving wallpaper…</string>
+    <string name="refresh">Refresh</string>
     <string name="wallpaper_author_title">Author</string>
     <string name="wallpaper_dimensions_title">Dimensions</string>
     <string name="wallpaper_copyright_title">Copyright</string>
@@ -138,7 +144,6 @@
     <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
     <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
 
-
     <!-- Icons filters -->
     <string name="filter">Filter</string>
     <string name="clear">Clear</string>
@@ -147,6 +152,11 @@
     <string name="search_icons">Search icons…</string>
     <string name="search_x">Search %1$s…</string>
 
+    <!-- Apply texts-->
+    <string name="apply_title">Apply %1$s</string>
+    <string name="apply_content">We have detected you are using %1$s. To start using our icon pack, just apply it to your launcher.</string>
+
+    <!-- Request texts -->
     <string name="requests_error">There was an error loading apps to request.\nPress here to retry.</string>
     <string name="building_request_dialog">Building request files…</string>
 
@@ -215,7 +225,7 @@
     <string name="fork_on_github">Fork on GitHub</string>
 
     <string name="visit_website">Website</string>
-    <string name="more_apps">More apps…</string>
+    <string name="more_apps">More apps</string>
     <string name="more_apps_long">Check the other apps I have published in Google Play Store.</string>
 
     <string name="implemented_libraries">Implemented libraries</string>
@@ -233,9 +243,6 @@
     <string name="join_community_summary">If you need help or have questions, the Blueprint
         community on Google Plus is a good place to go.
     </string>
-
-    <string name="saving_wallpaper">Saving wallpaper…</string>
-    <string name="refresh">Refresh</string>
 
     <!-- Messages shown when using LicenseChecker -->
     <string name="unknown">Unknown</string>
@@ -263,9 +270,10 @@
     <string name="copying_assets">Copying files to ZooperWidget/%1$s</string>
 
     <string name="icon_pack_in_numbers">Icon Pack in numbers</string>
-    <string name="themed_icons">Over %1$s included icons.</string>
-    <string name="available_wallpapers">About %1$s wallpapers available.</string>
-    <string name="included_widgets">More than %1$s included widgets.</string>
+    <string name="themed_icons">%1$s icons</string>
+    <string name="available_wallpapers">%1$s wallpapers</string>
+    <string name="included_zooper">%1$s Zooper Widget templates</string>
+    <string name="included_kwgt">%1$s KWGT templates</string>
     <string name="icons">Icons</string>
 
     <string name="md_storage_perm_error">You have not granted the \"Read External Storage\" permission to %1$s, which is needed to complete this action.</string>

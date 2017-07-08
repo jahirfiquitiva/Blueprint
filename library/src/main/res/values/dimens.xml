@@ -59,7 +59,8 @@
     <dimen name="credits_photo_margin">48dp</dimen>
     <dimen name="credits_photo_size">96dp</dimen>
 
-    <dimen name="app_card_icon_size">48dp</dimen>
+    <dimen name="app_link_icon_size">48dp</dimen>
+    <dimen name="app_link_open_icon_size">24dp</dimen>
 
     <!-- Dimensions for some dialogs -->
     <dimen name="dialog_margin">24dp</dimen>

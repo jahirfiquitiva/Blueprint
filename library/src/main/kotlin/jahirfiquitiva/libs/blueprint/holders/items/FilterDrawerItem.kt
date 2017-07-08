@@ -17,7 +17,7 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.ui.views
+package jahirfiquitiva.libs.blueprint.holders.items
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -29,11 +29,9 @@ import android.widget.TextView
 import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.extensions.getDividerColor
 import jahirfiquitiva.libs.blueprint.extensions.makeGone
 import jahirfiquitiva.libs.blueprint.extensions.makeVisible
-import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
 
 class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
@@ -65,23 +63,21 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
 
     override fun getLayoutRes():Int = R.layout.item_drawer_filter
 
-    override fun getViewHolder(v:View?):ViewHolder = ViewHolder(v)
+    override fun getViewHolder(v:View):ViewHolder = ViewHolder(v)
 
     override fun getType():Int = R.id.filter
 
-    override fun failedToRecycle(holder:ViewHolder?):Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun failedToRecycle(holder:ViewHolder?):Boolean = false
 
     override fun bindView(holder:ViewHolder?, payloads:MutableList<Any>?) {
         super.bindView(holder, payloads)
         nameHolder.applyTo(holder?.title)
         holder?.title?.background = ColorDrawable(color)
         val context = holder?.itemView?.context
-        if (showDivider && context is ThemedActivity) {
-            holder.divider?.background = ColorDrawable(
-                    context.getDividerColor(context.isDarkTheme()))
-            holder.divider?.makeVisible()
+        if (showDivider) {
+            holder?.divider?.makeVisible()
+            val dividerColor = context?.getDividerColor()
+            dividerColor?.let { holder.divider?.background = ColorDrawable(it) }
         } else holder?.divider?.makeGone()
         checkBoxHolder = FilterCheckBoxHolder()
         checkBoxHolder.setup(holder?.checkBox!!, nameHolder.text.toString(), listener)
@@ -91,10 +87,10 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
         onPostBindView(this, holder.itemView)
     }
 
-    class ViewHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
-        val title:TextView? = itemView?.findViewById(R.id.filter_name)
-        val checkBox:AppCompatCheckBox? = itemView?.findViewById(R.id.filter_checkbox)
-        val divider:View? = itemView?.findViewById(R.id.divider)
+    class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+        val title:TextView? = itemView.findViewById(R.id.filter_name)
+        val checkBox:AppCompatCheckBox? = itemView.findViewById(R.id.filter_checkbox)
+        val divider:View? = itemView.findViewById(R.id.divider)
     }
 
 }

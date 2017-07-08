@@ -17,15 +17,11 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
-package jahirfiquitiva.libs.blueprint.models.lists
+package jahirfiquitiva.libs.blueprint.extensions
 
-import jahirfiquitiva.libs.blueprint.models.HomeCard
-import jahirfiquitiva.libs.blueprint.models.IconsCategory
+import android.content.Context
+import jahirfiquitiva.libs.blueprint.models.Launcher
 
-class Holder {
-    val appsLinksList = AppsLinksList()
-    val iconsList = IconsList()
-
-    class AppsLinksList:BaseListHolder<HomeCard>()
-    class IconsList:BaseListHolder<IconsCategory>()
+fun Context.getDefaultLauncher():Launcher {
+    return Launcher("Cool Launcher")
 }

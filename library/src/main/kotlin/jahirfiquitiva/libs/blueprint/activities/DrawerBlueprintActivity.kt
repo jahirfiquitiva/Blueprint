@@ -58,7 +58,7 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
         if (header != null) {
             accountHeaderBuilder.withHeaderBackground(header)
         } else {
-            accountHeaderBuilder.withHeaderBackground(getAccentColor(isDarkTheme()))
+            accountHeaderBuilder.withHeaderBackground(getAccentColor())
         }
         if (getBoolean(R.bool.with_drawer_texts)) {
             accountHeaderBuilder.withSelectionFirstLine(getString(R.string.app_long_name))

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017. Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
+  -->
+<jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fabs_menu_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        fab:fabs_menu_cickableOverlay="true">
+
+    <jahirfiquitiva.libs.fabsmenu.FABsMenu
+            android:id="@+id/fabs_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:clipChildren="false"
+            fab:fab_menuMargins="@dimen/fab_margin"
+            fab:fab_moreButtonBackgroundColor="?attr/colorAccent"
+            fab:fab_moreButtonSize="normal"
+            fab:fab_labelsPosition="left"
+            fab:fab_expandDirection="up">
+
+        <jahirfiquitiva.libs.fabsmenu.TitleFAB
+                android:id="@+id/rate_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_title="@string/rate"
+                fab:fab_enableTitleClick="true"
+                fab:fab_title_backgroundColor="?attr/cardBackgroundColor"
+                fab:fabSize="mini"
+                fab:backgroundTint="?attr/cardBackgroundColor"/>
+
+        <jahirfiquitiva.libs.fabsmenu.TitleFAB
+                android:id="@+id/share_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_title="@string/share"
+                fab:fab_enableTitleClick="true"
+                fab:fab_title_backgroundColor="?attr/cardBackgroundColor"
+                fab:fabSize="mini"
+                fab:backgroundTint="?attr/cardBackgroundColor"/>
+
+        <jahirfiquitiva.libs.fabsmenu.TitleFAB
+                android:id="@+id/donate_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_title="@string/donate"
+                fab:fab_enableTitleClick="true"
+                fab:fab_title_backgroundColor="?attr/cardBackgroundColor"
+                fab:fabSize="mini"
+                fab:backgroundTint="?attr/cardBackgroundColor"/>
+
+        <jahirfiquitiva.libs.fabsmenu.TitleFAB
+                android:id="@+id/help_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_title="@string/section_help"
+                fab:fab_enableTitleClick="true"
+                fab:fab_title_backgroundColor="?attr/cardBackgroundColor"
+                fab:fabSize="mini"
+                fab:backgroundTint="?attr/cardBackgroundColor"/>
+
+    </jahirfiquitiva.libs.fabsmenu.FABsMenu>
+
+</jahirfiquitiva.libs.fabsmenu.FABsMenuLayout>

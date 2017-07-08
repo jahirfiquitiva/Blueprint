@@ -23,7 +23,7 @@
     <!-- LIGHT THEME COLORS -->
     <color name="light_theme_primary">#f5f5f5</color>
     <color name="light_theme_primary_dark">#e0e0e0</color>
-    <color name="light_theme_accent">#00b0ff</color>
+    <color name="light_theme_accent">#4285f4</color>
     <color name="light_theme_navigation_bar">@color/light_theme_primary_dark</color>
     <color name="fab_background_tint_light_theme">@color/light_theme_accent</color>
     <color name="splash_light_background">@color/light_bg</color>
@@ -32,7 +32,7 @@
     <!-- DARK THEME COLORS -->
     <color name="dark_theme_primary">#212121</color>
     <color name="dark_theme_primary_dark">#000000</color>
-    <color name="dark_theme_accent">#00b0ff</color>
+    <color name="dark_theme_accent">#4285f4</color>
     <color name="dark_theme_navigation_bar">@color/dark_theme_primary_dark</color>
     <color name="fab_background_tint_dark_theme">@color/dark_theme_accent</color>
     <color name="splash_dark_background">@color/dark_bg</color>

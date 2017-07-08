@@ -20,7 +20,7 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/home_extra_card"
+        android:id="@+id/home_app_link"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textStyle="bold"
             android:padding="@dimen/fab_margin"
             android:visibility="visible"
             android:clickable="false"
@@ -38,33 +39,39 @@
 
     <LinearLayout
             style="@style/HomeCardContent"
-            android:id="@+id/home_extra_card_sub_layout"
+            android:id="@+id/home_app_link_sub_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:minHeight="@dimen/md_listitem_height"
+            android:layout_marginLeft="@dimen/cards_super_small_margin"
+            android:layout_marginStart="@dimen/cards_super_small_margin"
+            android:layout_marginRight="@dimen/cards_margin"
+            android:layout_marginEnd="@dimen/cards_margin"
             android:paddingBottom="@dimen/cards_super_small_margin"
             android:orientation="horizontal"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true">
+            tools:ignore="PrivateResource">
 
         <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
-                android:id="@+id/home_extra_card_image"
-                android:layout_width="@dimen/app_card_icon_size"
-                android:layout_height="@dimen/app_card_icon_size"
+                android:id="@+id/home_app_link_image"
+                android:layout_width="@dimen/app_link_icon_size"
+                android:layout_height="@dimen/app_link_icon_size"
                 tools:ignore="ContentDescription"/>
 
         <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/cards_super_small_margin"
+                android:layout_marginStart="@dimen/cards_super_small_margin"
                 android:padding="@dimen/cards_margin"
                 android:gravity="center_vertical">
 
             <TextView
-                    android:id="@+id/home_extra_card_title"
+                    android:id="@+id/home_app_link_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center_vertical"
@@ -72,7 +79,7 @@
                     tools:text="Something"/>
 
             <TextView
-                    android:id="@+id/home_extra_card_description"
+                    android:id="@+id/home_app_link_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingMultiplier="1.2"
@@ -80,6 +87,14 @@
                     tools:text="Something"/>
 
         </LinearLayout>
+
+        <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
+                android:id="@+id/home_app_link_open_icon"
+                android:layout_width="@dimen/app_link_open_icon_size"
+                android:layout_height="@dimen/app_link_open_icon_size"
+                android:foreground="?selectableItemBackgroundBorderless"
+                tools:ignore="ContentDescription"/>
+
     </LinearLayout>
 
 </LinearLayout>

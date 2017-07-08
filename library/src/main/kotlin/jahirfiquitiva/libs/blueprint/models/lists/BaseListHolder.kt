@@ -23,8 +23,11 @@ abstract class BaseListHolder<D> {
     var list = ArrayList<D>()
 
     fun createList(newList:ArrayList<D>) {
-        list = newList
+        clearList()
+        list.addAll(newList)
     }
+
+    fun isEmpty():Boolean = list.isEmpty()
 
     fun hasList():Boolean = list.isNotEmpty()
 

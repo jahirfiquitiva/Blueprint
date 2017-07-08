@@ -42,7 +42,7 @@ fun Context.isConnectedToWiFi():Boolean {
             ConnectivityManager.TYPE_WIFI && activeNetwork.isConnectedOrConnecting
 }
 
-fun Context.openLink(link:String, isDarkTheme:Boolean) {
+fun Context.openLink(link:String) {
     val mClient = arrayOfNulls<CustomTabsClient>(1)
     val mCustomTabsSession = arrayOfNulls<CustomTabsSession>(1)
     val mCustomTabsServiceConnection:CustomTabsServiceConnection
@@ -62,7 +62,7 @@ fun Context.openLink(link:String, isDarkTheme:Boolean) {
     }
     CustomTabsClient.bindCustomTabsService(this, "com.android.chrome", mCustomTabsServiceConnection)
     customTabsIntent = CustomTabsIntent.Builder(mCustomTabsSession[0])
-            .setToolbarColor(getPrimaryColor(isDarkTheme))
+            .setToolbarColor(getPrimaryColor())
             .setShowTitle(true)
             .build()
 

@@ -24,7 +24,7 @@ import com.github.javiersantos.piracychecker.PiracyChecker
 import jahirfiquitiva.libs.blueprint.activities.BottomBarBlueprintActivity
 import jahirfiquitiva.libs.blueprint.activities.DrawerBlueprintActivity
 
-class MainActivity:DrawerBlueprintActivity() {
+class MainActivity:BottomBarBlueprintActivity() {
 
     override fun getLicenseChecker():PiracyChecker? = null
 

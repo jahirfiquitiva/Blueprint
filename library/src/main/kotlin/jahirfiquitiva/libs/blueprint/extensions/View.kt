@@ -19,6 +19,7 @@
 
 package jahirfiquitiva.libs.blueprint.extensions
 
+import android.support.design.widget.FloatingActionButton
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,8 +34,8 @@ fun View.isInvisible() = visibility == View.INVISIBLE
 
 fun View.isGone() = visibility == View.GONE
 
-fun View.makeInvisibleIf(
-        makeInvisible:Boolean) = if (makeInvisible) makeInvisible() else makeVisible()
+fun View.makeInvisibleIf(makeInvisible:Boolean) =
+        if (makeInvisible) makeInvisible() else makeVisible()
 
 fun View.makeVisibleIf(makeVisible:Boolean) = if (makeVisible) makeVisible() else makeGone()
 
@@ -51,6 +52,13 @@ fun View.makeVisible() {
 fun View.makeGone() {
     visibility = View.GONE
 }
+
+val FloatingActionButton.isHidden
+    get() = !isShown
+
+fun FloatingActionButton.showIf(show:Boolean) = if (show) show() else hide()
+
+fun FloatingActionButton.hideIf(hide:Boolean) = if (hide) hide() else show()
 
 fun ViewGroup.inflate(layoutId:Int, attachToRoot:Boolean = false):View =
         LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)

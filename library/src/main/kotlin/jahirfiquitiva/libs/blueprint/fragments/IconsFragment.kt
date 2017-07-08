@@ -19,6 +19,8 @@
 
 package jahirfiquitiva.libs.blueprint.fragments
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.Loader
@@ -41,10 +43,15 @@ import jahirfiquitiva.libs.blueprint.tasks.XMLIconsLoader
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_PREVIEWS_POSITION
 
-class IconsFragment:Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>> {
+@SuppressLint("ValidFragment")
+class IconsFragment(val nContext:Context):Fragment(), ItemsFragmentPresenter<ArrayList<IconsCategory>> {
 
     private lateinit var recyclerView:EmptyViewRecyclerView
     private lateinit var fastScroller:RecyclerFastScroller
+
+    override fun getContext():Context {
+        return nContext
+    }
 
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {

@@ -21,7 +21,6 @@ package jahirfiquitiva.libs.blueprint.activities.base
 
 import android.app.WallpaperManager
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
@@ -31,11 +30,7 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.Menu
-import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import com.konifar.fab_transformation.FabTransformation
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
@@ -44,14 +39,18 @@ import jahirfiquitiva.libs.blueprint.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
+import jahirfiquitiva.libs.blueprint.holders.items.FilterDrawerItem
+import jahirfiquitiva.libs.blueprint.holders.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.blueprint.ui.views.CounterFab
-import jahirfiquitiva.libs.blueprint.ui.views.FilterDrawerItem
-import jahirfiquitiva.libs.blueprint.ui.views.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.blueprint.utils.*
+import jahirfiquitiva.libs.fabsmenu.DimensionUtils
+import jahirfiquitiva.libs.fabsmenu.FABsMenu
+import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
+import jahirfiquitiva.libs.fabsmenu.TitleFAB
 
 abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
@@ -61,8 +60,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private lateinit var toolbar:Toolbar
     private lateinit var menu:Menu
     private lateinit var fab:CounterFab
-    private lateinit var overlay:View
-    private lateinit var sheet:View
+    private lateinit var fabsMenu:FABsMenu
     private lateinit var filtersDrawer:Drawer
 
     private var iconsFilters:ArrayList<String> = ArrayList()
@@ -74,17 +72,13 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        setupStatusBarStyle(true, getPrimaryDarkColor(isDarkTheme()).isColorLight())
+        setupStatusBarStyle(true, getPrimaryDarkColor().isColorLight())
         setContentView(R.layout.activity_blueprint)
         initMainComponents(savedInstanceState)
     }
 
     override fun onBackPressed() {
-        if (currentItemId == 0) {
-            FabTransformation.with(fab).setOverlay(overlay).transformFrom(sheet)
-        } else {
-            super.onBackPressed()
-        }
+        super.onBackPressed()
     }
 
     override fun onSaveInstanceState(outState:Bundle?) {
@@ -105,64 +99,80 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         initToolbar()
         initCollapsingToolbar()
         initFAB()
+        initFABsMenu()
         initFiltersDrawer(savedInstance)
     }
 
     private fun initFAB() {
         fab = findViewById(R.id.fab)
+        fab.setImageDrawable("ic_send".getDrawable(this).tintWithColor(
+                getActiveIconsColorFor(getAccentColor())))
         fab.updateBottomMargin(getDimensionPixelSize(
                 if (hasBottomBar()) R.dimen.fab_with_bottom_bar_margin else R.dimen.fab_margin))
+        fab.setOnClickListener { startRequestsProcess() }
+    }
 
-        overlay = findViewById(R.id.overlay)
-        overlay.background = ColorDrawable(getOverlayColor(isDarkTheme()))
-        overlay.setOnClickListener { _ ->
-            if (overlay.isVisible() && currentItemId == DEFAULT_HOME_POSITION)
-                hideOverlay()
+    private fun initFABsMenu() {
+        val fabsMenuOverlay:FABsMenuLayout = findViewById(R.id.fabs_menu_overlay)
+        fabsMenuOverlay.overlayColor = getOverlayColor()
+
+        fabsMenu = findViewById(R.id.fabs_menu)
+        if (hasBottomBar()) {
+            fabsMenu.menuBottomMargin = DimensionUtils.convertDpToPixel(72F, this).toInt()
+        }
+        fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this).tintWithColor(
+                getActiveIconsColorFor(getAccentColor()))
+        fabsMenu.menuButtonRippleColor = getRippleColor()
+        fabsMenu.menuUpdateListener = object:FABsMenu.OnFABsMenuUpdateListener {
+            override fun onMenuClicked() {
+                fabsMenu.toggle()
+            }
+
+            override fun onMenuCollapsed() {
+                // Do nothing
+            }
+
+            override fun onMenuExpanded() {
+                // Do nothing
+            }
         }
 
-        sheet = findViewById(R.id.sheet)
-        sheet.updateBottomMargin(getDimensionPixelSize(
-                if (hasBottomBar()) R.dimen.fab_with_bottom_bar_margin else R.dimen.fab_margin))
+        val rateFab:TitleFAB = findViewById(R.id.rate_fab)
+        rateFab.setImageDrawable(
+                "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor()))
+        rateFab.titleTextColor = getPrimaryTextColor()
+        rateFab.rippleColor = getRippleColor()
+        rateFab.setOnClickListener { openLink(PLAY_STORE_LINK_PREFIX + packageName ) }
 
-        val rateText:TextView = findViewById(R.id.action_rate_text)
-        rateText.setTextColor(getPrimaryTextColor(isDarkTheme()))
-        val rateIcon:ImageView = findViewById(R.id.action_rate_icon)
-        rateIcon.setImageDrawable(
-                "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
-        val rateItem:LinearLayout = findViewById(R.id.action_rate)
-        rateItem.setOnClickListener {
-            openLink(PLAY_STORE_LINK_PREFIX + packageName, isDarkTheme())
+        val shareFab:TitleFAB = findViewById(R.id.share_fab)
+        shareFab.setImageDrawable(
+                "ic_share".getDrawable(this).tintWithColor(getActiveIconsColor()))
+        shareFab.titleTextColor = getPrimaryTextColor()
+        shareFab.rippleColor = getRippleColor()
+        shareFab.setOnClickListener {
+            //TODO: Share intent 
         }
 
-        val shareText:TextView = findViewById(R.id.action_share_text)
-        shareText.setTextColor(getPrimaryTextColor(isDarkTheme()))
-        val shareIcon:ImageView = findViewById(R.id.action_share_icon)
-        shareIcon.setImageDrawable(
-                "ic_share".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
-        val shareItem:LinearLayout = findViewById(R.id.action_share)
-        shareItem.setOnClickListener {
-            // TODO: Share intent
+        val donateFab:TitleFAB = findViewById(R.id.donate_fab)
+        if (donationsEnabled()) {
+            donateFab.setImageDrawable(
+                    "ic_donate".getDrawable(this).tintWithColor(getActiveIconsColor()))
+            donateFab.titleTextColor = getPrimaryTextColor()
+            donateFab.rippleColor = getRippleColor()
+            donateFab.setOnClickListener {
+                // TODO: Init donations
+            }
+        } else {
+            fabsMenu.removeButton(donateFab)
         }
 
-        val donateText:TextView = findViewById(R.id.action_donate_text)
-        donateText.setTextColor(getPrimaryTextColor(isDarkTheme()))
-        val donateIcon:ImageView = findViewById(R.id.action_donate_icon)
-        donateIcon.setImageDrawable(
-                "ic_donate".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
-        val donateItem:LinearLayout = findViewById(R.id.action_donate)
-        donateItem.makeVisibleIf(donationsEnabled())
-        donateItem.setOnClickListener {
-            // TODO: Init donations
-        }
-
-        val helpText:TextView = findViewById(R.id.action_help_text)
-        helpText.setTextColor(getPrimaryTextColor(isDarkTheme()))
-        val helpIcon:ImageView = findViewById(R.id.action_help_icon)
-        helpIcon.setImageDrawable(
-                "ic_help".getDrawable(this).tintWithColor(getActiveIconsColor(isDarkTheme())))
-        val helpItem:LinearLayout = findViewById(R.id.action_help)
-        helpItem.setOnClickListener {
-            // TODO: Switch to help section
+        val helpFab:TitleFAB = findViewById(R.id.help_fab)
+        helpFab.setImageDrawable(
+                "ic_help".getDrawable(this).tintWithColor(getActiveIconsColor()))
+        helpFab.titleTextColor = getPrimaryTextColor()
+        helpFab.rippleColor = getRippleColor()
+        helpFab.setOnClickListener {
+            // TODO: Open help section
         }
     }
 
@@ -170,7 +180,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         toolbar = findViewById(R.id.toolbar)
         menu = toolbar.menu
         menuInflater.inflate(R.menu.menu_main, menu)
-        tintToolbar(toolbar, getActiveIconsColorFor(getPrimaryColor(isDarkTheme())))
+        tintToolbar(toolbar, getActiveIconsColorFor(getPrimaryColor()))
         toolbar.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
                     val i = item.itemId
@@ -190,7 +200,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         appBarLayout = findViewById(R.id.appBar)
         collapsingToolbar = findViewById(R.id.collapsingToolbar)
         collapsingToolbar.setExpandedTitleColor(Color.TRANSPARENT)
-        collapsingToolbar.setCollapsedTitleTextColor(getPrimaryTextColor(isDarkTheme()))
+        collapsingToolbar.setCollapsedTitleTextColor(getPrimaryTextColor())
         appBarLayout.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
             override fun onVerticalOffsetChanged(appBar:AppBarLayout?, verticalOffset:Int) {
                 updateToolbarColorsHere(verticalOffset)
@@ -277,22 +287,12 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         try {
             currentItemId = id
             updateToolbarMenuItems(item)
-            hideOverlay()
-            changeFABVisibility(
-                    id == DEFAULT_HOME_POSITION || id == DEFAULT_REQUEST_POSITION)
-            changeFABAction(id == DEFAULT_HOME_POSITION)
-            /*
-            hideOverlay(object:FabTransformation.OnTransformListener {
-                override fun onStartTransform() {
-                    // Do nothing
-                }
-
-                override fun onEndTransform() {
-                    changeFABVisibility(
-                            id == DEFAULT_HOME_POSITION || id == DEFAULT_REQUEST_POSITION)
-                    changeFABAction(id == DEFAULT_HOME_POSITION)
-                }
-            }) */
+            fabsMenu.collapse()
+            if (fabsMenu.menuButton.isShown) fabsMenu.menuButton.hideIf(id != DEFAULT_HOME_POSITION)
+            fabsMenu.makeGoneIf(id != DEFAULT_HOME_POSITION)
+            if (fabsMenu.menuButton.isHidden)
+                fabsMenu.menuButton.showIf(id == DEFAULT_HOME_POSITION)
+            fab.showIf(id == DEFAULT_REQUEST_POSITION)
             appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, konfigs.animationsEnabled)
             collapsingToolbar.title = getString(
                     if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
@@ -302,16 +302,9 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             lockFiltersDrawer(id != DEFAULT_PREVIEWS_POSITION)
             return true
         } catch(ignored:Exception) {
+            ignored.printStackTrace()
         }
         return false
-    }
-
-    private fun hideOverlay(listener:FabTransformation.OnTransformListener? = null) {
-        try {
-            FabTransformation.with(fab).setOverlay(overlay).setListener(listener).transformFrom(
-                    sheet)
-        } catch(ignored:Exception) {
-        }
     }
 
     private fun updateToolbarMenuItems(item:NavigationItem) {
@@ -325,10 +318,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                     item.id == DEFAULT_WALLPAPERS_POSITION)
         menu.changeOptionVisibility(R.id.select_all,
                                     item.id == DEFAULT_REQUEST_POSITION)
-        tintToolbarMenu(toolbar, menu, getActiveIconsColorFor(getPrimaryColor(isDarkTheme())))
+        tintToolbarMenu(toolbar, menu, getActiveIconsColorFor(getPrimaryColor()))
     }
-
-    fun changeFABVisibility(visible:Boolean) = if (visible) fab.show() else fab.hide()
 
     private fun lockFiltersDrawer(lock:Boolean) {
         val drawerLayout = filtersDrawer.drawerLayout
@@ -337,28 +328,11 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                 Gravity.END)
     }
 
-    private fun changeFABAction(home:Boolean) {
-        fab.setImageDrawable(
-                (if (home) "ic_plus" else "ic_send").getDrawable(this)
-                        .tintWithColor(getActiveIconsColorFor(getAccentColor(isDarkTheme()))))
-        if (home) {
-            fab.count = 0
-            fab.setOnClickListener({
-                                       FabTransformation.with(fab).setOverlay(overlay).transformTo(
-                                               sheet)
-                                   })
-        } else {
-            fab.setOnClickListener({ _ ->
-                                       showToast("Creating request")
-                                   })
-        }
-    }
-
     open fun getFragmentForNavigationItem(id:Int):Fragment {
         val frag:Fragment
         when (id) {
-            DEFAULT_HOME_POSITION -> frag = HomeFragment()
-            DEFAULT_PREVIEWS_POSITION -> frag = IconsFragment()
+            DEFAULT_HOME_POSITION -> frag = HomeFragment(this)
+            DEFAULT_PREVIEWS_POSITION -> frag = IconsFragment(this)
             else -> frag = EmptyFragment()
         }
         return frag
@@ -372,20 +346,22 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         return arrayOf(
                 NavigationItem("Home", DEFAULT_HOME_POSITION, R.string.section_home,
                                R.drawable.ic_home),
-                NavigationItem("Previews", DEFAULT_PREVIEWS_POSITION,
-                               R.string.section_icons, R.drawable.ic_icons_preview),
+                NavigationItem("Previews", DEFAULT_PREVIEWS_POSITION, R.string.section_icons,
+                               R.drawable.ic_icons_preview),
                 NavigationItem("Wallpapers", DEFAULT_WALLPAPERS_POSITION,
                                R.string.section_wallpapers, R.drawable.ic_wallpapers),
-                NavigationItem("Apply", DEFAULT_APPLY_POSITION,
-                               R.string.section_apply, R.drawable.ic_apply),
-                NavigationItem("Requests", DEFAULT_REQUEST_POSITION,
-                               R.string.section_icon_request, R.drawable.ic_request)
+                NavigationItem("Apply", DEFAULT_APPLY_POSITION, R.string.section_apply,
+                               R.drawable.ic_apply),
+                NavigationItem("Requests", DEFAULT_REQUEST_POSITION, R.string.section_icon_request,
+                               R.drawable.ic_request)
                       )
     }
 
     fun getToolbar():Toolbar? = toolbar
 
     fun updateToolbarColorsHere(offset:Int) = updateToolbarColors(toolbar, offset)
+
+    fun startRequestsProcess() = showToast("Creating request")
 
     interface FiltersListener {
         fun onFiltersUpdated(filters:ArrayList<String>)

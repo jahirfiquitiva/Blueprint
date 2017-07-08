@@ -36,8 +36,6 @@ fun ThemedActivity.setCustomTheme() {
     setNavbarColor(getNavbarColor())
 }
 
-fun ThemedActivity.isLightTheme():Boolean = !isDarkTheme()
-
 fun ThemedActivity.isDarkTheme():Boolean {
     val c = Calendar.getInstance()
     val hourOfDay = c.get(Calendar.HOUR_OF_DAY)

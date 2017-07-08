@@ -53,6 +53,10 @@ open class Konfigurations(val context:Context) {
         get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, true)
         set(shown) = prefsEditor.putBoolean(LAUNCHER_ICON_SHOWN, shown).apply()
 
+    var isApplyCardDismissed:Boolean
+        get() = prefs.getBoolean(APPLY_CARD_DISMISSED, false)
+        set(dismissed) = prefsEditor.putBoolean(APPLY_CARD_DISMISSED, dismissed).apply()
+
     var wallpaperAsToolbarHeaderEnabled:Boolean
         get() = prefs.getBoolean(WALLPAPER_AS_TOOLBAR_HEADER, true)
         set(enabled) = prefsEditor.putBoolean(WALLPAPER_AS_TOOLBAR_HEADER, enabled).apply()

@@ -27,7 +27,6 @@ import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseBlueprintActivi
 import jahirfiquitiva.libs.blueprint.extensions.getAccentColor
 import jahirfiquitiva.libs.blueprint.extensions.getCardBackgroundColor
 import jahirfiquitiva.libs.blueprint.extensions.getInactiveIconsColor
-import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.extensions.makeVisible
 
 abstract class BottomBarBlueprintActivity:InternalBaseBlueprintActivity() {
@@ -41,11 +40,11 @@ abstract class BottomBarBlueprintActivity:InternalBaseBlueprintActivity() {
 
     private fun initBottomBar() {
         bottomBar = findViewById(R.id.bottom_navigation)
+        bottomBar.accentColor = getAccentColor()
         with(bottomBar) {
             defaultBackgroundColor = getCardBackgroundColor()
             isBehaviorTranslationEnabled = false
-            accentColor = getAccentColor(isDarkTheme())
-            inactiveColor = getInactiveIconsColor(isDarkTheme())
+            inactiveColor = getInactiveIconsColor()
             isForceTint = true
             titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
             getNavigationItems().forEach {

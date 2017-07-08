@@ -19,32 +19,35 @@
 
 package jahirfiquitiva.libs.blueprint.fragments
 
-import android.graphics.drawable.ColorDrawable
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.Loader
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.adapters.HomeCardsAdapter
-import jahirfiquitiva.libs.blueprint.extensions.getDividerColor
-import jahirfiquitiva.libs.blueprint.extensions.isDarkTheme
 import jahirfiquitiva.libs.blueprint.extensions.openLink
 import jahirfiquitiva.libs.blueprint.fragments.presenters.ItemsFragmentPresenter
 import jahirfiquitiva.libs.blueprint.models.HomeCard
+import jahirfiquitiva.libs.blueprint.models.lists.ListsHolder
 import jahirfiquitiva.libs.blueprint.tasks.BasicTaskLoader
 import jahirfiquitiva.libs.blueprint.tasks.HomeCardsLoader
 import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
 
-class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
+@SuppressLint("ValidFragment")
+class HomeFragment(val nContext:Context):Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 
     private lateinit var rv:EmptyViewRecyclerView
     private lateinit var homeAdapter:HomeCardsAdapter
+
+    override fun getContext():Context {
+        return nContext
+    }
 
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
@@ -56,7 +59,14 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
 
     override fun onViewCreated(view:View?, savedInstanceState:Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        executeTask(context)
+        if (ListsHolder.lists.appsLinksList.isEmpty()) executeTask(context)
+        else {
+            try {
+                homeAdapter.clearAndAddAll(ListsHolder.lists.appsLinksList.list)
+                rv.updateState(EmptyViewRecyclerView.STATE_NORMAL)
+            } catch (ignored:Exception) {
+            }
+        }
     }
 
     override fun initUI(content:View) {
@@ -65,13 +75,12 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
         rv.textView = content.findViewById(R.id.empty_text)
         rv.updateState(EmptyViewRecyclerView.STATE_LOADING)
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        /*
         val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        if (context is ThemedActivity) {
-            deco.setDrawable(ColorDrawable(context.getDividerColor(
-                    (context as ThemedActivity).isDarkTheme())))
-        }
+        deco.setDrawable(ColorDrawable(context.getDividerColor()))
         rv.addItemDecoration(deco)
-        homeAdapter = HomeCardsAdapter { onItemClicked(it) }
+        */
+        homeAdapter = HomeCardsAdapter(context, { onItemClicked(it) })
         rv.setHasFixedSize(true)
         rv.adapter = homeAdapter
     }
@@ -79,9 +88,7 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
     override fun onItemClicked(item:Any) {
         if (item is HomeCard) {
             if (item.intent != null) context.startActivity(item.intent)
-            else context.openLink(item.url,
-                                  if (context is ThemedActivity) (context as ThemedActivity).isDarkTheme()
-                                  else false)
+            else context.openLink(item.url)
         }
     }
 
@@ -98,6 +105,7 @@ class HomeFragment:Fragment(), ItemsFragmentPresenter<ArrayList<HomeCard>> {
     override fun onDataLoadFinished(data:ArrayList<HomeCard>) {
         val adapter = rv.adapter
         if (adapter is HomeCardsAdapter) {
+            ListsHolder.lists.appsLinksList.createList(data)
             adapter.clearAndAddAll(data)
             rv.updateState(EmptyViewRecyclerView.STATE_NORMAL)
         }

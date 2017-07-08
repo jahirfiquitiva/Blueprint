@@ -24,58 +24,82 @@ import android.graphics.Color
 import android.support.annotation.ColorInt
 import jahirfiquitiva.libs.blueprint.R
 
-fun Context.getPrimaryColor(isDarkTheme:Boolean):Int =
+@ColorInt
+fun Context.getPrimaryColor():Int =
         getColorFromRes(
-                if (isDarkTheme) R.color.dark_theme_primary else R.color.light_theme_primary)
-
-fun Context.getPrimaryDarkColor(isDarkTheme:Boolean):Int =
-        getColorFromRes(
-                if (isDarkTheme) R.color.dark_theme_primary_dark else R.color.light_theme_primary_dark)
-
-fun Context.getAccentColor(isDarkTheme:Boolean):Int =
-        getColorFromRes(
-                if (isDarkTheme) R.color.dark_theme_accent else R.color.light_theme_accent)
-
-fun Context.getCardBackgroundColor():Int = extractColor(intArrayOf(R.attr.cardBackgroundColor))
-
-fun Context.getPrimaryTextColor(isDarkTheme:Boolean):Int =
-        if (isDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
-
-fun Context.getPrimaryTextColorInverse(usesLightTheme:Boolean):Int =
-        if (usesLightTheme) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
-
-fun Context.getSecondaryTextColor(isDarkTheme:Boolean):Int =
-        if (isDarkTheme) Color.parseColor("#b3ffffff") else Color.parseColor("#8a000000")
-
-fun Context.getSecondaryTextColorInverse(usesLightTheme:Boolean):Int =
-        if (usesLightTheme) Color.parseColor("#b3ffffff") else Color.parseColor("#8a000000")
-
-fun Context.getDisabledTextColor(isDarkTheme:Boolean):Int =
-        if (isDarkTheme) Color.parseColor("#80ffffff") else Color.parseColor("#61000000")
-
-fun Context.getHintTextColor(isDarkTheme:Boolean):Int = getDisabledTextColor(isDarkTheme)
+                if (usesDarkTheme) R.color.dark_theme_primary else R.color.light_theme_primary)
 
 @ColorInt
-fun Context.getDividerColor(isDarkTheme:Boolean) =
-        if (isDarkTheme) Color.parseColor("#1fffffff") else Color.parseColor("#1f000000")
-
-fun Context.getActiveIconsColor(isDarkTheme:Boolean):Int =
-        if (isDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#8a000000")
-
-fun Context.getInactiveIconsColor(isDarkTheme:Boolean):Int = getDisabledTextColor(isDarkTheme)
-
-fun Context.getRippleColor(isDarkTheme:Boolean):Int =
+fun Context.getPrimaryDarkColor():Int =
         getColorFromRes(
-                if (isDarkTheme) R.color.ripple_material_light else R.color.ripple_material_dark)
+                if (usesDarkTheme) R.color.dark_theme_primary_dark else R.color.light_theme_primary_dark)
 
-fun Context.getOverlayColor(isDarkTheme:Boolean):Int =
-        if (isDarkTheme) Color.parseColor("#40ffffff") else Color.parseColor("#4d000000")
+@ColorInt
+fun Context.getAccentColor():Int =
+        getColorFromRes(
+                if (usesDarkTheme) R.color.dark_theme_accent else R.color.light_theme_accent)
 
+@ColorInt
+fun Context.getCardBackgroundColor():Int = extractColor(intArrayOf(R.attr.cardBackgroundColor))
+
+@ColorInt
+fun Context.getPrimaryTextColor():Int =
+        if (usesDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
+
+@ColorInt
+fun Context.getPrimaryTextColorInverse():Int =
+        if (usesLightTheme) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
+
+@ColorInt
+fun Context.getSecondaryTextColor():Int =
+        if (usesDarkTheme) Color.parseColor("#b3ffffff") else Color.parseColor("#8a000000")
+
+@ColorInt
+fun Context.getSecondaryTextColorInverse():Int =
+        if (usesLightTheme) Color.parseColor("#b3ffffff") else Color.parseColor("#8a000000")
+
+@ColorInt
+fun Context.getDisabledTextColor():Int =
+        if (usesDarkTheme) Color.parseColor("#80ffffff") else Color.parseColor("#61000000")
+
+@ColorInt
+fun Context.getHintTextColor():Int = getDisabledTextColor()
+
+@ColorInt
+fun Context.getDividerColor() =
+        if (usesDarkTheme) Color.parseColor("#1fffffff") else Color.parseColor("#1f000000")
+
+@ColorInt
+fun Context.getActiveIconsColor():Int =
+        if (usesDarkTheme) Color.parseColor("#ffffffff") else Color.parseColor("#8a000000")
+
+@ColorInt
+fun Context.getInactiveIconsColor():Int = getDisabledTextColor()
+
+@ColorInt
+fun Context.getRippleColor():Int =
+        getColorFromRes(
+                if (usesDarkTheme) R.color.ripple_material_light else R.color.ripple_material_dark)
+
+@ColorInt
+fun Context.getOverlayColor():Int =
+        if (usesDarkTheme) Color.parseColor("#40ffffff") else Color.parseColor("#4d000000")
+
+@ColorInt
 fun Context.getPrimaryTextColorFor(@ColorInt color:Int):Int =
         if (color.isColorDark()) Color.parseColor("#ffffffff") else Color.parseColor("#de000000")
 
+@ColorInt
 fun Context.getSecondaryTextColorFor(@ColorInt color:Int):Int =
         if (color.isColorDark()) Color.parseColor("#b3ffffff") else Color.parseColor("#8a000000")
 
+@ColorInt
 fun Context.getActiveIconsColorFor(@ColorInt color:Int):Int =
         if (color.isColorDark()) Color.parseColor("#ffffffff") else Color.parseColor("#8a000000")
+
+@ColorInt
+fun Context.getChipsColor():Int =
+        if (usesDarkTheme) Color.parseColor("#000") else Color.parseColor("#e0e0e0")
+
+@ColorInt
+fun Context.getChipsIconsColor():Int = getActiveIconsColor()

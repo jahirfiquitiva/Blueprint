@@ -44,6 +44,7 @@ ext.versions = [
         iconRequestTool        : '0ff947f',
         circleImageView        : '7fd3573',
         bottomBar              : '2.0.6',
+        fabsMenu               : '1.0.3',
         fabTransformation      : '1.0.0',
         customFabTransformation: '59d2340',
         chips                  : '1.0.8',

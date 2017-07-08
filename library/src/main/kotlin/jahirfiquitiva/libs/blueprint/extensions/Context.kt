@@ -33,6 +33,17 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.utils.Konfigurations
 import jahirfiquitiva.libs.blueprint.utils.PREFERENCES_NAME
 
+var isDarkContext = false
+
+val Context.usesLightTheme
+    get() = !usesDarkTheme
+
+var Context.usesDarkTheme
+    get() = isDarkContext
+    set(dark) {
+        isDarkContext = dark
+    }
+
 fun Context.getStringFromRes(@StringRes stringRes:Int, fallback:String):String =
         if (stringRes > 0) getString(stringRes) else fallback
 

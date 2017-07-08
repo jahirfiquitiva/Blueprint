@@ -43,12 +43,11 @@ android {
         versionCode versions.versionCode
         versionName versions.versionName
         vectorDrawables.useSupportLibrary = true
-        consumerProguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -118,6 +117,8 @@ dependencies {
     compile 'com.github.hdodenhof:CircleImageView:' + versions.circleImageView
     // Better Bottom Bar
     compile 'com.aurelhubert:ahbottomnavigation:' + versions.bottomBar
+    // FABs Menu
+    compile 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu
     // FAB Transformation
     compile 'konifar:fab-transformation:' + versions.fabTransformation
     // compile 'me.jahirfiquitiva:fab-transformation:' + versions.customFabTransformation

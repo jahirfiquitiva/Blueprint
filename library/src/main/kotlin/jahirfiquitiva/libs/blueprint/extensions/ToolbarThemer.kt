@@ -47,7 +47,7 @@ fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, offset:Int) {
     if (ratio > 1) ratio = 1.0
     else if (ratio < 0) ratio = 0.0
     val rightIconsColor = defaultIconsColor.blendWith(
-            getActiveIconsColorFor(getPrimaryColor(isDarkTheme())), ratio.toFloat())
+            getActiveIconsColorFor(getPrimaryColor()), ratio.toFloat())
     tintToolbar(toolbar, rightIconsColor)
     updateStatusBarStyle(
             if (ratio > 0.7) CollapsingToolbarCallback.State.COLLAPSED else CollapsingToolbarCallback.State.EXPANDED)
@@ -79,8 +79,8 @@ fun ThemedActivity.tintToolbar(toolbar:Toolbar, color:Int) {
     }
 
     // Step 3: Changing the color of title and subtitle.
-    toolbar.setTitleTextColor(getPrimaryTextColorFor(getPrimaryColor(isDarkTheme())))
-    toolbar.setSubtitleTextColor(getSecondaryTextColorFor(getPrimaryColor(isDarkTheme())))
+    toolbar.setTitleTextColor(getPrimaryTextColorFor(getPrimaryColor()))
+    toolbar.setSubtitleTextColor(getSecondaryTextColorFor(getPrimaryColor()))
 
     // Step 4: Change the color of overflow menu icon.
     toolbar.overflowIcon?.tintWithColor(ColorStateList.valueOf(color))
@@ -143,7 +143,7 @@ private fun ThemedActivity.themeSearchView(tintColor:Int, view:SearchView) {
         mSearchSrcTextViewField.isAccessible = true
         val mSearchSrcTextView = mSearchSrcTextViewField.get(view) as EditText
         mSearchSrcTextView.setTextColor(tintColor)
-        mSearchSrcTextView.setHintTextColor(getHintTextColor(isDarkTheme()))
+        mSearchSrcTextView.setHintTextColor(getHintTextColor())
         setCursorTint(mSearchSrcTextView, tintColor)
 
         var field = cls.getDeclaredField("mSearchButton")
@@ -172,7 +172,7 @@ private fun ThemedActivity.themeSearchView(tintColor:Int, view:SearchView) {
 
 private fun ThemedActivity.updateStatusBarStyle(state:CollapsingToolbarCallback.State) {
     if (state === CollapsingToolbarCallback.State.COLLAPSED) {
-        setStatusBarMode(getPrimaryDarkColor(isDarkTheme()).isColorLight())
+        setStatusBarMode(getPrimaryDarkColor().isColorLight())
     } else {
         setStatusBarMode()
     }

@@ -32,7 +32,9 @@ class HomeCardsLoader(context:Context, listener:TaskListener? = null):
         BasicTaskLoader<ArrayList<HomeCard>>(context, listener) {
 
     override fun loadInBackground():ArrayList<HomeCard> {
-        val cards = ArrayList<HomeCard>()
+        val everything = ArrayList<HomeCard>()
+        val apps = ArrayList<HomeCard>()
+        val links = ArrayList<HomeCard>()
         val titles = context.getStringArray(R.array.home_list_titles)
         val descriptions = context.getStringArray(
                 R.array.home_list_descriptions)
@@ -51,11 +53,17 @@ class HomeCardsLoader(context:Context, listener:TaskListener? = null):
                     isInstalled = context.isAppInstalled(packageName)
                     intent = context.packageManager.getLaunchIntentForPackage(packageName)
                 }
-                cards.add(HomeCard(titles[i], descriptions[i], urls[i],
-                                   icons[i].getDrawable(context), isAnApp,
-                                   isInstalled, intent))
+                val item = HomeCard(titles[i], descriptions[i], urls[i],
+                                    icons[i].getDrawable(context),
+                                    (if (isAnApp)
+                                        if (isInstalled) "ic_open_app" else "ic_download"
+                                    else "ic_open_app").getDrawable(context),
+                                    isAnApp, isInstalled, intent)
+                if (isAnApp) apps.add(item) else links.add(item)
             }
         }
-        return cards
+        everything.addAll(apps)
+        everything.addAll(links)
+        return everything
     }
 }
