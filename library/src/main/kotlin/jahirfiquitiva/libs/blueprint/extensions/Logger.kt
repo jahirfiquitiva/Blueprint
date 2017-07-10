@@ -23,26 +23,14 @@ import android.content.Context
 import android.util.Log
 import jahirfiquitiva.libs.blueprint.utils.LOG_TAG
 
-fun Context.printVerbose(verbose:String) {
-    Log.v(LOG_TAG, verbose)
-}
+fun Context.printVerbose(verbose:String) = Log.v(LOG_TAG, verbose)
 
-fun Context.printDebug(debug:String) {
-    Log.d(LOG_TAG, debug)
-}
+fun Context.printDebug(debug:String) = Log.d(LOG_TAG, debug)
 
-fun Context.printInfo(info:String) {
-    Log.i(LOG_TAG, info)
-}
+fun Context.printInfo(info:String) = Log.i(LOG_TAG, info)
 
-fun Context.printWarning(warning:String) {
-    Log.w(LOG_TAG, warning)
-}
+fun Context.printWarning(warning:String) = Log.w(LOG_TAG, warning)
 
-fun Context.printError(error:String) {
-    Log.e(LOG_TAG, error)
-}
+fun Context.printError(error:String) = Log.e(LOG_TAG, error)
 
-fun Context.printError(error:String, th:Throwable) {
-    Log.e(LOG_TAG, error, th)
-}
+fun Context.printError(error:String, th:Throwable) = Log.e(LOG_TAG, error, th)

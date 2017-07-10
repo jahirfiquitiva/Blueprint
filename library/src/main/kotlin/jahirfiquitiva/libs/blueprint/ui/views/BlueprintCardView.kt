@@ -22,7 +22,7 @@ package jahirfiquitiva.libs.blueprint.ui.views
 import android.content.Context
 import android.support.v7.widget.CardView
 import android.util.AttributeSet
-import jahirfiquitiva.libs.blueprint.extensions.getCardBackgroundColor
+import jahirfiquitiva.libs.blueprint.extensions.cardBackgroundColor
 
 class BlueprintCardView:CardView {
     constructor(context:Context):super(context)
@@ -31,6 +31,6 @@ class BlueprintCardView:CardView {
             :super(context, attributeSet, defStyleAttr)
 
     override fun setBackgroundColor(color:Int) {
-        super.setBackgroundColor(context.getCardBackgroundColor())
+        super.setBackgroundColor(context.cardBackgroundColor)
     }
 }

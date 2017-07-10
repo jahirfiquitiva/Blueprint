@@ -29,7 +29,7 @@ import android.widget.TextView
 import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.extensions.getDividerColor
+import jahirfiquitiva.libs.blueprint.extensions.dividerColor
 import jahirfiquitiva.libs.blueprint.extensions.makeGone
 import jahirfiquitiva.libs.blueprint.extensions.makeVisible
 import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
@@ -71,20 +71,24 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
 
     override fun bindView(holder:ViewHolder?, payloads:MutableList<Any>?) {
         super.bindView(holder, payloads)
-        nameHolder.applyTo(holder?.title)
-        holder?.title?.background = ColorDrawable(color)
-        val context = holder?.itemView?.context
-        if (showDivider) {
-            holder?.divider?.makeVisible()
-            val dividerColor = context?.getDividerColor()
-            dividerColor?.let { holder.divider?.background = ColorDrawable(it) }
-        } else holder?.divider?.makeGone()
-        checkBoxHolder = FilterCheckBoxHolder()
-        checkBoxHolder.setup(holder?.checkBox!!, nameHolder.text.toString(), listener)
-        holder.itemView?.setOnClickListener {
-            checkBoxHolder.apply(!checkBoxHolder.isChecked())
+        holder?.let {
+            nameHolder.applyTo(it.title)
+            it.title?.background = ColorDrawable(color)
+            val context = it.itemView?.context
+            if (showDivider) {
+                it.divider?.makeVisible()
+                val dividerColor = context?.dividerColor
+                dividerColor?.let { holder.divider?.background = ColorDrawable(it) }
+            } else it.divider?.makeGone()
+            checkBoxHolder = FilterCheckBoxHolder()
+            it.checkBox?.let { checkBox ->
+                checkBoxHolder.setup(checkBox, nameHolder.text.toString(), listener)
+            }
+            holder.itemView?.setOnClickListener {
+                checkBoxHolder.apply(!checkBoxHolder.isChecked())
+            }
+            onPostBindView(this, holder.itemView)
         }
-        onPostBindView(this, holder.itemView)
     }
 
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {

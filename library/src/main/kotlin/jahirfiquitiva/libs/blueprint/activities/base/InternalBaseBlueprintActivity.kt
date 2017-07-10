@@ -62,6 +62,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private lateinit var fab:CounterFab
     private lateinit var fabsMenu:FABsMenu
     private lateinit var filtersDrawer:Drawer
+    var drawer:Drawer? = null
 
     private var iconsFilters:ArrayList<String> = ArrayList()
     internal var currentItemId:Int = -1
@@ -70,7 +71,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        setupStatusBarStyle(true, getPrimaryDarkColor().isColorLight())
+        setupStatusBarStyle(true, primaryDarkColor.isColorLight())
         setContentView(R.layout.activity_blueprint)
         initMainComponents(savedInstanceState)
     }
@@ -105,7 +106,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private fun initFAB() {
         fab = findViewById(R.id.fab)
         fab.setImageDrawable("ic_send".getDrawable(this).tintWithColor(
-                getActiveIconsColorFor(getAccentColor())))
+                getActiveIconsColorFor(accentColor)))
         fab.updateBottomMargin(getDimensionPixelSize(
                 if (hasBottomBar()) R.dimen.fab_with_bottom_bar_margin else R.dimen.fab_margin))
         fab.setOnClickListener { startRequestsProcess() }
@@ -113,15 +114,15 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
     private fun initFABsMenu() {
         val fabsMenuOverlay:FABsMenuLayout = findViewById(R.id.fabs_menu_overlay)
-        fabsMenuOverlay.overlayColor = getOverlayColor()
+        fabsMenuOverlay.overlayColor = overlayColor
 
         fabsMenu = findViewById(R.id.fabs_menu)
         if (hasBottomBar()) {
             fabsMenu.menuBottomMargin = DimensionUtils.convertDpToPixel(72F, this).toInt()
         }
         fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this).tintWithColor(
-                getActiveIconsColorFor(getAccentColor()))
-        fabsMenu.menuButtonRippleColor = getRippleColor()
+                getActiveIconsColorFor(accentColor))
+        fabsMenu.menuButtonRippleColor = rippleColor
         fabsMenu.menuUpdateListener = object:FABsMenu.OnFABsMenuUpdateListener {
             override fun onMenuClicked() {
                 fabsMenu.toggle()
@@ -138,16 +139,16 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
         val rateFab:TitleFAB = findViewById(R.id.rate_fab)
         rateFab.setImageDrawable(
-                "ic_rate".getDrawable(this).tintWithColor(getActiveIconsColor()))
-        rateFab.titleTextColor = getPrimaryTextColor()
-        rateFab.rippleColor = getRippleColor()
+                "ic_rate".getDrawable(this).tintWithColor(activeIconsColor))
+        rateFab.titleTextColor = primaryTextColor
+        rateFab.rippleColor = rippleColor
         rateFab.setOnClickListener { openLink(PLAY_STORE_LINK_PREFIX + packageName) }
 
         val shareFab:TitleFAB = findViewById(R.id.share_fab)
         shareFab.setImageDrawable(
-                "ic_share".getDrawable(this).tintWithColor(getActiveIconsColor()))
-        shareFab.titleTextColor = getPrimaryTextColor()
-        shareFab.rippleColor = getRippleColor()
+                "ic_share".getDrawable(this).tintWithColor(activeIconsColor))
+        shareFab.titleTextColor = primaryTextColor
+        shareFab.rippleColor = rippleColor
         shareFab.setOnClickListener {
             shareText(getString(R.string.share_this_app, getAppName(),
                                 PLAY_STORE_LINK_PREFIX + packageName))
@@ -156,9 +157,9 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         val donateFab:TitleFAB = findViewById(R.id.donate_fab)
         if (donationsEnabled()) {
             donateFab.setImageDrawable(
-                    "ic_donate".getDrawable(this).tintWithColor(getActiveIconsColor()))
-            donateFab.titleTextColor = getPrimaryTextColor()
-            donateFab.rippleColor = getRippleColor()
+                    "ic_donate".getDrawable(this).tintWithColor(activeIconsColor))
+            donateFab.titleTextColor = primaryTextColor
+            donateFab.rippleColor = rippleColor
             donateFab.setOnClickListener {
                 // TODO: Init donations
             }
@@ -168,9 +169,9 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
         val helpFab:TitleFAB = findViewById(R.id.help_fab)
         helpFab.setImageDrawable(
-                "ic_help".getDrawable(this).tintWithColor(getActiveIconsColor()))
-        helpFab.titleTextColor = getPrimaryTextColor()
-        helpFab.rippleColor = getRippleColor()
+                "ic_help".getDrawable(this).tintWithColor(activeIconsColor))
+        helpFab.titleTextColor = primaryTextColor
+        helpFab.rippleColor = rippleColor
         helpFab.setOnClickListener {
             // TODO: Open help section
         }
@@ -180,7 +181,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         toolbar = findViewById(R.id.toolbar)
         menu = toolbar.menu
         menuInflater.inflate(R.menu.menu_main, menu)
-        tintToolbar(toolbar, getActiveIconsColorFor(getPrimaryColor()))
+        tintToolbar(toolbar, getActiveIconsColorFor(primaryColor))
         toolbar.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
                     val i = item.itemId
@@ -200,7 +201,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         appBarLayout = findViewById(R.id.appBar)
         collapsingToolbar = findViewById(R.id.collapsingToolbar)
         collapsingToolbar.setExpandedTitleColor(Color.TRANSPARENT)
-        collapsingToolbar.setCollapsedTitleTextColor(getPrimaryTextColor())
+        collapsingToolbar.setCollapsedTitleTextColor(primaryTextColor)
         appBarLayout.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
             override fun onVerticalOffsetChanged(appBar:AppBarLayout?, verticalOffset:Int) {
                 updateToolbarColorsHere(verticalOffset)
@@ -318,7 +319,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                     item.id == DEFAULT_WALLPAPERS_POSITION)
         menu.changeOptionVisibility(R.id.select_all,
                                     item.id == DEFAULT_REQUEST_POSITION)
-        tintToolbarMenu(toolbar, menu, getActiveIconsColorFor(getPrimaryColor()))
+        tintToolbarMenu(toolbar, menu, getActiveIconsColorFor(primaryColor))
     }
 
     private fun lockFiltersDrawer(lock:Boolean) {
@@ -359,7 +360,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
 
     fun getToolbar():Toolbar? = toolbar
 
-    fun updateToolbarColorsHere(offset:Int) = updateToolbarColors(toolbar, offset)
+    fun updateToolbarColorsHere(offset:Int) = updateToolbarColors(toolbar, drawer, offset)
 
     fun startRequestsProcess() = showToast("Creating request")
 

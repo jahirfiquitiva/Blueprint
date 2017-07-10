@@ -27,41 +27,23 @@ import android.support.v7.graphics.Palette
 import java.io.File
 import java.io.FileOutputStream
 
-fun Bitmap.isColorDark() = !this.isColorLight()
+fun Bitmap.isColorDark() = !isColorLight()
 
-fun Bitmap.isColorLight():Boolean = this.generatePalette().isColorLight()
+fun Bitmap.isColorLight():Boolean = generatePalette().isColorLight()
 
 fun Bitmap.generatePalette():Palette = Palette.from(this).resizeBitmapArea(50 * 50).generate()
 
 val Bitmap.bestSwatch:Palette.Swatch?
-    get() = this.generatePalette().bestSwatch
+    get() = generatePalette().bestSwatch
 
 fun Bitmap.getUri(context:Context, name:String):Uri? {
-    var uri:Uri? = null
     val iconFile = File(context.cacheDir, name + ".png")
-    val fos:FileOutputStream
-    try {
-        fos = FileOutputStream(iconFile)
-        compress(Bitmap.CompressFormat.PNG, 100, fos)
-        fos.flush()
-        fos.close()
-
-        uri = iconFile.getUri(context)
-        if (uri == null) uri = Uri.fromFile(iconFile)
-    } catch (ignored:Exception) {
-    }
-    if (uri == null) {
-        val resId = name.getIconResource(context)
-        try {
-            uri = resId.getUriFromResource(context)
-        } catch (e:Exception) {
-            try {
-                uri = Uri.parse(
-                        ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName
-                        + "/" + resId.toString())
-            } catch (ignored:Exception) {
-            }
-        }
-    }
-    return uri
+    val fos = FileOutputStream(iconFile)
+    compress(Bitmap.CompressFormat.PNG, 100, fos)
+    fos.flush()
+    fos.close()
+    return iconFile.getUri(context) ?: Uri.fromFile(iconFile) ?:
+           name.getIconResource(context).getUriFromResource(context) ?:
+           Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName +
+                     "/" + name.getIconResource(context).toString())
 }

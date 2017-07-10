@@ -32,9 +32,9 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import jahirfiquitiva.libs.blueprint.activities.base.BaseBlueprintActivity
 
-fun Activity.setupStatusBarStyle(translucent:Boolean = true, lightMode:Boolean = false) {
+fun Activity.setupStatusBarStyle(translucent:Boolean = true,
+                                 lightMode:Boolean = primaryDarkColor.isColorLight()) {
     if (Build.VERSION.SDK_INT >= 21) {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     }
@@ -53,7 +53,7 @@ fun Activity.setupStatusBarStyle(translucent:Boolean = true, lightMode:Boolean =
     }
 }
 
-fun Activity.setStatusBarMode(lightMode:Boolean = false) {
+fun Activity.setStatusBarMode(lightMode:Boolean = primaryDarkColor.isColorLight()) {
     val view = window.decorView
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         var flags = view.systemUiVisibility
@@ -97,7 +97,7 @@ fun Activity.showKeyboard(et:TextInputEditText) {
 fun Activity.hideKeyboard() {
     val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow((currentFocus ?: View(this)).windowToken, 0)
-    window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+    window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     currentFocus?.clearFocus()
 }
 

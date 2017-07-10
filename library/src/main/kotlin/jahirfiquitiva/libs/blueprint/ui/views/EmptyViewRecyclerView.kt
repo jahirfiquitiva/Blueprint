@@ -26,7 +26,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.extensions.getSecondaryTextColor
+import jahirfiquitiva.libs.blueprint.extensions.secondaryTextColor
 import jahirfiquitiva.libs.blueprint.extensions.makeGone
 import jahirfiquitiva.libs.blueprint.extensions.makeVisible
 import jahirfiquitiva.libs.blueprint.extensions.makeVisibleIf
@@ -80,7 +80,7 @@ class EmptyViewRecyclerView:RecyclerView {
                 makeGone()
             }
         }
-        textView?.setTextColor(context.getSecondaryTextColor())
+        textView?.setTextColor(context.secondaryTextColor)
         textView?.makeVisibleIf(state != STATE_NORMAL)
     }
 

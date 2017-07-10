@@ -24,9 +24,9 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseBlueprintActivity
-import jahirfiquitiva.libs.blueprint.extensions.getAccentColor
-import jahirfiquitiva.libs.blueprint.extensions.getCardBackgroundColor
-import jahirfiquitiva.libs.blueprint.extensions.getInactiveIconsColor
+import jahirfiquitiva.libs.blueprint.extensions.accentColor
+import jahirfiquitiva.libs.blueprint.extensions.cardBackgroundColor
+import jahirfiquitiva.libs.blueprint.extensions.inactiveIconsColor
 import jahirfiquitiva.libs.blueprint.extensions.makeVisible
 
 abstract class BottomBarBlueprintActivity:InternalBaseBlueprintActivity() {
@@ -40,11 +40,11 @@ abstract class BottomBarBlueprintActivity:InternalBaseBlueprintActivity() {
 
     private fun initBottomBar() {
         bottomBar = findViewById(R.id.bottom_navigation)
-        bottomBar.accentColor = getAccentColor()
+        bottomBar.accentColor = accentColor
         with(bottomBar) {
-            defaultBackgroundColor = getCardBackgroundColor()
+            defaultBackgroundColor = cardBackgroundColor
             isBehaviorTranslationEnabled = false
-            inactiveColor = getInactiveIconsColor()
+            inactiveColor = inactiveIconsColor
             isForceTint = true
             titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
             getNavigationItems().forEach {

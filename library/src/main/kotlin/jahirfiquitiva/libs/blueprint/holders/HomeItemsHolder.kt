@@ -27,8 +27,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.pchmn.materialchips.ChipView
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.extensions.getActiveIconsColor
-import jahirfiquitiva.libs.blueprint.extensions.getSecondaryTextColor
+import jahirfiquitiva.libs.blueprint.extensions.activeIconsColor
+import jahirfiquitiva.libs.blueprint.extensions.secondaryTextColor
 import jahirfiquitiva.libs.blueprint.extensions.makeVisibleIf
 import jahirfiquitiva.libs.blueprint.extensions.tintWithColor
 import jahirfiquitiva.libs.blueprint.models.HomeItem
@@ -67,13 +67,13 @@ class HomeItemsHolder {
                                 R.string.more_apps)
                         else sectionTitle?.text = itemView.context.getString(R.string.useful_links)
                         sectionTitle?.setTextColor(
-                                context.getSecondaryTextColor())
+                                context.secondaryTextColor)
                     }
                     title?.text = item.title
                     description?.text = item.description
                     icon?.setImageDrawable(item.icon)
                     openIcon?.setImageDrawable(item.openIcon?.tintWithColor(
-                            context.getActiveIconsColor()))
+                            context.activeIconsColor))
                     openIcon?.setOnClickListener { listener(item) }
                 }
     }

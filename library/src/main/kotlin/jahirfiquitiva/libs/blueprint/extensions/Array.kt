@@ -22,11 +22,6 @@ package jahirfiquitiva.libs.blueprint.extensions
 import jahirfiquitiva.libs.blueprint.models.Icon
 
 fun ArrayList<Icon>.sortIconsList():ArrayList<Icon> {
-    sort()
-    val noDuplicates:Set<Icon> = HashSet()
-    noDuplicates.plus(this)
-    clear()
-    plus(noDuplicates)
-    sort()
+    distinct().sorted()
     return this
 }

@@ -22,19 +22,19 @@ package jahirfiquitiva.libs.blueprint.extensions
 import android.support.v7.graphics.Palette
 import java.util.*
 
-fun Palette.isColorDark() = !this.isColorLight()
+fun Palette.isColorDark() = !isColorLight()
 
-fun Palette.isColorLight() = this.bestSwatch?.rgb?.isColorLight() ?: false
+fun Palette.isColorLight() = bestSwatch?.rgb?.isColorLight() ?: false
 
 val Palette.bestSwatch:Palette.Swatch?
     get() {
-        this.vibrantSwatch?.let { return it }
-        this.lightVibrantSwatch?.let { return it }
-        this.darkVibrantSwatch?.let { return it }
-        this.mutedSwatch?.let { return it }
-        this.lightMutedSwatch?.let { return it }
-        this.darkMutedSwatch?.let { return it }
-        if (this.swatches.isNotEmpty()) return getBestPaletteSwatch(this.swatches)
+        vibrantSwatch?.let { return it }
+        lightVibrantSwatch?.let { return it }
+        darkVibrantSwatch?.let { return it }
+        mutedSwatch?.let { return it }
+        lightMutedSwatch?.let { return it }
+        darkMutedSwatch?.let { return it }
+        if (swatches.isNotEmpty()) return getBestPaletteSwatch(swatches)
         return null
     }
 

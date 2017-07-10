@@ -32,14 +32,13 @@ import android.support.customtabs.CustomTabsSession
 fun Context.isConnected():Boolean {
     val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val activeNetwork = cm.activeNetworkInfo
-    return activeNetwork != null && activeNetwork.isConnectedOrConnecting
+    return activeNetwork.isConnectedOrConnecting
 }
 
 fun Context.isConnectedToWiFi():Boolean {
     val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val activeNetwork = cm.activeNetworkInfo
-    return activeNetwork != null && activeNetwork.type ==
-            ConnectivityManager.TYPE_WIFI && activeNetwork.isConnectedOrConnecting
+    return activeNetwork.type == ConnectivityManager.TYPE_WIFI && activeNetwork.isConnectedOrConnecting
 }
 
 fun Context.openLink(link:String) {
@@ -62,7 +61,7 @@ fun Context.openLink(link:String) {
     }
     CustomTabsClient.bindCustomTabsService(this, "com.android.chrome", mCustomTabsServiceConnection)
     customTabsIntent = CustomTabsIntent.Builder(mCustomTabsSession[0])
-            .setToolbarColor(getPrimaryColor())
+            .setToolbarColor(primaryColor)
             .setShowTitle(true)
             .build()
 
@@ -74,10 +73,7 @@ fun Context.openLink(link:String) {
 }
 
 fun Context.openSimpleLink(link:String) {
-    try {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
-    } catch (ignored:Exception) {
-    }
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+    startActivity(intent)
 }

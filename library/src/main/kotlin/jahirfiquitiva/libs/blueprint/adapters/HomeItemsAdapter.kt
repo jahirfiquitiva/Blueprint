@@ -48,15 +48,15 @@ class HomeItemsAdapter(val context:Context,
                 val initCard = defLauncher?.isActuallySupported ?: false
                 if (initCard) {
                     holder.applyTitle?.setTextColor(context.getPrimaryTextColorFor(
-                            context.getAccentColor()))
+                            context.accentColor))
                     holder.applyTitle?.text = context.getString(R.string.apply_title,
                                                                 context.getAppName())
                     holder.applyContent?.setTextColor(context.getPrimaryTextColorFor(
-                            context.getAccentColor()))
+                            context.accentColor))
                     holder.applyContent?.text = context.getString(R.string.apply_content,
                                                                   defLauncher?.name)
                     holder.dismissButton?.setTextColor(context.getPrimaryTextColorFor(
-                            context.getAccentColor()))
+                            context.accentColor))
                     holder.dismissButton?.setOnClickListener {
                         val anim = AnimationUtils.loadAnimation(context,
                                                                 android.R.anim.slide_out_right)
@@ -76,17 +76,17 @@ class HomeItemsAdapter(val context:Context,
                         holder.itemView.startAnimation(anim)
                     }
                     holder.applyButton?.setTextColor(context.getPrimaryTextColorFor(
-                            context.getAccentColor()))
+                            context.accentColor))
                     holder.applyButton?.setOnClickListener {
                         context.executeLauncherIntent(defLauncher?.name ?: "")
                     }
                 }
             } else if (holder is HomeItemsHolder.ChipsItemHolder) {
-                val labelColor = context.getPrimaryTextColor()
-                val chipsIconColor = context.getChipsIconsColor()
-                val chipsColor = context.getChipsColor()
+                val labelColor = context.primaryTextColor
+                val chipsIconColor = context.chipsIconsColor
+                val chipsColor = context.chipsColor
 
-                holder.chipsTitle?.setTextColor(context.getSecondaryTextColor())
+                holder.chipsTitle?.setTextColor(context.secondaryTextColor)
 
                 holder.iconsChip?.makeVisibleIf(iconsAmount >= 0)
                 holder.iconsChip?.label = context.getString(R.string.themed_icons,

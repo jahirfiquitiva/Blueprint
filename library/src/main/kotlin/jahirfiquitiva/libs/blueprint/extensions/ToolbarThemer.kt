@@ -16,7 +16,6 @@
  * Special thanks to the project contributors and collaborators
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
-
 package jahirfiquitiva.libs.blueprint.extensions
 
 import android.annotation.SuppressLint
@@ -35,19 +34,24 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import com.mikepenz.materialdrawer.Drawer
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
 import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.blueprint.utils.CoreUtils
 import java.lang.reflect.Field
 
-fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, offset:Int) {
+fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, drawer:Drawer?, offset:Int) {
     val defaultIconsColor = getColorFromRes(android.R.color.white)
     var ratio = CoreUtils.round(offset / 255.0, 1)
     if (ratio > 1) ratio = 1.0
     else if (ratio < 0) ratio = 0.0
     val rightIconsColor = defaultIconsColor.blendWith(
-            getActiveIconsColorFor(getPrimaryColor()), ratio.toFloat())
+            getActiveIconsColorFor(primaryColor), ratio.toFloat())
+    try {
+        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = rightIconsColor
+    } catch (ignored:Exception) {
+    }
     tintToolbar(toolbar, rightIconsColor)
     updateStatusBarStyle(
             if (ratio > 0.7) CollapsingToolbarCallback.State.COLLAPSED else CollapsingToolbarCallback.State.EXPANDED)
@@ -79,8 +83,8 @@ fun ThemedActivity.tintToolbar(toolbar:Toolbar, color:Int) {
     }
 
     // Step 3: Changing the color of title and subtitle.
-    toolbar.setTitleTextColor(getPrimaryTextColorFor(getPrimaryColor()))
-    toolbar.setSubtitleTextColor(getSecondaryTextColorFor(getPrimaryColor()))
+    toolbar.setTitleTextColor(getPrimaryTextColorFor(primaryColor))
+    toolbar.setSubtitleTextColor(getSecondaryTextColorFor(primaryColor))
 
     // Step 4: Change the color of overflow menu icon.
     toolbar.overflowIcon?.tintWithColor(ColorStateList.valueOf(color))
@@ -143,7 +147,7 @@ private fun ThemedActivity.themeSearchView(tintColor:Int, view:SearchView) {
         mSearchSrcTextViewField.isAccessible = true
         val mSearchSrcTextView = mSearchSrcTextViewField.get(view) as EditText
         mSearchSrcTextView.setTextColor(tintColor)
-        mSearchSrcTextView.setHintTextColor(getHintTextColor())
+        mSearchSrcTextView.setHintTextColor(hintTextColor)
         setCursorTint(mSearchSrcTextView, tintColor)
 
         var field = cls.getDeclaredField("mSearchButton")
@@ -172,7 +176,7 @@ private fun ThemedActivity.themeSearchView(tintColor:Int, view:SearchView) {
 
 private fun ThemedActivity.updateStatusBarStyle(state:CollapsingToolbarCallback.State) {
     if (state === CollapsingToolbarCallback.State.COLLAPSED) {
-        setStatusBarMode(getPrimaryDarkColor().isColorLight())
+        setStatusBarMode(primaryDarkColor.isColorLight())
     } else {
         setStatusBarMode()
     }
@@ -198,10 +202,10 @@ private fun setCursorTint(editText:EditText, @ColorInt color:Int) {
         val fCursorDrawable = clazz.getDeclaredField("mCursorDrawable")
         fCursorDrawable.isAccessible = true
         val drawables = arrayOfNulls<Drawable>(2)
-        drawables[0] = ContextCompat.getDrawable(editText.context, mCursorDrawableRes)
-        drawables[0] = drawables[0]?.tintWithColor(color)
-        drawables[1] = ContextCompat.getDrawable(editText.context, mCursorDrawableRes)
-        drawables[1] = drawables[1]?.tintWithColor(color)
+        drawables[0] = ContextCompat.getDrawable(editText.context,
+                                                 mCursorDrawableRes)?.tintWithColor(color)
+        drawables[1] = ContextCompat.getDrawable(editText.context,
+                                                 mCursorDrawableRes)?.tintWithColor(color)
         fCursorDrawable.set(editor, drawables)
     } catch (e:Exception) {
         e.printStackTrace()
