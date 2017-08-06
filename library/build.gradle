@@ -17,7 +17,6 @@
  * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'kotlin-android'
 apply from: '../dependencies.gradle'
 
@@ -30,11 +29,6 @@ android {
         checkReleaseBuilds false
         disable 'MissingTranslation'
         disable 'GoogleAppIndexingWarning'
-    }
-
-    dexOptions {
-        preDexLibraries false
-        javaMaxHeapSize "2g"
     }
 
     defaultConfig {
@@ -81,53 +75,48 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    // Android Support Libraries
-    compile 'com.android.support:support-v13:' + versions.supportLibsTest
-    compile 'com.android.support:appcompat-v7:' + versions.supportLibsTest
-    compile 'com.android.support:recyclerview-v7:' + versions.supportLibsTest
-    compile 'com.android.support:cardview-v7:' + versions.supportLibsTest
-    compile 'com.android.support:palette-v7:' + versions.supportLibsTest
-    compile 'com.android.support:design:' + versions.supportLibsTest
-    compile 'com.android.support:customtabs:' + versions.supportLibsTest
-    // Architecture Components
-    compile 'android.arch.lifecycle:runtime:' + versions.archComponents
-    compile 'android.arch.lifecycle:extensions:' + versions.archComponents
-    annotationProcessor 'android.arch.lifecycle:compiler:' + versions.archComponents
-    // Kotlin
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:' + versions.kotlin
-    // Themes Manager
-    compile 'com.github.afollestad:aesthetic:' + versions.aesthetic
-    // Material Dialogs
-    compile 'com.afollestad.material-dialogs:core:' + versions.materialDialogs
+    // Frames
+    compile project(path: ':frames')
+
     // Navigation
     compile('com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar') {
         transitive = true
     }
-    // OkHttp
-    compile 'com.squareup.okhttp3:okhttp:' + versions.okhttp
-    // Glide Image Loading
-    compile 'com.github.bumptech.glide:glide:' + versions.glide
-    // kapt 'com.github.bumptech.glide:compiler:' + versions.glide
-    // RecyclerView FastAdapter
-    compile('com.mikepenz:fastadapter:' + versions.fastAdapter + '@aar') {
-        transitive = true
-    }
-    // RecyclerView Fast Scroller
-    compile 'com.github.plusCubed:recycler-fast-scroll:' + versions.recyclerViewFastScroll
+    compile 'com.aurelhubert:ahbottomnavigation:' + versions.bottomBar
     // Icon Requests Tool
     compile 'com.github.AllanWang:Icon-Request-Tool:' + versions.iconRequestTool
-    // Circular ImageView
-    compile 'com.github.hdodenhof:CircleImageView:' + versions.circleImageView
-    // Better Bottom Bar
-    compile 'com.aurelhubert:ahbottomnavigation:' + versions.bottomBar
     // FABs Menu
     compile 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu
     // FAB Transformation
     compile 'konifar:fab-transformation:' + versions.fabTransformation
-    // compile 'me.jahirfiquitiva:fab-transformation:' + versions.customFabTransformation
     // Chips View
     compile 'me.jahirfiquitiva:MaterialChipsInput:' + versions.chips
+
+    // Architecture Components
+    compile 'android.arch.lifecycle:runtime:' + versions.archComponents
+    compile 'android.arch.lifecycle:extensions:' + versions.archComponents
+    compile 'android.arch.persistence.room:runtime:' + versions.archComponents
+    annotationProcessor 'android.arch.lifecycle:compiler:' + versions.archComponents
+    annotationProcessor 'android.arch.persistence.room:compiler:' + versions.archComponents
+    kapt 'android.arch.lifecycle:compiler:' + versions.archComponents
+    kapt 'android.arch.persistence.room:compiler:' + versions.archComponents
+    // Material Dialogs
+    compile 'com.afollestad.material-dialogs:core:' + versions.materialDialogs
+    compile 'com.afollestad.material-dialogs:commons:' + versions.materialDialogs
+    // Volley
+    compile 'com.android.volley:volley:' + versions.volley
+    // Glide Image Loading
+    compile 'com.github.bumptech.glide:glide:' + versions.glide
+    // annotationProcessor 'com.github.bumptech.glide:compiler:' + versions.glide
+    // kapt 'com.github.bumptech.glide:compiler:' + versions.glide
+    // KAU Extensions
+    compile 'me.jahirfiquitiva:KAUExtensions:' + versions.kauExt
+    // Sectioned RecyclerView
+    compile 'com.afollestad:sectioned-recyclerview:' + versions.sectionedRecyclerView
+    // RecyclerView Fast Scroller
+    compile 'com.github.plusCubed:recycler-fast-scroll:' + versions.recyclerViewFastScroll
+    // Floating Toolbar
+    compile 'com.github.rubensousa:floatingtoolbar:' + versions.floatingToolbar
     // Subsampling ImageView
     compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView
     // In-App Purchases
@@ -135,6 +124,8 @@ dependencies {
     // Muzei API
     //noinspection GradleDynamicVersion
     compile 'com.google.android.apps.muzei:muzei-api:' + versions.muzeiApi
+    // Licenses Dialog
+    compile 'de.psdev.licensesdialog:licensesdialog:' + versions.licensesDialog
     // License Checker
     compile 'com.github.javiersantos:PiracyChecker:' + versions.checker
 }
@@ -145,41 +136,4 @@ tasks.whenTaskAdded { task ->
     }
 }
 
-// build a jar with source files
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    failOnError false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
-}
-
-// build a jar with javadoc
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
-}
-
-// uncomment to build a jar file in addition to the default aar file
-//android.libraryVariants.all { variant ->
-//    def name = variant.buildType.name
-//    def task = project.tasks.create "jar${name.capitalize()}", Jar
-//    task.dependsOn variant.javaCompile
-//    task.from variant.javaCompile.destinationDir
-//    artifacts.add('archives', task);
-//}
-
-//gradle.projectsEvaluated {
-//    tasks.withType(JavaCompile) {
-//        options.compilerArgs << "-Xbootclasspath/a:" + System.properties.get("java.home") + "/lib/rt.jar"
-//    }
-//}
+apply from: '../lib-artifacts.gradle'

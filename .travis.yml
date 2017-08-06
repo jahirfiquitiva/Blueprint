@@ -8,7 +8,7 @@ android:
     - tools
 
     # The BuildTools version used by your project
-    - build-tools-26.0.0
+    - build-tools-26.0.1
 
     # The SDK version used to compile your project
     - android-26
@@ -29,7 +29,11 @@ branches:
     - gh-pages
 
 notifications:
-  email: true
+  email: false
+  slack: 
+    rooms: jahirfiquitiva:w8qaFnNhW1jUcyryDYvAHgYK
+    template: 
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}: '%{commit_subject}'>)  by %{author} for %{repository_name}@%{branch}, %{result} in %{duration}. <%{build_url}|Check details>."
 
 sudo: false
 

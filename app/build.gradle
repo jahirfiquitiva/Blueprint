@@ -78,14 +78,14 @@ android {
             ]
         }
     }
+
+    packagingOptions {
+        pickFirst 'META-INF/library_release.kotlin_module'
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    // Blueprint
     compile project(path: ':library')
-    // Kotlin
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:' + versions.kotlin
 }
 
 tasks.whenTaskAdded { task ->

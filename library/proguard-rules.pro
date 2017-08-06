@@ -23,22 +23,22 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
 -keep class !android.support.v7.internal.view.menu**,** {*;}
 -keep class android.support.v7.graphics.** {*;}
 
 -keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
 
--keep class com.github.javiersantos.**
--dontwarn com.github.javiersantos.**
+-keep class com.google.**
+-keep class autovalue.shaded.com.google.**
+-keep class com.android.vending.billing.**
 -keep public class com.android.vending.licensing.ILicensingService
 
--dontwarn com.fasterxml.**
--dontwarn okio.**
--dontwarn okhttp3.**
--dontwarn retrofit2.**
-# -dontwarn java.lang.invoke.**
-# -dontwarn **$$Lambda$*
+-dontwarn org.apache.**
+-dontwarn com.google.**
+-dontwarn autovalue.shaded.com.google.**
+-dontwarn com.android.vending.billing.**
 
 -dontwarn
 -ignorewarnings
