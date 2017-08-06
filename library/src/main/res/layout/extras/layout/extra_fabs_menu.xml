@@ -23,7 +23,7 @@
         android:id="@+id/fabs_menu_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        fab:fabs_menu_cickableOverlay="true">
+        fab:fabs_menu_clickableOverlay="true">
 
     <jahirfiquitiva.libs.fabsmenu.FABsMenu
             android:id="@+id/fabs_menu"
