@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2017. Jahir Fiquitiva
   ~
@@ -15,17 +15,13 @@
   ~ limitations under the License.
   -->
 
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportWidth="24"
+        android:viewportHeight="24">
 
-    <!-- Make sure to put at least 8 icons -->
-    <string-array name="preview"/>
-
-    <!-- These sections below are for your "Previews" section -->
-    <!-- These names should match YOUR actual icon names
-    	 the names used below are just for sampling purposes -->
-
-    <!-- Make sure the filters names are the same as the other arrays -->
-    <string-array name="icon_filters">
-    </string-array>
-
-</resources>
+    <path
+            android:fillColor="#000000"
+            android:pathData="M2.3,20.6l20-8.6l-20-8.6v6.7L16.5,12L2.3,13.9V20.6z"/>
+</vector>

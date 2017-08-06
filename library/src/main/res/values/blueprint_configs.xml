@@ -62,9 +62,17 @@
     <!--    Do you want the app to read the icons from res/xml/drawable.xml ? (true)
             Or do you prefer the icons to be loaded from res/values/icon_pack.xml ? (false)
     -->
-    <bool name="xml_drawable_enabled">true</bool>
+    <bool name="xml_drawable_enabled">false</bool>
 
 
     <!-- Icons section columns number -->
     <integer name="icons_grid_columns">4</integer>
+
+
+    <!--
+    Do you want the app name and version in the drawer header?
+    True, means yes.
+    False, means no.
+    -->
+    <bool name="with_drawer_texts">true</bool>
 </resources>

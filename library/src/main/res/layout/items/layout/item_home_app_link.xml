@@ -50,7 +50,7 @@
             android:orientation="horizontal"
             tools:ignore="PrivateResource">
 
-        <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
+        <jahirfiquitiva.libs.kauextensions.ui.views.SquaredImageView
                 android:id="@+id/home_app_link_image"
                 android:layout_width="@dimen/icon_medium"
                 android:layout_height="@dimen/icon_medium"
@@ -85,7 +85,7 @@
 
         </LinearLayout>
 
-        <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
+        <jahirfiquitiva.libs.kauextensions.ui.views.SquaredImageView
                 android:id="@+id/home_app_link_open_icon"
                 android:layout_width="@dimen/icon_small"
                 android:layout_height="@dimen/icon_small"

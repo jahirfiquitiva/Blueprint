@@ -347,7 +347,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                     item.id == DEFAULT_WALLPAPERS_POSITION)
         menu.changeOptionVisibility(R.id.select_all,
                                     item.id == DEFAULT_REQUEST_POSITION)
-        toolbar.tintMenu(menu, getActiveIconsColorFor(primaryColor))
+        toolbar.tintMenu(getActiveIconsColorFor(primaryColor))
     }
     
     private fun lockFiltersDrawer(lock:Boolean) {

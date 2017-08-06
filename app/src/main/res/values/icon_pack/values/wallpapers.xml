@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2017. Jahir Fiquitiva
   ~
@@ -16,16 +16,8 @@
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-
-    <!-- Make sure to put at least 8 icons -->
-    <string-array name="preview"/>
-
-    <!-- These sections below are for your "Previews" section -->
-    <!-- These names should match YOUR actual icon names
-    	 the names used below are just for sampling purposes -->
-
-    <!-- Make sure the filters names are the same as the other arrays -->
-    <string-array name="icon_filters">
-    </string-array>
-
+    <!-- Provide a list of wallpapers -->
+    <string-array name="wallpapers"/>
+    <!-- This wallpaper will be used when a user applies the theme -->
+    <string name="default_wallpaper"/>
 </resources>

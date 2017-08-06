@@ -137,10 +137,8 @@ class HomeItemsAdapter(val context:Context,
                 if (!item.isAnApp && firstLinkPosition < 0) {
                     firstLinkPosition = rightPosition
                 }
-                holder.setItem(
-                        item,
-                        (rightPosition == 0 || rightPosition == firstLinkPosition),
-                        listener)
+                holder.setItem(item, (rightPosition == 0 || rightPosition == firstLinkPosition),
+                               listener)
             }
         } catch (ignored:Exception) {
         }

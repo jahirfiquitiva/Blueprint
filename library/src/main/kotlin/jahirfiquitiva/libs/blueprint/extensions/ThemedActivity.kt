@@ -33,8 +33,8 @@ fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, drawer:Drawer?, offset:I
     var ratio = round(offset / 255.0, 1)
     if (ratio > 1) ratio = 1.0
     else if (ratio < 0) ratio = 0.0
-    val rightIconsColor = defaultIconsColor.blendWith(
-            getActiveIconsColorFor(primaryColor), ratio.toFloat())
+    val rightIconsColor = defaultIconsColor.blendWith(getActiveIconsColorFor(primaryColor),
+                                                      ratio.toFloat())
     try {
         drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = rightIconsColor
     } catch (ignored:Exception) {

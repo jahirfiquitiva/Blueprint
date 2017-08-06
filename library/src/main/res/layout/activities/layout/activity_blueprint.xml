@@ -37,8 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipChildren="false"
-            android:fitsSystemWindows="true"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolbar"
@@ -74,7 +73,7 @@
                         android:id="@+id/toolbarGradient"
                         android:layout_width="match_parent"
                         android:layout_height="84.0dip"
-                        android:background="@drawable/gradient"
+                        android:background="@drawable/gradient_inverse"
                         android:fitsSystemWindows="true"
                         app:layout_collapseMode="parallax"
                         tools:ignore="ContentDescription"/>
@@ -101,9 +100,6 @@
             android:id="@+id/fragments_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="?actionBarSize"
-            android:clipToPadding="false"
-            android:clipChildren="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <jahirfiquitiva.libs.kauextensions.ui.views.CounterFab

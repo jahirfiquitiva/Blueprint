@@ -67,4 +67,13 @@
     <string name="apply_title">Apply %1$s</string>
     <string name="apply_content">We have detected you are using %1$s. To start using our icon pack, just apply it to your launcher.</string>
 
+
+    <string name="launcher_icon_restored">%1$s launcher icon was restored</string>
+    <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
+    <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
+
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Icon Restorer Widget</string>
+    <string name="clock_widget_title">Analog Clock</string>
+
 </resources>
