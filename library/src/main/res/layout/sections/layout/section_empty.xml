@@ -13,9 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +23,7 @@
 
     <include layout="@layout/extra_empty_views"/>
 
-    <jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
+    <jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
             android:id="@+id/empty_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

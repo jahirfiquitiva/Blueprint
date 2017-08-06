@@ -12,24 +12,19 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.models.viewmodels
 
 import android.content.Context
-import jahirfiquitiva.libs.blueprint.extensions.getDefaultLauncher
-import jahirfiquitiva.libs.blueprint.extensions.konfigs
-import jahirfiquitiva.libs.blueprint.models.Launcher
+import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
+import jahirfiquitiva.libs.blueprint.extensions.defaultLauncher
 
 class HomeApplyCardViewModel:BaseViewModel<Boolean>() {
     override fun loadItems(context:Context):Boolean {
-        val defLauncher:Launcher? = context.getDefaultLauncher()
-        val initCard = defLauncher?.isActuallySupported ?: false
+        val initCard = context.defaultLauncher?.isActuallySupported ?: false
         if (initCard) {
-            return !context.konfigs.isApplyCardDismissed
+            return !context.bpKonfigs.isApplyCardDismissed
         } else {
             return false
         }

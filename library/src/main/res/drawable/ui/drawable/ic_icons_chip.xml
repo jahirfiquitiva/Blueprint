@@ -13,9 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
         android:width="24dp"
@@ -27,5 +24,5 @@
             android:fillColor="#000"
             android:pathData="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z
 M16.3,18.2L12,15.5l-4.3,2.6l1.1-4.9L5,9.9
-l5-0.4l2-4.6l2,4.6l5,0.4l-3.8,3.3L16.3,18.2z" />
+l5-0.4l2-4.6l2,4.6l5,0.4l-3.8,3.3L16.3,18.2z"/>
 </vector>

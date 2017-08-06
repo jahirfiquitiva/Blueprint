@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.activities.base
@@ -31,10 +28,22 @@ import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.Menu
 import android.widget.ImageView
+import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.gone
+import ca.allanwang.kau.utils.goneIf
+import ca.allanwang.kau.utils.hideIf
+import ca.allanwang.kau.utils.isHidden
+import ca.allanwang.kau.utils.setMarginBottom
+import ca.allanwang.kau.utils.shareText
+import ca.allanwang.kau.utils.showIf
+import ca.allanwang.kau.utils.tint
+import ca.allanwang.kau.utils.visible
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.extensions.*
+import jahirfiquitiva.libs.blueprint.extensions.blueprintFormat
+import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
+import jahirfiquitiva.libs.blueprint.extensions.updateToolbarColors
 import jahirfiquitiva.libs.blueprint.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.fragments.IconsFragment
@@ -42,18 +51,40 @@ import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.holders.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.holders.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
-import jahirfiquitiva.libs.blueprint.ui.layouts.CustomCoordinatorLayout
-import jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout
-import jahirfiquitiva.libs.blueprint.ui.views.CounterFab
-import jahirfiquitiva.libs.blueprint.ui.views.callbacks.CollapsingToolbarCallback
-import jahirfiquitiva.libs.blueprint.utils.*
-import jahirfiquitiva.libs.fabsmenu.DimensionUtils
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_APPLY_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_PREVIEWS_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_REQUEST_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_WALLPAPERS_POSITION
 import jahirfiquitiva.libs.fabsmenu.FABsMenu
 import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
 import jahirfiquitiva.libs.fabsmenu.TitleFAB
+import jahirfiquitiva.libs.frames.utils.PLAY_STORE_LINK_PREFIX
+import jahirfiquitiva.libs.kauextensions.extensions.accentColor
+import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
+import jahirfiquitiva.libs.kauextensions.extensions.changeOptionVisibility
+import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
+import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.getAppName
+import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
+import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
+import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
+import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
+import jahirfiquitiva.libs.kauextensions.extensions.openLink
+import jahirfiquitiva.libs.kauextensions.extensions.overlayColor
+import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
+import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
+import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
+import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
+import jahirfiquitiva.libs.kauextensions.extensions.setupStatusBarStyle
+import jahirfiquitiva.libs.kauextensions.extensions.showToast
+import jahirfiquitiva.libs.kauextensions.extensions.tintMenu
+import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
+import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
+import jahirfiquitiva.libs.kauextensions.ui.views.CounterFab
+import jahirfiquitiva.libs.kauextensions.ui.views.callbacks.CollapsingToolbarCallback
 
 abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
-
     private lateinit var coordinatorLayout:CustomCoordinatorLayout
     private lateinit var appBarLayout:FixedElevationAppBarLayout
     private lateinit var collapsingToolbar:CollapsingToolbarLayout
@@ -63,38 +94,40 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private lateinit var fabsMenu:FABsMenu
     private lateinit var filtersDrawer:Drawer
     var drawer:Drawer? = null
-
+    
     private var iconsFilters:ArrayList<String> = ArrayList()
     internal var currentItemId:Int = -1
-
+    
     internal var filtersListener:FiltersListener? = null
-
+    
+    override fun fragmentsContainer():Int = R.id.fragments_container
+    
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        setupStatusBarStyle(true, primaryDarkColor.isColorLight())
+        setupStatusBarStyle(true, primaryDarkColor.isColorLight(0.6F))
         setContentView(R.layout.activity_blueprint)
         initMainComponents(savedInstanceState)
     }
-
+    
     override fun onBackPressed() {
         if (currentItemId == DEFAULT_HOME_POSITION) super.clearBackStack()
         super.onBackPressed()
     }
-
+    
     override fun onSaveInstanceState(outState:Bundle?) {
         outState?.putString("toolbarTitle", collapsingToolbar.title.toString())
         outState?.putInt("currentItemId", currentItemId)
         outState?.putInt("pickerKey", picker)
         super.onSaveInstanceState(outState)
     }
-
+    
     override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         collapsingToolbar.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         picker = savedInstanceState?.getInt("pickerKey") ?: 0
         navigateToItem(getNavigationItems()[savedInstanceState?.getInt("currentItemId") ?: 0])
     }
-
+    
     private fun initMainComponents(savedInstance:Bundle?) {
         initToolbar()
         initCollapsingToolbar()
@@ -102,62 +135,58 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         initFABsMenu()
         initFiltersDrawer(savedInstance)
     }
-
+    
     private fun initFAB() {
         fab = findViewById(R.id.fab)
-        fab.setImageDrawable("ic_send".getDrawable(this).tintWithColor(
-                getActiveIconsColorFor(accentColor)))
-        fab.updateBottomMargin(getDimensionPixelSize(
-                if (hasBottomBar()) R.dimen.fab_with_bottom_bar_margin else R.dimen.fab_margin))
+        fab.setImageDrawable("ic_send".getDrawable(this).tint(getActiveIconsColorFor(accentColor)))
+        fab.setMarginBottom(getDimensionPixelSize(
+                if (hasBottomBar()) R.dimen.fab_with_bottom_bar_margin else R.dimen.fabs_margin))
         fab.setOnClickListener { startRequestsProcess() }
     }
-
+    
     private fun initFABsMenu() {
         val fabsMenuOverlay:FABsMenuLayout = findViewById(R.id.fabs_menu_overlay)
         fabsMenuOverlay.overlayColor = overlayColor
-
+        
         fabsMenu = findViewById(R.id.fabs_menu)
         if (hasBottomBar()) {
-            fabsMenu.menuBottomMargin = DimensionUtils.convertDpToPixel(72F, this).toInt()
+            fabsMenu.menuBottomMargin = 72F.dpToPx.toInt()
         }
-        fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this).tintWithColor(
+        fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this).tint(
                 getActiveIconsColorFor(accentColor))
         fabsMenu.menuButtonRippleColor = rippleColor
         fabsMenu.menuUpdateListener = object:FABsMenu.OnFABsMenuUpdateListener {
             override fun onMenuClicked() {
                 fabsMenu.toggle()
             }
-
+            
             override fun onMenuCollapsed() {
                 // Do nothing
             }
-
+            
             override fun onMenuExpanded() {
                 // Do nothing
             }
         }
-
+        
         val rateFab:TitleFAB = findViewById(R.id.rate_fab)
-        rateFab.setImageDrawable(
-                "ic_rate".getDrawable(this).tintWithColor(activeIconsColor))
+        rateFab.setImageDrawable("ic_rate".getDrawable(this).tint(activeIconsColor))
         rateFab.titleTextColor = primaryTextColor
         rateFab.rippleColor = rippleColor
         rateFab.setOnClickListener { openLink(PLAY_STORE_LINK_PREFIX + packageName) }
-
+        
         val shareFab:TitleFAB = findViewById(R.id.share_fab)
-        shareFab.setImageDrawable(
-                "ic_share".getDrawable(this).tintWithColor(activeIconsColor))
+        shareFab.setImageDrawable("ic_share".getDrawable(this).tint(activeIconsColor))
         shareFab.titleTextColor = primaryTextColor
         shareFab.rippleColor = rippleColor
         shareFab.setOnClickListener {
             shareText(getString(R.string.share_this_app, getAppName(),
                                 PLAY_STORE_LINK_PREFIX + packageName))
         }
-
+        
         val donateFab:TitleFAB = findViewById(R.id.donate_fab)
-        if (donationsEnabled()) {
-            donateFab.setImageDrawable(
-                    "ic_donate".getDrawable(this).tintWithColor(activeIconsColor))
+        if (donationsEnabled) {
+            donateFab.setImageDrawable("ic_donate".getDrawable(this).tint(activeIconsColor))
             donateFab.titleTextColor = primaryTextColor
             donateFab.rippleColor = rippleColor
             donateFab.setOnClickListener {
@@ -166,22 +195,21 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         } else {
             fabsMenu.removeButton(donateFab)
         }
-
+        
         val helpFab:TitleFAB = findViewById(R.id.help_fab)
-        helpFab.setImageDrawable(
-                "ic_help".getDrawable(this).tintWithColor(activeIconsColor))
+        helpFab.setImageDrawable("ic_help".getDrawable(this).tint(activeIconsColor))
         helpFab.titleTextColor = primaryTextColor
         helpFab.rippleColor = rippleColor
         helpFab.setOnClickListener {
             // TODO: Open help section
         }
     }
-
+    
     open fun initToolbar() {
         toolbar = findViewById(R.id.toolbar)
         menu = toolbar.menu
         menuInflater.inflate(R.menu.menu_main, menu)
-        tintToolbar(toolbar, getActiveIconsColorFor(primaryColor))
+        toolbar.tint(getActiveIconsColorFor(primaryColor))
         toolbar.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
                     val i = item.itemId
@@ -195,7 +223,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                     return@OnMenuItemClickListener false
                 })
     }
-
+    
     private fun initCollapsingToolbar() {
         coordinatorLayout = findViewById(R.id.mainCoordinatorLayout)
         appBarLayout = findViewById(R.id.appBar)
@@ -203,7 +231,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         collapsingToolbar.setExpandedTitleColor(Color.TRANSPARENT)
         collapsingToolbar.setCollapsedTitleTextColor(primaryTextColor)
         appBarLayout.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
-            override fun onVerticalOffsetChanged(appBar:AppBarLayout?, verticalOffset:Int) {
+            override fun onVerticalOffsetChanged(appBar:AppBarLayout, verticalOffset:Int) {
                 updateToolbarColorsHere(verticalOffset)
             }
         })
@@ -211,7 +239,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         val wallManager = WallpaperManager.getInstance(this)
         if (picker == 0 && getShortcut().isEmpty()) {
             var drawable:Drawable? = null
-            if (konfigs.wallpaperAsToolbarHeaderEnabled) {
+            if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
                 drawable = wallManager?.fastDrawable
             } else {
                 val picName = getString(R.string.toolbar_picture)
@@ -224,14 +252,14 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             }
             wallpaper?.alpha = .95f
             wallpaper?.setImageDrawable(drawable)
-            wallpaper?.makeVisible()
+            wallpaper?.visible()
             if (wallpaper == null) {
                 val gradient:ImageView? = findViewById(R.id.toolbarGradient)
-                gradient?.makeGone()
+                gradient?.gone()
             }
         }
     }
-
+    
     fun initFiltersDrawer(savedInstance:Bundle?) {
         val filtersDrawerBuilder = DrawerBuilder().withActivity(this)
         filtersDrawerBuilder.addDrawerItems(
@@ -281,7 +309,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         if (savedInstance != null) filtersDrawerBuilder.withSavedInstance(savedInstance)
         filtersDrawer = filtersDrawerBuilder.build()
     }
-
+    
     protected open fun navigateToItem(item:NavigationItem):Boolean {
         val id = item.id
         if (currentItemId == id) return false
@@ -290,11 +318,11 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             updateToolbarMenuItems(item)
             fabsMenu.collapse()
             if (fabsMenu.menuButton.isShown) fabsMenu.menuButton.hideIf(id != DEFAULT_HOME_POSITION)
-            fabsMenu.makeGoneIf(id != DEFAULT_HOME_POSITION)
+            fabsMenu.goneIf(id != DEFAULT_HOME_POSITION)
             if (fabsMenu.menuButton.isHidden)
                 fabsMenu.menuButton.showIf(id == DEFAULT_HOME_POSITION)
             fab.showIf(id == DEFAULT_REQUEST_POSITION)
-            appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, konfigs.animationsEnabled)
+            appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, bpKonfigs.animationsEnabled)
             collapsingToolbar.title = getString(
                     if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
             coordinatorLayout.allowScroll = id == DEFAULT_HOME_POSITION
@@ -307,7 +335,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         }
         return false
     }
-
+    
     private fun updateToolbarMenuItems(item:NavigationItem) {
         menu.changeOptionVisibility(R.id.search,
                                     item.id == DEFAULT_PREVIEWS_POSITION)
@@ -319,16 +347,16 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                     item.id == DEFAULT_WALLPAPERS_POSITION)
         menu.changeOptionVisibility(R.id.select_all,
                                     item.id == DEFAULT_REQUEST_POSITION)
-        tintToolbarMenu(toolbar, menu, getActiveIconsColorFor(primaryColor))
+        toolbar.tintMenu(menu, getActiveIconsColorFor(primaryColor))
     }
-
+    
     private fun lockFiltersDrawer(lock:Boolean) {
         val drawerLayout = filtersDrawer.drawerLayout
         drawerLayout?.setDrawerLockMode(
                 if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
                 Gravity.END)
     }
-
+    
     open fun getFragmentForNavigationItem(id:Int):Fragment {
         val frag:Fragment
         when (id) {
@@ -338,11 +366,11 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         }
         return frag
     }
-
+    
     private fun getIconsFiltersNames():Array<String> {
         return getStringArray(R.array.icon_filters)
     }
-
+    
     override fun getNavigationItems():Array<NavigationItem> {
         return arrayOf(
                 NavigationItem("Home", DEFAULT_HOME_POSITION, R.string.section_home,
@@ -357,13 +385,13 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                R.drawable.ic_request)
                       )
     }
-
+    
     fun getToolbar():Toolbar? = toolbar
-
+    
     fun updateToolbarColorsHere(offset:Int) = updateToolbarColors(toolbar, drawer, offset)
-
+    
     fun startRequestsProcess() = showToast("Creating request")
-
+    
     interface FiltersListener {
         fun onFiltersUpdated(filters:ArrayList<String>)
     }

@@ -12,11 +12,8 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
-<jahirfiquitiva.libs.blueprint.ui.layouts.CustomCoordinatorLayout
+<jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -35,7 +32,7 @@
             android:clipToPadding="false"
             app:elevation="8dp"/>
 
-    <jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout
+    <jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,7 +74,7 @@
                         android:id="@+id/toolbarGradient"
                         android:layout_width="match_parent"
                         android:layout_height="84.0dip"
-                        android:background="@drawable/toolbar_gradient"
+                        android:background="@drawable/gradient"
                         android:fitsSystemWindows="true"
                         app:layout_collapseMode="parallax"
                         tools:ignore="ContentDescription"/>
@@ -93,15 +90,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:transitionName="actionBar"
-                    android:theme="?attr/actionBarTheme"
-                    app:popupTheme="?attr/actionBarPopupTheme"
-                    app:contentInsetStart="@dimen/second_keyline"
                     app:layout_collapseMode="pin"
                     tools:ignore="UnusedAttribute"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
-    </jahirfiquitiva.libs.blueprint.ui.layouts.FixedElevationAppBarLayout>
+    </jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout>
 
     <FrameLayout
             android:id="@+id/fragments_container"
@@ -112,7 +106,7 @@
             android:clipChildren="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <jahirfiquitiva.libs.blueprint.ui.views.CounterFab
+    <jahirfiquitiva.libs.kauextensions.ui.views.CounterFab
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,14 +114,13 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="bottom|end"
-            android:layout_marginRight="@dimen/fab_margin"
-            android:layout_marginEnd="@dimen/fab_margin"
-            android:layout_marginBottom="@dimen/fab_margin"
+            android:layout_marginRight="@dimen/fabs_margin"
+            android:layout_marginEnd="@dimen/fabs_margin"
+            android:layout_marginBottom="@dimen/fabs_margin"
             android:visibility="gone"
             app:fabSize="normal"
-            app:backgroundTint="?attr/colorAccent"
-            app:rippleColor="@color/semitransparent_white"/>
+            app:backgroundTint="?attr/colorAccent"/>
 
     <include layout="@layout/extra_fabs_menu"/>
 
-</jahirfiquitiva.libs.blueprint.ui.layouts.CustomCoordinatorLayout>
+</jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout>

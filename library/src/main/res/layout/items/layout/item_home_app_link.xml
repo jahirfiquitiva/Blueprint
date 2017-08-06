@@ -12,9 +12,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <LinearLayout
@@ -32,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textStyle="bold"
-            android:padding="@dimen/fab_margin"
+            android:padding="@dimen/fabs_margin"
             android:visibility="visible"
             android:clickable="false"
             android:text="@string/more_apps"/>
@@ -45,18 +42,18 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:minHeight="@dimen/md_listitem_height"
-            android:layout_marginLeft="@dimen/cards_super_small_margin"
-            android:layout_marginStart="@dimen/cards_super_small_margin"
+            android:layout_marginLeft="@dimen/cards_small_margin"
+            android:layout_marginStart="@dimen/cards_small_margin"
             android:layout_marginRight="@dimen/cards_margin"
             android:layout_marginEnd="@dimen/cards_margin"
-            android:paddingBottom="@dimen/cards_super_small_margin"
+            android:paddingBottom="@dimen/cards_small_margin"
             android:orientation="horizontal"
             tools:ignore="PrivateResource">
 
         <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
                 android:id="@+id/home_app_link_image"
-                android:layout_width="@dimen/app_link_icon_size"
-                android:layout_height="@dimen/app_link_icon_size"
+                android:layout_width="@dimen/icon_medium"
+                android:layout_height="@dimen/icon_medium"
                 tools:ignore="ContentDescription"/>
 
         <LinearLayout
@@ -65,8 +62,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/cards_super_small_margin"
-                android:layout_marginStart="@dimen/cards_super_small_margin"
+                android:layout_marginLeft="@dimen/cards_small_margin"
+                android:layout_marginStart="@dimen/cards_small_margin"
                 android:padding="@dimen/cards_margin"
                 android:gravity="center_vertical">
 
@@ -83,15 +80,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingMultiplier="1.2"
-                    android:paddingTop="@dimen/grid_padding_vertical"
+                    android:paddingTop="@dimen/cards_margin"
                     tools:text="Something"/>
 
         </LinearLayout>
 
         <jahirfiquitiva.libs.blueprint.ui.views.SquaredImageView
                 android:id="@+id/home_app_link_open_icon"
-                android:layout_width="@dimen/app_link_open_icon_size"
-                android:layout_height="@dimen/app_link_open_icon_size"
+                android:layout_width="@dimen/icon_small"
+                android:layout_height="@dimen/icon_small"
                 android:foreground="?selectableItemBackgroundBorderless"
                 tools:ignore="ContentDescription"/>
 

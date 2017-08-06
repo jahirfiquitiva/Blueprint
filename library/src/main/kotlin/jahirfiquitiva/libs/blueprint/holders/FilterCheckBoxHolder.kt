@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.holders
@@ -25,20 +22,20 @@ class FilterCheckBoxHolder {
     private lateinit var checkBox:AppCompatCheckBox
     private lateinit var title:String
     private var listener:StateChangeListener? = null
-
+    
     fun setup(checkBox:AppCompatCheckBox, title:String, listener:StateChangeListener?) {
         this.checkBox = checkBox
         this.title = title
         this.listener = listener
     }
-
+    
     fun apply(checked:Boolean, fireFiltersListener:Boolean = true) {
         checkBox.isChecked = checked
         listener?.onStateChanged(checked, title, fireFiltersListener)
     }
-
+    
     fun isChecked():Boolean = checkBox.isChecked
-
+    
     interface StateChangeListener {
         fun onStateChanged(checked:Boolean, title:String, fireFiltersListener:Boolean)
     }

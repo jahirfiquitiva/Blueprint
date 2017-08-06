@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.holders
@@ -30,10 +27,10 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.Icon
 
 class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
-
+    
     var lastPosition = 0
     val icon:ImageView? = itemView?.findViewById(R.id.icon)
-
+    
     fun bind(item:Icon, listener:(Icon) -> Unit) = with(itemView) {
         Glide.with(itemView?.context)
                 .load(item.icon)
@@ -54,7 +51,7 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
                 })
         setOnClickListener { listener(item) }
     }
-
+    
     private fun clearAnimations() {
         itemView?.clearAnimation()
         icon?.clearAnimation()

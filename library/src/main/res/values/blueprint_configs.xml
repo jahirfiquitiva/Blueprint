@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017. Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+
+    <!--    Configure your own Splash Screen style
+    -       Only change the parent. Available Styles:
+    -       LightTheme.SplashScreen
+    -       DarkTheme.SplashScreen
+    -       TransparentTheme.SplashScreen
+    -       AmoledTheme.SplashScreen
+    -->
+    <style name="MySplashScreen" parent="LightTheme.SplashScreen"/>
+
+    <!--    Define the default app theme
+    -       0 -> Light
+    -       1 -> Dark
+    -       2 -> Transparent
+    -       3 -> Amoled
+    -       4 -> Auto Light-Dark
+    -       5 -> Auto Light-Amoled
+    -->
+    <integer name="default_theme">0</integer>
+
+    <!--    Choose whether you want colored tiles by default -->
+    <bool name="enable_colored_tiles">false</bool>
+
+    <!--    These are your donation items. Only put their ids here -->
+    <string-array name="donation_items">
+    </string-array>
+
+    <!--    Set a drawable name in case you want to use a static picture in toolbar.
+    -       Leave empty if you don't want to use a static one.
+    -->
+    <string name="toolbar_picture"/>
+
+
+    <!--    These arrays are for the list of apps or links in main section. -->
+    <string-array name="home_list_titles">
+    </string-array>
+    <string-array name="home_list_descriptions">
+    </string-array>
+    <string-array name="home_list_icons">
+    </string-array>
+    <string-array name="home_list_links">
+    </string-array>
+
+
+    <!--    Do you want the app to read the icons from res/xml/drawable.xml ? (true)
+            Or do you prefer the icons to be loaded from res/values/icon_pack.xml ? (false)
+    -->
+    <bool name="xml_drawable_enabled">true</bool>
+
+
+    <!-- Icons section columns number -->
+    <integer name="icons_grid_columns">4</integer>
+</resources>

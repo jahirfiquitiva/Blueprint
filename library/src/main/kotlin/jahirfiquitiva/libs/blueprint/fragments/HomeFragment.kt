@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.fragments
@@ -27,31 +24,30 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.adapters.HomeItemsAdapter
-import jahirfiquitiva.libs.blueprint.extensions.openLink
 import jahirfiquitiva.libs.blueprint.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.models.viewmodels.HomeApplyCardViewModel
 import jahirfiquitiva.libs.blueprint.models.viewmodels.HomeItemViewModel
-import jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.extensions.openLink
+import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
 class HomeFragment:BaseViewModelFragment() {
-
+    
     private lateinit var model:HomeItemViewModel
     private lateinit var applyCardModel:HomeApplyCardViewModel
     private lateinit var rv:EmptyViewRecyclerView
     private lateinit var homeAdapter:HomeItemsAdapter
-
+    
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(HomeItemViewModel::class.java)
         applyCardModel = ViewModelProviders.of(this).get(HomeApplyCardViewModel::class.java)
     }
-
+    
     override fun registerObserver() {
         model.items.observe(this, Observer<ArrayList<HomeItem>> { data ->
-            try {
-                homeAdapter.clearAndAddAll(data)
-                rv.state = EmptyViewRecyclerView.STATE_NORMAL
-            } catch (ignored:Exception) {
+            data?.let {
+                homeAdapter.setItems(it)
+                rv.state = EmptyViewRecyclerView.State.NORMAL
             }
         })
         applyCardModel.items.observe(this, Observer<Boolean> { data ->
@@ -62,31 +58,31 @@ class HomeFragment:BaseViewModelFragment() {
             }
         })
     }
-
+    
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     override fun unregisterObserver() {
         model.items.removeObservers(this)
         applyCardModel.items.removeObservers(this)
     }
-
+    
     override fun loadDataFromViewModel() {
         model.loadData(activity)
         applyCardModel.loadData(activity)
     }
-
+    
     override fun getContentLayout():Int = R.layout.section_home
-
+    
     override fun initUI(content:View) {
         rv = content.findViewById(R.id.home_rv)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
-        rv.state = EmptyViewRecyclerView.STATE_LOADING
+        rv.state = EmptyViewRecyclerView.State.LOADING
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         homeAdapter = HomeItemsAdapter(context, { onItemClicked(it) })
         rv.setHasFixedSize(true)
         rv.adapter = homeAdapter
     }
-
+    
     override fun onItemClicked(item:Any) {
         if (item is HomeItem) {
             if (item.intent != null) context.startActivity(item.intent)
