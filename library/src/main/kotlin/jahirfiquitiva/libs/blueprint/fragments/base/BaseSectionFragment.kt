@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.fragments.base
@@ -24,7 +21,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import jahirfiquitiva.libs.blueprint.extensions.inflate
+import ca.allanwang.kau.utils.inflate
 import jahirfiquitiva.libs.blueprint.fragments.presenters.BasicFragmentPresenter
 
 abstract class BaseSectionFragment:LifecycleFragment(), BasicFragmentPresenter {

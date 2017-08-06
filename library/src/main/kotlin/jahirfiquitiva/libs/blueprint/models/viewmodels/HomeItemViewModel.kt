@@ -12,35 +12,31 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.models.viewmodels
 
 import android.content.Context
 import android.content.Intent
+import ca.allanwang.kau.utils.isAppInstalled
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.extensions.getDrawable
-import jahirfiquitiva.libs.blueprint.extensions.getStringArray
-import jahirfiquitiva.libs.blueprint.extensions.isAppInstalled
 import jahirfiquitiva.libs.blueprint.models.HomeItem
-import jahirfiquitiva.libs.blueprint.utils.PLAY_STORE_LINK_PREFIX
+import jahirfiquitiva.libs.frames.models.viewmodels.ListViewModel
+import jahirfiquitiva.libs.frames.utils.PLAY_STORE_LINK_PREFIX
+import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
+import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
 
-class HomeItemViewModel:BaseViewModel<ArrayList<HomeItem>>() {
-
-    override fun loadItems(context:Context):ArrayList<HomeItem> {
+class HomeItemViewModel:ListViewModel<Context, HomeItem>() {
+    override fun loadItems(param:Context):ArrayList<HomeItem> {
         val everything = ArrayList<HomeItem>()
         val apps = ArrayList<HomeItem>()
         val links = ArrayList<HomeItem>()
-        val titles = context.getStringArray(R.array.home_list_titles)
-        val descriptions = context.getStringArray(
-                R.array.home_list_descriptions)
-        val icons = context.getStringArray(R.array.home_list_icons)
-        val urls = context.getStringArray(R.array.home_list_links)
+        val titles = param.getStringArray(R.array.home_list_titles)
+        val descriptions = param.getStringArray(R.array.home_list_descriptions)
+        val icons = param.getStringArray(R.array.home_list_icons)
+        val urls = param.getStringArray(R.array.home_list_links)
         if (titles.size == descriptions.size && descriptions.size == icons.size
-            && icons.size == urls.size) {
+                && icons.size == urls.size) {
             val maxSize = (if (titles.size > 4) 4 else titles.size) - 1
             for (i in 0..maxSize) {
                 val url = urls[i]
@@ -49,14 +45,13 @@ class HomeItemViewModel:BaseViewModel<ArrayList<HomeItem>>() {
                 var intent:Intent? = null
                 if (isAnApp) {
                     val packageName = url.substring(url.lastIndexOf("="))
-                    isInstalled = context.isAppInstalled(packageName)
-                    intent = context.packageManager.getLaunchIntentForPackage(packageName)
+                    isInstalled = param.isAppInstalled(packageName)
+                    intent = param.packageManager.getLaunchIntentForPackage(packageName)
                 }
                 val item = HomeItem(titles[i], descriptions[i], urls[i],
-                                    icons[i].getDrawable(context),
-                                    (if (isAnApp)
-                                        if (isInstalled) "ic_open_app" else "ic_download"
-                                    else "ic_open_app").getDrawable(context),
+                                    icons[i].getDrawable(param),
+                                    (if (isAnApp) if (isInstalled) "ic_open_app" else "ic_download"
+                                    else "ic_open_app").getDrawable(param),
                                     isAnApp, isInstalled, intent)
                 if (isAnApp) apps.add(item) else links.add(item)
             }
@@ -65,5 +60,4 @@ class HomeItemViewModel:BaseViewModel<ArrayList<HomeItem>>() {
         everything.addAll(links)
         return everything
     }
-
 }

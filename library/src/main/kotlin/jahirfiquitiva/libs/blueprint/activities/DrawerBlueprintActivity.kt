@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.activities
@@ -24,6 +21,7 @@ import android.os.Bundle
 import android.support.v4.widget.TextViewCompat
 import android.view.View
 import android.widget.TextView
+import ca.allanwang.kau.utils.gone
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -31,6 +29,13 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.extensions.*
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
+import jahirfiquitiva.libs.kauextensions.extensions.accentColor
+import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.getAppName
+import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
+import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
+import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
+import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 
 abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
 
@@ -50,7 +55,7 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
 
     fun initDrawer(savedInstance:Bundle?) {
         val v:View = findViewById(R.id.bottom_navigation)
-        v.makeGone()
+        v.gone()
         val accountHeaderBuilder = AccountHeaderBuilder().withActivity(this)
         val header:Drawable? = "drawer_header".getDrawable(this)
         if (header != null) {
@@ -59,7 +64,7 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
             accountHeaderBuilder.withHeaderBackground(accentColor)
         }
         if (getBoolean(R.bool.with_drawer_texts)) {
-            accountHeaderBuilder.withSelectionFirstLine(getString(R.string.app_long_name))
+            accountHeaderBuilder.withSelectionFirstLine(getAppName())
             accountHeaderBuilder.withSelectionSecondLine("v " + getAppVersion())
         }
         accountHeaderBuilder.withProfileImagesClickable(false)
@@ -113,8 +118,7 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
             drawerBuilder.withSavedInstance(savedInstance)
 
         drawer = drawerBuilder.build()
-        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = getActiveIconsColorFor(
-                primaryColor)
+        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = getActiveIconsColorFor(primaryColor)
     }
 
     override fun onBackPressed() {

@@ -13,9 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <LinearLayout
@@ -51,10 +48,10 @@
                     android:id="@+id/welcome_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/cards_super_small_margin"
-                    android:layout_marginTop="@dimen/cards_content_margin_mini"
+                    android:layout_marginBottom="@dimen/cards_small_margin"
+                    android:layout_marginTop="@dimen/items_spacing"
                     android:lineSpacingMultiplier="1.2"
-                    android:text="@string/theme_description"/>
+                    android:text="@string/app_description"/>
 
         </LinearLayout>
 

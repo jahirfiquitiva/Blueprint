@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017. Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string-array name="credits_photos" formatted="false" tools:ignore="TypographyDashes">
+        <item>https://lh3.googleusercontent.com/-0mdcClKXlgM/AAAAAAAAAAI/AAAAAAAAAAA/xgdLWeAg7pM/s120-c/photo.jpg</item>
+        <item>https://ssl.gstatic.com/images/branding/product/2x/avatar_square_grey_512dp.png</item>
+    </string-array>
+
+    <string-array name="credits_titles">
+        <item>Your Name</item>
+        <item>Another Name</item>
+    </string-array>
+
+    <string-array name="credits_descriptions">
+        <item>Details of first credited person</item>
+        <item>Details of another credited person</item>
+    </string-array>
+
+    <string-array name="credits_buttons">
+        <item>Google+|Instagram</item>
+        <item>Facebook|Website|Twitter</item>
+    </string-array>
+
+    <string-array name="credits_links">
+        <item>https://www.google.com/+JahirFiquitivaR|http://instagram.com/jahirfiquitiva</item>
+        <item>https://facebook.com/|https://www.jahirfiquitiva.me/|https://twitter.com/jahirfiquitiva</item>
+    </string-array>
+</resources>

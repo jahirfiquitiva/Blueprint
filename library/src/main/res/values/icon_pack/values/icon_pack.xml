@@ -13,9 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
@@ -29,31 +26,6 @@
 
     <!-- Make sure the filters names are the same as the other arrays -->
     <string-array name="icon_filters">
-        <item>latest</item>
-        <item>system</item>
-        <item>google_apps</item>
-        <item>games</item>
-        <item>drawers</item>
     </string-array>
-
-    <!-- LATEST ICONS -->
-    <!-- All of your Latest icons listed here -->
-    <string-array name="latest"/>
-
-    <!-- SYSTEM ICONS -->
-    <!-- System icons listed here -->
-    <string-array name="system"/>
-
-    <!-- GOOGLE APPS ICONS -->
-    <!-- Google Apps icons are listed here -->
-    <string-array name="google_apps"/>
-
-    <!-- GAMES ICONS -->
-    <!-- Game icons are listed here -->
-    <string-array name="games"/>
-
-    <string-array name="drawers"/>
-
-    <string-array name="icon_pack"/>
 
 </resources>

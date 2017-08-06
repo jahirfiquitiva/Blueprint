@@ -12,52 +12,13 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.extensions
 
-import android.content.Context
-import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.support.v4.content.ContextCompat
-import android.support.v4.content.res.ResourcesCompat
 import jahirfiquitiva.libs.blueprint.utils.CAPS
 import jahirfiquitiva.libs.blueprint.utils.CAPS_LOCK
 import jahirfiquitiva.libs.blueprint.utils.SPACE
-
-fun String.getBitmap(context:Context):Bitmap? =
-        this.getBitmapDrawable(context)?.bitmap
-
-fun String.getBitmapDrawable(context:Context):BitmapDrawable? {
-    try {
-        return ResourcesCompat.getDrawable(context.resources,
-                                           this.getIconResource(context),
-                                           null) as BitmapDrawable?
-    } catch (e:Exception) {
-        throw Resources.NotFoundException("Icon with name ${this} could not be found")
-    }
-}
-
-fun String.getDrawable(context:Context):Drawable {
-    try {
-        return ContextCompat.getDrawable(context, this.getIconResource(context))
-    } catch (e:Exception) {
-        throw Resources.NotFoundException("Icon with name ${this} could not be found")
-    }
-}
-
-fun String.getIconResource(context:Context):Int {
-    val res = context.resources.getIdentifier(this, "drawable", context.packageName)
-    return if (res != 0) res else 0
-}
-
-fun String.formatCorrectly() =
-        replace("[^\\w\\s]+".toRegex(), " ").trim().replace(" +".toRegex(), " ").replace("\\p{Z}".toRegex(), "_")
 
 /**
  * Kotlin port of the icon names formatting method made by Aidan Follestad (afollestad)

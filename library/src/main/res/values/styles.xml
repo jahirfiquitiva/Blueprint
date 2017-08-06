@@ -3,8 +3,8 @@
 <!--
   ~ Copyright (c) 2017. Jahir Fiquitiva
   ~
-  ~ Licensed under the CreativeCommons Attribution-ShareAlike
-  ~ 4.0 International License. You may not use this file except in compliance
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike 
+  ~ 4.0 International License. You may not use this file except in compliance 
   ~ with the License. You may obtain a copy of the License at
   ~
   ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
@@ -14,89 +14,49 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <resources>
 
-    <style name="Toolbar.Popup.AppCompat.Light" parent="Theme.AppCompat.Light"/>
-
-    <style name="Toolbar.Popup.AppCompat.Dark" parent="Theme.AppCompat"/>
-
-    <style name="Toolbar.AppCompat.Responsive.Light" parent="AppTheme.Base"/>
-
-    <style name="Toolbar.AppCompat.Responsive.Dark" parent="AppTheme.Base.Dark"/>
-
-    <style name="Responsive.Toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="maxButtonHeight">48dp</item>
-        <item name="android:paddingLeft">@dimen/toolbar_horizontal_padding</item>
-        <item name="android:paddingRight">@dimen/toolbar_horizontal_padding</item>
-        <item name="contentInsetStart">@dimen/first_keyline</item>
-    </style>
-
-    <style name="Responsive.Toolbar.Button.Navigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="android:minWidth">48dp</item>
-    </style>
-
-    <style name="Responsive.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
-        <item name="android:paddingLeft">0dp</item>
-        <item name="android:paddingRight">0dp</item>
-    </style>
-
-    <style name="Responsive.ActionMode" parent="Widget.AppCompat.ActionMode">
-        <!--
-        <item name="android:paddingLeft">@dimen/toolbar_horizontal_padding</item>
-        -->
-        <item name="android:paddingLeft">0dp</item>
-        <item name="android:paddingRight">@dimen/toolbar_horizontal_padding</item>
-    </style>
-
-    <style name="Responsive.ActionButton.CloseMode" parent="Widget.AppCompat.ActionButton.CloseMode">
-        <item name="android:layout_marginRight">20dp</item>
-        <item name="android:minWidth">48dp</item>
-    </style>
-
     <style name="CardContent" parent="android:Widget">
-        <item name="android:paddingLeft">@dimen/cards_spacing</item>
-        <item name="android:paddingRight">@dimen/cards_spacing</item>
-        <item name="android:paddingTop">@dimen/cards_spacing</item>
-        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+        <item name="android:paddingLeft">@dimen/items_spacing</item>
+        <item name="android:paddingRight">@dimen/items_spacing</item>
+        <item name="android:paddingTop">@dimen/items_spacing</item>
+        <item name="android:paddingBottom">@dimen/items_spacing</item>
         <item name="android:orientation">vertical</item>
     </style>
 
     <style name="ZooperCardContent" parent="android:Widget">
-        <item name="android:paddingLeft">@dimen/cards_spacing</item>
-        <item name="android:paddingRight">@dimen/cards_spacing</item>
-        <item name="android:paddingTop">@dimen/cards_spacing</item>
-        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+        <item name="android:paddingLeft">@dimen/items_spacing</item>
+        <item name="android:paddingRight">@dimen/items_spacing</item>
+        <item name="android:paddingTop">@dimen/items_spacing</item>
+        <item name="android:paddingBottom">@dimen/items_spacing</item>
     </style>
 
     <style name="AboutContent" parent="android:Widget">
-        <item name="android:paddingLeft">@dimen/card_little_margin</item>
-        <item name="android:paddingRight">@dimen/card_little_margin</item>
-        <item name="android:paddingTop">@dimen/cards_spacing</item>
-        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+        <item name="android:paddingLeft">@dimen/items_spacing_small</item>
+        <item name="android:paddingRight">@dimen/items_spacing_small</item>
+        <item name="android:paddingTop">@dimen/items_spacing</item>
+        <item name="android:paddingBottom">@dimen/items_spacing</item>
         <item name="android:orientation">vertical</item>
     </style>
 
     <style name="ListsContent" parent="android:Widget">
-        <item name="android:paddingLeft">@dimen/card_little_margin</item>
-        <item name="android:paddingRight">@dimen/card_little_margin</item>
-        <item name="android:paddingTop">@dimen/card_little_margin</item>
-        <item name="android:paddingBottom">@dimen/card_little_margin</item>
+        <item name="android:paddingLeft">@dimen/items_spacing_small</item>
+        <item name="android:paddingRight">@dimen/items_spacing_small</item>
+        <item name="android:paddingTop">@dimen/items_spacing_small</item>
+        <item name="android:paddingBottom">@dimen/items_spacing_small</item>
     </style>
 
     <style name="PreviewContent" parent="android:Widget">
-        <item name="android:paddingLeft">@dimen/icons_preview_row</item>
-        <item name="android:paddingRight">@dimen/icons_preview_row</item>
-        <item name="android:paddingTop">@dimen/cards_spacing</item>
-        <item name="android:paddingBottom">@dimen/cards_spacing</item>
+        <item name="android:paddingLeft">@dimen/items_spacing</item>
+        <item name="android:paddingRight">@dimen/items_spacing</item>
+        <item name="android:paddingTop">@dimen/items_spacing</item>
+        <item name="android:paddingBottom">@dimen/items_spacing</item>
     </style>
 
     <style name="HomeCardContent" parent="android:Widget">
-        <item name="android:padding">@dimen/fab_margin</item>
+        <item name="android:padding">@dimen/fabs_margin</item>
         <item name="android:orientation">vertical</item>
     </style>
 

@@ -13,9 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 <jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:clipChildren="false"
-            fab:fab_menuMargins="@dimen/fab_margin"
+            fab:fab_menuMargins="@dimen/fabs_margin"
             fab:fab_moreButtonBackgroundColor="?attr/colorAccent"
             fab:fab_moreButtonSize="normal"
             fab:fab_labelsPosition="left"

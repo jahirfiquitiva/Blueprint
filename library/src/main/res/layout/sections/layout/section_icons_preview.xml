@@ -13,9 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <RelativeLayout
@@ -29,14 +26,14 @@
 
     <include layout="@layout/extra_empty_views"/>
 
-    <jahirfiquitiva.libs.blueprint.ui.views.EmptyViewRecyclerView
+    <jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
             android:id="@+id/icons_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:overScrollMode="ifContentScrolls"
-            android:paddingBottom="@dimen/grid_padding_vertical"
-            android:paddingTop="@dimen/grid_padding_vertical"
+            android:paddingBottom="@dimen/cards_margin"
+            android:paddingTop="@dimen/cards_margin"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.pluscubed.recyclerfastscroll.RecyclerFastScroller

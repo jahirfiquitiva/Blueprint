@@ -12,62 +12,34 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.extensions
 
-import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.activities.base.ThemedActivity
-import jahirfiquitiva.libs.blueprint.utils.AMOLED
-import jahirfiquitiva.libs.blueprint.utils.AUTO_AMOLED
-import jahirfiquitiva.libs.blueprint.utils.AUTO_DARK
-import jahirfiquitiva.libs.blueprint.utils.DARK
-import jahirfiquitiva.libs.blueprint.utils.LIGHT
-import java.util.*
+import android.support.v7.widget.Toolbar
+import ca.allanwang.kau.utils.blendWith
+import com.mikepenz.materialdrawer.Drawer
+import jahirfiquitiva.libs.kauextensions.activities.ThemedActivity
+import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.getColorFromRes
+import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
+import jahirfiquitiva.libs.kauextensions.extensions.round
+import jahirfiquitiva.libs.kauextensions.extensions.tint
+import jahirfiquitiva.libs.kauextensions.extensions.updateStatusBarStyle
+import jahirfiquitiva.libs.kauextensions.ui.views.callbacks.CollapsingToolbarCallback
 
-fun ThemedActivity.setCustomTheme() {
-    val enterAnimation = android.R.anim.fade_in
-    val exitAnimation = android.R.anim.fade_out
-    overridePendingTransition(enterAnimation, exitAnimation)
-    setTheme(getCustomTheme())
-    setNavbarColor(getNavbarColor())
-}
-
-fun ThemedActivity.isDarkTheme():Boolean {
-    val c = Calendar.getInstance()
-    val hourOfDay = c.get(Calendar.HOUR_OF_DAY)
-    when (konfigs.currentTheme) {
-        LIGHT -> return false
-        DARK, AMOLED -> return true
-        AUTO_DARK, AUTO_AMOLED -> return hourOfDay !in 7..18
-        else -> return false
+fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, drawer:Drawer?, offset:Int) {
+    val defaultIconsColor = getColorFromRes(android.R.color.white)
+    var ratio = round(offset / 255.0, 1)
+    if (ratio > 1) ratio = 1.0
+    else if (ratio < 0) ratio = 0.0
+    val rightIconsColor = defaultIconsColor.blendWith(getActiveIconsColorFor(primaryColor),
+                                                      ratio.toFloat())
+    try {
+        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = rightIconsColor
+    } catch (ignored:Exception) {
     }
-}
-
-fun ThemedActivity.getCustomTheme():Int {
-    val c = Calendar.getInstance()
-    val hourOfDay = c.get(Calendar.HOUR_OF_DAY)
-    when (konfigs.currentTheme) {
-        LIGHT -> return R.style.AppTheme
-        DARK -> return R.style.AppThemeDark
-        AMOLED -> return R.style.AppThemeAmoled
-        AUTO_DARK -> return if (hourOfDay in 7..18) R.style.AppTheme else R.style.AppThemeDark
-        AUTO_AMOLED -> return if (hourOfDay in 7..18) R.style.AppTheme else R.style.AppThemeAmoled
-        else -> return R.style.AppTheme
-    }
-}
-
-fun ThemedActivity.getNavbarColor():Int {
-    if (konfigs.currentTheme == AMOLED)
-        return getColorFromRes(android.R.color.black)
-    else if (konfigs.hasColoredNavbar)
-        if (konfigs.currentTheme == DARK)
-            return getColorFromRes(R.color.dark_theme_navigation_bar)
-        else
-            return getColorFromRes(R.color.light_theme_navigation_bar)
-    else
-        return getColorFromRes(android.R.color.black)
+    toolbar.tint(rightIconsColor)
+    updateStatusBarStyle(
+            if (ratio > 0.7) CollapsingToolbarCallback.State.COLLAPSED else CollapsingToolbarCallback.State.EXPANDED)
 }

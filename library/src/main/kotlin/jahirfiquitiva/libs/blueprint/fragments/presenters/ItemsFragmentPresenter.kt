@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.fragments.presenters
@@ -27,7 +24,7 @@ interface ItemsFragmentPresenter:BasicFragmentPresenter {
     fun registerObserver()
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun unregisterObserver()
-
+    
     fun loadDataFromViewModel()
     fun onItemClicked(item:Any)
 }

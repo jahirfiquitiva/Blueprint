@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.activities
@@ -25,7 +22,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.extensions.konfigs
+import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 
 class LauncherIconRestorerActivity:AppCompatActivity() {
 
@@ -49,8 +46,8 @@ class LauncherIconRestorerActivity:AppCompatActivity() {
         val content:String
         if (className != null) {
             val component = ComponentName(packageName, componentName)
-            if (!konfigs.launcherIconShown) {
-                konfigs.launcherIconShown = true
+            if (!bpKonfigs.launcherIconShown) {
+                bpKonfigs.launcherIconShown = true
                 pm.setComponentEnabledSetting(component,
                                               PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                                               PackageManager.DONT_KILL_APP)

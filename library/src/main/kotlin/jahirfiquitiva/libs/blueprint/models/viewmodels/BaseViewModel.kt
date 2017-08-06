@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.models.viewmodels
@@ -28,6 +25,6 @@ abstract class BaseViewModel<T>:ViewModel() {
     fun loadData(context:Context) {
         items.postValue(loadItems(context))
     }
-
+    
     abstract protected fun loadItems(context:Context):T
 }

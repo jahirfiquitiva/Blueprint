@@ -12,27 +12,23 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Special thanks to the project contributors and collaborators
- * 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
  */
 
 package jahirfiquitiva.libs.blueprint.adapters
 
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import ca.allanwang.kau.utils.inflate
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.extensions.inflate
 import jahirfiquitiva.libs.blueprint.holders.IconHolder
 import jahirfiquitiva.libs.blueprint.models.Icon
+import jahirfiquitiva.libs.frames.adapters.BaseListAdapter
 
-class IconsAdapter(val listener:(Icon) -> Unit):BaseListAdapter<Icon>() {
+class IconsAdapter(val listener:(Icon) -> Unit):BaseListAdapter<Icon, IconHolder>() {
     override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):IconHolder {
         return IconHolder(parent?.inflate(R.layout.item_icon))
     }
-
-    override fun onBindViewHolder(holder:RecyclerView.ViewHolder?, position:Int) {
-        if (position < 0) return
+    
+    override fun doBind(holder:IconHolder, position:Int) {
         (holder as? IconHolder)?.bind(list[position], listener)
     }
 }

@@ -12,11 +12,9 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
+<!--suppress AndroidDomInspection -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="jahirfiquitiva.libs.blueprint">
@@ -264,27 +262,11 @@
 
         </activity>
 
-        <!-- Wallpapers Activities
-        <activity
-                android:name=".activities.WallpaperViewerActivity"
-                android:label="@string/title_activity_detailed_wallpaper"
-                android:theme="@style/AppTheme"/>
-        <activity
-                android:name=".activities.AltWallpaperViewerActivity"
-                android:label="@string/title_activity_detailed_wallpaper"
-                android:theme="@style/AppTheme"/>
-        <activity
-                android:name=".activities.MuzeiSettings"
-                android:exported="true"
-                android:label="@string/muzei_settings"
-                android:theme="@style/AppTheme.LaunchScreen"/> -->
-
-
         <!-- WIDGETS -->
         <!-- Icon restorer Widget -->
         <receiver
                 android:name=".widgets.IconRestorerWidget"
-                android:icon="@drawable/splash_screen_icon"
+                android:icon="@drawable/app_logo"
                 android:label="@string/iconrestorer_widget_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>

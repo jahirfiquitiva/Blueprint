@@ -13,9 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -32,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textStyle="bold"
-            android:padding="@dimen/fab_margin"
+            android:padding="@dimen/fabs_margin"
             android:visibility="visible"
             android:clickable="false"
             android:text="@string/general_info"/>
@@ -64,8 +61,8 @@
                     android:id="@+id/wallpapers_chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/fab_margin"
-                    android:layout_marginStart="@dimen/fab_margin"
+                    android:layout_marginLeft="@dimen/fabs_margin"
+                    android:layout_marginStart="@dimen/fabs_margin"
                     android:clickable="false"
                     app:deletable="false"/>
 
@@ -74,7 +71,7 @@
         <LinearLayout
                 android:id="@+id/widgets_chips"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/fab_margin"
+                android:layout_marginTop="@dimen/fabs_margin"
                 android:layout_marginRight="@dimen/cards_margin"
                 android:layout_marginEnd="@dimen/cards_margin"
                 android:layout_width="match_parent"
@@ -93,8 +90,8 @@
                     android:id="@+id/kustom_chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/fab_margin"
-                    android:layout_marginStart="@dimen/fab_margin"
+                    android:layout_marginLeft="@dimen/fabs_margin"
+                    android:layout_marginStart="@dimen/fabs_margin"
                     android:clickable="false"
                     app:deletable="false"/>
 

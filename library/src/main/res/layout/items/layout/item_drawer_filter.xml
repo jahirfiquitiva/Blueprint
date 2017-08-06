@@ -13,9 +13,6 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Special thanks to the project contributors and collaborators
-  ~ 	https://github.com/jahirfiquitiva/Blueprint#special-thanks
   -->
 
 <LinearLayout
@@ -34,12 +31,12 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/lists_padding"
-            android:paddingBottom="@dimen/lists_padding"
-            android:paddingLeft="@dimen/fab_margin"
-            android:paddingStart="@dimen/fab_margin"
-            android:paddingRight="@dimen/lists_padding"
-            android:paddingEnd="@dimen/lists_padding"
+            android:paddingTop="@dimen/cards_margin"
+            android:paddingBottom="@dimen/cards_margin"
+            android:paddingLeft="@dimen/fabs_margin"
+            android:paddingStart="@dimen/fabs_margin"
+            android:paddingRight="@dimen/cards_margin"
+            android:paddingEnd="@dimen/cards_margin"
             android:gravity="center_vertical"
             tools:ignore="Overdraw">
 
@@ -55,12 +52,11 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:paddingTop="@dimen/cards_super_small_margin"
-                    android:paddingBottom="@dimen/cards_super_small_margin"
-                    android:paddingStart="@dimen/lists_padding"
-                    android:paddingEnd="@dimen/lists_padding"
+                    android:paddingTop="@dimen/cards_small_margin"
+                    android:paddingBottom="@dimen/cards_margin"
+                    android:paddingStart="@dimen/cards_margin"
+                    android:paddingEnd="@dimen/cards_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:background="#ffcdd2"
                     tools:text="Google"/>
 
         </LinearLayout>
