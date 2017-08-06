@@ -80,12 +80,4 @@
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
-    <!-- TODO: DELETE THIS ITEM -->
-    <item
-            android:id="@+id/switch_theme"
-            android:title="Switch Theme"
-            android:orderInCategory="900"
-            app:showAsAction="never"
-            tools:ignore="AppCompatResource,HardcodedText"/>
-
 </menu>

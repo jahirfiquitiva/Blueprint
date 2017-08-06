@@ -190,7 +190,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             donateFab.titleTextColor = primaryTextColor
             donateFab.rippleColor = rippleColor
             donateFab.setOnClickListener {
-                // TODO: Init donations
+                doDonation()
             }
         } else {
             fabsMenu.removeButton(donateFab)
@@ -215,9 +215,6 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                     val i = item.itemId
                     if (i == R.id.filters) {
                         filtersDrawer.openDrawer()
-                        return@OnMenuItemClickListener true
-                    } else if (i == R.id.switch_theme) {
-                        // switchTheme()
                         return@OnMenuItemClickListener true
                     }
                     return@OnMenuItemClickListener false
