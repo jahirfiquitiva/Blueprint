@@ -30,6 +30,7 @@ import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.models.viewmodels.IconItemViewModel
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
+import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
 class IconsFragment:BaseViewModelFragment() {
@@ -41,15 +42,18 @@ class IconsFragment:BaseViewModelFragment() {
     private var dialog:IconDialog? = null
     
     fun applyFilters(filters:ArrayList<String>) {
-        val adapter = rv.adapter
-        if (adapter is IconsAdapter) {
-            model.items.value?.let {
-                if (filters.isNotEmpty()) {
-                    setAdapterItems(ArrayList(it.filter { validFilter(it.title, filters) }))
-                } else {
-                    setAdapterItems(it)
-                }
+        model.items.value?.let {
+            if (filters.isNotEmpty()) {
+                setAdapterItems(ArrayList(it.filter { validFilter(it.title, filters) }))
+            } else {
+                setAdapterItems(it)
             }
+        }
+    }
+    
+    fun doSearch(search:String = "") {
+        model.items.value?.let {
+            setAdapterItems(it, search)
         }
     }
     
@@ -59,15 +63,7 @@ class IconsFragment:BaseViewModelFragment() {
     
     override fun registerObserver() {
         model.items.observe(this, Observer { data ->
-            val adapter = rv.adapter
-            if (adapter is IconsAdapter) {
-                val icons = ArrayList<Icon>()
-                data?.forEach {
-                    icons.addAll(it.icons)
-                }
-                adapter.setItems(ArrayList(icons.distinct().sorted()))
-                rv.state = EmptyViewRecyclerView.State.NORMAL
-            }
+            data?.let { setAdapterItems(it) }
         })
     }
     
@@ -76,12 +72,14 @@ class IconsFragment:BaseViewModelFragment() {
         return false
     }
     
-    private fun setAdapterItems(categories:ArrayList<IconsCategory>) {
+    private fun setAdapterItems(categories:ArrayList<IconsCategory>, filteredBy:String = "") {
         val adapter = rv.adapter
         if (adapter is IconsAdapter) {
             val icons = ArrayList<Icon>()
             categories.forEach {
-                icons.addAll(it.icons)
+                if (filteredBy.hasContent())
+                    icons.addAll(it.icons.filter { it.name.contains(filteredBy, true) })
+                else icons.addAll(it.icons)
             }
             adapter.setItems(ArrayList(icons.distinct().sorted()))
             rv.state = EmptyViewRecyclerView.State.NORMAL

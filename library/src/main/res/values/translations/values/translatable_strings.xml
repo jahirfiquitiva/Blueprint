@@ -76,4 +76,6 @@
     <string name="iconrestorer_widget_title">Icon Restorer Widget</string>
     <string name="clock_widget_title">Analog Clock</string>
 
+    <string name="search_icons">Search icons</string>
+
 </resources>

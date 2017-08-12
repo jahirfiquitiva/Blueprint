@@ -27,10 +27,13 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.LinearLayout
 import ca.allanwang.kau.utils.dpToPx
@@ -76,6 +79,8 @@ import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
+import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
@@ -86,6 +91,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.setupStatusBarStyle
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
+import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.extensions.tintMenu
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
@@ -111,6 +117,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
     var drawer:Drawer? = null
     var currentFragment:Fragment? = null
+    var searchView:SearchView? = null
     
     private var iconsFilters:ArrayList<String> = ArrayList()
     internal var currentItemId:Int = -1
@@ -225,7 +232,48 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         toolbar = findViewById(R.id.toolbar)
         menu = toolbar.menu
         menuInflater.inflate(R.menu.menu_main, menu)
-        toolbar.tint(getActiveIconsColorFor(primaryColor))
+        
+        menu.let {
+            val donationItem = it.findItem(R.id.donate)
+            donationItem?.isVisible = donationsEnabled
+            
+            val searchItem = it.findItem(R.id.search)
+            searchView = searchItem.actionView as SearchView
+            searchView?.let {
+                with(it) {
+                    queryHint = getString(R.string.search_icons)
+                    setOnQueryTextListener(object:SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query:String?):Boolean {
+                            query?.let {
+                                doSearch(it.trim())
+                            }
+                            return false
+                        }
+                        
+                        override fun onQueryTextChange(newText:String?):Boolean {
+                            newText?.let {
+                                doSearch(it.trim())
+                            }
+                            return false
+                        }
+                    })
+                    imeOptions = EditorInfo.IME_ACTION_DONE
+                }
+            }
+            searchItem.setOnActionExpandListener(object:MenuItem.OnActionExpandListener {
+                override fun onMenuItemActionExpand(item:MenuItem?):Boolean = true
+                
+                override fun onMenuItemActionCollapse(item:MenuItem?):Boolean {
+                    searchView?.setQuery("", true)
+                    doSearch()
+                    return true
+                }
+            })
+        }
+        
+        toolbar.tint(getPrimaryTextColorFor(primaryColor, 0.6F),
+                     getSecondaryTextColorFor(primaryColor, 0.6F),
+                     getActiveIconsColorFor(primaryColor, 0.6F))
         toolbar.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
                     val i = item.itemId
@@ -455,13 +503,20 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
     fun getToolbar():Toolbar? = toolbar
     
-    fun updateToolbarColorsHere(offset:Int) = updateToolbarColors(toolbar, drawer, offset)
+    internal fun updateToolbarColorsHere(offset:Int) = updateToolbarColors(toolbar, drawer, offset)
     
+    // TODO: Do this
     fun startRequestsProcess() = showToast("Creating request")
     
-    fun onFiltersUpdated(filters:ArrayList<String>) {
+    internal fun onFiltersUpdated(filters:ArrayList<String>) {
         if (currentFragment is IconsFragment) {
             (currentFragment as IconsFragment).applyFilters(filters)
+        }
+    }
+    
+    internal fun doSearch(search:String = "") {
+        if (currentFragment is IconsFragment) {
+            (currentFragment as IconsFragment).doSearch(search)
         }
     }
 }
