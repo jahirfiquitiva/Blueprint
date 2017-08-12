@@ -40,6 +40,19 @@ class IconsFragment:BaseViewModelFragment() {
     
     private var dialog:IconDialog? = null
     
+    fun applyFilters(filters:ArrayList<String>) {
+        val adapter = rv.adapter
+        if (adapter is IconsAdapter) {
+            model.items.value?.let {
+                if (filters.isNotEmpty()) {
+                    setAdapterItems(ArrayList(it.filter { validFilter(it.title, filters) }))
+                } else {
+                    setAdapterItems(it)
+                }
+            }
+        }
+    }
+    
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(IconItemViewModel::class.java)
     }
@@ -56,6 +69,23 @@ class IconsFragment:BaseViewModelFragment() {
                 rv.state = EmptyViewRecyclerView.State.NORMAL
             }
         })
+    }
+    
+    private fun validFilter(title:String, filters:ArrayList<String>):Boolean {
+        filters.forEach { if (title.equals(it, true)) return true }
+        return false
+    }
+    
+    private fun setAdapterItems(categories:ArrayList<IconsCategory>) {
+        val adapter = rv.adapter
+        if (adapter is IconsAdapter) {
+            val icons = ArrayList<Icon>()
+            categories.forEach {
+                icons.addAll(it.icons)
+            }
+            adapter.setItems(ArrayList(icons.distinct().sorted()))
+            rv.state = EmptyViewRecyclerView.State.NORMAL
+        }
     }
     
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)

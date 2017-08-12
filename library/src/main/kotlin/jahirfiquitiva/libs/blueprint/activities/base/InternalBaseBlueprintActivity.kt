@@ -58,7 +58,6 @@ import jahirfiquitiva.libs.blueprint.holders.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.holders.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
-import jahirfiquitiva.libs.blueprint.utils.DEFAULT_APPLY_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_PREVIEWS_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_REQUEST_POSITION
@@ -111,11 +110,10 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private lateinit var iconsPreviewAdapter:IconsAdapter
     
     var drawer:Drawer? = null
+    var currentFragment:Fragment? = null
     
     private var iconsFilters:ArrayList<String> = ArrayList()
     internal var currentItemId:Int = -1
-    
-    internal var filtersListener:FiltersListener? = null
     
     override fun fragmentsContainer():Int = R.id.fragments_container
     
@@ -336,38 +334,44 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                     }
                                 }
                                 iconsFilters.clear()
+                                onFiltersUpdated(iconsFilters)
                             }
                         }))
-        val listSize = getIconsFiltersNames().size
         var index = 0
         var colorIndex = 0
         val colors = getStringArray(R.array.filters_colors)
-        getIconsFiltersNames().forEach {
-            if (colorIndex >= colors.size) colorIndex = 0
-            filtersDrawerBuilder.addDrawerItems(
-                    FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
-                            .withColor(Color.parseColor(colors[colorIndex]))
-                            .withListener(object:FilterCheckBoxHolder.StateChangeListener {
-                                override fun onStateChanged(checked:Boolean, title:String,
-                                                            fireFiltersListener:Boolean) {
-                                    if (iconsFilters.contains(title)) {
-                                        if (!checked) {
-                                            iconsFilters.remove(title)
-                                            if (fireFiltersListener)
-                                                filtersListener?.onFiltersUpdated(iconsFilters)
+        val filters = getStringArray(R.array.icon_filters)
+        if (filters.size > 1) {
+            filters.forEach {
+                if (colorIndex >= colors.size) colorIndex = 0
+                val name = it.formatCorrectly().blueprintFormat()
+                if (!(name.equals("all", true))) {
+                    filtersDrawerBuilder.addDrawerItems(
+                            FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
+                                    .withColor(Color.parseColor(colors[colorIndex]))
+                                    .withListener(object:FilterCheckBoxHolder.StateChangeListener {
+                                        override fun onStateChanged(checked:Boolean, title:String,
+                                                                    fireFiltersListener:Boolean) {
+                                            if (iconsFilters.contains(title)) {
+                                                if (!checked) {
+                                                    iconsFilters.remove(title)
+                                                    if (fireFiltersListener)
+                                                        onFiltersUpdated(iconsFilters)
+                                                }
+                                            } else {
+                                                if (checked) {
+                                                    iconsFilters.add(title)
+                                                    if (fireFiltersListener)
+                                                        onFiltersUpdated(iconsFilters)
+                                                }
+                                            }
                                         }
-                                    } else {
-                                        if (checked) {
-                                            iconsFilters.add(title)
-                                            if (fireFiltersListener)
-                                                filtersListener?.onFiltersUpdated(iconsFilters)
-                                        }
-                                    }
-                                }
-                            })
-                            .withDivider(index < (listSize - 1)))
-            index += 1
-            colorIndex += 1
+                                    })
+                                    .withDivider(index < (filters.size - 1)))
+                    index += 1
+                    colorIndex += 1
+                }
+            }
         }
         filtersDrawerBuilder.withDrawerGravity(Gravity.END)
         if (savedInstance != null) filtersDrawerBuilder.withSavedInstance(savedInstance)
@@ -380,19 +384,27 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         try {
             currentItemId = id
             updateToolbarMenuItems(item)
+            
             fabsMenu.collapse()
-            if (fabsMenu.menuButton.isShown) fabsMenu.menuButton.hideIf(id != DEFAULT_HOME_POSITION)
+            if (fabsMenu.menuButton.isShown) fabsMenu.menuButton.hideIf(
+                    id != DEFAULT_HOME_POSITION)
             fabsMenu.goneIf(id != DEFAULT_HOME_POSITION)
             if (fabsMenu.menuButton.isHidden)
                 fabsMenu.menuButton.showIf(id == DEFAULT_HOME_POSITION)
             fab.showIf(id == DEFAULT_REQUEST_POSITION)
+            
             appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, bpKonfigs.animationsEnabled)
+            coordinatorLayout.allowScroll = id == DEFAULT_HOME_POSITION
+            collapsingToolbar.isEnabled = id == DEFAULT_HOME_POSITION
+            appBarLayout.isEnabled = id == DEFAULT_HOME_POSITION
+            
             collapsingToolbar.title = getString(
                     if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
-            coordinatorLayout.allowScroll = id == DEFAULT_HOME_POSITION
+            
             val rightItem = getNavigationItems()[id]
             changeFragment(getFragmentForNavigationItem(id), rightItem.tag)
-            lockFiltersDrawer(id != DEFAULT_PREVIEWS_POSITION)
+            lockFiltersDrawer(id != DEFAULT_PREVIEWS_POSITION ||
+                                      getStringArray(R.array.icon_filters).size <= 1)
             return true
         } catch(ignored:Exception) {
             ignored.printStackTrace()
@@ -404,7 +416,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         menu.changeOptionVisibility(R.id.search,
                                     item.id == DEFAULT_PREVIEWS_POSITION)
         menu.changeOptionVisibility(R.id.filters,
-                                    item.id == DEFAULT_PREVIEWS_POSITION)
+                                    item.id == DEFAULT_PREVIEWS_POSITION &&
+                                            getStringArray(R.array.icon_filters).size > 1)
         menu.changeOptionVisibility(R.id.columns,
                                     item.id == DEFAULT_WALLPAPERS_POSITION)
         menu.changeOptionVisibility(R.id.refresh,
@@ -428,26 +441,16 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             DEFAULT_PREVIEWS_POSITION -> frag = IconsFragment()
             else -> frag = EmptyFragment()
         }
+        currentFragment = frag
         return frag
     }
     
-    private fun getIconsFiltersNames():Array<String> {
-        return getStringArray(R.array.icon_filters)
-    }
-    
     override fun getNavigationItems():Array<NavigationItem> {
-        return arrayOf(
-                NavigationItem("Home", DEFAULT_HOME_POSITION, R.string.section_home,
-                               R.drawable.ic_home),
-                NavigationItem("Previews", DEFAULT_PREVIEWS_POSITION, R.string.section_icons,
-                               R.drawable.ic_icons_preview),
-                NavigationItem("Wallpapers", DEFAULT_WALLPAPERS_POSITION,
-                               R.string.section_wallpapers, R.drawable.ic_wallpapers),
-                NavigationItem("Apply", DEFAULT_APPLY_POSITION, R.string.section_apply,
-                               R.drawable.ic_apply),
-                NavigationItem("Requests", DEFAULT_REQUEST_POSITION, R.string.section_icon_request,
-                               R.drawable.ic_request)
-                      )
+        return arrayOf(NavigationItem.HOME,
+                       NavigationItem.ICONS,
+                       NavigationItem.WALLPAPERS,
+                       NavigationItem.APPLY,
+                       NavigationItem.REQUESTS)
     }
     
     fun getToolbar():Toolbar? = toolbar
@@ -456,7 +459,9 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
     fun startRequestsProcess() = showToast("Creating request")
     
-    interface FiltersListener {
-        fun onFiltersUpdated(filters:ArrayList<String>)
+    fun onFiltersUpdated(filters:ArrayList<String>) {
+        if (currentFragment is IconsFragment) {
+            (currentFragment as IconsFragment).applyFilters(filters)
+        }
     }
 }

@@ -20,6 +20,12 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_APPLY_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_PREVIEWS_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_REQUEST_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_WALLPAPERS_POSITION
 
 data class HomeItem(val title:String, val description:String, val url:String,
                     val icon:Drawable, val openIcon:Drawable?,
@@ -43,4 +49,15 @@ data class Launcher(val name:String, val packageNames:Array<String>, @ColorInt v
     }
 }
 
-data class NavigationItem(val tag:String, val id:Int, val title:Int, val icon:Int)
+enum class NavigationItem(val tag:String, val id:Int, val title:Int, val icon:Int) {
+    HOME("Home", DEFAULT_HOME_POSITION, R.string.section_home, R.drawable.ic_home),
+    ICONS("Previews", DEFAULT_PREVIEWS_POSITION, R.string.section_icons,
+          R.drawable.ic_icons_preview),
+    WALLPAPERS("Wallpapers", DEFAULT_WALLPAPERS_POSITION, R.string.section_wallpapers,
+               R.drawable.ic_wallpapers),
+    APPLY("Apply", DEFAULT_APPLY_POSITION, R.string.section_apply, R.drawable.ic_apply),
+    REQUESTS("Requests", DEFAULT_REQUEST_POSITION, R.string.section_icon_request,
+             R.drawable.ic_request);
+    
+    override fun toString():String = "NavigationItem[$id - $title]"
+}
