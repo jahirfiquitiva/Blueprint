@@ -71,9 +71,9 @@ class IconsFragment:BaseViewModelFragment() {
         fastScroller = content.findViewById(R.id.fast_scroller)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
-        rv.adapter = IconsAdapter {
+        rv.adapter = IconsAdapter(false, {
             onItemClicked(it)
-        }
+        })
         val columns = context.getInteger(R.integer.icons_grid_columns)
         rv.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
         rv.state = EmptyViewRecyclerView.State.LOADING

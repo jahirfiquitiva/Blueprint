@@ -23,12 +23,14 @@ import jahirfiquitiva.libs.blueprint.holders.IconHolder
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.frames.adapters.BaseListAdapter
 
-class IconsAdapter(val listener:(Icon) -> Unit):BaseListAdapter<Icon, IconHolder>() {
+class IconsAdapter(val animate:Boolean = false, val listener:(Icon) -> Unit = {}):
+        BaseListAdapter<Icon, IconHolder>() {
     override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):IconHolder {
         return IconHolder(parent?.inflate(R.layout.item_icon))
     }
     
     override fun doBind(holder:IconHolder, position:Int) {
-        (holder as? IconHolder)?.bind(list[position], listener)
+        if (animate) (holder as? IconHolder)?.bind(animate, list[position])
+        else (holder as? IconHolder)?.bind(animate, list[position], listener)
     }
 }

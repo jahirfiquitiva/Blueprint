@@ -19,19 +19,30 @@ package jahirfiquitiva.libs.blueprint.holders
 import android.graphics.Bitmap
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.ScaleAnimation
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.BitmapImageViewTarget
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.models.Icon
+import jahirfiquitiva.libs.frames.views.SimpleAnimationListener
 
 class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
     
-    var lastPosition = 0
+    var lastPosition = -1
     val icon:ImageView? = itemView?.findViewById(R.id.icon)
     
-    fun bind(item:Icon, listener:(Icon) -> Unit) = with(itemView) {
+    fun bind(animate:Boolean, item:Icon) {
+        bind(animate, item, {})
+        itemView.isClickable = false
+        itemView.isFocusable = false
+    }
+    
+    fun bind(animate:Boolean, item:Icon, listener:(Icon) -> Unit) = with(itemView) {
         Glide.with(itemView?.context)
                 .load(item.icon)
                 .asBitmap()
@@ -39,10 +50,32 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
                 .into(object:BitmapImageViewTarget(icon) {
                     override fun setResource(resource:Bitmap) {
                         if (adapterPosition > lastPosition) {
-                            icon?.alpha = 0F
-                            icon?.setImageBitmap(resource)
-                            icon?.animate()?.setDuration(250)?.alpha(1f)?.start()
-                            lastPosition = adapterPosition
+                            if (itemView.context.bpKonfigs.animationsEnabled && animate) {
+                                val scale = ScaleAnimation(1F, 0F, 1F, 0F,
+                                                           Animation.RELATIVE_TO_SELF,
+                                                           0.5f,
+                                                           Animation.RELATIVE_TO_SELF, 0.5f)
+                                scale.duration = 250
+                                scale.interpolator = LinearInterpolator()
+                                
+                                scale.setAnimationListener(object:SimpleAnimationListener() {
+                                    override fun onEnd(animation:Animation) {
+                                        super.onEnd(animation)
+                                        val nScale = ScaleAnimation(0F, 1F, 0F, 1F,
+                                                                    Animation.RELATIVE_TO_SELF,
+                                                                    0.5f,
+                                                                    Animation.RELATIVE_TO_SELF,
+                                                                    0.5f)
+                                        nScale.duration = 250
+                                        nScale.interpolator = LinearInterpolator()
+                                        setIconResource(resource)
+                                        startAnimation(nScale)
+                                    }
+                                })
+                                startAnimation(scale)
+                            } else {
+                                setIconResource(resource)
+                            }
                         } else {
                             icon?.setImageBitmap(resource)
                             clearAnimations()
@@ -50,6 +83,13 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
                     }
                 })
         setOnClickListener { listener(item) }
+    }
+    
+    private fun setIconResource(resource:Bitmap) {
+        icon?.alpha = 0F
+        icon?.setImageBitmap(resource)
+        icon?.animate()?.setDuration(250)?.alpha(1f)?.start()
+        lastPosition = adapterPosition
     }
     
     private fun clearAnimations() {

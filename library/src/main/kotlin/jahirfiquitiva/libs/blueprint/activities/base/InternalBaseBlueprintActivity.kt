@@ -18,16 +18,21 @@ package jahirfiquitiva.libs.blueprint.activities.base
 
 import android.app.WallpaperManager
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.Menu
+import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.goneIf
@@ -41,6 +46,7 @@ import ca.allanwang.kau.utils.visible
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.extensions.updateToolbarColors
@@ -50,6 +56,7 @@ import jahirfiquitiva.libs.blueprint.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.holders.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.holders.items.FilterTitleDrawerItem
+import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_APPLY_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
@@ -68,6 +75,8 @@ import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
+import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
+import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
@@ -79,12 +88,16 @@ import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.setupStatusBarStyle
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 import jahirfiquitiva.libs.kauextensions.extensions.tintMenu
+import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.views.CounterFab
 import jahirfiquitiva.libs.kauextensions.ui.views.callbacks.CollapsingToolbarCallback
+import java.util.*
+import kotlin.collections.ArrayList
 
 abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
+    
     private lateinit var coordinatorLayout:CustomCoordinatorLayout
     private lateinit var appBarLayout:FixedElevationAppBarLayout
     private lateinit var collapsingToolbar:CollapsingToolbarLayout
@@ -93,6 +106,10 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private lateinit var fab:CounterFab
     private lateinit var fabsMenu:FABsMenu
     private lateinit var filtersDrawer:Drawer
+    
+    private lateinit var iconsPreviewRV:RecyclerView
+    private lateinit var iconsPreviewAdapter:IconsAdapter
+    
     var drawer:Drawer? = null
     
     private var iconsFilters:ArrayList<String> = ArrayList()
@@ -131,6 +148,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private fun initMainComponents(savedInstance:Bundle?) {
         initToolbar()
         initCollapsingToolbar()
+        initIconsPreview()
         initFAB()
         initFABsMenu()
         initFiltersDrawer(savedInstance)
@@ -254,6 +272,55 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                 val gradient:ImageView? = findViewById(R.id.toolbarGradient)
                 gradient?.gone()
             }
+        }
+    }
+    
+    fun initIconsPreview() {
+        iconsPreviewRV = findViewById(R.id.toolbar_icons_grid)
+        iconsPreviewRV.layoutManager = object:GridLayoutManager(this,
+                                                                getInteger(
+                                                                        R.integer.toolbar_icons_columns)) {
+            override fun canScrollVertically():Boolean = false
+            override fun canScrollHorizontally():Boolean = false
+            override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
+                                                       rect:Rect?,
+                                                       immediate:Boolean):Boolean = false
+            
+            override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
+                                                       rect:Rect?, immediate:Boolean,
+                                                       focusedChildVisible:Boolean):Boolean = false
+        }
+        iconsPreviewRV.addItemDecoration(
+                GridSpacingItemDecoration(getInteger(R.integer.toolbar_icons_columns),
+                                          getDimensionPixelSize(R.dimen.cards_margin)))
+        findViewById<LinearLayout>(
+                R.id.toolbar_icons_container).setOnClickListener { loadIconsIntoAdapter() }
+        loadIconsIntoAdapter()
+    }
+    
+    private fun loadIconsIntoAdapter() {
+        try {
+            iconsPreviewAdapter = IconsAdapter(true)
+            val icons = ArrayList<Icon>()
+            val list = getStringArray(R.array.icons_preview)
+            list.forEach {
+                icons.add(Icon(it, it.getIconResource(this)))
+            }
+            if (icons.isNotEmpty()) {
+                icons.distinct().sorted()
+                Collections.shuffle(icons)
+                val correctList = ArrayList<Icon>()
+                for (i in 0..(getInteger(R.integer.toolbar_icons_columns) - 1)) {
+                    try {
+                        correctList.add(icons[i])
+                    } catch(ignored:Exception) {
+                    }
+                }
+                iconsPreviewRV.adapter = iconsPreviewAdapter
+                iconsPreviewAdapter.setItems(correctList)
+            }
+        } catch(e:Exception) {
+            e.printStackTrace()
         }
     }
     

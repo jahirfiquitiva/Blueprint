@@ -29,4 +29,7 @@
     <dimen name="icon_small">24dp</dimen>
 
     <dimen name="fab_with_bottom_bar_margin">72dp</dimen>
+
+    <dimen name="toolbar_icons_grid_margin">24dp</dimen>
+    <dimen name="half_toolbar_height">28dp</dimen>
 </resources>

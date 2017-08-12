@@ -15,8 +15,29 @@
   ~ limitations under the License.
   -->
 
-<android.support.v7.widget.RecyclerView
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/toolbar_icons_grid"
+        android:id="@+id/toolbar_icons_container"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_marginTop="@dimen/half_toolbar_height"
+        android:padding="@dimen/toolbar_icons_grid_margin"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:background="?selectableItemBackgroundBorderless"
+        android:descendantFocusability="blocksDescendants">
+
+    <jahirfiquitiva.libs.blueprint.views.ClickableRecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar_icons_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
+            android:descendantFocusability="blocksDescendants"/>
+
+</LinearLayout>
