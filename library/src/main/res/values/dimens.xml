@@ -32,4 +32,6 @@
 
     <dimen name="toolbar_icons_grid_margin">24dp</dimen>
     <dimen name="half_toolbar_height">28dp</dimen>
+
+    <dimen name="dialog_icon_size">120dp</dimen>
 </resources>

@@ -65,10 +65,6 @@
     <bool name="xml_drawable_enabled">false</bool>
 
 
-    <!-- Icons section columns number -->
-    <integer name="icons_grid_columns">4</integer>
-
-
     <!--
     Do you want the app name and version in the drawer header?
     True, means yes.

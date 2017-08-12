@@ -25,6 +25,7 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.fragments.base.BaseViewModelFragment
+import jahirfiquitiva.libs.blueprint.fragments.dialogs.IconDialog
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.models.viewmodels.IconItemViewModel
@@ -37,12 +38,14 @@ class IconsFragment:BaseViewModelFragment() {
     private lateinit var rv:EmptyViewRecyclerView
     private lateinit var fastScroller:RecyclerFastScroller
     
+    private var dialog:IconDialog? = null
+    
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(IconItemViewModel::class.java)
     }
     
     override fun registerObserver() {
-        model.items.observe(this, Observer<ArrayList<IconsCategory>> { data ->
+        model.items.observe(this, Observer { data ->
             val adapter = rv.adapter
             if (adapter is IconsAdapter) {
                 val icons = ArrayList<Icon>()
@@ -60,6 +63,16 @@ class IconsFragment:BaseViewModelFragment() {
         model.items.removeObservers(this)
     }
     
+    override fun onDestroyView() {
+        super.onDestroyView()
+        dialog?.dismiss(activity)
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        dialog?.dismiss(activity)
+    }
+    
     override fun loadDataFromViewModel() {
         model.loadData(activity)
     }
@@ -74,7 +87,7 @@ class IconsFragment:BaseViewModelFragment() {
         rv.adapter = IconsAdapter(false, {
             onItemClicked(it)
         })
-        val columns = context.getInteger(R.integer.icons_grid_columns)
+        val columns = context.getInteger(R.integer.icons_columns)
         rv.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
         rv.state = EmptyViewRecyclerView.State.LOADING
         fastScroller.attachRecyclerView(rv)
@@ -82,7 +95,9 @@ class IconsFragment:BaseViewModelFragment() {
     
     override fun onItemClicked(item:Any) {
         if (item is Icon) {
-            TODO("Not implemented yet")
+            dialog?.dismiss(activity)
+            dialog = IconDialog()
+            dialog?.show(activity, item.name, item.icon, true)
         }
     }
 }

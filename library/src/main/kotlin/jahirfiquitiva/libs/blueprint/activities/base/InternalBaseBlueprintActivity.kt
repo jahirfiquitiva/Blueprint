@@ -279,7 +279,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         iconsPreviewRV = findViewById(R.id.toolbar_icons_grid)
         iconsPreviewRV.layoutManager = object:GridLayoutManager(this,
                                                                 getInteger(
-                                                                        R.integer.toolbar_icons_columns)) {
+                                                                        R.integer.icons_columns)) {
             override fun canScrollVertically():Boolean = false
             override fun canScrollHorizontally():Boolean = false
             override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
@@ -291,7 +291,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                                        focusedChildVisible:Boolean):Boolean = false
         }
         iconsPreviewRV.addItemDecoration(
-                GridSpacingItemDecoration(getInteger(R.integer.toolbar_icons_columns),
+                GridSpacingItemDecoration(getInteger(R.integer.icons_columns),
                                           getDimensionPixelSize(R.dimen.cards_margin)))
         findViewById<LinearLayout>(
                 R.id.toolbar_icons_container).setOnClickListener { loadIconsIntoAdapter() }
@@ -310,7 +310,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                 icons.distinct().sorted()
                 Collections.shuffle(icons)
                 val correctList = ArrayList<Icon>()
-                for (i in 0..(getInteger(R.integer.toolbar_icons_columns) - 1)) {
+                for (i in 0..(getInteger(R.integer.icons_columns) - 1)) {
                     try {
                         correctList.add(icons[i])
                     } catch(ignored:Exception) {
