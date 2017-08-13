@@ -136,8 +136,18 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     }
     
     override fun onBackPressed() {
-        if (currentItemId == DEFAULT_HOME_POSITION) super.clearBackStack()
-        super.onBackPressed()
+        invalidateOptionsMenu()
+        val isClosed = searchView?.isIconified ?: false
+        if (!isClosed) {
+            doSearch()
+            searchView?.isIconified = true
+            searchView?.onActionViewCollapsed()
+            menu.findItem(R.id.search)?.collapseActionView()
+        } else if (currentItemId == DEFAULT_HOME_POSITION) {
+            super.clearBackStack()
+        } else {
+            super.onBackPressed()
+        }
     }
     
     override fun onSaveInstanceState(outState:Bundle?) {
@@ -442,6 +452,22 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         if (currentItemId == id) return false
         try {
             currentItemId = id
+            
+            searchView?.let {
+                if (id == DEFAULT_ICONS_POSITION) it.queryHint = getString(R.string.search_icons)
+                else if (id == DEFAULT_WALLPAPERS_POSITION)
+                    it.queryHint = getString(R.string.search_wallpapers)
+                else it.queryHint = ""
+            }
+            val isClosed = searchView?.isIconified ?: false
+            if (!isClosed) {
+                doSearch()
+                searchView?.isIconified = true
+                searchView?.onActionViewCollapsed()
+                menu.findItem(R.id.search)?.collapseActionView()
+            }
+            invalidateOptionsMenu()
+            
             updateToolbarMenuItems(item)
             
             fabsMenu.collapse()
