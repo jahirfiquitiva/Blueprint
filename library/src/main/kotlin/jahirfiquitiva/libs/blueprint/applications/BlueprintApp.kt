@@ -13,22 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.blueprint.utils
 
-// Shared Preferences
-const val PREFERENCES_NAME = "blueprint_preferences"
-const val LAUNCHER_ICON_SHOWN = "launcher_icon_shown"
-const val WALLPAPER_AS_TOOLBAR_HEADER = "wallpaper_as_toolbar_header"
-const val APPLY_CARD_DISMISSED = "apply_card_dismissed"
+package jahirfiquitiva.libs.blueprint.applications
 
-// Icon name formatting
-const val SPACE = 1
-const val CAPS = 2
-const val CAPS_LOCK = 3
+import android.support.multidex.MultiDex
+import android.support.multidex.MultiDexApplication
 
-// Drawer Items
-const val DEFAULT_HOME_POSITION = 0
-const val DEFAULT_ICONS_POSITION = 1
-const val DEFAULT_WALLPAPERS_POSITION = 2
-const val DEFAULT_APPLY_POSITION = 3
-const val DEFAULT_REQUEST_POSITION = 4
+class BlueprintApp:MultiDexApplication() {
+    override fun onCreate() {
+        MultiDex.install(this)
+        super.onCreate()
+    }
+}

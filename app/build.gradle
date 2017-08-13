@@ -48,11 +48,16 @@ android {
         versionCode versions.versionCode
         versionName versions.versionName
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
+    }
+
+    dexOptions {
+        jumboMode true
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -83,6 +88,8 @@ android {
 
 dependencies {
     compile project(path: ':library')
+    // TODO: Delete Multidex
+    compile 'com.android.support:multidex:' + versions.multidex
 }
 
 tasks.whenTaskAdded { task ->

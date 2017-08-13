@@ -72,7 +72,7 @@ abstract class BaseBlueprintActivity:BaseActivityWithFragments(), LifecycleRegis
     override fun autoStatusBarTint():Boolean = true
     
     private var checker:PiracyChecker? = null
-    private var dialog:MaterialDialog? = null
+    internal var dialog:MaterialDialog? = null
     internal var billingProcessor:BillingProcessor? = null
     
     val lcOwner = LifecycleRegistry(this)

@@ -29,6 +29,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
+import android.text.InputType
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -56,18 +57,21 @@ import jahirfiquitiva.libs.blueprint.extensions.updateToolbarColors
 import jahirfiquitiva.libs.blueprint.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.fragments.IconsFragment
+import jahirfiquitiva.libs.blueprint.fragments.WallpapersFragment
 import jahirfiquitiva.libs.blueprint.holders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.holders.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.holders.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
-import jahirfiquitiva.libs.blueprint.utils.DEFAULT_PREVIEWS_POSITION
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_WALLPAPERS_POSITION
 import jahirfiquitiva.libs.fabsmenu.FABsMenu
 import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
 import jahirfiquitiva.libs.fabsmenu.TitleFAB
+import jahirfiquitiva.libs.frames.extensions.buildMaterialDialog
+import jahirfiquitiva.libs.frames.extensions.framesKonfigs
 import jahirfiquitiva.libs.frames.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
@@ -276,11 +280,18 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                      getActiveIconsColorFor(primaryColor, 0.6F))
         toolbar.setOnMenuItemClickListener(
                 Toolbar.OnMenuItemClickListener { item ->
-                    val i = item.itemId
-                    if (i == R.id.filters) {
+                    val id = item.itemId
+                    if (id == R.id.filters) {
                         filtersDrawer.openDrawer()
                         return@OnMenuItemClickListener true
+                    } else if (id == R.id.columns) {
+                        showWallpapersColumnsDialog()
+                        return@OnMenuItemClickListener true
+                    } else if (id == R.id.refresh) {
+                        refreshWallpapers()
+                        return@OnMenuItemClickListener true
                     }
+                    // TODO: Manage other items
                     return@OnMenuItemClickListener false
                 })
     }
@@ -451,7 +462,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             
             val rightItem = getNavigationItems()[id]
             changeFragment(getFragmentForNavigationItem(id), rightItem.tag)
-            lockFiltersDrawer(id != DEFAULT_PREVIEWS_POSITION ||
+            lockFiltersDrawer(id != DEFAULT_ICONS_POSITION ||
                                       getStringArray(R.array.icon_filters).size <= 1)
             return true
         } catch(ignored:Exception) {
@@ -462,9 +473,10 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
     private fun updateToolbarMenuItems(item:NavigationItem) {
         menu.changeOptionVisibility(R.id.search,
-                                    item.id == DEFAULT_PREVIEWS_POSITION)
+                                    item.id == DEFAULT_ICONS_POSITION ||
+                                            item.id == DEFAULT_WALLPAPERS_POSITION)
         menu.changeOptionVisibility(R.id.filters,
-                                    item.id == DEFAULT_PREVIEWS_POSITION &&
+                                    item.id == DEFAULT_ICONS_POSITION &&
                                             getStringArray(R.array.icon_filters).size > 1)
         menu.changeOptionVisibility(R.id.columns,
                                     item.id == DEFAULT_WALLPAPERS_POSITION)
@@ -486,7 +498,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         val frag:Fragment
         when (id) {
             DEFAULT_HOME_POSITION -> frag = HomeFragment()
-            DEFAULT_PREVIEWS_POSITION -> frag = IconsFragment()
+            DEFAULT_ICONS_POSITION -> frag = IconsFragment()
+            DEFAULT_WALLPAPERS_POSITION -> frag = WallpapersFragment()
             else -> frag = EmptyFragment()
         }
         currentFragment = frag
@@ -517,6 +530,35 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     internal fun doSearch(search:String = "") {
         if (currentFragment is IconsFragment) {
             (currentFragment as IconsFragment).doSearch(search)
+        } else if (currentFragment is WallpapersFragment) {
+            (currentFragment as WallpapersFragment).applyFilter(search)
         }
     }
+    
+    internal fun showWallpapersColumnsDialog() {
+        if (currentFragment is WallpapersFragment) {
+            destroyDialog()
+            dialog = buildMaterialDialog {
+                title(R.string.wallpapers_columns_setting_title)
+                inputType(InputType.TYPE_CLASS_NUMBER)
+                input(0, 0, false, { _, input ->
+                    try {
+                        var cols = input.toString().toInt()
+                        if (cols <= 0) cols = 2
+                        framesKonfigs.columns = cols
+                        (currentFragment as WallpapersFragment).configureRVColumns()
+                    } catch (ignored:Exception) {
+                    }
+                })
+            }
+            dialog?.show()
+        }
+    }
+    
+    internal fun refreshWallpapers() {
+        if (currentFragment is WallpapersFragment) {
+            (currentFragment as WallpapersFragment).reloadData(1)
+        }
+    }
+    
 }
