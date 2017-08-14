@@ -29,6 +29,7 @@ import jahirfiquitiva.libs.blueprint.models.viewmodels.IconItemViewModel
 import jahirfiquitiva.libs.frames.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
+import jahirfiquitiva.libs.kauextensions.extensions.printInfo
 import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
 class IconsFragment:BaseViewModelFragment<Icon>() {

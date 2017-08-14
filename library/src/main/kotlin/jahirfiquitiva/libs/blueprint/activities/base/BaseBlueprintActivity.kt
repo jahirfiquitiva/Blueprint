@@ -49,7 +49,6 @@ import jahirfiquitiva.libs.frames.utils.NOVA_ACTION
 import jahirfiquitiva.libs.frames.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.frames.utils.TURBO_ACTION
 import jahirfiquitiva.libs.frames.utils.WALLS_PICKER
-import jahirfiquitiva.libs.kauextensions.activities.ThemedActivity
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent

@@ -30,6 +30,7 @@ import jahirfiquitiva.libs.blueprint.fragments.presenters.BasicFragmentPresenter
 import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
+import jahirfiquitiva.libs.kauextensions.extensions.printInfo
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
@@ -54,7 +55,7 @@ class ApplyFragment:BaseSectionFragment<Launcher>(), BasicFragmentPresenter {
             list.add(it)
         }
         adapter.setItems(
-                ArrayList(list.distinct().sortedBy { isLauncherInstalled(it.packageNames) }))
+                ArrayList(list.distinct().sortedBy { !isLauncherInstalled(it.packageNames) }))
         rv.state = EmptyViewRecyclerView.State.NORMAL
     }
     

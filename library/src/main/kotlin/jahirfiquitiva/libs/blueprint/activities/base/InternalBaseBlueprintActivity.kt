@@ -399,12 +399,13 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                 FilterTitleDrawerItem().withButtonListener(
                         object:FilterTitleDrawerItem.ButtonListener {
                             override fun onButtonPressed() {
+                                val hadFilters = iconsFilters.isNotEmpty()
                                 filtersDrawer.drawerItems?.forEach {
                                     if (it is FilterDrawerItem) {
                                         it.checkBoxHolder.apply(false, false)
                                     }
                                 }
-                                if (iconsFilters.isNotEmpty()) {
+                                if (hadFilters) {
                                     iconsFilters.clear()
                                     onFiltersUpdated(iconsFilters)
                                 }

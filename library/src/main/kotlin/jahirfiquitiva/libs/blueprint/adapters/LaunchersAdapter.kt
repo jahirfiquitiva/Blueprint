@@ -23,13 +23,13 @@ import jahirfiquitiva.libs.blueprint.holders.LauncherHolder
 import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.frames.adapters.BaseListAdapter
 
-class LaunchersAdapter(listener:(Launcher) -> Unit = {}):
+class LaunchersAdapter(val listener:(Launcher) -> Unit = {}):
         BaseListAdapter<Launcher, LauncherHolder>() {
     override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):LauncherHolder {
         return LauncherHolder(parent?.inflate(R.layout.item_launcher))
     }
     
     override fun doBind(holder:LauncherHolder, position:Int) {
-        holder.bind(list[position])
+        holder.bind(list[position], listener)
     }
 }
