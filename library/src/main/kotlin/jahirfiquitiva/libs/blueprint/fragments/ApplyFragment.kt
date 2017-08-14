@@ -55,7 +55,7 @@ class ApplyFragment:BaseSectionFragment<Launcher>(), BasicFragmentPresenter {
             list.add(it)
         }
         adapter.setItems(
-                ArrayList(list.distinct().sortedBy { isLauncherInstalled(it.packageNames) }))
+                ArrayList(list.distinct().sortedBy { !isLauncherInstalled(it.packageNames) }))
         rv.state = EmptyViewRecyclerView.State.NORMAL
     }
     
