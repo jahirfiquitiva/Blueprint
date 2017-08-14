@@ -20,7 +20,13 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
+import android.support.v4.app.Fragment
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.fragments.ApplyFragment
+import jahirfiquitiva.libs.blueprint.fragments.EmptyFragment
+import jahirfiquitiva.libs.blueprint.fragments.HomeFragment
+import jahirfiquitiva.libs.blueprint.fragments.IconsFragment
+import jahirfiquitiva.libs.blueprint.fragments.WallpapersFragment
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_APPLY_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_ICONS_POSITION
@@ -49,14 +55,17 @@ data class Launcher(val name:String, val packageNames:Array<String>, @ColorInt v
     }
 }
 
-enum class NavigationItem(val tag:String, val id:Int, val title:Int, val icon:Int) {
-    HOME("Home", DEFAULT_HOME_POSITION, R.string.section_home, R.drawable.ic_home),
-    ICONS("Previews", DEFAULT_ICONS_POSITION, R.string.section_icons, R.drawable.ic_icons_preview),
+enum class NavigationItem(val tag:String, val id:Int, val title:Int, val icon:Int,
+                          val fragment:Fragment) {
+    HOME("Home", DEFAULT_HOME_POSITION, R.string.section_home, R.drawable.ic_home, HomeFragment()),
+    ICONS("Previews", DEFAULT_ICONS_POSITION, R.string.section_icons, R.drawable.ic_icons_preview,
+          IconsFragment()),
     WALLPAPERS("Wallpapers", DEFAULT_WALLPAPERS_POSITION, R.string.section_wallpapers,
-               R.drawable.ic_wallpapers),
-    APPLY("Apply", DEFAULT_APPLY_POSITION, R.string.section_apply, R.drawable.ic_apply),
+               R.drawable.ic_wallpapers, WallpapersFragment()),
+    APPLY("Apply", DEFAULT_APPLY_POSITION, R.string.section_apply, R.drawable.ic_apply,
+          ApplyFragment()),
     REQUESTS("Requests", DEFAULT_REQUEST_POSITION, R.string.section_icon_request,
-             R.drawable.ic_request);
+             R.drawable.ic_request, EmptyFragment());
     
     override fun toString():String = "NavigationItem[$id - $title]"
 }

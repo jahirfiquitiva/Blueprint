@@ -24,14 +24,14 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.adapters.HomeItemsAdapter
-import jahirfiquitiva.libs.blueprint.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.models.viewmodels.HomeApplyCardViewModel
 import jahirfiquitiva.libs.blueprint.models.viewmodels.HomeItemViewModel
+import jahirfiquitiva.libs.frames.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
-class HomeFragment:BaseViewModelFragment() {
+class HomeFragment:BaseViewModelFragment<HomeItem>() {
     
     private lateinit var model:HomeItemViewModel
     private lateinit var applyCardModel:HomeApplyCardViewModel
@@ -70,10 +70,10 @@ class HomeFragment:BaseViewModelFragment() {
         applyCardModel.loadData(activity)
     }
     
-    override fun getContentLayout():Int = R.layout.section_home
+    override fun getContentLayout():Int = R.layout.section_wo_fastscroll
     
     override fun initUI(content:View) {
-        rv = content.findViewById(R.id.home_rv)
+        rv = content.findViewById(R.id.section_rv)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
         rv.state = EmptyViewRecyclerView.State.LOADING
@@ -83,10 +83,8 @@ class HomeFragment:BaseViewModelFragment() {
         rv.adapter = homeAdapter
     }
     
-    override fun onItemClicked(item:Any) {
-        if (item is HomeItem) {
-            if (item.intent != null) context.startActivity(item.intent)
-            else context.openLink(item.url)
-        }
+    override fun onItemClicked(item:HomeItem) {
+        if (item.intent != null) context.startActivity(item.intent)
+        else context.openLink(item.url)
     }
 }

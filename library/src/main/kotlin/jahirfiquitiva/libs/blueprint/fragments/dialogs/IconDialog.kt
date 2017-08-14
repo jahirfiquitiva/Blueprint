@@ -27,6 +27,8 @@ import ca.allanwang.kau.utils.isColorDark
 import ca.allanwang.kau.utils.scaleXY
 import com.afollestad.materialdialogs.DialogAction
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.utils.ICONS_ANIMATION_DURATION
+import jahirfiquitiva.libs.blueprint.utils.ICONS_ANIMATION_DURATION_DELAY
 import jahirfiquitiva.libs.frames.extensions.buildMaterialDialog
 import jahirfiquitiva.libs.frames.extensions.toBitmap
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
@@ -36,7 +38,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.usesDarkTheme
 
 class IconDialog:DialogFragment() {
     
-    private val ANIMATION_DURATION:Long = 500
     private var name:String = ""
     private var resId:Int = 0
     private var animate:Boolean = false
@@ -111,10 +112,10 @@ class IconDialog:DialogFragment() {
                     
                     Palette.from(icon).generate(Palette.PaletteAsyncListener { palette ->
                         if (animate) {
-                            animate()
-                                    .scaleX(1F)
+                            animate().scaleX(1F)
                                     .scaleY(1F)
-                                    .setDuration(ANIMATION_DURATION)
+                                    .setStartDelay(ICONS_ANIMATION_DURATION_DELAY / 2)
+                                    .setDuration(ICONS_ANIMATION_DURATION)
                                     .start()
                         }
                         if (palette == null) return@PaletteAsyncListener
@@ -138,7 +139,7 @@ class IconDialog:DialogFragment() {
                                 buttonText.alpha = 0F
                                 buttonText.setTextColor(correctTextColor)
                                 buttonText.animate().alpha(1F).setDuration(
-                                        ANIMATION_DURATION).start()
+                                        ICONS_ANIMATION_DURATION).start()
                             } else {
                                 buttonText.setTextColor(correctTextColor)
                             }

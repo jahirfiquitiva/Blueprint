@@ -46,6 +46,9 @@
     <string name="select_all">Select all</string>
     <string name="columns">Columns number</string>
 
+    <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to
+        install it from the Google Play Store?
+    </string>
 
     <string name="no_compatible_launcher_title">This launcher is NOT Compatible</string>
     <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs

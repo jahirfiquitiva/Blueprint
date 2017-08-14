@@ -15,20 +15,28 @@
   ~ limitations under the License.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/section_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <include layout="@layout/extra_empty_views"/>
 
     <jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
-            android:id="@+id/empty_rv"
+            android:id="@+id/section_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
+            android:clipChildren="false"
             android:fitsSystemWindows="true"
-            android:overScrollMode="ifContentScrolls"/>
+            android:scrollbars="none"
+            android:overScrollMode="ifContentScrolls"
+            android:paddingBottom="@dimen/kau_fab_size"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </RelativeLayout>

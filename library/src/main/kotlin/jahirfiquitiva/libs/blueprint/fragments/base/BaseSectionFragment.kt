@@ -24,7 +24,7 @@ import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
 import jahirfiquitiva.libs.blueprint.fragments.presenters.BasicFragmentPresenter
 
-abstract class BaseSectionFragment:LifecycleFragment(), BasicFragmentPresenter {
+abstract class BaseSectionFragment<in T>:LifecycleFragment(), BasicFragmentPresenter {
     override fun onCreateView(inflater:LayoutInflater?, container:ViewGroup?,
                               savedInstanceState:Bundle?):View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -33,4 +33,6 @@ abstract class BaseSectionFragment:LifecycleFragment(), BasicFragmentPresenter {
         initUI(content)
         return content
     }
+    
+    abstract fun onItemClicked(item:T)
 }

@@ -15,25 +15,23 @@
  */
 package jahirfiquitiva.libs.blueprint.fragments
 
-import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.adapters.IconsAdapter
-import jahirfiquitiva.libs.blueprint.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.blueprint.fragments.dialogs.IconDialog
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.models.viewmodels.IconItemViewModel
+import jahirfiquitiva.libs.frames.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
-class IconsFragment:BaseViewModelFragment() {
+class IconsFragment:BaseViewModelFragment<Icon>() {
     
     private lateinit var model:IconItemViewModel
     private lateinit var rv:EmptyViewRecyclerView
@@ -86,7 +84,6 @@ class IconsFragment:BaseViewModelFragment() {
         }
     }
     
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     override fun unregisterObserver() {
         model.items.removeObservers(this)
     }
@@ -105,27 +102,23 @@ class IconsFragment:BaseViewModelFragment() {
         model.loadData(activity)
     }
     
-    override fun getContentLayout():Int = R.layout.section_icons_preview
+    override fun getContentLayout():Int = R.layout.section_layout
     
     override fun initUI(content:View) {
-        rv = content.findViewById(R.id.icons_grid)
+        rv = content.findViewById(R.id.section_rv)
         fastScroller = content.findViewById(R.id.fast_scroller)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
-        rv.adapter = IconsAdapter(false, {
-            onItemClicked(it)
-        })
+        rv.adapter = IconsAdapter(false, { onItemClicked(it) })
         val columns = context.getInteger(R.integer.icons_columns)
         rv.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
         rv.state = EmptyViewRecyclerView.State.LOADING
         fastScroller.attachRecyclerView(rv)
     }
     
-    override fun onItemClicked(item:Any) {
-        if (item is Icon) {
-            dialog?.dismiss(activity)
-            dialog = IconDialog()
-            dialog?.show(activity, item.name, item.icon, true)
-        }
+    override fun onItemClicked(item:Icon) {
+        dialog?.dismiss(activity)
+        dialog = IconDialog()
+        dialog?.show(activity, item.name, item.icon, true)
     }
 }

@@ -16,22 +16,24 @@
   -->
 <resources>
 
-    <!--    Configure your own Splash Screen style
-    -       Only change the parent. Available Styles:
-    -       LightTheme.SplashScreen
-    -       DarkTheme.SplashScreen
-    -       TransparentTheme.SplashScreen
-    -       AmoledTheme.SplashScreen
+    <!--
+        Configure your own Splash Screen style
+        Only change the parent. Available Styles:
+        LightTheme.SplashScreen
+        DarkTheme.SplashScreen
+        TransparentTheme.SplashScreen
+        AmoledTheme.SplashScreen
     -->
     <style name="MySplashScreen" parent="LightTheme.SplashScreen"/>
 
-    <!--    Define the default app theme
-    -       0 -> Light
-    -       1 -> Dark
-    -       2 -> Transparent
-    -       3 -> Amoled
-    -       4 -> Auto Light-Dark
-    -       5 -> Auto Light-Amoled
+    <!--
+        Define the default app theme
+        0 -> Light
+        1 -> Dark
+        2 -> Transparent
+        3 -> Amoled
+        4 -> Auto Light-Dark
+        5 -> Auto Light-Amoled
     -->
     <integer name="default_theme">0</integer>
 
@@ -42,8 +44,9 @@
     <string-array name="donation_items">
     </string-array>
 
-    <!--    Set a drawable name in case you want to use a static picture in toolbar.
-    -       Leave empty if you don't want to use a static one.
+    <!--
+        Set a drawable name in case you want to use a static picture in toolbar.
+        Leave empty if you don't want to use a static one.
     -->
     <string name="toolbar_picture"/>
 
@@ -59,16 +62,24 @@
     </string-array>
 
 
-    <!--    Do you want the app to read the icons from res/xml/drawable.xml ? (true)
-            Or do you prefer the icons to be loaded from res/values/icon_pack.xml ? (false)
+    <!--
+        Do you want the app to read the icons from res/xml/drawable.xml ? (true)
+        Or do you prefer the icons to be loaded from res/values/icon_pack.xml ? (false)
     -->
     <bool name="xml_drawable_enabled">false</bool>
 
 
     <!--
-    Do you want the app name and version in the drawer header?
-    True, means yes.
-    False, means no.
+        Do you want the app name and version in the drawer header?
+        True, means yes.
+        False, means no.
     -->
     <bool name="with_drawer_texts">true</bool>
+
+    <!--
+        Would you like apply section cards to be colored?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="enable_colored_cards">false</bool>
 </resources>

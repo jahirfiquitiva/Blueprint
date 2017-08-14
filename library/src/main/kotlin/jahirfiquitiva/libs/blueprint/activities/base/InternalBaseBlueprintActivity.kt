@@ -54,6 +54,7 @@ import jahirfiquitiva.libs.blueprint.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.extensions.updateToolbarColors
+import jahirfiquitiva.libs.blueprint.fragments.ApplyFragment
 import jahirfiquitiva.libs.blueprint.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.fragments.IconsFragment
@@ -63,6 +64,7 @@ import jahirfiquitiva.libs.blueprint.holders.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.holders.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.utils.DEFAULT_APPLY_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_REQUEST_POSITION
@@ -402,8 +404,10 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                         it.checkBoxHolder.apply(false, false)
                                     }
                                 }
-                                iconsFilters.clear()
-                                onFiltersUpdated(iconsFilters)
+                                if (iconsFilters.isNotEmpty()) {
+                                    iconsFilters.clear()
+                                    onFiltersUpdated(iconsFilters)
+                                }
                             }
                         }))
         var index = 0
@@ -491,8 +495,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             lockFiltersDrawer(id != DEFAULT_ICONS_POSITION ||
                                       getStringArray(R.array.icon_filters).size <= 1)
             return true
-        } catch(ignored:Exception) {
-            ignored.printStackTrace()
+        } catch(e:Exception) {
+            e.printStackTrace()
         }
         return false
     }
@@ -526,6 +530,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             DEFAULT_HOME_POSITION -> frag = HomeFragment()
             DEFAULT_ICONS_POSITION -> frag = IconsFragment()
             DEFAULT_WALLPAPERS_POSITION -> frag = WallpapersFragment()
+            DEFAULT_APPLY_POSITION -> frag = ApplyFragment()
             else -> frag = EmptyFragment()
         }
         currentFragment = frag

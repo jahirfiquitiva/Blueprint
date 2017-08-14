@@ -22,13 +22,17 @@ import jahirfiquitiva.libs.blueprint.fragments.base.BaseSectionFragment
 import jahirfiquitiva.libs.blueprint.fragments.presenters.BasicFragmentPresenter
 import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
-open class EmptyFragment:BaseSectionFragment(), BasicFragmentPresenter {
-    override fun getContentLayout():Int = R.layout.section_empty
+open class EmptyFragment:BaseSectionFragment<Boolean>(), BasicFragmentPresenter {
+    override fun getContentLayout():Int = R.layout.section_wo_fastscroll
     
     override fun initUI(content:View) {
-        val emptyRecyclerView:EmptyViewRecyclerView = content.findViewById(R.id.empty_rv)
+        val emptyRecyclerView:EmptyViewRecyclerView = content.findViewById(R.id.section_rv)
         emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)
         emptyRecyclerView.textView = content.findViewById(R.id.empty_text)
         emptyRecyclerView.state = EmptyViewRecyclerView.State.EMPTY
+    }
+    
+    override fun onItemClicked(item:Boolean) {
+        return
     }
 }

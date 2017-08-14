@@ -26,10 +26,13 @@
     <TextView
             android:id="@+id/more_apps_section_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textStyle="bold"
-            android:padding="@dimen/fabs_margin"
+            android:textSize="14sp"
+            android:paddingStart="@dimen/fabs_margin"
+            android:paddingEnd="@dimen/fabs_margin"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:visibility="visible"
             android:clickable="false"
             android:text="@string/more_apps"/>

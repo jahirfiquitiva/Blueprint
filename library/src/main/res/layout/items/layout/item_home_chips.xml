@@ -26,10 +26,13 @@
     <TextView
             android:id="@+id/chips_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textStyle="bold"
-            android:padding="@dimen/fabs_margin"
+            android:textSize="14sp"
+            android:paddingStart="@dimen/fabs_margin"
+            android:paddingEnd="@dimen/fabs_margin"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:visibility="visible"
             android:clickable="false"
             android:text="@string/general_info"/>
@@ -69,20 +72,18 @@
         </LinearLayout>
 
         <LinearLayout
-                android:id="@+id/widgets_chips"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/fabs_margin"
-                android:layout_marginRight="@dimen/cards_margin"
-                android:layout_marginEnd="@dimen/cards_margin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:id="@+id/widgets_chips"
+                android:layout_marginLeft="@dimen/cards_margin"
+                android:layout_marginStart="@dimen/cards_margin"
+                android:orientation="vertical">
 
             <com.pchmn.materialchips.ChipView
                     android:id="@+id/zooper_chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/cards_margin"
-                    android:layout_marginStart="@dimen/cards_margin"
+                    android:layout_marginTop="@dimen/fabs_margin"
                     android:clickable="false"
                     app:deletable="false"/>
 
@@ -90,8 +91,7 @@
                     android:id="@+id/kustom_chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/fabs_margin"
-                    android:layout_marginStart="@dimen/fabs_margin"
+                    android:layout_marginTop="@dimen/fabs_margin"
                     android:clickable="false"
                     app:deletable="false"/>
 

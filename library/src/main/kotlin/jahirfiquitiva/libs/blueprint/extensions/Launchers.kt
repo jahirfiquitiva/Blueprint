@@ -82,8 +82,7 @@ val Context.supportedLaunchers:Array<Launcher>
             Launcher("TSF Launcher", arrayOf("com.tsf.shell"),
                      getColorFromRes(R.color.tsf_launcher_color)),
             Launcher("Unicon", arrayOf("sg.ruqqq.IconThemer"),
-                     getColorFromRes(R.color.unicon_pro_color))
-                   )
+                     getColorFromRes(R.color.unicon_pro_color)))
 
 fun Context.executeLauncherIntent(launcherKey:String) {
     if (launcherKey.isEmpty()) return
@@ -126,6 +125,16 @@ private fun Context.executeIconPacksNotSupportedIntent() {
         positiveText(android.R.string.ok)
         negativeText(android.R.string.cancel)
         onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts") }
+    }
+}
+
+fun Context.showLauncherNotInstalledDialog(item:Launcher) {
+    materialDialog {
+        title(item.name)
+        content(getString(R.string.lni_content, item.name))
+        positiveText(android.R.string.ok)
+        negativeText(android.R.string.cancel)
+        onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0]) }
     }
 }
 
@@ -173,7 +182,7 @@ private fun Context.executeAviateLauncherIntent() {
 }
 
 private fun Context.executeGoLauncherIntent() {
-    val intent = packageManager.getLaunchIntentForPackage("com.gau.go" + ".launcherex")
+    val intent = packageManager.getLaunchIntentForPackage("com.gau.go.launcherex")
     val go = Intent("com.gau.go.launcherex.MyThemes.mythemeaction")
     go.putExtra("type", 1)
     go.putExtra("pkgname", packageName)
@@ -190,7 +199,7 @@ private fun Context.executeHoloLauncherIntent() {
 private fun Context.executeHoloLauncherICSIntent() {
     val holohdApply = Intent(Intent.ACTION_MAIN)
     holohdApply.component = ComponentName("com.mobint.hololauncher.hd",
-                                          "com.mobint" + ".hololauncher.SettingsActivity")
+                                          "com.mobint.hololauncher.SettingsActivity")
     startActivity(holohdApply)
 }
 
@@ -297,7 +306,7 @@ private fun Context.executeSmartLauncherProIntent() {
 }
 
 private fun Context.executeSoloLauncherIntent() {
-    val soloApply = packageManager.getLaunchIntentForPackage("home.solo" + ".launcher.free")
+    val soloApply = packageManager.getLaunchIntentForPackage("home.solo.launcher.free")
     val solo = Intent("home.solo.launcher.free.APPLY_THEME")
     solo.putExtra("EXTRA_PACKAGENAME", packageName)
     solo.putExtra("EXTRA_THEMENAME", getString(R.string.app_name))

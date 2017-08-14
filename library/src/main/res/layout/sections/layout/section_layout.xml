@@ -18,7 +18,7 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/icons_layout"
+        android:id="@+id/section_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -27,13 +27,13 @@
     <include layout="@layout/extra_empty_views"/>
 
     <jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
-            android:id="@+id/icons_grid"
+            android:id="@+id/section_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:overScrollMode="ifContentScrolls"
-            android:paddingBottom="@dimen/cards_margin"
-            android:paddingTop="@dimen/cards_margin"
+            android:paddingBottom="@dimen/cards_small_margin"
+            android:paddingTop="@dimen/cards_small_margin"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.pluscubed.recyclerfastscroll.RecyclerFastScroller

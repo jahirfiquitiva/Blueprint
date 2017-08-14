@@ -19,17 +19,16 @@ package jahirfiquitiva.libs.blueprint.holders
 import android.graphics.Bitmap
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.LinearInterpolator
-import android.view.animation.ScaleAnimation
 import android.widget.ImageView
+import ca.allanwang.kau.utils.scaleXY
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.BitmapImageViewTarget
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.models.Icon
-import jahirfiquitiva.libs.frames.views.SimpleAnimationListener
+import jahirfiquitiva.libs.blueprint.utils.ICONS_ANIMATION_DURATION
+import jahirfiquitiva.libs.blueprint.utils.ICONS_ANIMATION_DURATION_DELAY
 
 class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
     
@@ -51,28 +50,13 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
                     override fun setResource(resource:Bitmap) {
                         if (adapterPosition > lastPosition) {
                             if (itemView.context.bpKonfigs.animationsEnabled && animate) {
-                                val scale = ScaleAnimation(1F, 0F, 1F, 0F,
-                                                           Animation.RELATIVE_TO_SELF,
-                                                           0.5f,
-                                                           Animation.RELATIVE_TO_SELF, 0.5f)
-                                scale.duration = 250
-                                scale.interpolator = LinearInterpolator()
-                                
-                                scale.setAnimationListener(object:SimpleAnimationListener() {
-                                    override fun onEnd(animation:Animation) {
-                                        super.onEnd(animation)
-                                        val nScale = ScaleAnimation(0F, 1F, 0F, 1F,
-                                                                    Animation.RELATIVE_TO_SELF,
-                                                                    0.5f,
-                                                                    Animation.RELATIVE_TO_SELF,
-                                                                    0.5f)
-                                        nScale.duration = 250
-                                        nScale.interpolator = LinearInterpolator()
-                                        setIconResource(resource)
-                                        startAnimation(nScale)
-                                    }
-                                })
-                                startAnimation(scale)
+                                scaleXY = 0F
+                                setIconResource(resource)
+                                animate().scaleX(1F)
+                                        .scaleY(1F)
+                                        .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
+                                        .setDuration(ICONS_ANIMATION_DURATION)
+                                        .start()
                             } else {
                                 setIconResource(resource)
                             }
@@ -88,7 +72,7 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
     private fun setIconResource(resource:Bitmap) {
         icon?.alpha = 0F
         icon?.setImageBitmap(resource)
-        icon?.animate()?.setDuration(250)?.alpha(1f)?.start()
+        icon?.animate()?.setDuration(ICONS_ANIMATION_DURATION)?.alpha(1f)?.start()
         lastPosition = adapterPosition
     }
     
