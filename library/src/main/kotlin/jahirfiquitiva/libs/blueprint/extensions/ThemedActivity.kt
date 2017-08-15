@@ -20,7 +20,6 @@ import android.support.v7.widget.Toolbar
 import ca.allanwang.kau.utils.blendWith
 import com.mikepenz.materialdrawer.Drawer
 import jahirfiquitiva.libs.kauextensions.activities.ThemedActivity
-import jahirfiquitiva.libs.kauextensions.extensions.applyColorFilter
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getColorFromRes
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
@@ -36,11 +35,11 @@ fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, drawer:Drawer?, offset:I
     else if (ratio < 0) ratio = 0.0
     val rightIconsColor = defaultIconsColor.blendWith(getActiveIconsColorFor(primaryColor),
                                                       ratio.toFloat())
+    toolbar.tint(rightIconsColor)
     try {
-        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.applyColorFilter(rightIconsColor)
+        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = rightIconsColor
     } catch (ignored:Exception) {
     }
-    toolbar.tint(rightIconsColor)
     updateStatusBarStyle(
             if (ratio > 0.7) CollapsingToolbarCallback.State.COLLAPSED else CollapsingToolbarCallback.State.EXPANDED)
 }

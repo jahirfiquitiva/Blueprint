@@ -69,6 +69,7 @@ import jahirfiquitiva.libs.blueprint.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.utils.DEFAULT_WALLPAPERS_POSITION
+import jahirfiquitiva.libs.blueprint.views.CustomAppBarLayout
 import jahirfiquitiva.libs.fabsmenu.FABsMenu
 import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
 import jahirfiquitiva.libs.fabsmenu.TitleFAB
@@ -101,7 +102,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.extensions.tintMenu
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
-import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.views.CounterFab
 import jahirfiquitiva.libs.kauextensions.ui.views.callbacks.CollapsingToolbarCallback
 import java.util.*
@@ -110,7 +110,7 @@ import kotlin.collections.ArrayList
 abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
     private lateinit var coordinatorLayout:CustomCoordinatorLayout
-    private lateinit var appBarLayout:FixedElevationAppBarLayout
+    private lateinit var appBarLayout:CustomAppBarLayout
     private lateinit var collapsingToolbar:CollapsingToolbarLayout
     private lateinit var toolbar:Toolbar
     private lateinit var menu:Menu
@@ -484,9 +484,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             fab.showIf(id == DEFAULT_REQUEST_POSITION)
             
             appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, bpKonfigs.animationsEnabled)
-            coordinatorLayout.allowScroll = id == DEFAULT_HOME_POSITION
-            collapsingToolbar.isEnabled = id == DEFAULT_HOME_POSITION
-            appBarLayout.isEnabled = id == DEFAULT_HOME_POSITION
+            appBarLayout.allowScroll(id == DEFAULT_HOME_POSITION)
+            coordinatorLayout.allowScroll = (id == DEFAULT_HOME_POSITION)
             
             collapsingToolbar.title = getString(
                     if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
