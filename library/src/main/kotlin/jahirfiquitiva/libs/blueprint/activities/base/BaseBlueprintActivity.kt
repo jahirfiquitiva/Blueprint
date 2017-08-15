@@ -116,7 +116,7 @@ abstract class BaseBlueprintActivity:BaseActivityWithFragments(), LifecycleRegis
         }
     }
     
-    internal fun startLicenseCheck() {
+    private fun startLicenseCheck() {
         if (isFirstRunEver || justUpdated || (!bpKonfigs.functionalDashboard)) {
             checker = getLicenseChecker()
             if (checker != null) {

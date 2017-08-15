@@ -582,6 +582,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                     }
                 })
             }
+            
             dialog?.show()
         }
     }
@@ -591,5 +592,4 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             (currentFragment as WallpapersFragment).reloadData(1)
         }
     }
-    
 }

@@ -17,7 +17,6 @@
 package jahirfiquitiva.libs.blueprint.holders
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.ColorFilter
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
@@ -30,24 +29,26 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import ca.allanwang.kau.utils.isAppInstalled
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.target.BitmapImageViewTarget
+import com.bumptech.glide.load.resource.drawable.GlideDrawable
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.models.Launcher
+import jahirfiquitiva.libs.frames.extensions.toBitmap
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
-import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.withAlpha
 import jahirfiquitiva.libs.kauextensions.ui.views.CustomCardView
 
 class LauncherHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
-    var lastPosition = -1
-    
     val itemLayout:CustomCardView? = itemView?.findViewById(R.id.launcher_item)
     val bg:LinearLayout? = itemView?.findViewById(R.id.launcher_bg)
     val icon:ImageView? = itemView?.findViewById(R.id.launcher_icon)
@@ -64,35 +65,53 @@ class LauncherHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
         val formattedName = item.name.replace("launcher", "", true).formatCorrectly()
         val iconName = formattedName.toLowerCase()
         text?.text = formattedName.blueprintFormat()
-        var bits:Int
-        try {
-            bits = ("ic_" + iconName).getIconResource(context)
+        val bits = try {
+            ("ic_" + iconName).getIconResource(context)
         } catch (ignored:Exception) {
-            bits = "ic_na_launcher".getIconResource(context)
+            "ic_na_launcher".getIconResource(context)
         }
+        
+        icon?.colorFilter = null
+        text?.background = null
+        text?.setTextColor(context.secondaryTextColor)
+        
         Glide.with(itemView?.context)
+                .fromResource()
                 .load(bits)
-                .asBitmap()
+                .dontAnimate()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .into(object:BitmapImageViewTarget(icon) {
-                    override fun setResource(resource:Bitmap) {
-                        val isInstalled = isLauncherInstalled(context, item.packageNames)
-                        setIconResource(resource, isInstalled)
-                        Palette.from(resource).generate().bestSwatch?.let {
-                            val rightColor = if (isInstalled) it.rgb else context.secondaryTextColor
-                            if (context.getBoolean(R.bool.enable_colored_cards)) {
-                                itemLayout?.radius = 0F
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                                    itemLayout?.elevation = 0F
-                                itemLayout?.cardElevation = 0F
-                                itemLayout?.maxCardElevation = 0F
-                                bg?.setBackgroundColor(rightColor.withAlpha(0.8F))
+                .priority(Priority.IMMEDIATE)
+                .listener(object:RequestListener<Int, GlideDrawable> {
+                    override fun onResourceReady(resource:GlideDrawable?, model:Int?,
+                                                 target:Target<GlideDrawable>?,
+                                                 isFromMemoryCache:Boolean,
+                                                 isFirstResource:Boolean):Boolean {
+                        resource?.let {
+                            val isInstalled = isLauncherInstalled(context, item.packageNames)
+                            setIconResource(it, isInstalled)
+                            Palette.from(it.toBitmap(context)).generate().bestSwatch?.let {
+                                val rightColor = if (isInstalled) it.rgb else context.secondaryTextColor
+                                if (context.getBoolean(R.bool.enable_colored_cards)) {
+                                    itemLayout?.radius = 0F
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                                        itemLayout?.elevation = 0F
+                                    itemLayout?.cardElevation = 0F
+                                    itemLayout?.maxCardElevation = 0F
+                                    bg?.setBackgroundColor(rightColor.withAlpha(0.8F))
+                                }
+                                text?.setBackgroundColor(rightColor)
+                                text?.setTextColor(
+                                        context.getSecondaryTextColorFor(rightColor, 0.6F))
                             }
-                            text?.setBackgroundColor(rightColor)
-                            text?.setTextColor(context.getPrimaryTextColorFor(rightColor, 0.6F))
                         }
+                        return true
                     }
+                    
+                    override fun onException(e:java.lang.Exception?, model:Int?,
+                                             target:Target<GlideDrawable>?,
+                                             isFirstResource:Boolean):Boolean = false
                 })
+                .into(icon)
         setOnClickListener { listener(item) }
     }
     
@@ -103,24 +122,11 @@ class LauncherHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
         return false
     }
     
-    private fun setIconResource(resource:Bitmap, isInstalled:Boolean) {
+    private fun setIconResource(resource:GlideDrawable, isInstalled:Boolean) {
         val filter:ColorFilter? = if (isInstalled) null else bnwFilter
-        if (adapterPosition > lastPosition) {
-            if (itemView.context.bpKonfigs.animationsEnabled) {
-                icon?.alpha = 0F
-                icon?.setImageBitmap(resource)
-                icon?.colorFilter = filter
-                icon?.animate()?.setDuration(250)?.alpha(1f)?.start()
-            } else {
-                icon?.setImageBitmap(resource)
-                icon?.colorFilter = filter
-            }
-        } else {
-            icon?.setImageBitmap(resource)
-            icon?.colorFilter = filter
-            clearAnimations()
-        }
-        lastPosition = adapterPosition
+        icon?.setImageDrawable(resource)
+        icon?.colorFilter = filter
+        clearAnimations()
     }
     
     private fun clearAnimations() {
