@@ -96,6 +96,8 @@ dependencies {
     compile 'konifar:fab-transformation:' + versions.fabTransformation
     // Chips View
     compile 'me.jahirfiquitiva:MaterialChipsInput:' + versions.chips
+    // Material Number Picker
+    compile 'biz.kasual:materialnumberpicker:' + versions.mnp
 
     // Architecture Components
     compile 'android.arch.lifecycle:runtime:' + versions.archComponents

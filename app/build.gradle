@@ -60,7 +60,7 @@ android {
             minifyEnabled true
             shrinkResources false
             proguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
-			consumerProguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
         }
     }
 

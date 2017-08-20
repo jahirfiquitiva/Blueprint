@@ -52,4 +52,5 @@ ext.versions = [
         fabsMenu              : '1.0.4',
         fabTransformation     : '1.0.0',
         chips                 : '6988f83',
+        mnp                   : '1.2.1'
 ]

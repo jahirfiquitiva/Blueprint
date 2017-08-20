@@ -29,7 +29,6 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
-import android.text.InputType
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -37,6 +36,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.LinearLayout
+import biz.kasual.materialnumberpicker.MaterialNumberPicker
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.goneIf
@@ -78,6 +78,7 @@ import jahirfiquitiva.libs.frames.extensions.framesKonfigs
 import jahirfiquitiva.libs.frames.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
+import jahirfiquitiva.libs.kauextensions.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kauextensions.extensions.changeOptionVisibility
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
@@ -96,6 +97,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
+import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.setupStatusBarStyle
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 import jahirfiquitiva.libs.kauextensions.extensions.tint
@@ -382,13 +384,13 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                 for (i in 0..(getInteger(R.integer.icons_columns) - 1)) {
                     try {
                         correctList.add(icons[i])
-                    } catch(ignored:Exception) {
+                    } catch (ignored:Exception) {
                     }
                 }
                 iconsPreviewRV.adapter = iconsPreviewAdapter
                 iconsPreviewAdapter.setItems(correctList)
             }
-        } catch(e:Exception) {
+        } catch (e:Exception) {
             e.printStackTrace()
         }
     }
@@ -495,7 +497,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             lockFiltersDrawer(id != DEFAULT_ICONS_POSITION ||
                                       getStringArray(R.array.icon_filters).size <= 1)
             return true
-        } catch(e:Exception) {
+        } catch (e:Exception) {
             e.printStackTrace()
         }
         return false
@@ -569,20 +571,36 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     internal fun showWallpapersColumnsDialog() {
         if (currentFragment is WallpapersFragment) {
             destroyDialog()
+            
+            val currentColumns = framesKonfigs.columns
+            
+            val numberPicker = MaterialNumberPicker.Builder(this)
+                    .minValue(1)
+                    .maxValue(6)
+                    .defaultValue(currentColumns)
+                    .backgroundColor(cardBackgroundColor)
+                    .separatorColor(Color.TRANSPARENT)
+                    .textColor(secondaryTextColor)
+                    .enableFocusability(false)
+                    .wrapSelectorWheel(true)
+                    .build()
+            
             dialog = buildMaterialDialog {
                 title(R.string.wallpapers_columns_setting_title)
-                inputType(InputType.TYPE_CLASS_NUMBER)
-                input(0, 0, false, { _, input ->
+                customView(numberPicker, false)
+                positiveText(android.R.string.ok)
+                onPositive { dialog, _ ->
                     try {
-                        var cols = input.toString().toInt()
-                        if (cols <= 0) cols = 2
-                        framesKonfigs.columns = cols
-                        (currentFragment as WallpapersFragment).configureRVColumns()
+                        val newColumns = numberPicker.value
+                        if (currentColumns != newColumns) {
+                            framesKonfigs.columns = newColumns
+                            (currentFragment as WallpapersFragment).configureRVColumns()
+                        }
                     } catch (ignored:Exception) {
                     }
-                })
+                    dialog.dismiss()
+                }
             }
-            
             dialog?.show()
         }
     }
