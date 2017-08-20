@@ -116,7 +116,7 @@ abstract class BaseBlueprintActivity:BaseActivityWithFragments(), LifecycleRegis
         }
     }
     
-    internal fun startLicenseCheck() {
+    private fun startLicenseCheck() {
         if (isFirstRunEver || justUpdated || (!bpKonfigs.functionalDashboard)) {
             checker = getLicenseChecker()
             if (checker != null) {
@@ -327,18 +327,16 @@ abstract class BaseBlueprintActivity:BaseActivityWithFragments(), LifecycleRegis
         dialog?.show()
     }
     
-    override fun onProductPurchased(productId:String?, details:TransactionDetails?) {
-        productId?.let {
-            billingProcessor?.let {
-                if (it.consumePurchase(productId)) {
-                    destroyDialog()
-                    dialog = buildMaterialDialog {
-                        title(R.string.donate_success_title)
-                        content(getString(R.string.donate_success_content, getAppName()))
-                        positiveText(R.string.close)
-                    }
-                    dialog?.show()
+    override fun onProductPurchased(productId:String, details:TransactionDetails?) {
+        billingProcessor?.let {
+            if (it.consumePurchase(productId)) {
+                destroyDialog()
+                dialog = buildMaterialDialog {
+                    title(R.string.donate_success_title)
+                    content(getString(R.string.donate_success_content, getAppName()))
+                    positiveText(R.string.close)
                 }
+                dialog?.show()
             }
         }
     }

@@ -28,8 +28,7 @@
             android:name="jahirfiquitiva.libs.blueprint.applications.BlueprintApp"
             android:theme="@style/MySplashScreen">
 
-        <activity
-                android:name=".MainActivity">
+        <activity android:name=".MainActivity">
 
             <!-- TODO: Do NOT remove the intent-filter tags -->
             <intent-filter>

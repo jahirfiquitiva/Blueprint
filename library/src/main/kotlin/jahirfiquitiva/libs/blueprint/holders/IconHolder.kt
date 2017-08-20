@@ -16,14 +16,19 @@
 
 package jahirfiquitiva.libs.blueprint.holders
 
-import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import ca.allanwang.kau.utils.scaleXY
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
+import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.target.BitmapImageViewTarget
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.models.Icon
@@ -44,35 +49,45 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
     fun bind(animate:Boolean, item:Icon, listener:(Icon) -> Unit) = with(itemView) {
         Glide.with(itemView?.context)
                 .load(item.icon)
-                .asBitmap()
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .into(object:BitmapImageViewTarget(icon) {
-                    override fun setResource(resource:Bitmap) {
-                        if (adapterPosition > lastPosition) {
-                            if (itemView.context.bpKonfigs.animationsEnabled && animate) {
-                                scaleXY = 0F
-                                setIconResource(resource)
-                                animate().scaleX(1F)
-                                        .scaleY(1F)
-                                        .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
-                                        .setDuration(ICONS_ANIMATION_DURATION)
-                                        .start()
+                .apply(RequestOptions().dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                               .priority(Priority.IMMEDIATE))
+                .listener(object:RequestListener<Drawable> {
+                    override fun onResourceReady(resource:Drawable?, model:Any?,
+                                                 target:Target<Drawable>?, dataSource:DataSource?,
+                                                 isFirstResource:Boolean):Boolean {
+                        resource?.let {
+                            if (adapterPosition > lastPosition) {
+                                if (itemView.context.bpKonfigs.animationsEnabled && animate) {
+                                    scaleXY = 0F
+                                    setIconResource(it)
+                                    animate().scaleX(1F)
+                                            .scaleY(1F)
+                                            .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
+                                            .setDuration(ICONS_ANIMATION_DURATION)
+                                            .start()
+                                } else {
+                                    setIconResource(it)
+                                }
                             } else {
-                                setIconResource(resource)
+                                icon?.setImageDrawable(it)
+                                clearAnimations()
                             }
-                        } else {
-                            icon?.setImageBitmap(resource)
-                            clearAnimations()
                         }
+                        // True if I manage setting the resource and its animations
+                        // False to let Glide do that
+                        return true
                     }
+                    
+                    override fun onLoadFailed(e:GlideException?, model:Any?,
+                                              target:Target<Drawable>?,
+                                              isFirstResource:Boolean):Boolean = false
                 })
+                .into(icon)
         setOnClickListener { listener(item) }
     }
     
-    private fun setIconResource(resource:Bitmap) {
-        icon?.alpha = 0F
-        icon?.setImageBitmap(resource)
-        icon?.animate()?.setDuration(ICONS_ANIMATION_DURATION)?.alpha(1f)?.start()
+    private fun setIconResource(resource:Drawable) {
+        icon?.setImageDrawable(resource)
         lastPosition = adapterPosition
     }
     

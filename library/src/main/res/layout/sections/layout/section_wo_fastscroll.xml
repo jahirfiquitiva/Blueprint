@@ -22,8 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:gravity="center">
 
     <include layout="@layout/extra_empty_views"/>
 
@@ -36,7 +35,6 @@
             android:fitsSystemWindows="true"
             android:scrollbars="none"
             android:overScrollMode="ifContentScrolls"
-            android:paddingBottom="@dimen/kau_fab_size"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:paddingBottom="@dimen/kau_fab_size"/>
 
 </RelativeLayout>

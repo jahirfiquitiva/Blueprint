@@ -45,7 +45,8 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
         }
     }
 
@@ -111,8 +112,9 @@ dependencies {
     compile 'com.android.volley:volley:' + versions.volley
     // Glide Image Loading
     compile 'com.github.bumptech.glide:glide:' + versions.glide
-    // annotationProcessor 'com.github.bumptech.glide:compiler:' + versions.glide
-    // kapt 'com.github.bumptech.glide:compiler:' + versions.glide
+    compile 'com.github.bumptech.glide:annotations:' + versions.glide
+    annotationProcessor 'com.github.bumptech.glide:compiler:' + versions.glide
+    kapt 'com.github.bumptech.glide:compiler:' + versions.glide
     // KAU Extensions
     compile 'me.jahirfiquitiva:KAUExtensions:' + versions.kauExt
     // Sectioned RecyclerView

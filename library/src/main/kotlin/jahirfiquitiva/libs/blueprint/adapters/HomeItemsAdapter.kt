@@ -31,6 +31,7 @@ import jahirfiquitiva.libs.blueprint.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.holders.HomeItemsHolder
 import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.frames.adapters.BaseListAdapter
+import jahirfiquitiva.libs.frames.views.SimpleAnimationListener
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.chipsColor
 import jahirfiquitiva.libs.kauextensions.extensions.chipsIconsColor
@@ -43,8 +44,8 @@ import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 class HomeItemsAdapter(val context:Context,
                        val listener:(HomeItem) -> Unit,
                        val iconsAmount:Int = 0, val wallpapersAmount:Int = 0,
-                       val zooperAmount:Int = 0,
-                       val kustomAmount:Int = 0):BaseListAdapter<HomeItem, RecyclerView.ViewHolder>() {
+                       val zooperAmount:Int = 0, val kustomAmount:Int = 0):
+        BaseListAdapter<HomeItem, RecyclerView.ViewHolder>() {
     
     var shouldShowApplyCard = false
     var firstLinkPosition = -1
@@ -68,17 +69,13 @@ class HomeItemsAdapter(val context:Context,
                     holder.dismissButton?.setOnClickListener {
                         val anim = AnimationUtils.loadAnimation(context,
                                                                 android.R.anim.slide_out_right)
-                        anim.setAnimationListener(object:Animation.AnimationListener {
-                            override fun onAnimationRepeat(p0:Animation?) {
-                            }
-                            
-                            override fun onAnimationEnd(p0:Animation?) {
+                        anim.setAnimationListener(object:SimpleAnimationListener() {
+                            override fun onAnimationEnd(animation:Animation?) {
+                                super.onAnimationEnd(animation)
                                 context.bpKonfigs.isApplyCardDismissed = true
+                                shouldShowApplyCard = false
                                 notifyItemRemoved(0)
                                 notifyDataSetChanged()
-                            }
-                            
-                            override fun onAnimationStart(p0:Animation?) {
                             }
                         })
                         holder.itemView.startAnimation(anim)

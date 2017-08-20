@@ -21,8 +21,7 @@
         android:id="@+id/section_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:clipToPadding="false">
 
     <include layout="@layout/extra_empty_views"/>
 
@@ -33,8 +32,7 @@
             android:clipToPadding="false"
             android:overScrollMode="ifContentScrolls"
             android:paddingBottom="@dimen/cards_small_margin"
-            android:paddingTop="@dimen/cards_small_margin"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:paddingTop="@dimen/cards_small_margin"/>
 
     <com.pluscubed.recyclerfastscroll.RecyclerFastScroller
             android:id="@+id/fast_scroller"
