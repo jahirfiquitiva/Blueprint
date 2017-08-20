@@ -20,6 +20,7 @@ import android.content.Context
 import android.graphics.ColorFilter
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.support.v7.graphics.Palette
 import android.support.v7.widget.RecyclerView
@@ -30,13 +31,14 @@ import android.widget.TextView
 import ca.allanwang.kau.utils.isAppInstalled
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
+import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.GlideDrawable
+import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.blueprintFormat
-import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.frames.extensions.toBitmap
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
@@ -76,15 +78,12 @@ class LauncherHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
         text?.setTextColor(context.secondaryTextColor)
         
         Glide.with(itemView?.context)
-                .fromResource()
                 .load(bits)
-                .dontAnimate()
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .priority(Priority.IMMEDIATE)
-                .listener(object:RequestListener<Int, GlideDrawable> {
-                    override fun onResourceReady(resource:GlideDrawable?, model:Int?,
-                                                 target:Target<GlideDrawable>?,
-                                                 isFromMemoryCache:Boolean,
+                .apply(RequestOptions().dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                               .priority(Priority.IMMEDIATE))
+                .listener(object:RequestListener<Drawable> {
+                    override fun onResourceReady(resource:Drawable?, model:Any?,
+                                                 target:Target<Drawable>?, dataSource:DataSource?,
                                                  isFirstResource:Boolean):Boolean {
                         resource?.let {
                             val isInstalled = isLauncherInstalled(context, item.packageNames)
@@ -107,9 +106,9 @@ class LauncherHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
                         return true
                     }
                     
-                    override fun onException(e:java.lang.Exception?, model:Int?,
-                                             target:Target<GlideDrawable>?,
-                                             isFirstResource:Boolean):Boolean = false
+                    override fun onLoadFailed(e:GlideException?, model:Any?,
+                                              target:Target<Drawable>?,
+                                              isFirstResource:Boolean):Boolean = false
                 })
                 .into(icon)
         setOnClickListener { listener(item) }
@@ -122,7 +121,7 @@ class LauncherHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
         return false
     }
     
-    private fun setIconResource(resource:GlideDrawable, isInstalled:Boolean) {
+    private fun setIconResource(resource:Drawable, isInstalled:Boolean) {
         val filter:ColorFilter? = if (isInstalled) null else bnwFilter
         icon?.setImageDrawable(resource)
         icon?.colorFilter = filter

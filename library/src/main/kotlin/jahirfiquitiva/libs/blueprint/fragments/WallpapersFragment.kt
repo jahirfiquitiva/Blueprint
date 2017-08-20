@@ -25,14 +25,6 @@ class WallpapersFragment:BaseWallpapersFragment() {
     override fun fromFavorites():Boolean = false
     override fun showFavoritesIcon():Boolean = false
     
-    override fun initUI(content:View) {
-        super.initUI(content)
-        try {
-            rv.state = EmptyViewRecyclerView.State.LOADING
-        } catch (ignored:Exception) {
-        }
-    }
-    
     override fun doOnWallpapersChange(data:ArrayList<Wallpaper>, fromCollectionActivity:Boolean) {
         super.doOnWallpapersChange(data, fromCollectionActivity)
         adapter.setItems(data)

@@ -20,6 +20,7 @@ import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModelProviders
+import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import jahirfiquitiva.libs.blueprint.R
@@ -44,7 +45,7 @@ class HomeFragment:BaseViewModelFragment<HomeItem>() {
     }
     
     override fun registerObserver() {
-        model.items.observe(this, Observer<ArrayList<HomeItem>> { data ->
+        model.items.observe(this, Observer { data ->
             data?.let {
                 homeAdapter.setItems(it)
                 rv.state = EmptyViewRecyclerView.State.NORMAL

@@ -16,22 +16,24 @@
 
 package jahirfiquitiva.libs.blueprint.holders
 
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import ca.allanwang.kau.utils.scaleXY
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
+import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.GlideDrawable
+import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.utils.ICONS_ANIMATION_DURATION_DELAY
-import java.lang.Exception
 
 class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
     
@@ -46,15 +48,12 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
     
     fun bind(animate:Boolean, item:Icon, listener:(Icon) -> Unit) = with(itemView) {
         Glide.with(itemView?.context)
-                .fromResource()
                 .load(item.icon)
-                .dontAnimate()
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .priority(Priority.IMMEDIATE)
-                .listener(object:RequestListener<Int, GlideDrawable> {
-                    override fun onResourceReady(resource:GlideDrawable?, model:Int?,
-                                                 target:Target<GlideDrawable>?,
-                                                 isFromMemoryCache:Boolean,
+                .apply(RequestOptions().dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                               .priority(Priority.IMMEDIATE))
+                .listener(object:RequestListener<Drawable> {
+                    override fun onResourceReady(resource:Drawable?, model:Any?,
+                                                 target:Target<Drawable>?, dataSource:DataSource?,
                                                  isFirstResource:Boolean):Boolean {
                         resource?.let {
                             if (adapterPosition > lastPosition) {
@@ -79,15 +78,15 @@ class IconHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
                         return true
                     }
                     
-                    override fun onException(e:Exception?, model:Int?,
-                                             target:Target<GlideDrawable>?,
-                                             isFirstResource:Boolean):Boolean = false
+                    override fun onLoadFailed(e:GlideException?, model:Any?,
+                                              target:Target<Drawable>?,
+                                              isFirstResource:Boolean):Boolean = false
                 })
                 .into(icon)
         setOnClickListener { listener(item) }
     }
     
-    private fun setIconResource(resource:GlideDrawable) {
+    private fun setIconResource(resource:Drawable) {
         icon?.setImageDrawable(resource)
         lastPosition = adapterPosition
     }
