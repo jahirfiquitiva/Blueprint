@@ -74,7 +74,7 @@
 
         <!-- Icons -->
         <activity
-                android:name=".activities.base.InternalBaseBlueprintActivity"
+                android:name=".ui.activities.base.InternalBaseBlueprintActivity"
                 android:label="@string/app_name"
                 android:windowSoftInputMode="stateHidden"
                 android:exported="false"/>
@@ -82,7 +82,7 @@
         <!-- WIDGETS -->
         <!-- Icon restorer Widget -->
         <receiver
-                android:name=".widgets.IconRestorerWidget"
+                android:name=".providers.appwidget.IconRestorerWidget"
                 android:icon="@drawable/app_logo"
                 android:label="@string/iconrestorer_widget_title">
             <intent-filter>
@@ -95,7 +95,7 @@
         </receiver>
 
         <activity
-                android:name=".activities.LauncherIconRestorerActivity"
+                android:name=".ui.activities.LauncherIconRestorerActivity"
                 android:excludeFromRecents="true"
                 android:label="@string/app_name"
                 android:noHistory="true"
@@ -103,7 +103,7 @@
 
         <!-- Clock Widget -->
         <receiver
-                android:name=".widgets.ClockWidget"
+                android:name=".providers.appwidget.ClockWidget"
                 android:label="@string/clock_widget_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -117,10 +117,10 @@
                     android:resource="@xml/clock_widget_provider"/>
         </receiver>
 
-        <activity android:name="jahirfiquitiva.libs.frames.activities.SettingsActivity">
+        <activity android:name="jahirfiquitiva.libs.frames.ui.activities.SettingsActivity">
             <intent-filter tools:node="removeAll"/>
         </activity>
-        <activity android:name="jahirfiquitiva.libs.frames.activities.FramesActivity">
+        <activity android:name="jahirfiquitiva.libs.frames.ui.activities.FramesActivity">
             <intent-filter tools:node="removeAll"/>
         </activity>
 

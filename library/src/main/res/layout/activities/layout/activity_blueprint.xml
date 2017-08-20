@@ -32,7 +32,7 @@
             android:clipToPadding="false"
             app:elevation="8dp"/>
 
-    <jahirfiquitiva.libs.blueprint.views.CustomAppBarLayout
+    <jahirfiquitiva.libs.blueprint.ui.widgets.CustomAppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
-    </jahirfiquitiva.libs.blueprint.views.CustomAppBarLayout>
+    </jahirfiquitiva.libs.blueprint.ui.widgets.CustomAppBarLayout>
 
     <FrameLayout
             android:id="@+id/fragments_container"

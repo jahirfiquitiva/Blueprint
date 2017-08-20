@@ -18,7 +18,7 @@ package jahirfiquitiva.apps.blueprint.demo
 
 import android.os.Bundle
 import com.github.javiersantos.piracychecker.PiracyChecker
-import jahirfiquitiva.libs.blueprint.activities.DrawerBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.DrawerBlueprintActivity
 
 class MainActivity:DrawerBlueprintActivity() {
     /**
