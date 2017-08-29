@@ -16,16 +16,15 @@
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply from: '../dependencies.gradle'
 
 android {
-    compileSdkVersion versions.compileSdk
-    buildToolsVersion versions.buildTools
+    compileSdkVersion project.ext.compileSdk
+    buildToolsVersion project.ext.buildTools
 
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             output.outputFile = new File(output.outputFile.parent,
-                    versions.appId + "-v${variant.versionName}-${variant.name}.apk")
+                    project.ext.appId + "-v${variant.versionName}-${variant.name}.apk")
         }
     }
 
@@ -42,11 +41,11 @@ android {
     }
 
     defaultConfig {
-        applicationId versions.appGroup + "." + versions.appId.toLowerCase() + ".demo"
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
-        versionCode versions.versionCode
-        versionName versions.versionName
+        applicationId project.ext.appGroup + "." + project.ext.appId.toLowerCase() + ".demo"
+        minSdkVersion project.ext.minSdk
+        targetSdkVersion project.ext.targetSdk
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
@@ -90,7 +89,7 @@ android {
 dependencies {
     compile project(path: ':library')
     // TODO: Delete Multidex
-    compile 'com.android.support:multidex:' + versions.multidex
+    compile 'com.android.support:multidex:' + project.ext.multidex
 }
 
 tasks.whenTaskAdded { task ->
