@@ -123,19 +123,16 @@ dependencies {
     compile 'com.android.volley:volley:' + project.ext.volley
     // Glide Image Loading
     compile 'com.github.bumptech.glide:glide:' + project.ext.glide
-    compile 'com.github.bumptech.glide:annotations:' + project.ext.glide
-    annotationProcessor 'com.github.bumptech.glide:compiler:' + project.ext.glide
-    kapt 'com.github.bumptech.glide:compiler:' + project.ext.glide
+    // compile 'com.github.bumptech.glide:annotations:' + project.ext.glide
+    // annotationProcessor 'com.github.bumptech.glide:compiler:' + project.ext.glide
+    // kapt 'com.github.bumptech.glide:compiler:' + project.ext.glide
     // KAU Extensions
-    compile 'me.jahirfiquitiva:KAUExtensions:' + project.ext.kauExt
+    compile 'me.jahirfiquitiva.KAUExtensions:core:' + project.ext.kauExt
+    compile 'me.jahirfiquitiva.KAUExtensions:ziv:' + project.ext.kauExt
     // Sectioned RecyclerView
     compile 'com.afollestad:sectioned-recyclerview:' + project.ext.sectionedRecyclerView
     // RecyclerView Fast Scroller
-    compile 'com.github.pluscubed:recycler-fast-scroll:' + project.ext.recyclerViewFastScroll
-	// Floating Toolbar
-    compile 'com.github.rubensousa:floatingtoolbar:' + project.ext.floatingToolbar
-    // Subsampling ImageView
-    compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + project.ext..subsImageView
+    compile ('me.jahirfiquitiva:recycler-fast-scroll:' + project.ext.recyclerViewFastScroll + '@aar')
     // In-App Purchases
     compile 'com.anjlab.android.iab.v3:library:' + project.ext.iaps
     // Muzei API
