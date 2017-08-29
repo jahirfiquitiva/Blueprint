@@ -92,6 +92,8 @@ dependencies {
     compile 'com.github.AllanWang:Icon-Request-Tool:' + versions.iconRequestTool
     // FABs Menu
     compile 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu
+    // FAB Transformation
+    compile 'konifar:fab-transformation:' + versions.fabTransformation
     // Chips View
     compile 'me.jahirfiquitiva:MaterialChipsInput:' + versions.chips
     // Material Number Picker
@@ -121,6 +123,8 @@ dependencies {
     compile 'com.afollestad:sectioned-recyclerview:' + versions.sectionedRecyclerView
     // RecyclerView Fast Scroller
     compile 'com.github.plusCubed:recycler-fast-scroll:' + versions.recyclerViewFastScroll
+    // Floating Toolbar
+    compile 'com.github.rubensousa:floatingtoolbar:' + versions.floatingToolbar
     // Subsampling ImageView
     compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView
     // In-App Purchases

@@ -35,6 +35,6 @@
             android:fitsSystemWindows="true"
             android:scrollbars="none"
             android:overScrollMode="ifContentScrolls"
-            android:paddingBottom="56dp"/>
+            android:paddingBottom="@dimen/kau_fab_size"/>
 
 </RelativeLayout>
