@@ -77,10 +77,6 @@ android {
                     'src/main/res'
             ]
     }
-	
-	sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
 
     packagingOptions {
         pickFirst 'META-INF/core_release.kotlin_module'
