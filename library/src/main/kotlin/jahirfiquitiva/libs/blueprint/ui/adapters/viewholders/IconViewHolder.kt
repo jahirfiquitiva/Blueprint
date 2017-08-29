@@ -17,28 +17,26 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import ca.allanwang.kau.utils.scaleXY
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.data.models.Icon
+import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
+import jahirfiquitiva.libs.frames.helpers.extensions.clearChildrenAnimations
+import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
+import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
+import jahirfiquitiva.libs.frames.helpers.utils.GlideResourceRequestListener
+import jahirfiquitiva.libs.frames.ui.adapters.viewholders.GlideViewHolder
 
-class IconViewHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
+class IconViewHolder(itemView:View):GlideViewHolder(itemView) {
     
     var lastPosition = -1
-    val icon:ImageView? = itemView?.findViewById(R.id.icon)
+    val icon:ImageView = itemView.findViewById(R.id.icon)
     
     fun bind(animate:Boolean, item:Icon) {
         bind(animate, item, {})
@@ -46,53 +44,43 @@ class IconViewHolder(itemView:View?):RecyclerView.ViewHolder(itemView) {
         itemView.isFocusable = false
     }
     
+    override fun onRecycled() {
+        icon.releaseFromGlide()
+    }
+    
     fun bind(animate:Boolean, item:Icon, listener:(Icon) -> Unit) = with(itemView) {
-        Glide.with(itemView?.context)
-                .load(item.icon)
-                .apply(RequestOptions().dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                               .priority(Priority.IMMEDIATE))
-                .listener(object:RequestListener<Drawable> {
-                    override fun onResourceReady(resource:Drawable?, model:Any?,
-                                                 target:Target<Drawable>?, dataSource:DataSource?,
-                                                 isFirstResource:Boolean):Boolean {
-                        resource?.let {
-                            if (adapterPosition > lastPosition) {
-                                if (itemView.context.bpKonfigs.animationsEnabled && animate) {
-                                    scaleXY = 0F
-                                    setIconResource(it)
-                                    animate().scaleX(1F)
-                                            .scaleY(1F)
-                                            .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
-                                            .setDuration(ICONS_ANIMATION_DURATION)
-                                            .start()
-                                } else {
-                                    setIconResource(it)
-                                }
-                            } else {
-                                icon?.setImageDrawable(it)
-                                clearAnimations()
-                            }
-                        }
-                        // True if I manage setting the resource and its animations
-                        // False to let Glide do that
-                        return true
-                    }
-                    
-                    override fun onLoadFailed(e:GlideException?, model:Any?,
-                                              target:Target<Drawable>?,
-                                              isFirstResource:Boolean):Boolean = false
-                })
-                .into(icon)
+        icon.loadResource(Glide.with(itemView.context), item.icon, true, animate, true,
+                          object:GlideResourceRequestListener<GlideDrawable>() {
+                              override fun onLoadSucceed(resource:GlideDrawable):Boolean {
+                                  if (adapterPosition > lastPosition) {
+                                      if (itemView.context.bpKonfigs.animationsEnabled && animate) {
+                                          scaleXY = 0F
+                                          setIconResource(resource)
+                                          animate().scaleX(1F)
+                                                  .scaleY(1F)
+                                                  .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
+                                                  .setDuration(ICONS_ANIMATION_DURATION)
+                                                  .start()
+                                      } else {
+                                          setIconResource(resource)
+                                      }
+                                  } else {
+                                      icon.setImageDrawable(resource)
+                                      itemView.clearChildrenAnimations()
+                                  }
+                                  return true
+                              }
+                          })
         setOnClickListener { listener(item) }
     }
     
     private fun setIconResource(resource:Drawable) {
-        icon?.setImageDrawable(resource)
+        icon.setImageDrawable(resource)
         lastPosition = adapterPosition
     }
     
     private fun clearAnimations() {
         itemView?.clearAnimation()
-        icon?.clearAnimation()
+        icon.clearAnimation()
     }
 }

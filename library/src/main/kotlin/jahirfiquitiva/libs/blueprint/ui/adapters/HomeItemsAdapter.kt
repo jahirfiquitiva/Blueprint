@@ -25,11 +25,11 @@ import ca.allanwang.kau.utils.inflate
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visibleIf
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.HomeItemsViewHolders
-import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 import jahirfiquitiva.libs.frames.ui.widgets.SimpleAnimationListener
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
@@ -50,7 +50,7 @@ class HomeItemsAdapter(val context:Context,
     var shouldShowApplyCard = false
     var firstLinkPosition = -1
     
-    override fun doBind(holder:RecyclerView.ViewHolder, position:Int) {
+    override fun doBind(holder:RecyclerView.ViewHolder, position:Int, shouldAnimate:Boolean) {
         try {
             if (shouldShowApplyCard && position == 0 &&
                     holder is HomeItemsViewHolders.ApplyCardHolder) {

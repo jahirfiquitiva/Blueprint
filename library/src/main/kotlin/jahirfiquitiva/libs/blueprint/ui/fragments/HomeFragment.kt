@@ -23,15 +23,17 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.adapters.HomeItemsAdapter
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeApplyCardViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
-import jahirfiquitiva.libs.frames.ui.base.BaseViewModelFragment
+import jahirfiquitiva.libs.blueprint.ui.adapters.HomeItemsAdapter
+import jahirfiquitiva.libs.frames.ui.fragments.base.BaseViewModelFragment
+import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
-import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
 class HomeFragment:BaseViewModelFragment<HomeItem>() {
+    
+    override fun autoStartLoad():Boolean = true
     
     private lateinit var model:HomeItemViewModel
     private lateinit var applyCardModel:HomeApplyCardViewModel

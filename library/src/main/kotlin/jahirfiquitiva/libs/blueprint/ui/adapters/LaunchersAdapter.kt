@@ -17,17 +17,19 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import ca.allanwang.kau.utils.inflate
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.LauncherViewHolder
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
+import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.LauncherViewHolder
 import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 
 class LaunchersAdapter(val listener:(Launcher) -> Unit = {}):
         BaseListAdapter<Launcher, LauncherViewHolder>() {
     override fun onCreateViewHolder(parent:ViewGroup?,
-                                    viewType:Int):LauncherViewHolder = LauncherViewHolder(
-            parent?.inflate(R.layout.item_launcher))
+                                    viewType:Int):LauncherViewHolder =
+            LauncherViewHolder(parent?.inflate(R.layout.item_launcher) ?: FrameLayout(null))
     
-    override fun doBind(holder:LauncherViewHolder, position:Int) = holder.bind(list[position], listener)
+    override fun doBind(holder:LauncherViewHolder, position:Int, shouldAnimate:Boolean) =
+            holder.bind(list[position], listener)
 }

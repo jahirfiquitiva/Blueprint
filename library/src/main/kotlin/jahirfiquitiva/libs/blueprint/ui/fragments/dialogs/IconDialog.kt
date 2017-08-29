@@ -25,12 +25,12 @@ import android.support.v7.graphics.Palette
 import android.widget.ImageView
 import ca.allanwang.kau.utils.isColorDark
 import ca.allanwang.kau.utils.scaleXY
+import ca.allanwang.kau.utils.toBitmap
 import com.afollestad.materialdialogs.DialogAction
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
-import jahirfiquitiva.libs.frames.helpers.extensions.toBitmap
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
@@ -48,14 +48,12 @@ class IconDialog:DialogFragment() {
         private val ANIMATE = "animate"
         private val TAG = "icon_dialog"
         
-        fun newInstance(name:String, resId:Int, animate:Boolean):IconDialog {
-            val f = IconDialog()
-            val args = Bundle()
-            args.putString(NAME, name)
-            args.putInt(RESID, resId)
-            args.putBoolean(ANIMATE, animate)
-            f.arguments = args
-            return f
+        fun invoke(name:String, resId:Int, animate:Boolean):IconDialog {
+            return IconDialog().apply {
+                this.name = name
+                this.resId = resId
+                this.animate = animate
+            }
         }
     }
     
@@ -63,12 +61,15 @@ class IconDialog:DialogFragment() {
              animate:Boolean) {
         val frag = context.supportFragmentManager.findFragmentByTag(TAG)
         if (frag != null) (frag as IconDialog).dismiss()
-        IconDialog.newInstance(name, resId, animate).show(context.supportFragmentManager, TAG)
+        IconDialog.invoke(name, resId, animate).show(context.supportFragmentManager, TAG)
     }
     
     fun dismiss(context:FragmentActivity) {
-        val frag = context.supportFragmentManager.findFragmentByTag(TAG)
-        if (frag != null) (frag as IconDialog).dismiss()
+        try {
+            val frag = context.supportFragmentManager.findFragmentByTag(TAG)
+            if (frag != null) (frag as IconDialog).dismiss()
+        } catch (ignored:Exception) {
+        }
         try {
             dismiss()
         } catch (ignored:Exception) {
@@ -107,7 +108,7 @@ class IconDialog:DialogFragment() {
                         scaleXY = 0F
                     }
                     
-                    val icon = ContextCompat.getDrawable(activity, resId).toBitmap(activity)
+                    val icon = ContextCompat.getDrawable(activity, resId).toBitmap()
                     setImageBitmap(icon)
                     
                     Palette.from(icon).generate(Palette.PaletteAsyncListener { palette ->
@@ -159,5 +160,4 @@ class IconDialog:DialogFragment() {
         }
         super.onSaveInstanceState(outState)
     }
-    
 }

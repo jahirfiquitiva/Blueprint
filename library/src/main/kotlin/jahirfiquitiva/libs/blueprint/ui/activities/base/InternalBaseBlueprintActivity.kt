@@ -45,20 +45,13 @@ import ca.allanwang.kau.utils.isHidden
 import ca.allanwang.kau.utils.setMarginBottom
 import ca.allanwang.kau.utils.shareText
 import ca.allanwang.kau.utils.showIf
+import ca.allanwang.kau.utils.statusBarLight
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
+import com.andremion.counterfab.CounterFab
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
-import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
-import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment
-import jahirfiquitiva.libs.blueprint.ui.fragments.HomeFragment
-import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
-import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
-import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
-import jahirfiquitiva.libs.blueprint.ui.items.FilterDrawerItem
-import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
@@ -69,6 +62,15 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
+import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
+import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
+import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
+import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment
+import jahirfiquitiva.libs.blueprint.ui.fragments.HomeFragment
+import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
+import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
+import jahirfiquitiva.libs.blueprint.ui.items.FilterDrawerItem
+import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.widgets.CustomAppBarLayout
 import jahirfiquitiva.libs.fabsmenu.FABsMenu
 import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
@@ -80,6 +82,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kauextensions.extensions.changeOptionVisibility
+import jahirfiquitiva.libs.kauextensions.extensions.enableTranslucentStatusBar
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
@@ -98,15 +101,12 @@ import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
-import jahirfiquitiva.libs.kauextensions.extensions.setupStatusBarStyle
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.extensions.tintMenu
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
-import jahirfiquitiva.libs.kauextensions.ui.views.CounterFab
 import jahirfiquitiva.libs.kauextensions.ui.views.callbacks.CollapsingToolbarCallback
-import org.jetbrains.anko.custom.customView
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -135,7 +135,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        setupStatusBarStyle(true, primaryDarkColor.isColorLight(0.6F))
+        enableTranslucentStatusBar()
+        statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         initMainComponents(savedInstanceState)
     }
@@ -197,13 +198,6 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this).tint(
                 getActiveIconsColorFor(accentColor))
         fabsMenu.menuButtonRippleColor = rippleColor
-        fabsMenu.menuUpdateListener = object:FABsMenu.OnFABsMenuUpdateListener {
-            override fun onMenuClicked() = fabsMenu.toggle()
-            
-            override fun onMenuCollapsed(){}
-            
-            override fun onMenuExpanded() {}
-        }
         
         val rateFab:TitleFAB = findViewById(R.id.rate_fab)
         rateFab.setImageDrawable("ic_rate".getDrawable(this).tint(activeIconsColor))
@@ -348,16 +342,16 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         iconsPreviewRV = findViewById(R.id.toolbar_icons_grid)
         iconsPreviewRV.layoutManager =
                 object:GridLayoutManager(this, getInteger(R.integer.icons_columns)) {
-            override fun canScrollVertically():Boolean = false
-            override fun canScrollHorizontally():Boolean = false
-            override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
-                                                       rect:Rect?,
-                                                       immediate:Boolean):Boolean = false
-            
-            override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
-                                                       rect:Rect?, immediate:Boolean,
-                                                       focusedChildVisible:Boolean):Boolean = false
-        }
+                    override fun canScrollVertically():Boolean = false
+                    override fun canScrollHorizontally():Boolean = false
+                    override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
+                                                               rect:Rect?,
+                                                               immediate:Boolean):Boolean = false
+                    
+                    override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
+                                                               rect:Rect?, immediate:Boolean,
+                                                               focusedChildVisible:Boolean):Boolean = false
+                }
         iconsPreviewRV.addItemDecoration(
                 GridSpacingItemDecoration(getInteger(R.integer.icons_columns),
                                           getDimensionPixelSize(R.dimen.cards_margin)))
@@ -483,7 +477,6 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             
             appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, bpKonfigs.animationsEnabled)
             appBarLayout.allowScroll(id == DEFAULT_HOME_POSITION)
-            coordinatorLayout.allowScroll = (id == DEFAULT_HOME_POSITION)
             
             collapsingToolbar.title = getString(
                     if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)

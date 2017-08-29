@@ -21,17 +21,19 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
-import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.IconDialog
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconItemViewModel
-import jahirfiquitiva.libs.frames.ui.base.BaseViewModelFragment
+import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
+import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.IconDialog
+import jahirfiquitiva.libs.frames.ui.fragments.base.BaseViewModelFragment
+import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
 class IconsFragment:BaseViewModelFragment<Icon>() {
+    
+    override fun autoStartLoad():Boolean = true
     
     private lateinit var model:IconItemViewModel
     private lateinit var rv:EmptyViewRecyclerView

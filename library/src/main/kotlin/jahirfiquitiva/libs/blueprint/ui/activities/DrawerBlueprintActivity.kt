@@ -26,8 +26,8 @@ import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
@@ -116,7 +116,8 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
             drawerBuilder.withSavedInstance(savedInstance)
         
         drawer = drawerBuilder.build()
-        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = getActiveIconsColorFor(primaryColor)
+        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = getActiveIconsColorFor(
+                primaryColor)
     }
     
     override fun onBackPressed() {

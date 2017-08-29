@@ -21,16 +21,16 @@ import android.view.View
 import ca.allanwang.kau.utils.isAppInstalled
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.adapters.LaunchersAdapter
+import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.helpers.extensions.showLauncherNotInstalledDialog
 import jahirfiquitiva.libs.blueprint.helpers.extensions.supportedLaunchers
-import jahirfiquitiva.libs.blueprint.data.models.Launcher
-import jahirfiquitiva.libs.frames.ui.base.BasicFragment
+import jahirfiquitiva.libs.blueprint.ui.adapters.LaunchersAdapter
+import jahirfiquitiva.libs.frames.ui.fragments.base.BasicFragment
+import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
-import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
 
 class ApplyFragment:BasicFragment<Launcher>() {
     override fun getContentLayout():Int = R.layout.section_layout

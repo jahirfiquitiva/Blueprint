@@ -17,6 +17,7 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import ca.allanwang.kau.utils.inflate
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
@@ -26,10 +27,10 @@ import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 class IconsAdapter(val animate:Boolean = false, val listener:(Icon) -> Unit = {}):
         BaseListAdapter<Icon, IconViewHolder>() {
     override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):IconViewHolder =
-            IconViewHolder(parent?.inflate(R.layout.item_icon))
+            IconViewHolder(parent?.inflate(R.layout.item_icon) ?: FrameLayout(null))
     
-    override fun doBind(holder:IconViewHolder, position:Int) {
-        if (animate) (holder as? IconViewHolder)?.bind(animate, list[position])
-        else (holder as? IconViewHolder)?.bind(animate, list[position], listener)
+    override fun doBind(holder:IconViewHolder, position:Int, shouldAnimate:Boolean) {
+        if (animate) (holder as? IconViewHolder)?.bind(animate && shouldAnimate, list[position])
+        else (holder as? IconViewHolder)?.bind(false, list[position], listener)
     }
 }

@@ -18,8 +18,8 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.view.View
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.frames.ui.base.BasicFragment
-import jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
+import jahirfiquitiva.libs.frames.ui.fragments.base.BasicFragment
+import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 
 open class EmptyFragment:BasicFragment<Boolean>() {
     override fun getContentLayout():Int = R.layout.section_wo_fastscroll

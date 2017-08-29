@@ -50,7 +50,7 @@ allprojects {
         gradlePlugin = '2.3.3'
         libPubPlugin = '1.5'
         kotlin = '1.1.4-2'
-        // TODO= Delete
+        // TODO Delete
         multidex = '1.0.1'
         // Libraries versions
         supportLibs = '26.0.1'
@@ -69,7 +69,7 @@ allprojects {
         materialDrawer = '5.9.5'
         bottomBar = '2.0.6'
         iconRequestTool = 'a87db9d'
-        fabsMenu = '1.0.6'
+        fabsMenu = '1.0.7'
         counterFab = '1.0.1'
         chips = '6988f83'
         mnp = '1.2.1'
