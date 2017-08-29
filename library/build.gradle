@@ -15,24 +15,28 @@
  */
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply from: '../dependencies.gradle'
 
 android {
-    compileSdkVersion versions.compileSdk
-    buildToolsVersion versions.buildTools
+    compileSdkVersion project.ext.compileSdk
+    buildToolsVersion project.ext.buildTools
 
     lintOptions {
-        abortOnError false
-        checkReleaseBuilds false
-        disable 'MissingTranslation'
-        disable 'GoogleAppIndexingWarning'
+        warningsAsErrors true
+        disable 'MissingTranslation',
+                'GoogleAppIndexingWarning',
+                'UnusedResources',
+                'ContentDescription',
+                'RtlSymmetry',
+                'RtlHardcoded',
+                'RtlEnabled',
+                'Overdraw'
     }
 
     defaultConfig {
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
-        versionCode versions.versionCode
-        versionName versions.versionName
+        minSdkVersion project.ext.minSdk
+        targetSdkVersion project.ext.targetSdk
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
@@ -51,91 +55,100 @@ android {
     }
 
     sourceSets {
-        main {
-            java.srcDirs += 'src/main/kotlin'
-            res.srcDirs += [
-                    'src/main/res',
-                    'src/main/res/drawable',
+		main.java.srcDirs += 'src/main/kotlin'
+        main.res.srcDirs += [
                     'src/main/res/drawable/app',
                     'src/main/res/drawable/clock_widget',
                     'src/main/res/drawable/launchers_icons',
                     'src/main/res/drawable/shortcuts',
                     'src/main/res/drawable/splash_screens',
                     'src/main/res/drawable/ui',
-                    'src/main/res/layout',
+                    'src/main/res/drawable',
                     'src/main/res/layout/activities',
                     'src/main/res/layout/extras',
                     'src/main/res/layout/items',
                     'src/main/res/layout/sections',
                     'src/main/res/layout/widgets',
-                    'src/main/res/values',
+                    'src/main/res/layout',
                     'src/main/res/values/icon_pack',
                     'src/main/res/values/private-values',
-                    'src/main/res/values/translations'
+                    'src/main/res/values/translations',
+                    'src/main/res/values',
+                    'src/main/res'
             ]
-        }
+    }
+	
+	sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/core_release.kotlin_module'
+        pickFirst 'META-INF/library_release.kotlin_module'
     }
 }
 
 dependencies {
     // Frames
     compile project(path: ':frames')
+	// Kotlin
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:' + project.ext.kotlin
     // TODO: Delete Multidex
-    compile 'com.android.support:multidex:' + versions.multidex
+    compile 'com.android.support:multidex:' + project.ext.multidex
 
     // Navigation
-    compile('com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar') {
+    compile('com.mikepenz:materialdrawer:' + project.ext.materialDrawer + '@aar') {
         transitive = true
     }
-    compile 'com.aurelhubert:ahbottomnavigation:' + versions.bottomBar
+    compile 'com.aurelhubert:ahbottomnavigation:' + project.ext.bottomBar
     // Icon Requests Tool
-    compile 'com.github.AllanWang:Icon-Request-Tool:' + versions.iconRequestTool
+    compile 'com.github.AllanWang:Icon-Request-Tool:' + project.ext.iconRequestTool
     // FABs Menu
-    compile 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu
-    // FAB Transformation
-    compile 'konifar:fab-transformation:' + versions.fabTransformation
+    compile 'me.jahirfiquitiva:FABsMenu:' + project.ext.fabsMenu
+    // CounterFab
+    compile 'com.github.andremion:counterfab:' + project.ext.counterFab
     // Chips View
-    compile 'me.jahirfiquitiva:MaterialChipsInput:' + versions.chips
+    compile 'me.jahirfiquitiva:MaterialChipsInput:' + project.ext.chips
     // Material Number Picker
-    compile 'biz.kasual:materialnumberpicker:' + versions.mnp
+    compile 'biz.kasual:materialnumberpicker:' + project.ext.mnp
 
     // Architecture Components
-    compile 'android.arch.lifecycle:runtime:' + versions.archComponents
-    compile 'android.arch.lifecycle:extensions:' + versions.archComponents
-    compile 'android.arch.persistence.room:runtime:' + versions.archComponents
-    annotationProcessor 'android.arch.lifecycle:compiler:' + versions.archComponents
-    annotationProcessor 'android.arch.persistence.room:compiler:' + versions.archComponents
-    kapt 'android.arch.lifecycle:compiler:' + versions.archComponents
-    kapt 'android.arch.persistence.room:compiler:' + versions.archComponents
+    compile 'android.arch.lifecycle:runtime:' + project.ext.archComponents
+    compile 'android.arch.lifecycle:extensions:' + project.ext.archComponents
+    compile 'android.arch.persistence.room:runtime:' + project.ext.archComponents
+    annotationProcessor 'android.arch.lifecycle:compiler:' + project.ext.archComponents
+    annotationProcessor 'android.arch.persistence.room:compiler:' + project.ext.archComponents
+    kapt 'android.arch.lifecycle:compiler:' + project.ext.archComponents
+    kapt 'android.arch.persistence.room:compiler:' + project.ext.archComponents
     // Material Dialogs
-    compile 'com.afollestad.material-dialogs:core:' + versions.materialDialogs
-    compile 'com.afollestad.material-dialogs:commons:' + versions.materialDialogs
+    compile 'com.afollestad.material-dialogs:core:' + project.ext.materialDialogs
+    compile 'com.afollestad.material-dialogs:commons:' + project.ext.materialDialogs
     // Volley
-    compile 'com.android.volley:volley:' + versions.volley
+    compile 'com.android.volley:volley:' + project.ext.volley
     // Glide Image Loading
-    compile 'com.github.bumptech.glide:glide:' + versions.glide
-    compile 'com.github.bumptech.glide:annotations:' + versions.glide
-    annotationProcessor 'com.github.bumptech.glide:compiler:' + versions.glide
-    kapt 'com.github.bumptech.glide:compiler:' + versions.glide
+    compile 'com.github.bumptech.glide:glide:' + project.ext.glide
+    compile 'com.github.bumptech.glide:annotations:' + project.ext.glide
+    annotationProcessor 'com.github.bumptech.glide:compiler:' + project.ext.glide
+    kapt 'com.github.bumptech.glide:compiler:' + project.ext.glide
     // KAU Extensions
-    compile 'me.jahirfiquitiva:KAUExtensions:' + versions.kauExt
+    compile 'me.jahirfiquitiva:KAUExtensions:' + project.ext.kauExt
     // Sectioned RecyclerView
-    compile 'com.afollestad:sectioned-recyclerview:' + versions.sectionedRecyclerView
+    compile 'com.afollestad:sectioned-recyclerview:' + project.ext.sectionedRecyclerView
     // RecyclerView Fast Scroller
-    compile 'com.github.plusCubed:recycler-fast-scroll:' + versions.recyclerViewFastScroll
-    // Floating Toolbar
-    compile 'com.github.rubensousa:floatingtoolbar:' + versions.floatingToolbar
+    compile 'com.github.pluscubed:recycler-fast-scroll:' + project.ext.recyclerViewFastScroll
+	// Floating Toolbar
+    compile 'com.github.rubensousa:floatingtoolbar:' + project.ext.floatingToolbar
     // Subsampling ImageView
-    compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + versions.subsImageView
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:' + project.ext..subsImageView
     // In-App Purchases
-    compile 'com.anjlab.android.iab.v3:library:' + versions.iaps
+    compile 'com.anjlab.android.iab.v3:library:' + project.ext.iaps
     // Muzei API
     //noinspection GradleDynamicVersion
-    compile 'com.google.android.apps.muzei:muzei-api:' + versions.muzeiApi
+    compile 'com.google.android.apps.muzei:muzei-api:' + project.ext.muzeiApi
     // Licenses Dialog
-    compile 'de.psdev.licensesdialog:licensesdialog:' + versions.licensesDialog
+    compile 'de.psdev.licensesdialog:licensesdialog:' + project.ext.licensesDialog
     // License Checker
-    compile 'com.github.javiersantos:PiracyChecker:' + versions.checker
+    compile 'com.github.javiersantos:PiracyChecker:' + project.ext.checker
 }
 
 tasks.whenTaskAdded { task ->

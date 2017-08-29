@@ -16,37 +16,30 @@
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply from: '../dependencies.gradle'
 
 android {
-    compileSdkVersion versions.compileSdk
-    buildToolsVersion versions.buildTools
+    compileSdkVersion project.ext.compileSdk
+    buildToolsVersion project.ext.buildTools
 
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             output.outputFile = new File(output.outputFile.parent,
-                    versions.appId + "-v${variant.versionName}-${variant.name}.apk")
+                    project.ext.appId + "-v${variant.versionName}-${variant.name}.apk")
         }
     }
 
     lintOptions {
         abortOnError false
         checkReleaseBuilds false
-        disable 'MissingTranslation'
-        disable 'GoogleAppIndexingWarning'
-    }
-
-    dexOptions {
-        preDexLibraries false
-        javaMaxHeapSize "2g"
+        disable 'MissingTranslation', 'GoogleAppIndexingWarning'
     }
 
     defaultConfig {
-        applicationId versions.appGroup + "." + versions.appId.toLowerCase() + ".demo"
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
-        versionCode versions.versionCode
-        versionName versions.versionName
+        applicationId project.ext.appGroup + "." + project.ext.appId.toLowerCase() + ".demo"
+        minSdkVersion project.ext.minSdk
+        targetSdkVersion project.ext.targetSdk
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
@@ -65,24 +58,23 @@ android {
     }
 
     sourceSets {
-        main {
-            java.srcDirs += 'src/main/kotlin'
-            res.srcDirs += [
-                    'src/main/res',
-                    'src/main/res/drawable',
+        main.java.srcDirs += 'src/main/kotlin'
+        main.res.srcDirs += [
                     'src/main/res/drawable/app',
                     'src/main/res/drawable/clock_widget',
                     'src/main/res/drawable/icon_pack',
                     'src/main/res/drawable/launchers_icons',
                     'src/main/res/drawable/shortcuts',
                     'src/main/res/drawable/ui',
+                    'src/main/res/drawable',
+                    'src/main/res/values/icon_pack',
                     'src/main/res/values',
-                    'src/main/res/values/icon_pack'
+                    'src/main/res'
             ]
-        }
     }
 
     packagingOptions {
+        pickFirst 'META-INF/core_release.kotlin_module'
         pickFirst 'META-INF/library_release.kotlin_module'
     }
 }
@@ -90,7 +82,7 @@ android {
 dependencies {
     compile project(path: ':library')
     // TODO: Delete Multidex
-    compile 'com.android.support:multidex:' + versions.multidex
+    compile 'com.android.support:multidex:' + project.ext.multidex
 }
 
 tasks.whenTaskAdded { task ->
