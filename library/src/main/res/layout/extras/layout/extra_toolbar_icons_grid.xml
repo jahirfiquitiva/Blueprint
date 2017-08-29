@@ -30,7 +30,7 @@
         android:background="?selectableItemBackgroundBorderless"
         android:descendantFocusability="blocksDescendants">
 
-    <jahirfiquitiva.libs.blueprint.views.ClickableRecyclerView
+    <jahirfiquitiva.libs.blueprint.ui.widgets.ClickableRecyclerView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/toolbar_icons_grid"
             android:layout_width="match_parent"
