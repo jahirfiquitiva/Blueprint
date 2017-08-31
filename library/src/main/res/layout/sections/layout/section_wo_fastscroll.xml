@@ -17,7 +17,6 @@
 
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/section_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +25,7 @@
 
     <include layout="@layout/extra_empty_views"/>
 
-    <jahirfiquitiva.libs.kauextensions.ui.views.EmptyViewRecyclerView
+    <jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
             android:id="@+id/section_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

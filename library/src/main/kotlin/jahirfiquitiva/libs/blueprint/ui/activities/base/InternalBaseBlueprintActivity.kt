@@ -17,6 +17,7 @@
 package jahirfiquitiva.libs.blueprint.ui.activities.base
 
 import android.app.WallpaperManager
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
@@ -62,6 +63,8 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
+import jahirfiquitiva.libs.blueprint.ui.activities.BpCreditsActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.BpSettingsActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
@@ -71,7 +74,6 @@ import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
 import jahirfiquitiva.libs.blueprint.ui.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
-import jahirfiquitiva.libs.blueprint.ui.widgets.CustomAppBarLayout
 import jahirfiquitiva.libs.fabsmenu.FABsMenu
 import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
 import jahirfiquitiva.libs.fabsmenu.TitleFAB
@@ -106,6 +108,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.extensions.tintMenu
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
+import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.views.callbacks.CollapsingToolbarCallback
 import java.util.*
 import kotlin.collections.ArrayList
@@ -113,7 +116,7 @@ import kotlin.collections.ArrayList
 abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
     private lateinit var coordinatorLayout:CustomCoordinatorLayout
-    private lateinit var appBarLayout:CustomAppBarLayout
+    private lateinit var appBarLayout:FixedElevationAppBarLayout
     private lateinit var collapsingToolbar:CollapsingToolbarLayout
     private lateinit var toolbar:Toolbar
     private lateinit var menu:Menu
@@ -287,19 +290,22 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                     when (id) {
                         R.id.filters -> {
                             filtersDrawer.openDrawer()
-                            return@OnMenuItemClickListener true
                         }
                         R.id.columns -> {
                             showWallpapersColumnsDialog()
-                            return@OnMenuItemClickListener true
                         }
                         R.id.refresh -> {
                             refreshWallpapers()
-                            return@OnMenuItemClickListener true
                         }
-                        else -> return@OnMenuItemClickListener false
+                        R.id.about -> {
+                            startActivity(Intent(this, BpCreditsActivity::class.java))
+                        }
+                        R.id.settings -> {
+                            startActivity(Intent(this, BpSettingsActivity::class.java))
+                        }
                     // TODO: Manage other items
                     }
+                    return@OnMenuItemClickListener true
                 })
     }
     
@@ -476,7 +482,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             fab.showIf(id == DEFAULT_REQUEST_POSITION)
             
             appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, bpKonfigs.animationsEnabled)
-            appBarLayout.allowScroll(id == DEFAULT_HOME_POSITION)
+            appBarLayout.scrollAllowed = (id == DEFAULT_HOME_POSITION)
             
             collapsingToolbar.title = getString(
                     if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)

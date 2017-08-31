@@ -65,10 +65,10 @@ abstract class BaseBlueprintActivity:BaseActivityWithFragments(), LifecycleRegis
     internal var picker:Int = 0
     private var donationsReady = false
     
-    override fun lightTheme():Int = R.style.LightTheme
-    override fun darkTheme():Int = R.style.DarkTheme
-    override fun amoledTheme():Int = R.style.AmoledTheme
-    override fun transparentTheme():Int = R.style.TransparentTheme
+    override fun lightTheme():Int = R.style.BlueprintLightTheme
+    override fun darkTheme():Int = R.style.BlueprintDarkTheme
+    override fun amoledTheme():Int = R.style.BlueprintAmoledTheme
+    override fun transparentTheme():Int = R.style.BlueprintTransparentTheme
     override fun autoStatusBarTint():Boolean = true
     
     private var checker:PiracyChecker? = null

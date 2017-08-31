@@ -38,6 +38,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.chipsIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 
@@ -56,16 +57,15 @@ class HomeItemsAdapter(val context:Context,
                     holder is HomeItemsViewHolders.ApplyCardHolder) {
                 val initCard = context.defaultLauncher?.isActuallySupported == true
                 if (initCard) {
-                    holder.applyTitle?.setTextColor(
-                            context.getPrimaryTextColorFor(context.accentColor))
+                    val titleColor = context.getPrimaryTextColorFor(context.accentColor)
+                    val contentColor = context.getSecondaryTextColorFor(context.accentColor)
+                    holder.applyTitle?.setTextColor(titleColor)
                     holder.applyTitle?.text = context.getString(R.string.apply_title,
                                                                 context.getAppName())
-                    holder.applyContent?.setTextColor(
-                            context.getPrimaryTextColorFor(context.accentColor))
+                    holder.applyContent?.setTextColor(contentColor)
                     holder.applyContent?.text = context.getString(R.string.apply_content,
                                                                   context.defaultLauncher?.name)
-                    holder.dismissButton?.setTextColor(context.getPrimaryTextColorFor(
-                            context.accentColor))
+                    holder.dismissButton?.setTextColor(contentColor)
                     holder.dismissButton?.setOnClickListener {
                         val anim = AnimationUtils.loadAnimation(context,
                                                                 android.R.anim.slide_out_right)
@@ -80,8 +80,7 @@ class HomeItemsAdapter(val context:Context,
                         })
                         holder.itemView.startAnimation(anim)
                     }
-                    holder.applyButton?.setTextColor(context.getPrimaryTextColorFor(
-                            context.accentColor))
+                    holder.applyButton?.setTextColor(contentColor)
                     holder.applyButton?.setOnClickListener {
                         context.executeLauncherIntent(context.defaultLauncher?.name ?: "")
                     }

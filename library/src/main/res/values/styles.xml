@@ -60,21 +60,7 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="ToolbarTitleWithShadow" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:shadowColor">#66000000</item>
-        <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
-
-    <style name="ToolbarSubtitleWithShadow" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:shadowColor">#66000000</item>
-        <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
+    <bool name="isFrames">false</bool>
 
     <style name="DrawerTextsWithShadow">
         <item name="android:textSize">14sp</item>

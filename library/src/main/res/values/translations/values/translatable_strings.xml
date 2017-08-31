@@ -17,6 +17,8 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
+    <string name="frames_dashboard">Blueprint Dashboard</string>
+
     <!-- List Of Drawer Sections -->
     <string name="section_home">Home</string>
     <string name="section_icons">Icons</string>
