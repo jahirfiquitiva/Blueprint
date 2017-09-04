@@ -50,6 +50,8 @@ android {
 
     buildTypes {
         release {
+            debuggable false
+            zipAlignEnabled true
             minifyEnabled true
             shrinkResources false
             proguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'

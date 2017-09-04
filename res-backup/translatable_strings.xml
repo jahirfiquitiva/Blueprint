@@ -139,8 +139,6 @@
     <string name="search_icons">Search icons…</string>
     <string name="search_x">Search %1$s…</string>
 
-    <string name="requests_error">There was an error loading apps to request.\nPress here to retry.</string>
-    <string name="building_request_dialog">Building request files…</string>
     <string name="loading_apps">Please wait until the apps load, it will take a few seconds more…</string>
     <string name="loading_icons">Loading icons…</string>
 

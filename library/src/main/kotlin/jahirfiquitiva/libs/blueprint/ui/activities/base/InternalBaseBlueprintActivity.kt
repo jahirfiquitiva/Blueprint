@@ -16,14 +16,17 @@
 
 package jahirfiquitiva.libs.blueprint.ui.activities.base
 
+import android.Manifest
 import android.app.WallpaperManager
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.GridLayoutManager
@@ -46,6 +49,7 @@ import ca.allanwang.kau.utils.isHidden
 import ca.allanwang.kau.utils.setMarginBottom
 import ca.allanwang.kau.utils.shareText
 import ca.allanwang.kau.utils.showIf
+import ca.allanwang.kau.utils.snackbar
 import ca.allanwang.kau.utils.statusBarLight
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
@@ -80,8 +84,11 @@ import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.fabsmenu.FABsMenu
 import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
 import jahirfiquitiva.libs.fabsmenu.TitleFAB
+import jahirfiquitiva.libs.frames.helpers.extensions.PermissionRequestListener
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
+import jahirfiquitiva.libs.frames.helpers.extensions.checkPermission
 import jahirfiquitiva.libs.frames.helpers.extensions.framesKonfigs
+import jahirfiquitiva.libs.frames.helpers.extensions.requestPermissions
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
@@ -301,7 +308,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                             refreshWallpapers()
                         }
                         R.id.select_all -> {
-                            selectAllApps()
+                            toggleSelectAll()
                         }
                         R.id.about -> {
                             startActivity(Intent(this, BpCreditsActivity::class.java))
@@ -561,20 +568,93 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     internal fun updateToolbarColorsHere(offset:Int) =
             updateToolbarColors(toolbar, drawer, offset, 0.6F)
     
+    override fun onRequestPermissionsResult(requestCode:Int, permissions:Array<out String>,
+                                            grantResults:IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 41) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                doSendRequest()
+            } else {
+                snackbar(R.string.permission_denied)
+            }
+        }
+    }
+    
     fun startRequestsProcess() {
-        // TODO: Request permissions
-        IconRequest.get()?.send(object:OnRequestProgress() {
-            override fun doWhenReady() {
-                // TODO
+        IconRequest.get()?.let {
+            if (it.selectedApps.size > 0) {
+                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                object:PermissionRequestListener {
+                                    override fun onPermissionRequest(permission:String) =
+                                            requestPermissions(41, permission)
+                    
+                                    override fun showPermissionInformation(permission:String) =
+                                            showPermissionInformation()
+                    
+                                    override fun onPermissionCompletelyDenied() {
+                                        snackbar(R.string.permission_denied_completely)
+                                    }
+                    
+                                    override fun onPermissionGranted() = doSendRequest()
+                                })
+            } else {
+                destroyDialog()
+                dialog = buildMaterialDialog {
+                    title(R.string.no_selected_apps_title)
+                    content(R.string.no_selected_apps_content)
+                    positiveText(android.R.string.ok)
+                }
+                dialog?.show()
             }
-            
-            override fun doWhenStarted() {
-                // TODO
+        }
+    }
+    
+    private fun doSendRequest() {
+        destroyDialog()
+        dialog = buildMaterialDialog {
+            content(R.string.building_request_dialog)
+            progress(true, 0)
+            cancelable(false)
+        }
+        val ir = IconRequest.get()
+        if (ir != null) {
+            ir.send(object:OnRequestProgress() {
+                override fun doWhenStarted() {
+                    dialog?.show()
+                }
+                
+                override fun doOnError() {
+                    destroyDialog()
+                    dialog = buildMaterialDialog {
+                        title(R.string.error_title)
+                        content(R.string.requests_error)
+                        positiveText(android.R.string.ok)
+                    }
+                    dialog?.show()
+                }
+                
+                override fun doWhenReady() {
+                    destroyDialog()
+                    toggleSelectAll()
+                }
+            })
+        } else {
+            destroyDialog()
+            dialog = buildMaterialDialog {
+                title(R.string.error_title)
+                content(R.string.requests_error)
+                positiveText(android.R.string.ok)
             }
-            
-            override fun doOnError() {
-                // TODO
-            }
+            dialog?.show()
+        }
+    }
+    
+    private fun showPermissionInformation() {
+        snackbar(getString(R.string.permission_request, getAppName()), Snackbar.LENGTH_SHORT, {
+            setAction(R.string.allow, {
+                dismiss()
+                doSendRequest()
+            })
         })
     }
     
@@ -635,7 +715,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         }
     }
     
-    internal fun selectAllApps() {
+    internal fun toggleSelectAll() {
         if (currentFragment is RequestsFragment) {
             (currentFragment as RequestsFragment).toggleSelectAll()
         }
