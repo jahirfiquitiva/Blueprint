@@ -13,12 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
 import android.support.v7.graphics.Palette
@@ -36,7 +34,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.usesDarkTheme
 
-class IconDialog:DialogFragment() {
+class IconDialog:BasicDialogFragment() {
     
     private var name:String = ""
     private var resId:Int = 0
@@ -46,7 +44,7 @@ class IconDialog:DialogFragment() {
         private val NAME = "name"
         private val RESID = "resId"
         private val ANIMATE = "animate"
-        private val TAG = "icon_dialog"
+        val TAG = "icon_dialog"
         
         fun invoke(name:String, resId:Int, animate:Boolean):IconDialog {
             return IconDialog().apply {
@@ -59,37 +57,8 @@ class IconDialog:DialogFragment() {
     
     fun show(context:FragmentActivity, name:String, resId:Int,
              animate:Boolean) {
-        val frag = context.supportFragmentManager.findFragmentByTag(TAG)
-        if (frag != null) (frag as IconDialog).dismiss()
+        dismiss(context, TAG)
         IconDialog.invoke(name, resId, animate).show(context.supportFragmentManager, TAG)
-    }
-    
-    fun dismiss(context:FragmentActivity) {
-        try {
-            val frag = context.supportFragmentManager.findFragmentByTag(TAG)
-            if (frag != null) (frag as IconDialog).dismiss()
-        } catch (ignored:Exception) {
-        }
-        try {
-            dismiss()
-        } catch (ignored:Exception) {
-        }
-    }
-    
-    override fun onCreate(savedInstanceState:Bundle?) {
-        super.onCreate(savedInstanceState)
-        this.name = arguments.getString(NAME)
-        this.resId = arguments.getInt(RESID)
-        this.animate = arguments.getBoolean(ANIMATE)
-    }
-    
-    override fun onActivityCreated(savedInstanceState:Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        savedInstanceState?.let {
-            name = it.getString(NAME)
-            resId = it.getInt(RESID)
-            animate = it.getBoolean(ANIMATE)
-        }
     }
     
     override fun onCreateDialog(savedInstanceState:Bundle?):Dialog {
@@ -150,6 +119,22 @@ class IconDialog:DialogFragment() {
             }
         }
         return dialog
+    }
+    
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
+        this.name = arguments.getString(NAME)
+        this.resId = arguments.getInt(RESID)
+        this.animate = arguments.getBoolean(ANIMATE)
+    }
+    
+    override fun onActivityCreated(savedInstanceState:Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        savedInstanceState?.let {
+            name = it.getString(NAME)
+            resId = it.getInt(RESID)
+            animate = it.getBoolean(ANIMATE)
+        }
     }
     
     override fun onSaveInstanceState(outState:Bundle?) {

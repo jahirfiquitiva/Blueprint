@@ -44,8 +44,6 @@
     <string name="general_info">General information</string>
     <string name="useful_links">Useful links</string>
 
-
-    <string name="select_all">Select all</string>
     <string name="columns">Columns number</string>
 
     <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to
@@ -62,16 +60,13 @@
     <string name="impossible_open_themes">Impossible to open themes app</string>
     <string name="themes_app_not_installed">Themes app is not installed in this device</string>
 
-
     <string name="themed_icons">%1$s icons</string>
     <string name="available_wallpapers">%1$s wallpapers</string>
     <string name="included_zooper">%1$s Zooper Widget templates</string>
     <string name="included_kwgt">%1$s KWGT templates</string>
 
-
     <string name="apply_title">Apply %1$s</string>
     <string name="apply_content">We have detected you are using %1$s. To start using our icon pack, just apply it to your launcher.</string>
-
 
     <string name="launcher_icon_restored">%1$s launcher icon was restored</string>
     <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
@@ -83,5 +78,22 @@
 
     <string name="search_icons">Search icons</string>
     <string name="search_wallpapers">Search wallpapers</string>
+
+    <string name="seconds">Seconds</string>
+    <string name="minutes">Minutes</string>
+    <string name="hours">Hours</string>
+    <string name="days">Days</string>
+    <string name="weeks">Weeks</string>
+    <string name="months">Months</string>
+
+    <!-- Requests -->
+    <string name="select_all">Select all</string>
+    <string name="no_selected_apps_title">No selected apps</string>
+    <string name="no_selected_apps_content">You did not select any app to request. Select some before pressing the FAB again.</string>
+    <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
+    <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
+    <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
 
 </resources>

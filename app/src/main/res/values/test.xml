@@ -16,6 +16,11 @@
   -->
 
 <resources>
+
+    <!--    TODO: Change this link -->
+    <string name="json_url">https://www.jahirfiquitiva.me/frames/wallpapers.json</string>
+    <bool name="use_old_json_format">true</bool>
+
     <!-- These arrays are for the list of apps or links in main section. -->
     <string-array name="home_list_titles">
         <item>IconShowcase</item>

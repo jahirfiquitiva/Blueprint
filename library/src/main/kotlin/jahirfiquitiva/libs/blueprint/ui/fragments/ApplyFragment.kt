@@ -36,7 +36,7 @@ class ApplyFragment:BasicFragment<Launcher>() {
     override fun getContentLayout():Int = R.layout.section_layout
     
     override fun initUI(content:View) {
-        val rv:EmptyViewRecyclerView = content.findViewById(R.id.section_rv)
+        val rv:EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
         val fastScroller:RecyclerFastScroller = content.findViewById(R.id.fast_scroller)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)

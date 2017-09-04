@@ -21,12 +21,13 @@ import android.content.Intent
 import ca.allanwang.kau.utils.isAppInstalled
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
-import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.frames.providers.viewmodels.ListViewModel
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
 
 class HomeItemViewModel:ListViewModel<Context, HomeItem>() {
+    private val PLAY_STORE_LINK_PREFIX = "https://play.google.com/store/apps/details?id="
+    
     override fun loadItems(param:Context):ArrayList<HomeItem> {
         val everything = ArrayList<HomeItem>()
         val apps = ArrayList<HomeItem>()

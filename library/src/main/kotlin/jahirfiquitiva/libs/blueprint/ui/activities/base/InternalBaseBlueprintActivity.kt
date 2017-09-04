@@ -52,6 +52,8 @@ import ca.allanwang.kau.utils.visible
 import com.andremion.counterfab.CounterFab
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
+import com.pitchedapps.butler.iconrequest.IconRequest
+import com.pitchedapps.butler.iconrequest.events.OnRequestProgress
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
@@ -71,6 +73,7 @@ import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
+import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
 import jahirfiquitiva.libs.blueprint.ui.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
@@ -103,7 +106,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
-import jahirfiquitiva.libs.kauextensions.extensions.showToast
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.extensions.tintMenu
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
@@ -120,12 +122,13 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private lateinit var collapsingToolbar:CollapsingToolbarLayout
     private lateinit var toolbar:Toolbar
     private lateinit var menu:Menu
-    private lateinit var fab:CounterFab
     private lateinit var fabsMenu:FABsMenu
     private lateinit var filtersDrawer:Drawer
     
     private lateinit var iconsPreviewRV:RecyclerView
     private lateinit var iconsPreviewAdapter:IconsAdapter
+    
+    internal lateinit var fab:CounterFab
     
     var drawer:Drawer? = null
     var currentFragment:Fragment? = null
@@ -296,6 +299,9 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                         }
                         R.id.refresh -> {
                             refreshWallpapers()
+                        }
+                        R.id.select_all -> {
+                            selectAllApps()
                         }
                         R.id.about -> {
                             startActivity(Intent(this, BpCreditsActivity::class.java))
@@ -481,8 +487,17 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                 fabsMenu.menuButton.showIf(id == DEFAULT_HOME_POSITION)
             fab.showIf(id == DEFAULT_REQUEST_POSITION)
             
-            appBarLayout.setExpanded(id == DEFAULT_HOME_POSITION, bpKonfigs.animationsEnabled)
-            appBarLayout.scrollAllowed = (id == DEFAULT_HOME_POSITION)
+            val shouldExpand = id == DEFAULT_HOME_POSITION
+            
+            statusBarLight = !shouldExpand && primaryDarkColor.isColorLight(0.6F)
+            
+            val isExpanded = appBarLayout.isExpandedNow
+            
+            if (isExpanded != shouldExpand) {
+                appBarLayout.setExpanded(shouldExpand, bpKonfigs.animationsEnabled)
+                appBarLayout.scrollAllowed = shouldExpand
+                coordinatorLayout.scrollAllowed = shouldExpand
+            }
             
             collapsingToolbar.title = getString(
                     if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
@@ -527,6 +542,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             DEFAULT_ICONS_POSITION -> IconsFragment()
             DEFAULT_WALLPAPERS_POSITION -> WallpapersFragment()
             DEFAULT_APPLY_POSITION -> ApplyFragment()
+            DEFAULT_REQUEST_POSITION -> RequestsFragment()
             else -> EmptyFragment()
         }
         currentFragment = frag
@@ -542,10 +558,25 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
     fun getToolbar():Toolbar? = toolbar
     
-    internal fun updateToolbarColorsHere(offset:Int) = updateToolbarColors(toolbar, drawer, offset)
+    internal fun updateToolbarColorsHere(offset:Int) =
+            updateToolbarColors(toolbar, drawer, offset, 0.6F)
     
-    // TODO: Do this
-    fun startRequestsProcess() = showToast("Creating request")
+    fun startRequestsProcess() {
+        // TODO: Request permissions
+        IconRequest.get()?.send(object:OnRequestProgress() {
+            override fun doWhenReady() {
+                // TODO
+            }
+            
+            override fun doWhenStarted() {
+                // TODO
+            }
+            
+            override fun doOnError() {
+                // TODO
+            }
+        })
+    }
     
     internal fun onFiltersUpdated(filters:ArrayList<String>) {
         if (currentFragment is IconsFragment) {
@@ -601,6 +632,12 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     internal fun refreshWallpapers() {
         if (currentFragment is WallpapersFragment) {
             (currentFragment as WallpapersFragment).reloadData(1)
+        }
+    }
+    
+    internal fun selectAllApps() {
+        if (currentFragment is RequestsFragment) {
+            (currentFragment as RequestsFragment).toggleSelectAll()
         }
     }
 }

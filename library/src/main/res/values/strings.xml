@@ -19,11 +19,10 @@
     <string name="app_description">A great wallpapers app with hundreds of cool pictures.</string>
 
     <!--    TODO: Change this link -->
-    <string name="json_url">https://raw.githubusercontent.com/dragodev94/Wall-app/master/Wallpapers.json</string>
+    <string name="json_url"></string>
 
     <!--    Default wallpapers download folder. Always write it like '%1$s/xxxxxxx' -->
     <string name="default_download_folder">%1$s/Blueprint/Wallpapers</string>
-
 
     <!-- Icon Pack designer/owner e-mail -->
     <string name="email">someone@email.com</string>

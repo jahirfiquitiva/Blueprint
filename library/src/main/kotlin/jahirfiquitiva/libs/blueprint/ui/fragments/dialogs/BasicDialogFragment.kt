@@ -13,16 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 
-package jahirfiquitiva.libs.blueprint.providers.viewmodels
+import android.support.v4.app.DialogFragment
+import android.support.v4.app.FragmentActivity
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.content.Context
-
-abstract class BaseViewModel<T>:ViewModel() {
-    val items = MutableLiveData<T>()
-    fun loadData(context:Context) = items.postValue(loadItems(context))
+abstract class BasicDialogFragment:DialogFragment() {
+    fun dismiss(context:FragmentActivity, tag:String) {
+        try {
+            val frag = context.supportFragmentManager.findFragmentByTag(tag)
+            if (frag != null) (frag as IconDialog).dismiss()
+        } catch (ignored:Exception) {
+        }
+        try {
+            dismiss()
+        } catch (ignored:Exception) {
+        }
+    }
     
-    abstract protected fun loadItems(context:Context):T
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }

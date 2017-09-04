@@ -16,30 +16,44 @@
 
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
+import android.graphics.PorterDuff
 import android.support.v7.widget.Toolbar
 import ca.allanwang.kau.utils.blendWith
+import ca.allanwang.kau.utils.statusBarLight
 import com.mikepenz.materialdrawer.Drawer
 import jahirfiquitiva.libs.kauextensions.activities.ThemedActivity
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getColorFromRes
+import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
+import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
+import jahirfiquitiva.libs.kauextensions.extensions.printInfo
 import jahirfiquitiva.libs.kauextensions.extensions.round
 import jahirfiquitiva.libs.kauextensions.extensions.tint
-import jahirfiquitiva.libs.kauextensions.extensions.updateStatusBarStyle
 import jahirfiquitiva.libs.kauextensions.ui.views.callbacks.CollapsingToolbarCallback
 
-fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, drawer:Drawer?, offset:Int) {
+fun ThemedActivity.updateToolbarColors(toolbar:Toolbar, drawer:Drawer?, offset:Int,
+                                       darkness:Float = 0.5F) {
     val defaultIconsColor = getColorFromRes(android.R.color.white)
     var ratio = round(offset / 255.0, 1)
     if (ratio > 1) ratio = 1.0
     else if (ratio < 0) ratio = 0.0
-    val rightIconsColor = defaultIconsColor.blendWith(getActiveIconsColorFor(primaryColor),
-                                                      ratio.toFloat())
+    val rightIconsColor = defaultIconsColor.blendWith(
+            getActiveIconsColorFor(primaryColor, darkness),
+            ratio.toFloat())
     toolbar.tint(rightIconsColor)
     try {
-        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = rightIconsColor
+        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.setColorFilter(rightIconsColor,
+                                                                           PorterDuff.Mode.SRC_ATOP)
+        drawer?.actionBarDrawerToggle?.syncState()
     } catch (ignored:Exception) {
     }
     updateStatusBarStyle(
-            if (ratio > 0.7) CollapsingToolbarCallback.State.COLLAPSED else CollapsingToolbarCallback.State.EXPANDED)
+            if (ratio > 0.9) CollapsingToolbarCallback.State.COLLAPSED else CollapsingToolbarCallback.State.EXPANDED,
+            darkness)
+}
+
+fun ThemedActivity.updateStatusBarStyle(state:CollapsingToolbarCallback.State, darkness:Float) {
+    statusBarLight = if (state == CollapsingToolbarCallback.State.COLLAPSED)
+        primaryDarkColor.isColorLight(darkness) else false
 }

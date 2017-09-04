@@ -55,6 +55,9 @@ android {
             proguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
             consumerProguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
         }
+        aaptOptions {
+            noCompress 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch'
+        }
     }
 
     sourceSets {

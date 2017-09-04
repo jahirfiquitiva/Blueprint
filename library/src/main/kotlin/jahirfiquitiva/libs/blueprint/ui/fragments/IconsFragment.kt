@@ -88,12 +88,12 @@ class IconsFragment:BaseViewModelFragment<Icon>() {
     
     override fun onDestroyView() {
         super.onDestroyView()
-        dialog?.dismiss(activity)
+        dialog?.dismiss(activity, IconDialog.TAG)
     }
     
     override fun onDestroy() {
         super.onDestroy()
-        dialog?.dismiss(activity)
+        dialog?.dismiss(activity, IconDialog.TAG)
     }
     
     override fun loadDataFromViewModel() = model.loadData(activity)
@@ -101,7 +101,7 @@ class IconsFragment:BaseViewModelFragment<Icon>() {
     override fun getContentLayout():Int = R.layout.section_layout
     
     override fun initUI(content:View) {
-        rv = content.findViewById(R.id.section_rv)
+        rv = content.findViewById(R.id.list_rv)
         fastScroller = content.findViewById(R.id.fast_scroller)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
@@ -113,7 +113,7 @@ class IconsFragment:BaseViewModelFragment<Icon>() {
     }
     
     override fun onItemClicked(item:Icon) {
-        dialog?.dismiss(activity)
+        dialog?.dismiss(activity, IconDialog.TAG)
         dialog = IconDialog()
         dialog?.show(activity, item.name, item.icon, true)
     }

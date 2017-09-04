@@ -25,7 +25,7 @@ open class EmptyFragment:BasicFragment<Boolean>() {
     override fun getContentLayout():Int = R.layout.section_wo_fastscroll
     
     override fun initUI(content:View) {
-        val emptyRecyclerView:EmptyViewRecyclerView = content.findViewById(R.id.section_rv)
+        val emptyRecyclerView:EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
         emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)
         emptyRecyclerView.textView = content.findViewById(R.id.empty_text)
         emptyRecyclerView.state = EmptyViewRecyclerView.State.EMPTY

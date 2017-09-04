@@ -17,16 +17,18 @@
 
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/section_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center">
+        android:gravity="center"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <include layout="@layout/extra_empty_views"/>
 
     <jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-            android:id="@+id/section_rv"
+            android:id="@+id/list_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
@@ -34,6 +36,7 @@
             android:fitsSystemWindows="true"
             android:scrollbars="none"
             android:overScrollMode="ifContentScrolls"
-            android:paddingBottom="@dimen/kau_fab_size"/>
+            android:paddingBottom="@dimen/kau_fab_size"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </RelativeLayout>

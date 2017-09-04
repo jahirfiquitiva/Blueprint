@@ -17,21 +17,22 @@
 
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/section_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <include layout="@layout/extra_empty_views"/>
 
     <jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-            android:id="@+id/section_rv"
+            android:id="@+id/list_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:overScrollMode="ifContentScrolls"
-            android:paddingBottom="@dimen/cards_small_margin"
-            android:paddingTop="@dimen/cards_small_margin"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.pluscubed.recyclerfastscroll.RecyclerFastScroller
             android:id="@+id/fast_scroller"

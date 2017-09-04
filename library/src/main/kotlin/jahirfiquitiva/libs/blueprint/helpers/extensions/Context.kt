@@ -17,8 +17,34 @@
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
 import android.content.Context
+import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.PREFERENCES_NAME
+import java.util.concurrent.TimeUnit
 
 val Context.bpKonfigs:BPKonfigs
     get() = BPKonfigs.newInstance(PREFERENCES_NAME, this)
+
+fun Context.millisToText(millis:Long):String {
+    when {
+        TimeUnit.MILLISECONDS.toSeconds(millis) < 60 ->
+            return (TimeUnit.MILLISECONDS.toSeconds(millis).toString() + " "
+                    + getString(R.string.seconds).toLowerCase())
+        TimeUnit.MILLISECONDS.toMinutes(millis) < 60 ->
+            return (TimeUnit.MILLISECONDS.toMinutes(millis).toString() + " "
+                    + getString(R.string.minutes).toLowerCase())
+        TimeUnit.MILLISECONDS.toHours(millis) < 24 ->
+            return (TimeUnit.MILLISECONDS.toHours(millis).toString() + " "
+                    + getString(R.string.hours).toLowerCase())
+        TimeUnit.MILLISECONDS.toDays(millis) < 7 ->
+            return (TimeUnit.MILLISECONDS.toDays(millis).toString() + " "
+                    + getString(R.string.days)).toLowerCase()
+        millis.toWeeks() < 4 -> return (millis.toWeeks().toString() + " "
+                + getString(R.string.weeks).toLowerCase())
+        else -> return (millis.toMonths().toString() + " "
+                + getString(R.string.months).toLowerCase())
+    }
+}
+
+private fun Long.toWeeks() = TimeUnit.MILLISECONDS.toDays(this) / 7
+private fun Long.toMonths() = toWeeks() / 4

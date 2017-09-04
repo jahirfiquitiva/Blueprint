@@ -54,11 +54,11 @@ allprojects {
         multidex = '1.0.1'
         // Libraries versions
         supportLibs = '26.0.2'
-        archComponents = '1.0.0-alpha5'
+        archComponents = '1.0.0-alpha9'
         materialDialogs = '0.9.4.7'
         glide = '3.7.0' // '4.0.0'
         volley = '1.0.0'
-        kauExt = '219e8a4'
+        kauExt = '6d74818'
         sectionedRecyclerView = '0.5.0'
         recyclerViewFastScroll = 'f08746f'
         iaps = '1.0.44'
@@ -68,7 +68,7 @@ allprojects {
         // Blueprint
         materialDrawer = '5.9.5'
         bottomBar = '2.0.6'
-        iconRequestTool = 'a87db9d'
+        iconRequestTool = '68bb24f'
         fabsMenu = '9b7735b'
         counterFab = '1.0.1'
         chips = '6988f83'

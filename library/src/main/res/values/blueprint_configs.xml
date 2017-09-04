@@ -82,4 +82,25 @@
         False, means no.
     -->
     <bool name="enable_colored_cards">false</bool>
+
+    <!--
+    1. Set the max amount of apps to request.
+    2. Limit requests to 1 every X minutes.
+    Replace X with the number of minutes you want.
+    60 means 1 request every 1 hour.
+    1440 means 1 request per day.
+    10080 means 1 request per week.
+    40320 means 1 request per month.
+
+    App Limit:
+    If the apps limit is 0, users won't be able to request anything.
+    If the apps limit is -1, users can request as many times they want, and
+    as many apps they want.
+
+    Time limit:
+    If the time limit is set to 0 or less, users will be able to request as many times they want,
+    with the max apps limit.
+    -->
+    <integer name="max_apps_to_request">-1</integer>
+    <integer name="time_limit_in_minutes">0</integer>
 </resources>

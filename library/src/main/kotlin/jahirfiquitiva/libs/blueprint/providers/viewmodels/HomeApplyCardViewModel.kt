@@ -19,12 +19,13 @@ package jahirfiquitiva.libs.blueprint.providers.viewmodels
 import android.content.Context
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
+import jahirfiquitiva.libs.frames.providers.viewmodels.BasicViewModel
 
-class HomeApplyCardViewModel:BaseViewModel<Boolean>() {
-    override fun loadItems(context:Context):Boolean {
-        val initCard = context.defaultLauncher?.isActuallySupported == true
+class HomeApplyCardViewModel:BasicViewModel<Context, Boolean>() {
+    override fun loadItems(param:Context):Boolean {
+        val initCard = param.defaultLauncher?.isActuallySupported == true
         return if (initCard) {
-            !context.bpKonfigs.isApplyCardDismissed
+            !param.bpKonfigs.isApplyCardDismissed
         } else {
             false
         }

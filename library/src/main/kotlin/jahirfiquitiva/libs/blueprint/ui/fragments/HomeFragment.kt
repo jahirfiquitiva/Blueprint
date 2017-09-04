@@ -77,7 +77,7 @@ class HomeFragment:BaseViewModelFragment<HomeItem>() {
     override fun getContentLayout():Int = R.layout.section_wo_fastscroll
     
     override fun initUI(content:View) {
-        rv = content.findViewById(R.id.section_rv)
+        rv = content.findViewById(R.id.list_rv)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
         rv.state = EmptyViewRecyclerView.State.LOADING
