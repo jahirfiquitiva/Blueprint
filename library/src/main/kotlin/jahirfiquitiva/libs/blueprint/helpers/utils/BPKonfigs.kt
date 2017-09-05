@@ -25,7 +25,7 @@ class BPKonfigs(nm:String, cntxt:Context):FramesKonfigs(nm, cntxt) {
     }
     
     var launcherIconShown:Boolean
-        get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, true)
+        get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, false)
         set(shown) = prefsEditor.putBoolean(LAUNCHER_ICON_SHOWN, shown).apply()
     
     var isApplyCardDismissed:Boolean
@@ -35,5 +35,4 @@ class BPKonfigs(nm:String, cntxt:Context):FramesKonfigs(nm, cntxt) {
     var wallpaperAsToolbarHeaderEnabled:Boolean
         get() = prefs.getBoolean(WALLPAPER_AS_TOOLBAR_HEADER, true)
         set(enabled) = prefsEditor.putBoolean(WALLPAPER_AS_TOOLBAR_HEADER, enabled).apply()
-    
 }

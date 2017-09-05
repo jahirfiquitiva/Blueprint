@@ -31,21 +31,21 @@ class IconRestorerWidget:AppWidgetProvider() {
     override fun onUpdate(context:Context?, appWidgetManager:AppWidgetManager?,
                           appWidgetIds:IntArray?) {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
-        appWidgetIds?.forEach {
-            try {
-                val intent = Intent(Intent.ACTION_MAIN)
-                intent.addCategory(Intent.CATEGORY_LAUNCHER)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                intent.component = ComponentName(context?.packageName,
-                                                 "LauncherIconRestorerActivity.class")
-                val rViews = RemoteViews(context?.packageName, R.layout.widget_icon_restorer)
-                rViews.setOnClickPendingIntent(R.id.appWidget,
-                                               PendingIntent.getActivity(context, 0, intent, 0))
-                appWidgetManager?.updateAppWidget(it, rViews)
-            } catch (e:Exception) {
-                context?.let {
-                    it.showToast(it.getString(R.string.launcher_icon_restorer_error,
-                                              it.getString(R.string.app_name)))
+        context?.let {
+            appWidgetIds?.forEach {
+                try {
+                    val intent = Intent(Intent.ACTION_MAIN)
+                    intent.addCategory(Intent.CATEGORY_LAUNCHER)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.component = ComponentName(context.packageName,
+                                                     "LauncherIconRestorerActivity.class")
+                    val rViews = RemoteViews(context.packageName, R.layout.widget_icon_restorer)
+                    rViews.setOnClickPendingIntent(R.id.appWidget,
+                                                   PendingIntent.getActivity(context, 0, intent, 0))
+                    appWidgetManager?.updateAppWidget(it, rViews)
+                } catch (e:Exception) {
+                    context.showToast(context.getString(R.string.launcher_icon_restorer_error,
+                                                        context.getString(R.string.app_name)))
                 }
             }
         }
@@ -53,15 +53,17 @@ class IconRestorerWidget:AppWidgetProvider() {
     
     override fun onReceive(context:Context?, intent:Intent?) {
         super.onReceive(context, intent)
-        val action = intent?.action
-        if (AppWidgetManager.ACTION_APPWIDGET_UPDATE == action) {
-            val rViews = RemoteViews(context?.packageName, R.layout.widget_icon_restorer)
-            val restore = Intent(context, LauncherIconRestorerActivity::class.java)
-            rViews.setOnClickPendingIntent(R.id.appWidget,
-                                           PendingIntent.getActivity(context, 0, restore, 0))
-            AppWidgetManager.getInstance(context)
-                    .updateAppWidget(
-                            intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS), rViews)
+        context?.let {
+            val action = intent?.action
+            if (AppWidgetManager.ACTION_APPWIDGET_UPDATE == action) {
+                val rViews = RemoteViews(context.packageName, R.layout.widget_icon_restorer)
+                val restore = Intent(context, LauncherIconRestorerActivity::class.java)
+                rViews.setOnClickPendingIntent(R.id.appWidget,
+                                               PendingIntent.getActivity(context, 0, restore, 0))
+                AppWidgetManager.getInstance(context).updateAppWidget(
+                        intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS),
+                        rViews)
+            }
         }
     }
 }

@@ -16,15 +16,12 @@
 
 package jahirfiquitiva.libs.blueprint.ui.activities
 
-import android.support.v4.app.Fragment
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.fragments.BpSettingsFragment
-import jahirfiquitiva.libs.frames.ui.activities.SettingsActivity
+import jahirfiquitiva.libs.frames.ui.activities.CreditsActivity
 
-class BpSettingsActivity:SettingsActivity() {
+class CreditsActivity:CreditsActivity() {
     override fun lightTheme():Int = R.style.BlueprintLightTheme
     override fun darkTheme():Int = R.style.BlueprintDarkTheme
     override fun amoledTheme():Int = R.style.BlueprintAmoledTheme
     override fun transparentTheme():Int = R.style.BlueprintTransparentTheme
-    override fun settingsFragment():Fragment = BpSettingsFragment()
 }

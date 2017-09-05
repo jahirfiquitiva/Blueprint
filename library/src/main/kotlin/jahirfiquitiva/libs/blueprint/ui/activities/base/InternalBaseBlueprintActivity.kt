@@ -42,7 +42,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import biz.kasual.materialnumberpicker.MaterialNumberPicker
 import ca.allanwang.kau.utils.dpToPx
-import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.goneIf
 import ca.allanwang.kau.utils.hideIf
 import ca.allanwang.kau.utils.isHidden
@@ -69,8 +68,8 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
-import jahirfiquitiva.libs.blueprint.ui.activities.BpCreditsActivity
-import jahirfiquitiva.libs.blueprint.ui.activities.BpSettingsActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.CreditsActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.SettingsActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
@@ -181,6 +180,11 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         collapsingToolbar.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         picker = savedInstanceState?.getInt("pickerKey") ?: 0
         navigateToItem(getNavigationItems()[savedInstanceState?.getInt("currentItemId") ?: 0])
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        initWallpaperInToolbar()
     }
     
     private fun initMainComponents(savedInstance:Bundle?) {
@@ -311,10 +315,10 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                             toggleSelectAll()
                         }
                         R.id.about -> {
-                            startActivity(Intent(this, BpCreditsActivity::class.java))
+                            startActivity(Intent(this, CreditsActivity::class.java))
                         }
                         R.id.settings -> {
-                            startActivity(Intent(this, BpSettingsActivity::class.java))
+                            startActivity(Intent(this, SettingsActivity::class.java))
                         }
                     // TODO: Manage other items
                     }
@@ -332,28 +336,28 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             override fun onVerticalOffsetChanged(appBar:AppBarLayout, verticalOffset:Int) =
                     updateToolbarColorsHere(verticalOffset)
         })
+        initWallpaperInToolbar()
+    }
+    
+    private fun initWallpaperInToolbar() {
         val wallpaper:ImageView? = findViewById(R.id.toolbarHeader)
         val wallManager = WallpaperManager.getInstance(this)
         if (picker == 0 && getShortcut().isEmpty()) {
-            var drawable:Drawable? = null
-            if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
-                drawable = wallManager?.fastDrawable
+            val drawable:Drawable? = if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
+                wallManager?.fastDrawable
             } else {
                 val picName = getString(R.string.toolbar_picture)
                 if (picName.isNotEmpty()) {
                     try {
-                        drawable = picName.getDrawable(this)
+                        picName.getDrawable(this)
                     } catch (ignored:Exception) {
+                        null
                     }
-                }
+                } else null
             }
             wallpaper?.alpha = .95f
             wallpaper?.setImageDrawable(drawable)
             wallpaper?.visible()
-            if (wallpaper == null) {
-                val gradient:ImageView? = findViewById(R.id.toolbarGradient)
-                gradient?.gone()
-            }
         }
     }
     

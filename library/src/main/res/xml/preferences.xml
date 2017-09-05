@@ -40,6 +40,20 @@
                 android:summary="@string/wallpapers_columns_setting_content"
                 android:title="@string/wallpapers_columns_setting_title"/>
 
+        <SwitchPreference
+                android:defaultValue="true"
+                android:key="animations"
+                android:persistent="true"
+                android:summary="@string/pref_summary_anims"
+                android:title="@string/pref_title_anims"/>
+
+        <SwitchPreference
+                android:defaultValue="true"
+                android:key="toolbar_header"
+                android:persistent="true"
+                android:summary="@string/pref_summary_wall_header"
+                android:title="@string/pref_title_wall_header"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -74,6 +88,19 @@
                 android:key="enable_notifications"
                 android:persistent="true"
                 android:title="@string/enable_notifications"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="launcher_icon_preference"
+            android:title="@string/pref_header_launcher_icon">
+
+        <SwitchPreference
+                android:defaultValue="false"
+                android:key="launcher_icon"
+                android:persistent="true"
+                android:summary="@string/pref_summary_launcher_icon"
+                android:title="@string/pref_title_launcher_icon"/>
 
     </PreferenceCategory>
 

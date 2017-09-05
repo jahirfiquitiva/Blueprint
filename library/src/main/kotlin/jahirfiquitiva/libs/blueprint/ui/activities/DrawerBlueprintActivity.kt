@@ -16,6 +16,7 @@
 
 package jahirfiquitiva.libs.blueprint.ui.activities
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.widget.TextViewCompat
@@ -24,17 +25,20 @@ import android.widget.TextView
 import ca.allanwang.kau.utils.gone
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.DrawerBuilder
+import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_POSITION
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_POSITION
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_POSITION
 import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
-import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
 import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
-import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 
 abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
     
@@ -93,12 +97,36 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
         
         drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
             try {
-                val navigated = navigateToItem(getNavigationItems()[drawerItem.identifier.toInt()])
-                if (navigated) drawer?.closeDrawer()
-                return@withOnDrawerItemClickListener navigated
-            } catch (ignored:Exception) {
-                return@withOnDrawerItemClickListener true
+                when (drawerItem.identifier) {
+                    DEFAULT_HELP_POSITION.toLong() -> {
+                        drawer?.closeDrawer()
+                        drawer?.setSelection(currentItemId.toLong(), false)
+                        // TODO: Launch Help activity
+                        return@withOnDrawerItemClickListener false
+                    }
+                    DEFAULT_CREDITS_POSITION.toLong() -> {
+                        drawer?.closeDrawer()
+                        drawer?.setSelection(currentItemId.toLong(), false)
+                        startActivity(Intent(this, CreditsActivity::class.java))
+                        return@withOnDrawerItemClickListener false
+                    }
+                    DEFAULT_SETTINGS_POSITION.toLong() -> {
+                        drawer?.closeDrawer()
+                        drawer?.setSelection(currentItemId.toLong(), false)
+                        startActivity(Intent(this, SettingsActivity::class.java))
+                        return@withOnDrawerItemClickListener false
+                    }
+                    else -> {
+                        val navigated = navigateToItem(
+                                getNavigationItems()[drawerItem.identifier.toInt()])
+                        if (navigated) drawer?.closeDrawer()
+                        return@withOnDrawerItemClickListener navigated
+                    }
+                }
+            } catch (e:Exception) {
+                e.printStackTrace()
             }
+            return@withOnDrawerItemClickListener false
         }
         
         getNavigationItems().forEach {
@@ -109,6 +137,20 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
                             .withIconTintingEnabled(true))
         }
         
+        drawerBuilder.addDrawerItems(DividerDrawerItem())
+        
+        drawerBuilder.addDrawerItems(SecondaryDrawerItem()
+                                             .withIdentifier(DEFAULT_HELP_POSITION.toLong())
+                                             .withName(R.string.section_help))
+        
+        drawerBuilder.addDrawerItems(SecondaryDrawerItem()
+                                             .withIdentifier(DEFAULT_CREDITS_POSITION.toLong())
+                                             .withName(R.string.section_about))
+        
+        drawerBuilder.addDrawerItems(SecondaryDrawerItem()
+                                             .withIdentifier(DEFAULT_SETTINGS_POSITION.toLong())
+                                             .withName(R.string.settings))
+        
         drawerBuilder.withHasStableIds(true)
                 .withFireOnInitialOnClick(true)
         
@@ -116,8 +158,8 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
             drawerBuilder.withSavedInstance(savedInstance)
         
         drawer = drawerBuilder.build()
-        drawer?.actionBarDrawerToggle?.drawerArrowDrawable?.color = getActiveIconsColorFor(
-                primaryColor)
+        
+        updateToolbarColorsHere(0)
     }
     
     override fun onBackPressed() {

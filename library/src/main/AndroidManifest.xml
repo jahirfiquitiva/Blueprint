@@ -81,9 +81,9 @@
 
 
         <activity
-                android:name=".ui.activities.BpCreditsActivity"
+                android:name=".ui.activities.CreditsActivity"
                 android:exported="false"/>
-        <activity android:name=".ui.activities.BpSettingsActivity">
+        <activity android:name=".ui.activities.SettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES"/>
                 <category android:name="android.intent.category.DEFAULT"/>

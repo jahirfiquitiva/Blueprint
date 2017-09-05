@@ -55,8 +55,7 @@ class IconDialog:BasicDialogFragment() {
         }
     }
     
-    fun show(context:FragmentActivity, name:String, resId:Int,
-             animate:Boolean) {
+    fun show(context:FragmentActivity, name:String, resId:Int, animate:Boolean) {
         dismiss(context, TAG)
         IconDialog.invoke(name, resId, animate).show(context.supportFragmentManager, TAG)
     }
@@ -123,17 +122,17 @@ class IconDialog:BasicDialogFragment() {
     
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
-        this.name = arguments.getString(NAME)
-        this.resId = arguments.getInt(RESID)
-        this.animate = arguments.getBoolean(ANIMATE)
+        this.name = arguments?.getString(NAME) ?: ""
+        this.resId = arguments?.getInt(RESID) ?: 0
+        this.animate = arguments?.getBoolean(ANIMATE) ?: false
     }
     
     override fun onActivityCreated(savedInstanceState:Bundle?) {
         super.onActivityCreated(savedInstanceState)
         savedInstanceState?.let {
-            name = it.getString(NAME)
-            resId = it.getInt(RESID)
-            animate = it.getBoolean(ANIMATE)
+            this.name = it.getString(NAME)
+            this.resId = it.getInt(RESID)
+            this.animate = it.getBoolean(ANIMATE)
         }
     }
     

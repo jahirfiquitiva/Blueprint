@@ -23,6 +23,7 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
+import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconItemViewModel
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.IconDialog
@@ -115,6 +116,6 @@ class IconsFragment:BaseViewModelFragment<Icon>() {
     override fun onItemClicked(item:Icon) {
         dialog?.dismiss(activity, IconDialog.TAG)
         dialog = IconDialog()
-        dialog?.show(activity, item.name, item.icon, true)
+        dialog?.show(activity, item.name, item.icon, context.bpKonfigs.animationsEnabled)
     }
 }
