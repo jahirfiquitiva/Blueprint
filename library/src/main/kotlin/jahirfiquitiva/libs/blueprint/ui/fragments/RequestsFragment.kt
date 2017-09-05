@@ -111,8 +111,19 @@ class RequestsFragment:BaseViewModelFragment<App>() {
         ir?.let {
             if (hasSelectedAll) ir.unselectAllApps()
             else ir.selectAllApps()
-            hasSelectedAll = !hasSelectedAll
+            updateFabCount()
             adapter.notifyDataSetChanged()
+            hasSelectedAll = !hasSelectedAll
+        }
+    }
+    
+    fun unselectAll() {
+        val ir = IconRequest.get()
+        ir?.let {
+            ir.unselectAllApps()
+            updateFabCount()
+            adapter.notifyDataSetChanged()
+            hasSelectedAll = false
         }
     }
     

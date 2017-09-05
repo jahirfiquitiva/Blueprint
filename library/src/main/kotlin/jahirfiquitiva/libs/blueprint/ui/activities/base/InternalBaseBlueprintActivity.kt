@@ -598,13 +598,15 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                                     override fun onPermissionGranted() = doSendRequest()
                                 })
             } else {
-                destroyDialog()
-                dialog = buildMaterialDialog {
-                    title(R.string.no_selected_apps_title)
-                    content(R.string.no_selected_apps_content)
-                    positiveText(android.R.string.ok)
+                runOnUiThread {
+                    destroyDialog()
+                    dialog = buildMaterialDialog {
+                        title(R.string.no_selected_apps_title)
+                        content(R.string.no_selected_apps_content)
+                        positiveText(android.R.string.ok)
+                    }
+                    dialog?.show()
                 }
-                dialog?.show()
             }
         }
     }
@@ -620,22 +622,26 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         if (ir != null) {
             ir.send(object:OnRequestProgress() {
                 override fun doWhenStarted() {
-                    dialog?.show()
+                    runOnUiThread { dialog?.show() }
                 }
                 
                 override fun doOnError() {
-                    destroyDialog()
-                    dialog = buildMaterialDialog {
-                        title(R.string.error_title)
-                        content(R.string.requests_error)
-                        positiveText(android.R.string.ok)
+                    runOnUiThread {
+                        destroyDialog()
+                        dialog = buildMaterialDialog {
+                            title(R.string.error_title)
+                            content(R.string.requests_error)
+                            positiveText(android.R.string.ok)
+                        }
+                        dialog?.show()
                     }
-                    dialog?.show()
                 }
                 
                 override fun doWhenReady() {
-                    destroyDialog()
-                    toggleSelectAll()
+                    runOnUiThread {
+                        destroyDialog()
+                        unselectAll()
+                    }
                 }
             })
         } else {
@@ -718,6 +724,12 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     internal fun toggleSelectAll() {
         if (currentFragment is RequestsFragment) {
             (currentFragment as RequestsFragment).toggleSelectAll()
+        }
+    }
+    
+    internal fun unselectAll() {
+        if (currentFragment is RequestsFragment) {
+            (currentFragment as RequestsFragment).unselectAll()
         }
     }
 }

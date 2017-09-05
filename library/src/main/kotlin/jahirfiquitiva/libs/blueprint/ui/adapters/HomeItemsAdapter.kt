@@ -109,7 +109,7 @@ class HomeItemsAdapter(private val context:Context,
                 if (wallsAmount > MINIMAL_AMOUNT) {
                     holder.wallsCounter.setBackgroundColor(bgColor)
                     holder.wallsCounterIcon.setImageDrawable(
-                            ContextCompat.getDrawable(context, NavigationItem.ICONS.icon)
+                            ContextCompat.getDrawable(context, NavigationItem.WALLPAPERS.icon)
                                     .applyColorFilter(iconColor))
                     holder.wallsCounterTitle.setTextColor(labelColor)
                     holder.wallsCounterCount.setTextColor(counterColor)
@@ -121,11 +121,12 @@ class HomeItemsAdapter(private val context:Context,
                 if (kwgtAmount > MINIMAL_AMOUNT) {
                     holder.kwgtCounter.setBackgroundColor(bgColor)
                     holder.kwgtCounterIcon.setImageDrawable(
-                            ContextCompat.getDrawable(context, NavigationItem.ICONS.icon)
+                            ContextCompat.getDrawable(context, R.drawable.ic_kustom)
                                     .applyColorFilter(iconColor))
                     holder.kwgtCounterTitle.setTextColor(labelColor)
                     holder.kwgtCounterCount.setTextColor(counterColor)
-                    holder.kwgtCounterCount.text = kwgtAmount.toString()
+                    holder.kwgtCounterCount.text = context.getString(R.string.included_templates,
+                                                                     kwgtAmount.toString())
                 } else {
                     holder.kwgtCounter.gone()
                 }
@@ -133,11 +134,12 @@ class HomeItemsAdapter(private val context:Context,
                 if (zooperAmount > MINIMAL_AMOUNT) {
                     holder.zooperCounter.setBackgroundColor(bgColor)
                     holder.zooperCounterIcon.setImageDrawable(
-                            ContextCompat.getDrawable(context, NavigationItem.ICONS.icon)
+                            ContextCompat.getDrawable(context, R.drawable.ic_zooper)
                                     .applyColorFilter(iconColor))
                     holder.zooperCounterTitle.setTextColor(labelColor)
                     holder.zooperCounterCount.setTextColor(counterColor)
-                    holder.zooperCounterCount.text = zooperAmount.toString()
+                    holder.zooperCounterCount.text = context.getString(R.string.included_templates,
+                                                                       zooperAmount.toString())
                 } else {
                     holder.zooperCounter.gone()
                 }

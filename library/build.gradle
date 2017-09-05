@@ -49,8 +49,8 @@ android {
         release {
             debuggable false
             zipAlignEnabled true
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
             consumerProguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
         }
@@ -100,7 +100,9 @@ dependencies {
     }
     compile 'com.aurelhubert:ahbottomnavigation:' + project.ext.bottomBar
     // Icon Requests Tool
-    compile 'me.jahirfiquitiva:Quest:' + project.ext.quest
+    compile('me.jahirfiquitiva:Quest:' + project.ext.quest) {
+        exclude group: 'com.intellij', module: 'annotations'
+    }
     // FABs Menu
     compile 'me.jahirfiquitiva:FABsMenu:' + project.ext.fabsMenu
     // CounterFab

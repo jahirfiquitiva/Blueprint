@@ -18,7 +18,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
 
     <TextView
             android:id="@+id/general_info_section_title"
@@ -66,7 +66,10 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/fabs_margin"
+                    android:paddingLeft="@dimen/fabs_margin"
+                    tools:ignore="RtlSymmetry">
 
                 <TextView
                         android:id="@+id/icons_counter_title"
@@ -124,7 +127,10 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/fabs_margin"
+                    android:paddingLeft="@dimen/fabs_margin"
+                    tools:ignore="RtlSymmetry">
 
                 <TextView
                         android:id="@+id/walls_counter_title"
@@ -190,7 +196,10 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/fabs_margin"
+                    android:paddingLeft="@dimen/fabs_margin"
+                    tools:ignore="RtlSymmetry">
 
                 <TextView
                         android:id="@+id/kwgt_counter_title"
@@ -248,7 +257,10 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/fabs_margin"
+                    android:paddingLeft="@dimen/fabs_margin"
+                    tools:ignore="RtlSymmetry">
 
                 <TextView
                         android:id="@+id/zooper_counter_title"

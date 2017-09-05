@@ -60,8 +60,7 @@
     <string name="impossible_open_themes">Impossible to open themes app</string>
     <string name="themes_app_not_installed">Themes app is not installed in this device</string>
 
-    <string name="included_zooper">%1$s templates</string>
-    <string name="included_kwgt">%1$s templates</string>
+    <string name="included_templates">%1$s templates</string>
 
     <string name="apply_title">Apply %1$s</string>
     <string name="apply_content">We have detected you are using %1$s. To start using our icon pack, just apply it to your launcher.</string>
