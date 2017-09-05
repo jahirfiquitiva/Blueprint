@@ -100,13 +100,11 @@ dependencies {
     }
     compile 'com.aurelhubert:ahbottomnavigation:' + project.ext.bottomBar
     // Icon Requests Tool
-    compile 'com.github.AllanWang:Icon-Request-Tool:' + project.ext.iconRequestTool
+    compile 'me.jahirfiquitiva:Quest:' + project.ext.quest
     // FABs Menu
     compile 'me.jahirfiquitiva:FABsMenu:' + project.ext.fabsMenu
     // CounterFab
     compile 'com.github.andremion:counterfab:' + project.ext.counterFab
-    // Chips View
-    compile 'me.jahirfiquitiva:MaterialChipsInput:' + project.ext.chips
     // Material Number Picker
     compile 'biz.kasual:materialnumberpicker:' + project.ext.mnp
 

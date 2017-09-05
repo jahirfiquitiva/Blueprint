@@ -68,10 +68,9 @@ allprojects {
         // Blueprint
         materialDrawer = '5.9.5'
         bottomBar = '2.0.6'
-        iconRequestTool = '68bb24f'
+        quest = '0def78f'
         fabsMenu = '9b7735b'
         counterFab = '1.0.1'
-        chips = '6988f83'
         mnp = '1.2.1'
     }
 

@@ -60,5 +60,5 @@ enum class NavigationItem(val tag:String, val id:Int, @StringRes val title:Int,
     REQUESTS("Requests", DEFAULT_REQUEST_POSITION, R.string.section_icon_request,
              R.drawable.ic_request);
     
-    override fun toString():String = "NavigationItem[$id - $title]"
+    override fun toString():String = "NavigationItem[$tag - $id]"
 }
