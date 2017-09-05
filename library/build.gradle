@@ -38,11 +38,6 @@ android {
         versionCode project.ext.versionCode
         versionName project.ext.versionName
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled = true
-    }
-
-    dexOptions {
-        jumboMode true
     }
 
     buildTypes {
@@ -91,8 +86,6 @@ dependencies {
     compile project(path: ':frames')
     // Kotlin
     compile 'org.jetbrains.kotlin:kotlin-stdlib:' + project.ext.kotlin
-    // TODO: Delete Multidex
-    compile 'com.android.support:multidex:' + project.ext.multidex
 
     // Navigation
     compile('com.mikepenz:materialdrawer:' + project.ext.materialDrawer + '@aar') {

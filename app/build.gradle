@@ -41,11 +41,6 @@ android {
         versionCode project.ext.versionCode
         versionName project.ext.versionName
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled = true
-    }
-
-    dexOptions {
-        jumboMode true
     }
 
     buildTypes {
@@ -86,8 +81,6 @@ android {
 
 dependencies {
     compile project(path: ':library')
-    // TODO: Delete Multidex
-    compile 'com.android.support:multidex:' + project.ext.multidex
 }
 
 tasks.whenTaskAdded { task ->
