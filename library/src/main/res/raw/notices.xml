@@ -1,0 +1,119 @@
+<!--
+  ~ Copyright (c) 2017. Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<notices>
+    <notice>
+        <name>Frames</name>
+        <url>https://github.com/jahirfiquitiva/Frames</url>
+        <copyright>Copyright (c) 2017 Jahir Fiquitiva</copyright>
+        <license>CreativeCommons Attribution-ShareAlike 4.0 International License</license>
+    </notice>
+    <notice>
+        <name>FABsMenu</name>
+        <url>https://github.com/jahirfiquitiva/FABsMenu</url>
+        <copyright>Copyright (c) 2017 Jahir Fiquitiva</copyright>
+        <license>CreativeCommons Attribution-ShareAlike 4.0 International License</license>
+    </notice>
+    <notice>
+        <name>KAU Extensions</name>
+        <url>https://github.com/jahirfiquitiva/KAUExtensions</url>
+        <copyright>Copyright (c) 2017 Jahir Fiquitiva</copyright>
+        <license>CreativeCommons Attribution-ShareAlike 4.0 International License</license>
+    </notice>
+    <notice>
+        <name>Quest</name>
+        <url>https://github.com/jahirfiquitiva/Quest</url>
+        <copyright>Copyright (c) 2017 Allan Wang - Jahir Fiquitiva</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>KAU</name>
+        <url>https://github.com/AllanWang/KAU</url>
+        <copyright>Copyright (c) 2017 Allan Wang</copyright>
+        <license>Educational Community License v2.0</license>
+    </notice>
+    <notice>
+        <name>Material Drawer</name>
+        <url>https://github.com/mikepenz/MaterialDrawer/</url>
+        <copyright>Copyright (c) 2017 Mike Penz</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Material Dialogs</name>
+        <url>https://github.com/afollestad/material-dialogs</url>
+        <copyright>Copyright (c) 2014-2017 Aidan Michael Follestad</copyright>
+        <license>MIT License</license>
+    </notice>
+    <notice>
+        <name>Volley</name>
+        <url>https://github.com/google/volley</url>
+        <copyright>Copyright (c) 2017 Google Inc.</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Glide</name>
+        <url>https://github.com/bumptech/glide</url>
+        <copyright>""</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Sectioned RecyclerView</name>
+        <url>https://github.com/afollestad/sectioned-recyclerview</url>
+        <copyright>Copyright (c) 2017 Aidan Michael Follestad</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>RecyclerFastScroll</name>
+        <url>https://github.com/plusCubed/recycler-fast-scroll</url>
+        <copyright>Copyright 2016 Daniel Ciao</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>AhBottomNavigation</name>
+        <url>https://github.com/aurelhubert/ahbottomnavigation</url>
+        <copyright>Copyright (c) 2017 Aurelien Hubert</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>CounterFab</name>
+        <url>https://github.com/andremion/CounterFab</url>
+        <copyright>Copyright 2016 André Mion</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>MaterialNumberPicker</name>
+        <url>https://github.com/KasualBusiness/MaterialNumberPicker</url>
+        <copyright>Copyright 2015 Kasual Business</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Android InApp Billing v3</name>
+        <url>https://github.com/anjlab/android-inapp-billing-v3</url>
+        <copyright>Copyright 2014-2017 AnjLab</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Muzei API</name>
+        <url>https://github.com/romannurik/muzei</url>
+        <copyright>Copyright 2017 Roman Nurik</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Licenses Dialog</name>
+        <url>https://github.com/PSDev/LicensesDialog/</url>
+        <copyright>Copyright 2013-2017 Philip Schiffer</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+</notices>
