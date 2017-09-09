@@ -52,6 +52,7 @@ import ca.allanwang.kau.utils.snackbar
 import ca.allanwang.kau.utils.statusBarLight
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
+import ca.allanwang.kau.xml.showChangelog
 import com.andremion.counterfab.CounterFab
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
@@ -319,6 +320,9 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                         R.id.refresh -> {
                             refreshWallpapers()
                         }
+                        R.id.changelog -> {
+                            showChangelog(R.xml.changelog, secondaryTextColor)
+                        }
                         R.id.select_all -> {
                             toggleSelectAll()
                         }
@@ -491,11 +495,12 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     internal open fun internalNavigateToItem(item:NavigationItem):Boolean {
         try {
             searchView?.let {
-                when (item.id) {
-                    DEFAULT_ICONS_POSITION -> it.queryHint = getString(R.string.search_icons)
-                    DEFAULT_WALLPAPERS_POSITION -> it.queryHint = getString(
-                            R.string.search_wallpapers)
-                    else -> it.queryHint = ""
+                it.queryHint = when (item.id) {
+                    DEFAULT_ICONS_POSITION -> getString(R.string.search_icons)
+                    DEFAULT_WALLPAPERS_POSITION -> getString(R.string.search_wallpapers)
+                    DEFAULT_APPLY_POSITION -> getString(R.string.search_launchers)
+                    DEFAULT_REQUEST_POSITION -> getString(R.string.search_apps)
+                    else -> ""
                 }
             }
             val isClosed = searchView?.isIconified == true
@@ -544,9 +549,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     }
     
     private fun updateToolbarMenuItems(item:NavigationItem) {
-        menu.changeOptionVisibility(R.id.search,
-                                    item.id == DEFAULT_ICONS_POSITION ||
-                                            item.id == DEFAULT_WALLPAPERS_POSITION)
+        menu.changeOptionVisibility(R.id.search, item.id != DEFAULT_HOME_POSITION)
         menu.changeOptionVisibility(R.id.filters,
                                     item.id == DEFAULT_ICONS_POSITION &&
                                             getStringArray(R.array.icon_filters).size > 1)
@@ -703,6 +706,10 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             (currentFragment as IconsFragment).doSearch(search)
         } else if (currentFragment is WallpapersFragment) {
             (currentFragment as WallpapersFragment).applyFilter(search)
+        } else if (currentFragment is ApplyFragment) {
+            (currentFragment as ApplyFragment).applyFilter(search)
+        } else if (currentFragment is RequestsFragment) {
+            (currentFragment as RequestsFragment).applyFilter(search)
         }
     }
     

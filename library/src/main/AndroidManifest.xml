@@ -76,9 +76,8 @@
         <activity
                 android:name=".ui.activities.base.InternalBaseBlueprintActivity"
                 android:label="@string/app_name"
-                android:windowSoftInputMode="stateHidden"
+                android:windowSoftInputMode="stateHidden|adjustResize"
                 android:exported="false"/>
-
 
         <activity
                 android:name=".ui.activities.HelpActivity"

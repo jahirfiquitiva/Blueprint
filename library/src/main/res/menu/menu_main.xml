@@ -60,10 +60,18 @@
             tools:ignore="AppCompatResource"/>
 
     <item
+            android:id="@+id/changelog"
+            android:icon="@drawable/ic_changes"
+            android:title="@string/kau_changelog"
+            android:orderInCategory="600"
+            app:showAsAction="ifRoom"
+            tools:ignore="AppCompatResource"/>
+
+    <item
             android:id="@+id/about"
             android:icon="@drawable/ic_about"
             android:title="@string/section_about"
-            android:orderInCategory="600"
+            android:orderInCategory="700"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
@@ -71,7 +79,7 @@
             android:id="@+id/settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/settings"
-            android:orderInCategory="700"
+            android:orderInCategory="800"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
@@ -79,7 +87,7 @@
             android:id="@+id/help"
             android:icon="@drawable/ic_help"
             android:title="@string/section_help"
-            android:orderInCategory="800"
+            android:orderInCategory="900"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 

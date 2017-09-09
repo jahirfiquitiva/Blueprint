@@ -28,7 +28,9 @@
             android:theme="@style/MySplashScreen"
             android:name="jahirfiquitiva.libs.blueprint.BlueprintApp">
 
-        <activity android:name=".MainActivity">
+        <activity
+                android:name=".MainActivity"
+                android:windowSoftInputMode="stateHidden|adjustResize">
 
             <!-- TODO: Do NOT remove the intent-filter tags -->
             <intent-filter>

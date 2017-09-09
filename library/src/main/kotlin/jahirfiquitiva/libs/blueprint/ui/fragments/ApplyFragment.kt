@@ -29,17 +29,21 @@ import jahirfiquitiva.libs.frames.ui.fragments.base.BasicFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
+import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 
 class ApplyFragment:BasicFragment<Launcher>() {
     override fun getContentLayout():Int = R.layout.section_layout
+    
+    private val list = ArrayList<Launcher>()
+    private lateinit var adapter:LaunchersAdapter
     
     override fun initUI(content:View) {
         val rv:EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
         val fastScroller:RecyclerFastScroller = content.findViewById(R.id.fast_scroller)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
-        val adapter = LaunchersAdapter { onItemClicked(it) }
+        adapter = LaunchersAdapter { onItemClicked(it) }
         rv.adapter = adapter
         val columns = context.getInteger(R.integer.icons_columns) - 1
         rv.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
@@ -47,13 +51,24 @@ class ApplyFragment:BasicFragment<Launcher>() {
                 R.dimen.cards_margin)))
         rv.state = EmptyViewRecyclerView.State.LOADING
         fastScroller.attachRecyclerView(rv)
-        val list = ArrayList<Launcher>()
         context.supportedLaunchers.forEach {
             list.add(it)
         }
-        adapter.setItems(
-                ArrayList(list.distinct().sortedBy { !isLauncherInstalled(it.packageNames) }))
+        setAdapterItems(list)
         rv.state = EmptyViewRecyclerView.State.NORMAL
+    }
+    
+    fun applyFilter(filter:String = "") {
+        if (filter.hasContent()) {
+            setAdapterItems(ArrayList(list.filter { it.name.contains(filter, true) }))
+        } else {
+            setAdapterItems(list)
+        }
+    }
+    
+    private fun setAdapterItems(items:ArrayList<Launcher>) {
+        adapter.setItems(
+                ArrayList(items.distinct().sortedBy { !isLauncherInstalled(it.packageNames) }))
     }
     
     private fun isLauncherInstalled(packages:Array<String>):Boolean {

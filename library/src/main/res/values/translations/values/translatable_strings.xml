@@ -75,6 +75,8 @@
 
     <string name="search_icons">Search icons</string>
     <string name="search_wallpapers">Search wallpapers</string>
+    <string name="search_launchers">Search launchers</string>
+    <string name="search_apps">Search apps</string>
 
     <string name="seconds">Seconds</string>
     <string name="minutes">Minutes</string>

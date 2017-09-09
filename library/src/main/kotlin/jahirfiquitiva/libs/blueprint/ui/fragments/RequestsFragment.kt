@@ -40,6 +40,7 @@ import jahirfiquitiva.libs.frames.helpers.configs.isLowRamDevice
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 
@@ -129,6 +130,18 @@ class RequestsFragment:BaseViewModelFragment<App>() {
             updateFabCount()
             adapter.notifyDataSetChanged()
             hasSelectedAll = false
+        }
+    }
+    
+    fun applyFilter(filter:String = "") {
+        if (filter.hasContent()) {
+            viewModel.items.value?.let {
+                adapter.setItems(ArrayList(it.filter { it.name.contains(filter, true) }))
+            }
+        } else {
+            viewModel.items.value?.let {
+                adapter.setItems(it)
+            }
         }
     }
     
