@@ -110,9 +110,6 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="bottom|end"
-            android:layout_marginRight="@dimen/fabs_margin"
-            android:layout_marginEnd="@dimen/fabs_margin"
-            android:layout_marginBottom="@dimen/fabs_margin"
             android:visibility="gone"
             app:fabSize="normal"
             app:backgroundTint="?attr/colorAccent"/>

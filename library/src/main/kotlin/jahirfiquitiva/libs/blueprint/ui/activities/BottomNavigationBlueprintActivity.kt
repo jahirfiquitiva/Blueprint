@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.activities
 
 import android.os.Bundle
@@ -21,14 +20,15 @@ import ca.allanwang.kau.utils.visible
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kauextensions.extensions.inactiveIconsColor
 
-abstract class BottomBarBlueprintActivity:InternalBaseBlueprintActivity() {
+abstract class BottomNavigationBlueprintActivity:InternalBaseBlueprintActivity() {
     
-    private lateinit var bottomBar:AHBottomNavigation
+    internal lateinit var bottomBar:AHBottomNavigation
     
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,13 +40,13 @@ abstract class BottomBarBlueprintActivity:InternalBaseBlueprintActivity() {
         bottomBar.accentColor = accentColor
         with(bottomBar) {
             defaultBackgroundColor = cardBackgroundColor
-            isBehaviorTranslationEnabled = false
             inactiveColor = inactiveIconsColor
+            // TODO: Enable this?
+            // isBehaviorTranslationEnabled = false
             isForceTint = true
             titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
             getNavigationItems().forEach {
-                addItem(
-                        AHBottomNavigationItem(getString(it.title), it.icon))
+                addItem(AHBottomNavigationItem(getString(it.title), it.icon))
             }
             setOnTabSelectedListener { position, _ ->
                 return@setOnTabSelectedListener navigateToItem(getNavigationItems()[position])
@@ -56,13 +56,10 @@ abstract class BottomBarBlueprintActivity:InternalBaseBlueprintActivity() {
         }
     }
     
-    override fun onSaveInstanceState(outState:Bundle?) = super.onSaveInstanceState(outState)
-    
-    override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-        bottomBar.setCurrentItem(savedInstanceState?.getInt("currentItemId", 0) ?: 0, true)
+    override fun internalNavigateToItem(item:NavigationItem):Boolean {
+        bottomBar.setCurrentItem(item.id, false)
+        return super.internalNavigateToItem(item)
     }
     
-    override fun hasBottomBar():Boolean = true
-    
+    override fun hasBottomNavigation():Boolean = true
 }

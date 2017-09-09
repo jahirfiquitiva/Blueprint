@@ -38,6 +38,11 @@ android {
         versionCode project.ext.versionCode
         versionName project.ext.versionName
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
+    }
+
+    dexOptions {
+        jumboMode true
     }
 
     buildTypes {
@@ -86,6 +91,8 @@ dependencies {
     compile project(path: ':frames')
     // Kotlin
     compile 'org.jetbrains.kotlin:kotlin-stdlib:' + project.ext.kotlin
+    // TODO: Delete
+    compile 'com.android.support:multidex:' + project.ext.multidex
 
     // Navigation
     compile('com.mikepenz:materialdrawer:' + project.ext.materialDrawer + '@aar') {
@@ -118,9 +125,9 @@ dependencies {
     compile 'com.android.volley:volley:' + project.ext.volley
     // Glide Image Loading
     compile 'com.github.bumptech.glide:glide:' + project.ext.glide
-    // compile 'com.github.bumptech.glide:annotations:' + project.ext.glide
-    // annotationProcessor 'com.github.bumptech.glide:compiler:' + project.ext.glide
-    // kapt 'com.github.bumptech.glide:compiler:' + project.ext.glide
+    compile 'com.github.bumptech.glide:annotations:' + project.ext.glide
+    annotationProcessor 'com.github.bumptech.glide:compiler:' + project.ext.glide
+    kapt 'com.github.bumptech.glide:compiler:' + project.ext.glide
     // KAU Extensions
     compile 'me.jahirfiquitiva.KAUExtensions:core:' + project.ext.kauExt
     compile 'me.jahirfiquitiva.KAUExtensions:ziv:' + project.ext.kauExt

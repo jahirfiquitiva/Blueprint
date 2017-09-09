@@ -31,7 +31,7 @@ class RequestViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
     val checkbox:AppCompatCheckBox = itemView.findViewById(R.id.checkbox)
     
     fun setItem(app:App, listener:(checkbox:AppCompatCheckBox, item:App) -> Unit) {
-        app.loadIcon(icon, Priority.IMMEDIATE)
+        app.loadIcon(icon)
         text.text = app.name
         val request = IconRequest.get()
         checkbox.isChecked = (request != null && request.isAppSelected(app))

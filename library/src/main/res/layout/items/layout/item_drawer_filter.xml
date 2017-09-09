@@ -31,13 +31,12 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/cards_margin"
-            android:paddingBottom="@dimen/cards_margin"
-            android:paddingLeft="@dimen/fabs_margin"
-            android:paddingStart="@dimen/fabs_margin"
-            android:paddingRight="@dimen/cards_margin"
-            android:paddingEnd="@dimen/cards_margin"
+            android:minHeight="?android:listPreferredItemHeightSmall"
+            android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:baselineAligned="false"
             tools:ignore="Overdraw">
 
         <LinearLayout
@@ -50,13 +49,20 @@
                     android:id="@+id/filter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="@dimen/materialize_touch_target"
                     android:ellipsize="end"
                     android:maxLines="1"
+                    android:layout_marginStart="@dimen/fabs_margin"
+                    android:layout_marginLeft="@dimen/fabs_margin"
                     android:paddingTop="@dimen/cards_small_margin"
-                    android:paddingBottom="@dimen/cards_margin"
+                    android:paddingBottom="@dimen/cards_small_margin"
                     android:paddingStart="@dimen/cards_margin"
                     android:paddingEnd="@dimen/cards_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
                     tools:text="Google"/>
 
         </LinearLayout>
@@ -65,6 +71,8 @@
                 android:id="@+id/filter_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="@dimen/materialize_touch_target"
+                android:minWidth="@dimen/materialize_touch_target"
                 android:clickable="false"/>
 
     </LinearLayout>

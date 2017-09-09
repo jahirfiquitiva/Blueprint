@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.apps.blueprint.demo
 
 import android.os.Bundle
 import com.github.javiersantos.piracychecker.PiracyChecker
+import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.DrawerBlueprintActivity
 
-class MainActivity:DrawerBlueprintActivity() {
+class MainActivity:BottomNavigationBlueprintActivity() {
     /**
      * These things here have the default values. You can delete the ones you don't want to change
      * and/or modify the ones you want to.
@@ -32,9 +32,10 @@ class MainActivity:DrawerBlueprintActivity() {
     override fun checkStores():Boolean = true
     
     /**
-     * This is your app's license key. Get yours on Google Play Dev Console
+     * This is your app's license key. Get yours on Google Play Dev Console.
+     * Default one isn't valid and could cause issues in your app.
      */
-    override fun getLicKey():String? = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr5D+w15edXAHbMnGOTDYmfRxSN8qpQNPH/9mkpxN3BI9/EkayopID/54Xgkny3CYKwKBDQ89s0USHTNV1uFTKpYgez55Og6JlFTeb6M3St4ZxKDcyOW46tRJZIhpIFLxUXP/v8bl9pm08ArD3aUZagTio+/4Q6HPJ96VimkIbwjTUTYqkEIJYC4SOGabaGvPhH+Tq1LiQmxdjdLirZ7hxDJIJ1QQXbdu4Phiuc++58B5ENwHzl1Y8K3ZzOCc7xeB8AhjCmscux0Y+aCjCI67Ak+SL2cLtaxnDNboNVYeLiLDuhufxihYMZEgZoDwbMVL1hw/rN4k6ucTU3mVn/pGCwIDAQAB"
+    override fun getLicKey():String? = "MIIBIjANBgkqhkiGgKglYGYGihLuihUuhhuBlouBkuiuBIyvYV"
     
     /**
      * This is the license checker code. Feel free to create your own implementation or

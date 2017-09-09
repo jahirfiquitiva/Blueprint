@@ -32,6 +32,7 @@ import com.pitchedapps.butler.iconrequest.IconRequest
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
+import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
@@ -58,8 +59,12 @@ class RequestsFragment:BaseViewModelFragment<App>() {
     
     override fun initUI(content:View) {
         rv = content.findViewById(R.id.list_rv)
-        
-        rv.setPaddingBottom(64.dpToPx)
+        if (activity is BottomNavigationBlueprintActivity) {
+            val bottomNavigationHeight = (activity as BottomNavigationBlueprintActivity).bottomBar.height
+            rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        } else {
+            rv.setPaddingBottom(64F.dpToPx.toInt())
+        }
         rv.itemAnimator = if (context.isLowRamDevice) null else DefaultItemAnimator()
         rv.textView = content.findViewById(R.id.empty_text)
         rv.emptyView = content.findViewById(R.id.empty_view)

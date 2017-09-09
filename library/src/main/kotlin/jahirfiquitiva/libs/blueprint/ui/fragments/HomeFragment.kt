@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.arch.lifecycle.Lifecycle
@@ -22,13 +21,18 @@ import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.setPaddingBottom
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeApplyCardViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
+import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.HomeItemsAdapter
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 
 class HomeFragment:BaseViewModelFragment<HomeItem>() {
@@ -74,20 +78,33 @@ class HomeFragment:BaseViewModelFragment<HomeItem>() {
         applyCardModel.loadData(activity)
     }
     
-    override fun getContentLayout():Int = R.layout.section_wo_fastscroll
+    override fun getContentLayout():Int = R.layout.section_layout
     
     override fun initUI(content:View) {
         rv = content.findViewById(R.id.list_rv)
+        if (activity is InternalBaseBlueprintActivity) {
+            (activity as InternalBaseBlueprintActivity).fabsMenu.attachToRecyclerView(rv)
+        }
+        if (activity is BottomNavigationBlueprintActivity) {
+            val bottomNavigationHeight = (activity as BottomNavigationBlueprintActivity).bottomBar.height
+            rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        }else{
+            rv.setPaddingBottom(64F.dpToPx.toInt())
+        }
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
         rv.state = EmptyViewRecyclerView.State.LOADING
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        homeAdapter = HomeItemsAdapter(context, { onItemClicked(it) })
+        homeAdapter = HomeItemsAdapter(activity, { onItemClicked(it) },
+                                       context.getInteger(R.integer.icons_count),
+                                       context.getInteger(R.integer.wallpapers_count),
+                                       context.getInteger(R.integer.kwgt_count),
+                                       context.getInteger(R.integer.zooper_count))
         rv.setHasFixedSize(true)
         rv.adapter = homeAdapter
     }
     
-    override fun onItemClicked(item:HomeItem) = if (item.intent != null) context.startActivity(
-            item.intent)
-    else context.openLink(item.url)
+    override fun onItemClicked(item:HomeItem) =
+            if (item.intent != null) context.startActivity(item.intent)
+            else context.openLink(item.url)
 }

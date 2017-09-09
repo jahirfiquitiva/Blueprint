@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
@@ -24,7 +23,7 @@ import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.IconViewHolder
 import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 
-class IconsAdapter(val animate:Boolean = false, val listener:(Icon) -> Unit = {}):
+class IconsAdapter(private val animate:Boolean = false, val listener:(Icon) -> Unit = {}):
         BaseListAdapter<Icon, IconViewHolder>() {
     override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):IconViewHolder =
             IconViewHolder(parent?.inflate(R.layout.item_icon) ?: FrameLayout(null))

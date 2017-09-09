@@ -50,6 +50,12 @@
     -->
     <string name="toolbar_picture"/>
 
+    <!--    Items count shown in home section -->
+    <integer name="icons_count">0</integer>
+    <integer name="wallpapers_count">0</integer>
+    <integer name="kwgt_count">0</integer>
+    <integer name="zooper_count">0</integer>
+
 
     <!--    These arrays are for the list of apps or links in main section. -->
     <string-array name="home_list_titles">

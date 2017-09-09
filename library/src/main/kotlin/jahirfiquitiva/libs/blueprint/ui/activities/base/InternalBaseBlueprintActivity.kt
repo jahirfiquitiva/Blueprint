@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.activities.base
 
 import android.Manifest
@@ -46,6 +45,7 @@ import ca.allanwang.kau.utils.goneIf
 import ca.allanwang.kau.utils.hideIf
 import ca.allanwang.kau.utils.isHidden
 import ca.allanwang.kau.utils.setMarginBottom
+import ca.allanwang.kau.utils.setMarginRight
 import ca.allanwang.kau.utils.shareText
 import ca.allanwang.kau.utils.showIf
 import ca.allanwang.kau.utils.snackbar
@@ -69,6 +69,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
 import jahirfiquitiva.libs.blueprint.ui.activities.CreditsActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.SettingsActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
@@ -123,17 +124,19 @@ import kotlin.collections.ArrayList
 
 abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     
+    abstract fun hasBottomNavigation():Boolean
+    
     private lateinit var coordinatorLayout:CustomCoordinatorLayout
     private lateinit var appBarLayout:FixedElevationAppBarLayout
     private lateinit var collapsingToolbar:CollapsingToolbarLayout
     private lateinit var toolbar:Toolbar
     private lateinit var menu:Menu
-    private lateinit var fabsMenu:FABsMenu
     private lateinit var filtersDrawer:Drawer
     
     private lateinit var iconsPreviewRV:RecyclerView
     private lateinit var iconsPreviewAdapter:IconsAdapter
     
+    internal lateinit var fabsMenu:FABsMenu
     internal lateinit var fab:CounterFab
     
     var drawer:Drawer? = null
@@ -161,10 +164,16 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             searchView?.isIconified = true
             searchView?.onActionViewCollapsed()
             menu.findItem(R.id.search)?.collapseActionView()
-        } else if (currentItemId == DEFAULT_HOME_POSITION) {
-            super.clearBackStack()
         } else {
-            super.onBackPressed()
+            if (!hasBottomNavigation()) {
+                if (currentItemId != DEFAULT_HOME_POSITION) {
+                    navigateToItem(getNavigationItemWithId(DEFAULT_HOME_POSITION))
+                } else {
+                    supportFinishAfterTransition()
+                }
+            } else {
+                supportFinishAfterTransition()
+            }
         }
     }
     
@@ -179,7 +188,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         collapsingToolbar.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         picker = savedInstanceState?.getInt("pickerKey") ?: 0
-        navigateToItem(getNavigationItems()[savedInstanceState?.getInt("currentItemId") ?: 0])
+        navigateToItem(getNavigationItemWithId(
+                savedInstanceState?.getInt("currentItemId") ?: DEFAULT_HOME_POSITION))
     }
     
     override fun onResume() {
@@ -199,8 +209,8 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
     private fun initFAB() {
         fab = findViewById(R.id.fab)
         fab.setImageDrawable("ic_send".getDrawable(this).tint(getActiveIconsColorFor(accentColor)))
-        fab.setMarginBottom(getDimensionPixelSize(
-                if (hasBottomBar()) R.dimen.fab_with_bottom_bar_margin else R.dimen.fabs_margin))
+        fab.setMarginRight(16F.dpToPx.toInt())
+        fab.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
         fab.setOnClickListener { startRequestsProcess() }
     }
     
@@ -209,7 +219,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         fabsMenuOverlay.overlayColor = overlayColor
         
         fabsMenu = findViewById(R.id.fabs_menu)
-        if (hasBottomBar()) {
+        if (hasBottomNavigation()) {
             fabsMenu.menuBottomMargin = 72F.dpToPx.toInt()
         }
         fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this).tint(
@@ -247,9 +257,7 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         helpFab.setImageDrawable("ic_help".getDrawable(this).tint(activeIconsColor))
         helpFab.titleTextColor = primaryTextColor
         helpFab.rippleColor = rippleColor
-        helpFab.setOnClickListener {
-            // TODO: Open help section
-        }
+        helpFab.setOnClickListener { launchHelpActivity() }
     }
     
     open fun initToolbar() {
@@ -314,13 +322,15 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                         R.id.select_all -> {
                             toggleSelectAll()
                         }
+                        R.id.help -> {
+                            launchHelpActivity()
+                        }
                         R.id.about -> {
                             startActivity(Intent(this, CreditsActivity::class.java))
                         }
                         R.id.settings -> {
                             startActivity(Intent(this, SettingsActivity::class.java))
                         }
-                    // TODO: Manage other items
                     }
                     return@OnMenuItemClickListener true
                 })
@@ -466,14 +476,22 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         filtersDrawer = filtersDrawerBuilder.build()
     }
     
-    protected open fun navigateToItem(item:NavigationItem):Boolean {
+    internal fun navigateToItem(item:NavigationItem):Boolean {
         val id = item.id
         if (currentItemId == id) return false
         try {
             currentItemId = id
-            
+            return internalNavigateToItem(item)
+        } catch (e:Exception) {
+            e.printStackTrace()
+        }
+        return false
+    }
+    
+    internal open fun internalNavigateToItem(item:NavigationItem):Boolean {
+        try {
             searchView?.let {
-                when (id) {
+                when (item.id) {
                     DEFAULT_ICONS_POSITION -> it.queryHint = getString(R.string.search_icons)
                     DEFAULT_WALLPAPERS_POSITION -> it.queryHint = getString(
                             R.string.search_wallpapers)
@@ -492,13 +510,14 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             updateToolbarMenuItems(item)
             
             fabsMenu.collapse()
-            if (fabsMenu.menuButton.isShown) fabsMenu.menuButton.hideIf(id != DEFAULT_HOME_POSITION)
-            fabsMenu.goneIf(id != DEFAULT_HOME_POSITION)
+            if (fabsMenu.menuButton.isShown) fabsMenu.menuButton.hideIf(
+                    item.id != DEFAULT_HOME_POSITION)
+            fabsMenu.goneIf(item.id != DEFAULT_HOME_POSITION)
             if (fabsMenu.menuButton.isHidden)
-                fabsMenu.menuButton.showIf(id == DEFAULT_HOME_POSITION)
-            fab.showIf(id == DEFAULT_REQUEST_POSITION)
+                fabsMenu.menuButton.showIf(item.id == DEFAULT_HOME_POSITION)
+            fab.showIf(item.id == DEFAULT_REQUEST_POSITION)
             
-            val shouldExpand = id == DEFAULT_HOME_POSITION
+            val shouldExpand = item.id == DEFAULT_HOME_POSITION
             
             statusBarLight = !shouldExpand && primaryDarkColor.isColorLight(0.6F)
             
@@ -511,11 +530,11 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
             }
             
             collapsingToolbar.title = getString(
-                    if (id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+                    if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
             
-            val rightItem = getNavigationItems()[id]
-            changeFragment(getFragmentForNavigationItem(id), rightItem.tag)
-            lockFiltersDrawer(id != DEFAULT_ICONS_POSITION ||
+            val rightItem = getNavigationItemWithId(item.id)
+            changeFragment(getFragmentForNavigationItem(item.id), rightItem.tag)
+            lockFiltersDrawer(item.id != DEFAULT_ICONS_POSITION ||
                                       getStringArray(R.array.icon_filters).size <= 1)
             return true
         } catch (e:Exception) {
@@ -566,6 +585,11 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
                     NavigationItem.WALLPAPERS,
                     NavigationItem.APPLY,
                     NavigationItem.REQUESTS)
+    
+    internal fun getNavigationItemWithId(id:Int):NavigationItem {
+        getNavigationItems().forEach { if (it.id == id) return it }
+        return NavigationItem.HOME
+    }
     
     fun getToolbar():Toolbar? = toolbar
     
@@ -735,5 +759,13 @@ abstract class InternalBaseBlueprintActivity:BaseBlueprintActivity() {
         if (currentFragment is RequestsFragment) {
             (currentFragment as RequestsFragment).unselectAll()
         }
+    }
+    
+    internal fun launchHelpActivity() {
+        startActivity(Intent(this, HelpActivity::class.java))
+    }
+    
+    internal fun launchKuperActivity() {
+        // TODO
     }
 }

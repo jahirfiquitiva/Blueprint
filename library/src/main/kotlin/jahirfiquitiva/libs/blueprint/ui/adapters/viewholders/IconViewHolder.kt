@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.graphics.drawable.Drawable
@@ -21,7 +20,6 @@ import android.view.View
 import android.widget.ImageView
 import ca.allanwang.kau.utils.scaleXY
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
@@ -30,7 +28,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELA
 import jahirfiquitiva.libs.frames.helpers.extensions.clearChildrenAnimations
 import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
-import jahirfiquitiva.libs.frames.helpers.utils.GlideResourceRequestListener
+import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestListener
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.GlideViewHolder
 
 class IconViewHolder(itemView:View):GlideViewHolder(itemView) {
@@ -44,26 +42,18 @@ class IconViewHolder(itemView:View):GlideViewHolder(itemView) {
         itemView.isFocusable = false
     }
     
-    override fun onRecycled() {
-        icon.releaseFromGlide()
-    }
-    
     fun bind(animate:Boolean, item:Icon, listener:(Icon) -> Unit) = with(itemView) {
         icon.loadResource(Glide.with(itemView.context), item.icon, true, animate, true,
-                          object:GlideResourceRequestListener<GlideDrawable>() {
-                              override fun onLoadSucceed(resource:GlideDrawable):Boolean {
-                                  if (adapterPosition > lastPosition) {
-                                      if (itemView.context.bpKonfigs.animationsEnabled && animate) {
-                                          scaleXY = 0F
-                                          setIconResource(resource)
-                                          animate().scaleX(1F)
-                                                  .scaleY(1F)
-                                                  .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
-                                                  .setDuration(ICONS_ANIMATION_DURATION)
-                                                  .start()
-                                      } else {
-                                          setIconResource(resource)
-                                      }
+                          object:GlideRequestListener<Drawable>() {
+                              override fun onLoadSucceed(resource:Drawable):Boolean {
+                                  if (itemView.context.bpKonfigs.animationsEnabled && animate) {
+                                      scaleXY = 0F
+                                      setIconResource(resource)
+                                      animate().scaleX(1F)
+                                              .scaleY(1F)
+                                              .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
+                                              .setDuration(ICONS_ANIMATION_DURATION)
+                                              .start()
                                   } else {
                                       icon.setImageDrawable(resource)
                                       itemView.clearChildrenAnimations()
@@ -79,8 +69,7 @@ class IconViewHolder(itemView:View):GlideViewHolder(itemView) {
         lastPosition = adapterPosition
     }
     
-    private fun clearAnimations() {
-        itemView?.clearAnimation()
-        icon.clearAnimation()
+    override fun doOnRecycle() {
+        icon.releaseFromGlide()
     }
 }

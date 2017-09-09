@@ -13,17 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.blueprint.ui.activities
+package jahirfiquitiva.libs.blueprint
 
-import android.support.v4.app.Fragment
-import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.fragments.SettingsFragment
-import jahirfiquitiva.libs.frames.ui.activities.SettingsActivity
+import android.support.multidex.MultiDex
+import android.support.multidex.MultiDexApplication
 
-class SettingsActivity:SettingsActivity() {
-    override fun lightTheme():Int = R.style.BlueprintLightTheme
-    override fun darkTheme():Int = R.style.BlueprintDarkTheme
-    override fun amoledTheme():Int = R.style.BlueprintAmoledTheme
-    override fun transparentTheme():Int = R.style.BlueprintTransparentTheme
-    override fun settingsFragment():Fragment = SettingsFragment()
+class BlueprintApp:MultiDexApplication() {
+    override fun onCreate() {
+        MultiDex.install(this)
+        super.onCreate()
+    }
 }

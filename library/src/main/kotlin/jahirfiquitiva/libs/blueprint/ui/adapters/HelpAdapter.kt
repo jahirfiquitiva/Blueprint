@@ -13,17 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.blueprint.ui.activities
+package jahirfiquitiva.libs.blueprint.ui.adapters
 
-import android.support.v4.app.Fragment
+import android.view.ViewGroup
+import ca.allanwang.kau.utils.inflate
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.fragments.SettingsFragment
-import jahirfiquitiva.libs.frames.ui.activities.SettingsActivity
+import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.HelpViewHolder
+import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 
-class SettingsActivity:SettingsActivity() {
-    override fun lightTheme():Int = R.style.BlueprintLightTheme
-    override fun darkTheme():Int = R.style.BlueprintDarkTheme
-    override fun amoledTheme():Int = R.style.BlueprintAmoledTheme
-    override fun transparentTheme():Int = R.style.BlueprintTransparentTheme
-    override fun settingsFragment():Fragment = SettingsFragment()
+data class HelpItem(val question:String, val answer:String)
+
+class HelpAdapter:BaseListAdapter<HelpItem, HelpViewHolder>() {
+    override fun doBind(holder:HelpViewHolder, position:Int, shouldAnimate:Boolean) {
+        holder.setQA(list[position])
+    }
+    
+    override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):HelpViewHolder? =
+            parent?.inflate(R.layout.item_help)?.let { HelpViewHolder(it) }
 }

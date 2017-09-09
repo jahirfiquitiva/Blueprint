@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.activities
 
 import android.content.Intent
@@ -32,6 +31,7 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_POSITION
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_POSITION
 import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
@@ -100,25 +100,19 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
                 when (drawerItem.identifier) {
                     DEFAULT_HELP_POSITION.toLong() -> {
                         drawer?.closeDrawer()
-                        drawer?.setSelection(currentItemId.toLong(), false)
-                        // TODO: Launch Help activity
-                        return@withOnDrawerItemClickListener false
+                        launchHelpActivity()
                     }
                     DEFAULT_CREDITS_POSITION.toLong() -> {
                         drawer?.closeDrawer()
-                        drawer?.setSelection(currentItemId.toLong(), false)
                         startActivity(Intent(this, CreditsActivity::class.java))
-                        return@withOnDrawerItemClickListener false
                     }
                     DEFAULT_SETTINGS_POSITION.toLong() -> {
                         drawer?.closeDrawer()
-                        drawer?.setSelection(currentItemId.toLong(), false)
                         startActivity(Intent(this, SettingsActivity::class.java))
-                        return@withOnDrawerItemClickListener false
                     }
                     else -> {
                         val navigated = navigateToItem(
-                                getNavigationItems()[drawerItem.identifier.toInt()])
+                                getNavigationItemWithId(drawerItem.identifier.toInt()))
                         if (navigated) drawer?.closeDrawer()
                         return@withOnDrawerItemClickListener navigated
                     }
@@ -126,7 +120,7 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
             } catch (e:Exception) {
                 e.printStackTrace()
             }
-            return@withOnDrawerItemClickListener false
+            return@withOnDrawerItemClickListener true
         }
         
         getNavigationItems().forEach {
@@ -140,16 +134,19 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
         drawerBuilder.addDrawerItems(DividerDrawerItem())
         
         drawerBuilder.addDrawerItems(SecondaryDrawerItem()
-                                             .withIdentifier(DEFAULT_HELP_POSITION.toLong())
-                                             .withName(R.string.section_help))
-        
-        drawerBuilder.addDrawerItems(SecondaryDrawerItem()
                                              .withIdentifier(DEFAULT_CREDITS_POSITION.toLong())
-                                             .withName(R.string.section_about))
+                                             .withName(R.string.section_about)
+                                             .withSelectable(false))
         
         drawerBuilder.addDrawerItems(SecondaryDrawerItem()
                                              .withIdentifier(DEFAULT_SETTINGS_POSITION.toLong())
-                                             .withName(R.string.settings))
+                                             .withName(R.string.settings)
+                                             .withSelectable(false))
+        
+        drawerBuilder.addDrawerItems(SecondaryDrawerItem()
+                                             .withIdentifier(DEFAULT_HELP_POSITION.toLong())
+                                             .withName(R.string.section_help)
+                                             .withSelectable(false))
         
         drawerBuilder.withHasStableIds(true)
                 .withFireOnInitialOnClick(true)
@@ -163,20 +160,21 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
     }
     
     override fun onBackPressed() {
-        val isOpen = drawer?.isDrawerOpen == true
+        val isOpen = drawer?.isDrawerOpen ?: false
         when {
             isOpen -> drawer?.closeDrawer()
-            currentItemId != 0 -> navigateToItem(getNavigationItems()[0])
+            currentItemId != DEFAULT_HOME_POSITION -> {
+                drawer?.setSelection(DEFAULT_HOME_POSITION.toLong(), true)
+            }
             else -> super.onBackPressed()
         }
     }
     
-    override fun navigateToItem(item:NavigationItem):Boolean {
-        val result = super.navigateToItem(item)
-        if (result) drawer?.setSelection(item.id.toLong())
+    override fun internalNavigateToItem(item:NavigationItem):Boolean {
+        val result = super.internalNavigateToItem(item)
+        if (result) drawer?.setSelection(item.id.toLong(), false)
         return result
     }
     
-    override fun hasBottomBar():Boolean = false
-    
+    override fun hasBottomNavigation():Boolean = false
 }

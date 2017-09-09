@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.content.Context
@@ -24,17 +23,18 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.inflate
+import ca.allanwang.kau.utils.tint
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
+import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.HomeItemsViewHolders
 import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 import jahirfiquitiva.libs.frames.ui.widgets.SimpleAnimationListener
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
-import jahirfiquitiva.libs.kauextensions.extensions.applyColorFilter
 import jahirfiquitiva.libs.kauextensions.extensions.chipsColor
 import jahirfiquitiva.libs.kauextensions.extensions.chipsIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
@@ -45,13 +45,12 @@ import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 
 class HomeItemsAdapter(private val context:Context,
                        private val listener:(HomeItem) -> Unit,
-                       private val iconsAmount:Int = 0, private val wallsAmount:Int = 0,
-                       private val kwgtAmount:Int = 0, private val zooperAmount:Int = 0):
+                       private val iconsCount:Int = 0, private val wallsCount:Int = 0,
+                       private val kwgtCount:Int = 0, private val zooperCount:Int = 0):
         BaseListAdapter<HomeItem, RecyclerView.ViewHolder>() {
     
     var shouldShowApplyCard = false
     private var firstLinkPosition = -1
-    // TODO Change to 0
     private val MINIMAL_AMOUNT = -1
     
     override fun doBind(holder:RecyclerView.ViewHolder, position:Int, shouldAnimate:Boolean) {
@@ -94,52 +93,74 @@ class HomeItemsAdapter(private val context:Context,
                 val iconColor = context.chipsIconsColor
                 val bgColor = context.chipsColor
                 
-                if (iconsAmount > MINIMAL_AMOUNT) {
+                holder.sectionTitle.setTextColor(counterColor)
+                
+                if (iconsCount > MINIMAL_AMOUNT) {
                     holder.iconsCounter.setBackgroundColor(bgColor)
                     holder.iconsCounterIcon.setImageDrawable(
                             ContextCompat.getDrawable(context, NavigationItem.ICONS.icon)
-                                    .applyColorFilter(iconColor))
+                                    .tint(iconColor))
                     holder.iconsCounterTitle.setTextColor(labelColor)
                     holder.iconsCounterCount.setTextColor(counterColor)
-                    holder.iconsCounterCount.text = iconsAmount.toString()
+                    holder.iconsCounterCount.text = iconsCount.toString()
+                    if (context is InternalBaseBlueprintActivity) {
+                        holder.iconsCounter.setOnClickListener {
+                            context.navigateToItem(NavigationItem.ICONS)
+                        }
+                    }
                 } else {
                     holder.iconsCounter.gone()
                 }
                 
-                if (wallsAmount > MINIMAL_AMOUNT) {
+                if (wallsCount > MINIMAL_AMOUNT) {
                     holder.wallsCounter.setBackgroundColor(bgColor)
                     holder.wallsCounterIcon.setImageDrawable(
                             ContextCompat.getDrawable(context, NavigationItem.WALLPAPERS.icon)
-                                    .applyColorFilter(iconColor))
+                                    .tint(iconColor))
                     holder.wallsCounterTitle.setTextColor(labelColor)
                     holder.wallsCounterCount.setTextColor(counterColor)
-                    holder.wallsCounterCount.text = wallsAmount.toString()
+                    holder.wallsCounterCount.text = wallsCount.toString()
+                    if (context is InternalBaseBlueprintActivity) {
+                        holder.wallsCounter.setOnClickListener {
+                            context.navigateToItem(NavigationItem.WALLPAPERS)
+                        }
+                    }
                 } else {
                     holder.wallsCounter.gone()
                 }
                 
-                if (kwgtAmount > MINIMAL_AMOUNT) {
+                if (kwgtCount > MINIMAL_AMOUNT) {
                     holder.kwgtCounter.setBackgroundColor(bgColor)
                     holder.kwgtCounterIcon.setImageDrawable(
                             ContextCompat.getDrawable(context, R.drawable.ic_kustom)
-                                    .applyColorFilter(iconColor))
+                                    .tint(iconColor))
                     holder.kwgtCounterTitle.setTextColor(labelColor)
                     holder.kwgtCounterCount.setTextColor(counterColor)
                     holder.kwgtCounterCount.text = context.getString(R.string.included_templates,
-                                                                     kwgtAmount.toString())
+                                                                     kwgtCount.toString())
+                    if (context is InternalBaseBlueprintActivity) {
+                        holder.kwgtCounter.setOnClickListener {
+                            context.launchKuperActivity()
+                        }
+                    }
                 } else {
                     holder.kwgtCounter.gone()
                 }
                 
-                if (zooperAmount > MINIMAL_AMOUNT) {
+                if (zooperCount > MINIMAL_AMOUNT) {
                     holder.zooperCounter.setBackgroundColor(bgColor)
                     holder.zooperCounterIcon.setImageDrawable(
                             ContextCompat.getDrawable(context, R.drawable.ic_zooper)
-                                    .applyColorFilter(iconColor))
+                                    .tint(iconColor))
                     holder.zooperCounterTitle.setTextColor(labelColor)
                     holder.zooperCounterCount.setTextColor(counterColor)
                     holder.zooperCounterCount.text = context.getString(R.string.included_templates,
-                                                                       zooperAmount.toString())
+                                                                       zooperCount.toString())
+                    if (context is InternalBaseBlueprintActivity) {
+                        holder.zooperCounter.setOnClickListener {
+                            context.launchKuperActivity()
+                        }
+                    }
                 } else {
                     holder.zooperCounter.gone()
                 }

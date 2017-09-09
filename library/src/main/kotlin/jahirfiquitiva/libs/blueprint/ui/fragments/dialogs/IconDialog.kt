@@ -120,13 +120,6 @@ class IconDialog:BasicDialogFragment() {
         return dialog
     }
     
-    override fun onCreate(savedInstanceState:Bundle?) {
-        super.onCreate(savedInstanceState)
-        this.name = arguments?.getString(NAME) ?: ""
-        this.resId = arguments?.getInt(RESID) ?: 0
-        this.animate = arguments?.getBoolean(ANIMATE) ?: false
-    }
-    
     override fun onActivityCreated(savedInstanceState:Bundle?) {
         super.onActivityCreated(savedInstanceState)
         savedInstanceState?.let {

@@ -24,7 +24,7 @@
             android:id="@+id/general_info_section_title"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textSize="14sp"
             android:paddingStart="@dimen/fabs_margin"
             android:paddingEnd="@dimen/fabs_margin"
@@ -53,7 +53,8 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:clipChildren="false">
+                android:clipChildren="false"
+                android:foreground="?selectableItemBackground">
 
             <ImageView
                     android:id="@+id/icons_counter_icon"
@@ -114,7 +115,8 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:clipChildren="false">
+                android:clipChildren="false"
+                android:foreground="?selectableItemBackground">
 
             <ImageView
                     android:id="@+id/walls_counter_icon"
@@ -183,7 +185,8 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:clipChildren="false">
+                android:clipChildren="false"
+                android:foreground="?selectableItemBackground">
 
             <ImageView
                     android:id="@+id/kwgt_counter_icon"
@@ -244,7 +247,8 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:clipChildren="false">
+                android:clipChildren="false"
+                android:foreground="?selectableItemBackground">
 
             <ImageView
                     android:id="@+id/zooper_counter_icon"

@@ -81,6 +81,9 @@
 
 
         <activity
+                android:name=".ui.activities.HelpActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".ui.activities.CreditsActivity"
                 android:exported="false"/>
         <activity android:name=".ui.activities.SettingsActivity">

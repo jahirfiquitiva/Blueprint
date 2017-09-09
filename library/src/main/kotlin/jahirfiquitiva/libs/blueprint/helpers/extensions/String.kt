@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
 import jahirfiquitiva.libs.blueprint.helpers.utils.CAPS

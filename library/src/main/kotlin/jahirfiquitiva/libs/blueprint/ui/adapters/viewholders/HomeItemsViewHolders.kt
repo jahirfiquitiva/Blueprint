@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.support.v7.widget.AppCompatButton
@@ -39,6 +38,8 @@ class HomeItemsViewHolders {
     }
     
     class CounterItemHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+        val sectionTitle:TextView = itemView.findViewById(R.id.general_info_section_title)
+        
         val iconsCounter:LinearLayout = itemView.findViewById(R.id.icons_counter)
         val iconsCounterTitle:TextView = itemView.findViewById(R.id.icons_counter_title)
         val iconsCounterCount:TextView = itemView.findViewById(R.id.icons_counter_count)
@@ -75,8 +76,7 @@ class HomeItemsViewHolders {
                         if (item.isAnApp) sectionTitle.text = itemView.context.getString(
                                 R.string.more_apps)
                         else sectionTitle.text = itemView.context.getString(R.string.useful_links)
-                        sectionTitle.setTextColor(
-                                context.secondaryTextColor)
+                        sectionTitle.setTextColor(context.secondaryTextColor)
                     }
                     title.text = item.title
                     description.text = item.description

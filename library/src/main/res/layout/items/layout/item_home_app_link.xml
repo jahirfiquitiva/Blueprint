@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textStyle="bold"
             android:textSize="14sp"
             android:paddingStart="@dimen/fabs_margin"
             android:paddingEnd="@dimen/fabs_margin"

@@ -44,8 +44,8 @@
                 android:defaultValue="true"
                 android:key="animations"
                 android:persistent="true"
-                android:summary="@string/pref_summary_anims"
-                android:title="@string/pref_title_anims"/>
+                android:summary="@string/animations_setting_content"
+                android:title="@string/animations_setting_title"/>
 
         <SwitchPreference
                 android:defaultValue="true"

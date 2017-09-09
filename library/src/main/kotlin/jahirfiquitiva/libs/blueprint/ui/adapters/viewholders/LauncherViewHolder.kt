@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.content.Context
@@ -29,13 +28,13 @@ import android.widget.TextView
 import ca.allanwang.kau.utils.isAppInstalled
 import ca.allanwang.kau.utils.toBitmap
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
+import jahirfiquitiva.libs.frames.helpers.extensions.clearChildrenAnimations
 import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
-import jahirfiquitiva.libs.frames.helpers.utils.GlideResourceRequestListener
+import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestListener
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.GlideViewHolder
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
@@ -59,10 +58,6 @@ class LauncherViewHolder(itemView:View):GlideViewHolder(itemView) {
             return ColorMatrixColorFilter(matrix)
         }
     
-    override fun onRecycled() {
-        icon.releaseFromGlide()
-    }
-    
     fun bind(item:Launcher, listener:(Launcher) -> Unit = {}) = with(itemView) {
         val formattedName = item.name.replace("launcher", "", true).formatCorrectly()
         val iconName = formattedName.toLowerCase()
@@ -78,8 +73,8 @@ class LauncherViewHolder(itemView:View):GlideViewHolder(itemView) {
         text.setTextColor(context.secondaryTextColor)
         
         icon.loadResource(Glide.with(itemView.context), bits, true, false, true,
-                          object:GlideResourceRequestListener<GlideDrawable>() {
-                              override fun onLoadSucceed(resource:GlideDrawable):Boolean {
+                          object:GlideRequestListener<Drawable>() {
+                              override fun onLoadSucceed(resource:Drawable):Boolean {
                                   val isInstalled = isLauncherInstalled(context, item.packageNames)
                                   setIconResource(resource, isInstalled)
                                   resource.toBitmap().bestSwatch?.let {
@@ -110,14 +105,12 @@ class LauncherViewHolder(itemView:View):GlideViewHolder(itemView) {
     }
     
     private fun setIconResource(resource:Drawable, isInstalled:Boolean) {
-        val filter:ColorFilter? = if (isInstalled) null else bnwFilter
         icon.setImageDrawable(resource)
-        icon.colorFilter = filter
-        clearAnimations()
+        icon.colorFilter = if (isInstalled) null else bnwFilter
+        icon.clearChildrenAnimations()
     }
     
-    private fun clearAnimations() {
-        itemView?.clearAnimation()
-        icon.clearAnimation()
+    override fun doOnRecycle() {
+        icon.releaseFromGlide()
     }
 }

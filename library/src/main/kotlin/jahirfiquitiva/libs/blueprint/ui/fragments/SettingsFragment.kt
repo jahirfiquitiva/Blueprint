@@ -28,14 +28,6 @@ class SettingsFragment:SettingsFragment() {
     override fun initPreferences() {
         super.initPreferences()
         
-        val animationsPref = findPreference("animations") as SwitchPreference
-        animationsPref.setOnPreferenceChangeListener { _, any ->
-            val enable = any.toString().equals("true", true)
-            if (enable != context.bpKonfigs.animationsEnabled)
-                context.bpKonfigs.animationsEnabled = enable
-            true
-        }
-        
         val toolbarHeaderPref = findPreference("toolbar_header") as SwitchPreference
         toolbarHeaderPref.setOnPreferenceChangeListener { _, any ->
             val enable = any.toString().equals("true", true)

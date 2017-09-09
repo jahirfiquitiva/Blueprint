@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jahirfiquitiva.libs.blueprint.ui.items
 
 import android.graphics.Color
@@ -30,6 +29,7 @@ import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.kauextensions.extensions.dividerColor
+import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 
 class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
     private lateinit var nameHolder:StringHolder
@@ -70,8 +70,9 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
         super.bindView(holder, payloads)
         holder?.let {
             nameHolder.applyTo(it.title)
-            it.title?.background = ColorDrawable(color)
+            it.title?.setBackgroundColor(color)
             val context = it.itemView?.context
+            it.title?.setTextColor(context?.getPrimaryTextColorFor(color) ?: Color.BLACK)
             if (showDivider) {
                 it.divider?.visible()
                 val dividerColor = context?.dividerColor
@@ -81,9 +82,7 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
             it.checkBox?.let { checkBox ->
                 checkBoxHolder.setup(checkBox, nameHolder.text.toString(), listener)
             }
-            holder.itemView?.setOnClickListener {
-                checkBoxHolder.apply(!checkBoxHolder.isChecked())
-            }
+            it.itemView?.setOnClickListener { checkBoxHolder.apply(!checkBoxHolder.isChecked()) }
             onPostBindView(this, holder.itemView)
         }
     }
@@ -93,5 +92,4 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
         val checkBox:AppCompatCheckBox? = itemView.findViewById(R.id.filter_checkbox)
         val divider:View? = itemView.findViewById(R.id.divider)
     }
-    
 }
