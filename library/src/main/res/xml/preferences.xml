@@ -54,6 +54,20 @@
                 android:summary="@string/pref_summary_wall_header"
                 android:title="@string/pref_title_wall_header"/>
 
+        <SwitchPreference
+                android:defaultValue="false"
+                android:key="hi_res_pics"
+                android:persistent="true"
+                android:summary="@string/load_hi_res_pictures_content"
+                android:title="@string/load_hi_res_pictures_title"/>
+
+        <SwitchPreference
+                android:defaultValue="true"
+                android:key="deep_search"
+                android:persistent="true"
+                android:summary="@string/deep_search_content"
+                android:title="@string/deep_search_title"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory

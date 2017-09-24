@@ -31,7 +31,7 @@ branches:
 notifications:
   email: false
   slack: 
-    rooms: jahirfiquitiva:w8qaFnNhW1jUcyryDYvAHgYK
+    rooms: jahirfiquitiva:StCMaxV85iad38DdSMBY43xW
     template: 
       - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}: '%{commit_subject}'>)  by %{author} for %{repository_name}@%{branch}, %{result} in %{duration}. <%{build_url}|Check details>."
 
