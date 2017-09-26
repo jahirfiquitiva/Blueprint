@@ -34,7 +34,7 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.frames.helpers.extensions.clearChildrenAnimations
 import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
-import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestListener
+import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.GlideViewHolder
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
@@ -73,7 +73,7 @@ class LauncherViewHolder(itemView:View):GlideViewHolder(itemView) {
         text.setTextColor(context.secondaryTextColor)
         
         icon.loadResource(Glide.with(itemView.context), bits, true, false, true,
-                          object:GlideRequestListener<Drawable>() {
+                          object:GlideRequestCallback<Drawable>() {
                               override fun onLoadSucceed(resource:Drawable):Boolean {
                                   val isInstalled = isLauncherInstalled(context, item.packageNames)
                                   setIconResource(resource, isInstalled)

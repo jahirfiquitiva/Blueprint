@@ -21,14 +21,15 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
-import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kauextensions.extensions.inactiveIconsColor
 
-abstract class BottomNavigationBlueprintActivity:InternalBaseBlueprintActivity() {
+abstract class BottomNavigationBlueprintActivity:BaseBlueprintActivity() {
     
-    internal lateinit var bottomBar:AHBottomNavigation
+    internal val bottomBar:AHBottomNavigation by bind(R.id.bottom_navigation)
     
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,6 @@ abstract class BottomNavigationBlueprintActivity:InternalBaseBlueprintActivity()
     }
     
     private fun initBottomBar() {
-        bottomBar = findViewById(R.id.bottom_navigation)
         bottomBar.accentColor = accentColor
         with(bottomBar) {
             defaultBackgroundColor = cardBackgroundColor

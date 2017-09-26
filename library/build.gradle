@@ -51,33 +51,13 @@ android {
             zipAlignEnabled true
             minifyEnabled false
             shrinkResources false
-            proguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
-            consumerProguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
+            proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         }
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-        main.res.srcDirs += [
-                'src/main/res/drawable/app',
-                'src/main/res/drawable/clock_widget',
-                'src/main/res/drawable/launchers_icons',
-                'src/main/res/drawable/shortcuts',
-                'src/main/res/drawable/splash_screens',
-                'src/main/res/drawable/ui',
-                'src/main/res/drawable',
-                'src/main/res/layout/activities',
-                'src/main/res/layout/extras',
-                'src/main/res/layout/items',
-                'src/main/res/layout/sections',
-                'src/main/res/layout/widgets',
-                'src/main/res/layout',
-                'src/main/res/values/icon_pack',
-                'src/main/res/values/private-values',
-                'src/main/res/values/translations',
-                'src/main/res/values',
-                'src/main/res'
-        ]
     }
 
     packagingOptions {
@@ -87,8 +67,6 @@ android {
 }
 
 dependencies {
-    // Frames
-    compile project(path: ':frames')
     // Kotlin
     compile 'org.jetbrains.kotlin:kotlin-stdlib:' + project.ext.kotlin
     // TODO: Delete
@@ -107,43 +85,10 @@ dependencies {
     compile 'me.jahirfiquitiva:FABsMenu:' + project.ext.fabsMenu
     // CounterFab
     compile 'com.github.andremion:counterfab:' + project.ext.counterFab
-    // Material Number Picker
-    compile 'biz.kasual:materialnumberpicker:' + project.ext.mnp
-
-    // Architecture Components
-    compile 'android.arch.lifecycle:runtime:' + project.ext.archComponents
-    compile 'android.arch.lifecycle:extensions:' + project.ext.archComponents
-    compile 'android.arch.persistence.room:runtime:' + project.ext.archComponents
-    annotationProcessor 'android.arch.lifecycle:compiler:' + project.ext.archComponents
-    annotationProcessor 'android.arch.persistence.room:compiler:' + project.ext.archComponents
-    kapt 'android.arch.lifecycle:compiler:' + project.ext.archComponents
-    kapt 'android.arch.persistence.room:compiler:' + project.ext.archComponents
-    // Material Dialogs
-    compile 'com.afollestad.material-dialogs:core:' + project.ext.materialDialogs
-    compile 'com.afollestad.material-dialogs:commons:' + project.ext.materialDialogs
-    // Volley
-    compile 'com.android.volley:volley:' + project.ext.volley
-    // Glide Image Loading
-    compile 'com.github.bumptech.glide:glide:' + project.ext.glide
-    compile 'com.github.bumptech.glide:annotations:' + project.ext.glide
-    annotationProcessor 'com.github.bumptech.glide:compiler:' + project.ext.glide
-    kapt 'com.github.bumptech.glide:compiler:' + project.ext.glide
-    // KAU Extensions
-    compile 'me.jahirfiquitiva.KAUExtensions:core:' + project.ext.kauExt
-    compile 'me.jahirfiquitiva.KAUExtensions:ziv:' + project.ext.kauExt
-    // Sectioned RecyclerView
-    compile 'com.afollestad:sectioned-recyclerview:' + project.ext.sectionedRecyclerView
-    // RecyclerView Fast Scroller
-    compile('me.jahirfiquitiva:recycler-fast-scroll:' + project.ext.recyclerViewFastScroll + '@aar')
-    // In-App Purchases
-    compile 'com.anjlab.android.iab.v3:library:' + project.ext.iaps
-    // Muzei API
-    //noinspection GradleDynamicVersion
-    compile 'com.google.android.apps.muzei:muzei-api:' + project.ext.muzeiApi
-    // Licenses Dialog
-    compile 'de.psdev.licensesdialog:licensesdialog:' + project.ext.licensesDialog
-    // License Checker
-    compile 'com.github.javiersantos:PiracyChecker:' + project.ext.checker
+    // Frames
+    compile('me.jahirfiquitiva:Frames:' + project.ext.frames + '@aar') {
+        transitive = true
+    }
 }
 
 tasks.whenTaskAdded { task ->

@@ -15,7 +15,9 @@
  */
 package jahirfiquitiva.libs.blueprint.providers.viewmodels
 
+import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.os.Environment
@@ -25,40 +27,85 @@ import com.pitchedapps.butler.iconrequest.events.RequestsCallback
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
-import jahirfiquitiva.libs.frames.helpers.utils.AsyncTaskManager
+import jahirfiquitiva.libs.frames.helpers.utils.SimpleAsyncTask
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import java.io.File
+import java.lang.ref.WeakReference
 
 class RequestsViewModel:ViewModel() {
     
-    val items = MutableLiveData<ArrayList<App>>()
-    private var task:AsyncTaskManager<Unit, Context>? = null
+    fun getData():MutableList<App>? = data.value
     
-    fun loadData(parameter:Context, onEmpty:() -> Unit,
-                 onLimited:(reason:Int, appsLeft:Int, millis:Long) -> Unit,
+    private var taskStarted = false
+    private val data = MutableLiveData<MutableList<App>>()
+    private var task:SimpleAsyncTask<Context, Unit>? = null
+    
+    fun loadData(parameter:Context,
+                 onEmpty:() -> Unit, onLimited:(reason:Int, appsLeft:Int, millis:Long) -> Unit,
                  forceLoad:Boolean = false) {
-        stopTask(true)
-        task = AsyncTaskManager(parameter, {},
-                                {
-                                    internalLoad(parameter, object:RequestsCallback() {
-                                        override fun onAppsLoaded(p0:java.util.ArrayList<App>?) {
-                                            p0?.let { postResult(it) }
-                                        }
-                
-                                        override fun onRequestEmpty(p0:Context?) {
+        if (!taskStarted || forceLoad) {
+            cancelTask(true)
+            task = SimpleAsyncTask<Context, Unit>(
+                    WeakReference(parameter),
+                    object:SimpleAsyncTask.AsyncTaskCallback<Context, Unit>() {
+                        override fun doLoad(param:Context):Unit? =
+                                safeInternalLoad(param, forceLoad, object:RequestsCallback() {
+                                    override fun onAppsLoaded(list:ArrayList<App>?) {
+                                        list?.let { postResult(it) }
+                                    }
+                                    
+                                    override fun onRequestEmpty(p0:Context?) =
                                             onEmpty()
-                                        }
-                
-                                        override fun onRequestLimited(p0:Context?, p1:Int, p2:Int,
-                                                                      p3:Long) {
+                                    
+                                    override fun onRequestLimited(p0:Context?,
+                                                                  p1:Int, p2:Int, p3:Long) =
                                             onLimited(p1, p2, p3)
-                                        }
-                                    }, forceLoad)
-                                }, {})
-        task?.execute()
+                                })
+                        
+                        override fun onSuccess(result:Unit) {}
+                    })
+            task?.execute()
+            taskStarted = true
+        }
     }
     
-    private fun loadItems(param:Context, callback:RequestsCallback) {
+    private fun cancelTask(interrupt:Boolean = false) {
+        task?.cancel(interrupt)
+        task = null
+        taskStarted = false
+    }
+    
+    fun destroy(owner:LifecycleOwner, interrupt:Boolean = true) {
+        cancelTask(interrupt)
+        data.removeObservers(owner)
+    }
+    
+    private fun safeInternalLoad(param:Context, forceLoad:Boolean = false,
+                                 callback:RequestsCallback) {
+        if (forceLoad) {
+            internalLoad(param, callback)
+        } else {
+            if ((getData()?.size ?: 0) > 0) {
+                val list = ArrayList<App>()
+                getData()?.let { list.addAll(it.distinct()) }
+                postResult(list)
+            } else {
+                internalLoad(param, callback)
+            }
+        }
+    }
+    
+    fun postResult(result:MutableList<App>) {
+        data.postValue(result)
+        taskStarted = false
+    }
+    
+    fun observe(owner:LifecycleOwner, onUpdated:(MutableList<App>) -> Unit) {
+        destroy(owner, true)
+        data.observe(owner, Observer<MutableList<App>> { r -> r?.let { onUpdated(it) } })
+    }
+    
+    private fun internalLoad(param:Context, callback:RequestsCallback) {
         if (IconRequest.get() != null) {
             postResult(ArrayList(IconRequest.get().apps))
             return
@@ -78,27 +125,5 @@ class RequestsViewModel:ViewModel() {
                 .maxSelectionCount(param.getInteger(R.integer.max_apps_to_request))
                 .setCallback(callback)
                 .build().loadApps()
-    }
-    
-    fun stopTask(interrupt:Boolean = false) {
-        task?.cancelTask(interrupt)
-    }
-    
-    private fun internalLoad(param:Context, callback:RequestsCallback, forceLoad:Boolean = false) {
-        if (forceLoad) {
-            loadItems(param, callback)
-        } else {
-            if (items.value != null && (items.value?.size ?: 0) > 0) {
-                val list = ArrayList<App>()
-                items.value?.let { list.addAll(it.distinct()) }
-                postResult(list)
-            } else {
-                loadItems(param, callback)
-            }
-        }
-    }
-    
-    internal fun postResult(data:ArrayList<App>) {
-        items.postValue(ArrayList(data.distinct()))
     }
 }

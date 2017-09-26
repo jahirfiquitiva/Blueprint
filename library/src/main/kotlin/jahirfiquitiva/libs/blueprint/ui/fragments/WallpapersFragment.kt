@@ -27,7 +27,7 @@ class WallpapersFragment:BaseWallpapersFragment() {
     
     override fun doOnWallpapersChange(data:ArrayList<Wallpaper>, fromCollectionActivity:Boolean) {
         super.doOnWallpapersChange(data, fromCollectionActivity)
-        adapter.setItems(data)
+        wallsAdapter?.setItems(data)
         rv.state = EmptyViewRecyclerView.State.NORMAL
     }
 }

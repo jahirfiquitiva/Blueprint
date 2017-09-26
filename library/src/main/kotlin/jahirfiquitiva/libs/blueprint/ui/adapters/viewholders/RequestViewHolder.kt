@@ -16,16 +16,16 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.support.v7.widget.AppCompatCheckBox
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Priority
 import com.pitchedapps.butler.iconrequest.App
 import com.pitchedapps.butler.iconrequest.IconRequest
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
+import jahirfiquitiva.libs.frames.ui.adapters.viewholders.GlideViewHolder
 
-class RequestViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+class RequestViewHolder(itemView:View):GlideViewHolder(itemView) {
     val icon:ImageView = itemView.findViewById(R.id.icon)
     val text:TextView = itemView.findViewById(R.id.name)
     val checkbox:AppCompatCheckBox = itemView.findViewById(R.id.checkbox)
@@ -39,5 +39,9 @@ class RequestViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
             isActivated = (request != null && request.isAppSelected(app))
             setOnClickListener { listener(checkbox, app) }
         }
+    }
+    
+    override fun doOnRecycle() {
+        icon.releaseFromGlide()
     }
 }

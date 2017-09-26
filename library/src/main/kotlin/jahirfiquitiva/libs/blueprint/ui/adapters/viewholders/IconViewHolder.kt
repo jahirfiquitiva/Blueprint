@@ -28,7 +28,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELA
 import jahirfiquitiva.libs.frames.helpers.extensions.clearChildrenAnimations
 import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
-import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestListener
+import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.GlideViewHolder
 
 class IconViewHolder(itemView:View):GlideViewHolder(itemView) {
@@ -44,7 +44,7 @@ class IconViewHolder(itemView:View):GlideViewHolder(itemView) {
     
     fun bind(animate:Boolean, item:Icon, listener:(Icon) -> Unit) = with(itemView) {
         icon.loadResource(Glide.with(itemView.context), item.icon, true, animate, true,
-                          object:GlideRequestListener<Drawable>() {
+                          object:GlideRequestCallback<Drawable>() {
                               override fun onLoadSucceed(resource:Drawable):Boolean {
                                   if (itemView.context.bpKonfigs.animationsEnabled && animate) {
                                       scaleXY = 0F

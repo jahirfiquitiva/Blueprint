@@ -30,10 +30,10 @@ import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
-import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.HomeItemsViewHolders
 import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
-import jahirfiquitiva.libs.frames.ui.widgets.SimpleAnimationListener
+import jahirfiquitiva.libs.kauextensions.extensions.SimpleAnimationListener
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.chipsColor
 import jahirfiquitiva.libs.kauextensions.extensions.chipsIconsColor
@@ -103,7 +103,7 @@ class HomeItemsAdapter(private val context:Context,
                     holder.iconsCounterTitle.setTextColor(labelColor)
                     holder.iconsCounterCount.setTextColor(counterColor)
                     holder.iconsCounterCount.text = iconsCount.toString()
-                    if (context is InternalBaseBlueprintActivity) {
+                    if (context is BaseBlueprintActivity) {
                         holder.iconsCounter.setOnClickListener {
                             context.navigateToItem(NavigationItem.ICONS)
                         }
@@ -120,7 +120,7 @@ class HomeItemsAdapter(private val context:Context,
                     holder.wallsCounterTitle.setTextColor(labelColor)
                     holder.wallsCounterCount.setTextColor(counterColor)
                     holder.wallsCounterCount.text = wallsCount.toString()
-                    if (context is InternalBaseBlueprintActivity) {
+                    if (context is BaseBlueprintActivity) {
                         holder.wallsCounter.setOnClickListener {
                             context.navigateToItem(NavigationItem.WALLPAPERS)
                         }
@@ -138,7 +138,7 @@ class HomeItemsAdapter(private val context:Context,
                     holder.kwgtCounterCount.setTextColor(counterColor)
                     holder.kwgtCounterCount.text = context.getString(R.string.included_templates,
                                                                      kwgtCount.toString())
-                    if (context is InternalBaseBlueprintActivity) {
+                    if (context is BaseBlueprintActivity) {
                         holder.kwgtCounter.setOnClickListener {
                             context.launchKuperActivity()
                         }
@@ -156,7 +156,7 @@ class HomeItemsAdapter(private val context:Context,
                     holder.zooperCounterCount.setTextColor(counterColor)
                     holder.zooperCounterCount.text = context.getString(R.string.included_templates,
                                                                        zooperCount.toString())
-                    if (context is InternalBaseBlueprintActivity) {
+                    if (context is BaseBlueprintActivity) {
                         holder.zooperCounter.setOnClickListener {
                             context.launchKuperActivity()
                         }
