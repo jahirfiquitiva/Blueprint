@@ -15,7 +15,7 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
-import android.arch.lifecycle.Observer
+import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
@@ -43,18 +43,18 @@ class IconsFragment:BaseViewModelFragment<Icon>() {
     private var dialog:IconDialog? = null
     
     fun applyFilters(filters:ArrayList<String>) {
-        model.items.value?.let {
+        model.getData()?.let {
             if (filters.isNotEmpty()) {
                 setAdapterItems(ArrayList(it.filter { validFilter(it.title, filters) }))
             } else {
-                setAdapterItems(it)
+                setAdapterItems(ArrayList(it))
             }
         }
     }
     
     fun doSearch(search:String = "") {
-        model.items.value?.let {
-            setAdapterItems(it, search)
+        model.getData()?.let {
+            setAdapterItems(ArrayList(it), search)
         }
     }
     
@@ -62,9 +62,11 @@ class IconsFragment:BaseViewModelFragment<Icon>() {
         model = ViewModelProviders.of(this).get(IconItemViewModel::class.java)
     }
     
-    override fun registerObserver() = model.items.observe(this, Observer { data ->
-        data?.let { setAdapterItems(it) }
-    })
+    override fun registerObserver() {
+        model.observe(this, {
+            setAdapterItems(ArrayList(it))
+        })
+    }
     
     private fun validFilter(title:String, filters:ArrayList<String>):Boolean {
         filters.forEach { if (title.equals(it, true)) return true }
@@ -76,8 +78,16 @@ class IconsFragment:BaseViewModelFragment<Icon>() {
         if (adapter is IconsAdapter) {
             val icons = ArrayList<Icon>()
             categories.forEach {
+                val category = it
                 if (filteredBy.hasContent())
-                    icons.addAll(it.icons.filter { it.name.contains(filteredBy, true) })
+                    icons.addAll(it.icons.filter {
+                        if (context.bpKonfigs.deepSearchEnabled) {
+                            it.name.contains(filteredBy, true) ||
+                                    category.title.contains(filteredBy, true)
+                        } else {
+                            it.name.contains(filteredBy, true)
+                        }
+                    })
                 else icons.addAll(it.icons)
             }
             adapter.setItems(ArrayList(icons.distinct().sorted()))
@@ -85,13 +95,14 @@ class IconsFragment:BaseViewModelFragment<Icon>() {
         }
     }
     
-    override fun unregisterObserver() = model.items.removeObservers(this)
+    override fun unregisterObserver() = model.destroy(this)
     
     override fun onDestroyView() {
         super.onDestroyView()
         dialog?.dismiss(activity, IconDialog.TAG)
     }
     
+    @SuppressLint("MissingSuperCall")
     override fun onDestroy() {
         super.onDestroy()
         dialog?.dismiss(activity, IconDialog.TAG)

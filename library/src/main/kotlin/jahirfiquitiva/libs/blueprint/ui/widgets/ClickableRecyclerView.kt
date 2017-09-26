@@ -35,8 +35,6 @@ class ClickableRecyclerView:RecyclerView {
         isNestedScrollingEnabled = false
     }
     
-    override fun setLayoutManager(layout:LayoutManager?) = super.setLayoutManager(layout)
-    
     override fun onTouchEvent(e:MotionEvent?):Boolean {
         val par = parent
         if (par != null) {

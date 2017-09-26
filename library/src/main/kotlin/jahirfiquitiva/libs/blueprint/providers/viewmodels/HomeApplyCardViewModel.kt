@@ -21,7 +21,7 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.frames.providers.viewmodels.BasicViewModel
 
 class HomeApplyCardViewModel:BasicViewModel<Context, Boolean>() {
-    override fun loadItems(param:Context):Boolean {
+    override fun internalLoad(param:Context):Boolean {
         val initCard = param.defaultLauncher?.isActuallySupported == true
         return if (initCard) {
             !param.bpKonfigs.isApplyCardDismissed
@@ -29,4 +29,6 @@ class HomeApplyCardViewModel:BasicViewModel<Context, Boolean>() {
             false
         }
     }
+    
+    override val isOldDataValid:Boolean = false
 }

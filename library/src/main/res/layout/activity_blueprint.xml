@@ -13,6 +13,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+<!--suppress AndroidElementNotAllowed -->
 <jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -33,7 +34,7 @@
             app:elevation="8dp"/>
 
     <jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
-            android:id="@+id/appBar"
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipChildren="false"
@@ -45,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
                 android:fitsSystemWindows="true"
+                android:minHeight="?actionBarSize"
                 android:maxHeight="@dimen/toolbar_expanded"
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleMarginBottom="32dp"

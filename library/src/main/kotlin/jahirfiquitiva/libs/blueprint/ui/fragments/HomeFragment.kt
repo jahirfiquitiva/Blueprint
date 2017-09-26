@@ -15,9 +15,6 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -28,7 +25,7 @@ import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeApplyCardViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
-import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.HomeItemsAdapter
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
@@ -50,27 +47,19 @@ class HomeFragment:BaseViewModelFragment<HomeItem>() {
     }
     
     override fun registerObserver() {
-        model.items.observe(this, Observer { data ->
-            data?.let {
-                homeAdapter.setItems(it)
-                rv.state = EmptyViewRecyclerView.State.NORMAL
-            }
+        model.observe(this, {
+            homeAdapter.setItems(ArrayList(it))
+            rv.state = EmptyViewRecyclerView.State.NORMAL
         })
-        applyCardModel.items.observe(this, Observer { data ->
-            data?.let {
-                try {
-                    homeAdapter.shouldShowApplyCard = data
-                    homeAdapter.notifyDataSetChanged()
-                } catch (ignored:Exception) {
-                }
-            }
+        applyCardModel.observe(this, {
+            homeAdapter.shouldShowApplyCard = it
+            homeAdapter.notifyDataSetChanged()
         })
     }
     
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     override fun unregisterObserver() {
-        model.items.removeObservers(this)
-        applyCardModel.items.removeObservers(this)
+        model.destroy(this)
+        applyCardModel.destroy(this)
     }
     
     override fun loadDataFromViewModel() {
@@ -82,13 +71,13 @@ class HomeFragment:BaseViewModelFragment<HomeItem>() {
     
     override fun initUI(content:View) {
         rv = content.findViewById(R.id.list_rv)
-        if (activity is InternalBaseBlueprintActivity) {
-            (activity as InternalBaseBlueprintActivity).fabsMenu.attachToRecyclerView(rv)
+        if (activity is BaseBlueprintActivity) {
+            (activity as BaseBlueprintActivity).fabsMenu.attachToRecyclerView(rv)
         }
         if (activity is BottomNavigationBlueprintActivity) {
             val bottomNavigationHeight = (activity as BottomNavigationBlueprintActivity).bottomBar.height
             rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
-        }else{
+        } else {
             rv.setPaddingBottom(64F.dpToPx.toInt())
         }
         rv.emptyView = content.findViewById(R.id.empty_view)

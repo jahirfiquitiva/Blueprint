@@ -18,8 +18,6 @@ package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
-import ca.allanwang.kau.utils.isVisible
-import ca.allanwang.kau.utils.visibleIf
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
 
@@ -27,8 +25,7 @@ class HelpViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
     private val question = itemView.findViewById<TextView>(R.id.help_question)
     private val answer = itemView.findViewById<TextView>(R.id.help_answer)
     fun setQA(help:HelpItem) {
-        question.text = help.question
+        question.text = "${adapterPosition + 1}. ${help.question}"
         answer.text = help.answer
-        itemView.setOnClickListener { answer.visibleIf(!answer.isVisible) }
     }
 }

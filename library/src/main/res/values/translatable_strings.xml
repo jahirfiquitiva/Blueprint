@@ -19,6 +19,8 @@
 
     <string name="frames_dashboard">Blueprint Dashboard</string>
 
+    <string name="coming_soon">Coming soon</string>
+
     <!-- List Of Drawer Sections -->
     <string name="section_home">Home</string>
     <string name="section_icons">Icons</string>

@@ -28,10 +28,14 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.frames.ui.widgets.SearchView
+import jahirfiquitiva.libs.frames.ui.widgets.bindSearchView
 import jahirfiquitiva.libs.kauextensions.activities.ThemedActivity
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 
@@ -42,9 +46,13 @@ class HelpActivity:ThemedActivity() {
     override fun transparentTheme():Int = R.style.BlueprintTransparentTheme
     override fun autoStatusBarTint():Boolean = true
     
-    private lateinit var toolbar:Toolbar
-    private lateinit var rv:EmptyViewRecyclerView
-    private lateinit var fastScroll:RecyclerFastScroller
+    private val toolbar:Toolbar by bind(R.id.toolbar)
+    private val rv:EmptyViewRecyclerView by bind(R.id.list_rv)
+    private val fastScroll:RecyclerFastScroller by bind(R.id.fast_scroller)
+    
+    var searchView:SearchView? = null
+    val faqs = ArrayList<HelpItem>()
+    val adapter = HelpAdapter()
     
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,10 +61,8 @@ class HelpActivity:ThemedActivity() {
         val questions = resources.getStringArray(R.array.questions)
         val answers = resources.getStringArray(R.array.answers)
         
-        val faqs = ArrayList<HelpItem>()
+        faqs.clear()
         questions.indices.mapTo(faqs) { HelpItem(questions[it], answers[it]) }
-        
-        toolbar = findViewById(R.id.toolbar)
         
         setSupportActionBar(toolbar)
         supportActionBar?.title = getString(R.string.about)
@@ -67,23 +73,40 @@ class HelpActivity:ThemedActivity() {
         val refreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_to_refresh)
         refreshLayout.isEnabled = false
         
-        rv = findViewById(R.id.list_rv)
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         rv.itemAnimator = DefaultItemAnimator()
         rv.state = EmptyViewRecyclerView.State.LOADING
         
-        val adapter = HelpAdapter()
         adapter.setItems(faqs)
         rv.adapter = adapter
         
-        fastScroll = findViewById(R.id.fast_scroller)
         fastScroll.attachRecyclerView(rv)
         
         rv.state = EmptyViewRecyclerView.State.NORMAL
     }
     
     override fun onCreateOptionsMenu(menu:Menu?):Boolean {
+        menuInflater?.inflate(R.menu.search, menu)
+        menu?.let { searchView = bindSearchView(it, R.id.search) }
+        searchView?.listener = object:SearchView.SearchListener {
+            override fun onQueryChanged(query:String) {
+                doSearch(query)
+            }
+            
+            override fun onQuerySubmit(query:String) {
+                doSearch(query)
+            }
+            
+            override fun onSearchOpened(searchView:SearchView) {
+                // Do nothing
+            }
+            
+            override fun onSearchClosed(searchView:SearchView) {
+                doSearch()
+            }
+        }
+        searchView?.hintText = getString(R.string.search_x, "")
         toolbar.tint(getPrimaryTextColorFor(primaryColor, 0.6F),
                      getSecondaryTextColorFor(primaryColor, 0.6F),
                      getActiveIconsColorFor(primaryColor, 0.6F))
@@ -95,5 +118,15 @@ class HelpActivity:ThemedActivity() {
             if (it.itemId == android.R.id.home) finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+    
+    private fun doSearch(filter:String = "") {
+        if (filter.hasContent()) {
+            adapter.setItems(ArrayList(faqs.filter {
+                (it.question.contains(filter, true) || it.answer.contains(filter, true))
+            }))
+        } else {
+            adapter.setItems(faqs)
+        }
     }
 }

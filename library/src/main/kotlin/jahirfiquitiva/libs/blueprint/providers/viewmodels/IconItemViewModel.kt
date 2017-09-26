@@ -28,7 +28,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
 import org.xmlpull.v1.XmlPullParser
 
 class IconItemViewModel:ListViewModel<Context, IconsCategory>() {
-    override fun loadItems(param:Context):ArrayList<IconsCategory> {
+    override fun internalLoad(param:Context):MutableList<IconsCategory> {
         if (param.getBoolean(R.bool.xml_drawable_enabled)) {
             val list = ArrayList<IconsCategory>()
             val parser = param.resources.getXml(R.xml.drawable)

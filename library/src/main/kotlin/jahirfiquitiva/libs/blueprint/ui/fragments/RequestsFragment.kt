@@ -16,7 +16,6 @@
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
@@ -33,11 +32,11 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
-import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
-import jahirfiquitiva.libs.frames.helpers.configs.isLowRamDevice
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
+import jahirfiquitiva.libs.frames.helpers.extensions.isLowRamDevice
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
@@ -102,8 +101,8 @@ class RequestsFragment:BaseViewModelFragment<App>() {
     }
     
     private fun doToFab(what:(CounterFab) -> Unit) {
-        if (activity is InternalBaseBlueprintActivity) {
-            what((activity as InternalBaseBlueprintActivity).fab)
+        if (activity is BaseBlueprintActivity) {
+            what((activity as BaseBlueprintActivity).fab)
         }
     }
     
@@ -135,13 +134,11 @@ class RequestsFragment:BaseViewModelFragment<App>() {
     
     fun applyFilter(filter:String = "") {
         if (filter.hasContent()) {
-            viewModel.items.value?.let {
+            viewModel.getData()?.let {
                 adapter.setItems(ArrayList(it.filter { it.name.contains(filter, true) }))
             }
         } else {
-            viewModel.items.value?.let {
-                adapter.setItems(it)
-            }
+            viewModel.getData()?.let { adapter.setItems(ArrayList(it)) }
         }
     }
     
@@ -150,9 +147,7 @@ class RequestsFragment:BaseViewModelFragment<App>() {
     }
     
     override fun registerObserver() {
-        viewModel.items.observe(this, Observer { data ->
-            data?.let { adapter.setItems(it) }
-        })
+        viewModel.observe(this, { adapter.setItems(ArrayList(it)) })
     }
     
     override fun loadDataFromViewModel() {
@@ -178,7 +173,7 @@ class RequestsFragment:BaseViewModelFragment<App>() {
     }
     
     override fun unregisterObserver() {
-        viewModel.items.removeObservers(this)
+        viewModel.destroy(this)
     }
     
     override fun onDestroy() {

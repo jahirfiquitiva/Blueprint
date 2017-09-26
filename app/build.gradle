@@ -54,8 +54,8 @@ android {
             zipAlignEnabled true
             minifyEnabled true
             shrinkResources false
-            proguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
-            consumerProguardFiles 'proguard-android-optimize.pro', 'proguard-rules.pro'
+            proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         }
         aaptOptions {
             noCompress 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch'
@@ -64,18 +64,6 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-        main.res.srcDirs += [
-                'src/main/res/drawable/app',
-                'src/main/res/drawable/clock_widget',
-                'src/main/res/drawable/icon_pack',
-                'src/main/res/drawable/launchers_icons',
-                'src/main/res/drawable/shortcuts',
-                'src/main/res/drawable/ui',
-                'src/main/res/drawable',
-                'src/main/res/values/icon_pack',
-                'src/main/res/values',
-                'src/main/res'
-        ]
     }
 
     packagingOptions {

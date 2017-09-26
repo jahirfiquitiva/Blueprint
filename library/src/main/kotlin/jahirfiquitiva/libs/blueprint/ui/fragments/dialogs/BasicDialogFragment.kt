@@ -31,7 +31,4 @@ abstract class BasicDialogFragment:DialogFragment() {
         }
     }
     
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 }

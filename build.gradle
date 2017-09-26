@@ -26,7 +26,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.4-3'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.50'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -49,29 +49,16 @@ allprojects {
         versionName = '2.0.0'
         gradlePlugin = '2.3.3'
         libPubPlugin = '1.5'
-        kotlin = '1.1.4-3'
+        kotlin = '1.1.50'
         // TODO Delete
         multidex = '1.0.1'
         // Libraries versions
-        supportLibs = '26.0.2'
-        archComponents = '1.0.0-alpha9'
-        materialDialogs = '0.9.4.7'
-        glide = '4.1.1'
-        volley = '1.0.0'
-        kauExt = '6d74818'
-        sectionedRecyclerView = '0.5.0'
-        recyclerViewFastScroll = '6a72f8c'
-        iaps = '1.0.44'
-        muzeiApi = '2.0'
-        licensesDialog = '1.8.3'
-        checker = '1.1'
-        // Blueprint
         materialDrawer = '5.9.5'
-        bottomBar = '2.0.6'
+        bottomBar = '2.1.0'
         quest = 'c3625e7'
-        fabsMenu = '476204d'
+        fabsMenu = '1.0.9'
         counterFab = '1.0.1'
-        mnp = '1.2.1'
+        frames = 'f0a7a56'
     }
 
     repositories {

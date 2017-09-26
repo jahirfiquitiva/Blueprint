@@ -30,7 +30,7 @@
 
         <activity
                 android:name=".MainActivity"
-                android:windowSoftInputMode="stateHidden|adjustResize">
+                android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
 
             <!-- TODO: Do NOT remove the intent-filter tags -->
             <intent-filter>

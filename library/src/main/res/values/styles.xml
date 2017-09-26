@@ -19,10 +19,7 @@
 <resources>
 
     <style name="CardContent" parent="android:Widget">
-        <item name="android:paddingLeft">@dimen/fabs_margin</item>
-        <item name="android:paddingRight">@dimen/fabs_margin</item>
-        <item name="android:paddingTop">@dimen/cards_margin</item>
-        <item name="android:paddingBottom">@dimen/cards_margin</item>
+        <item name="android:padding">@dimen/fabs_margin</item>
         <item name="android:orientation">vertical</item>
     </style>
 

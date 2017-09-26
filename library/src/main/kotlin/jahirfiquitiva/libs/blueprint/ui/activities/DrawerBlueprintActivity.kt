@@ -33,14 +33,14 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_POSITION
-import jahirfiquitiva.libs.blueprint.ui.activities.base.InternalBaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
 import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 
-abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
+abstract class DrawerBlueprintActivity:BaseBlueprintActivity() {
     
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,9 +51,6 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
         val nOutState = drawer?.saveInstanceState(outState)
         super.onSaveInstanceState(nOutState)
     }
-    
-    override fun onRestoreInstanceState(savedInstanceState:Bundle?) =
-            super.onRestoreInstanceState(savedInstanceState)
     
     private fun initDrawer(savedInstance:Bundle?) {
         val v:View = findViewById(R.id.bottom_navigation)
@@ -88,10 +85,8 @@ abstract class DrawerBlueprintActivity:InternalBaseBlueprintActivity() {
         TextViewCompat.setTextAppearance(drawerSubtitle, R.style.DrawerTextsWithShadow)
         
         val drawerBuilder = DrawerBuilder().withActivity(this)
-        getToolbar()?.let {
-            drawerBuilder.withToolbar(it)
-        }
-        drawerBuilder.withAccountHeader(accountHeader)
+        drawerBuilder.withToolbar(toolbar)
+                .withAccountHeader(accountHeader)
                 .withDelayOnDrawerClose(-1)
                 .withShowDrawerOnFirstLaunch(true)
         
