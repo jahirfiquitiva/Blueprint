@@ -58,7 +58,7 @@ allprojects {
         quest = 'c3625e7'
         fabsMenu = '1.0.9'
         counterFab = '1.0.1'
-        frames = 'f0a7a56'
+        frames = 'a26b072'
     }
 
     repositories {

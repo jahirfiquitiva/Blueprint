@@ -86,7 +86,7 @@
                     layout="@layout/extra_toolbar_icons_grid"
                     app:layout_collapseMode="parallax"/>
 
-            <android.support.v7.widget.Toolbar
+            <jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"

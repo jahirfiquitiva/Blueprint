@@ -31,9 +31,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -90,6 +90,7 @@ import jahirfiquitiva.libs.frames.helpers.extensions.framesKonfigs
 import jahirfiquitiva.libs.frames.helpers.extensions.requestPermissions
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.frames.ui.activities.base.BaseFramesActivity
+import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
 import jahirfiquitiva.libs.frames.ui.widgets.SearchView
 import jahirfiquitiva.libs.frames.ui.widgets.bindSearchView
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
@@ -136,10 +137,9 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
     private val iconsPreviewRV:RecyclerView by bind(R.id.toolbar_icons_grid)
     
     private lateinit var filtersDrawer:Drawer
-    private lateinit var menu:Menu
     private lateinit var iconsPreviewAdapter:IconsAdapter
     
-    internal val toolbar:Toolbar by bind(R.id.toolbar)
+    internal val toolbar:CustomToolbar by bind(R.id.toolbar)
     internal val fabsMenu:FABsMenu by bind(R.id.fabs_menu)
     internal val fab:CounterFab by bind(R.id.fab)
     
@@ -157,6 +157,7 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
         enableTranslucentStatusBar()
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
+        toolbar.bindToActivity(this, false)
         initMainComponents(savedInstanceState)
     }
     
@@ -199,7 +200,7 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
     }
     
     private fun initMainComponents(savedInstance:Bundle?) {
-        initToolbar()
+        // initToolbar()
         initCollapsingToolbar()
         initIconsPreview()
         initFAB()
@@ -259,15 +260,16 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
         helpFab.setOnClickListener { launchHelpActivity() }
     }
     
-    open fun initToolbar() {
-        menu = toolbar.menu
+    override fun onCreateOptionsMenu(menu:Menu?):Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
-        
-        menu.let {
+        menu?.let {
             val donationItem = it.findItem(R.id.donate)
             donationItem?.isVisible = donationsEnabled
             
-            searchView = bindSearchView(it, R.id.search)
+            updateToolbarMenuItems(getNavigationItemWithId(currentItemId), it)
+            
+            searchView = bindSearchView(it, R.id.search, true)
+            
             searchView?.listener = object:SearchView.SearchListener {
                 override fun onQueryChanged(query:String) {
                     doSearch(query)
@@ -293,41 +295,26 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
                 else -> ""
             }
         }
-        
         toolbar.tint(getPrimaryTextColorFor(primaryColor, 0.6F),
                      getSecondaryTextColorFor(primaryColor, 0.6F),
                      getActiveIconsColorFor(primaryColor, 0.6F))
-        toolbar.setOnMenuItemClickListener(
-                Toolbar.OnMenuItemClickListener { item ->
-                    val id = item.itemId
-                    when (id) {
-                        R.id.filters -> {
-                            filtersDrawer.openDrawer()
-                        }
-                        R.id.columns -> {
-                            showWallpapersColumnsDialog()
-                        }
-                        R.id.refresh -> {
-                            refreshWallpapers()
-                        }
-                        R.id.changelog -> {
-                            showChangelog(R.xml.changelog, secondaryTextColor)
-                        }
-                        R.id.select_all -> {
-                            toggleSelectAll()
-                        }
-                        R.id.help -> {
-                            launchHelpActivity()
-                        }
-                        R.id.about -> {
-                            startActivity(Intent(this, CreditsActivity::class.java))
-                        }
-                        R.id.settings -> {
-                            startActivity(Intent(this, SettingsActivity::class.java))
-                        }
-                    }
-                    return@OnMenuItemClickListener true
-                })
+        return super.onCreateOptionsMenu(menu)
+    }
+    
+    override fun onOptionsItemSelected(item:MenuItem?):Boolean {
+        item?.let {
+            when (it.itemId) {
+                R.id.filters -> filtersDrawer.openDrawer()
+                R.id.columns -> showWallpapersColumnsDialog()
+                R.id.refresh -> refreshWallpapers()
+                R.id.changelog -> showChangelog(R.xml.changelog, secondaryTextColor)
+                R.id.select_all -> toggleSelectAll()
+                R.id.help -> launchHelpActivity()
+                R.id.about -> startActivity(Intent(this, CreditsActivity::class.java))
+                R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
     
     private fun initCollapsingToolbar() {
@@ -488,18 +475,6 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
             
             invalidateOptionsMenu()
             
-            /*
-            searchView?.hintText = when (item.id) {
-                DEFAULT_ICONS_POSITION -> getString(R.string.search_icons)
-                DEFAULT_WALLPAPERS_POSITION -> getString(R.string.search_wallpapers)
-                DEFAULT_APPLY_POSITION -> getString(R.string.search_launchers)
-                DEFAULT_REQUEST_POSITION -> getString(R.string.search_apps)
-                else -> ""
-            }
-            */
-            
-            updateToolbarMenuItems(item)
-            
             fabsMenu.collapse()
             if (fabsMenu.menuButton.isShown) fabsMenu.menuButton.hideIf(
                     item.id != DEFAULT_HOME_POSITION)
@@ -534,7 +509,7 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
         return false
     }
     
-    private fun updateToolbarMenuItems(item:NavigationItem) {
+    private fun updateToolbarMenuItems(item:NavigationItem, menu:Menu) {
         menu.changeOptionVisibility(R.id.search, item.id != DEFAULT_HOME_POSITION)
         menu.changeOptionVisibility(R.id.filters,
                                     item.id == DEFAULT_ICONS_POSITION &&
