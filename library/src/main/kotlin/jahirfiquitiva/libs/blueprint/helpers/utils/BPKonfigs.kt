@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -18,20 +18,20 @@ package jahirfiquitiva.libs.blueprint.helpers.utils
 import android.content.Context
 import jahirfiquitiva.libs.frames.helpers.utils.FramesKonfigs
 
-class BPKonfigs(nm:String, cntxt:Context):FramesKonfigs(nm, cntxt) {
+class BPKonfigs(nm: String, cntxt: Context) : FramesKonfigs(nm, cntxt) {
     companion object {
-        fun newInstance(name:String, context:Context) = BPKonfigs(name, context)
+        fun newInstance(name: String, context: Context) = BPKonfigs(name, context)
     }
     
-    var launcherIconShown:Boolean
+    var launcherIconShown: Boolean
         get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, false)
         set(shown) = prefsEditor.putBoolean(LAUNCHER_ICON_SHOWN, shown).apply()
     
-    var isApplyCardDismissed:Boolean
+    var isApplyCardDismissed: Boolean
         get() = prefs.getBoolean(APPLY_CARD_DISMISSED, false)
         set(dismissed) = prefsEditor.putBoolean(APPLY_CARD_DISMISSED, dismissed).apply()
     
-    var wallpaperAsToolbarHeaderEnabled:Boolean
+    var wallpaperAsToolbarHeaderEnabled: Boolean
         get() = prefs.getBoolean(WALLPAPER_AS_TOOLBAR_HEADER, true)
         set(enabled) = prefsEditor.putBoolean(WALLPAPER_AS_TOOLBAR_HEADER, enabled).apply()
 }

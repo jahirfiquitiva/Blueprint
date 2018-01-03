@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -26,9 +26,11 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.activities.LauncherIconRestorerActivity
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 
-class IconRestorerWidget:AppWidgetProvider() {
-    override fun onUpdate(context:Context?, appWidgetManager:AppWidgetManager?,
-                          appWidgetIds:IntArray?) {
+class IconRestorerWidget : AppWidgetProvider() {
+    override fun onUpdate(
+            context: Context?, appWidgetManager: AppWidgetManager?,
+            appWidgetIds: IntArray?
+                         ) {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
         context?.let {
             appWidgetIds?.forEach {
@@ -36,29 +38,34 @@ class IconRestorerWidget:AppWidgetProvider() {
                     val intent = Intent(Intent.ACTION_MAIN)
                     intent.addCategory(Intent.CATEGORY_LAUNCHER)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    intent.component = ComponentName(context.packageName,
-                                                     "LauncherIconRestorerActivity.class")
+                    intent.component = ComponentName(
+                            context.packageName,
+                            "LauncherIconRestorerActivity.class")
                     val rViews = RemoteViews(context.packageName, R.layout.widget_icon_restorer)
-                    rViews.setOnClickPendingIntent(R.id.appWidget,
-                                                   PendingIntent.getActivity(context, 0, intent, 0))
+                    rViews.setOnClickPendingIntent(
+                            R.id.appWidget,
+                            PendingIntent.getActivity(context, 0, intent, 0))
                     appWidgetManager?.updateAppWidget(it, rViews)
-                } catch (e:Exception) {
-                    context.showToast(context.getString(R.string.launcher_icon_restorer_error,
-                                                        context.getString(R.string.app_name)))
+                } catch (e: Exception) {
+                    context.showToast(
+                            context.getString(
+                                    R.string.launcher_icon_restorer_error,
+                                    context.getString(R.string.app_name)))
                 }
             }
         }
     }
     
-    override fun onReceive(context:Context?, intent:Intent?) {
+    override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
         context?.let {
             val action = intent?.action
             if (AppWidgetManager.ACTION_APPWIDGET_UPDATE == action) {
                 val rViews = RemoteViews(context.packageName, R.layout.widget_icon_restorer)
                 val restore = Intent(context, LauncherIconRestorerActivity::class.java)
-                rViews.setOnClickPendingIntent(R.id.appWidget,
-                                               PendingIntent.getActivity(context, 0, restore, 0))
+                rViews.setOnClickPendingIntent(
+                        R.id.appWidget,
+                        PendingIntent.getActivity(context, 0, restore, 0))
                 AppWidgetManager.getInstance(context).updateAppWidget(
                         intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS),
                         rViews)

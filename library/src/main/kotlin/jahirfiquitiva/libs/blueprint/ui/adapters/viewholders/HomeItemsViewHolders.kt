@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -30,46 +30,46 @@ import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 
 class HomeItemsViewHolders {
     
-    class ApplyCardHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
-        val applyTitle:TextView = itemView.findViewById(R.id.apply_title)
-        val applyContent:TextView = itemView.findViewById(R.id.apply_content)
-        val dismissButton:AppCompatButton = itemView.findViewById(R.id.apply_dismiss)
-        val applyButton:AppCompatButton = itemView.findViewById(R.id.apply_ok)
+    class ApplyCardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val applyTitle: TextView = itemView.findViewById(R.id.apply_title)
+        val applyContent: TextView = itemView.findViewById(R.id.apply_content)
+        val dismissButton: AppCompatButton = itemView.findViewById(R.id.apply_dismiss)
+        val applyButton: AppCompatButton = itemView.findViewById(R.id.apply_ok)
     }
     
-    class CounterItemHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
-        val sectionTitle:TextView = itemView.findViewById(R.id.general_info_section_title)
+    class CounterItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val sectionTitle: TextView = itemView.findViewById(R.id.general_info_section_title)
         
-        val iconsCounter:LinearLayout = itemView.findViewById(R.id.icons_counter)
-        val iconsCounterTitle:TextView = itemView.findViewById(R.id.icons_counter_title)
-        val iconsCounterCount:TextView = itemView.findViewById(R.id.icons_counter_count)
-        val iconsCounterIcon:ImageView = itemView.findViewById(R.id.icons_counter_icon)
+        val iconsCounter: LinearLayout = itemView.findViewById(R.id.icons_counter)
+        val iconsCounterTitle: TextView = itemView.findViewById(R.id.icons_counter_title)
+        val iconsCounterCount: TextView = itemView.findViewById(R.id.icons_counter_count)
+        val iconsCounterIcon: ImageView = itemView.findViewById(R.id.icons_counter_icon)
         
-        val wallsCounter:LinearLayout = itemView.findViewById(R.id.walls_counter)
-        val wallsCounterTitle:TextView = itemView.findViewById(R.id.walls_counter_title)
-        val wallsCounterCount:TextView = itemView.findViewById(R.id.walls_counter_count)
-        val wallsCounterIcon:ImageView = itemView.findViewById(R.id.walls_counter_icon)
+        val wallsCounter: LinearLayout = itemView.findViewById(R.id.walls_counter)
+        val wallsCounterTitle: TextView = itemView.findViewById(R.id.walls_counter_title)
+        val wallsCounterCount: TextView = itemView.findViewById(R.id.walls_counter_count)
+        val wallsCounterIcon: ImageView = itemView.findViewById(R.id.walls_counter_icon)
         
-        val kwgtCounter:LinearLayout = itemView.findViewById(R.id.kwgt_counter)
-        val kwgtCounterTitle:TextView = itemView.findViewById(R.id.kwgt_counter_title)
-        val kwgtCounterCount:TextView = itemView.findViewById(R.id.kwgt_counter_count)
-        val kwgtCounterIcon:ImageView = itemView.findViewById(R.id.kwgt_counter_icon)
+        val kwgtCounter: LinearLayout = itemView.findViewById(R.id.kwgt_counter)
+        val kwgtCounterTitle: TextView = itemView.findViewById(R.id.kwgt_counter_title)
+        val kwgtCounterCount: TextView = itemView.findViewById(R.id.kwgt_counter_count)
+        val kwgtCounterIcon: ImageView = itemView.findViewById(R.id.kwgt_counter_icon)
         
-        val zooperCounter:LinearLayout = itemView.findViewById(R.id.zooper_counter)
-        val zooperCounterTitle:TextView = itemView.findViewById(R.id.zooper_counter_title)
-        val zooperCounterCount:TextView = itemView.findViewById(R.id.zooper_counter_count)
-        val zooperCounterIcon:ImageView = itemView.findViewById(R.id.zooper_counter_icon)
+        val zooperCounter: LinearLayout = itemView.findViewById(R.id.zooper_counter)
+        val zooperCounterTitle: TextView = itemView.findViewById(R.id.zooper_counter_title)
+        val zooperCounterCount: TextView = itemView.findViewById(R.id.zooper_counter_count)
+        val zooperCounterIcon: ImageView = itemView.findViewById(R.id.zooper_counter_icon)
     }
     
-    class AppLinkItemHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
-        val root:LinearLayout = itemView.findViewById(R.id.home_app_link_sub_layout)
-        val sectionTitle:TextView = itemView.findViewById(R.id.more_apps_section_title)
-        val title:TextView = itemView.findViewById(R.id.home_app_link_title)
-        val description:TextView = itemView.findViewById(R.id.home_app_link_description)
-        val icon:ImageView = itemView.findViewById(R.id.home_app_link_image)
-        val openIcon:ImageView = itemView.findViewById(R.id.home_app_link_open_icon)
+    class AppLinkItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val root: LinearLayout = itemView.findViewById(R.id.home_app_link_sub_layout)
+        val sectionTitle: TextView = itemView.findViewById(R.id.more_apps_section_title)
+        val title: TextView = itemView.findViewById(R.id.home_app_link_title)
+        val description: TextView = itemView.findViewById(R.id.home_app_link_description)
+        val icon: ImageView = itemView.findViewById(R.id.home_app_link_image)
+        val openIcon: ImageView = itemView.findViewById(R.id.home_app_link_open_icon)
         
-        fun setItem(item:HomeItem, showSectionTitle:Boolean, listener:(HomeItem) -> Unit) =
+        fun setItem(item: HomeItem, showSectionTitle: Boolean, listener: (HomeItem) -> Unit) =
                 with(itemView) {
                     sectionTitle.visibleIf(showSectionTitle)
                     if (showSectionTitle) {

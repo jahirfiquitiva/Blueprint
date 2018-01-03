@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -22,7 +22,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.SPACE
 /**
  * Kotlin port of the icon names formatting method made by Aidan Follestad (afollestad)
  */
-fun String.blueprintFormat():String {
+fun String.blueprintFormat(): String {
     val sb = StringBuilder()
     var underscoreMode = 0
     var foundFirstLetter = false

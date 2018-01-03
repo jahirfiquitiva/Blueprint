@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2017. Jahir Fiquitiva
+  ~ Copyright (c) 2018. Jahir Fiquitiva
   ~
   ~ Licensed under the CreativeCommons Attribution-ShareAlike
   ~ 4.0 International License. You may not use this file except in compliance
@@ -25,8 +25,7 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/MySplashScreen"
-            android:name="jahirfiquitiva.libs.blueprint.BlueprintApp">
+            android:theme="@style/MySplashScreen">
 
         <activity
                 android:name=".MainActivity"

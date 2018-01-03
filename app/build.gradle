@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -13,33 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion project.ext.compileSdk
-    buildToolsVersion project.ext.buildTools
+    compileSdkVersion versions.targetSdk
+    buildToolsVersion versions.buildTools
 
     applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            output.outputFile = new File(output.outputFile.parent,
-                    project.ext.appId + "-v${variant.versionName}-${variant.name}.apk")
+        variant.outputs.all { output ->
+            outputFileName = "MyBlueprintApp-v${variant.versionName}-${variant.name}.apk"
         }
     }
 
     lintOptions {
         abortOnError false
-        checkReleaseBuilds false
+        checkReleaseBuilds true
         disable 'MissingTranslation', 'GoogleAppIndexingWarning'
     }
 
     defaultConfig {
-        applicationId project.ext.appGroup + "." + project.ext.appId.toLowerCase() + ".demo"
-        minSdkVersion project.ext.minSdk
-        targetSdkVersion project.ext.targetSdk
-        versionCode project.ext.versionCode
-        versionName project.ext.versionName
+        applicationId "jahirfiquitiva.apps.blueprint.demo"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 100
+        versionName "1.0.0"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
@@ -57,9 +55,10 @@ android {
             proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
             consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         }
-        aaptOptions {
-            noCompress 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch'
-        }
+    }
+
+    aaptOptions {
+        noCompress 'zw', 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch'
     }
 
     sourceSets {
@@ -67,16 +66,19 @@ android {
     }
 
     packagingOptions {
+        pickFirst 'META-INF/core_debug.kotlin_module'
         pickFirst 'META-INF/core_release.kotlin_module'
+        pickFirst 'META-INF/library_debug.kotlin_module'
         pickFirst 'META-INF/library_release.kotlin_module'
     }
 }
 
 dependencies {
     compile project(path: ':library')
-    // TODO: Delete
-    compile 'com.android.support:multidex:' + project.ext.multidex
 }
+
+// TODO: Remove comment marks if you plan on implementing Firebase Notifications
+// apply from: './firebase.gradle'
 
 tasks.whenTaskAdded { task ->
     if (task.name.contains("lint") || task.name.contains("test")) {

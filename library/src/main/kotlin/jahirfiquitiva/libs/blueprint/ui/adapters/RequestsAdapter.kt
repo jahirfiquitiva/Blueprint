@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -19,18 +19,18 @@ import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
 import com.pitchedapps.butler.iconrequest.App
 import com.pitchedapps.butler.iconrequest.IconRequest
+import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.RequestViewHolder
-import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 
-class RequestsAdapter(private val onItemsChanged:() -> Unit):
-        BaseListAdapter<App, RequestViewHolder>() {
+class RequestsAdapter(private val onItemsChanged: () -> Unit) :
+        ListAdapter<App, RequestViewHolder>() {
+    override fun doCreateVH(parent: ViewGroup, viewType: Int): RequestViewHolder =
+            RequestViewHolder(parent.inflate(R.layout.item_app_to_request))
     
-    override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):RequestViewHolder? =
-            parent?.inflate(R.layout.item_app_to_request)?.let { RequestViewHolder(it) }
-    
-    override fun doBind(holder:RequestViewHolder, position:Int, shouldAnimate:Boolean) {
-        holder.setItem(list[position], { _, item ->
+    override fun doBind(holder: RequestViewHolder, position: Int, shouldAnimate: Boolean) {
+        holder.setItem(
+                list[position], { _, item ->
             val ir = IconRequest.get()
             if (ir != null && ir.apps != null) {
                 ir.toggleAppSelected(item)

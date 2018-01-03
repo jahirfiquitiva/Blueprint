@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -21,27 +21,27 @@ import android.view.View
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 
-class FilterTitleDrawerItem:BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
-    private var listener:ButtonListener? = null
+class FilterTitleDrawerItem : BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
+    private var listener: ButtonListener? = null
     
-    fun withButtonListener(listener:ButtonListener):FilterTitleDrawerItem {
+    fun withButtonListener(listener: ButtonListener): FilterTitleDrawerItem {
         this.listener = listener
         return this
     }
     
-    override fun getLayoutRes():Int = R.layout.item_drawer_filter_title
+    override fun getLayoutRes(): Int = R.layout.item_drawer_filter_title
     
-    override fun getViewHolder(v:View):ViewHolder = ViewHolder(v)
+    override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
     
-    override fun getType():Int = R.id.filters_title
+    override fun getType(): Int = R.id.filters_title
     
-    override fun failedToRecycle(holder:ViewHolder?):Boolean = false
+    override fun failedToRecycle(holder: ViewHolder?): Boolean = false
     
-    override fun isEnabled():Boolean = false
+    override fun isEnabled(): Boolean = false
     
-    override fun isSelected():Boolean = false
+    override fun isSelected(): Boolean = false
     
-    override fun bindView(holder:ViewHolder?, payloads:MutableList<Any>?) {
+    override fun bindView(holder: ViewHolder?, payloads: MutableList<Any>?) {
         super.bindView(holder, payloads)
         holder?.itemView?.isClickable = false
         holder?.itemView?.isEnabled = false
@@ -50,8 +50,8 @@ class FilterTitleDrawerItem:BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDra
         onPostBindView(this, holder?.itemView)
     }
     
-    class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
-        val button:AppCompatButton? = itemView.findViewById(R.id.clear_filters)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val button: AppCompatButton? = itemView.findViewById(R.id.clear_filters)
     }
     
     interface ButtonListener {

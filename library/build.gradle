@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -15,10 +15,11 @@
  */
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion project.ext.compileSdk
-    buildToolsVersion project.ext.buildTools
+    compileSdkVersion versions.targetSdk
+    buildToolsVersion versions.buildTools
 
     lintOptions {
         warningsAsErrors true
@@ -33,22 +34,15 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion project.ext.minSdk
-        targetSdkVersion project.ext.targetSdk
-        versionCode project.ext.versionCode
-        versionName project.ext.versionName
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled = true
-    }
-
-    dexOptions {
-        jumboMode true
     }
 
     buildTypes {
         release {
-            debuggable false
-            zipAlignEnabled true
             minifyEnabled false
             shrinkResources false
             proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
@@ -56,39 +50,39 @@ android {
         }
     }
 
+    aaptOptions {
+        noCompress 'zw', 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch'
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
     packagingOptions {
+        pickFirst 'META-INF/core_debug.kotlin_module'
         pickFirst 'META-INF/core_release.kotlin_module'
+        pickFirst 'META-INF/library_debug.kotlin_module'
         pickFirst 'META-INF/library_release.kotlin_module'
     }
 }
 
 dependencies {
-    // Kotlin
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:' + project.ext.kotlin
-    // TODO: Delete
-    compile 'com.android.support:multidex:' + project.ext.multidex
-
-    // Navigation
-    compile('com.mikepenz:materialdrawer:' + project.ext.materialDrawer + '@aar') {
+    // Kuper
+    api(libraries.kuper) {
         transitive = true
     }
-    compile 'com.aurelhubert:ahbottomnavigation:' + project.ext.bottomBar
+    // Navigation
+    api(libraries.materialDrawer) {
+        transitive = true
+    }
     // Icon Requests Tool
-    compile('me.jahirfiquitiva:Quest:' + project.ext.quest) {
+    api(libraries.quest) {
         exclude group: 'com.intellij', module: 'annotations'
     }
     // FABs Menu
-    compile 'me.jahirfiquitiva:FABsMenu:' + project.ext.fabsMenu
+    api libraries.fabsMenu
     // CounterFab
-    compile 'com.github.andremion:counterfab:' + project.ext.counterFab
-    // Frames
-    compile('me.jahirfiquitiva:Frames:' + project.ext.frames + '@aar') {
-        transitive = true
-    }
+    api libraries.counterFab
 }
 
 tasks.whenTaskAdded { task ->

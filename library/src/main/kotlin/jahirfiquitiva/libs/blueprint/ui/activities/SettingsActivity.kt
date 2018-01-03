@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -20,10 +20,10 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.fragments.SettingsFragment
 import jahirfiquitiva.libs.frames.ui.activities.SettingsActivity
 
-class SettingsActivity:SettingsActivity() {
-    override fun lightTheme():Int = R.style.BlueprintLightTheme
-    override fun darkTheme():Int = R.style.BlueprintDarkTheme
-    override fun amoledTheme():Int = R.style.BlueprintAmoledTheme
-    override fun transparentTheme():Int = R.style.BlueprintTransparentTheme
-    override fun settingsFragment():Fragment = SettingsFragment()
+class SettingsActivity : SettingsActivity() {
+    override fun lightTheme(): Int = R.style.BlueprintLightTheme
+    override fun darkTheme(): Int = R.style.BlueprintDarkTheme
+    override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme
+    override fun transparentTheme(): Int = R.style.BlueprintTransparentTheme
+    override fun settingsFragment(): Fragment = SettingsFragment()
 }

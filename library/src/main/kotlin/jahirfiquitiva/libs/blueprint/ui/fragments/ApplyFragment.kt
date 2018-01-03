@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -25,40 +25,42 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.helpers.extensions.showLauncherNotInstalledDialog
 import jahirfiquitiva.libs.blueprint.helpers.extensions.supportedLaunchers
 import jahirfiquitiva.libs.blueprint.ui.adapters.LaunchersAdapter
-import jahirfiquitiva.libs.frames.ui.fragments.base.BasicFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.kauextensions.ui.fragments.Fragment
 
-class ApplyFragment:BasicFragment<Launcher>() {
-    override fun getContentLayout():Int = R.layout.section_layout
+class ApplyFragment : Fragment<Launcher>() {
+    override fun getContentLayout(): Int = R.layout.section_layout
     
     private val list = ArrayList<Launcher>()
-    private lateinit var adapter:LaunchersAdapter
+    private lateinit var adapter: LaunchersAdapter
     
-    override fun initUI(content:View) {
-        val rv:EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
-        val fastScroller:RecyclerFastScroller = content.findViewById(R.id.fast_scroller)
+    override fun initUI(content: View) {
+        val rv: EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
+        val fastScroller: RecyclerFastScroller = content.findViewById(R.id.fast_scroller)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
-        adapter = LaunchersAdapter { onItemClicked(it) }
+        adapter = LaunchersAdapter { onItemClicked(it, false) }
         rv.adapter = adapter
-        val columns = context.getInteger(R.integer.icons_columns) - 1
+        val columns = ctxt.getInteger(R.integer.icons_columns) - 1
         rv.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
-        rv.addItemDecoration(GridSpacingItemDecoration(columns, context.getDimensionPixelSize(
-                R.dimen.cards_margin)))
+        rv.addItemDecoration(
+                GridSpacingItemDecoration(
+                        columns, ctxt.getDimensionPixelSize(R.dimen.cards_margin)))
         rv.state = EmptyViewRecyclerView.State.LOADING
         fastScroller.attachRecyclerView(rv)
-        context.supportedLaunchers.forEach {
+        ctxt.supportedLaunchers.forEach {
             list.add(it)
         }
         setAdapterItems(list)
         rv.state = EmptyViewRecyclerView.State.NORMAL
     }
     
-    fun applyFilter(filter:String = "") {
+    fun applyFilter(filter: String = "") {
         if (filter.hasContent()) {
             setAdapterItems(ArrayList(list.filter { it.name.contains(filter, true) }))
         } else {
@@ -66,21 +68,23 @@ class ApplyFragment:BasicFragment<Launcher>() {
         }
     }
     
-    private fun setAdapterItems(items:ArrayList<Launcher>) {
+    private fun setAdapterItems(items: ArrayList<Launcher>) {
         adapter.setItems(
                 ArrayList(items.distinct().sortedBy { !isLauncherInstalled(it.packageNames) }))
     }
     
-    private fun isLauncherInstalled(packages:Array<String>):Boolean {
+    private fun isLauncherInstalled(packages: Array<String>): Boolean {
         packages.forEach {
-            if (context.isAppInstalled(it)) return true
+            if (ctxt.isAppInstalled(it)) return true
         }
         return false
     }
     
-    override fun onItemClicked(item:Launcher) {
-        if (isLauncherInstalled(item.packageNames) || item.name.contains("lineage", true))
-            context.executeLauncherIntent(item.name)
-        else context.showLauncherNotInstalledDialog(item)
+    override fun onItemClicked(item: Launcher, longClick: Boolean) {
+        if (!longClick) {
+            if (isLauncherInstalled(item.packageNames) || item.name.contains("lineage", true))
+                ctxt.executeLauncherIntent(item.name)
+            else ctxt.showLauncherNotInstalledDialog(item)
+        }
     }
 }

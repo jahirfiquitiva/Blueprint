@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -13,21 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: './dependencies.gradle'
+
 buildscript {
+    apply from: './dependencies.gradle'
 
     repositories {
+        google()
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        maven { url 'https://maven.google.com' }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.50'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath gradlePlugins.android
+        classpath gradlePlugins.kotlin
+        classpath gradlePlugins.libs
+
+        // TODO: Remove comment marks if you plan on implementing Firebase Notifications
+        // classpath gradlePlugins.gms
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -35,37 +40,11 @@ buildscript {
 }
 
 allprojects {
-
-    project.ext {
-        // Core app details
-        appId = 'Blueprint'
-        appGroup = 'jahirfiquitiva.apps'
-        libGroup = 'jahirfiquitiva.libs'
-        minSdk = 16
-        targetSdk = 26
-        compileSdk = 26
-        buildTools = '26.0.1'
-        versionCode = 200
-        versionName = '2.0.0'
-        gradlePlugin = '2.3.3'
-        libPubPlugin = '1.5'
-        kotlin = '1.1.50'
-        // TODO Delete
-        multidex = '1.0.1'
-        // Libraries versions
-        materialDrawer = '5.9.5'
-        bottomBar = '2.1.0'
-        quest = 'c3625e7'
-        fabsMenu = '1.0.9'
-        counterFab = '1.0.1'
-        frames = 'a26b072'
-    }
-
     repositories {
+        google()
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        maven { url 'https://maven.google.com' }
     }
 }
 

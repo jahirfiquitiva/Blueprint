@@ -1,7 +1,5 @@
-apply plugin: 'com.github.dcendents.android-maven'
-
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -15,6 +13,8 @@ apply plugin: 'com.github.dcendents.android-maven'
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'me.jahirfiquitiva'
 
 // build a jar with source files
 task sourcesJar(type: Jar) {
@@ -41,13 +41,13 @@ artifacts {
 }
 
 // uncomment to build a jar file in addition to the default aar file
-//android.libraryVariants.all { variant ->
-//    def name = variant.buildType.name
-//    def task = project.tasks.create "jar${name.capitalize()}", Jar
-//    task.dependsOn variant.javaCompile
-//    task.from variant.javaCompile.destinationDir
-//    artifacts.add('archives', task);
-//}
+android.libraryVariants.all { variant ->
+    def name = variant.buildType.name
+    def task = project.tasks.create "jar${name.capitalize()}", Jar
+    task.dependsOn variant.javaCompile
+    task.from variant.javaCompile.destinationDir
+    artifacts.add('archives', task);
+}
 
 //gradle.projectsEvaluated {
 //    tasks.withType(JavaCompile) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -24,6 +24,7 @@ import android.view.animation.AnimationUtils
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.inflate
 import ca.allanwang.kau.utils.tint
+import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
@@ -32,7 +33,6 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.HomeItemsViewHolders
-import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 import jahirfiquitiva.libs.kauextensions.extensions.SimpleAnimationListener
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.chipsColor
@@ -43,17 +43,19 @@ import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 
-class HomeItemsAdapter(private val context:Context,
-                       private val listener:(HomeItem) -> Unit,
-                       private val iconsCount:Int = 0, private val wallsCount:Int = 0,
-                       private val kwgtCount:Int = 0, private val zooperCount:Int = 0):
-        BaseListAdapter<HomeItem, RecyclerView.ViewHolder>() {
+class HomeItemsAdapter(
+        private val context: Context,
+        private val listener: (HomeItem) -> Unit,
+        private val iconsCount: Int = 0, private val wallsCount: Int = 0,
+        private val kwgtCount: Int = 0, private val zooperCount: Int = 0
+                      ) :
+        ListAdapter<HomeItem, RecyclerView.ViewHolder>() {
     
     var shouldShowApplyCard = false
     private var firstLinkPosition = -1
     private val MINIMAL_AMOUNT = -1
     
-    override fun doBind(holder:RecyclerView.ViewHolder, position:Int, shouldAnimate:Boolean) {
+    override fun doBind(holder: RecyclerView.ViewHolder, position: Int, shouldAnimate: Boolean) {
         try {
             if (shouldShowApplyCard && position == 0 &&
                     holder is HomeItemsViewHolders.ApplyCardHolder) {
@@ -62,24 +64,28 @@ class HomeItemsAdapter(private val context:Context,
                     val titleColor = context.getPrimaryTextColorFor(context.accentColor)
                     val contentColor = context.getSecondaryTextColorFor(context.accentColor)
                     holder.applyTitle.setTextColor(titleColor)
-                    holder.applyTitle.text = context.getString(R.string.apply_title,
-                                                               context.getAppName())
+                    holder.applyTitle.text = context.getString(
+                            R.string.apply_title,
+                            context.getAppName())
                     holder.applyContent.setTextColor(contentColor)
-                    holder.applyContent.text = context.getString(R.string.apply_content,
-                                                                 context.defaultLauncher?.name)
+                    holder.applyContent.text = context.getString(
+                            R.string.apply_content,
+                            context.defaultLauncher?.name)
                     holder.dismissButton.setTextColor(contentColor)
                     holder.dismissButton.setOnClickListener {
-                        val anim = AnimationUtils.loadAnimation(context,
-                                                                android.R.anim.slide_out_right)
-                        anim.setAnimationListener(object:SimpleAnimationListener() {
-                            override fun onAnimationEnd(animation:Animation?) {
-                                super.onAnimationEnd(animation)
-                                context.bpKonfigs.isApplyCardDismissed = true
-                                shouldShowApplyCard = false
-                                notifyItemRemoved(0)
-                                notifyDataSetChanged()
-                            }
-                        })
+                        val anim = AnimationUtils.loadAnimation(
+                                context,
+                                android.R.anim.slide_out_right)
+                        anim.setAnimationListener(
+                                object : SimpleAnimationListener() {
+                                    override fun onAnimationEnd(animation: Animation?) {
+                                        super.onAnimationEnd(animation)
+                                        context.bpKonfigs.isApplyCardDismissed = true
+                                        shouldShowApplyCard = false
+                                        notifyItemRemoved(0)
+                                        notifyDataSetChanged()
+                                    }
+                                })
                         holder.itemView.startAnimation(anim)
                     }
                     holder.applyButton.setTextColor(contentColor)
@@ -98,8 +104,8 @@ class HomeItemsAdapter(private val context:Context,
                 if (iconsCount > MINIMAL_AMOUNT) {
                     holder.iconsCounter.setBackgroundColor(bgColor)
                     holder.iconsCounterIcon.setImageDrawable(
-                            ContextCompat.getDrawable(context, NavigationItem.ICONS.icon)
-                                    .tint(iconColor))
+                            ContextCompat.getDrawable(context, NavigationItem.ICONS.icon)?.tint(
+                                    iconColor))
                     holder.iconsCounterTitle.setTextColor(labelColor)
                     holder.iconsCounterCount.setTextColor(counterColor)
                     holder.iconsCounterCount.text = iconsCount.toString()
@@ -115,8 +121,9 @@ class HomeItemsAdapter(private val context:Context,
                 if (wallsCount > MINIMAL_AMOUNT) {
                     holder.wallsCounter.setBackgroundColor(bgColor)
                     holder.wallsCounterIcon.setImageDrawable(
-                            ContextCompat.getDrawable(context, NavigationItem.WALLPAPERS.icon)
-                                    .tint(iconColor))
+                            ContextCompat.getDrawable(
+                                    context, NavigationItem.WALLPAPERS.icon)?.tint(
+                                    iconColor))
                     holder.wallsCounterTitle.setTextColor(labelColor)
                     holder.wallsCounterCount.setTextColor(counterColor)
                     holder.wallsCounterCount.text = wallsCount.toString()
@@ -132,12 +139,13 @@ class HomeItemsAdapter(private val context:Context,
                 if (kwgtCount > MINIMAL_AMOUNT) {
                     holder.kwgtCounter.setBackgroundColor(bgColor)
                     holder.kwgtCounterIcon.setImageDrawable(
-                            ContextCompat.getDrawable(context, R.drawable.ic_kustom)
-                                    .tint(iconColor))
+                            ContextCompat.getDrawable(context, R.drawable.ic_kustom)?.tint(
+                                    iconColor))
                     holder.kwgtCounterTitle.setTextColor(labelColor)
                     holder.kwgtCounterCount.setTextColor(counterColor)
-                    holder.kwgtCounterCount.text = context.getString(R.string.included_templates,
-                                                                     kwgtCount.toString())
+                    holder.kwgtCounterCount.text = context.getString(
+                            R.string.included_templates,
+                            kwgtCount.toString())
                     if (context is BaseBlueprintActivity) {
                         holder.kwgtCounter.setOnClickListener {
                             context.launchKuperActivity()
@@ -150,12 +158,13 @@ class HomeItemsAdapter(private val context:Context,
                 if (zooperCount > MINIMAL_AMOUNT) {
                     holder.zooperCounter.setBackgroundColor(bgColor)
                     holder.zooperCounterIcon.setImageDrawable(
-                            ContextCompat.getDrawable(context, R.drawable.ic_zooper)
-                                    .tint(iconColor))
+                            ContextCompat.getDrawable(context, R.drawable.ic_zooper)?.tint(
+                                    iconColor))
                     holder.zooperCounterTitle.setTextColor(labelColor)
                     holder.zooperCounterCount.setTextColor(counterColor)
-                    holder.zooperCounterCount.text = context.getString(R.string.included_templates,
-                                                                       zooperCount.toString())
+                    holder.zooperCounterCount.text = context.getString(
+                            R.string.included_templates,
+                            zooperCount.toString())
                     if (context is BaseBlueprintActivity) {
                         holder.zooperCounter.setOnClickListener {
                             context.launchKuperActivity()
@@ -170,28 +179,26 @@ class HomeItemsAdapter(private val context:Context,
                 if (!item.isAnApp && firstLinkPosition < 0) {
                     firstLinkPosition = rightPosition
                 }
-                holder.setItem(item, (rightPosition == 0 || rightPosition == firstLinkPosition),
-                               listener)
+                holder.setItem(
+                        item, (rightPosition == 0 || rightPosition == firstLinkPosition),
+                        listener)
             }
-        } catch (ignored:Exception) {
+        } catch (ignored: Exception) {
         }
     }
     
-    override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):RecyclerView.ViewHolder? {
+    override fun doCreateVH(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0 && shouldShowApplyCard) {
-            parent?.inflate(
-                    R.layout.item_home_apply_card)?.let { HomeItemsViewHolders.ApplyCardHolder(it) }
+            HomeItemsViewHolders.ApplyCardHolder(parent.inflate(R.layout.item_home_apply_card))
         } else if (viewType == 1) {
-            parent?.inflate(
-                    R.layout.item_home_counters)?.let { HomeItemsViewHolders.CounterItemHolder(it) }
+            HomeItemsViewHolders.CounterItemHolder(parent.inflate(R.layout.item_home_counters))
         } else {
-            parent?.inflate(
-                    R.layout.item_home_app_link)?.let { HomeItemsViewHolders.AppLinkItemHolder(it) }
+            HomeItemsViewHolders.AppLinkItemHolder(parent.inflate(R.layout.item_home_app_link))
         }
     }
     
-    override fun getItemCount():Int = list.size + (if (shouldShowApplyCard) 2 else 1)
+    override fun getItemCount(): Int = list.size + (if (shouldShowApplyCard) 2 else 1)
     
-    override fun getItemViewType(position:Int):Int =
+    override fun getItemViewType(position: Int): Int =
             if (shouldShowApplyCard) position else position + 1
 }

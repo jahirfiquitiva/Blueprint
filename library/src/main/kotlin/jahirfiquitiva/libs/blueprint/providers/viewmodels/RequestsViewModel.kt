@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -24,64 +24,72 @@ import android.os.Environment
 import com.pitchedapps.butler.iconrequest.App
 import com.pitchedapps.butler.iconrequest.IconRequest
 import com.pitchedapps.butler.iconrequest.events.RequestsCallback
+import jahirfiquitiva.libs.archhelpers.tasks.Async
+import jahirfiquitiva.libs.archhelpers.tasks.EasyAsync
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
-import jahirfiquitiva.libs.frames.helpers.utils.SimpleAsyncTask
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import java.io.File
 import java.lang.ref.WeakReference
 
-class RequestsViewModel:ViewModel() {
+class RequestsViewModel : ViewModel() {
     
-    fun getData():MutableList<App>? = data.value
+    fun getData(): MutableList<App>? = data.value
     
     private var taskStarted = false
     private val data = MutableLiveData<MutableList<App>>()
-    private var task:SimpleAsyncTask<Context, Unit>? = null
+    private var task: EasyAsync<Context, Unit>? = null
     
-    fun loadData(parameter:Context,
-                 onEmpty:() -> Unit, onLimited:(reason:Int, appsLeft:Int, millis:Long) -> Unit,
-                 forceLoad:Boolean = false) {
+    fun loadData(
+            parameter: Context,
+            onEmpty: () -> Unit, onLimited: (reason: Int, appsLeft: Int, millis: Long) -> Unit,
+            forceLoad: Boolean = false
+                ) {
         if (!taskStarted || forceLoad) {
             cancelTask(true)
-            task = SimpleAsyncTask<Context, Unit>(
+            task = EasyAsync<Context, Unit>(
                     WeakReference(parameter),
-                    object:SimpleAsyncTask.AsyncTaskCallback<Context, Unit>() {
-                        override fun doLoad(param:Context):Unit? =
-                                safeInternalLoad(param, forceLoad, object:RequestsCallback() {
-                                    override fun onAppsLoaded(list:ArrayList<App>?) {
+                    object : Async.Callback<Context, Unit>() {
+                        override fun doLoad(param: Context): Unit? =
+                                safeInternalLoad(
+                                        param, forceLoad, object : RequestsCallback() {
+                                    override fun onAppsLoaded(list: ArrayList<App>?) {
                                         list?.let { postResult(it) }
                                     }
                                     
-                                    override fun onRequestEmpty(p0:Context?) =
+                                    override fun onRequestEmpty(p0: Context?) =
                                             onEmpty()
                                     
-                                    override fun onRequestLimited(p0:Context?,
-                                                                  p1:Int, p2:Int, p3:Long) =
+                                    override fun onRequestLimited(
+                                            p0: Context?,
+                                            p1: Int, p2: Int, p3: Long
+                                                                 ) =
                                             onLimited(p1, p2, p3)
                                 })
                         
-                        override fun onSuccess(result:Unit) {}
+                        override fun onSuccess(result: Unit) {}
                     })
             task?.execute()
             taskStarted = true
         }
     }
     
-    private fun cancelTask(interrupt:Boolean = false) {
+    private fun cancelTask(interrupt: Boolean = false) {
         task?.cancel(interrupt)
         task = null
         taskStarted = false
     }
     
-    fun destroy(owner:LifecycleOwner, interrupt:Boolean = true) {
+    fun destroy(owner: LifecycleOwner, interrupt: Boolean = true) {
         cancelTask(interrupt)
         data.removeObservers(owner)
     }
     
-    private fun safeInternalLoad(param:Context, forceLoad:Boolean = false,
-                                 callback:RequestsCallback) {
+    private fun safeInternalLoad(
+            param: Context, forceLoad: Boolean = false,
+            callback: RequestsCallback
+                                ) {
         if (forceLoad) {
             internalLoad(param, callback)
         } else {
@@ -95,17 +103,17 @@ class RequestsViewModel:ViewModel() {
         }
     }
     
-    fun postResult(result:MutableList<App>) {
+    fun postResult(result: MutableList<App>) {
         data.postValue(result)
         taskStarted = false
     }
     
-    fun observe(owner:LifecycleOwner, onUpdated:(MutableList<App>) -> Unit) {
+    fun observe(owner: LifecycleOwner, onUpdated: (MutableList<App>) -> Unit) {
         destroy(owner, true)
         data.observe(owner, Observer<MutableList<App>> { r -> r?.let { onUpdated(it) } })
     }
     
-    private fun internalLoad(param:Context, callback:RequestsCallback) {
+    private fun internalLoad(param: Context, callback: RequestsCallback) {
         if (IconRequest.get() != null) {
             postResult(ArrayList(IconRequest.get().apps))
             return
@@ -115,13 +123,17 @@ class RequestsViewModel:ViewModel() {
                 .withFooter("Blueprint version: %s", BuildConfig.VERSION_NAME)
                 .withSubject(param.getString(R.string.request_title))
                 .toEmail(param.getString(R.string.email))
-                .saveDir(File(param.getString(R.string.request_save_location,
-                                              Environment.getExternalStorageDirectory())))
+                .saveDir(
+                        File(
+                                param.getString(
+                                        R.string.request_save_location,
+                                        Environment.getExternalStorageDirectory())))
                 .generateAppFilterJson(false)
                 .debugMode(BuildConfig.DEBUG)
                 .filterXmlId(R.xml.appfilter)
-                .withTimeLimit(param.getInteger(R.integer.time_limit_in_minutes),
-                               param.bpKonfigs.prefs)
+                .withTimeLimit(
+                        param.getInteger(R.integer.time_limit_in_minutes),
+                        param.bpKonfigs.prefs)
                 .maxSelectionCount(param.getInteger(R.integer.max_apps_to_request))
                 .setCallback(callback)
                 .build().loadApps()

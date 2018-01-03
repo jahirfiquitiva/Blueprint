@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -16,12 +16,12 @@
 package jahirfiquitiva.libs.blueprint.providers.viewmodels
 
 import android.content.Context
+import jahirfiquitiva.libs.archhelpers.viewmodels.BasicViewModel
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
-import jahirfiquitiva.libs.frames.providers.viewmodels.BasicViewModel
 
-class HomeApplyCardViewModel:BasicViewModel<Context, Boolean>() {
-    override fun internalLoad(param:Context):Boolean {
+class HomeApplyCardViewModel : BasicViewModel<Context, Boolean>() {
+    override fun internalLoad(param: Context): Boolean {
         val initCard = param.defaultLauncher?.isActuallySupported == true
         return if (initCard) {
             !param.bpKonfigs.isApplyCardDismissed
@@ -30,5 +30,5 @@ class HomeApplyCardViewModel:BasicViewModel<Context, Boolean>() {
         }
     }
     
-    override val isOldDataValid:Boolean = false
+    override val isOldDataValid: Boolean = false
 }

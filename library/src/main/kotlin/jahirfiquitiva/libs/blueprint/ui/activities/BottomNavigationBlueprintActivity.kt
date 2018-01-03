@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -27,11 +27,11 @@ import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kauextensions.extensions.inactiveIconsColor
 
-abstract class BottomNavigationBlueprintActivity:BaseBlueprintActivity() {
+abstract class BottomNavigationBlueprintActivity : BaseBlueprintActivity() {
     
-    internal val bottomBar:AHBottomNavigation by bind(R.id.bottom_navigation)
+    internal val bottomBar: AHBottomNavigation by bind(R.id.bottom_navigation)
     
-    override fun onCreate(savedInstanceState:Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBottomBar()
     }
@@ -56,10 +56,10 @@ abstract class BottomNavigationBlueprintActivity:BaseBlueprintActivity() {
         }
     }
     
-    override fun internalNavigateToItem(item:NavigationItem):Boolean {
+    override fun internalNavigateToItem(item: NavigationItem): Boolean {
         bottomBar.setCurrentItem(item.id, false)
         return super.internalNavigateToItem(item)
     }
     
-    override fun hasBottomNavigation():Boolean = true
+    override fun hasBottomNavigation(): Boolean = true
 }

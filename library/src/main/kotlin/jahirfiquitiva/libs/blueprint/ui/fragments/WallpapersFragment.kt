@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -19,13 +19,13 @@ import jahirfiquitiva.libs.frames.data.models.Wallpaper
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseWallpapersFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 
-class WallpapersFragment:BaseWallpapersFragment() {
-    override fun fromCollectionActivity():Boolean = false
-    override fun autoStartLoad():Boolean = true
-    override fun fromFavorites():Boolean = false
-    override fun showFavoritesIcon():Boolean = false
+class WallpapersFragment : BaseWallpapersFragment() {
+    override fun fromCollectionActivity(): Boolean = false
+    override fun autoStartLoad(): Boolean = true
+    override fun fromFavorites(): Boolean = false
+    override fun showFavoritesIcon(): Boolean = false
     
-    override fun doOnWallpapersChange(data:ArrayList<Wallpaper>, fromCollectionActivity:Boolean) {
+    override fun doOnWallpapersChange(data: ArrayList<Wallpaper>, fromCollectionActivity: Boolean) {
         super.doOnWallpapersChange(data, fromCollectionActivity)
         wallsAdapter?.setItems(data)
         rv.state = EmptyViewRecyclerView.State.NORMAL

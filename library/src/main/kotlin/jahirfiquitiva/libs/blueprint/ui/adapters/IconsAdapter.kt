@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -16,19 +16,18 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import ca.allanwang.kau.utils.inflate
+import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.IconViewHolder
-import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 
-class IconsAdapter(private val animate:Boolean = false, val listener:(Icon) -> Unit = {}):
-        BaseListAdapter<Icon, IconViewHolder>() {
-    override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):IconViewHolder =
-            IconViewHolder(parent?.inflate(R.layout.item_icon) ?: FrameLayout(null))
+class IconsAdapter(private val animate: Boolean = false, val listener: (Icon) -> Unit = {}) :
+        ListAdapter<Icon, IconViewHolder>() {
+    override fun doCreateVH(parent: ViewGroup, viewType: Int): IconViewHolder =
+            IconViewHolder(parent.inflate(R.layout.item_icon))
     
-    override fun doBind(holder:IconViewHolder, position:Int, shouldAnimate:Boolean) {
+    override fun doBind(holder: IconViewHolder, position: Int, shouldAnimate: Boolean) {
         if (animate) (holder as? IconViewHolder)?.bind(animate && shouldAnimate, list[position])
         else (holder as? IconViewHolder)?.bind(false, list[position], listener)
     }

@@ -8,10 +8,10 @@ android:
     - tools
 
     # The BuildTools version used by your project
-    - build-tools-26.0.1
+    - build-tools-27.0.3
 
     # The SDK version used to compile your project
-    - android-26
+    - android-27
 
     # Additional components
     - extra-android-support
@@ -26,6 +26,7 @@ script: ./gradlew clean test
 
 branches:
   except:
+    - images
     - gh-pages
 
 notifications:
@@ -43,3 +44,6 @@ cache:
 
 before_script:
   - chmod +x gradlew
+
+before_install:
+  - yes | sdkmanager "platforms;android-27"

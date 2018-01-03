@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -21,10 +21,10 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.PREFERENCES_NAME
 import java.util.concurrent.TimeUnit
 
-val Context.bpKonfigs:BPKonfigs
+val Context.bpKonfigs: BPKonfigs
     get() = BPKonfigs.newInstance(PREFERENCES_NAME, this)
 
-fun Context.millisToText(millis:Long):String {
+fun Context.millisToText(millis: Long): String {
     when {
         TimeUnit.MILLISECONDS.toSeconds(millis) < 60 ->
             return (TimeUnit.MILLISECONDS.toSeconds(millis).toString() + " "

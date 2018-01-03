@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -18,24 +18,24 @@ package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 import android.support.v7.widget.AppCompatCheckBox
 
 class FilterCheckBoxHolder {
-    private lateinit var checkBox:AppCompatCheckBox
-    private lateinit var title:String
-    private var listener:StateChangeListener? = null
+    private lateinit var checkBox: AppCompatCheckBox
+    private lateinit var title: String
+    private var listener: StateChangeListener? = null
     
-    fun setup(checkBox:AppCompatCheckBox, title:String, listener:StateChangeListener?) {
+    fun setup(checkBox: AppCompatCheckBox, title: String, listener: StateChangeListener?) {
         this.checkBox = checkBox
         this.title = title
         this.listener = listener
     }
     
-    fun apply(checked:Boolean, fireFiltersListener:Boolean = true) {
+    fun apply(checked: Boolean, fireFiltersListener: Boolean = true) {
         checkBox.isChecked = checked
         listener?.onStateChanged(checked, title, fireFiltersListener)
     }
     
-    fun isChecked():Boolean = checkBox.isChecked
+    fun isChecked(): Boolean = checkBox.isChecked
     
     interface StateChangeListener {
-        fun onStateChanged(checked:Boolean, title:String, fireFiltersListener:Boolean)
+        fun onStateChanged(checked: Boolean, title: String, fireFiltersListener: Boolean)
     }
 }

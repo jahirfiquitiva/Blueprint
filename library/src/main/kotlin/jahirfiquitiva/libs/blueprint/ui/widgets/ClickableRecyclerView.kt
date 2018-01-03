@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -21,21 +21,21 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 
-class ClickableRecyclerView:RecyclerView {
-    constructor(context:Context):super(context) {
+class ClickableRecyclerView : RecyclerView {
+    constructor(context: Context) : super(context) {
         isNestedScrollingEnabled = false
     }
     
-    constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet) {
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         isNestedScrollingEnabled = false
     }
     
-    constructor(context:Context, attributeSet:AttributeSet, defStyleAttr:Int)
-            :super(context, attributeSet, defStyleAttr) {
+    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int)
+            : super(context, attributeSet, defStyleAttr) {
         isNestedScrollingEnabled = false
     }
     
-    override fun onTouchEvent(e:MotionEvent?):Boolean {
+    override fun onTouchEvent(e: MotionEvent?): Boolean {
         val par = parent
         if (par != null) {
             if (par is View) return par.performClick()

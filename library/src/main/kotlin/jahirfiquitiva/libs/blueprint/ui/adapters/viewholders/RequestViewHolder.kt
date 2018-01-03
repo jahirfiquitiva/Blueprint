@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -16,6 +16,7 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.support.v7.widget.AppCompatCheckBox
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,16 +24,16 @@ import com.pitchedapps.butler.iconrequest.App
 import com.pitchedapps.butler.iconrequest.IconRequest
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
-import jahirfiquitiva.libs.frames.ui.adapters.viewholders.GlideViewHolder
+import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 
-class RequestViewHolder(itemView:View):GlideViewHolder(itemView) {
-    val icon:ImageView = itemView.findViewById(R.id.icon)
-    val text:TextView = itemView.findViewById(R.id.name)
-    val checkbox:AppCompatCheckBox = itemView.findViewById(R.id.checkbox)
+class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+    val text: TextView = itemView.findViewById(R.id.name)
+    val checkbox: AppCompatCheckBox = itemView.findViewById(R.id.checkbox)
     
-    fun setItem(app:App, listener:(checkbox:AppCompatCheckBox, item:App) -> Unit) {
+    fun setItem(app: App, listener: (checkbox: AppCompatCheckBox, item: App) -> Unit) {
         app.loadIcon(icon)
-        text.text = app.name
+        text.text = app.name.formatCorrectly().replace("_", " ")
         val request = IconRequest.get()
         checkbox.isChecked = (request != null && request.isAppSelected(app))
         with(itemView) {
@@ -41,7 +42,7 @@ class RequestViewHolder(itemView:View):GlideViewHolder(itemView) {
         }
     }
     
-    override fun doOnRecycle() {
+    fun doOnRecycle() {
         icon.releaseFromGlide()
     }
 }

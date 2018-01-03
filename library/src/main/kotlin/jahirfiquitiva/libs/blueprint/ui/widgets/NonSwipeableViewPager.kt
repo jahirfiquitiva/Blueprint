@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -22,28 +22,30 @@ import android.view.MotionEvent
 import android.view.animation.DecelerateInterpolator
 import android.widget.Scroller
 
-class NonSwipeableViewPager:ViewPager {
-    constructor(context:Context):super(context) {
+class NonSwipeableViewPager : ViewPager {
+    constructor(context: Context) : super(context) {
         setCustomScroller()
     }
     
-    constructor(context:Context, attributeSet:AttributeSet):super(context, attributeSet) {
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         setCustomScroller()
     }
     
-    override fun onInterceptTouchEvent(ev:MotionEvent?):Boolean = false
-    override fun onTouchEvent(ev:MotionEvent?):Boolean = false
+    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean = false
+    override fun onTouchEvent(ev: MotionEvent?): Boolean = false
     
     private fun setCustomScroller() = try {
         val klass = ViewPager::class.java
         val scrollerField = klass.getDeclaredField("mScroller")
         scrollerField.isAccessible = true
         scrollerField.set(this, CustomScroller(context))
-    } catch (ignored:Exception) {
+    } catch (ignored: Exception) {
     }
     
-    internal class CustomScroller(context:Context):Scroller(context, DecelerateInterpolator()) {
-        override fun startScroll(startX:Int, startY:Int, dx:Int, dy:Int,
-                                 duration:Int) = super.startScroll(startX, startY, dx, dy, 350)
+    internal class CustomScroller(context: Context) : Scroller(context, DecelerateInterpolator()) {
+        override fun startScroll(
+                startX: Int, startY: Int, dx: Int, dy: Int,
+                duration: Int
+                                ) = super.startScroll(startX, startY, dx, dy, 350)
     }
 }

@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2018. Jahir Fiquitiva
+ *
+ * Licensed under the CreativeCommons Attribution-ShareAlike
+ * 4.0 International License. You may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at
+ *
+ *    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ext.versions = [
+        // Projects
+        minSdk        : 16,
+        targetSdk     : 27,
+        buildTools    : '27.0.3',
+        // Gradle Plugins
+        gradle        : '3.0.1',
+        kotlin        : '1.2.0',
+        libs          : '2.0',
+        gms           : '3.1.0',
+        // Dependencies
+        kuper         : '1.0.8',
+        materialDrawer: '6.0.2',
+        quest         : 'c3625e7',
+        fabsMenu      : '1.1.1',
+        counterFab    : '1.0.1',
+        firebase      : '11.8.0'
+]
+
+ext.gradlePlugins = [
+        android: 'com.android.tools.build:gradle:' + versions.gradle,
+        kotlin : 'org.jetbrains.kotlin:kotlin-gradle-plugin:' + versions.kotlin,
+        libs   : 'com.github.dcendents:android-maven-gradle-plugin:' + versions.libs,
+        gms    : 'com.google.gms:google-services:' + versions.gms
+]
+
+ext.libraries = [
+        // Kuper
+        kuper         : 'me.jahirfiquitiva:Kuper:' + versions.kuper + '@aar',
+        // Material Drawer
+        materialDrawer: 'com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar',
+        // Quest
+        quest         : 'me.jahirfiquitiva:Quest:' + versions.quest,
+        // FABsMenu
+        fabsMenu      : 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu,
+        // CounterFab
+        counterFab    : 'com.github.andremion:counterfab:' + versions.counterFab,
+        // Firebase
+        firebase      : 'com.google.firebase:firebase-messaging:' + versions.firebase
+]

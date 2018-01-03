@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -20,6 +20,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
+import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeApplyCardViewModel
@@ -27,19 +28,20 @@ import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.HomeItemsAdapter
-import jahirfiquitiva.libs.frames.ui.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.extensions.actv
+import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 
-class HomeFragment:BaseViewModelFragment<HomeItem>() {
+class HomeFragment : ViewModelFragment<HomeItem>() {
     
-    override fun autoStartLoad():Boolean = true
+    override fun autoStartLoad(): Boolean = true
     
-    private lateinit var model:HomeItemViewModel
-    private lateinit var applyCardModel:HomeApplyCardViewModel
-    private lateinit var rv:EmptyViewRecyclerView
-    private lateinit var homeAdapter:HomeItemsAdapter
+    private lateinit var model: HomeItemViewModel
+    private lateinit var applyCardModel: HomeApplyCardViewModel
+    private lateinit var rv: EmptyViewRecyclerView
+    private lateinit var homeAdapter: HomeItemsAdapter
     
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(HomeItemViewModel::class.java)
@@ -47,11 +49,13 @@ class HomeFragment:BaseViewModelFragment<HomeItem>() {
     }
     
     override fun registerObserver() {
-        model.observe(this, {
+        model.observe(
+                this, {
             homeAdapter.setItems(ArrayList(it))
             rv.state = EmptyViewRecyclerView.State.NORMAL
         })
-        applyCardModel.observe(this, {
+        applyCardModel.observe(
+                this, {
             homeAdapter.shouldShowApplyCard = it
             homeAdapter.notifyDataSetChanged()
         })
@@ -63,13 +67,13 @@ class HomeFragment:BaseViewModelFragment<HomeItem>() {
     }
     
     override fun loadDataFromViewModel() {
-        model.loadData(activity)
-        applyCardModel.loadData(activity)
+        model.loadData(actv)
+        applyCardModel.loadData(actv)
     }
     
-    override fun getContentLayout():Int = R.layout.section_layout
+    override fun getContentLayout(): Int = R.layout.section_layout
     
-    override fun initUI(content:View) {
+    override fun initUI(content: View) {
         rv = content.findViewById(R.id.list_rv)
         if (activity is BaseBlueprintActivity) {
             (activity as BaseBlueprintActivity).fabsMenu.attachToRecyclerView(rv)
@@ -84,16 +88,20 @@ class HomeFragment:BaseViewModelFragment<HomeItem>() {
         rv.textView = content.findViewById(R.id.empty_text)
         rv.state = EmptyViewRecyclerView.State.LOADING
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        homeAdapter = HomeItemsAdapter(activity, { onItemClicked(it) },
-                                       context.getInteger(R.integer.icons_count),
-                                       context.getInteger(R.integer.wallpapers_count),
-                                       context.getInteger(R.integer.kwgt_count),
-                                       context.getInteger(R.integer.zooper_count))
+        homeAdapter = HomeItemsAdapter(
+                actv, { onItemClicked(it, false) },
+                ctxt.getInteger(R.integer.icons_count),
+                ctxt.getInteger(R.integer.wallpapers_count),
+                ctxt.getInteger(R.integer.kwgt_count),
+                ctxt.getInteger(R.integer.zooper_count))
         rv.setHasFixedSize(true)
         rv.adapter = homeAdapter
     }
     
-    override fun onItemClicked(item:HomeItem) =
-            if (item.intent != null) context.startActivity(item.intent)
-            else context.openLink(item.url)
+    override fun onItemClicked(item: HomeItem, longClick: Boolean) {
+        if (!longClick) {
+            if (item.intent != null) ctxt.startActivity(item.intent)
+            else ctxt.openLink(item.url)
+        }
+    }
 }

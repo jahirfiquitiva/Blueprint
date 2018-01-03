@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -23,42 +23,46 @@ import android.widget.Toast
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 
-class LauncherIconRestorerActivity:AppCompatActivity() {
+class LauncherIconRestorerActivity : AppCompatActivity() {
     
-    override fun onCreate(savedInstanceState:Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val pm = packageManager
-        var className:Class<*>? = null
+        var className: Class<*>? = null
         
         var componentName = packageName + "." + getString(R.string.main_activity_name)
         
         try {
             className = Class.forName(componentName)
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             componentName = getString(R.string.main_activity_fullname)
             try {
                 className = Class.forName(componentName)
-            } catch (ignored:Exception) {
+            } catch (ignored: Exception) {
             }
         }
         
-        val content:String
+        val content: String
         if (className != null) {
             val component = ComponentName(packageName, componentName)
             if (!bpKonfigs.launcherIconShown) {
                 bpKonfigs.launcherIconShown = true
-                pm.setComponentEnabledSetting(component,
-                                              PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                                              PackageManager.DONT_KILL_APP)
-                content = getString(R.string.launcher_icon_restored,
-                                    getString(R.string.app_name))
+                pm.setComponentEnabledSetting(
+                        component,
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                        PackageManager.DONT_KILL_APP)
+                content = getString(
+                        R.string.launcher_icon_restored,
+                        getString(R.string.app_name))
             } else {
-                content = getString(R.string.launcher_icon_not_restored,
-                                    getString(R.string.app_name))
+                content = getString(
+                        R.string.launcher_icon_not_restored,
+                        getString(R.string.app_name))
             }
         } else {
-            content = getString(R.string.launcher_icon_restorer_error,
-                                getString(R.string.app_name))
+            content = getString(
+                    R.string.launcher_icon_restorer_error,
+                    getString(R.string.app_name))
         }
         if (content.isNotEmpty()) Toast.makeText(this, content, Toast.LENGTH_LONG).show()
         finish()

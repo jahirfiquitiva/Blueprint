@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -15,6 +15,7 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.activities
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.DefaultItemAnimator
@@ -23,38 +24,42 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import ca.allanwang.kau.email.sendEmail
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-import jahirfiquitiva.libs.frames.ui.widgets.SearchView
-import jahirfiquitiva.libs.frames.ui.widgets.bindSearchView
-import jahirfiquitiva.libs.kauextensions.activities.ThemedActivity
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 import jahirfiquitiva.libs.kauextensions.extensions.tint
+import jahirfiquitiva.libs.kauextensions.ui.activities.ThemedActivity
+import jahirfiquitiva.libs.kauextensions.ui.widgets.SearchView
+import jahirfiquitiva.libs.kauextensions.ui.widgets.bindSearchView
 
-class HelpActivity:ThemedActivity() {
-    override fun lightTheme():Int = R.style.BlueprintLightTheme
-    override fun darkTheme():Int = R.style.BlueprintDarkTheme
-    override fun amoledTheme():Int = R.style.BlueprintAmoledTheme
-    override fun transparentTheme():Int = R.style.BlueprintTransparentTheme
-    override fun autoStatusBarTint():Boolean = true
+@SuppressLint("MissingSuperCall")
+class HelpActivity : ThemedActivity() {
+    override fun lightTheme(): Int = R.style.BlueprintLightTheme
+    override fun darkTheme(): Int = R.style.BlueprintDarkTheme
+    override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme
+    override fun transparentTheme(): Int = R.style.BlueprintTransparentTheme
+    override fun autoTintStatusBar() = true
+    override fun autoTintNavigationBar() = true
     
-    private val toolbar:Toolbar by bind(R.id.toolbar)
-    private val rv:EmptyViewRecyclerView by bind(R.id.list_rv)
-    private val fastScroll:RecyclerFastScroller by bind(R.id.fast_scroller)
+    private val toolbar: Toolbar by bind(R.id.toolbar)
+    private val rv: EmptyViewRecyclerView by bind(R.id.list_rv)
+    private val fastScroll: RecyclerFastScroller by bind(R.id.fast_scroller)
     
-    var searchView:SearchView? = null
+    var searchView: SearchView? = null
     val faqs = ArrayList<HelpItem>()
     val adapter = HelpAdapter()
     
-    override fun onCreate(savedInstanceState:Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_credits)
         
@@ -86,45 +91,54 @@ class HelpActivity:ThemedActivity() {
         rv.state = EmptyViewRecyclerView.State.NORMAL
     }
     
-    override fun onCreateOptionsMenu(menu:Menu?):Boolean {
-        menuInflater?.inflate(R.menu.search, menu)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater?.inflate(R.menu.menu_help, menu)
         menu?.let { searchView = bindSearchView(it, R.id.search) }
-        searchView?.listener = object:SearchView.SearchListener {
-            override fun onQueryChanged(query:String) {
+        searchView?.listener = object : SearchView.SearchListener {
+            override fun onQueryChanged(query: String) {
                 doSearch(query)
             }
             
-            override fun onQuerySubmit(query:String) {
+            override fun onQuerySubmit(query: String) {
                 doSearch(query)
             }
             
-            override fun onSearchOpened(searchView:SearchView) {
+            override fun onSearchOpened(searchView: SearchView) {
                 // Do nothing
             }
             
-            override fun onSearchClosed(searchView:SearchView) {
+            override fun onSearchClosed(searchView: SearchView) {
                 doSearch()
             }
         }
         searchView?.hintText = getString(R.string.search_x, "")
-        toolbar.tint(getPrimaryTextColorFor(primaryColor, 0.6F),
-                     getSecondaryTextColorFor(primaryColor, 0.6F),
-                     getActiveIconsColorFor(primaryColor, 0.6F))
+        toolbar.tint(
+                getPrimaryTextColorFor(primaryColor, 0.6F),
+                getSecondaryTextColorFor(primaryColor, 0.6F),
+                getActiveIconsColorFor(primaryColor, 0.6F))
         return super.onCreateOptionsMenu(menu)
     }
     
-    override fun onOptionsItemSelected(item:MenuItem?):Boolean {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         item?.let {
-            if (it.itemId == android.R.id.home) finish()
+            when (it.itemId) {
+                android.R.id.home -> finish()
+                R.id.contact -> {
+                    sendEmail(getString(R.string.email), "${getAppName()} Support")
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
     
-    private fun doSearch(filter:String = "") {
+    private fun doSearch(filter: String = "") {
         if (filter.hasContent()) {
-            adapter.setItems(ArrayList(faqs.filter {
-                (it.question.contains(filter, true) || it.answer.contains(filter, true))
-            }))
+            adapter.setItems(
+                    ArrayList(
+                            faqs.filter {
+                                (it.question.contains(filter, true) || it.answer.contains(
+                                        filter, true))
+                            }))
         } else {
             adapter.setItems(faqs)
         }

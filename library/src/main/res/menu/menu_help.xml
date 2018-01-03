@@ -26,4 +26,12 @@
             app:showAsAction="always"
             tools:ignore="AppCompatResource"/>
 
+    <item
+            android:id="@+id/contact"
+            android:icon="@drawable/ic_contact"
+            android:title="@string/section_help"
+            android:orderInCategory="200"
+            app:showAsAction="ifRoom"
+            tools:ignore="AppCompatResource"/>
+
 </menu>

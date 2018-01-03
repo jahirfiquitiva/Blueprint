@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -17,17 +17,17 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
+import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.HelpViewHolder
-import jahirfiquitiva.libs.frames.ui.adapters.BaseListAdapter
 
-data class HelpItem(val question:String, val answer:String)
+data class HelpItem(val question: String, val answer: String)
 
-class HelpAdapter:BaseListAdapter<HelpItem, HelpViewHolder>() {
-    override fun doBind(holder:HelpViewHolder, position:Int, shouldAnimate:Boolean) {
+class HelpAdapter : ListAdapter<HelpItem, HelpViewHolder>() {
+    override fun doBind(holder: HelpViewHolder, position: Int, shouldAnimate: Boolean) {
         holder.setQA(list[position])
     }
     
-    override fun onCreateViewHolder(parent:ViewGroup?, viewType:Int):HelpViewHolder? =
-            parent?.inflate(R.layout.item_help)?.let { HelpViewHolder(it) }
+    override fun doCreateVH(parent: ViewGroup, viewType: Int): HelpViewHolder =
+            HelpViewHolder(parent.inflate(R.layout.item_help))
 }

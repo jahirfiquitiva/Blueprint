@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -31,42 +31,42 @@ import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolde
 import jahirfiquitiva.libs.kauextensions.extensions.dividerColor
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 
-class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
-    private lateinit var nameHolder:StringHolder
-    private var listener:FilterCheckBoxHolder.StateChangeListener? = null
+class FilterDrawerItem : BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
+    private lateinit var nameHolder: StringHolder
+    private var listener: FilterCheckBoxHolder.StateChangeListener? = null
     private var showDivider = true
     var checkBoxHolder = FilterCheckBoxHolder()
     var color = Color.parseColor("#b3e5fc")
     
-    override fun withName(name:String?):FilterDrawerItem {
+    override fun withName(name: String?): FilterDrawerItem {
         this.nameHolder = StringHolder(name)
         return this
     }
     
-    fun withListener(listener:FilterCheckBoxHolder.StateChangeListener):FilterDrawerItem {
+    fun withListener(listener: FilterCheckBoxHolder.StateChangeListener): FilterDrawerItem {
         this.listener = listener
         return this
     }
     
-    fun withDivider(show:Boolean):FilterDrawerItem {
+    fun withDivider(show: Boolean): FilterDrawerItem {
         this.showDivider = show
         return this
     }
     
-    fun withColor(@ColorInt color:Int):FilterDrawerItem {
+    fun withColor(@ColorInt color: Int): FilterDrawerItem {
         this.color = color
         return this
     }
     
-    override fun getLayoutRes():Int = R.layout.item_drawer_filter
+    override fun getLayoutRes(): Int = R.layout.item_drawer_filter
     
-    override fun getViewHolder(v:View):ViewHolder = ViewHolder(v)
+    override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
     
-    override fun getType():Int = R.id.filter
+    override fun getType(): Int = R.id.filter
     
-    override fun failedToRecycle(holder:ViewHolder?):Boolean = false
+    override fun failedToRecycle(holder: ViewHolder?): Boolean = false
     
-    override fun bindView(holder:ViewHolder?, payloads:MutableList<Any>?) {
+    override fun bindView(holder: ViewHolder?, payloads: MutableList<Any>?) {
         super.bindView(holder, payloads)
         holder?.let {
             nameHolder.applyTo(it.title)
@@ -87,9 +87,9 @@ class FilterDrawerItem:BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHol
         }
     }
     
-    class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
-        val title:TextView? = itemView.findViewById(R.id.filter_name)
-        val checkBox:AppCompatCheckBox? = itemView.findViewById(R.id.filter_checkbox)
-        val divider:View? = itemView.findViewById(R.id.divider)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title: TextView? = itemView.findViewById(R.id.filter_name)
+        val checkBox: AppCompatCheckBox? = itemView.findViewById(R.id.filter_checkbox)
+        val divider: View? = itemView.findViewById(R.id.divider)
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -16,6 +16,7 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.graphics.drawable.Drawable
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import ca.allanwang.kau.utils.scaleXY
@@ -25,51 +26,51 @@ import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
-import jahirfiquitiva.libs.frames.helpers.extensions.clearChildrenAnimations
 import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
-import jahirfiquitiva.libs.frames.ui.adapters.viewholders.GlideViewHolder
+import jahirfiquitiva.libs.kauextensions.extensions.clearChildrenAnimations
 
-class IconViewHolder(itemView:View):GlideViewHolder(itemView) {
+class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     
     var lastPosition = -1
-    val icon:ImageView = itemView.findViewById(R.id.icon)
+    val icon: ImageView = itemView.findViewById(R.id.icon)
     
-    fun bind(animate:Boolean, item:Icon) {
+    fun bind(animate: Boolean, item: Icon) {
         bind(animate, item, {})
         itemView.isClickable = false
         itemView.isFocusable = false
     }
     
-    fun bind(animate:Boolean, item:Icon, listener:(Icon) -> Unit) = with(itemView) {
-        icon.loadResource(Glide.with(itemView.context), item.icon, true, animate, true,
-                          object:GlideRequestCallback<Drawable>() {
-                              override fun onLoadSucceed(resource:Drawable):Boolean {
-                                  if (itemView.context.bpKonfigs.animationsEnabled && animate) {
-                                      scaleXY = 0F
-                                      setIconResource(resource)
-                                      animate().scaleX(1F)
-                                              .scaleY(1F)
-                                              .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
-                                              .setDuration(ICONS_ANIMATION_DURATION)
-                                              .start()
-                                  } else {
-                                      icon.setImageDrawable(resource)
-                                      itemView.clearChildrenAnimations()
-                                  }
-                                  return true
-                              }
-                          })
+    fun bind(animate: Boolean, item: Icon, listener: (Icon) -> Unit) = with(itemView) {
+        icon.loadResource(
+                Glide.with(itemView.context), item.icon, true, animate, true,
+                object : GlideRequestCallback<Drawable>() {
+                    override fun onLoadSucceed(resource: Drawable): Boolean {
+                        if (itemView.context.bpKonfigs.animationsEnabled && animate) {
+                            scaleXY = 0F
+                            setIconResource(resource)
+                            animate().scaleX(1F)
+                                    .scaleY(1F)
+                                    .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
+                                    .setDuration(ICONS_ANIMATION_DURATION)
+                                    .start()
+                        } else {
+                            icon.setImageDrawable(resource)
+                            itemView.clearChildrenAnimations()
+                        }
+                        return true
+                    }
+                })
         setOnClickListener { listener(item) }
     }
     
-    private fun setIconResource(resource:Drawable) {
+    private fun setIconResource(resource: Drawable) {
         icon.setImageDrawable(resource)
         lastPosition = adapterPosition
     }
     
-    override fun doOnRecycle() {
+    fun doOnRecycle() {
         icon.releaseFromGlide()
     }
 }

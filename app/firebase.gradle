@@ -13,14 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.blueprint
-
-import android.support.multidex.MultiDex
-import android.support.multidex.MultiDexApplication
-
-class BlueprintApp:MultiDexApplication() {
-    override fun onCreate() {
-        MultiDex.install(this)
-        super.onCreate()
-    }
+dependencies {
+    compile 'com.google.firebase:firebase-messaging:11.4.2'
 }
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -29,6 +29,7 @@ import com.andremion.counterfab.CounterFab
 import com.pitchedapps.butler.iconrequest.App
 import com.pitchedapps.butler.iconrequest.IconRequest
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
+import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
@@ -36,36 +37,37 @@ import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
-import jahirfiquitiva.libs.frames.helpers.extensions.isLowRamDevice
-import jahirfiquitiva.libs.frames.ui.fragments.base.BaseViewModelFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.extensions.actv
+import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.isInHorizontalMode
+import jahirfiquitiva.libs.kauextensions.extensions.isLowRamDevice
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 
 @SuppressLint("MissingSuperCall")
-class RequestsFragment:BaseViewModelFragment<App>() {
+class RequestsFragment : ViewModelFragment<App>() {
     
-    lateinit var viewModel:RequestsViewModel
+    lateinit var viewModel: RequestsViewModel
     
-    lateinit var rv:EmptyViewRecyclerView
-    lateinit var adapter:RequestsAdapter
-    lateinit var fastScroll:RecyclerFastScroller
+    lateinit var rv: EmptyViewRecyclerView
+    lateinit var adapter: RequestsAdapter
+    lateinit var fastScroll: RecyclerFastScroller
     
     private var spanCount = 0
-    private var spacingDecoration:GridSpacingItemDecoration? = null
-    private var dialog:RequestLimitDialog? = null
-    private var otherDialog:MaterialDialog? = null
+    private var spacingDecoration: GridSpacingItemDecoration? = null
+    private var dialog: RequestLimitDialog? = null
+    private var otherDialog: MaterialDialog? = null
     
-    override fun initUI(content:View) {
+    override fun initUI(content: View) {
         rv = content.findViewById(R.id.list_rv)
-        if (activity is BottomNavigationBlueprintActivity) {
-            val bottomNavigationHeight = (activity as BottomNavigationBlueprintActivity).bottomBar.height
+        if (actv is BottomNavigationBlueprintActivity) {
+            val bottomNavigationHeight = (actv as BottomNavigationBlueprintActivity).bottomBar.height
             rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
         } else {
             rv.setPaddingBottom(64F.dpToPx.toInt())
         }
-        rv.itemAnimator = if (context.isLowRamDevice) null else DefaultItemAnimator()
+        rv.itemAnimator = if (ctxt.isLowRamDevice) null else DefaultItemAnimator()
         rv.textView = content.findViewById(R.id.empty_text)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.setEmptyImage(R.drawable.empty_section)
@@ -73,20 +75,22 @@ class RequestsFragment:BaseViewModelFragment<App>() {
         rv.loadingView = content.findViewById(R.id.loading_view)
         rv.setLoadingText(R.string.loading_section)
         
-        spanCount = if (context.isInHorizontalMode) 2 else 1
+        spanCount = if (ctxt.isInHorizontalMode) 2 else 1
         rv.layoutManager = GridLayoutManager(context, spanCount)
-        spacingDecoration = GridSpacingItemDecoration(spanCount,
-                                                      context.dimenPixelSize(
-                                                              R.dimen.cards_small_margin))
+        spacingDecoration = GridSpacingItemDecoration(
+                spanCount,
+                ctxt.dimenPixelSize(
+                        R.dimen.cards_small_margin))
         rv.addItemDecoration(spacingDecoration)
         
-        rv.addOnScrollListener(object:RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView:RecyclerView?, dx:Int, dy:Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (dy > 0) doToFab { it -> it.hide() }
-                else doToFab { it -> it.show() }
-            }
-        })
+        rv.addOnScrollListener(
+                object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                        super.onScrolled(recyclerView, dx, dy)
+                        if (dy > 0) doToFab { it -> it.hide() }
+                        else doToFab { it -> it.show() }
+                    }
+                })
         
         adapter = RequestsAdapter { updateFabCount() }
         rv.adapter = adapter
@@ -100,7 +104,7 @@ class RequestsFragment:BaseViewModelFragment<App>() {
         ir?.let { doToFab { fab -> fab.count = it.selectedApps.size } }
     }
     
-    private fun doToFab(what:(CounterFab) -> Unit) {
+    private fun doToFab(what: (CounterFab) -> Unit) {
         if (activity is BaseBlueprintActivity) {
             what((activity as BaseBlueprintActivity).fab)
         }
@@ -132,7 +136,7 @@ class RequestsFragment:BaseViewModelFragment<App>() {
         }
     }
     
-    fun applyFilter(filter:String = "") {
+    fun applyFilter(filter: String = "") {
         if (filter.hasContent()) {
             viewModel.getData()?.let {
                 adapter.setItems(ArrayList(it.filter { it.name.contains(filter, true) }))
@@ -151,25 +155,26 @@ class RequestsFragment:BaseViewModelFragment<App>() {
     }
     
     override fun loadDataFromViewModel() {
-        viewModel.loadData(context, {
-            otherDialog = activity.buildMaterialDialog {
+        viewModel.loadData(
+                ctxt, {
+            otherDialog = actv.buildMaterialDialog {
                 title(R.string.no_selected_apps_title)
                 content(R.string.no_selected_apps_content)
                 positiveText(android.R.string.ok)
             }
             otherDialog?.show()
         }, { reason, appsLeft, millis ->
-                               try {
-                                   dialog = RequestLimitDialog()
-                                   if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
-                                       dialog?.show(activity, millis)
-                                   } else {
-                                       dialog?.show(activity, appsLeft)
-                                   }
-                               } catch (e:Exception) {
-                                   e.printStackTrace()
-                               }
-                           })
+                    try {
+                        dialog = RequestLimitDialog()
+                        if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
+                            dialog?.show(actv, millis)
+                        } else {
+                            dialog?.show(actv, appsLeft)
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                })
     }
     
     override fun unregisterObserver() {
@@ -185,10 +190,10 @@ class RequestsFragment:BaseViewModelFragment<App>() {
     private fun destroyDialog() {
         otherDialog?.dismiss()
         otherDialog = null
-        dialog?.dismiss(activity, RequestLimitDialog.TAG)
+        dialog?.dismiss(actv, RequestLimitDialog.TAG)
         dialog = null
     }
     
-    override fun getContentLayout():Int = R.layout.section_layout
-    override fun autoStartLoad():Boolean = true
+    override fun getContentLayout(): Int = R.layout.section_layout
+    override fun autoStartLoad(): Boolean = true
 }

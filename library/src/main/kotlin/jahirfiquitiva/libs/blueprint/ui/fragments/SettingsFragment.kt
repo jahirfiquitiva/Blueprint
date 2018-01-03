@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -23,28 +23,29 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
 import jahirfiquitiva.libs.frames.ui.fragments.SettingsFragment
+import jahirfiquitiva.libs.kauextensions.extensions.actv
+import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 
-class SettingsFragment:SettingsFragment() {
+class SettingsFragment : SettingsFragment() {
     override fun initPreferences() {
         super.initPreferences()
         
         val toolbarHeaderPref = findPreference("toolbar_header") as SwitchPreference
         toolbarHeaderPref.setOnPreferenceChangeListener { _, any ->
             val enable = any.toString().equals("true", true)
-            if (enable != context.bpKonfigs.wallpaperAsToolbarHeaderEnabled)
-                context.bpKonfigs.wallpaperAsToolbarHeaderEnabled = enable
+            if (enable != ctxt.bpKonfigs.wallpaperAsToolbarHeaderEnabled)
+                ctxt.bpKonfigs.wallpaperAsToolbarHeaderEnabled = enable
             true
         }
         
-        
-        var componentName = context.packageName + "." + getString(R.string.main_activity_name)
-        val className:Class<*>? = try {
+        var componentName = ctxt.packageName + "." + getString(R.string.main_activity_name)
+        val className: Class<*>? = try {
             Class.forName(componentName)
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             componentName = getString(R.string.main_activity_fullname)
             try {
                 Class.forName(componentName)
-            } catch (ignored:Exception) {
+            } catch (ignored: Exception) {
                 null
             }
         }
@@ -52,23 +53,24 @@ class SettingsFragment:SettingsFragment() {
         val hideIcon = findPreference("launcher_icon") as SwitchPreference
         
         if (className != null) {
-            hideIcon.isChecked = !context.bpKonfigs.launcherIconShown
+            hideIcon.isChecked = !ctxt.bpKonfigs.launcherIconShown
             
             hideIcon.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
-                val component = ComponentName(context.packageName, componentName)
+                val component = ComponentName(ctxt.packageName, componentName)
                 if (newValue.toString().equals("true", true)) {
                     clearDialog()
-                    dialog = activity.buildMaterialDialog {
+                    dialog = actv.buildMaterialDialog {
                         title(R.string.hideicon_dialog_title)
                         content(R.string.hideicon_dialog_content)
                         positiveText(android.R.string.yes)
                         negativeText(android.R.string.no)
                         onPositive { _, _ ->
-                            if (context.bpKonfigs.launcherIconShown) {
-                                context.bpKonfigs.launcherIconShown = false
-                                context.packageManager.setComponentEnabledSetting(component,
-                                                                                  PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                                                                                  PackageManager.DONT_KILL_APP)
+                            if (ctxt.bpKonfigs.launcherIconShown) {
+                                ctxt.bpKonfigs.launcherIconShown = false
+                                ctxt.packageManager.setComponentEnabledSetting(
+                                        component,
+                                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                                        PackageManager.DONT_KILL_APP)
                                 hideIcon.isChecked = true
                             }
                         }
@@ -81,11 +83,12 @@ class SettingsFragment:SettingsFragment() {
                     }
                     dialog?.show()
                 } else {
-                    if (!context.bpKonfigs.launcherIconShown) {
-                        context.bpKonfigs.launcherIconShown = true
-                        context.packageManager.setComponentEnabledSetting(component,
-                                                                          PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                                                                          PackageManager.DONT_KILL_APP)
+                    if (!ctxt.bpKonfigs.launcherIconShown) {
+                        ctxt.bpKonfigs.launcherIconShown = true
+                        ctxt.packageManager.setComponentEnabledSetting(
+                                component,
+                                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                                PackageManager.DONT_KILL_APP)
                     }
                 }
                 true

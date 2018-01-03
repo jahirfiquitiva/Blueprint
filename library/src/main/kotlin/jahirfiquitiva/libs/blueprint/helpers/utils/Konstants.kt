@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -37,5 +37,5 @@ const val DEFAULT_SETTINGS_POSITION = 6
 const val DEFAULT_HELP_POSITION = 7
 
 // Animation durations
-const val ICONS_ANIMATION_DURATION:Long = 250
-const val ICONS_ANIMATION_DURATION_DELAY:Long = 100
+const val ICONS_ANIMATION_DURATION: Long = 250
+const val ICONS_ANIMATION_DURATION_DELAY: Long = 100

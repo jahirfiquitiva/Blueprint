@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2017. Jahir Fiquitiva
+  ~ Copyright (c) 2018. Jahir Fiquitiva
   ~
   ~ Licensed under the CreativeCommons Attribution-ShareAlike
   ~ 4.0 International License. You may not use this file except in compliance
@@ -14,8 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
-<jahirfiquitiva.libs.kauextensions.ui.views.SquaredImageView
+<jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/icon"

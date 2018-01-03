@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -18,17 +18,16 @@ package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentActivity
 
-abstract class BasicDialogFragment:DialogFragment() {
-    fun dismiss(context:FragmentActivity, tag:String) {
+abstract class BasicDialogFragment : DialogFragment() {
+    fun dismiss(activity: FragmentActivity, tag: String) {
         try {
-            val frag = context.supportFragmentManager.findFragmentByTag(tag)
+            val frag = activity.supportFragmentManager.findFragmentByTag(tag)
             if (frag != null) (frag as IconDialog).dismiss()
-        } catch (ignored:Exception) {
+        } catch (ignored: Exception) {
         }
         try {
             dismiss()
-        } catch (ignored:Exception) {
+        } catch (ignored: Exception) {
         }
     }
-    
 }

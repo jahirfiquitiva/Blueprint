@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -37,7 +37,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import biz.kasual.materialnumberpicker.MaterialNumberPicker
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.goneIf
 import ca.allanwang.kau.utils.hideIf
@@ -52,6 +51,7 @@ import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
 import ca.allanwang.kau.xml.showChangelog
 import com.andremion.counterfab.CounterFab
+import com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.pitchedapps.butler.iconrequest.IconRequest
@@ -83,20 +83,15 @@ import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.fabsmenu.FABsMenu
 import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
 import jahirfiquitiva.libs.fabsmenu.TitleFAB
-import jahirfiquitiva.libs.frames.helpers.extensions.PermissionRequestListener
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
-import jahirfiquitiva.libs.frames.helpers.extensions.checkPermission
 import jahirfiquitiva.libs.frames.helpers.extensions.framesKonfigs
-import jahirfiquitiva.libs.frames.helpers.extensions.requestPermissions
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.frames.ui.activities.base.BaseFramesActivity
 import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
-import jahirfiquitiva.libs.frames.ui.widgets.SearchView
-import jahirfiquitiva.libs.frames.ui.widgets.bindSearchView
+import jahirfiquitiva.libs.kauextensions.extensions.PermissionRequestListener
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kauextensions.extensions.changeOptionVisibility
 import jahirfiquitiva.libs.kauextensions.extensions.enableTranslucentStatusBar
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
@@ -115,44 +110,46 @@ import jahirfiquitiva.libs.kauextensions.extensions.overlayColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
+import jahirfiquitiva.libs.kauextensions.extensions.requestSinglePermission
 import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 import jahirfiquitiva.libs.kauextensions.extensions.tint
-import jahirfiquitiva.libs.kauextensions.extensions.tintMenu
+import jahirfiquitiva.libs.kauextensions.ui.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
-import jahirfiquitiva.libs.kauextensions.ui.views.callbacks.CollapsingToolbarCallback
-import java.util.*
-import kotlin.collections.ArrayList
+import jahirfiquitiva.libs.kauextensions.ui.widgets.SearchView
+import jahirfiquitiva.libs.kauextensions.ui.widgets.bindSearchView
+import java.util.Collections
 
-abstract class BaseBlueprintActivity:BaseFramesActivity() {
+abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
-    abstract fun hasBottomNavigation():Boolean
+    abstract fun hasBottomNavigation(): Boolean
     
-    private val coordinatorLayout:CustomCoordinatorLayout by bind(R.id.mainCoordinatorLayout)
-    private val appbarLayout:FixedElevationAppBarLayout by bind(R.id.appbar)
-    private val collapsingToolbar:CollapsingToolbarLayout by bind(R.id.collapsingToolbar)
-    private val iconsPreviewRV:RecyclerView by bind(R.id.toolbar_icons_grid)
+    private val coordinatorLayout: CustomCoordinatorLayout by bind(R.id.mainCoordinatorLayout)
+    private val appbarLayout: FixedElevationAppBarLayout by bind(R.id.appbar)
+    private val collapsingToolbar: CollapsingToolbarLayout by bind(R.id.collapsingToolbar)
+    private val iconsPreviewRV: RecyclerView by bind(R.id.toolbar_icons_grid)
     
-    private lateinit var filtersDrawer:Drawer
-    private lateinit var iconsPreviewAdapter:IconsAdapter
+    private lateinit var filtersDrawer: Drawer
+    private lateinit var iconsPreviewAdapter: IconsAdapter
     
-    internal val toolbar:CustomToolbar by bind(R.id.toolbar)
-    internal val fabsMenu:FABsMenu by bind(R.id.fabs_menu)
-    internal val fab:CounterFab by bind(R.id.fab)
+    internal val toolbar: CustomToolbar by bind(R.id.toolbar)
+    internal val fabsMenu: FABsMenu by bind(R.id.fabs_menu)
+    internal val fab: CounterFab by bind(R.id.fab)
     
-    var drawer:Drawer? = null
-    var searchView:SearchView? = null
-    private var currentFragment:Fragment? = null
+    var drawer: Drawer? = null
+    var searchView: SearchView? = null
+    private var currentFragment: Fragment? = null
     
-    private var iconsFilters:ArrayList<String> = ArrayList()
-    internal var currentItemId:Int = -1
+    private var iconsFilters: ArrayList<String> = ArrayList()
+    internal var currentItemId: Int = -1
     
-    override fun fragmentsContainer():Int = R.id.fragments_container
+    override fun fragmentsContainer(): Int = R.id.fragments_container
     
-    override fun onCreate(savedInstanceState:Bundle?) {
+    @SuppressLint("MissingSuperCall")
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableTranslucentStatusBar()
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
@@ -181,25 +178,27 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
     }
     
     @SuppressLint("MissingSuperCall")
-    override fun onSaveInstanceState(outState:Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle?) {
         outState?.putString("toolbarTitle", collapsingToolbar.title.toString())
         outState?.putInt("currentItemId", currentItemId)
         super.onSaveInstanceState(outState)
     }
     
-    override fun onRestoreInstanceState(savedInstanceState:Bundle?) {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         collapsingToolbar.title = savedInstanceState?.getString("toolbarTitle", getAppName())
-        navigateToItem(getNavigationItemWithId(
-                savedInstanceState?.getInt("currentItemId") ?: DEFAULT_HOME_POSITION))
+        navigateToItem(
+                getNavigationItemWithId(
+                        savedInstanceState?.getInt("currentItemId") ?: DEFAULT_HOME_POSITION))
     }
     
+    @SuppressLint("MissingSuperCall")
     override fun onResume() {
         super.onResume()
         initWallpaperInToolbar()
     }
     
-    private fun initMainComponents(savedInstance:Bundle?) {
+    private fun initMainComponents(savedInstance: Bundle?) {
         // initToolbar()
         initCollapsingToolbar()
         initIconsPreview()
@@ -209,41 +208,43 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
     }
     
     private fun initFAB() {
-        fab.setImageDrawable("ic_send".getDrawable(this).tint(getActiveIconsColorFor(accentColor)))
+        fab.setImageDrawable("ic_send".getDrawable(this)?.tint(getActiveIconsColorFor(accentColor)))
         fab.setMarginRight(16F.dpToPx.toInt())
         fab.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
         fab.setOnClickListener { startRequestsProcess() }
     }
     
     private fun initFABsMenu() {
-        val fabsMenuOverlay:FABsMenuLayout = findViewById(R.id.fabs_menu_overlay)
+        val fabsMenuOverlay: FABsMenuLayout = findViewById(R.id.fabs_menu_overlay)
         fabsMenuOverlay.overlayColor = overlayColor
         
         if (hasBottomNavigation()) {
             fabsMenu.menuBottomMargin = 72F.dpToPx.toInt()
         }
-        fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this).tint(
+        fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this)?.tint(
                 getActiveIconsColorFor(accentColor))
         fabsMenu.menuButtonRippleColor = rippleColor
         
-        val rateFab:TitleFAB = findViewById(R.id.rate_fab)
-        rateFab.setImageDrawable("ic_rate".getDrawable(this).tint(activeIconsColor))
+        val rateFab: TitleFAB = findViewById(R.id.rate_fab)
+        rateFab.setImageDrawable("ic_rate".getDrawable(this)?.tint(activeIconsColor))
         rateFab.titleTextColor = primaryTextColor
         rateFab.rippleColor = rippleColor
         rateFab.setOnClickListener { openLink(PLAY_STORE_LINK_PREFIX + packageName) }
         
-        val shareFab:TitleFAB = findViewById(R.id.share_fab)
-        shareFab.setImageDrawable("ic_share".getDrawable(this).tint(activeIconsColor))
+        val shareFab: TitleFAB = findViewById(R.id.share_fab)
+        shareFab.setImageDrawable("ic_share".getDrawable(this)?.tint(activeIconsColor))
         shareFab.titleTextColor = primaryTextColor
         shareFab.rippleColor = rippleColor
         shareFab.setOnClickListener {
-            shareText(getString(R.string.share_this_app, getAppName(),
-                                PLAY_STORE_LINK_PREFIX + packageName))
+            shareText(
+                    getString(
+                            R.string.share_this_app, getAppName(),
+                            PLAY_STORE_LINK_PREFIX + packageName))
         }
         
-        val donateFab:TitleFAB = findViewById(R.id.donate_fab)
+        val donateFab: TitleFAB = findViewById(R.id.donate_fab)
         if (donationsEnabled) {
-            donateFab.setImageDrawable("ic_donate".getDrawable(this).tint(activeIconsColor))
+            donateFab.setImageDrawable("ic_donate".getDrawable(this)?.tint(activeIconsColor))
             donateFab.titleTextColor = primaryTextColor
             donateFab.rippleColor = rippleColor
             donateFab.setOnClickListener {
@@ -253,14 +254,14 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
             fabsMenu.removeButton(donateFab)
         }
         
-        val helpFab:TitleFAB = findViewById(R.id.help_fab)
-        helpFab.setImageDrawable("ic_help".getDrawable(this).tint(activeIconsColor))
+        val helpFab: TitleFAB = findViewById(R.id.help_fab)
+        helpFab.setImageDrawable("ic_help".getDrawable(this)?.tint(activeIconsColor))
         helpFab.titleTextColor = primaryTextColor
         helpFab.rippleColor = rippleColor
         helpFab.setOnClickListener { launchHelpActivity() }
     }
     
-    override fun onCreateOptionsMenu(menu:Menu?):Boolean {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         menu?.let {
             val donationItem = it.findItem(R.id.donate)
@@ -270,20 +271,20 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
             
             searchView = bindSearchView(it, R.id.search, true)
             
-            searchView?.listener = object:SearchView.SearchListener {
-                override fun onQueryChanged(query:String) {
+            searchView?.listener = object : SearchView.SearchListener {
+                override fun onQueryChanged(query: String) {
                     doSearch(query)
                 }
                 
-                override fun onQuerySubmit(query:String) {
+                override fun onQuerySubmit(query: String) {
                     doSearch(query)
                 }
                 
-                override fun onSearchOpened(searchView:SearchView) {
+                override fun onSearchOpened(searchView: SearchView) {
                     // Do nothing
                 }
                 
-                override fun onSearchClosed(searchView:SearchView) {
+                override fun onSearchClosed(searchView: SearchView) {
                     doSearch()
                 }
             }
@@ -295,13 +296,14 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
                 else -> ""
             }
         }
-        toolbar.tint(getPrimaryTextColorFor(primaryColor, 0.6F),
-                     getSecondaryTextColorFor(primaryColor, 0.6F),
-                     getActiveIconsColorFor(primaryColor, 0.6F))
+        toolbar.tint(
+                getPrimaryTextColorFor(primaryColor, 0.6F),
+                getSecondaryTextColorFor(primaryColor, 0.6F),
+                getActiveIconsColorFor(primaryColor, 0.6F))
         return super.onCreateOptionsMenu(menu)
     }
     
-    override fun onOptionsItemSelected(item:MenuItem?):Boolean {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         item?.let {
             when (it.itemId) {
                 R.id.filters -> filtersDrawer.openDrawer()
@@ -320,25 +322,29 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
     private fun initCollapsingToolbar() {
         collapsingToolbar.setExpandedTitleColor(Color.TRANSPARENT)
         collapsingToolbar.setCollapsedTitleTextColor(primaryTextColor)
-        appbarLayout.addOnOffsetChangedListener(object:CollapsingToolbarCallback() {
-            override fun onVerticalOffsetChanged(appBar:AppBarLayout, verticalOffset:Int) =
-                    updateToolbarColorsHere(verticalOffset)
-        })
+        appbarLayout.addOnOffsetChangedListener(
+                object : CollapsingToolbarCallback() {
+                    override fun onVerticalOffsetChanged(
+                            appBar: AppBarLayout,
+                            verticalOffset: Int
+                                                        ) =
+                            updateToolbarColorsHere(verticalOffset)
+                })
         initWallpaperInToolbar()
     }
     
     private fun initWallpaperInToolbar() {
-        val wallpaper:ImageView? = findViewById(R.id.toolbarHeader)
+        val wallpaper: ImageView? = findViewById(R.id.toolbarHeader)
         val wallManager = WallpaperManager.getInstance(this)
         if (picker == 0 && getShortcut().isEmpty()) {
-            val drawable:Drawable? = if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
+            val drawable: Drawable? = if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
                 wallManager?.fastDrawable
             } else {
                 val picName = getString(R.string.toolbar_picture)
                 if (picName.isNotEmpty()) {
                     try {
                         picName.getDrawable(this)
-                    } catch (ignored:Exception) {
+                    } catch (ignored: Exception) {
                         null
                     }
                 } else null
@@ -351,20 +357,25 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
     
     fun initIconsPreview() {
         iconsPreviewRV.layoutManager =
-                object:GridLayoutManager(this, getInteger(R.integer.icons_columns)) {
-                    override fun canScrollVertically():Boolean = false
-                    override fun canScrollHorizontally():Boolean = false
-                    override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
-                                                               rect:Rect?,
-                                                               immediate:Boolean):Boolean = false
+                object : GridLayoutManager(this, getInteger(R.integer.icons_columns)) {
+                    override fun canScrollVertically(): Boolean = false
+                    override fun canScrollHorizontally(): Boolean = false
+                    override fun requestChildRectangleOnScreen(
+                            parent: RecyclerView?, child: View?,
+                            rect: Rect?,
+                            immediate: Boolean
+                                                              ): Boolean = false
                     
-                    override fun requestChildRectangleOnScreen(parent:RecyclerView?, child:View?,
-                                                               rect:Rect?, immediate:Boolean,
-                                                               focusedChildVisible:Boolean):Boolean = false
+                    override fun requestChildRectangleOnScreen(
+                            parent: RecyclerView?, child: View?,
+                            rect: Rect?, immediate: Boolean,
+                            focusedChildVisible: Boolean
+                                                              ): Boolean = false
                 }
         iconsPreviewRV.addItemDecoration(
-                GridSpacingItemDecoration(getInteger(R.integer.icons_columns),
-                                          getDimensionPixelSize(R.dimen.cards_margin)))
+                GridSpacingItemDecoration(
+                        getInteger(R.integer.icons_columns),
+                        getDimensionPixelSize(R.dimen.cards_margin)))
         findViewById<LinearLayout>(
                 R.id.toolbar_icons_container).setOnClickListener { loadIconsIntoAdapter() }
         loadIconsIntoAdapter()
@@ -385,22 +396,22 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
                 for (i in 0 until getInteger(R.integer.icons_columns)) {
                     try {
                         correctList.add(icons[i])
-                    } catch (ignored:Exception) {
+                    } catch (ignored: Exception) {
                     }
                 }
                 iconsPreviewRV.adapter = iconsPreviewAdapter
                 iconsPreviewAdapter.setItems(correctList)
             }
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
     
-    fun initFiltersDrawer(savedInstance:Bundle?) {
+    fun initFiltersDrawer(savedInstance: Bundle?) {
         val filtersDrawerBuilder = DrawerBuilder().withActivity(this)
         filtersDrawerBuilder.addDrawerItems(
                 FilterTitleDrawerItem().withButtonListener(
-                        object:FilterTitleDrawerItem.ButtonListener {
+                        object : FilterTitleDrawerItem.ButtonListener {
                             override fun onButtonPressed() {
                                 val hadFilters = iconsFilters.isNotEmpty()
                                 filtersDrawer.drawerItems?.forEach {
@@ -424,24 +435,27 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
                     filtersDrawerBuilder.addDrawerItems(
                             FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
                                     .withColor(Color.parseColor(colors[colorIndex]))
-                                    .withListener(object:FilterCheckBoxHolder.StateChangeListener {
-                                        override fun onStateChanged(checked:Boolean, title:String,
-                                                                    fireFiltersListener:Boolean) {
-                                            if (iconsFilters.contains(title)) {
-                                                if (!checked) {
-                                                    iconsFilters.remove(title)
-                                                    if (fireFiltersListener)
-                                                        onFiltersUpdated(iconsFilters)
+                                    .withListener(
+                                            object : FilterCheckBoxHolder.StateChangeListener {
+                                                override fun onStateChanged(
+                                                        checked: Boolean, title: String,
+                                                        fireFiltersListener: Boolean
+                                                                           ) {
+                                                    if (iconsFilters.contains(title)) {
+                                                        if (!checked) {
+                                                            iconsFilters.remove(title)
+                                                            if (fireFiltersListener)
+                                                                onFiltersUpdated(iconsFilters)
+                                                        }
+                                                    } else {
+                                                        if (checked) {
+                                                            iconsFilters.add(title)
+                                                            if (fireFiltersListener)
+                                                                onFiltersUpdated(iconsFilters)
+                                                        }
+                                                    }
                                                 }
-                                            } else {
-                                                if (checked) {
-                                                    iconsFilters.add(title)
-                                                    if (fireFiltersListener)
-                                                        onFiltersUpdated(iconsFilters)
-                                                }
-                                            }
-                                        }
-                                    })
+                                            })
                                     .withDivider(index < (filters.size - 1)))
                     index += 1
                     colorIndex += 1
@@ -453,19 +467,19 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
         filtersDrawer = filtersDrawerBuilder.build()
     }
     
-    internal fun navigateToItem(item:NavigationItem):Boolean {
+    internal fun navigateToItem(item: NavigationItem): Boolean {
         val id = item.id
         if (currentItemId == id) return false
         try {
             currentItemId = id
             return internalNavigateToItem(item)
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
         return false
     }
     
-    internal open fun internalNavigateToItem(item:NavigationItem):Boolean {
+    internal open fun internalNavigateToItem(item: NavigationItem): Boolean {
         try {
             val isOpen = searchView?.isOpen ?: false
             if (isOpen) {
@@ -500,38 +514,43 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
             
             val rightItem = getNavigationItemWithId(item.id)
             changeFragment(getFragmentForNavigationItem(item.id), rightItem.tag)
-            lockFiltersDrawer(item.id != DEFAULT_ICONS_POSITION ||
-                                      getStringArray(R.array.icon_filters).size <= 1)
+            lockFiltersDrawer(
+                    item.id != DEFAULT_ICONS_POSITION ||
+                            getStringArray(R.array.icon_filters).size <= 1)
             return true
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
         return false
     }
     
-    private fun updateToolbarMenuItems(item:NavigationItem, menu:Menu) {
+    private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
         menu.changeOptionVisibility(R.id.search, item.id != DEFAULT_HOME_POSITION)
-        menu.changeOptionVisibility(R.id.filters,
-                                    item.id == DEFAULT_ICONS_POSITION &&
-                                            getStringArray(R.array.icon_filters).size > 1)
-        menu.changeOptionVisibility(R.id.columns,
-                                    item.id == DEFAULT_WALLPAPERS_POSITION)
-        menu.changeOptionVisibility(R.id.refresh,
-                                    item.id == DEFAULT_WALLPAPERS_POSITION)
-        menu.changeOptionVisibility(R.id.select_all,
-                                    item.id == DEFAULT_REQUEST_POSITION)
-        toolbar.tintMenu(getActiveIconsColorFor(primaryColor))
+        menu.changeOptionVisibility(
+                R.id.filters,
+                item.id == DEFAULT_ICONS_POSITION &&
+                        getStringArray(R.array.icon_filters).size > 1)
+        menu.changeOptionVisibility(
+                R.id.columns,
+                item.id == DEFAULT_WALLPAPERS_POSITION)
+        menu.changeOptionVisibility(
+                R.id.refresh,
+                item.id == DEFAULT_WALLPAPERS_POSITION)
+        menu.changeOptionVisibility(
+                R.id.select_all,
+                item.id == DEFAULT_REQUEST_POSITION)
+        menu.tint(getActiveIconsColorFor(primaryColor))
     }
     
-    private fun lockFiltersDrawer(lock:Boolean) {
+    private fun lockFiltersDrawer(lock: Boolean) {
         val drawerLayout = filtersDrawer.drawerLayout
         drawerLayout?.setDrawerLockMode(
                 if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
                 Gravity.END)
     }
     
-    open fun getFragmentForNavigationItem(id:Int):Fragment {
-        val frag:Fragment = when (id) {
+    open fun getFragmentForNavigationItem(id: Int): Fragment {
+        val frag: Fragment = when (id) {
             DEFAULT_HOME_POSITION -> HomeFragment()
             DEFAULT_ICONS_POSITION -> IconsFragment()
             DEFAULT_WALLPAPERS_POSITION -> WallpapersFragment()
@@ -543,23 +562,26 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
         return frag
     }
     
-    open fun getNavigationItems():Array<NavigationItem> =
-            arrayOf(NavigationItem.HOME,
+    open fun getNavigationItems(): Array<NavigationItem> =
+            arrayOf(
+                    NavigationItem.HOME,
                     NavigationItem.ICONS,
                     NavigationItem.WALLPAPERS,
                     NavigationItem.APPLY,
                     NavigationItem.REQUESTS)
     
-    internal fun getNavigationItemWithId(id:Int):NavigationItem {
+    internal fun getNavigationItemWithId(id: Int): NavigationItem {
         getNavigationItems().forEach { if (it.id == id) return it }
         return NavigationItem.HOME
     }
     
-    internal fun updateToolbarColorsHere(offset:Int) =
+    internal fun updateToolbarColorsHere(offset: Int) =
             updateToolbarColors(toolbar, drawer, offset, 0.6F)
     
-    override fun onRequestPermissionsResult(requestCode:Int, permissions:Array<out String>,
-                                            grantResults:IntArray) {
+    override fun onRequestPermissionsResult(
+            requestCode: Int, permissions: Array<out String>,
+            grantResults: IntArray
+                                           ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 41) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -573,20 +595,20 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
     fun startRequestsProcess() {
         IconRequest.get()?.let {
             if (it.selectedApps.size > 0) {
-                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                object:PermissionRequestListener {
-                                    override fun onPermissionRequest(permission:String) =
-                                            requestPermissions(41, permission)
-                    
-                                    override fun showPermissionInformation(permission:String) =
-                                            showPermissionInformation()
-                    
-                                    override fun onPermissionCompletelyDenied() {
-                                        snackbar(R.string.permission_denied_completely)
-                                    }
-                    
-                                    override fun onPermissionGranted() = doSendRequest()
-                                })
+                requestSinglePermission(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE, 41,
+                        object : PermissionRequestListener() {
+                            override fun onPermissionCompletelyDenied() {
+                                snackbar(R.string.permission_denied_completely)
+                            }
+                            
+                            override fun onPermissionGranted() {
+                                doSendRequest()
+                            }
+                            
+                            override fun onShowInformation(permission: String) =
+                                    showPermissionInformation()
+                        })
             } else {
                 runOnUiThread {
                     destroyDialog()
@@ -610,30 +632,31 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
         }
         val ir = IconRequest.get()
         if (ir != null) {
-            ir.send(object:OnRequestProgress() {
-                override fun doWhenStarted() {
-                    runOnUiThread { dialog?.show() }
-                }
-                
-                override fun doOnError() {
-                    runOnUiThread {
-                        destroyDialog()
-                        dialog = buildMaterialDialog {
-                            title(R.string.error_title)
-                            content(R.string.requests_error)
-                            positiveText(android.R.string.ok)
+            ir.send(
+                    object : OnRequestProgress() {
+                        override fun doWhenStarted() {
+                            runOnUiThread { dialog?.show() }
                         }
-                        dialog?.show()
-                    }
-                }
-                
-                override fun doWhenReady() {
-                    runOnUiThread {
-                        destroyDialog()
-                        unselectAll()
-                    }
-                }
-            })
+                        
+                        override fun doOnError() {
+                            runOnUiThread {
+                                destroyDialog()
+                                dialog = buildMaterialDialog {
+                                    title(R.string.error_title)
+                                    content(R.string.requests_error)
+                                    positiveText(android.R.string.ok)
+                                }
+                                dialog?.show()
+                            }
+                        }
+                        
+                        override fun doWhenReady() {
+                            runOnUiThread {
+                                destroyDialog()
+                                unselectAll()
+                            }
+                        }
+                    })
         } else {
             destroyDialog()
             dialog = buildMaterialDialog {
@@ -646,21 +669,23 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
     }
     
     private fun showPermissionInformation() {
-        snackbar(getString(R.string.permission_request, getAppName()), Snackbar.LENGTH_SHORT, {
-            setAction(R.string.allow, {
+        snackbar(
+                getString(R.string.permission_request, getAppName()), Snackbar.LENGTH_SHORT, {
+            setAction(
+                    R.string.allow, {
                 dismiss()
                 doSendRequest()
             })
         })
     }
     
-    internal fun onFiltersUpdated(filters:ArrayList<String>) {
+    internal fun onFiltersUpdated(filters: ArrayList<String>) {
         if (currentFragment is IconsFragment) {
             (currentFragment as IconsFragment).applyFilters(filters)
         }
     }
     
-    internal fun doSearch(search:String = "") {
+    internal fun doSearch(search: String = "") {
         when (currentFragment) {
             is IconsFragment -> (currentFragment as IconsFragment).doSearch(search)
             is WallpapersFragment -> (currentFragment as WallpapersFragment).applyFilter(search)
@@ -675,16 +700,14 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
             
             val currentColumns = framesKonfigs.columns
             
-            val numberPicker = MaterialNumberPicker.Builder(this)
-                    .minValue(1)
-                    .maxValue(6)
-                    .defaultValue(currentColumns)
-                    .backgroundColor(cardBackgroundColor)
-                    .separatorColor(Color.TRANSPARENT)
-                    .textColor(secondaryTextColor)
-                    .enableFocusability(false)
-                    .wrapSelectorWheel(true)
-                    .build()
+            val numberPicker = MaterialNumberPicker(
+                    context = this,
+                    minValue = 1,
+                    maxValue = 6,
+                    value = currentColumns,
+                    separatorColor = Color.TRANSPARENT,
+                    textColor = secondaryTextColor,
+                    wrapped = true)
             
             dialog = buildMaterialDialog {
                 title(R.string.wallpapers_columns_setting_title)
@@ -697,7 +720,7 @@ abstract class BaseBlueprintActivity:BaseFramesActivity() {
                             framesKonfigs.columns = newColumns
                             (currentFragment as WallpapersFragment).configureRVColumns()
                         }
-                    } catch (ignored:Exception) {
+                    } catch (ignored: Exception) {
                     }
                     dialog.dismiss()
                 }

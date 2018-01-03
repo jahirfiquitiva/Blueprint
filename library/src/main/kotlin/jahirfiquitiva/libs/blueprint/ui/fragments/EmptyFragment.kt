@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -19,20 +19,20 @@ import android.view.View
 import ca.allanwang.kau.utils.gone
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.frames.ui.fragments.base.BasicFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.ui.fragments.Fragment
 
-open class EmptyFragment:BasicFragment<Boolean>() {
-    override fun getContentLayout():Int = R.layout.section_layout
+open class EmptyFragment : Fragment<Boolean>() {
+    override fun getContentLayout(): Int = R.layout.section_layout
     
-    override fun initUI(content:View) {
-        val fastScroll:RecyclerFastScroller = content.findViewById(R.id.fast_scroller)
+    override fun initUI(content: View) {
+        val fastScroll: RecyclerFastScroller = content.findViewById(R.id.fast_scroller)
         fastScroll.gone()
-        val emptyRecyclerView:EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
+        val emptyRecyclerView: EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
         emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)
         emptyRecyclerView.textView = content.findViewById(R.id.empty_text)
         emptyRecyclerView.state = EmptyViewRecyclerView.State.EMPTY
     }
     
-    override fun onItemClicked(item:Boolean) {}
+    override fun onItemClicked(item: Boolean, longClick: Boolean) {}
 }

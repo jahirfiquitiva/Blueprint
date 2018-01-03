@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -18,15 +18,15 @@ package jahirfiquitiva.libs.blueprint.providers.viewmodels
 import android.content.Context
 import android.content.Intent
 import ca.allanwang.kau.utils.isAppInstalled
+import jahirfiquitiva.libs.archhelpers.viewmodels.ListViewModel
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
-import jahirfiquitiva.libs.frames.providers.viewmodels.ListViewModel
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
 
-class HomeItemViewModel:ListViewModel<Context, HomeItem>() {
-    override fun internalLoad(param:Context):MutableList<HomeItem> {
+class HomeItemViewModel : ListViewModel<Context, HomeItem>() {
+    override fun internalLoad(param: Context): ArrayList<HomeItem> {
         val everything = ArrayList<HomeItem>()
         val apps = ArrayList<HomeItem>()
         val links = ArrayList<HomeItem>()
@@ -41,17 +41,19 @@ class HomeItemViewModel:ListViewModel<Context, HomeItem>() {
                 val url = urls[i]
                 val isAnApp = url.toLowerCase().startsWith(PLAY_STORE_LINK_PREFIX)
                 var isInstalled = false
-                var intent:Intent? = null
+                var intent: Intent? = null
                 if (isAnApp) {
                     val packageName = url.substring(url.lastIndexOf("="))
                     isInstalled = param.isAppInstalled(packageName)
                     intent = param.packageManager.getLaunchIntentForPackage(packageName)
                 }
-                val item = HomeItem(titles[i], descriptions[i], urls[i],
-                                    icons[i].getDrawable(param),
-                                    (if (isAnApp) if (isInstalled) "ic_open_app" else "ic_download"
-                                    else "ic_open_app").getDrawable(param),
-                                    isAnApp, isInstalled, intent)
+                val item = HomeItem(
+                        titles[i], descriptions[i], urls[i],
+                        // TODO: Remove !!
+                        icons[i].getDrawable(param)!!,
+                        (if (isAnApp) if (isInstalled) "ic_open_app" else "ic_download"
+                        else "ic_open_app").getDrawable(param),
+                        isAnApp, isInstalled, intent)
                 if (isAnApp) apps.add(item) else links.add(item)
             }
         }

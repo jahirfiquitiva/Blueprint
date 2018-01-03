@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -40,23 +40,23 @@ import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
 import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 
-abstract class DrawerBlueprintActivity:BaseBlueprintActivity() {
+abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
     
-    override fun onCreate(savedInstanceState:Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initDrawer(savedInstanceState)
     }
     
-    override fun onSaveInstanceState(outState:Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle?) {
         val nOutState = drawer?.saveInstanceState(outState)
         super.onSaveInstanceState(nOutState)
     }
     
-    private fun initDrawer(savedInstance:Bundle?) {
-        val v:View = findViewById(R.id.bottom_navigation)
+    private fun initDrawer(savedInstance: Bundle?) {
+        val v: View = findViewById(R.id.bottom_navigation)
         v.gone()
         val accountHeaderBuilder = AccountHeaderBuilder().withActivity(this)
-        val header:Drawable? = "drawer_header".getDrawable(this)
+        val header: Drawable? = "drawer_header".getDrawable(this)
         if (header != null) {
             accountHeaderBuilder.withHeaderBackground(header)
         } else {
@@ -76,9 +76,9 @@ abstract class DrawerBlueprintActivity:BaseBlueprintActivity() {
         
         val accountHeader = accountHeaderBuilder.build()
         
-        val drawerTitle:TextView = accountHeader.view.findViewById(
+        val drawerTitle: TextView = accountHeader.view.findViewById(
                 R.id.material_drawer_account_header_name)
-        val drawerSubtitle:TextView = accountHeader.view.findViewById(
+        val drawerSubtitle: TextView = accountHeader.view.findViewById(
                 R.id.material_drawer_account_header_email)
         
         TextViewCompat.setTextAppearance(drawerTitle, R.style.DrawerTextsWithShadow)
@@ -112,7 +112,7 @@ abstract class DrawerBlueprintActivity:BaseBlueprintActivity() {
                         return@withOnDrawerItemClickListener navigated
                     }
                 }
-            } catch (e:Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
             return@withOnDrawerItemClickListener true
@@ -128,20 +128,23 @@ abstract class DrawerBlueprintActivity:BaseBlueprintActivity() {
         
         drawerBuilder.addDrawerItems(DividerDrawerItem())
         
-        drawerBuilder.addDrawerItems(SecondaryDrawerItem()
-                                             .withIdentifier(DEFAULT_CREDITS_POSITION.toLong())
-                                             .withName(R.string.section_about)
-                                             .withSelectable(false))
+        drawerBuilder.addDrawerItems(
+                SecondaryDrawerItem()
+                        .withIdentifier(DEFAULT_CREDITS_POSITION.toLong())
+                        .withName(R.string.section_about)
+                        .withSelectable(false))
         
-        drawerBuilder.addDrawerItems(SecondaryDrawerItem()
-                                             .withIdentifier(DEFAULT_SETTINGS_POSITION.toLong())
-                                             .withName(R.string.settings)
-                                             .withSelectable(false))
+        drawerBuilder.addDrawerItems(
+                SecondaryDrawerItem()
+                        .withIdentifier(DEFAULT_SETTINGS_POSITION.toLong())
+                        .withName(R.string.settings)
+                        .withSelectable(false))
         
-        drawerBuilder.addDrawerItems(SecondaryDrawerItem()
-                                             .withIdentifier(DEFAULT_HELP_POSITION.toLong())
-                                             .withName(R.string.section_help)
-                                             .withSelectable(false))
+        drawerBuilder.addDrawerItems(
+                SecondaryDrawerItem()
+                        .withIdentifier(DEFAULT_HELP_POSITION.toLong())
+                        .withName(R.string.section_help)
+                        .withSelectable(false))
         
         drawerBuilder.withHasStableIds(true)
                 .withFireOnInitialOnClick(true)
@@ -165,11 +168,11 @@ abstract class DrawerBlueprintActivity:BaseBlueprintActivity() {
         }
     }
     
-    override fun internalNavigateToItem(item:NavigationItem):Boolean {
+    override fun internalNavigateToItem(item: NavigationItem): Boolean {
         val result = super.internalNavigateToItem(item)
         if (result) drawer?.setSelection(item.id.toLong(), false)
         return result
     }
     
-    override fun hasBottomNavigation():Boolean = false
+    override fun hasBottomNavigation(): Boolean = false
 }

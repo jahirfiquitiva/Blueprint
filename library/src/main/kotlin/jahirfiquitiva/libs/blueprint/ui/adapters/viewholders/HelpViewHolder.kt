@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. Jahir Fiquitiva
+ * Copyright (c) 2018. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -21,11 +21,11 @@ import android.widget.TextView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
 
-class HelpViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+class HelpViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val question = itemView.findViewById<TextView>(R.id.help_question)
     private val answer = itemView.findViewById<TextView>(R.id.help_answer)
-    fun setQA(help:HelpItem) {
-        question.text = "${adapterPosition + 1}. ${help.question}"
+    fun setQA(help: HelpItem) {
+        question.text = help.question
         answer.text = help.answer
     }
 }
