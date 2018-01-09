@@ -1,8 +1,8 @@
 - [ ] I have verified there are no duplicate active or recent bugs, questions, or requests
-- [ ] I have verified that I am using the latest version of Frames.
+- [ ] I have verified that I am using the latest version of Blueprint.
 
 ###### Device/dashboard info:
- - Frames version: `?`
+ - Blueprint version: `?`
  - Device OS version: `?`
  - Device Manufacturer: `?`
  - Device Name: `?`
@@ -19,7 +19,7 @@ println("Hello, world!")
 java.lang.RuntimeException: This is an example Exception log
     at jahirfiquitiva.libs.blueprint.HelloWorld
     at jahirfiquitiva.libs.blueprint.HelloWorld$ThisIsNotARealLog
-    at android.app.Instrumentation.callActivityOnResume(Instrumentation.kava)
+    at android.app.Instrumentation.callActivityOnResume(Instrumentation.kt)
 ```
  
 ###### Reproduction Steps

@@ -80,6 +80,9 @@
                 android:exported="false"/>
 
         <activity
+                android:name=".ui.activities.BlueprintKuperActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".ui.activities.HelpActivity"
                 android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
                 android:exported="false"/>
@@ -131,6 +134,21 @@
                     android:resource="@xml/clock_widget_provider"/>
         </receiver>
 
+        <activity android:name="jahirfiquitiva.libs.kuper.ui.activities.KuperActivity">
+            <intent-filter tools:node="removeAll"/>
+        </activity>
+
+        <activity android:name="jahirfiquitiva.libs.kuper.ui.activities.CreditsActivity">
+            <intent-filter tools:node="removeAll"/>
+        </activity>
+
+        <activity android:name="jahirfiquitiva.libs.kuper.ui.activities.SettingsActivity">
+            <intent-filter tools:node="removeAll"/>
+        </activity>
+
+        <activity android:name="jahirfiquitiva.libs.frames.ui.activities.CreditsActivity">
+            <intent-filter tools:node="removeAll"/>
+        </activity>
         <activity android:name="jahirfiquitiva.libs.frames.ui.activities.SettingsActivity">
             <intent-filter tools:node="removeAll"/>
         </activity>

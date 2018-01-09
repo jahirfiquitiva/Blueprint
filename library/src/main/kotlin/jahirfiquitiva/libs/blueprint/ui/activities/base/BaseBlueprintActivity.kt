@@ -67,6 +67,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
+import jahirfiquitiva.libs.blueprint.ui.activities.BlueprintKuperActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.CreditsActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.SettingsActivity
@@ -113,7 +114,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.requestSinglePermission
 import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
-import jahirfiquitiva.libs.kauextensions.extensions.showToast
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.ui.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
@@ -752,7 +752,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     }
     
     internal fun launchKuperActivity() {
-        // TODO
-        showToast(R.string.coming_soon)
+        startActivity(Intent(this, BlueprintKuperActivity::class.java))
     }
 }

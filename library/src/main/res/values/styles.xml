@@ -58,6 +58,7 @@
     </style>
 
     <bool name="isFrames">false</bool>
+    <bool name="isKuper">false</bool>
 
     <style name="DrawerTextsWithShadow">
         <item name="android:textSize">14sp</item>
