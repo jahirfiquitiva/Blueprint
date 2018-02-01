@@ -17,11 +17,11 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
-import com.pitchedapps.butler.iconrequest.App
-import com.pitchedapps.butler.iconrequest.IconRequest
 import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.RequestViewHolder
+import jahirfiquitiva.libs.quest.App
+import jahirfiquitiva.libs.quest.IconRequest
 
 class RequestsAdapter(private val onItemsChanged: () -> Unit) :
         ListAdapter<App, RequestViewHolder>() {
@@ -32,7 +32,7 @@ class RequestsAdapter(private val onItemsChanged: () -> Unit) :
         holder.setItem(
                 list[position], { _, item ->
             val ir = IconRequest.get()
-            if (ir != null && ir.apps != null) {
+            ir?.apps?.let {
                 ir.toggleAppSelected(item)
                 notifyItemChanged(position)
                 onItemsChanged()

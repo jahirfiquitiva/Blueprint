@@ -34,6 +34,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 
+@Suppress("DEPRECATION")
 class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun autoStartLoad(): Boolean = true
@@ -67,23 +68,22 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     }
     
     override fun loadDataFromViewModel() {
-        model.loadData(actv)
-        applyCardModel.loadData(actv)
+        actv {
+            model.loadData(it)
+            applyCardModel.loadData(it)
+        }
     }
     
     override fun getContentLayout(): Int = R.layout.section_layout
     
     override fun initUI(content: View) {
         rv = content.findViewById(R.id.list_rv)
-        if (activity is BaseBlueprintActivity) {
-            (activity as BaseBlueprintActivity).fabsMenu.attachToRecyclerView(rv)
-        }
-        if (activity is BottomNavigationBlueprintActivity) {
-            val bottomNavigationHeight = (activity as BottomNavigationBlueprintActivity).bottomBar.height
-            rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
-        } else {
-            rv.setPaddingBottom(64F.dpToPx.toInt())
-        }
+        (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(rv)
+        
+        val bottomNavigationHeight =
+                (activity as? BottomNavigationBlueprintActivity)?.bottomBar?.height ?: 0
+        rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
         rv.state = EmptyViewRecyclerView.State.LOADING
@@ -100,8 +100,8 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun onItemClicked(item: HomeItem, longClick: Boolean) {
         if (!longClick) {
-            if (item.intent != null) ctxt.startActivity(item.intent)
-            else ctxt.openLink(item.url)
+            if (item.intent != null) context?.startActivity(item.intent)
+            else context?.openLink(item.url)
         }
     }
 }

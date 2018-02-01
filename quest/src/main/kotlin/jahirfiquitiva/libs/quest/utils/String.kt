@@ -13,4 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':app', ':library', ':quest'
+package jahirfiquitiva.libs.quest.utils
+
+import java.util.Locale
+
+internal fun String.formatCorrectly(): String {
+    return replace("[^\\w\\s]+".toRegex(), " ").trim { it <= ' ' }
+            .replace(" +".toRegex(), " ")
+            .replace("\\p{Z}".toRegex(), "_")
+}
+
+internal fun CharSequence.hasContent(): Boolean = trim().isNotBlank() && trim().isNotEmpty()
+
+internal fun String.safeDrawableName(): String {
+    val text = if (Character.isDigit(get(0))) ("a_" + this) else this
+    return text.toLowerCase(Locale.getDefault()).replace(" ", "_")
+}

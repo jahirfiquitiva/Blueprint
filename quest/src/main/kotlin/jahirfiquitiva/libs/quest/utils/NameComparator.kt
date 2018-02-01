@@ -13,4 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':app', ':library', ':quest'
+package jahirfiquitiva.libs.quest.utils
+
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
+
+internal class NameComparator(private val mPM: PackageManager) : Comparator<ResolveInfo> {
+    override fun compare(ra: ResolveInfo, rb: ResolveInfo): Int {
+        var sa: CharSequence = ra.loadLabel(mPM) ?: ""
+        if (!sa.hasContent()) {
+            sa = ra.activityInfo.packageName
+        }
+        var sb: CharSequence = rb.loadLabel(mPM) ?: ""
+        if (!sa.hasContent()) {
+            sb = rb.activityInfo.packageName
+        }
+        return sa.toString().compareTo(sb.toString())
+    }
+}

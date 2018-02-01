@@ -20,11 +20,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.pitchedapps.butler.iconrequest.App
-import com.pitchedapps.butler.iconrequest.IconRequest
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
+import jahirfiquitiva.libs.quest.App
+import jahirfiquitiva.libs.quest.IconRequest
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val icon: ImageView = itemView.findViewById(R.id.icon)

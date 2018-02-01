@@ -26,8 +26,6 @@ import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.afollestad.materialdialogs.MaterialDialog
 import com.andremion.counterfab.CounterFab
-import com.pitchedapps.butler.iconrequest.App
-import com.pitchedapps.butler.iconrequest.IconRequest
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
@@ -44,7 +42,10 @@ import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kauextensions.extensions.isLowRamDevice
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.quest.App
+import jahirfiquitiva.libs.quest.IconRequest
 
+@Suppress("DEPRECATION")
 @SuppressLint("MissingSuperCall")
 class RequestsFragment : ViewModelFragment<App>() {
     
@@ -61,13 +62,12 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     override fun initUI(content: View) {
         rv = content.findViewById(R.id.list_rv)
-        if (actv is BottomNavigationBlueprintActivity) {
-            val bottomNavigationHeight = (actv as BottomNavigationBlueprintActivity).bottomBar.height
-            rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
-        } else {
-            rv.setPaddingBottom(64F.dpToPx.toInt())
-        }
-        rv.itemAnimator = if (ctxt.isLowRamDevice) null else DefaultItemAnimator()
+        
+        val bottomNavigationHeight =
+                (activity as? BottomNavigationBlueprintActivity)?.bottomBar?.height ?: 0
+        rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        
+        rv.itemAnimator = if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
         rv.textView = content.findViewById(R.id.empty_text)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.setEmptyImage(R.drawable.empty_section)
@@ -75,12 +75,10 @@ class RequestsFragment : ViewModelFragment<App>() {
         rv.loadingView = content.findViewById(R.id.loading_view)
         rv.setLoadingText(R.string.loading_section)
         
-        spanCount = if (ctxt.isInHorizontalMode) 2 else 1
+        spanCount = if (context?.isInHorizontalMode == true) 2 else 1
         rv.layoutManager = GridLayoutManager(context, spanCount)
         spacingDecoration = GridSpacingItemDecoration(
-                spanCount,
-                ctxt.dimenPixelSize(
-                        R.dimen.cards_small_margin))
+                spanCount, ctxt.dimenPixelSize(R.dimen.cards_small_margin))
         rv.addItemDecoration(spacingDecoration)
         
         rv.addOnScrollListener(
@@ -105,9 +103,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     private fun doToFab(what: (CounterFab) -> Unit) {
-        if (activity is BaseBlueprintActivity) {
-            what((activity as BaseBlueprintActivity).fab)
-        }
+        (activity as? BaseBlueprintActivity)?.fab?.let { what(it) }
     }
     
     fun scrollToTop() {
@@ -155,26 +151,28 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     override fun loadDataFromViewModel() {
-        viewModel.loadData(
-                ctxt, {
-            otherDialog = actv.buildMaterialDialog {
-                title(R.string.no_selected_apps_title)
-                content(R.string.no_selected_apps_content)
-                positiveText(android.R.string.ok)
-            }
-            otherDialog?.show()
-        }, { reason, appsLeft, millis ->
-                    try {
-                        dialog = RequestLimitDialog()
-                        if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
-                            dialog?.show(actv, millis)
-                        } else {
-                            dialog?.show(actv, appsLeft)
+        actv {
+            viewModel.loadData(
+                    it, {
+                otherDialog = it.buildMaterialDialog {
+                    title(R.string.no_selected_apps_title)
+                    content(R.string.no_selected_apps_content)
+                    positiveText(android.R.string.ok)
+                }
+                otherDialog?.show()
+            }, { reason, appsLeft, millis ->
+                        try {
+                            dialog = RequestLimitDialog()
+                            if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
+                                dialog?.show(it, millis)
+                            } else {
+                                dialog?.show(it, appsLeft)
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
                         }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                })
+                    })
+        }
     }
     
     override fun unregisterObserver() {
@@ -190,7 +188,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     private fun destroyDialog() {
         otherDialog?.dismiss()
         otherDialog = null
-        dialog?.dismiss(actv, RequestLimitDialog.TAG)
+        actv { dialog?.dismiss(it, RequestLimitDialog.TAG) }
         dialog = null
     }
     

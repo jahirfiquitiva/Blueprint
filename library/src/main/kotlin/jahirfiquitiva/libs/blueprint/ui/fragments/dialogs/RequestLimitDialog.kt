@@ -26,6 +26,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import java.util.concurrent.TimeUnit
 
+@Suppress("DEPRECATION")
 class RequestLimitDialog : BasicDialogFragment() {
     
     private var isTimeLimit: Boolean = false
@@ -33,10 +34,10 @@ class RequestLimitDialog : BasicDialogFragment() {
     private var appsLeft: Int = 0
     
     companion object {
-        private val IS_TIME_LIMIT = "is_time_limit"
-        private val MILLIS = "millis"
-        private val APPS_LEFT = "apps_left"
-        val TAG = "request_limit_dialog"
+        private const val IS_TIME_LIMIT = "is_time_limit"
+        private const val MILLIS = "millis"
+        private const val APPS_LEFT = "apps_left"
+        const val TAG = "request_limit_dialog"
         
         fun invoke(isTimeLimit: Boolean, millis: Long, appsLeft: Int): RequestLimitDialog {
             return RequestLimitDialog().apply {

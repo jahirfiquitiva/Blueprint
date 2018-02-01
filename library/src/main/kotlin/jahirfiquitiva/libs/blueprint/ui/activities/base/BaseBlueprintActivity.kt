@@ -15,7 +15,6 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.activities.base
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.WallpaperManager
 import android.content.Intent
@@ -26,7 +25,6 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.GridLayoutManager
@@ -54,8 +52,6 @@ import com.andremion.counterfab.CounterFab
 import com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
-import com.pitchedapps.butler.iconrequest.IconRequest
-import com.pitchedapps.butler.iconrequest.events.OnRequestProgress
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
@@ -89,7 +85,6 @@ import jahirfiquitiva.libs.frames.helpers.extensions.framesKonfigs
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.frames.ui.activities.base.BaseFramesActivity
 import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
-import jahirfiquitiva.libs.kauextensions.extensions.PermissionRequestListener
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
@@ -105,22 +100,24 @@ import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
+import jahirfiquitiva.libs.kauextensions.extensions.hideAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import jahirfiquitiva.libs.kauextensions.extensions.overlayColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
-import jahirfiquitiva.libs.kauextensions.extensions.requestSinglePermission
 import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
+import jahirfiquitiva.libs.kauextensions.extensions.showAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.ui.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
-import jahirfiquitiva.libs.kauextensions.ui.widgets.SearchView
-import jahirfiquitiva.libs.kauextensions.ui.widgets.bindSearchView
+import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
+import jahirfiquitiva.libs.quest.IconRequest
+import jahirfiquitiva.libs.quest.events.OnRequestProgress
 import java.util.Collections
 
 abstract class BaseBlueprintActivity : BaseFramesActivity() {
@@ -140,8 +137,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     internal val fab: CounterFab by bind(R.id.fab)
     
     var drawer: Drawer? = null
-    var searchView: SearchView? = null
-    private var currentFragment: Fragment? = null
+    var searchView: CustomSearchView? = null
+    private var activeFragment: Fragment? = null
     
     private var iconsFilters: ArrayList<String> = ArrayList()
     internal var currentItemId: Int = -1
@@ -163,7 +160,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         val isOpen = searchView?.isOpen ?: false
         if (isOpen) {
             doSearch()
-            searchView?.revealClose()
+            searchView?.onActionViewCollapsed()
         } else {
             if (!hasBottomNavigation()) {
                 if (currentItemId != DEFAULT_HOME_POSITION) {
@@ -269,32 +266,29 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             
             updateToolbarMenuItems(getNavigationItemWithId(currentItemId), it)
             
-            searchView = bindSearchView(it, R.id.search, true)
-            
-            searchView?.listener = object : SearchView.SearchListener {
-                override fun onQueryChanged(query: String) {
-                    doSearch(query)
-                }
-                
-                override fun onQuerySubmit(query: String) {
-                    doSearch(query)
-                }
-                
-                override fun onSearchOpened(searchView: SearchView) {
-                    // Do nothing
-                }
-                
-                override fun onSearchClosed(searchView: SearchView) {
-                    doSearch()
-                }
+            val searchItem = it.findItem(R.id.search)
+            searchView = searchItem.actionView as? CustomSearchView
+            searchView?.onExpand = {
+                it.hideAllItems()
             }
-            searchView?.hintText = when (currentItemId) {
+            searchView?.onCollapse = {
+                it.showAllItems()
+                doSearch()
+            }
+            searchView?.onQueryChanged = { doSearch(it) }
+            searchView?.onQuerySubmit = { doSearch(it) }
+            searchView?.bindToItem(searchItem)
+            
+            searchView?.queryHint = when (currentItemId) {
                 DEFAULT_ICONS_POSITION -> getString(R.string.search_icons)
                 DEFAULT_WALLPAPERS_POSITION -> getString(R.string.search_wallpapers)
                 DEFAULT_APPLY_POSITION -> getString(R.string.search_launchers)
                 DEFAULT_REQUEST_POSITION -> getString(R.string.search_apps)
                 else -> ""
             }
+            
+            searchView?.tint(getPrimaryTextColorFor(primaryColor, 0.6F))
+            it.tint(getActiveIconsColorFor(primaryColor, 0.6F))
         }
         toolbar.tint(
                 getPrimaryTextColorFor(primaryColor, 0.6F),
@@ -334,24 +328,26 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     }
     
     private fun initWallpaperInToolbar() {
-        val wallpaper: ImageView? = findViewById(R.id.toolbarHeader)
-        val wallManager = WallpaperManager.getInstance(this)
-        if (picker == 0 && getShortcut().isEmpty()) {
-            val drawable: Drawable? = if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
-                wallManager?.fastDrawable
-            } else {
-                val picName = getString(R.string.toolbar_picture)
-                if (picName.isNotEmpty()) {
-                    try {
-                        picName.getDrawable(this)
-                    } catch (ignored: Exception) {
-                        null
-                    }
-                } else null
+        requestStoragePermission(getString(R.string.permission_request_wallpaper)) {
+            val wallpaper: ImageView? = findViewById(R.id.toolbarHeader)
+            val wallManager = WallpaperManager.getInstance(this)
+            if (picker == 0 && getShortcut().isEmpty()) {
+                val drawable: Drawable? = if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
+                    wallManager?.fastDrawable
+                } else {
+                    val picName = getString(R.string.toolbar_picture)
+                    if (picName.isNotEmpty()) {
+                        try {
+                            picName.getDrawable(this)
+                        } catch (ignored: Exception) {
+                            null
+                        }
+                    } else null
+                }
+                wallpaper?.alpha = .95f
+                wallpaper?.setImageDrawable(drawable)
+                wallpaper?.visible()
             }
-            wallpaper?.alpha = .95f
-            wallpaper?.setImageDrawable(drawable)
-            wallpaper?.visible()
         }
     }
     
@@ -409,11 +405,11 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
     fun initFiltersDrawer(savedInstance: Bundle?) {
         val filtersDrawerBuilder = DrawerBuilder().withActivity(this)
+        val hadFilters = iconsFilters.isNotEmpty()
         filtersDrawerBuilder.addDrawerItems(
-                FilterTitleDrawerItem().withButtonListener(
+                FilterTitleDrawerItem(hadFilters).withButtonListener(
                         object : FilterTitleDrawerItem.ButtonListener {
                             override fun onButtonPressed() {
-                                val hadFilters = iconsFilters.isNotEmpty()
                                 filtersDrawer.drawerItems?.forEach {
                                     (it as? FilterDrawerItem)?.checkBoxHolder?.apply(false, false)
                                 }
@@ -484,7 +480,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             val isOpen = searchView?.isOpen ?: false
             if (isOpen) {
                 doSearch()
-                searchView?.revealClose()
+                searchView?.onActionViewCollapsed()
             }
             
             invalidateOptionsMenu()
@@ -558,7 +554,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             DEFAULT_REQUEST_POSITION -> RequestsFragment()
             else -> EmptyFragment()
         }
-        currentFragment = frag
+        activeFragment = frag
         return frag
     }
     
@@ -595,20 +591,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     fun startRequestsProcess() {
         IconRequest.get()?.let {
             if (it.selectedApps.size > 0) {
-                requestSinglePermission(
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE, 41,
-                        object : PermissionRequestListener() {
-                            override fun onPermissionCompletelyDenied() {
-                                snackbar(R.string.permission_denied_completely)
-                            }
-                            
-                            override fun onPermissionGranted() {
-                                doSendRequest()
-                            }
-                            
-                            override fun onShowInformation(permission: String) =
-                                    showPermissionInformation()
-                        })
+                requestStoragePermission(getString(R.string.permission_request, getAppName())) {
+                    doSendRequest()
+                }
             } else {
                 runOnUiThread {
                     destroyDialog()
@@ -668,34 +653,23 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         }
     }
     
-    private fun showPermissionInformation() {
-        snackbar(
-                getString(R.string.permission_request, getAppName()), Snackbar.LENGTH_SHORT, {
-            setAction(
-                    R.string.allow, {
-                dismiss()
-                doSendRequest()
-            })
-        })
-    }
-    
     internal fun onFiltersUpdated(filters: ArrayList<String>) {
-        if (currentFragment is IconsFragment) {
-            (currentFragment as IconsFragment).applyFilters(filters)
+        if (activeFragment is IconsFragment) {
+            (activeFragment as IconsFragment).applyFilters(filters)
         }
     }
     
     internal fun doSearch(search: String = "") {
-        when (currentFragment) {
-            is IconsFragment -> (currentFragment as IconsFragment).doSearch(search)
-            is WallpapersFragment -> (currentFragment as WallpapersFragment).applyFilter(search)
-            is ApplyFragment -> (currentFragment as ApplyFragment).applyFilter(search)
-            is RequestsFragment -> (currentFragment as RequestsFragment).applyFilter(search)
+        when (activeFragment) {
+            is IconsFragment -> (activeFragment as IconsFragment).doSearch(search)
+            is WallpapersFragment -> (activeFragment as WallpapersFragment).applyFilter(search)
+            is ApplyFragment -> (activeFragment as ApplyFragment).applyFilter(search)
+            is RequestsFragment -> (activeFragment as RequestsFragment).applyFilter(search)
         }
     }
     
     internal fun showWallpapersColumnsDialog() {
-        if (currentFragment is WallpapersFragment) {
+        if (activeFragment is WallpapersFragment) {
             destroyDialog()
             
             val currentColumns = framesKonfigs.columns
@@ -718,7 +692,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                         val newColumns = numberPicker.value
                         if (currentColumns != newColumns) {
                             framesKonfigs.columns = newColumns
-                            (currentFragment as WallpapersFragment).configureRVColumns()
+                            (activeFragment as WallpapersFragment).configureRVColumns()
                         }
                     } catch (ignored: Exception) {
                     }
@@ -730,20 +704,20 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     }
     
     internal fun refreshWallpapers() {
-        if (currentFragment is WallpapersFragment) {
-            (currentFragment as WallpapersFragment).reloadData(1)
+        if (activeFragment is WallpapersFragment) {
+            (activeFragment as WallpapersFragment).reloadData(1)
         }
     }
     
     internal fun toggleSelectAll() {
-        if (currentFragment is RequestsFragment) {
-            (currentFragment as RequestsFragment).toggleSelectAll()
+        if (activeFragment is RequestsFragment) {
+            (activeFragment as RequestsFragment).toggleSelectAll()
         }
     }
     
     internal fun unselectAll() {
-        if (currentFragment is RequestsFragment) {
-            (currentFragment as RequestsFragment).unselectAll()
+        if (activeFragment is RequestsFragment) {
+            (activeFragment as RequestsFragment).unselectAll()
         }
     }
     

@@ -30,5 +30,5 @@ class HomeApplyCardViewModel : BasicViewModel<Context, Boolean>() {
         }
     }
     
-    override val isOldDataValid: Boolean = false
+    override fun isOldDataValid(): Boolean = false
 }

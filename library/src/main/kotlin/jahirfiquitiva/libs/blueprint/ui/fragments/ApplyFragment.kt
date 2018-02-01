@@ -33,6 +33,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.fragments.Fragment
 
+@Suppress("DEPRECATION")
 class ApplyFragment : Fragment<Launcher>() {
     override fun getContentLayout(): Int = R.layout.section_layout
     
@@ -75,7 +76,7 @@ class ApplyFragment : Fragment<Launcher>() {
     
     private fun isLauncherInstalled(packages: Array<String>): Boolean {
         packages.forEach {
-            if (ctxt.isAppInstalled(it)) return true
+            if (context?.isAppInstalled(it) == true) return true
         }
         return false
     }
@@ -83,8 +84,8 @@ class ApplyFragment : Fragment<Launcher>() {
     override fun onItemClicked(item: Launcher, longClick: Boolean) {
         if (!longClick) {
             if (isLauncherInstalled(item.packageNames) || item.name.contains("lineage", true))
-                ctxt.executeLauncherIntent(item.name)
-            else ctxt.showLauncherNotInstalledDialog(item)
+                context?.executeLauncherIntent(item.name)
+            else context?.showLauncherNotInstalledDialog(item)
         }
     }
 }

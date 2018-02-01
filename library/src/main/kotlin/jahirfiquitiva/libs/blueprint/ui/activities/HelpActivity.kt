@@ -36,11 +36,12 @@ import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
+import jahirfiquitiva.libs.kauextensions.extensions.hideAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
+import jahirfiquitiva.libs.kauextensions.extensions.showAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.ui.activities.ThemedActivity
-import jahirfiquitiva.libs.kauextensions.ui.widgets.SearchView
-import jahirfiquitiva.libs.kauextensions.ui.widgets.bindSearchView
+import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
 
 @SuppressLint("MissingSuperCall")
 class HelpActivity : ThemedActivity() {
@@ -55,7 +56,7 @@ class HelpActivity : ThemedActivity() {
     private val rv: EmptyViewRecyclerView by bind(R.id.list_rv)
     private val fastScroll: RecyclerFastScroller by bind(R.id.fast_scroller)
     
-    var searchView: SearchView? = null
+    var searchView: CustomSearchView? = null
     val faqs = ArrayList<HelpItem>()
     val adapter = HelpAdapter()
     
@@ -93,25 +94,26 @@ class HelpActivity : ThemedActivity() {
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater?.inflate(R.menu.menu_help, menu)
-        menu?.let { searchView = bindSearchView(it, R.id.search) }
-        searchView?.listener = object : SearchView.SearchListener {
-            override fun onQueryChanged(query: String) {
-                doSearch(query)
+        menu?.let {
+            val searchItem = it.findItem(R.id.search)
+            searchView = searchItem.actionView as? CustomSearchView
+            searchView?.onExpand = {
+                it.hideAllItems()
             }
-            
-            override fun onQuerySubmit(query: String) {
-                doSearch(query)
-            }
-            
-            override fun onSearchOpened(searchView: SearchView) {
-                // Do nothing
-            }
-            
-            override fun onSearchClosed(searchView: SearchView) {
+            searchView?.onCollapse = {
+                it.showAllItems()
                 doSearch()
             }
+            searchView?.onQueryChanged = { doSearch(it) }
+            searchView?.onQuerySubmit = { doSearch(it) }
+            searchView?.bindToItem(searchItem)
+            
+            searchView?.queryHint = getString(R.string.search_x, "")
+            
+            searchView?.tint(getPrimaryTextColorFor(primaryColor, 0.6F))
+            it.tint(getActiveIconsColorFor(primaryColor, 0.6F))
         }
-        searchView?.hintText = getString(R.string.search_x, "")
+        
         toolbar.tint(
                 getPrimaryTextColorFor(primaryColor, 0.6F),
                 getSecondaryTextColorFor(primaryColor, 0.6F),

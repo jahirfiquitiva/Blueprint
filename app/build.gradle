@@ -74,7 +74,7 @@ android {
 }
 
 dependencies {
-    compile project(path: ':library')
+    implementation project(path: ':library')
 }
 
 // TODO: Remove comment marks if you plan on implementing Firebase Notifications

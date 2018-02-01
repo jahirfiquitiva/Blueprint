@@ -35,6 +35,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.usesDarkTheme
 
+@Suppress("DEPRECATION")
 class IconDialog : BasicDialogFragment() {
     
     private var name: String = ""
@@ -42,10 +43,10 @@ class IconDialog : BasicDialogFragment() {
     private var animate: Boolean = false
     
     companion object {
-        private val NAME = "name"
-        private val RESID = "resId"
-        private val ANIMATE = "animate"
-        val TAG = "icon_dialog"
+        private const val NAME = "name"
+        private const val RES_ID = "resId"
+        private const val ANIMATE = "animate"
+        const val TAG = "icon_dialog"
         
         fun invoke(name: String, resId: Int, animate: Boolean): IconDialog {
             return IconDialog().apply {
@@ -91,7 +92,8 @@ class IconDialog : BasicDialogFragment() {
                                                 .start()
                                     }
                                     
-                                    val iconSwatch = palette.bestSwatch ?: return@PaletteAsyncListener
+                                    val iconSwatch =
+                                            palette.bestSwatch ?: return@PaletteAsyncListener
                                     val color = iconSwatch.rgb
                                     val buttonText = dialog.getActionButton(
                                             DialogAction.POSITIVE) ?: return@PaletteAsyncListener
@@ -127,7 +129,7 @@ class IconDialog : BasicDialogFragment() {
         super.onActivityCreated(savedInstanceState)
         savedInstanceState?.let {
             this.name = it.getString(NAME)
-            this.resId = it.getInt(RESID)
+            this.resId = it.getInt(RES_ID)
             this.animate = it.getBoolean(ANIMATE)
         }
     }
@@ -135,7 +137,7 @@ class IconDialog : BasicDialogFragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         with(outState) {
             putString(NAME, name)
-            putInt(RESID, resId)
+            putInt(RES_ID, resId)
             putBoolean(ANIMATE, animate)
         }
         super.onSaveInstanceState(outState)

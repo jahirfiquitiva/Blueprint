@@ -13,4 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':app', ':library', ':quest'
+package jahirfiquitiva.libs.quest.utils
+
+import ca.allanwang.kau.logging.KauLogger
+import jahirfiquitiva.libs.quest.BuildConfig
+
+object QuestLog : KauLogger("Quest", { BuildConfig.DEBUG })

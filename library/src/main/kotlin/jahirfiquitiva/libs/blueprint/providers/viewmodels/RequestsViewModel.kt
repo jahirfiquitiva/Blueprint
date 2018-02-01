@@ -21,15 +21,15 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.os.Environment
-import com.pitchedapps.butler.iconrequest.App
-import com.pitchedapps.butler.iconrequest.IconRequest
-import com.pitchedapps.butler.iconrequest.events.RequestsCallback
 import jahirfiquitiva.libs.archhelpers.tasks.Async
 import jahirfiquitiva.libs.archhelpers.tasks.EasyAsync
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
+import jahirfiquitiva.libs.quest.App
+import jahirfiquitiva.libs.quest.IconRequest
+import jahirfiquitiva.libs.quest.events.RequestsCallback
 import java.io.File
 import java.lang.ref.WeakReference
 
@@ -54,18 +54,20 @@ class RequestsViewModel : ViewModel() {
                         override fun doLoad(param: Context): Unit? =
                                 safeInternalLoad(
                                         param, forceLoad, object : RequestsCallback() {
-                                    override fun onAppsLoaded(list: ArrayList<App>?) {
-                                        list?.let { postResult(it) }
+                                    override fun onAppsLoaded(apps: ArrayList<App>) {
+                                        postResult(apps)
                                     }
                                     
-                                    override fun onRequestEmpty(p0: Context?) =
+                                    override fun onRequestEmpty(context: Context) =
                                             onEmpty()
                                     
                                     override fun onRequestLimited(
-                                            p0: Context?,
-                                            p1: Int, p2: Int, p3: Long
+                                            context: Context,
+                                            reason: Int,
+                                            requestsLeft: Int,
+                                            millis: Long
                                                                  ) =
-                                            onLimited(p1, p2, p3)
+                                            onLimited(reason, requestsLeft, millis)
                                 })
                         
                         override fun onSuccess(result: Unit) {}
@@ -115,7 +117,7 @@ class RequestsViewModel : ViewModel() {
     
     private fun internalLoad(param: Context, callback: RequestsCallback) {
         if (IconRequest.get() != null) {
-            postResult(ArrayList(IconRequest.get().apps))
+            postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
             return
         }
         IconRequest.start(param)

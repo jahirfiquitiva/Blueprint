@@ -212,6 +212,18 @@
                 <category android:name="android.intent.category.INFO"/>
             </intent-filter>
         </activity>
+
+        <!-- Required for files access !!! DO NOT REMOVE !!! -->
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="${applicationId}.fileProvider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_providers"/>
+        </provider>
+
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@ import jahirfiquitiva.libs.frames.ui.fragments.SettingsFragment
 import jahirfiquitiva.libs.kauextensions.extensions.actv
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 
+@Suppress("DEPRECATION")
 class SettingsFragment : SettingsFragment() {
     override fun initPreferences() {
         super.initPreferences()
@@ -33,12 +34,13 @@ class SettingsFragment : SettingsFragment() {
         val toolbarHeaderPref = findPreference("toolbar_header") as SwitchPreference
         toolbarHeaderPref.setOnPreferenceChangeListener { _, any ->
             val enable = any.toString().equals("true", true)
-            if (enable != ctxt.bpKonfigs.wallpaperAsToolbarHeaderEnabled)
-                ctxt.bpKonfigs.wallpaperAsToolbarHeaderEnabled = enable
+            if (enable != context?.bpKonfigs?.wallpaperAsToolbarHeaderEnabled)
+                context?.bpKonfigs?.wallpaperAsToolbarHeaderEnabled = enable
             true
         }
         
-        var componentName = ctxt.packageName + "." + getString(R.string.main_activity_name)
+        var componentName =
+                (context?.packageName ?: "") + "." + getString(R.string.main_activity_name)
         val className: Class<*>? = try {
             Class.forName(componentName)
         } catch (e: Exception) {
@@ -55,44 +57,45 @@ class SettingsFragment : SettingsFragment() {
         if (className != null) {
             hideIcon.isChecked = !ctxt.bpKonfigs.launcherIconShown
             
-            hideIcon.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
-                val component = ComponentName(ctxt.packageName, componentName)
-                if (newValue.toString().equals("true", true)) {
-                    clearDialog()
-                    dialog = actv.buildMaterialDialog {
-                        title(R.string.hideicon_dialog_title)
-                        content(R.string.hideicon_dialog_content)
-                        positiveText(android.R.string.yes)
-                        negativeText(android.R.string.no)
-                        onPositive { _, _ ->
-                            if (ctxt.bpKonfigs.launcherIconShown) {
-                                ctxt.bpKonfigs.launcherIconShown = false
+            hideIcon.onPreferenceChangeListener =
+                    Preference.OnPreferenceChangeListener { _, newValue ->
+                        val component = ComponentName(ctxt.packageName, componentName)
+                        if (newValue.toString().equals("true", true)) {
+                            clearDialog()
+                            dialog = actv.buildMaterialDialog {
+                                title(R.string.hideicon_dialog_title)
+                                content(R.string.hideicon_dialog_content)
+                                positiveText(android.R.string.yes)
+                                negativeText(android.R.string.no)
+                                onPositive { _, _ ->
+                                    if (ctxt.bpKonfigs.launcherIconShown) {
+                                        ctxt.bpKonfigs.launcherIconShown = false
+                                        ctxt.packageManager.setComponentEnabledSetting(
+                                                component,
+                                                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                                                PackageManager.DONT_KILL_APP)
+                                        hideIcon.isChecked = true
+                                    }
+                                }
+                                onNegative { _, _ ->
+                                    hideIcon.isChecked = false
+                                }
+                                dismissListener {
+                                    hideIcon.isChecked = false
+                                }
+                            }
+                            dialog?.show()
+                        } else {
+                            if (!ctxt.bpKonfigs.launcherIconShown) {
+                                ctxt.bpKonfigs.launcherIconShown = true
                                 ctxt.packageManager.setComponentEnabledSetting(
                                         component,
-                                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                                         PackageManager.DONT_KILL_APP)
-                                hideIcon.isChecked = true
                             }
                         }
-                        onNegative { _, _ ->
-                            hideIcon.isChecked = false
-                        }
-                        dismissListener {
-                            hideIcon.isChecked = false
-                        }
+                        true
                     }
-                    dialog?.show()
-                } else {
-                    if (!ctxt.bpKonfigs.launcherIconShown) {
-                        ctxt.bpKonfigs.launcherIconShown = true
-                        ctxt.packageManager.setComponentEnabledSetting(
-                                component,
-                                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                                PackageManager.DONT_KILL_APP)
-                    }
-                }
-                true
-            }
         } else {
             hideIcon.isEnabled = false
         }

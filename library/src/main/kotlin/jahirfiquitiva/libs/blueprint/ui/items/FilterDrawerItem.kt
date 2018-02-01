@@ -32,6 +32,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.dividerColor
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 
 class FilterDrawerItem : BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
+    
     private lateinit var nameHolder: StringHolder
     private var listener: FilterCheckBoxHolder.StateChangeListener? = null
     private var showDivider = true
@@ -66,7 +67,7 @@ class FilterDrawerItem : BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewH
     
     override fun failedToRecycle(holder: ViewHolder?): Boolean = false
     
-    override fun bindView(holder: ViewHolder?, payloads: MutableList<Any>?) {
+    override fun bindView(holder: ViewHolder?, payloads: MutableList<Any>) {
         super.bindView(holder, payloads)
         holder?.let {
             nameHolder.applyTo(it.title)

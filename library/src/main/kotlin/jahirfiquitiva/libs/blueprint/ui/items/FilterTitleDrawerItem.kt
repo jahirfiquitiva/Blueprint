@@ -18,10 +18,13 @@ package jahirfiquitiva.libs.blueprint.ui.items
 import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import ca.allanwang.kau.utils.gone
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 
-class FilterTitleDrawerItem : BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
+class FilterTitleDrawerItem(private val showClearButton: Boolean) :
+        BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
+    
     private var listener: ButtonListener? = null
     
     fun withButtonListener(listener: ButtonListener): FilterTitleDrawerItem {
@@ -41,12 +44,13 @@ class FilterTitleDrawerItem : BaseDrawerItem<FilterTitleDrawerItem, FilterTitleD
     
     override fun isSelected(): Boolean = false
     
-    override fun bindView(holder: ViewHolder?, payloads: MutableList<Any>?) {
+    override fun bindView(holder: ViewHolder?, payloads: MutableList<Any>) {
         super.bindView(holder, payloads)
         holder?.itemView?.isClickable = false
         holder?.itemView?.isEnabled = false
-        // TODO: Show button only when filters list is not empty
-        holder?.button?.setOnClickListener { listener?.onButtonPressed() }
+        if (showClearButton)
+            holder?.button?.setOnClickListener { listener?.onButtonPressed() }
+        else holder?.button?.gone()
         onPostBindView(this, holder?.itemView)
     }
     

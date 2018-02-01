@@ -18,17 +18,21 @@ ext.versions = [
         minSdk        : 16,
         targetSdk     : 27,
         buildTools    : '27.0.3',
+        // Versions:
+        versionCode   : 100,
+        versionName   : '1.0.0',
         // Gradle Plugins
         gradle        : '3.0.1',
-        kotlin        : '1.2.0',
+        kotlin        : '1.2.21',
         libs          : '2.0',
         gms           : '3.1.0',
         // Dependencies
-        kuper         : '1.0.8',
-        materialDrawer: '6.0.2',
+        archHelpers   : 'ad9b3fc',
+        kuper         : '263c097',
+        materialDrawer: '6.0.4',
         quest         : 'c3625e7',
-        fabsMenu      : '1.1.1',
-        counterFab    : '1.0.1',
+        fabsMenu      : 'cde8a62',
+        counterFab    : '1.0.3',
         firebase      : '11.8.0'
 ]
 
@@ -40,6 +44,8 @@ ext.gradlePlugins = [
 ]
 
 ext.libraries = [
+        // Arch Helpers
+        archHelpers   : 'me.jahirfiquitiva.KAUExtensions:archhelpers:' + versions.archHelpers + '@aar',
         // Kuper
         kuper         : 'me.jahirfiquitiva:Kuper:' + versions.kuper + '@aar',
         // Material Drawer

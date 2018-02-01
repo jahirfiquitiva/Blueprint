@@ -26,4 +26,5 @@ class SettingsActivity : SettingsActivity() {
     override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme
     override fun transparentTheme(): Int = R.style.BlueprintTransparentTheme
     override fun settingsFragment(): Fragment = SettingsFragment()
+    override fun getTranslationSite(): String = "http://j.mp/BlueprintTranslations"
 }

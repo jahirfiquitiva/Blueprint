@@ -34,6 +34,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 
+@Suppress("DEPRECATION")
 class IconsFragment : ViewModelFragment<Icon>() {
     
     override fun autoStartLoad(): Boolean = true
@@ -85,7 +86,8 @@ class IconsFragment : ViewModelFragment<Icon>() {
                 if (filteredBy.hasContent())
                     icons.addAll(
                             it.icons.filter {
-                                if (ctxt.bpKonfigs.deepSearchEnabled) {
+                                val deep = context?.bpKonfigs?.deepSearchEnabled ?: false
+                                if (deep) {
                                     it.name.contains(filteredBy, true) ||
                                             category.title.contains(filteredBy, true)
                                 } else {
@@ -103,16 +105,16 @@ class IconsFragment : ViewModelFragment<Icon>() {
     
     override fun onDestroyView() {
         super.onDestroyView()
-        dialog?.dismiss(actv, IconDialog.TAG)
+        actv { dialog?.dismiss(it, IconDialog.TAG) }
     }
     
     @SuppressLint("MissingSuperCall")
     override fun onDestroy() {
         super.onDestroy()
-        dialog?.dismiss(actv, IconDialog.TAG)
+        actv { dialog?.dismiss(it, IconDialog.TAG) }
     }
     
-    override fun loadDataFromViewModel() = model.loadData(actv)
+    override fun loadDataFromViewModel() = actv { model.loadData(it) }
     
     override fun getContentLayout(): Int = R.layout.section_layout
     
@@ -130,9 +132,11 @@ class IconsFragment : ViewModelFragment<Icon>() {
     
     override fun onItemClicked(item: Icon, longClick: Boolean) {
         if (!longClick) {
-            dialog?.dismiss(actv, IconDialog.TAG)
-            dialog = IconDialog()
-            dialog?.show(actv, item.name, item.icon, ctxt.bpKonfigs.animationsEnabled)
+            actv {
+                dialog?.dismiss(it, IconDialog.TAG)
+                dialog = IconDialog()
+                dialog?.show(it, item.name, item.icon, it.bpKonfigs.animationsEnabled)
+            }
         }
     }
 }
