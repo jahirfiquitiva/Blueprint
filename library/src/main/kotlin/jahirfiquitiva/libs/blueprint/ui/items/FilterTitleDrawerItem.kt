@@ -21,6 +21,7 @@ import android.view.View
 import ca.allanwang.kau.utils.gone
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 
 class FilterTitleDrawerItem(private val showClearButton: Boolean) :
         BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
@@ -55,7 +56,7 @@ class FilterTitleDrawerItem(private val showClearButton: Boolean) :
     }
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val button: AppCompatButton? = itemView.findViewById(R.id.clear_filters)
+        val button: AppCompatButton? by itemView.bind(R.id.clear_filters)
     }
     
     interface ButtonListener {

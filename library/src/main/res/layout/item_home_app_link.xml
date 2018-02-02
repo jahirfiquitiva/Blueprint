@@ -91,9 +91,10 @@
 
         <jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
                 android:id="@+id/home_app_link_open_icon"
-                android:layout_width="@dimen/icon_small"
-                android:layout_height="@dimen/icon_small"
+                android:layout_width="@dimen/materialize_touch_target"
+                android:layout_height="@dimen/materialize_touch_target"
                 android:foreground="?selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
                 tools:ignore="ContentDescription"/>
 
     </LinearLayout>

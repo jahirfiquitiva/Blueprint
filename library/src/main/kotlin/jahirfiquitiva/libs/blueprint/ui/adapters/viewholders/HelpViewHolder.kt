@@ -20,12 +20,13 @@ import android.view.View
 import android.widget.TextView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 
 class HelpViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val question = itemView.findViewById<TextView>(R.id.help_question)
-    private val answer = itemView.findViewById<TextView>(R.id.help_answer)
+    private val question: TextView? by itemView.bind(R.id.help_question)
+    private val answer: TextView? by itemView.bind(R.id.help_answer)
     fun setQA(help: HelpItem) {
-        question.text = help.question
-        answer.text = help.answer
+        question?.text = help.question
+        answer?.text = help.answer
     }
 }

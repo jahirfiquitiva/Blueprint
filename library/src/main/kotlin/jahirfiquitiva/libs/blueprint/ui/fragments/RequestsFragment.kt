@@ -49,11 +49,11 @@ import jahirfiquitiva.libs.quest.IconRequest
 @SuppressLint("MissingSuperCall")
 class RequestsFragment : ViewModelFragment<App>() {
     
-    lateinit var viewModel: RequestsViewModel
+    private var viewModel: RequestsViewModel? = null
     
-    lateinit var rv: EmptyViewRecyclerView
-    lateinit var adapter: RequestsAdapter
-    lateinit var fastScroll: RecyclerFastScroller
+    private var rv: EmptyViewRecyclerView? = null
+    private var adapter: RequestsAdapter? = null
+    private var fastScroll: RecyclerFastScroller? = null
     
     private var spanCount = 0
     private var spacingDecoration: GridSpacingItemDecoration? = null
@@ -65,23 +65,23 @@ class RequestsFragment : ViewModelFragment<App>() {
         
         val bottomNavigationHeight =
                 (activity as? BottomNavigationBlueprintActivity)?.bottomBar?.height ?: 0
-        rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        rv?.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
         
-        rv.itemAnimator = if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
-        rv.textView = content.findViewById(R.id.empty_text)
-        rv.emptyView = content.findViewById(R.id.empty_view)
-        rv.setEmptyImage(R.drawable.empty_section)
-        rv.setEmptyText(R.string.empty_section)
-        rv.loadingView = content.findViewById(R.id.loading_view)
-        rv.setLoadingText(R.string.loading_section)
+        rv?.itemAnimator = if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
+        rv?.textView = content.findViewById(R.id.empty_text)
+        rv?.emptyView = content.findViewById(R.id.empty_view)
+        rv?.setEmptyImage(R.drawable.empty_section)
+        rv?.setEmptyText(R.string.empty_section)
+        rv?.loadingView = content.findViewById(R.id.loading_view)
+        rv?.setLoadingText(R.string.loading_section)
         
         spanCount = if (context?.isInHorizontalMode == true) 2 else 1
-        rv.layoutManager = GridLayoutManager(context, spanCount)
+        rv?.layoutManager = GridLayoutManager(context, spanCount)
         spacingDecoration = GridSpacingItemDecoration(
                 spanCount, ctxt.dimenPixelSize(R.dimen.cards_small_margin))
-        rv.addItemDecoration(spacingDecoration)
+        rv?.addItemDecoration(spacingDecoration)
         
-        rv.addOnScrollListener(
+        rv?.addOnScrollListener(
                 object : RecyclerView.OnScrollListener() {
                     override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                         super.onScrolled(recyclerView, dx, dy)
@@ -91,10 +91,10 @@ class RequestsFragment : ViewModelFragment<App>() {
                 })
         
         adapter = RequestsAdapter { updateFabCount() }
-        rv.adapter = adapter
+        rv?.adapter = adapter
         fastScroll = content.findViewById(R.id.fast_scroller)
-        fastScroll.attachRecyclerView(rv)
-        rv.state = EmptyViewRecyclerView.State.LOADING
+        fastScroll?.attachRecyclerView(rv)
+        rv?.state = EmptyViewRecyclerView.State.LOADING
     }
     
     private fun updateFabCount() {
@@ -107,7 +107,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     fun scrollToTop() {
-        rv.layoutManager.scrollToPosition(0)
+        rv?.layoutManager?.scrollToPosition(0)
     }
     
     private var hasSelectedAll = false
@@ -117,7 +117,7 @@ class RequestsFragment : ViewModelFragment<App>() {
             if (hasSelectedAll) ir.unselectAllApps()
             else ir.selectAllApps()
             updateFabCount()
-            adapter.notifyDataSetChanged()
+            adapter?.notifyDataSetChanged()
             hasSelectedAll = !hasSelectedAll
         }
     }
@@ -127,18 +127,18 @@ class RequestsFragment : ViewModelFragment<App>() {
         ir?.let {
             ir.unselectAllApps()
             updateFabCount()
-            adapter.notifyDataSetChanged()
+            adapter?.notifyDataSetChanged()
             hasSelectedAll = false
         }
     }
     
     fun applyFilter(filter: String = "") {
         if (filter.hasContent()) {
-            viewModel.getData()?.let {
-                adapter.setItems(ArrayList(it.filter { it.name.contains(filter, true) }))
+            viewModel?.getData()?.let {
+                adapter?.setItems(ArrayList(it.filter { it.name.contains(filter, true) }))
             }
         } else {
-            viewModel.getData()?.let { adapter.setItems(ArrayList(it)) }
+            viewModel?.getData()?.let { adapter?.setItems(ArrayList(it)) }
         }
     }
     
@@ -147,12 +147,12 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     override fun registerObserver() {
-        viewModel.observe(this, { adapter.setItems(ArrayList(it)) })
+        viewModel?.observe(this) { adapter?.setItems(ArrayList(it)) }
     }
     
     override fun loadDataFromViewModel() {
         actv {
-            viewModel.loadData(
+            viewModel?.loadData(
                     it, {
                 otherDialog = it.buildMaterialDialog {
                     title(R.string.no_selected_apps_title)
@@ -176,7 +176,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     override fun unregisterObserver() {
-        viewModel.destroy(this)
+        viewModel?.destroy(this)
     }
     
     override fun onDestroy() {

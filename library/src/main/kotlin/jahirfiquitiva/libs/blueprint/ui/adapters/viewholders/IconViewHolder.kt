@@ -29,12 +29,13 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELA
 import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.clearChildrenAnimations
 
 class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     
-    var lastPosition = -1
-    val icon: ImageView = itemView.findViewById(R.id.icon)
+    private var lastPosition = -1
+    val icon: ImageView? by itemView.bind(R.id.icon)
     
     fun bind(animate: Boolean, item: Icon) {
         bind(animate, item, {})
@@ -43,7 +44,7 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     
     fun bind(animate: Boolean, item: Icon, listener: (Icon) -> Unit) = with(itemView) {
-        icon.loadResource(
+        icon?.loadResource(
                 Glide.with(itemView.context), item.icon, true, animate, true,
                 object : GlideRequestCallback<Drawable>() {
                     override fun onLoadSucceed(resource: Drawable): Boolean {
@@ -56,7 +57,7 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                                     .setDuration(ICONS_ANIMATION_DURATION)
                                     .start()
                         } else {
-                            icon.setImageDrawable(resource)
+                            icon?.setImageDrawable(resource)
                             itemView.clearChildrenAnimations()
                         }
                         return true
@@ -66,11 +67,12 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     
     private fun setIconResource(resource: Drawable) {
-        icon.setImageDrawable(resource)
+        icon?.setImageDrawable(resource)
         lastPosition = adapterPosition
     }
     
-    fun doOnRecycle() {
-        icon.releaseFromGlide()
+    fun unbind() {
+        icon?.releaseFromGlide()
+        icon?.setImageDrawable(null)
     }
 }

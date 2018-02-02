@@ -77,10 +77,6 @@ dependencies {
     }
     // Icon Requests Tool
     def withoutAnnotations = { exclude group: 'com.intellij', module: 'annotations' }
-    /*
-    api(libraries.quest) {
-        exclude group: 'com.intellij', module: 'annotations'
-    } */
     api project(path: ':quest'), withoutAnnotations
     // FABs Menu
     api libraries.fabsMenu

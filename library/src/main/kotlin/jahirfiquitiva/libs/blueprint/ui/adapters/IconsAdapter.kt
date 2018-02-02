@@ -31,4 +31,9 @@ class IconsAdapter(private val animate: Boolean = false, val listener: (Icon) ->
         if (animate) (holder as? IconViewHolder)?.bind(animate && shouldAnimate, list[position])
         else (holder as? IconViewHolder)?.bind(false, list[position], listener)
     }
+    
+    override fun onViewRecycled(holder: IconViewHolder?) {
+        super.onViewRecycled(holder)
+        holder?.unbind()
+    }
 }

@@ -19,30 +19,42 @@ import android.support.v7.widget.AppCompatCheckBox
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
+import ca.allanwang.kau.utils.drawable
+import ca.allanwang.kau.utils.gone
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.quest.App
 import jahirfiquitiva.libs.quest.IconRequest
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val icon: ImageView = itemView.findViewById(R.id.icon)
-    val text: TextView = itemView.findViewById(R.id.name)
-    val checkbox: AppCompatCheckBox = itemView.findViewById(R.id.checkbox)
+    private val progress: ProgressBar? by itemView.bind(R.id.progress)
+    private val icon: ImageView? by itemView.bind(R.id.icon)
+    private val text: TextView? by itemView.bind(R.id.name)
+    private val checkbox: AppCompatCheckBox? by itemView.bind(R.id.checkbox)
     
     fun setItem(app: App, listener: (checkbox: AppCompatCheckBox, item: App) -> Unit) {
-        app.loadIcon(icon)
-        text.text = app.name.formatCorrectly().replace("_", " ")
+        app.loadIcon(icon) { success ->
+            if (success) {
+                progress?.gone()
+            } else {
+                icon?.setImageDrawable(itemView.context.drawable(R.drawable.ic_na_launcher))
+            }
+        }
+        text?.text = app.name.formatCorrectly().replace("_", " ")
         val request = IconRequest.get()
-        checkbox.isChecked = (request != null && request.isAppSelected(app))
+        checkbox?.isChecked = (request != null && request.isAppSelected(app))
         with(itemView) {
             isActivated = (request != null && request.isAppSelected(app))
-            setOnClickListener { listener(checkbox, app) }
+            checkbox?.let { check ->
+                setOnClickListener { listener(check, app) }
+            }
         }
     }
     
-    fun doOnRecycle() {
-        icon.releaseFromGlide()
+    fun unbind() {
+        icon?.setImageDrawable(null)
     }
 }

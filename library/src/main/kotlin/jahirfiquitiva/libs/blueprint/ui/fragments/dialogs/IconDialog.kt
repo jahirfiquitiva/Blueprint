@@ -32,6 +32,7 @@ import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.actv
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.usesDarkTheme
 
@@ -71,7 +72,7 @@ class IconDialog : BasicDialogFragment() {
         }
         
         dialog.customView?.let {
-            val iconView: ImageView = it.findViewById(R.id.dialogicon)
+            val iconView: ImageView by it.bind(R.id.dialogicon)
             with(iconView) {
                 if (resId > 0) {
                     if (animate) {

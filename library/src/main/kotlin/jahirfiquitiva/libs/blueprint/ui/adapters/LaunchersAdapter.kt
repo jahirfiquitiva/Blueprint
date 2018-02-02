@@ -29,4 +29,9 @@ class LaunchersAdapter(val listener: (Launcher) -> Unit = {}) :
     
     override fun doBind(holder: LauncherViewHolder, position: Int, shouldAnimate: Boolean) =
             holder.bind(list[position], listener)
+    
+    override fun onViewRecycled(holder: LauncherViewHolder?) {
+        super.onViewRecycled(holder)
+        holder?.unbind()
+    }
 }

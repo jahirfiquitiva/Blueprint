@@ -39,10 +39,10 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun autoStartLoad(): Boolean = true
     
-    private lateinit var model: HomeItemViewModel
-    private lateinit var applyCardModel: HomeApplyCardViewModel
-    private lateinit var rv: EmptyViewRecyclerView
-    private lateinit var homeAdapter: HomeItemsAdapter
+    private var model: HomeItemViewModel? = null
+    private var applyCardModel: HomeApplyCardViewModel? = null
+    private var rv: EmptyViewRecyclerView? = null
+    private var homeAdapter: HomeItemsAdapter? = null
     
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(HomeItemViewModel::class.java)
@@ -50,27 +50,27 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     }
     
     override fun registerObserver() {
-        model.observe(
+        model?.observe(
                 this, {
-            homeAdapter.setItems(ArrayList(it))
-            rv.state = EmptyViewRecyclerView.State.NORMAL
+            homeAdapter?.setItems(ArrayList(it))
+            rv?.state = EmptyViewRecyclerView.State.NORMAL
         })
-        applyCardModel.observe(
+        applyCardModel?.observe(
                 this, {
-            homeAdapter.shouldShowApplyCard = it
-            homeAdapter.notifyDataSetChanged()
+            homeAdapter?.shouldShowApplyCard = it
+            homeAdapter?.notifyDataSetChanged()
         })
     }
     
     override fun unregisterObserver() {
-        model.destroy(this)
-        applyCardModel.destroy(this)
+        model?.destroy(this)
+        applyCardModel?.destroy(this)
     }
     
     override fun loadDataFromViewModel() {
         actv {
-            model.loadData(it)
-            applyCardModel.loadData(it)
+            model?.loadData(it)
+            applyCardModel?.loadData(it)
         }
     }
     
@@ -78,24 +78,24 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun initUI(content: View) {
         rv = content.findViewById(R.id.list_rv)
-        (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(rv)
+        rv?.let { (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(it) }
         
         val bottomNavigationHeight =
                 (activity as? BottomNavigationBlueprintActivity)?.bottomBar?.height ?: 0
-        rv.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        rv?.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
         
-        rv.emptyView = content.findViewById(R.id.empty_view)
-        rv.textView = content.findViewById(R.id.empty_text)
-        rv.state = EmptyViewRecyclerView.State.LOADING
-        rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rv?.emptyView = content.findViewById(R.id.empty_view)
+        rv?.textView = content.findViewById(R.id.empty_text)
+        rv?.state = EmptyViewRecyclerView.State.LOADING
+        rv?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         homeAdapter = HomeItemsAdapter(
                 actv, { onItemClicked(it, false) },
                 ctxt.getInteger(R.integer.icons_count),
                 ctxt.getInteger(R.integer.wallpapers_count),
                 ctxt.getInteger(R.integer.kwgt_count),
                 ctxt.getInteger(R.integer.zooper_count))
-        rv.setHasFixedSize(true)
-        rv.adapter = homeAdapter
+        rv?.setHasFixedSize(true)
+        rv?.adapter = homeAdapter
     }
     
     override fun onItemClicked(item: HomeItem, longClick: Boolean) {

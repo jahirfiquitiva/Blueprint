@@ -76,8 +76,8 @@ class HelpActivity : ThemedActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         
-        val refreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_to_refresh)
-        refreshLayout.isEnabled = false
+        val refreshLayout: SwipeRefreshLayout? by bind(R.id.swipe_to_refresh)
+        refreshLayout?.isEnabled = false
         
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))

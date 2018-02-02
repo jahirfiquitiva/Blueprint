@@ -28,9 +28,8 @@ ext.versions = [
         gms           : '3.1.0',
         // Dependencies
         archHelpers   : 'ad9b3fc',
-        kuper         : '263c097',
+        kuper         : '1.1.6',
         materialDrawer: '6.0.4',
-        quest         : 'c3625e7',
         fabsMenu      : 'cde8a62',
         counterFab    : '1.0.3',
         firebase      : '11.8.0'
@@ -50,8 +49,6 @@ ext.libraries = [
         kuper         : 'me.jahirfiquitiva:Kuper:' + versions.kuper + '@aar',
         // Material Drawer
         materialDrawer: 'com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar',
-        // Quest
-        quest         : 'me.jahirfiquitiva:Quest:' + versions.quest,
         // FABsMenu
         fabsMenu      : 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu,
         // CounterFab

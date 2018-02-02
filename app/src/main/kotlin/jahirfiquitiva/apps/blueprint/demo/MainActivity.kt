@@ -15,7 +15,6 @@
  */
 package jahirfiquitiva.apps.blueprint.demo
 
-import android.os.Bundle
 import com.github.javiersantos.piracychecker.PiracyChecker
 import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
 
@@ -34,7 +33,7 @@ class MainActivity : BottomNavigationBlueprintActivity() {
      * This is your app's license key. Get yours on Google Play Dev Console.
      * Default one isn't valid and could cause issues in your app.
      */
-    override fun getLicKey(): String? = "MIIBIjANBgkqhkiGgKglYGYGihLuihUuhhuBlouBkuiuBIyvYV"
+    override fun getLicKey(): String? = "MIIBIjANBgkqhkiGgKglYGYGihLuihUuhhuBlouBkuiu"
     
     /**
      * This is the license checker code. Feel free to create your own implementation or
@@ -44,12 +43,7 @@ class MainActivity : BottomNavigationBlueprintActivity() {
      */
     override fun getLicenseChecker(): PiracyChecker? {
         destroyChecker() // Important
-        if (BuildConfig.DEBUG) return null
-        return super.getLicenseChecker()
+        return if (BuildConfig.DEBUG) null
+        else super.getLicenseChecker()
     }
-    
-    /**
-     * This is needed by the app. Do NOT edit it. Do NOT delete it.
-     */
-    override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState)
 }

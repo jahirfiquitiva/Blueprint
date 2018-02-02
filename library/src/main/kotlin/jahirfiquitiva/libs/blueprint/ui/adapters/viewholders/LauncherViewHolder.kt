@@ -36,6 +36,7 @@ import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.clearChildrenAnimations
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
@@ -46,10 +47,10 @@ import jahirfiquitiva.libs.kauextensions.extensions.withAlpha
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
 
 class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val itemLayout: CustomCardView = itemView.findViewById(R.id.launcher_item)
-    val bg: LinearLayout = itemView.findViewById(R.id.launcher_bg)
-    val icon: ImageView = itemView.findViewById(R.id.launcher_icon)
-    val text: TextView = itemView.findViewById(R.id.launcher_name)
+    val itemLayout: CustomCardView? by itemView.bind(R.id.launcher_item)
+    val bg: LinearLayout? by itemView.bind(R.id.launcher_bg)
+    val icon: ImageView? by itemView.bind(R.id.launcher_icon)
+    val text: TextView? by itemView.bind(R.id.launcher_name)
     
     private val bnwFilter: ColorFilter
         get() {
@@ -61,18 +62,18 @@ class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(item: Launcher, listener: (Launcher) -> Unit = {}) = with(itemView) {
         val formattedName = item.name.replace("launcher", "", true).formatCorrectly()
         val iconName = formattedName.toLowerCase()
-        text.text = formattedName.blueprintFormat()
+        text?.text = formattedName.blueprintFormat()
         val bits = try {
             ("ic_" + iconName).getIconResource(context)
         } catch (ignored: Exception) {
             "ic_na_launcher".getIconResource(context)
         }
         
-        icon.colorFilter = null
-        text.background = null
-        text.setTextColor(context.secondaryTextColor)
+        icon?.colorFilter = null
+        text?.background = null
+        text?.setTextColor(context.secondaryTextColor)
         
-        icon.loadResource(
+        icon?.loadResource(
                 Glide.with(itemView.context), bits, true, false, true,
                 object : GlideRequestCallback<Drawable>() {
                     override fun onLoadSucceed(resource: Drawable): Boolean {
@@ -81,15 +82,15 @@ class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         resource.toBitmap().bestSwatch?.let {
                             val rightColor = if (isInstalled) it.rgb else context.secondaryTextColor
                             if (context.getBoolean(R.bool.enable_colored_cards)) {
-                                itemLayout.radius = 0F
+                                itemLayout?.radius = 0F
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                                    itemLayout.elevation = 0F
-                                itemLayout.cardElevation = 0F
-                                itemLayout.maxCardElevation = 0F
-                                bg.setBackgroundColor(rightColor.withAlpha(0.8F))
+                                    itemLayout?.elevation = 0F
+                                itemLayout?.cardElevation = 0F
+                                itemLayout?.maxCardElevation = 0F
+                                bg?.setBackgroundColor(rightColor.withAlpha(0.8F))
                             }
-                            text.setBackgroundColor(rightColor)
-                            text.setTextColor(
+                            text?.setBackgroundColor(rightColor)
+                            text?.setTextColor(
                                     context.getSecondaryTextColorFor(rightColor, 0.6F))
                         }
                         return true
@@ -106,12 +107,13 @@ class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     
     private fun setIconResource(resource: Drawable, isInstalled: Boolean) {
-        icon.setImageDrawable(resource)
-        icon.colorFilter = if (isInstalled) null else bnwFilter
-        icon.clearChildrenAnimations()
+        icon?.setImageDrawable(resource)
+        icon?.colorFilter = if (isInstalled) null else bnwFilter
+        icon?.clearChildrenAnimations()
     }
     
-    fun doOnRecycle() {
-        icon.releaseFromGlide()
+    fun unbind() {
+        icon?.releaseFromGlide()
+        icon?.setImageDrawable(null)
     }
 }

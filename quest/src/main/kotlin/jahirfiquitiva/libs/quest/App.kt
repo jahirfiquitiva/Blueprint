@@ -61,10 +61,10 @@ class App : Parcelable {
         if (hiResIcon != null) return hiResIcon
         try {
             hiResIcon = getIconFromInfo(context) ?:
-                    context.packageManager.getApplicationIcon(pckg) ?: appDefaultIcon
+                    context.packageManager.getApplicationIcon(pckg) ?: icon ?: appDefaultIcon
         } catch (e: Exception) {
         }
-        return null
+        return hiResIcon
     }
     
     private fun getIconFromInfo(context: Context): Drawable? {
@@ -95,8 +95,12 @@ class App : Parcelable {
         return d
     }
     
-    fun loadIcon(into: ImageView) {
-        into.setImageDrawable(getHighResIcon(into.context))
+    fun loadIcon(into: ImageView?, listener: (success: Boolean) -> Unit = {}) {
+        into ?: return
+        getIconFromInfo(into.context)?.let {
+            listener(true)
+            into.setImageDrawable(it)
+        } ?: listener(false)
     }
     
     private fun getAppInfo(context: Context): ApplicationInfo? {

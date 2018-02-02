@@ -39,4 +39,9 @@ class RequestsAdapter(private val onItemsChanged: () -> Unit) :
             }
         })
     }
+    
+    override fun onViewRecycled(holder: RequestViewHolder?) {
+        super.onViewRecycled(holder)
+        holder?.unbind()
+    }
 }

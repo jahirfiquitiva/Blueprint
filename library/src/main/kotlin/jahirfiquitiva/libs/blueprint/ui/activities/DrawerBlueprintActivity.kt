@@ -35,6 +35,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_POSITION
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
 import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
@@ -53,7 +54,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
     }
     
     private fun initDrawer(savedInstance: Bundle?) {
-        val v: View = findViewById(R.id.bottom_navigation)
+        val v: View by bind(R.id.bottom_navigation)
         v.gone()
         val accountHeaderBuilder = AccountHeaderBuilder().withActivity(this)
         val header: Drawable? = "drawer_header".getDrawable(this)
@@ -76,17 +77,18 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         
         val accountHeader = accountHeaderBuilder.build()
         
-        val drawerTitle: TextView = accountHeader.view.findViewById(
+        val drawerTitle: TextView by accountHeader.view.bind(
                 R.id.material_drawer_account_header_name)
-        val drawerSubtitle: TextView = accountHeader.view.findViewById(
+        val drawerSubtitle: TextView by accountHeader.view.bind(
                 R.id.material_drawer_account_header_email)
         
         TextViewCompat.setTextAppearance(drawerTitle, R.style.DrawerTextsWithShadow)
         TextViewCompat.setTextAppearance(drawerSubtitle, R.style.DrawerTextsWithShadow)
         
         val drawerBuilder = DrawerBuilder().withActivity(this)
-        drawerBuilder.withToolbar(toolbar)
-                .withAccountHeader(accountHeader)
+        toolbar?.let { drawerBuilder.withToolbar(it) }
+        
+        drawerBuilder.withAccountHeader(accountHeader)
                 .withDelayOnDrawerClose(-1)
                 .withShowDrawerOnFirstLaunch(true)
         
@@ -153,8 +155,6 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
             drawerBuilder.withSavedInstance(savedInstance)
         
         drawer = drawerBuilder.build()
-        
-        updateToolbarColorsHere(0)
     }
     
     override fun onBackPressed() {

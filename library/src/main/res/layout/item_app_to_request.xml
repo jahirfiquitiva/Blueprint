@@ -28,15 +28,36 @@
         android:gravity="center_vertical"
         tools:ignore="Overdraw">
 
-    <ImageView
-            android:id="@+id/icon"
+    <FrameLayout
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:maxHeight="64dp"
             android:maxWidth="64dp"
             android:padding="@dimen/cards_margin"
-            android:src="@drawable/ic_na_launcher"
-            tools:ignore="ContentDescription"/>
+            android:layout_gravity="center"
+            android:gravity="center">
+
+        <ProgressBar
+                android:id="@+id/progress"
+                style="?android:progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="visible"/>
+
+        <ImageView
+                android:id="@+id/icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:visibility="visible"
+                android:src="@drawable/ic_na_launcher"
+                tools:ignore="ContentDescription"/>
+
+    </FrameLayout>
 
     <LinearLayout
             android:layout_width="match_parent"

@@ -26,6 +26,7 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.showLauncherNotInstalled
 import jahirfiquitiva.libs.blueprint.helpers.extensions.supportedLaunchers
 import jahirfiquitiva.libs.blueprint.ui.adapters.LaunchersAdapter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
@@ -41,8 +42,8 @@ class ApplyFragment : Fragment<Launcher>() {
     private lateinit var adapter: LaunchersAdapter
     
     override fun initUI(content: View) {
-        val rv: EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
-        val fastScroller: RecyclerFastScroller = content.findViewById(R.id.fast_scroller)
+        val rv: EmptyViewRecyclerView by content.bind(R.id.list_rv)
+        val fastScroller: RecyclerFastScroller by content.bind(R.id.fast_scroller)
         rv.emptyView = content.findViewById(R.id.empty_view)
         rv.textView = content.findViewById(R.id.empty_text)
         adapter = LaunchersAdapter { onItemClicked(it, false) }

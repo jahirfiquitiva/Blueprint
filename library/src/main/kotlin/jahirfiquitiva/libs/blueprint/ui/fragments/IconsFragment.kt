@@ -39,14 +39,14 @@ class IconsFragment : ViewModelFragment<Icon>() {
     
     override fun autoStartLoad(): Boolean = true
     
-    private lateinit var model: IconItemViewModel
-    private lateinit var rv: EmptyViewRecyclerView
-    private lateinit var fastScroller: RecyclerFastScroller
+    private var model: IconItemViewModel? = null
+    private var rv: EmptyViewRecyclerView? = null
+    private var fastScroller: RecyclerFastScroller? = null
     
     private var dialog: IconDialog? = null
     
     fun applyFilters(filters: ArrayList<String>) {
-        model.getData()?.let {
+        model?.getData()?.let {
             if (filters.isNotEmpty()) {
                 setAdapterItems(ArrayList(it.filter { validFilter(it.title, filters) }))
             } else {
@@ -56,7 +56,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     fun doSearch(search: String = "") {
-        model.getData()?.let {
+        model?.getData()?.let {
             setAdapterItems(ArrayList(it), search)
         }
     }
@@ -66,10 +66,9 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     override fun registerObserver() {
-        model.observe(
-                this, {
+        model?.observe(this) {
             setAdapterItems(ArrayList(it))
-        })
+        }
     }
     
     private fun validFilter(title: String, filters: ArrayList<String>): Boolean {
@@ -78,7 +77,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     private fun setAdapterItems(categories: ArrayList<IconsCategory>, filteredBy: String = "") {
-        val adapter = rv.adapter
+        val adapter = rv?.adapter
         if (adapter is IconsAdapter) {
             val icons = ArrayList<Icon>()
             categories.forEach {
@@ -97,11 +96,13 @@ class IconsFragment : ViewModelFragment<Icon>() {
                 else icons.addAll(it.icons)
             }
             adapter.setItems(ArrayList(icons.distinct().sorted()))
-            rv.state = EmptyViewRecyclerView.State.NORMAL
+            rv?.state = EmptyViewRecyclerView.State.NORMAL
         }
     }
     
-    override fun unregisterObserver() = model.destroy(this)
+    override fun unregisterObserver() {
+        model?.destroy(this)
+    }
     
     override fun onDestroyView() {
         super.onDestroyView()
@@ -114,20 +115,20 @@ class IconsFragment : ViewModelFragment<Icon>() {
         actv { dialog?.dismiss(it, IconDialog.TAG) }
     }
     
-    override fun loadDataFromViewModel() = actv { model.loadData(it) }
+    override fun loadDataFromViewModel() = actv { model?.loadData(it) }
     
     override fun getContentLayout(): Int = R.layout.section_layout
     
     override fun initUI(content: View) {
         rv = content.findViewById(R.id.list_rv)
         fastScroller = content.findViewById(R.id.fast_scroller)
-        rv.emptyView = content.findViewById(R.id.empty_view)
-        rv.textView = content.findViewById(R.id.empty_text)
-        rv.adapter = IconsAdapter(false, { onItemClicked(it, false) })
+        rv?.emptyView = content.findViewById(R.id.empty_view)
+        rv?.textView = content.findViewById(R.id.empty_text)
+        rv?.adapter = IconsAdapter(false, { onItemClicked(it, false) })
         val columns = ctxt.getInteger(R.integer.icons_columns)
-        rv.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
-        rv.state = EmptyViewRecyclerView.State.LOADING
-        fastScroller.attachRecyclerView(rv)
+        rv?.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
+        rv?.state = EmptyViewRecyclerView.State.LOADING
+        fastScroller?.attachRecyclerView(rv)
     }
     
     override fun onItemClicked(item: Icon, longClick: Boolean) {

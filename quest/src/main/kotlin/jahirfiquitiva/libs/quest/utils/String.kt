@@ -15,6 +15,7 @@
  */
 package jahirfiquitiva.libs.quest.utils
 
+import java.text.Normalizer
 import java.util.Locale
 
 internal fun String.formatCorrectly(): String {
@@ -27,5 +28,7 @@ internal fun CharSequence.hasContent(): Boolean = trim().isNotBlank() && trim().
 
 internal fun String.safeDrawableName(): String {
     val text = if (Character.isDigit(get(0))) ("a_" + this) else this
-    return text.toLowerCase(Locale.getDefault()).replace(" ", "_")
+    val normalized = Normalizer.normalize(text, Normalizer.Form.NFKD)
+    val withoutAccents = normalized.replace("[\\p{InCombiningDiacriticalMarks}]", "")
+    return withoutAccents.formatCorrectly().toLowerCase(Locale.getDefault()).replace(" ", "_")
 }

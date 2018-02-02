@@ -16,15 +16,11 @@
 package jahirfiquitiva.libs.blueprint.ui.activities.base
 
 import android.annotation.SuppressLint
-import android.app.WallpaperManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.Rect
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.widget.GridLayoutManager
@@ -33,7 +29,6 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.goneIf
@@ -46,7 +41,6 @@ import ca.allanwang.kau.utils.showIf
 import ca.allanwang.kau.utils.snackbar
 import ca.allanwang.kau.utils.statusBarLight
 import ca.allanwang.kau.utils.tint
-import ca.allanwang.kau.utils.visible
 import ca.allanwang.kau.xml.showChangelog
 import com.andremion.counterfab.CounterFab
 import com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
@@ -56,8 +50,6 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
-import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
-import jahirfiquitiva.libs.blueprint.helpers.extensions.updateToolbarColors
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
@@ -111,7 +103,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.showAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.tint
-import jahirfiquitiva.libs.kauextensions.ui.callbacks.CollapsingToolbarCallback
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
@@ -122,22 +113,26 @@ import java.util.Collections
 
 abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
+    override fun lightTheme(): Int = R.style.BlueprintLightTheme
+    override fun darkTheme(): Int = R.style.BlueprintDarkTheme
+    override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme
+    override fun transparentTheme(): Int = R.style.BlueprintTransparentTheme
+    
     abstract fun hasBottomNavigation(): Boolean
     
-    private val coordinatorLayout: CustomCoordinatorLayout by bind(R.id.mainCoordinatorLayout)
-    private val appbarLayout: FixedElevationAppBarLayout by bind(R.id.appbar)
-    private val collapsingToolbar: CollapsingToolbarLayout by bind(R.id.collapsingToolbar)
-    private val iconsPreviewRV: RecyclerView by bind(R.id.toolbar_icons_grid)
+    private val coordinatorLayout: CustomCoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
+    private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
+    private val iconsPreviewRV: RecyclerView? by bind(R.id.toolbar_icons_grid)
     
     private lateinit var filtersDrawer: Drawer
     private lateinit var iconsPreviewAdapter: IconsAdapter
     
-    internal val toolbar: CustomToolbar by bind(R.id.toolbar)
-    internal val fabsMenu: FABsMenu by bind(R.id.fabs_menu)
-    internal val fab: CounterFab by bind(R.id.fab)
+    internal val toolbar: CustomToolbar? by bind(R.id.toolbar)
+    internal val fabsMenu: FABsMenu? by bind(R.id.fabs_menu)
+    internal val fab: CounterFab? by bind(R.id.fab)
     
-    var drawer: Drawer? = null
-    var searchView: CustomSearchView? = null
+    internal var drawer: Drawer? = null
+    private var searchView: CustomSearchView? = null
     private var activeFragment: Fragment? = null
     
     private var iconsFilters: ArrayList<String> = ArrayList()
@@ -151,7 +146,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         enableTranslucentStatusBar()
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
-        toolbar.bindToActivity(this, false)
+        toolbar?.bindToActivity(this, false)
         initMainComponents(savedInstanceState)
     }
     
@@ -176,59 +171,56 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
     @SuppressLint("MissingSuperCall")
     override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putString("toolbarTitle", collapsingToolbar.title.toString())
+        outState?.putString("toolbarTitle", toolbar?.title.toString())
         outState?.putInt("currentItemId", currentItemId)
         super.onSaveInstanceState(outState)
     }
     
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        collapsingToolbar.title = savedInstanceState?.getString("toolbarTitle", getAppName())
+        toolbar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
+        supportActionBar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         navigateToItem(
                 getNavigationItemWithId(
                         savedInstanceState?.getInt("currentItemId") ?: DEFAULT_HOME_POSITION))
     }
     
-    @SuppressLint("MissingSuperCall")
-    override fun onResume() {
-        super.onResume()
-        initWallpaperInToolbar()
-    }
-    
     private fun initMainComponents(savedInstance: Bundle?) {
         // initToolbar()
-        initCollapsingToolbar()
-        initIconsPreview()
+        // TODO: Check
+        // initCollapsingToolbar()
+        // initIconsPreview()
         initFAB()
         initFABsMenu()
         initFiltersDrawer(savedInstance)
     }
     
     private fun initFAB() {
-        fab.setImageDrawable("ic_send".getDrawable(this)?.tint(getActiveIconsColorFor(accentColor)))
-        fab.setMarginRight(16F.dpToPx.toInt())
-        fab.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
-        fab.setOnClickListener { startRequestsProcess() }
+        fab?.setImageDrawable(
+                "ic_send".getDrawable(this)?.tint(getActiveIconsColorFor(accentColor)))
+        fab?.setMarginRight(16F.dpToPx.toInt())
+        fab?.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
+        fab?.setOnClickListener { startRequestsProcess() }
     }
     
     private fun initFABsMenu() {
-        val fabsMenuOverlay: FABsMenuLayout = findViewById(R.id.fabs_menu_overlay)
+        val fabsMenuOverlay: FABsMenuLayout by bind(R.id.fabs_menu_overlay)
         fabsMenuOverlay.overlayColor = overlayColor
         
         if (hasBottomNavigation()) {
-            fabsMenu.menuBottomMargin = 72F.dpToPx.toInt()
+            fabsMenu?.menuBottomMargin = 72F.dpToPx.toInt()
         }
-        fabsMenu.menuButtonIcon = "ic_plus".getDrawable(this)?.tint(
+        fabsMenu?.menuButtonIcon = "ic_plus".getDrawable(this)?.tint(
                 getActiveIconsColorFor(accentColor))
-        fabsMenu.menuButtonRippleColor = rippleColor
+        fabsMenu?.menuButtonRippleColor = rippleColor
         
-        val rateFab: TitleFAB = findViewById(R.id.rate_fab)
+        val rateFab: TitleFAB by bind(R.id.rate_fab)
         rateFab.setImageDrawable("ic_rate".getDrawable(this)?.tint(activeIconsColor))
         rateFab.titleTextColor = primaryTextColor
         rateFab.rippleColor = rippleColor
         rateFab.setOnClickListener { openLink(PLAY_STORE_LINK_PREFIX + packageName) }
         
-        val shareFab: TitleFAB = findViewById(R.id.share_fab)
+        val shareFab: TitleFAB by bind(R.id.share_fab)
         shareFab.setImageDrawable("ic_share".getDrawable(this)?.tint(activeIconsColor))
         shareFab.titleTextColor = primaryTextColor
         shareFab.rippleColor = rippleColor
@@ -239,7 +231,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                             PLAY_STORE_LINK_PREFIX + packageName))
         }
         
-        val donateFab: TitleFAB = findViewById(R.id.donate_fab)
+        val donateFab: TitleFAB by bind(R.id.donate_fab)
         if (donationsEnabled) {
             donateFab.setImageDrawable("ic_donate".getDrawable(this)?.tint(activeIconsColor))
             donateFab.titleTextColor = primaryTextColor
@@ -248,10 +240,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                 doDonation()
             }
         } else {
-            fabsMenu.removeButton(donateFab)
+            fabsMenu?.removeButton(donateFab)
         }
         
-        val helpFab: TitleFAB = findViewById(R.id.help_fab)
+        val helpFab: TitleFAB by bind(R.id.help_fab)
         helpFab.setImageDrawable("ic_help".getDrawable(this)?.tint(activeIconsColor))
         helpFab.titleTextColor = primaryTextColor
         helpFab.rippleColor = rippleColor
@@ -290,7 +282,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             searchView?.tint(getPrimaryTextColorFor(primaryColor, 0.6F))
             it.tint(getActiveIconsColorFor(primaryColor, 0.6F))
         }
-        toolbar.tint(
+        toolbar?.tint(
                 getPrimaryTextColorFor(primaryColor, 0.6F),
                 getSecondaryTextColorFor(primaryColor, 0.6F),
                 getActiveIconsColorFor(primaryColor, 0.6F))
@@ -314,9 +306,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     }
     
     private fun initCollapsingToolbar() {
-        collapsingToolbar.setExpandedTitleColor(Color.TRANSPARENT)
-        collapsingToolbar.setCollapsedTitleTextColor(primaryTextColor)
-        appbarLayout.addOnOffsetChangedListener(
+        /*
+        appbarLayout?.addOnOffsetChangedListener(
                 object : CollapsingToolbarCallback() {
                     override fun onVerticalOffsetChanged(
                             appBar: AppBarLayout,
@@ -325,11 +316,14 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                             updateToolbarColorsHere(verticalOffset)
                 })
         initWallpaperInToolbar()
+        */
     }
     
+    /*
+    TODO: Move this to HomeFragment
     private fun initWallpaperInToolbar() {
         requestStoragePermission(getString(R.string.permission_request_wallpaper)) {
-            val wallpaper: ImageView? = findViewById(R.id.toolbarHeader)
+            val wallpaper: ImageView? by bind(R.id.toolbarHeader)
             val wallManager = WallpaperManager.getInstance(this)
             if (picker == 0 && getShortcut().isEmpty()) {
                 val drawable: Drawable? = if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
@@ -350,9 +344,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             }
         }
     }
+    */
     
     fun initIconsPreview() {
-        iconsPreviewRV.layoutManager =
+        iconsPreviewRV?.layoutManager =
                 object : GridLayoutManager(this, getInteger(R.integer.icons_columns)) {
                     override fun canScrollVertically(): Boolean = false
                     override fun canScrollHorizontally(): Boolean = false
@@ -368,12 +363,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                             focusedChildVisible: Boolean
                                                               ): Boolean = false
                 }
-        iconsPreviewRV.addItemDecoration(
+        iconsPreviewRV?.addItemDecoration(
                 GridSpacingItemDecoration(
                         getInteger(R.integer.icons_columns),
                         getDimensionPixelSize(R.dimen.cards_margin)))
-        findViewById<LinearLayout>(
-                R.id.toolbar_icons_container).setOnClickListener { loadIconsIntoAdapter() }
+        findViewById<LinearLayout>(R.id.toolbar_icons_container).setOnClickListener {
+            loadIconsIntoAdapter()
+        }
         loadIconsIntoAdapter()
     }
     
@@ -395,7 +391,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                     } catch (ignored: Exception) {
                     }
                 }
-                iconsPreviewRV.adapter = iconsPreviewAdapter
+                iconsPreviewRV?.adapter = iconsPreviewAdapter
                 iconsPreviewAdapter.setItems(correctList)
             }
         } catch (e: Exception) {
@@ -485,27 +481,31 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             
             invalidateOptionsMenu()
             
-            fabsMenu.collapse()
-            if (fabsMenu.menuButton.isShown) fabsMenu.menuButton.hideIf(
-                    item.id != DEFAULT_HOME_POSITION)
-            fabsMenu.goneIf(item.id != DEFAULT_HOME_POSITION)
-            if (fabsMenu.menuButton.isHidden)
-                fabsMenu.menuButton.showIf(item.id == DEFAULT_HOME_POSITION)
-            fab.showIf(item.id == DEFAULT_REQUEST_POSITION)
+            fabsMenu?.collapse()
+            if (fabsMenu?.menuButton?.isShown == true)
+                fabsMenu?.menuButton?.hideIf(item.id != DEFAULT_HOME_POSITION)
+            fabsMenu?.goneIf(item.id != DEFAULT_HOME_POSITION)
+            if (fabsMenu?.menuButton?.isHidden == true)
+                fabsMenu?.menuButton?.showIf(item.id == DEFAULT_HOME_POSITION)
+            fab?.showIf(item.id == DEFAULT_REQUEST_POSITION)
             
+            /*
             val shouldExpand = item.id == DEFAULT_HOME_POSITION
             
             statusBarLight = !shouldExpand && primaryDarkColor.isColorLight(0.6F)
             
-            val isExpanded = appbarLayout.isExpandedNow
+            val isExpanded = appbarLayout?.isExpandedNow
             
             if (isExpanded != shouldExpand) {
-                appbarLayout.setExpanded(shouldExpand, bpKonfigs.animationsEnabled)
-                appbarLayout.scrollAllowed = shouldExpand
-                coordinatorLayout.scrollAllowed = shouldExpand
+                appbarLayout?.setExpanded(shouldExpand, bpKonfigs.animationsEnabled)
+                appbarLayout?.scrollAllowed = shouldExpand
+                coordinatorLayout?.scrollAllowed = shouldExpand
             }
+            */
             
-            collapsingToolbar.title = getString(
+            toolbar?.title = getString(
+                    if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+            supportActionBar?.title = getString(
                     if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
             
             val rightItem = getNavigationItemWithId(item.id)
@@ -571,8 +571,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         return NavigationItem.HOME
     }
     
+    /*
     internal fun updateToolbarColorsHere(offset: Int) =
             updateToolbarColors(toolbar, drawer, offset, 0.6F)
+    */
     
     override fun onRequestPermissionsResult(
             requestCode: Int, permissions: Array<out String>,

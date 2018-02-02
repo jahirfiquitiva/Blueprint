@@ -25,7 +25,6 @@ import android.content.SharedPreferences
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.res.XmlResourceParser
-import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -38,6 +37,7 @@ import android.support.annotation.IntRange
 import android.support.annotation.WorkerThread
 import android.support.annotation.XmlRes
 import android.text.Html
+import ca.allanwang.kau.utils.toBitmap
 import com.afollestad.bridge.Bridge
 import com.afollestad.bridge.Bridge.post
 import com.afollestad.bridge.MultipartForm
@@ -592,29 +592,26 @@ class IconRequest private constructor() {
                 var prevName = ""
                 var count = 1
                 for (app in selectedApps) {
-                    var iconName = app.name
+                    var iconName = app.name.safeDrawableName()
                     if (prevName.equals(iconName, ignoreCase = true)) {
                         iconName += "_" + count.toString()
                         count += 1
                     } else {
                         count = 1
                     }
-                    val drawable = builder?.context?.let {
-                        app.getHighResIcon(it) as? BitmapDrawable
+                    val icon = builder?.context?.let {
+                        app.getHighResIcon(it)?.toBitmap()
                     }
-                    drawable ?: continue
+                    icon ?: continue
                     
-                    val icon = drawable.bitmap
-                    val file = File(builder?.saveDir, "${iconName.safeDrawableName()}.png")
+                    val file = File(builder?.saveDir, "$iconName.png")
                     appNames.add(iconName)
                     filesToZip.add(file)
                     try {
                         file.saveIcon(icon)
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        postError(
-                                "Failed to save icon\'" + iconName + "\'due to error: "
-                                        + e.message, e)
+                        postError("Failed to save icon \'$iconName\' due to error: ${e.message}", e)
                         onRequestProgress?.doOnError()
                         return@Thread
                     }

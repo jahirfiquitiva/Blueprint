@@ -20,15 +20,16 @@ import ca.allanwang.kau.utils.gone
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.ui.fragments.Fragment
 
 open class EmptyFragment : Fragment<Boolean>() {
     override fun getContentLayout(): Int = R.layout.section_layout
     
     override fun initUI(content: View) {
-        val fastScroll: RecyclerFastScroller = content.findViewById(R.id.fast_scroller)
+        val fastScroll: RecyclerFastScroller by content.bind(R.id.fast_scroller)
         fastScroll.gone()
-        val emptyRecyclerView: EmptyViewRecyclerView = content.findViewById(R.id.list_rv)
+        val emptyRecyclerView: EmptyViewRecyclerView by content.bind(R.id.list_rv)
         emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)
         emptyRecyclerView.textView = content.findViewById(R.id.empty_text)
         emptyRecyclerView.state = EmptyViewRecyclerView.State.EMPTY
