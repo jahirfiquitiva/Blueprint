@@ -14,6 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+<!--suppress CheckTagEmptyBody -->
 <resources>
 
     <!--
@@ -45,10 +46,10 @@
     </string-array>
 
     <!--
-        Set a drawable name in case you want to use a static picture in toolbar.
+        Set a drawable name in case you want to use a static picture for icons preview.
         Leave empty if you don't want to use a static one.
     -->
-    <string name="toolbar_picture"/>
+    <string name="icons_preview_picture"></string>
 
     <!--    Items count shown in home section -->
     <integer name="icons_count">0</integer>

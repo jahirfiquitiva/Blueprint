@@ -22,14 +22,20 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.IconViewHolder
 
-class IconsAdapter(private val animate: Boolean = false, val listener: (Icon) -> Unit = {}) :
+class IconsAdapter(
+        private val fromPreviews: Boolean = false,
+        private val listener: (Icon) -> Unit = {}
+                  ) :
         ListAdapter<Icon, IconViewHolder>() {
     override fun doCreateVH(parent: ViewGroup, viewType: Int): IconViewHolder =
             IconViewHolder(parent.inflate(R.layout.item_icon))
     
     override fun doBind(holder: IconViewHolder, position: Int, shouldAnimate: Boolean) {
-        if (animate) (holder as? IconViewHolder)?.bind(animate && shouldAnimate, list[position])
-        else (holder as? IconViewHolder)?.bind(false, list[position], listener)
+        if (fromPreviews) {
+            (holder as? IconViewHolder)?.bind(true, list[position])
+        } else {
+            (holder as? IconViewHolder)?.bind(shouldAnimate, list[position], listener)
+        }
     }
     
     override fun onViewRecycled(holder: IconViewHolder?) {

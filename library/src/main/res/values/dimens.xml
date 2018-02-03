@@ -21,7 +21,8 @@
 
     <dimen name="cards_small_margin">4dp</dimen>
 
-    <dimen name="toolbar_expanded">256dp</dimen>
+    <dimen name="icons_preview">@dimen/toolbar_expanded</dimen>
+    <dimen name="toolbar_expanded">216dp</dimen>
     <integer name="toolbar_elevation">4</integer>
     <dimen name="tabs_contentInset">72dp</dimen>
 
@@ -30,7 +31,7 @@
 
     <dimen name="fab_with_bottom_bar_margin">72dp</dimen>
 
-    <dimen name="toolbar_icons_grid_margin">24dp</dimen>
+    <dimen name="icons_preview_grid_margin">16dp</dimen>
     <dimen name="half_toolbar_height">28dp</dimen>
 
     <dimen name="dialog_icon_size">120dp</dimen>

@@ -19,17 +19,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.LinearLayout
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.goneIf
 import ca.allanwang.kau.utils.hideIf
@@ -47,7 +42,6 @@ import com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_POSITION
@@ -59,7 +53,6 @@ import jahirfiquitiva.libs.blueprint.ui.activities.BlueprintKuperActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.CreditsActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.SettingsActivity
-import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment
@@ -85,10 +78,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.enableTranslucentStatusBar
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
-import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
-import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
@@ -103,13 +93,11 @@ import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.showAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.tint
-import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.quest.IconRequest
 import jahirfiquitiva.libs.quest.events.OnRequestProgress
-import java.util.Collections
 
 abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
@@ -122,10 +110,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
     private val coordinatorLayout: CustomCoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
     private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
-    private val iconsPreviewRV: RecyclerView? by bind(R.id.toolbar_icons_grid)
     
     private lateinit var filtersDrawer: Drawer
-    private lateinit var iconsPreviewAdapter: IconsAdapter
     
     internal val toolbar: CustomToolbar? by bind(R.id.toolbar)
     internal val fabsMenu: FABsMenu? by bind(R.id.fabs_menu)
@@ -186,10 +172,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     }
     
     private fun initMainComponents(savedInstance: Bundle?) {
-        // initToolbar()
-        // TODO: Check
-        // initCollapsingToolbar()
-        // initIconsPreview()
         initFAB()
         initFABsMenu()
         initFiltersDrawer(savedInstance)
@@ -305,101 +287,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         return super.onOptionsItemSelected(item)
     }
     
-    private fun initCollapsingToolbar() {
-        /*
-        appbarLayout?.addOnOffsetChangedListener(
-                object : CollapsingToolbarCallback() {
-                    override fun onVerticalOffsetChanged(
-                            appBar: AppBarLayout,
-                            verticalOffset: Int
-                                                        ) =
-                            updateToolbarColorsHere(verticalOffset)
-                })
-        initWallpaperInToolbar()
-        */
-    }
-    
-    /*
-    TODO: Move this to HomeFragment
-    private fun initWallpaperInToolbar() {
-        requestStoragePermission(getString(R.string.permission_request_wallpaper)) {
-            val wallpaper: ImageView? by bind(R.id.toolbarHeader)
-            val wallManager = WallpaperManager.getInstance(this)
-            if (picker == 0 && getShortcut().isEmpty()) {
-                val drawable: Drawable? = if (bpKonfigs.wallpaperAsToolbarHeaderEnabled) {
-                    wallManager?.fastDrawable
-                } else {
-                    val picName = getString(R.string.toolbar_picture)
-                    if (picName.isNotEmpty()) {
-                        try {
-                            picName.getDrawable(this)
-                        } catch (ignored: Exception) {
-                            null
-                        }
-                    } else null
-                }
-                wallpaper?.alpha = .95f
-                wallpaper?.setImageDrawable(drawable)
-                wallpaper?.visible()
-            }
-        }
-    }
-    */
-    
-    fun initIconsPreview() {
-        iconsPreviewRV?.layoutManager =
-                object : GridLayoutManager(this, getInteger(R.integer.icons_columns)) {
-                    override fun canScrollVertically(): Boolean = false
-                    override fun canScrollHorizontally(): Boolean = false
-                    override fun requestChildRectangleOnScreen(
-                            parent: RecyclerView?, child: View?,
-                            rect: Rect?,
-                            immediate: Boolean
-                                                              ): Boolean = false
-                    
-                    override fun requestChildRectangleOnScreen(
-                            parent: RecyclerView?, child: View?,
-                            rect: Rect?, immediate: Boolean,
-                            focusedChildVisible: Boolean
-                                                              ): Boolean = false
-                }
-        iconsPreviewRV?.addItemDecoration(
-                GridSpacingItemDecoration(
-                        getInteger(R.integer.icons_columns),
-                        getDimensionPixelSize(R.dimen.cards_margin)))
-        findViewById<LinearLayout>(R.id.toolbar_icons_container).setOnClickListener {
-            loadIconsIntoAdapter()
-        }
-        loadIconsIntoAdapter()
-    }
-    
-    private fun loadIconsIntoAdapter() {
-        try {
-            iconsPreviewAdapter = IconsAdapter(true)
-            val icons = ArrayList<Icon>()
-            val list = getStringArray(R.array.icons_preview)
-            list.forEach {
-                icons.add(Icon(it, it.getIconResource(this)))
-            }
-            if (icons.isNotEmpty()) {
-                icons.distinct().sorted()
-                Collections.shuffle(icons)
-                val correctList = ArrayList<Icon>()
-                for (i in 0 until getInteger(R.integer.icons_columns)) {
-                    try {
-                        correctList.add(icons[i])
-                    } catch (ignored: Exception) {
-                    }
-                }
-                iconsPreviewRV?.adapter = iconsPreviewAdapter
-                iconsPreviewAdapter.setItems(correctList)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-    
-    fun initFiltersDrawer(savedInstance: Bundle?) {
+    private fun initFiltersDrawer(savedInstance: Bundle?) {
         val filtersDrawerBuilder = DrawerBuilder().withActivity(this)
         val hadFilters = iconsFilters.isNotEmpty()
         filtersDrawerBuilder.addDrawerItems(

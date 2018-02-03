@@ -17,22 +17,22 @@
 
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/toolbar_icons_container"
-        android:layout_height="wrap_content"
+        android:id="@+id/icons_preview_container"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/half_toolbar_height"
-        android:padding="@dimen/toolbar_icons_grid_margin"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/icons_preview_grid_margin"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:clickable="true"
+        android:focusable="true"
         android:background="?selectableItemBackgroundBorderless"
         android:descendantFocusability="blocksDescendants">
 
     <jahirfiquitiva.libs.blueprint.ui.widgets.ClickableRecyclerView
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/toolbar_icons_grid"
+            android:id="@+id/icons_preview_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

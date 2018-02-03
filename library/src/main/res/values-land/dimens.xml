@@ -16,6 +16,6 @@
   -->
 <resources>
     <dimen name="toolbar_expanded">128dp</dimen>
-    <dimen name="toolbar_icons_grid_margin">36dp</dimen>
+    <dimen name="icons_preview_grid_margin">24dp</dimen>
     <dimen name="half_toolbar_height">24dp</dimen>
 </resources>

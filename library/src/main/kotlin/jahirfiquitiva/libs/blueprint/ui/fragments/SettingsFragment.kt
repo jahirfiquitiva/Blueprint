@@ -31,11 +31,11 @@ class SettingsFragment : SettingsFragment() {
     override fun initPreferences() {
         super.initPreferences()
         
-        val toolbarHeaderPref = findPreference("toolbar_header") as SwitchPreference
+        val toolbarHeaderPref = findPreference("wallpaper_in_icons_preview") as SwitchPreference
         toolbarHeaderPref.setOnPreferenceChangeListener { _, any ->
             val enable = any.toString().equals("true", true)
-            if (enable != context?.bpKonfigs?.wallpaperAsToolbarHeaderEnabled)
-                context?.bpKonfigs?.wallpaperAsToolbarHeaderEnabled = enable
+            if (enable != context?.bpKonfigs?.wallpaperInIconsPreview)
+                context?.bpKonfigs?.wallpaperInIconsPreview = enable
             true
         }
         

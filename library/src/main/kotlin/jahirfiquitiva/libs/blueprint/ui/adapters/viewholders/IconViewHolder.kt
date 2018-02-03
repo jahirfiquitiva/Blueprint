@@ -37,13 +37,7 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var lastPosition = -1
     val icon: ImageView? by itemView.bind(R.id.icon)
     
-    fun bind(animate: Boolean, item: Icon) {
-        bind(animate, item, {})
-        itemView.isClickable = false
-        itemView.isFocusable = false
-    }
-    
-    fun bind(animate: Boolean, item: Icon, listener: (Icon) -> Unit) = with(itemView) {
+    fun bind(animate: Boolean, item: Icon) = with(itemView) {
         icon?.loadResource(
                 Glide.with(itemView.context), item.icon, true, animate, true,
                 object : GlideRequestCallback<Drawable>() {
@@ -63,6 +57,14 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         return true
                     }
                 })
+        icon?.isClickable = false
+        icon?.isFocusable = false
+        itemView.isClickable = false
+        itemView.isFocusable = false
+    }
+    
+    fun bind(animate: Boolean, item: Icon, listener: (Icon) -> Unit = {}) = with(itemView) {
+        bind(animate, item)
         setOnClickListener { listener(item) }
     }
     

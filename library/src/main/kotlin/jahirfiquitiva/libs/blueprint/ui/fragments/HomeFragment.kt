@@ -19,20 +19,19 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.integer
 import ca.allanwang.kau.utils.setPaddingBottom
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
-import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeApplyCardViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
-import jahirfiquitiva.libs.blueprint.ui.adapters.HomeItemsAdapter
+import jahirfiquitiva.libs.blueprint.ui.adapters.HomeAdapter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.ctxt
-import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
+import java.lang.ref.WeakReference
 
 @Suppress("DEPRECATION")
 class HomeFragment : ViewModelFragment<HomeItem>() {
@@ -40,38 +39,35 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     override fun autoStartLoad(): Boolean = true
     
     private var model: HomeItemViewModel? = null
-    private var applyCardModel: HomeApplyCardViewModel? = null
     private var rv: EmptyViewRecyclerView? = null
-    private var homeAdapter: HomeItemsAdapter? = null
+    private val homeAdapter: HomeAdapter? by lazy {
+        HomeAdapter(
+                WeakReference(activity),
+                activity?.integer(R.integer.icons_count) ?: 0,
+                activity?.integer(R.integer.wallpapers_count) ?: 0
+                   ) {
+            onItemClicked(it, false)
+        }
+    }
     
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(HomeItemViewModel::class.java)
-        applyCardModel = ViewModelProviders.of(this).get(HomeApplyCardViewModel::class.java)
     }
     
     override fun registerObserver() {
         model?.observe(
                 this, {
-            homeAdapter?.setItems(ArrayList(it))
+            homeAdapter?.updateItems(ArrayList(it))
             rv?.state = EmptyViewRecyclerView.State.NORMAL
-        })
-        applyCardModel?.observe(
-                this, {
-            homeAdapter?.shouldShowApplyCard = it
-            homeAdapter?.notifyDataSetChanged()
         })
     }
     
     override fun unregisterObserver() {
         model?.destroy(this)
-        applyCardModel?.destroy(this)
     }
     
     override fun loadDataFromViewModel() {
-        actv {
-            model?.loadData(it)
-            applyCardModel?.loadData(it)
-        }
+        actv { model?.loadData(it) }
     }
     
     override fun getContentLayout(): Int = R.layout.section_layout
@@ -88,12 +84,6 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         rv?.textView = content.findViewById(R.id.empty_text)
         rv?.state = EmptyViewRecyclerView.State.LOADING
         rv?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        homeAdapter = HomeItemsAdapter(
-                actv, { onItemClicked(it, false) },
-                ctxt.getInteger(R.integer.icons_count),
-                ctxt.getInteger(R.integer.wallpapers_count),
-                ctxt.getInteger(R.integer.kwgt_count),
-                ctxt.getInteger(R.integer.zooper_count))
         rv?.setHasFixedSize(true)
         rv?.adapter = homeAdapter
     }

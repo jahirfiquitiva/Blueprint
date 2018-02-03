@@ -31,7 +31,7 @@ class BPKonfigs(nm: String, cntxt: Context) : FramesKonfigs(nm, cntxt) {
         get() = prefs.getBoolean(APPLY_CARD_DISMISSED, false)
         set(dismissed) = prefsEditor.putBoolean(APPLY_CARD_DISMISSED, dismissed).apply()
     
-    var wallpaperAsToolbarHeaderEnabled: Boolean
-        get() = prefs.getBoolean(WALLPAPER_AS_TOOLBAR_HEADER, true)
-        set(enabled) = prefsEditor.putBoolean(WALLPAPER_AS_TOOLBAR_HEADER, enabled).apply()
+    var wallpaperInIconsPreview: Boolean
+        get() = prefs.getBoolean(WALLPAPER_IN_ICONS_PREVIEW, true)
+        set(enabled) = prefsEditor.putBoolean(WALLPAPER_IN_ICONS_PREVIEW, enabled).apply()
 }
