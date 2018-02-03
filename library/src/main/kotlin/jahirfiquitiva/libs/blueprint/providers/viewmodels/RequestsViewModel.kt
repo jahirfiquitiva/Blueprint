@@ -43,8 +43,10 @@ class RequestsViewModel : ViewModel() {
     
     fun loadData(
             parameter: Context,
-            onEmpty: () -> Unit, onLimited: (reason: Int, appsLeft: Int, millis: Long) -> Unit,
-            forceLoad: Boolean = false
+            onEmpty: () -> Unit,
+            onLimited: (reason: Int, appsLeft: Int, millis: Long) -> Unit,
+            forceLoad: Boolean = false,
+            onProgress: (progress: Int) -> Unit = {}
                 ) {
         if (!taskStarted || forceLoad) {
             cancelTask(true)
@@ -53,7 +55,7 @@ class RequestsViewModel : ViewModel() {
                     object : Async.Callback<Context, Unit>() {
                         override fun doLoad(param: Context): Unit? =
                                 safeInternalLoad(
-                                        param, forceLoad, object : RequestsCallback() {
+                                        param, object : RequestsCallback() {
                                     override fun onAppsLoaded(apps: ArrayList<App>) {
                                         postResult(apps)
                                     }
@@ -68,7 +70,7 @@ class RequestsViewModel : ViewModel() {
                                             millis: Long
                                                                  ) =
                                             onLimited(reason, requestsLeft, millis)
-                                })
+                                }, forceLoad, onProgress)
                         
                         override fun onSuccess(result: Unit) {}
                     })
@@ -89,18 +91,20 @@ class RequestsViewModel : ViewModel() {
     }
     
     private fun safeInternalLoad(
-            param: Context, forceLoad: Boolean = false,
-            callback: RequestsCallback
+            param: Context,
+            callback: RequestsCallback,
+            forceLoad: Boolean = false,
+            onProgress: (progress: Int) -> Unit = {}
                                 ) {
         if (forceLoad) {
-            internalLoad(param, callback)
+            internalLoad(param, callback, forceLoad, onProgress)
         } else {
             if ((getData()?.size ?: 0) > 0) {
                 val list = ArrayList<App>()
                 getData()?.let { list.addAll(it.distinct()) }
                 postResult(list)
             } else {
-                internalLoad(param, callback)
+                internalLoad(param, callback, forceLoad, onProgress)
             }
         }
     }
@@ -115,14 +119,19 @@ class RequestsViewModel : ViewModel() {
         data.observe(owner, Observer<MutableList<App>> { r -> r?.let { onUpdated(it) } })
     }
     
-    private fun internalLoad(param: Context, callback: RequestsCallback) {
-        if (IconRequest.get() != null) {
+    private fun internalLoad(
+            param: Context,
+            callback: RequestsCallback,
+            forceLoad: Boolean = false,
+            onProgress: (progress: Int) -> Unit = {}
+                            ) {
+        if (IconRequest.get() != null && !forceLoad) {
             postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
             return
         }
         IconRequest.start(param)
                 .withAppName(param.getString(R.string.app_name))
-                .withFooter("Blueprint version: %s", BuildConfig.VERSION_NAME)
+                .withFooter("Blueprint version: ${BuildConfig.VERSION_NAME}")
                 .withSubject(param.getString(R.string.request_title))
                 .toEmail(param.getString(R.string.email))
                 .saveDir(
@@ -138,6 +147,6 @@ class RequestsViewModel : ViewModel() {
                         param.bpKonfigs.prefs)
                 .maxSelectionCount(param.getInteger(R.integer.max_apps_to_request))
                 .setCallback(callback)
-                .build().loadApps()
+                .build().loadApps(onProgress)
     }
 }

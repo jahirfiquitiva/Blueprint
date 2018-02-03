@@ -41,6 +41,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kauextensions.extensions.isLowRamDevice
+import jahirfiquitiva.libs.kauextensions.extensions.runOnUiThread
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.quest.App
 import jahirfiquitiva.libs.quest.IconRequest
@@ -59,6 +60,16 @@ class RequestsFragment : ViewModelFragment<App>() {
     private var spacingDecoration: GridSpacingItemDecoration? = null
     private var dialog: RequestLimitDialog? = null
     private var otherDialog: MaterialDialog? = null
+    private val progressDialog: MaterialDialog? by lazy {
+        activity?.buildMaterialDialog {
+            content(R.string.loading_apps_to_request)
+            progress(false, 100, true)
+            positiveText(android.R.string.ok)
+            onPositive { _, _ -> canShowProgress = false }
+        }
+    }
+    
+    private var canShowProgress = true
     
     override fun initUI(content: View) {
         rv = content.findViewById(R.id.list_rv)
@@ -110,6 +121,12 @@ class RequestsFragment : ViewModelFragment<App>() {
         rv?.layoutManager?.scrollToPosition(0)
     }
     
+    fun refresh() {
+        rv?.state = EmptyViewRecyclerView.State.LOADING
+        canShowProgress = true
+        internalLoadData(true)
+    }
+    
     private var hasSelectedAll = false
     fun toggleSelectAll() {
         val ir = IconRequest.get()
@@ -147,14 +164,23 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     override fun registerObserver() {
-        viewModel?.observe(this) { adapter?.setItems(ArrayList(it)) }
+        viewModel?.observe(this) {
+            if (it.isNotEmpty()) {
+                adapter?.setItems(ArrayList(it))
+            }
+            progressDialog?.dismiss()
+        }
     }
     
     override fun loadDataFromViewModel() {
-        actv {
+        internalLoadData(false)
+    }
+    
+    private fun internalLoadData(force: Boolean) {
+        actv { actv ->
             viewModel?.loadData(
-                    it, {
-                otherDialog = it.buildMaterialDialog {
+                    actv, {
+                otherDialog = actv.buildMaterialDialog {
                     title(R.string.no_selected_apps_title)
                     content(R.string.no_selected_apps_content)
                     positiveText(android.R.string.ok)
@@ -164,14 +190,28 @@ class RequestsFragment : ViewModelFragment<App>() {
                         try {
                             dialog = RequestLimitDialog()
                             if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
-                                dialog?.show(it, millis)
+                                dialog?.show(actv, millis)
                             } else {
-                                dialog?.show(it, appsLeft)
+                                dialog?.show(actv, appsLeft)
                             }
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
-                    })
+                    }, force) { progress ->
+                if (canShowProgress) {
+                    actv {
+                        runOnUiThread {
+                            progressDialog?.setProgress(progress)
+                            progressDialog?.setOnDismissListener { canShowProgress = false }
+                            if (progress >= 100) {
+                                progressDialog?.dismiss()
+                            } else {
+                                progressDialog?.show()
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -188,6 +228,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     private fun destroyDialog() {
         otherDialog?.dismiss()
         otherDialog = null
+        progressDialog?.dismiss()
         actv { dialog?.dismiss(it, RequestLimitDialog.TAG) }
         dialog = null
     }

@@ -15,7 +15,7 @@ internal fun Context.getInstalledApps(
             Intent("android.intent.action.MAIN")
                     .addCategory("android.intent.category.LAUNCHER"), 0)
     
-    val list = ArrayList(packageList)
+    val list = ArrayList(packageList.distinct())
     list.sortWith(NameComparator(packageManager))
     
     val apps = ArrayList<App>()
@@ -38,10 +38,18 @@ internal fun Context.getInstalledApps(
                         this.getLocalizedName(launchStr, name.toString()), launchStr,
                         ri.activityInfo.packageName))
         loaded++
-        val percent = loaded * 100 / packageList.size
-        onProgress(percent)
+        
+        try {
+            val percent = loaded * 100 / list.size
+            onProgress(percent)
+        } catch (e: Exception) {
+        }
     }
     
     QuestLog.d { "Loaded ${apps.size} total app(s), filtered out $filtered app(s)." }
+    try {
+        onProgress(100)
+    } catch (e: Exception) {
+    }
     return ArrayList(apps.distinctBy { it.pckg }.sortedBy { it.name })
 }

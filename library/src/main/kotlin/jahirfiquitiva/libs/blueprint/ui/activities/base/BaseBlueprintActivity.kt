@@ -38,7 +38,6 @@ import ca.allanwang.kau.utils.statusBarLight
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.xml.showChangelog
 import com.andremion.counterfab.CounterFab
-import com.github.stephenvinouze.materialnumberpickercore.MaterialNumberPicker
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
@@ -66,7 +65,6 @@ import jahirfiquitiva.libs.fabsmenu.FABsMenu
 import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
 import jahirfiquitiva.libs.fabsmenu.TitleFAB
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
-import jahirfiquitiva.libs.frames.helpers.extensions.framesKonfigs
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.frames.ui.activities.base.BaseFramesActivity
 import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
@@ -275,8 +273,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         item?.let {
             when (it.itemId) {
                 R.id.filters -> filtersDrawer.openDrawer()
-                R.id.columns -> showWallpapersColumnsDialog()
-                R.id.refresh -> refreshWallpapers()
+                R.id.refresh -> {
+                    refreshWallpapers()
+                    refreshRequests()
+                }
                 R.id.changelog -> showChangelog(R.xml.changelog, secondaryTextColor)
                 R.id.select_all -> toggleSelectAll()
                 R.id.help -> launchHelpActivity()
@@ -377,20 +377,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                 fabsMenu?.menuButton?.showIf(item.id == DEFAULT_HOME_POSITION)
             fab?.showIf(item.id == DEFAULT_REQUEST_POSITION)
             
-            /*
-            val shouldExpand = item.id == DEFAULT_HOME_POSITION
-            
-            statusBarLight = !shouldExpand && primaryDarkColor.isColorLight(0.6F)
-            
-            val isExpanded = appbarLayout?.isExpandedNow
-            
-            if (isExpanded != shouldExpand) {
-                appbarLayout?.setExpanded(shouldExpand, bpKonfigs.animationsEnabled)
-                appbarLayout?.scrollAllowed = shouldExpand
-                coordinatorLayout?.scrollAllowed = shouldExpand
-            }
-            */
-            
             toolbar?.title = getString(
                     if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
             supportActionBar?.title = getString(
@@ -415,11 +401,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                 item.id == DEFAULT_ICONS_POSITION &&
                         getStringArray(R.array.icon_filters).size > 1)
         menu.changeOptionVisibility(
-                R.id.columns,
-                item.id == DEFAULT_WALLPAPERS_POSITION)
-        menu.changeOptionVisibility(
                 R.id.refresh,
-                item.id == DEFAULT_WALLPAPERS_POSITION)
+                item.id == DEFAULT_WALLPAPERS_POSITION || item.id == DEFAULT_REQUEST_POSITION)
         menu.changeOptionVisibility(
                 R.id.select_all,
                 item.id == DEFAULT_REQUEST_POSITION)
@@ -458,11 +441,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         getNavigationItems().forEach { if (it.id == id) return it }
         return NavigationItem.HOME
     }
-    
-    /*
-    internal fun updateToolbarColorsHere(offset: Int) =
-            updateToolbarColors(toolbar, drawer, offset, 0.6F)
-    */
     
     override fun onRequestPermissionsResult(
             requestCode: Int, permissions: Array<out String>,
@@ -558,57 +536,20 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         }
     }
     
-    internal fun showWallpapersColumnsDialog() {
-        if (activeFragment is WallpapersFragment) {
-            destroyDialog()
-            
-            val currentColumns = framesKonfigs.columns
-            
-            val numberPicker = MaterialNumberPicker(
-                    context = this,
-                    minValue = 1,
-                    maxValue = 6,
-                    value = currentColumns,
-                    separatorColor = Color.TRANSPARENT,
-                    textColor = secondaryTextColor,
-                    wrapped = true)
-            
-            dialog = buildMaterialDialog {
-                title(R.string.wallpapers_columns_setting_title)
-                customView(numberPicker, false)
-                positiveText(android.R.string.ok)
-                onPositive { dialog, _ ->
-                    try {
-                        val newColumns = numberPicker.value
-                        if (currentColumns != newColumns) {
-                            framesKonfigs.columns = newColumns
-                            (activeFragment as WallpapersFragment).configureRVColumns()
-                        }
-                    } catch (ignored: Exception) {
-                    }
-                    dialog.dismiss()
-                }
-            }
-            dialog?.show()
-        }
+    internal fun refreshWallpapers() {
+        (activeFragment as? WallpapersFragment)?.reloadData(1)
     }
     
-    internal fun refreshWallpapers() {
-        if (activeFragment is WallpapersFragment) {
-            (activeFragment as WallpapersFragment).reloadData(1)
-        }
+    internal fun refreshRequests() {
+        (activeFragment as? RequestsFragment)?.refresh()
     }
     
     internal fun toggleSelectAll() {
-        if (activeFragment is RequestsFragment) {
-            (activeFragment as RequestsFragment).toggleSelectAll()
-        }
+        (activeFragment as? RequestsFragment)?.toggleSelectAll()
     }
     
     internal fun unselectAll() {
-        if (activeFragment is RequestsFragment) {
-            (activeFragment as RequestsFragment).unselectAll()
-        }
+        (activeFragment as? RequestsFragment)?.unselectAll()
     }
     
     internal fun launchHelpActivity() {
