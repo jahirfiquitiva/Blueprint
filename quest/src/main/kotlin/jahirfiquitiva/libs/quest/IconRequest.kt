@@ -342,7 +342,7 @@ class IconRequest private constructor() {
             return this
         }
         
-        fun setCallback(callback: RequestsCallback): Builder {
+        fun setCallback(callback: RequestsCallback?): Builder {
             this.callback = callback
             return this
         }

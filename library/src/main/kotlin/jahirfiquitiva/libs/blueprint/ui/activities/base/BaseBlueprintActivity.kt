@@ -48,6 +48,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
+import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.BlueprintKuperActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.CreditsActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
@@ -173,6 +174,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         initFAB()
         initFABsMenu()
         initFiltersDrawer(savedInstance)
+        RequestsViewModel.initAndLoadRequestApps(this)
     }
     
     private fun initFAB() {

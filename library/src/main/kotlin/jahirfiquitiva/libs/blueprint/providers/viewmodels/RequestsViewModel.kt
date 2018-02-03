@@ -129,24 +129,34 @@ class RequestsViewModel : ViewModel() {
             postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
             return
         }
-        IconRequest.start(param)
-                .withAppName(param.getString(R.string.app_name))
-                .withFooter("Blueprint version: ${BuildConfig.VERSION_NAME}")
-                .withSubject(param.getString(R.string.request_title))
-                .toEmail(param.getString(R.string.email))
-                .saveDir(
-                        File(
-                                param.getString(
-                                        R.string.request_save_location,
-                                        Environment.getExternalStorageDirectory())))
-                .generateAppFilterJson(false)
-                .debugMode(BuildConfig.DEBUG)
-                .filterXmlId(R.xml.appfilter)
-                .withTimeLimit(
-                        param.getInteger(R.integer.time_limit_in_minutes),
-                        param.bpKonfigs.prefs)
-                .maxSelectionCount(param.getInteger(R.integer.max_apps_to_request))
-                .setCallback(callback)
-                .build().loadApps(onProgress)
+        initAndLoadRequestApps(param, callback, onProgress)
+    }
+    
+    companion object {
+        internal fun initAndLoadRequestApps(
+                context: Context,
+                callback: RequestsCallback? = null,
+                onProgress: (progress: Int) -> Unit = {}
+                                           ) {
+            IconRequest.start(context)
+                    .withAppName(context.getString(R.string.app_name))
+                    .withFooter("Blueprint version: ${BuildConfig.VERSION_NAME}")
+                    .withSubject(context.getString(R.string.request_title))
+                    .toEmail(context.getString(R.string.email))
+                    .saveDir(
+                            File(
+                                    context.getString(
+                                            R.string.request_save_location,
+                                            Environment.getExternalStorageDirectory())))
+                    .generateAppFilterJson(false)
+                    .debugMode(BuildConfig.DEBUG)
+                    .filterXmlId(R.xml.appfilter)
+                    .withTimeLimit(
+                            context.getInteger(R.integer.time_limit_in_minutes),
+                            context.bpKonfigs.prefs)
+                    .maxSelectionCount(context.getInteger(R.integer.max_apps_to_request))
+                    .setCallback(callback)
+                    .build().loadApps(onProgress)
+        }
     }
 }
