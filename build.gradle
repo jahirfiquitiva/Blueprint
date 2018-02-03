@@ -31,9 +31,6 @@ buildscript {
         classpath gradlePlugins.kotlin
         classpath gradlePlugins.libs
 
-        // TODO: Remove comment marks if you plan on implementing Firebase Notifications
-        // classpath gradlePlugins.gms
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

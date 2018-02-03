@@ -81,7 +81,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
-import jahirfiquitiva.libs.kauextensions.extensions.hideAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import jahirfiquitiva.libs.kauextensions.extensions.overlayColor
@@ -90,7 +89,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
-import jahirfiquitiva.libs.kauextensions.extensions.showAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
@@ -242,13 +240,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             
             val searchItem = it.findItem(R.id.search)
             searchView = searchItem.actionView as? CustomSearchView
-            searchView?.onExpand = {
-                it.hideAllItems()
-            }
-            searchView?.onCollapse = {
-                it.showAllItems()
-                doSearch()
-            }
+            searchView?.onCollapse = { doSearch() }
             searchView?.onQueryChanged = { doSearch(it) }
             searchView?.onQuerySubmit = { doSearch(it) }
             searchView?.bindToItem(searchItem)
