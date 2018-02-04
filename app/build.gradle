@@ -13,32 +13,54 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+// TODO: Remove comment marks to enable
+/*
+plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin' version '0.8.1'
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+*/
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'blueprint'
+            keyPassword 'blueprint'
+            storeFile file('blueprint.jks')
+            storePassword 'blueprint'
+        }
+    }
+
     compileSdkVersion versions.targetSdk
     buildToolsVersion versions.buildTools
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            outputFileName = "MyBlueprintApp-v${variant.versionName}-${variant.name}.apk"
+            outputFileName = "Blueprint-v${variant.versionName}-${variant.name}.apk"
         }
     }
 
     lintOptions {
         abortOnError false
-        checkReleaseBuilds true
+        checkReleaseBuilds false
         disable 'MissingTranslation', 'GoogleAppIndexingWarning'
     }
 
     defaultConfig {
+        // TODO: Remove comment marks to enable
+        /*
+        manifestPlaceholders = [onesignal_app_id               : "abcd-1234-efgh-5678",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "1234567890"]
+                                */
+
         applicationId "jahirfiquitiva.apps.blueprint.demo"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 100
-        versionName "1.0.0"
+        versionCode versions.versionCode
+        versionName versions.versionName
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
@@ -55,10 +77,7 @@ android {
             shrinkResources false
             proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
             consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
-            //Other parameters
-            jniDebuggable false
-            renderscriptDebuggable false
-            pseudoLocalesEnabled false
+            signingConfig signingConfigs.release
         }
     }
 
@@ -80,28 +99,12 @@ android {
 
 dependencies {
     implementation project(path: ':library')
+    // TODO: Remove comment marks to enable
+    // implementation libraries.oneSignal
 }
-
-// TODO: Remove comment marks if you plan on implementing Firebase Notifications
-// apply from: './firebase.gradle'
 
 tasks.whenTaskAdded { task ->
     if (task.name.contains("lint") || task.name.contains("test")) {
         task.enabled = false
     }
-}
-
-dexcount {
-    format = "list"
-    includeClasses = false
-    includeClassCount = false
-    includeFieldCount = true
-    includeTotalMethodCount = false
-    orderByMethodCount = false
-    verbose = false
-    maxTreeDepth = Integer.MAX_VALUE
-    teamCityIntegration = false
-    teamCitySlug = null
-    runOnEachPackage = true
-    maxMethodCount = 64000
 }
