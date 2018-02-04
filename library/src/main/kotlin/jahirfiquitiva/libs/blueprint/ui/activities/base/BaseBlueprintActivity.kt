@@ -128,7 +128,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     private val fragments: ArrayList<Pair<Int, Fragment>> = ArrayList()
     
     internal val isIconsPicker: Boolean
-        get() = (picker == ICONS_PICKER || picker == IMAGE_PICKER || picker == ICONS_APPLIER)
+        get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
     
     override fun fragmentsContainer(): Int = R.id.fragments_container
     
@@ -439,7 +439,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     private fun getFragmentForNavigationItem(id: Int): Fragment {
         activeFragment = when (id) {
             DEFAULT_HOME_POSITION -> HomeFragment()
-            DEFAULT_ICONS_POSITION -> IconsFragment.create(picker)
+            DEFAULT_ICONS_POSITION -> IconsFragment.create(pickerKey)
             DEFAULT_WALLPAPERS_POSITION -> WallpapersFragment()
             DEFAULT_APPLY_POSITION -> ApplyFragment()
             DEFAULT_REQUEST_POSITION -> RequestsFragment()
