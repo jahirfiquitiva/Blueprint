@@ -16,7 +16,7 @@
   -->
 <resources>
     <!-- Your app name -->
-    <string name="app_name">Kuper</string>
+    <string name="app_name">Blueprint</string>
 
     <!--    This one applies for Muzei too. Try not to exceed a tweet length (140 characters) -->
     <string name="app_description">A great icon pack app with hundreds of cool icons.</string>
