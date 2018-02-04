@@ -16,9 +16,14 @@
 package jahirfiquitiva.apps.blueprint.demo
 
 import com.github.javiersantos.piracychecker.PiracyChecker
-import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
+import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.ui.activities.DrawerBlueprintActivity
 
+/**
+ * You can choose between:
+ * - DrawerBlueprintActivity
+ * - BottomNavigationBlueprintActivity
+ */
 class MainActivity : DrawerBlueprintActivity() {
     /**
      * These things here have the default values. You can delete the ones you don't want to change
@@ -44,7 +49,22 @@ class MainActivity : DrawerBlueprintActivity() {
      */
     override fun getLicenseChecker(): PiracyChecker? {
         destroyChecker() // Important
-        return if (BuildConfig.DEBUG) null
-        else super.getLicenseChecker()
+        return null
+        // return if (BuildConfig.DEBUG) null
+        // else super.getLicenseChecker()
+    }
+    
+    /**
+     * These are the main items that will be shown in the navigation drawer or bottom navigation.
+     * Remove the ones you don't want to show.
+     * Credits, Settings and Help sections are added by default. So ignore those.
+     */
+    override fun getNavigationItems(): Array<NavigationItem> {
+        return arrayOf(
+                NavigationItem.HOME,
+                NavigationItem.ICONS,
+                NavigationItem.WALLPAPERS,
+                NavigationItem.APPLY,
+                NavigationItem.REQUESTS)
     }
 }
