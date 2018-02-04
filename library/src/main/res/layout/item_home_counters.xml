@@ -23,6 +23,10 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cards_small_margin"
+            android:layout_marginStart="@dimen/cards_small_margin"
+            android:layout_marginRight="@dimen/cards_small_margin"
+            android:layout_marginEnd="@dimen/cards_small_margin"
             android:orientation="horizontal"
             android:baselineAligned="false">
 
@@ -155,6 +159,10 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cards_small_margin"
+            android:layout_marginStart="@dimen/cards_small_margin"
+            android:layout_marginRight="@dimen/cards_small_margin"
+            android:layout_marginEnd="@dimen/cards_small_margin"
             android:orientation="horizontal"
             android:baselineAligned="false">
 

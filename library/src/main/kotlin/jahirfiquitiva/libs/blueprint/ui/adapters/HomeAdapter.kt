@@ -26,6 +26,7 @@ import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.inflate
 import ca.allanwang.kau.utils.tint
+import ca.allanwang.kau.utils.visible
 import com.afollestad.sectionedrecyclerview.SectionedRecyclerViewAdapter
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import jahirfiquitiva.libs.blueprint.R
@@ -55,14 +56,12 @@ import java.lang.ref.WeakReference
 
 class HomeAdapter(
         private val actv: WeakReference<Activity?>,
-        private val iconsCount: Int = 0,
-        private val wallsCount: Int = 0,
+        private var iconsCount: Int = 0,
+        private var wallsCount: Int = 0,
         private val listener: (HomeItem) -> Unit = {}
                  ) : SectionedRecyclerViewAdapter<SectionedViewHolder>() {
     
     private val list: ArrayList<HomeItem> = ArrayList()
-    
-    private var firstLinkPosition: Int = -1
     
     private var shouldShowApplyCard: Boolean = false
         get() {
@@ -79,13 +78,23 @@ class HomeAdapter(
     }
     
     companion object {
-        private const val MINIMAL_AMOUNT = -1
+        private const val MINIMAL_AMOUNT = 0
     }
     
     fun updateItems(newItems: ArrayList<HomeItem>) {
         list.clear()
         list.addAll(newItems)
         notifyDataSetChanged()
+    }
+    
+    fun updateIconsCount(newCount: Int) {
+        iconsCount = newCount
+        notifySectionChanged(2)
+    }
+    
+    fun updateWallsCount(newCount: Int) {
+        wallsCount = newCount
+        notifySectionChanged(2)
     }
     
     override fun getSectionCount(): Int = 5
@@ -223,18 +232,18 @@ class HomeAdapter(
         val iconColor = activity?.chipsIconsColor ?: Color.parseColor("#8a000000")
         val bgColor = activity?.chipsColor ?: Color.parseColor("#e0e0e0")
         
-        // holder.sectionTitle?.setTextColor(counterColor)
-        
         if (iconsCount > MINIMAL_AMOUNT) {
             holder.iconsCounter?.setBackgroundColor(bgColor)
             holder.iconsCounterIcon?.setImageDrawable(
                     activity?.drawable(NavigationItem.ICONS.icon)?.tint(iconColor))
             holder.iconsCounterTitle?.setTextColor(labelColor)
             holder.iconsCounterCount?.setTextColor(counterColor)
-            holder.iconsCounterCount?.text = iconsCount.toString()
+            holder.iconsCounterCount?.text =
+                    if (iconsCount > MINIMAL_AMOUNT) iconsCount.toString() else "…"
             holder.iconsCounter?.setOnClickListener {
-                (activity as? BaseBlueprintActivity)?.navigateToItem(NavigationItem.ICONS)
+                (activity as? BaseBlueprintActivity)?.navigateToItem(NavigationItem.ICONS, false)
             }
+            holder.iconsCounter?.visible()
         } else {
             holder.iconsCounter?.gone()
         }
@@ -245,10 +254,13 @@ class HomeAdapter(
                     activity?.drawable(NavigationItem.WALLPAPERS.icon)?.tint(iconColor))
             holder.wallsCounterTitle?.setTextColor(labelColor)
             holder.wallsCounterCount?.setTextColor(counterColor)
-            holder.wallsCounterCount?.text = wallsCount.toString()
+            holder.wallsCounterCount?.text =
+                    if (wallsCount > MINIMAL_AMOUNT) wallsCount.toString() else "…"
             holder.wallsCounter?.setOnClickListener {
-                (activity as? BaseBlueprintActivity)?.navigateToItem(NavigationItem.WALLPAPERS)
+                (activity as? BaseBlueprintActivity)?.navigateToItem(
+                        NavigationItem.WALLPAPERS, false)
             }
+            holder.wallsCounter?.visible()
         } else {
             holder.wallsCounter?.gone()
         }
@@ -265,10 +277,12 @@ class HomeAdapter(
             holder.kwgtCounterTitle?.setTextColor(labelColor)
             holder.kwgtCounterCount?.setTextColor(counterColor)
             holder.kwgtCounterCount?.text = activity?.getString(
-                    R.string.included_templates, kustomCount.toString())
+                    R.string.included_templates,
+                    if (kustomCount > MINIMAL_AMOUNT) kustomCount.toString() else "…")
             holder.kwgtCounter?.setOnClickListener {
                 (activity as? BaseBlueprintActivity)?.launchKuperActivity()
             }
+            holder.kwgtCounter?.visible()
         } else {
             holder.kwgtCounter?.gone()
         }
@@ -282,10 +296,12 @@ class HomeAdapter(
             holder.zooperCounterTitle?.setTextColor(labelColor)
             holder.zooperCounterCount?.setTextColor(counterColor)
             holder.zooperCounterCount?.text = activity?.getString(
-                    R.string.included_templates, zooperCount.toString())
+                    R.string.included_templates,
+                    if (zooperCount > MINIMAL_AMOUNT) zooperCount.toString() else "…")
             holder.zooperCounter?.setOnClickListener {
                 (activity as? BaseBlueprintActivity)?.launchKuperActivity()
             }
+            holder.zooperCounter?.visible()
         } else {
             holder.zooperCounter?.gone()
         }

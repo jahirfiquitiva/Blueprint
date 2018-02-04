@@ -52,9 +52,9 @@ class HelpActivity : ThemedActivity() {
     override fun autoTintStatusBar() = true
     override fun autoTintNavigationBar() = true
     
-    private val toolbar: Toolbar by bind(R.id.toolbar)
-    private val rv: EmptyViewRecyclerView by bind(R.id.list_rv)
-    private val fastScroll: RecyclerFastScroller by bind(R.id.fast_scroller)
+    private val toolbar: Toolbar? by bind(R.id.toolbar)
+    private val rv: EmptyViewRecyclerView? by bind(R.id.list_rv)
+    private val fastScroll: RecyclerFastScroller? by bind(R.id.fast_scroller)
     
     var searchView: CustomSearchView? = null
     val faqs = ArrayList<HelpItem>()
@@ -79,17 +79,17 @@ class HelpActivity : ThemedActivity() {
         val refreshLayout: SwipeRefreshLayout? by bind(R.id.swipe_to_refresh)
         refreshLayout?.isEnabled = false
         
-        rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        rv.itemAnimator = DefaultItemAnimator()
-        rv.state = EmptyViewRecyclerView.State.LOADING
+        rv?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rv?.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        rv?.itemAnimator = DefaultItemAnimator()
+        rv?.state = EmptyViewRecyclerView.State.LOADING
         
         adapter.setItems(faqs)
-        rv.adapter = adapter
+        rv?.adapter = adapter
         
-        fastScroll.attachRecyclerView(rv)
+        fastScroll?.attachRecyclerView(rv)
         
-        rv.state = EmptyViewRecyclerView.State.NORMAL
+        rv?.state = EmptyViewRecyclerView.State.NORMAL
     }
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -114,7 +114,7 @@ class HelpActivity : ThemedActivity() {
             it.tint(getActiveIconsColorFor(primaryColor, 0.6F))
         }
         
-        toolbar.tint(
+        toolbar?.tint(
                 getPrimaryTextColorFor(primaryColor, 0.6F),
                 getSecondaryTextColorFor(primaryColor, 0.6F),
                 getActiveIconsColorFor(primaryColor, 0.6F))

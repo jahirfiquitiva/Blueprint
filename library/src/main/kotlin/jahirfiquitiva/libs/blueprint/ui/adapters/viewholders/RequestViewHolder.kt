@@ -25,22 +25,23 @@ import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.gone
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.kauextensions.extensions.bind
+import jahirfiquitiva.libs.kauextensions.extensions.context
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.quest.App
 import jahirfiquitiva.libs.quest.IconRequest
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val progress: ProgressBar? by itemView.bind(R.id.progress)
-    private val icon: ImageView? by itemView.bind(R.id.icon)
-    private val text: TextView? by itemView.bind(R.id.name)
-    private val checkbox: AppCompatCheckBox? by itemView.bind(R.id.checkbox)
+    private val progress: ProgressBar? by bind(R.id.progress)
+    private val icon: ImageView? by bind(R.id.icon)
+    private val text: TextView? by bind(R.id.name)
+    private val checkbox: AppCompatCheckBox? by bind(R.id.checkbox)
     
     fun setItem(app: App, listener: (checkbox: AppCompatCheckBox, item: App) -> Unit) {
         app.loadIcon(icon) { success ->
             if (success) {
                 progress?.gone()
             } else {
-                icon?.setImageDrawable(itemView.context.drawable(R.drawable.ic_na_launcher))
+                icon?.setImageDrawable(context.drawable(R.drawable.ic_na_launcher))
             }
         }
         text?.text = app.name.formatCorrectly().replace("_", " ")

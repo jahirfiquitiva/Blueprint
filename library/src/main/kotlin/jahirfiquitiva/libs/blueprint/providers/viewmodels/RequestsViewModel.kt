@@ -21,12 +21,12 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.os.Environment
+import ca.allanwang.kau.utils.integer
 import jahirfiquitiva.libs.archhelpers.tasks.Async
 import jahirfiquitiva.libs.archhelpers.tasks.EasyAsync
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
-import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.quest.App
 import jahirfiquitiva.libs.quest.IconRequest
 import jahirfiquitiva.libs.quest.events.RequestsCallback
@@ -45,6 +45,8 @@ class RequestsViewModel : ViewModel() {
             parameter: Context,
             onEmpty: () -> Unit,
             onLimited: (reason: Int, appsLeft: Int, millis: Long) -> Unit,
+            host: String? = null,
+            apiKey: String? = null,
             forceLoad: Boolean = false,
             onProgress: (progress: Int) -> Unit = {}
                 ) {
@@ -70,7 +72,7 @@ class RequestsViewModel : ViewModel() {
                                             millis: Long
                                                                  ) =
                                             onLimited(reason, requestsLeft, millis)
-                                }, forceLoad, onProgress)
+                                }, host, apiKey, forceLoad, onProgress)
                         
                         override fun onSuccess(result: Unit) {}
                     })
@@ -93,18 +95,20 @@ class RequestsViewModel : ViewModel() {
     private fun safeInternalLoad(
             param: Context,
             callback: RequestsCallback,
+            host: String? = null,
+            apiKey: String? = null,
             forceLoad: Boolean = false,
             onProgress: (progress: Int) -> Unit = {}
                                 ) {
         if (forceLoad) {
-            internalLoad(param, callback, forceLoad, onProgress)
+            internalLoad(param, callback, host, apiKey, forceLoad, onProgress)
         } else {
             if ((getData()?.size ?: 0) > 0) {
                 val list = ArrayList<App>()
                 getData()?.let { list.addAll(it.distinct()) }
                 postResult(list)
             } else {
-                internalLoad(param, callback, forceLoad, onProgress)
+                internalLoad(param, callback, host, apiKey, forceLoad, onProgress)
             }
         }
     }
@@ -122,6 +126,8 @@ class RequestsViewModel : ViewModel() {
     private fun internalLoad(
             param: Context,
             callback: RequestsCallback,
+            host: String? = null,
+            apiKey: String? = null,
             forceLoad: Boolean = false,
             onProgress: (progress: Int) -> Unit = {}
                             ) {
@@ -129,12 +135,14 @@ class RequestsViewModel : ViewModel() {
             postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
             return
         }
-        initAndLoadRequestApps(param, callback, onProgress)
+        initAndLoadRequestApps(param, host, apiKey, callback, onProgress)
     }
     
     companion object {
         internal fun initAndLoadRequestApps(
                 context: Context,
+                host: String? = null,
+                apiKey: String? = null,
                 callback: RequestsCallback? = null,
                 onProgress: (progress: Int) -> Unit = {}
                                            ) {
@@ -143,6 +151,8 @@ class RequestsViewModel : ViewModel() {
                     .withFooter("Blueprint version: ${BuildConfig.VERSION_NAME}")
                     .withSubject(context.getString(R.string.request_title))
                     .toEmail(context.getString(R.string.email))
+                    .withAPIHost(host.orEmpty())
+                    .withAPIKey(apiKey)
                     .saveDir(
                             File(
                                     context.getString(
@@ -152,9 +162,9 @@ class RequestsViewModel : ViewModel() {
                     .debugMode(BuildConfig.DEBUG)
                     .filterXmlId(R.xml.appfilter)
                     .withTimeLimit(
-                            context.getInteger(R.integer.time_limit_in_minutes),
+                            context.integer(R.integer.time_limit_in_minutes),
                             context.bpKonfigs.prefs)
-                    .maxSelectionCount(context.getInteger(R.integer.max_apps_to_request))
+                    .maxSelectionCount(context.integer(R.integer.max_apps_to_request))
                     .setCallback(callback)
                     .build().loadApps(onProgress)
         }

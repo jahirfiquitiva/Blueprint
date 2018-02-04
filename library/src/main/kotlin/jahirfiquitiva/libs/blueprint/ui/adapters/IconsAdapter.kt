@@ -27,6 +27,7 @@ class IconsAdapter(
         private val listener: (Icon) -> Unit = {}
                   ) :
         ListAdapter<Icon, IconViewHolder>() {
+    
     override fun doCreateVH(parent: ViewGroup, viewType: Int): IconViewHolder =
             IconViewHolder(parent.inflate(R.layout.item_icon))
     

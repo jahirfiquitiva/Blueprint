@@ -19,12 +19,12 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import ca.allanwang.kau.utils.color
 import ca.allanwang.kau.utils.isAppInstalled
 import ca.allanwang.kau.utils.materialDialog
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
-import jahirfiquitiva.libs.kauextensions.extensions.getColorFromRes
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 
@@ -32,82 +32,82 @@ val Context.supportedLaunchers: Array<Launcher>
     get() = arrayOf(
             Launcher(
                     "Action Launcher", arrayOf("com.actionlauncher.playstore"),
-                    getColorFromRes(R.color.action_launcher_color)),
+                    color(R.color.action_launcher_color)),
             Launcher(
                     "ADW Launcher", arrayOf("org.adw.launcher"),
-                    getColorFromRes(R.color.adw_launcher_color)),
+                    color(R.color.adw_launcher_color)),
             Launcher(
                     "ADW Ex Launcher", arrayOf("org.adwfreak.launcher"),
-                    getColorFromRes(R.color.adw_ex_launcher_color)),
+                    color(R.color.adw_ex_launcher_color)),
             Launcher(
                     "Apex Launcher", arrayOf("com.anddoes.launcher"),
-                    getColorFromRes(R.color.apex_launcher_color)),
+                    color(R.color.apex_launcher_color)),
             Launcher(
                     "Atom Launcher", arrayOf("com.dlto.atom.launcher"),
-                    getColorFromRes(R.color.atom_launcher_color)),
+                    color(R.color.atom_launcher_color)),
             Launcher(
                     "Aviate Launcher", arrayOf("com.tul.aviate"),
-                    getColorFromRes(R.color.aviate_launcher_color)),
+                    color(R.color.aviate_launcher_color)),
             Launcher(
                     "LineageOS Theme Engine",
                     arrayOf(
                             "org.cyanogenmod.theme.chooser", "org.cyanogenmod.theme.chooser2",
                             "com.cyngn.theme.chooser"),
-                    getColorFromRes(R.color.cm_theme_engine_color)),
+                    color(R.color.cm_theme_engine_color)),
             Launcher(
                     "Go Launcher", arrayOf("com.gau.go.launcherex"),
-                    getColorFromRes(R.color.go_launcher_color)),
+                    color(R.color.go_launcher_color)),
             Launcher(
                     "Google Now Launcher", arrayOf("com.google.android.launcher"),
-                    getColorFromRes(R.color.google_now_launcher_color), false),
+                    color(R.color.google_now_launcher_color), false),
             Launcher(
                     "Holo Launcher", arrayOf("com.mobint.hololauncher"),
-                    getColorFromRes(R.color.holo_launcher_color)),
+                    color(R.color.holo_launcher_color)),
             Launcher(
                     "Holo Launcher ICS", arrayOf("com.mobint.hololauncher.hd"),
-                    getColorFromRes(R.color.holo_ics_launcher_color)),
+                    color(R.color.holo_ics_launcher_color)),
             Launcher(
                     "KK Launcher", arrayOf("com.kk.launcher"),
-                    getColorFromRes(R.color.kk_launcher_color)),
+                    color(R.color.kk_launcher_color)),
             Launcher(
                     "LG Home", arrayOf("com.lge.launcher2"),
-                    getColorFromRes(R.color.lg_home_color)),
+                    color(R.color.lg_home_color)),
             Launcher(
                     "L Launcher", arrayOf("com.l.launcher"),
-                    getColorFromRes(R.color.l_launcher_color)),
+                    color(R.color.l_launcher_color)),
             Launcher(
                     "Lucid Launcher", arrayOf("com.powerpoint45.launcher"),
-                    getColorFromRes(R.color.lucid_launcher_color)),
+                    color(R.color.lucid_launcher_color)),
             Launcher(
                     "Mini Launcher", arrayOf("com.jiubang.go.mini.launcher"),
-                    getColorFromRes(R.color.mini_launcher_color)),
+                    color(R.color.mini_launcher_color)),
             Launcher(
                     "Next Launcher", arrayOf("com.gtp.nextlauncher"),
-                    getColorFromRes(R.color.next_launcher_color)),
+                    color(R.color.next_launcher_color)),
             Launcher(
                     "Nova Launcher", arrayOf("com.teslacoilsw.launcher"),
-                    getColorFromRes(R.color.nova_launcher_color)),
+                    color(R.color.nova_launcher_color)),
             Launcher(
                     "Pixel Launcher", arrayOf("com.google.android.apps.nexuslauncher"),
-                    getColorFromRes(R.color.pixel_launcher_color), false),
+                    color(R.color.pixel_launcher_color), false),
             Launcher(
                     "S Launcher", arrayOf("com.s.launcher"),
-                    getColorFromRes(R.color.s_launcher_color)),
+                    color(R.color.s_launcher_color)),
             Launcher(
                     "Smart Launcher", arrayOf("ginlemon.flowerfree"),
-                    getColorFromRes(R.color.smart_launcher_color)),
+                    color(R.color.smart_launcher_color)),
             Launcher(
                     "Smart Launcher Pro", arrayOf("ginlemon.flowerpro"),
-                    getColorFromRes(R.color.smart_pro_launcher_color)),
+                    color(R.color.smart_pro_launcher_color)),
             Launcher(
                     "Solo Launcher", arrayOf("home.solo.launcher.free"),
-                    getColorFromRes(R.color.solo_launcher_color)),
+                    color(R.color.solo_launcher_color)),
             Launcher(
                     "TSF Launcher", arrayOf("com.tsf.shell"),
-                    getColorFromRes(R.color.tsf_launcher_color)),
+                    color(R.color.tsf_launcher_color)),
             Launcher(
                     "Unicon", arrayOf("sg.ruqqq.IconThemer"),
-                    getColorFromRes(R.color.unicon_pro_color)))
+                    color(R.color.unicon_pro_color)))
 
 fun Context.executeLauncherIntent(launcherKey: String) {
     if (launcherKey.isEmpty()) return

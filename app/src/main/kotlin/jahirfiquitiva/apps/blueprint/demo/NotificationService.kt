@@ -13,20 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
+package jahirfiquitiva.apps.blueprint.demo
 
-import android.support.v7.widget.RecyclerView
-import android.view.View
-import android.widget.TextView
-import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
-import jahirfiquitiva.libs.kauextensions.extensions.bind
+/* TODO: Remove comment marks to enable
+import com.onesignal.NotificationExtenderService
+import com.onesignal.OSNotificationReceivedResult
+import jahirfiquitiva.libs.frames.helpers.extensions.framesKonfigs
 
-class HelpViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val question: TextView? by bind(R.id.help_question)
-    private val answer: TextView? by bind(R.id.help_answer)
-    fun setQA(help: HelpItem) {
-        question?.text = help.question
-        answer?.text = help.answer
-    }
+class NotificationService : NotificationExtenderService() {
+    override fun onNotificationProcessing(notification: OSNotificationReceivedResult?): Boolean =
+            !framesKonfigs.notificationsEnabled
 }
+*/

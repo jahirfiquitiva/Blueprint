@@ -37,9 +37,9 @@ import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
 import jahirfiquitiva.libs.kauextensions.extensions.bind
+import jahirfiquitiva.libs.kauextensions.extensions.boolean
 import jahirfiquitiva.libs.kauextensions.extensions.clearChildrenAnimations
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
-import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
@@ -47,10 +47,10 @@ import jahirfiquitiva.libs.kauextensions.extensions.withAlpha
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
 
 class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val itemLayout: CustomCardView? by itemView.bind(R.id.launcher_item)
-    val bg: LinearLayout? by itemView.bind(R.id.launcher_bg)
-    val icon: ImageView? by itemView.bind(R.id.launcher_icon)
-    val text: TextView? by itemView.bind(R.id.launcher_name)
+    val itemLayout: CustomCardView? by bind(R.id.launcher_item)
+    val bg: LinearLayout? by bind(R.id.launcher_bg)
+    val icon: ImageView? by bind(R.id.launcher_icon)
+    val text: TextView? by bind(R.id.launcher_name)
     
     private val bnwFilter: ColorFilter
         get() {
@@ -74,14 +74,14 @@ class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         text?.setTextColor(context.secondaryTextColor)
         
         icon?.loadResource(
-                Glide.with(itemView.context), bits, true, false, true,
+                Glide.with(context), bits, true, false, true,
                 object : GlideRequestCallback<Drawable>() {
                     override fun onLoadSucceed(resource: Drawable): Boolean {
                         val isInstalled = isLauncherInstalled(context, item.packageNames)
                         setIconResource(resource, isInstalled)
                         resource.toBitmap().bestSwatch?.let {
                             val rightColor = if (isInstalled) it.rgb else context.secondaryTextColor
-                            if (context.getBoolean(R.bool.enable_colored_cards)) {
+                            if (boolean(R.bool.enable_colored_cards)) {
                                 itemLayout?.radius = 0F
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                                     itemLayout?.elevation = 0F

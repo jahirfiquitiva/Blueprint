@@ -27,12 +27,11 @@ ext.versions = [
         libs          : '2.0',
         gms           : '3.1.0',
         // Dependencies
-        archHelpers   : 'ad9b3fc',
-        kuper         : '1.1.6',
+        archHelpers   : 'fe278c3',
+        kuper         : '2d7ce12',
         materialDrawer: '6.0.4',
         fabsMenu      : 'cde8a62',
-        counterFab    : '1.0.3',
-        firebase      : '11.8.0'
+        counterFab    : '1.0.3'
 ]
 
 ext.gradlePlugins = [
@@ -52,7 +51,5 @@ ext.libraries = [
         // FABsMenu
         fabsMenu      : 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu,
         // CounterFab
-        counterFab    : 'com.github.andremion:counterfab:' + versions.counterFab,
-        // Firebase
-        firebase      : 'com.google.firebase:firebase-messaging:' + versions.firebase
+        counterFab    : 'com.github.andremion:counterfab:' + versions.counterFab
 ]

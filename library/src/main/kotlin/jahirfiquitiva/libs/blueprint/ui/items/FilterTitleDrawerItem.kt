@@ -18,12 +18,11 @@ package jahirfiquitiva.libs.blueprint.ui.items
 import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import ca.allanwang.kau.utils.gone
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 
-class FilterTitleDrawerItem(private val showClearButton: Boolean) :
+class FilterTitleDrawerItem :
         BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
     
     private var listener: ButtonListener? = null
@@ -49,14 +48,12 @@ class FilterTitleDrawerItem(private val showClearButton: Boolean) :
         super.bindView(holder, payloads)
         holder?.itemView?.isClickable = false
         holder?.itemView?.isEnabled = false
-        if (showClearButton)
-            holder?.button?.setOnClickListener { listener?.onButtonPressed() }
-        else holder?.button?.gone()
+        holder?.button?.setOnClickListener { listener?.onButtonPressed() }
         onPostBindView(this, holder?.itemView)
     }
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val button: AppCompatButton? by itemView.bind(R.id.clear_filters)
+        val button: AppCompatButton? by bind(R.id.clear_filters)
     }
     
     interface ButtonListener {

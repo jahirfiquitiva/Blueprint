@@ -16,9 +16,9 @@
 package jahirfiquitiva.libs.blueprint.helpers.utils
 
 import android.content.Context
-import jahirfiquitiva.libs.frames.helpers.utils.FramesKonfigs
+import jahirfiquitiva.libs.kuper.helpers.utils.KuperKonfigs
 
-class BPKonfigs(nm: String, cntxt: Context) : FramesKonfigs(nm, cntxt) {
+class BPKonfigs(nm: String, cntxt: Context) : KuperKonfigs(nm, cntxt) {
     companion object {
         fun newInstance(name: String, context: Context) = BPKonfigs(name, context)
     }

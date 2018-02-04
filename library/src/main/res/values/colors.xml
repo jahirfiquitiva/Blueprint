@@ -15,9 +15,6 @@
   ~ limitations under the License.
   -->
 <resources>
-    <!-- Color for Muzei -->
-    <color name="muzei_color">@color/light_theme_accent</color>
-
     <!-- Light Theme -->
     <color name="light_theme_primary_dark">#e0e0e0</color>
     <color name="light_theme_primary">#f5f5f5</color>

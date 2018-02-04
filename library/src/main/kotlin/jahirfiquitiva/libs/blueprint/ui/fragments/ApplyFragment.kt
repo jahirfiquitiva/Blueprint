@@ -28,7 +28,7 @@ import jahirfiquitiva.libs.blueprint.ui.adapters.LaunchersAdapter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
-import jahirfiquitiva.libs.kauextensions.extensions.getDimensionPixelSize
+import jahirfiquitiva.libs.kauextensions.extensions.dimenPixelSize
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
@@ -39,27 +39,23 @@ class ApplyFragment : Fragment<Launcher>() {
     override fun getContentLayout(): Int = R.layout.section_layout
     
     private val list = ArrayList<Launcher>()
-    private lateinit var adapter: LaunchersAdapter
+    private val adapter: LaunchersAdapter by lazy { LaunchersAdapter { onItemClicked(it, false) } }
     
     override fun initUI(content: View) {
-        val rv: EmptyViewRecyclerView by content.bind(R.id.list_rv)
-        val fastScroller: RecyclerFastScroller by content.bind(R.id.fast_scroller)
-        rv.emptyView = content.findViewById(R.id.empty_view)
-        rv.textView = content.findViewById(R.id.empty_text)
-        adapter = LaunchersAdapter { onItemClicked(it, false) }
-        rv.adapter = adapter
+        val rv: EmptyViewRecyclerView? by content.bind(R.id.list_rv)
+        val fastScroller: RecyclerFastScroller? by content.bind(R.id.fast_scroller)
+        rv?.emptyView = content.findViewById(R.id.empty_view)
+        rv?.textView = content.findViewById(R.id.empty_text)
+        rv?.adapter = adapter
         val columns = ctxt.getInteger(R.integer.icons_columns) - 1
-        rv.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
-        rv.addItemDecoration(
-                GridSpacingItemDecoration(
-                        columns, ctxt.getDimensionPixelSize(R.dimen.cards_margin)))
-        rv.state = EmptyViewRecyclerView.State.LOADING
-        fastScroller.attachRecyclerView(rv)
-        ctxt.supportedLaunchers.forEach {
-            list.add(it)
-        }
+        rv?.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
+        rv?.addItemDecoration(
+                GridSpacingItemDecoration(columns, dimenPixelSize(R.dimen.cards_margin)))
+        rv?.state = EmptyViewRecyclerView.State.LOADING
+        fastScroller?.attachRecyclerView(rv)
+        ctxt.supportedLaunchers.forEach { list.add(it) }
         setAdapterItems(list)
-        rv.state = EmptyViewRecyclerView.State.NORMAL
+        rv?.state = EmptyViewRecyclerView.State.NORMAL
     }
     
     fun applyFilter(filter: String = "") {

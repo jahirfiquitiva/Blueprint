@@ -23,17 +23,17 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
-import jahirfiquitiva.libs.kauextensions.extensions.getStringArray
+import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 
 class HomeItemViewModel : ListViewModel<Context, HomeItem>() {
     override fun internalLoad(param: Context): ArrayList<HomeItem> {
         val everything = ArrayList<HomeItem>()
         val apps = ArrayList<HomeItem>()
         val links = ArrayList<HomeItem>()
-        val titles = param.getStringArray(R.array.home_list_titles)
-        val descriptions = param.getStringArray(R.array.home_list_descriptions)
-        val icons = param.getStringArray(R.array.home_list_icons)
-        val urls = param.getStringArray(R.array.home_list_links)
+        val titles = param.stringArray(R.array.home_list_titles)
+        val descriptions = param.stringArray(R.array.home_list_descriptions)
+        val icons = param.stringArray(R.array.home_list_icons)
+        val urls = param.stringArray(R.array.home_list_links)
         if (titles.size == descriptions.size && descriptions.size == icons.size
                 && icons.size == urls.size) {
             val maxSize = (if (titles.size > 4) 4 else titles.size) - 1

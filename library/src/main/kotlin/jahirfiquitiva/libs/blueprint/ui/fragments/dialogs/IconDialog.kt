@@ -72,53 +72,57 @@ class IconDialog : BasicDialogFragment() {
         }
         
         dialog.customView?.let {
-            val iconView: ImageView by it.bind(R.id.dialogicon)
-            with(iconView) {
-                if (resId > 0) {
-                    if (animate) {
-                        scaleXY = 0F
-                    }
-                    
-                    val icon = ContextCompat.getDrawable(actv, resId)?.toBitmap()
-                    setImageBitmap(icon)
-                    
-                    icon?.let {
-                        Palette.from(it).generate(
-                                Palette.PaletteAsyncListener { palette ->
-                                    if (animate) {
-                                        animate().scaleX(1F)
-                                                .scaleY(1F)
-                                                .setStartDelay(ICONS_ANIMATION_DURATION_DELAY / 2)
-                                                .setDuration(ICONS_ANIMATION_DURATION)
-                                                .start()
-                                    }
-                                    
-                                    val iconSwatch =
-                                            palette.bestSwatch ?: return@PaletteAsyncListener
-                                    val color = iconSwatch.rgb
-                                    val buttonText = dialog.getActionButton(
-                                            DialogAction.POSITIVE) ?: return@PaletteAsyncListener
-                                    
-                                    val correctTextColor: Int
-                                    correctTextColor = if (actv.usesDarkTheme) {
-                                        if (color.isColorLight) color
-                                        else actv.accentColor
-                                    } else {
-                                        if (color.isColorDark) color
-                                        else actv.accentColor
-                                    }
-                                    
-                                    if (correctTextColor != 0) {
+            val iconView: ImageView? by it.bind(R.id.dialogicon)
+            iconView?.let {
+                with(it) {
+                    if (resId > 0) {
+                        if (animate) {
+                            scaleXY = 0F
+                        }
+                        
+                        val icon = ContextCompat.getDrawable(actv, resId)?.toBitmap()
+                        setImageBitmap(icon)
+                        
+                        icon?.let {
+                            Palette.from(it).generate(
+                                    Palette.PaletteAsyncListener { palette ->
                                         if (animate) {
-                                            buttonText.alpha = 0F
-                                            buttonText.setTextColor(correctTextColor)
-                                            buttonText.animate().alpha(1F).setDuration(
-                                                    ICONS_ANIMATION_DURATION).start()
-                                        } else {
-                                            buttonText.setTextColor(correctTextColor)
+                                            animate().scaleX(1F)
+                                                    .scaleY(1F)
+                                                    .setStartDelay(
+                                                            ICONS_ANIMATION_DURATION_DELAY / 2)
+                                                    .setDuration(ICONS_ANIMATION_DURATION)
+                                                    .start()
                                         }
-                                    }
-                                })
+                                        
+                                        val iconSwatch =
+                                                palette.bestSwatch ?: return@PaletteAsyncListener
+                                        val color = iconSwatch.rgb
+                                        val buttonText = dialog.getActionButton(
+                                                DialogAction.POSITIVE)
+                                                ?: return@PaletteAsyncListener
+                                        
+                                        val correctTextColor: Int
+                                        correctTextColor = if (actv.usesDarkTheme) {
+                                            if (color.isColorLight) color
+                                            else actv.accentColor
+                                        } else {
+                                            if (color.isColorDark) color
+                                            else actv.accentColor
+                                        }
+                                        
+                                        if (correctTextColor != 0) {
+                                            if (animate) {
+                                                buttonText.alpha = 0F
+                                                buttonText.setTextColor(correctTextColor)
+                                                buttonText.animate().alpha(1F).setDuration(
+                                                        ICONS_ANIMATION_DURATION).start()
+                                            } else {
+                                                buttonText.setTextColor(correctTextColor)
+                                            }
+                                        }
+                                    })
+                        }
                     }
                 }
             }

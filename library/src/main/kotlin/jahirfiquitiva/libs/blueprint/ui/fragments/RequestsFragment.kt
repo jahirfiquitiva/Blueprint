@@ -106,6 +106,7 @@ class RequestsFragment : ViewModelFragment<App>() {
         fastScroll = content.findViewById(R.id.fast_scroller)
         fastScroll?.attachRecyclerView(rv)
         rv?.state = EmptyViewRecyclerView.State.LOADING
+        updateFabCount()
     }
     
     private fun updateFabCount() {
@@ -197,7 +198,9 @@ class RequestsFragment : ViewModelFragment<App>() {
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
-                    }, force) { progress ->
+                    }, context?.getString(R.string.arctic_backend_host),
+                    context?.getString(R.string.arctic_backend_api_key),
+                    force) { progress ->
                 if (canShowProgress) {
                     actv {
                         runOnUiThread {

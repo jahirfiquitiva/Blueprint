@@ -255,13 +255,15 @@ class IconRequest private constructor() {
         }
         
         fun withAPIHost(host: String): Builder {
-            apiHost = host
-            return generateAppFilterJson(true)
+            if (host.hasContent()) apiHost = host
+            return generateAppFilterJson(host.hasContent())
         }
         
         fun withAPIKey(key: String?): Builder {
-            apiKey = key
-            return generateAppFilterJson(true)
+            key?.let {
+                if (it.hasContent()) apiKey = it
+                return generateAppFilterJson(it.hasContent())
+            } ?: return generateAppFilterJson(false)
         }
         
         fun maxSelectionCount(@IntRange(from = 0) count: Int): Builder {
@@ -807,42 +809,13 @@ class IconRequest private constructor() {
                     }
                 }
                 
-                if (builder?.apiKey == null || builder?.apiKey.orEmpty().isEmpty()) {
-                    QuestLog.d { "Launching intent!" }
-                    val zipUri = builder?.context?.let { zipFile.getUri(it) }
-                    val emailIntent = Intent(Intent.ACTION_SEND)
-                            .putExtra(Intent.EXTRA_EMAIL, arrayOf(builder?.email.orEmpty()))
-                            .putExtra(Intent.EXTRA_SUBJECT, builder?.subject)
-                            .putExtra(
-                                    Intent.EXTRA_TEXT,
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                                        Html.fromHtml(body, Html.FROM_HTML_MODE_LEGACY)
-                                    else Html.fromHtml(body))
-                            .putExtra(Intent.EXTRA_STREAM, zipUri)
-                            .setType("application/zip")
-                    
-                    val amount = requestsLeft - selectedApps.size
-                    QuestLog.d { "Request: Allowing $amount more requests." }
-                    saveRequestsLeft(if (amount < 0) 0 else amount)
-                    
-                    if (requestsLeft == 0)
-                        saveRequestMoment()
-                    
-                    onRequestProgress?.doWhenReady()
-                    
-                    (builder?.context as? Activity)?.startActivityForResult(
-                            Intent.createChooser(
-                                    emailIntent, builder?.context?.getString(R.string.send_using)),
-                            INTENT_CODE) ?: {
-                        builder?.context?.startActivity(
-                                Intent.createChooser(
-                                        emailIntent,
-                                        builder?.context?.getString(R.string.send_using)))
-                    }()
-                } else {
+                val host = builder?.apiHost.orEmpty()
+                val apiKey = builder?.apiKey.orEmpty()
+                
+                if (host.hasContent() && apiKey.hasContent()) {
                     Bridge.config()
-                            .host(builder?.apiHost.orEmpty())
-                            .defaultHeader("TokenID", builder?.apiKey)
+                            .host(host)
+                            .defaultHeader("TokenID", apiKey)
                             .defaultHeader("Accept", "application/json")
                             .defaultHeader("User-Agent", "afollestad/icon-request")
                             .validators(RemoteValidator())
@@ -857,15 +830,15 @@ class IconRequest private constructor() {
                         QuestLog.d { "Request: Allowing $amount more requests." }
                         saveRequestsLeft(if (amount < 0) 0 else amount)
                         
-                        if (requestsLeft == 0)
-                            saveRequestMoment()
+                        if (requestsLeft == 0) saveRequestMoment()
                         
                         onRequestProgress?.doWhenReady()
                     } catch (e: Exception) {
                         QuestLog.e { "Failed to send icons to the backend: ${e.message}" }
-                        onRequestProgress?.doOnError()
+                        sendRequestViaEmail(zipFile, onRequestProgress)
                     }
-                    
+                } else {
+                    sendRequestViaEmail(zipFile, onRequestProgress)
                 }
             }.start()
         } else {
@@ -873,6 +846,45 @@ class IconRequest private constructor() {
                 builder?.callback?.onRequestLimited(
                         it, currentState, requestsLeft, millisToFinish)
             }
+        }
+    }
+    
+    private fun sendRequestViaEmail(zipFile: File, onRequestProgress: OnRequestProgress?) {
+        try {
+            QuestLog.d { "Launching intent!" }
+            val zipUri = builder?.context?.let { zipFile.getUri(it) }
+            val emailIntent = Intent(Intent.ACTION_SEND)
+                    .putExtra(Intent.EXTRA_EMAIL, arrayOf(builder?.email.orEmpty()))
+                    .putExtra(Intent.EXTRA_SUBJECT, builder?.subject)
+                    .putExtra(
+                            Intent.EXTRA_TEXT,
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                                Html.fromHtml(body, Html.FROM_HTML_MODE_LEGACY)
+                            else Html.fromHtml(body))
+                    .putExtra(Intent.EXTRA_STREAM, zipUri)
+                    .setType("application/zip")
+            
+            val amount = requestsLeft - selectedApps.size
+            QuestLog.d { "Request: Allowing $amount more requests." }
+            saveRequestsLeft(if (amount < 0) 0 else amount)
+            
+            if (requestsLeft == 0)
+                saveRequestMoment()
+            
+            onRequestProgress?.doWhenReady()
+            
+            (builder?.context as? Activity)?.startActivityForResult(
+                    Intent.createChooser(
+                            emailIntent, builder?.context?.getString(R.string.send_using)),
+                    INTENT_CODE) ?: {
+                builder?.context?.startActivity(
+                        Intent.createChooser(
+                                emailIntent,
+                                builder?.context?.getString(R.string.send_using)))
+            }()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            onRequestProgress?.doOnError()
         }
     }
     

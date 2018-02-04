@@ -15,8 +15,15 @@
   ~ limitations under the License.
   -->
 <resources>
+    <!-- Your app name -->
+    <string name="app_name">Kuper</string>
+
     <!--    This one applies for Muzei too. Try not to exceed a tweet length (140 characters) -->
     <string name="app_description">A great icon pack app with hundreds of cool icons.</string>
+
+    <!--    TODO: Change this link -->
+    <!--    This is the link for the JSON file where you have listed your wallpapers -->
+    <string name="json_url">https://jahirfiquitiva.me/frames/wallpapers.json</string>
 
     <!--    Default wallpapers download folder. Always write it like '%1$s/xxxxxxx' -->
     <string name="default_download_folder">%1$s/Blueprint/Wallpapers</string>

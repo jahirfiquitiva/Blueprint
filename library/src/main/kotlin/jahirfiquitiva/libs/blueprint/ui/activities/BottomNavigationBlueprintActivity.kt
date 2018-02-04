@@ -16,6 +16,7 @@
 package jahirfiquitiva.libs.blueprint.ui.activities
 
 import android.os.Bundle
+import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.visible
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
@@ -29,7 +30,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.inactiveIconsColor
 
 abstract class BottomNavigationBlueprintActivity : BaseBlueprintActivity() {
     
-    internal val bottomBar: AHBottomNavigation by bind(R.id.bottom_navigation)
+    internal val bottomBar: AHBottomNavigation? by bind(R.id.bottom_navigation)
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,29 +38,35 @@ abstract class BottomNavigationBlueprintActivity : BaseBlueprintActivity() {
     }
     
     private fun initBottomBar() {
-        bottomBar.accentColor = accentColor
-        with(bottomBar) {
-            defaultBackgroundColor = cardBackgroundColor
-            inactiveColor = inactiveIconsColor
-            // TODO: Enable this?
-            // isBehaviorTranslationEnabled = false
-            isForceTint = true
-            titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
-            getNavigationItems().forEach {
-                addItem(AHBottomNavigationItem(getString(it.title), it.icon))
+        bottomBar?.let {
+            it.accentColor = accentColor
+            with(it) {
+                defaultBackgroundColor = cardBackgroundColor
+                inactiveColor = inactiveIconsColor
+                // TODO: Enable this?
+                isBehaviorTranslationEnabled = false
+                isForceTint = true
+                titleState = AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE
+                getNavigationItems().forEach {
+                    addItem(AHBottomNavigationItem(getString(it.title), it.icon))
+                }
+                setOnTabSelectedListener { position, _ ->
+                    navigateToItem(getNavigationItems()[position], true)
+                    return@setOnTabSelectedListener true
+                }
+                visible()
             }
-            setOnTabSelectedListener { position, _ ->
-                return@setOnTabSelectedListener navigateToItem(getNavigationItems()[position])
-            }
-            setCurrentItem(0, true)
-            visible()
         }
     }
     
-    override fun internalNavigateToItem(item: NavigationItem): Boolean {
-        bottomBar.setCurrentItem(item.id, false)
-        return super.internalNavigateToItem(item)
+    override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean) {
+        if (!fromClick) bottomBar?.setCurrentItem(item.id, false)
+        super.navigateToItem(item, fromClick, force)
+        if (!hasBottomNavigation()) {
+            bottomBar?.hideBottomNavigation()
+            bottomBar?.gone()
+        }
     }
     
-    override fun hasBottomNavigation(): Boolean = true
+    override fun hasBottomNavigation(): Boolean = !isIconsPicker
 }

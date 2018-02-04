@@ -15,14 +15,21 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.support.v4.widget.DrawerLayout
 import android.support.v4.widget.TextViewCompat
+import android.view.Gravity
 import android.view.View
 import android.widget.TextView
+import ca.allanwang.kau.utils.boolean
+import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.gone
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
+import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -38,10 +45,11 @@ import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
-import jahirfiquitiva.libs.kauextensions.extensions.getBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 
 abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
+    
+    private var drawer: Drawer? = null
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +62,8 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
     }
     
     private fun initDrawer(savedInstance: Bundle?) {
-        val v: View by bind(R.id.bottom_navigation)
-        v.gone()
+        val v: View? by bind(R.id.bottom_navigation)
+        v?.gone()
         val accountHeaderBuilder = AccountHeaderBuilder().withActivity(this)
         val header: Drawable? = "drawer_header".getDrawable(this)
         if (header != null) {
@@ -63,7 +71,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         } else {
             accountHeaderBuilder.withHeaderBackground(accentColor)
         }
-        if (getBoolean(R.bool.with_drawer_texts)) {
+        if (boolean(R.bool.with_drawer_texts)) {
             accountHeaderBuilder.withSelectionFirstLine(getAppName())
             accountHeaderBuilder.withSelectionSecondLine("v " + getAppVersion())
         }
@@ -77,20 +85,20 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         
         val accountHeader = accountHeaderBuilder.build()
         
-        val drawerTitle: TextView by accountHeader.view.bind(
+        val drawerTitle: TextView? by accountHeader.view.bind(
                 R.id.material_drawer_account_header_name)
-        val drawerSubtitle: TextView by accountHeader.view.bind(
+        val drawerSubtitle: TextView? by accountHeader.view.bind(
                 R.id.material_drawer_account_header_email)
         
-        TextViewCompat.setTextAppearance(drawerTitle, R.style.DrawerTextsWithShadow)
-        TextViewCompat.setTextAppearance(drawerSubtitle, R.style.DrawerTextsWithShadow)
+        drawerTitle?.let { TextViewCompat.setTextAppearance(it, R.style.DrawerTextsWithShadow) }
+        drawerSubtitle?.let { TextViewCompat.setTextAppearance(it, R.style.DrawerTextsWithShadow) }
         
         val drawerBuilder = DrawerBuilder().withActivity(this)
         toolbar?.let { drawerBuilder.withToolbar(it) }
         
         drawerBuilder.withAccountHeader(accountHeader)
                 .withDelayOnDrawerClose(-1)
-                .withShowDrawerOnFirstLaunch(true)
+                .withActionBarDrawerToggle(!isIconsPicker)
         
         drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
             try {
@@ -108,10 +116,9 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
                         startActivity(Intent(this, SettingsActivity::class.java))
                     }
                     else -> {
-                        val navigated = navigateToItem(
-                                getNavigationItemWithId(drawerItem.identifier.toInt()))
-                        if (navigated) drawer?.closeDrawer()
-                        return@withOnDrawerItemClickListener navigated
+                        navigateToItem(getNavigationItemWithId(drawerItem.identifier.toInt()), true)
+                        drawer?.closeDrawer()
+                        return@withOnDrawerItemClickListener true
                     }
                 }
             } catch (e: Exception) {
@@ -124,7 +131,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
             drawerBuilder.addDrawerItems(
                     PrimaryDrawerItem().withIdentifier(it.id.toLong())
                             .withName(it.title)
-                            .withIcon(getDrawable(it.icon, null))
+                            .withIcon(drawable(it.icon, null))
                             .withIconTintingEnabled(true))
         }
         
@@ -149,29 +156,51 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
                         .withSelectable(false))
         
         drawerBuilder.withHasStableIds(true)
-                .withFireOnInitialOnClick(true)
-        
-        if (savedInstance != null)
-            drawerBuilder.withSavedInstance(savedInstance)
+                .withFireOnInitialOnClick(false)
+                .withDrawerGravity(Gravity.START)
+                .withSavedInstance(savedInstance)
         
         drawer = drawerBuilder.build()
+        if (isIconsPicker) lockDrawer()
     }
     
     override fun onBackPressed() {
-        val isOpen = drawer?.isDrawerOpen ?: false
-        when {
-            isOpen -> drawer?.closeDrawer()
-            currentItemId != DEFAULT_HOME_POSITION -> {
-                drawer?.setSelection(DEFAULT_HOME_POSITION.toLong(), true)
+        val isDrawerOpen = drawer?.isDrawerOpen ?: false
+        if (!isIconsPicker) {
+            when {
+                isDrawerOpen -> drawer?.closeDrawer()
+                currentItemId != DEFAULT_HOME_POSITION -> {
+                    drawer?.setSelection(DEFAULT_HOME_POSITION.toLong(), true)
+                }
+                else -> super.onBackPressed()
             }
-            else -> super.onBackPressed()
+        } else {
+            super.onBackPressed()
         }
     }
     
-    override fun internalNavigateToItem(item: NavigationItem): Boolean {
-        val result = super.internalNavigateToItem(item)
-        if (result) drawer?.setSelection(item.id.toLong(), false)
-        return result
+    override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean) {
+        if (!fromClick) drawer?.setSelection(item.id.toLong(), false)
+        super.navigateToItem(item, fromClick, force)
+        if (isIconsPicker) lockDrawer()
+    }
+    
+    private fun lockDrawer() {
+        drawer?.closeDrawer()
+        drawer?.drawerLayout?.setDrawerLockMode(
+                DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.START)
+        drawer?.actionBarDrawerToggle = null
+    }
+    
+    @SuppressLint("MissingSuperCall")
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        drawer?.actionBarDrawerToggle?.syncState()
+    }
+    
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        drawer?.actionBarDrawerToggle?.onConfigurationChanged(newConfig)
     }
     
     override fun hasBottomNavigation(): Boolean = false

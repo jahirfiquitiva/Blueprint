@@ -30,11 +30,10 @@ class RequestsAdapter(private val onItemsChanged: () -> Unit) :
     
     override fun doBind(holder: RequestViewHolder, position: Int, shouldAnimate: Boolean) {
         holder.setItem(
-                list[position], { _, item ->
-            val ir = IconRequest.get()
-            ir?.apps?.let {
-                ir.toggleAppSelected(item)
-                notifyItemChanged(position)
+                list[position], { checkbox, item ->
+            IconRequest.get()?.let {
+                it.toggleAppSelected(item)
+                checkbox.isChecked = !checkbox.isChecked
                 onItemsChanged()
             }
         })

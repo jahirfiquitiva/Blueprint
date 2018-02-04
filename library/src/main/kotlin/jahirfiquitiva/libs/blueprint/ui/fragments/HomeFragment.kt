@@ -19,17 +19,20 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
-import ca.allanwang.kau.utils.integer
 import ca.allanwang.kau.utils.setPaddingBottom
+import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
+import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.HomeAdapter
+import jahirfiquitiva.libs.frames.providers.viewmodels.WallpapersViewModel
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.actv
+import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import java.lang.ref.WeakReference
 
@@ -39,35 +42,46 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     override fun autoStartLoad(): Boolean = true
     
     private var model: HomeItemViewModel? = null
+    private var iconsModel: IconsViewModel? = null
+    private var wallsModel: WallpapersViewModel? = null
+    
     private var rv: EmptyViewRecyclerView? = null
     private val homeAdapter: HomeAdapter? by lazy {
         HomeAdapter(
                 WeakReference(activity),
-                activity?.integer(R.integer.icons_count) ?: 0,
-                activity?.integer(R.integer.wallpapers_count) ?: 0
-                   ) {
+                iconsModel?.getData().orEmpty().size,
+                wallsModel?.getData().orEmpty().size) {
             onItemClicked(it, false)
         }
     }
     
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(HomeItemViewModel::class.java)
+        iconsModel = ViewModelProviders.of(this).get(IconsViewModel::class.java)
+        wallsModel = ViewModelProviders.of(this).get(WallpapersViewModel::class.java)
     }
     
     override fun registerObserver() {
-        model?.observe(
-                this, {
+        model?.observe(this) {
             homeAdapter?.updateItems(ArrayList(it))
             rv?.state = EmptyViewRecyclerView.State.NORMAL
-        })
+        }
+        iconsModel?.observe(this) { homeAdapter?.updateIconsCount(it.size) }
+        wallsModel?.observe(this) { homeAdapter?.updateWallsCount(it.size) }
     }
     
     override fun unregisterObserver() {
         model?.destroy(this)
+        iconsModel?.destroy(this)
+        wallsModel?.destroy(this)
     }
     
     override fun loadDataFromViewModel() {
-        actv { model?.loadData(it) }
+        actv {
+            model?.loadData(it)
+            iconsModel?.loadData(it)
+            wallsModel?.loadData(it)
+        }
     }
     
     override fun getContentLayout(): Int = R.layout.section_layout
@@ -86,6 +100,9 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         rv?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rv?.setHasFixedSize(true)
         rv?.adapter = homeAdapter
+        
+        val fastScroller: RecyclerFastScroller? by content.bind(R.id.fast_scroller)
+        fastScroller?.attachRecyclerView(rv)
     }
     
     override fun onItemClicked(item: HomeItem, longClick: Boolean) {

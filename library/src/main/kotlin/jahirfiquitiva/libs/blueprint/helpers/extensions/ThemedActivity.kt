@@ -18,10 +18,10 @@ package jahirfiquitiva.libs.blueprint.helpers.extensions
 import android.graphics.PorterDuff
 import android.support.v7.widget.Toolbar
 import ca.allanwang.kau.utils.blendWith
+import ca.allanwang.kau.utils.color
 import ca.allanwang.kau.utils.statusBarLight
 import com.mikepenz.materialdrawer.Drawer
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
-import jahirfiquitiva.libs.kauextensions.extensions.getColorFromRes
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
@@ -34,7 +34,7 @@ fun ThemedActivity.updateToolbarColors(
         toolbar: Toolbar, drawer: Drawer?, offset: Int,
         darkness: Float = 0.5F
                                       ) {
-    val defaultIconsColor = getColorFromRes(android.R.color.white)
+    val defaultIconsColor = color(android.R.color.white)
     var ratio = (offset / 255.0).round(1)
     if (ratio > 1) ratio = 1.0
     else if (ratio < 0) ratio = 0.0

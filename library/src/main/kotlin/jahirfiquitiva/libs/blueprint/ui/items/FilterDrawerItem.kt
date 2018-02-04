@@ -90,8 +90,8 @@ class FilterDrawerItem : BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewH
     }
     
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView? by itemView.bind(R.id.filter_name)
-        val checkBox: AppCompatCheckBox? by itemView.bind(R.id.filter_checkbox)
-        val divider: View? by itemView.bind(R.id.divider)
+        val title: TextView? by bind(R.id.filter_name)
+        val checkBox: AppCompatCheckBox? by bind(R.id.filter_checkbox)
+        val divider: View? by bind(R.id.divider)
     }
 }

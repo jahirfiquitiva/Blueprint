@@ -27,12 +27,12 @@ open class EmptyFragment : Fragment<Boolean>() {
     override fun getContentLayout(): Int = R.layout.section_layout
     
     override fun initUI(content: View) {
-        val fastScroll: RecyclerFastScroller by content.bind(R.id.fast_scroller)
-        fastScroll.gone()
-        val emptyRecyclerView: EmptyViewRecyclerView by content.bind(R.id.list_rv)
-        emptyRecyclerView.emptyView = content.findViewById(R.id.empty_view)
-        emptyRecyclerView.textView = content.findViewById(R.id.empty_text)
-        emptyRecyclerView.state = EmptyViewRecyclerView.State.EMPTY
+        val fastScroll: RecyclerFastScroller? by content.bind(R.id.fast_scroller)
+        fastScroll?.gone()
+        val emptyRecyclerView: EmptyViewRecyclerView? by content.bind(R.id.list_rv)
+        emptyRecyclerView?.emptyView = content.findViewById(R.id.empty_view)
+        emptyRecyclerView?.textView = content.findViewById(R.id.empty_text)
+        emptyRecyclerView?.state = EmptyViewRecyclerView.State.EMPTY
     }
     
     override fun onItemClicked(item: Boolean, longClick: Boolean) {}
