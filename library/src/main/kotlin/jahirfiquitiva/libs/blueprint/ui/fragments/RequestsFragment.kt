@@ -52,7 +52,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     private var viewModel: RequestsViewModel? = null
     
-    private var rv: EmptyViewRecyclerView? = null
+    private var recyclerView: EmptyViewRecyclerView? = null
     private var adapter: RequestsAdapter? = null
     private var fastScroll: RecyclerFastScroller? = null
     
@@ -60,6 +60,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     private var spacingDecoration: GridSpacingItemDecoration? = null
     private var dialog: RequestLimitDialog? = null
     private var otherDialog: MaterialDialog? = null
+    
     private val progressDialog: MaterialDialog? by lazy {
         activity?.buildMaterialDialog {
             content(R.string.loading_apps_to_request)
@@ -72,27 +73,31 @@ class RequestsFragment : ViewModelFragment<App>() {
     private var canShowProgress = true
     
     override fun initUI(content: View) {
-        rv = content.findViewById(R.id.list_rv)
+        recyclerView = content.findViewById(R.id.list_rv)
         
         val bottomNavigationHeight =
                 (activity as? BottomNavigationBlueprintActivity)?.bottomBar?.height ?: 0
-        rv?.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        recyclerView?.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
         
-        rv?.itemAnimator = if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
-        rv?.textView = content.findViewById(R.id.empty_text)
-        rv?.emptyView = content.findViewById(R.id.empty_view)
-        rv?.setEmptyImage(R.drawable.empty_section)
-        rv?.setEmptyText(R.string.empty_section)
-        rv?.loadingView = content.findViewById(R.id.loading_view)
-        rv?.setLoadingText(R.string.loading_section)
+        recyclerView?.itemAnimator =
+                if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
+        
+        recyclerView?.emptyView = content.findViewById(R.id.empty_view)
+        recyclerView?.setEmptyImage(R.drawable.empty_section)
+        
+        recyclerView?.textView = content.findViewById(R.id.empty_text)
+        recyclerView?.setEmptyText(R.string.empty_section)
+        
+        recyclerView?.loadingView = content.findViewById(R.id.loading_view)
+        recyclerView?.setLoadingText(R.string.loading_section)
         
         spanCount = if (context?.isInHorizontalMode == true) 2 else 1
-        rv?.layoutManager = GridLayoutManager(context, spanCount)
+        recyclerView?.layoutManager = GridLayoutManager(context, spanCount)
         spacingDecoration = GridSpacingItemDecoration(
                 spanCount, ctxt.dimenPixelSize(R.dimen.cards_small_margin))
-        rv?.addItemDecoration(spacingDecoration)
+        recyclerView?.addItemDecoration(spacingDecoration)
         
-        rv?.addOnScrollListener(
+        recyclerView?.addOnScrollListener(
                 object : RecyclerView.OnScrollListener() {
                     override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                         super.onScrolled(recyclerView, dx, dy)
@@ -102,11 +107,17 @@ class RequestsFragment : ViewModelFragment<App>() {
                 })
         
         adapter = RequestsAdapter { updateFabCount() }
-        rv?.adapter = adapter
+        recyclerView?.adapter = adapter
         fastScroll = content.findViewById(R.id.fast_scroller)
-        fastScroll?.attachRecyclerView(rv)
-        rv?.state = EmptyViewRecyclerView.State.LOADING
+        fastScroll?.attachRecyclerView(recyclerView)
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         updateFabCount()
+        loadDataFromViewModel()
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        loadDataFromViewModel()
     }
     
     private fun updateFabCount() {
@@ -119,11 +130,11 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     fun scrollToTop() {
-        rv?.layoutManager?.scrollToPosition(0)
+        recyclerView?.post { recyclerView?.scrollToPosition(0) }
     }
     
     fun refresh() {
-        rv?.state = EmptyViewRecyclerView.State.LOADING
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         canShowProgress = true
         internalLoadData(true)
     }
@@ -174,6 +185,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     override fun loadDataFromViewModel() {
+        canShowProgress = true
         internalLoadData(false)
     }
     
@@ -238,4 +250,11 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     override fun getContentLayout(): Int = R.layout.section_layout
     override fun autoStartLoad(): Boolean = true
+    override fun allowReloadAfterVisibleToUser(): Boolean = true
+    
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        if (isVisibleToUser) canShowProgress = true
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser && !allowReloadAfterVisibleToUser()) recyclerView?.updateEmptyState()
+    }
 }

@@ -57,7 +57,6 @@ import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.SettingsActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
-import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
@@ -95,9 +94,11 @@ import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import jahirfiquitiva.libs.kauextensions.extensions.tint
+import jahirfiquitiva.libs.kauextensions.ui.fragments.adapters.FragmentsAdapter
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
+import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
 import jahirfiquitiva.libs.quest.IconRequest
 import jahirfiquitiva.libs.quest.events.OnRequestProgress
 
@@ -113,24 +114,35 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     private val coordinatorLayout: CustomCoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
     private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
     
-    private lateinit var filtersDrawer: Drawer
+    private var filtersDrawer: Drawer? = null
     
     internal val toolbar: CustomToolbar? by bind(R.id.toolbar)
     internal val fabsMenu: FABsMenu? by bind(R.id.fabs_menu)
     internal val fab: CounterFab? by bind(R.id.fab)
     
+    private var searchItem: MenuItem? = null
     private var searchView: CustomSearchView? = null
-    private var activeFragment: Fragment? = null
     
     private var iconsFilters: ArrayList<String> = ArrayList()
-    internal var currentItemId: Int = -1
-    
-    private val fragments: ArrayList<Pair<Int, Fragment>> = ArrayList()
+    internal var currentItemId: Int = DEFAULT_HOME_POSITION
     
     internal val isIconsPicker: Boolean
         get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
     
-    override fun fragmentsContainer(): Int = R.id.fragments_container
+    private val pager: PseudoViewPager? by bind(R.id.pager)
+    private var fragmentsAdapter: FragmentsAdapter? = null
+    private val activeFragment: Fragment?
+        get() = fragmentsAdapter?.get(currentItemId)
+    
+    internal val hasTemplates: Boolean
+        get() {
+            var templatesCount = resources?.assets?.list("komponents").orEmpty().size
+            templatesCount += resources?.assets?.list("lockscreens").orEmpty().size
+            templatesCount += resources?.assets?.list("wallpapers").orEmpty().size
+            templatesCount += resources?.assets?.list("widgets").orEmpty().size
+            templatesCount += resources?.assets?.list("templates").orEmpty().size
+            return templatesCount > 0
+        }
     
     @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -147,8 +159,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         invalidateOptionsMenu()
         val isOpen = searchView?.isOpen ?: false
         if (isOpen) {
-            doSearch()
-            searchView?.onActionViewCollapsed()
+            searchItem?.collapseActionView()
         } else {
             if (!isIconsPicker && !hasBottomNavigation() && currentItemId != DEFAULT_HOME_POSITION) {
                 navigateToItem(getNavigationItemWithId(DEFAULT_HOME_POSITION), false)
@@ -163,6 +174,11 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         super.onResume()
         if (currentItemId < 0) defaultNavigation(true)
         else navigateToItem(getNavigationItemWithId(currentItemId), false)
+    }
+    
+    override fun onPause() {
+        super.onPause()
+        if (searchView?.isOpen == true) searchItem?.collapseActionView()
     }
     
     @SuppressLint("MissingSuperCall")
@@ -191,11 +207,31 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     }
     
     private fun initMainComponents(savedInstance: Bundle?) {
+        initFragments()
         initFAB()
         initFABsMenu()
         initFiltersDrawer(savedInstance)
         RequestsViewModel.initAndLoadRequestApps(
                 this, string(R.string.arctic_backend_host), string(R.string.arctic_backend_api_key))
+    }
+    
+    private fun initFragments() {
+        fragmentsAdapter = FragmentsAdapter(supportFragmentManager)
+        loop@ for (item in getNavigationItems()) {
+            when (item.id) {
+                DEFAULT_HOME_POSITION -> fragmentsAdapter?.addFragment(HomeFragment())
+                DEFAULT_ICONS_POSITION ->
+                    fragmentsAdapter?.addFragment(IconsFragment.create(pickerKey))
+                DEFAULT_WALLPAPERS_POSITION ->
+                    fragmentsAdapter?.addFragment(
+                            WallpapersFragment.create(getLicenseChecker() != null))
+                DEFAULT_APPLY_POSITION -> fragmentsAdapter?.addFragment(ApplyFragment())
+                DEFAULT_REQUEST_POSITION -> fragmentsAdapter?.addFragment(RequestsFragment())
+                else -> continue@loop
+            }
+        }
+        pager?.offscreenPageLimit = fragmentsAdapter?.count ?: 1
+        pager?.adapter = fragmentsAdapter
     }
     
     private fun initFAB() {
@@ -256,13 +292,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         menu?.let {
-            val donationItem = it.findItem(R.id.donate)
-            donationItem?.isVisible = donationsEnabled
-            
             updateToolbarMenuItems(getNavigationItemWithId(currentItemId), it)
             
-            val searchItem = it.findItem(R.id.search)
-            searchView = searchItem.actionView as? CustomSearchView
+            searchItem = it.findItem(R.id.search)
+            searchView = searchItem?.actionView as? CustomSearchView
             searchView?.onCollapse = { doSearch() }
             searchView?.onQueryChanged = { doSearch(it) }
             searchView?.onQuerySubmit = { doSearch(it) }
@@ -273,7 +306,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                 DEFAULT_WALLPAPERS_POSITION -> getString(R.string.search_wallpapers)
                 DEFAULT_APPLY_POSITION -> getString(R.string.search_launchers)
                 DEFAULT_REQUEST_POSITION -> getString(R.string.search_apps)
-                else -> ""
+                else -> getString(R.string.search)
             }
             
             searchView?.tint(getPrimaryTextColorFor(primaryColor, 0.6F))
@@ -289,16 +322,19 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         item?.let {
             when (it.itemId) {
-                R.id.filters -> filtersDrawer.openDrawer()
+                R.id.filters -> filtersDrawer?.openDrawer()
                 R.id.refresh -> {
                     refreshWallpapers()
                     refreshRequests()
                 }
                 R.id.changelog -> showChangelog(R.xml.changelog, secondaryTextColor)
                 R.id.select_all -> toggleSelectAll()
+                R.id.templates -> launchKuperActivity()
                 R.id.help -> launchHelpActivity()
                 R.id.about -> startActivity(Intent(this, CreditsActivity::class.java))
                 R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
+                else -> {
+                }
             }
         }
         return super.onOptionsItemSelected(item)
@@ -311,7 +347,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         filtersDrawerBuilder.addDrawerItems(FilterTitleDrawerItem().withButtonListener(
                 object : FilterTitleDrawerItem.ButtonListener {
                     override fun onButtonPressed() {
-                        filtersDrawer.drawerItems?.forEach {
+                        filtersDrawer?.drawerItems?.forEach {
                             (it as? FilterDrawerItem)?.checkBoxHolder?.apply(false, false)
                         }
                         if (hadFilters) {
@@ -370,82 +406,63 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             fromClick: Boolean,
             force: Boolean = false
                                     ) {
-        if (currentItemId != item.id || force) {
-            try {
-                internalNavigateToItem(item)
-            } catch (e: Exception) {
-                e.printStackTrace()
+        try {
+            postDelayed(10) {
+                if (currentItemId != item.id) {
+                    pager?.setCurrentItem(item.id, true)
+                    currentItemId = item.id
+                    invalidateOptionsMenu()
+                    updateUI(item)
+                } else {
+                    if (hasBottomNavigation()) {
+                        val activeFragment = fragmentsAdapter?.get(pager?.currentItem ?: -1)
+                        (activeFragment as? HomeFragment)?.scrollToTop()
+                        (activeFragment as? IconsFragment)?.scrollToTop()
+                        (activeFragment as? WallpapersFragment)?.scrollToTop()
+                        (activeFragment as? ApplyFragment)?.scrollToTop()
+                        (activeFragment as? RequestsFragment)?.scrollToTop()
+                    }
+                }
             }
+        } catch (e: Exception) {
         }
     }
     
-    private fun internalNavigateToItem(item: NavigationItem) {
-        try {
-            val isOpen = searchView?.isOpen ?: false
-            if (isOpen) {
-                doSearch()
-                searchView?.onActionViewCollapsed()
-            }
-            
-            invalidateOptionsMenu()
-            
-            fabsMenu?.collapse()
-            if (fabsMenu?.menuButton?.isShown == true)
-                fabsMenu?.menuButton?.hideIf(item.id != DEFAULT_HOME_POSITION)
-            fabsMenu?.goneIf(item.id != DEFAULT_HOME_POSITION)
-            if (fabsMenu?.menuButton?.isHidden == true)
-                fabsMenu?.menuButton?.showIf(item.id == DEFAULT_HOME_POSITION)
-            fab?.showIf(item.id == DEFAULT_REQUEST_POSITION)
-            
-            toolbar?.title = getString(
-                    if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
-            supportActionBar?.title = getString(
-                    if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
-            
-            postDelayed(15) {
-                val rightItem = getNavigationItemWithId(item.id)
-                changeFragment(getFragmentForNavigationItem(item.id), rightItem.tag)
-                lockFiltersDrawer(
-                        item.id != DEFAULT_ICONS_POSITION ||
-                                stringArray(R.array.icon_filters).size <= 1)
-                currentItemId = item.id
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+    private fun updateUI(item: NavigationItem) {
+        fabsMenu?.collapse()
+        if (fabsMenu?.menuButton?.isShown == true)
+            fabsMenu?.menuButton?.hideIf(item.id != DEFAULT_HOME_POSITION)
+        fabsMenu?.goneIf(item.id != DEFAULT_HOME_POSITION)
+        if (fabsMenu?.menuButton?.isHidden == true)
+            fabsMenu?.menuButton?.showIf(item.id == DEFAULT_HOME_POSITION)
+        fab?.showIf(item.id == DEFAULT_REQUEST_POSITION)
+        
+        toolbar?.title = getString(
+                if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+        supportActionBar?.title = getString(
+                if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+        
+        lockFiltersDrawer(
+                item.id != DEFAULT_ICONS_POSITION || stringArray(R.array.icon_filters).size <= 1)
     }
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
+        menu.changeOptionVisibility(R.id.donate, donationsEnabled)
         menu.changeOptionVisibility(R.id.search, item.id != DEFAULT_HOME_POSITION)
         menu.changeOptionVisibility(
                 R.id.filters,
-                item.id == DEFAULT_ICONS_POSITION &&
-                        stringArray(R.array.icon_filters).size > 1)
+                item.id == DEFAULT_ICONS_POSITION && stringArray(R.array.icon_filters).size > 1)
         menu.changeOptionVisibility(
                 R.id.refresh,
                 item.id == DEFAULT_WALLPAPERS_POSITION || item.id == DEFAULT_REQUEST_POSITION)
-        menu.changeOptionVisibility(
-                R.id.select_all,
-                item.id == DEFAULT_REQUEST_POSITION)
-        menu.tint(getActiveIconsColorFor(primaryColor))
+        menu.changeOptionVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_POSITION)
+        menu.changeOptionVisibility(R.id.templates, hasTemplates)
     }
     
     private fun lockFiltersDrawer(lock: Boolean) {
-        filtersDrawer.drawerLayout?.setDrawerLockMode(
+        filtersDrawer?.drawerLayout?.setDrawerLockMode(
                 if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
                 Gravity.END)
-    }
-    
-    private fun getFragmentForNavigationItem(id: Int): Fragment {
-        activeFragment = when (id) {
-            DEFAULT_HOME_POSITION -> HomeFragment()
-            DEFAULT_ICONS_POSITION -> IconsFragment.create(pickerKey)
-            DEFAULT_WALLPAPERS_POSITION -> WallpapersFragment()
-            DEFAULT_APPLY_POSITION -> ApplyFragment()
-            DEFAULT_REQUEST_POSITION -> RequestsFragment()
-            else -> EmptyFragment()
-        }
-        return activeFragment ?: EmptyFragment()
     }
     
     open fun getNavigationItems(): Array<NavigationItem> =
@@ -545,12 +562,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     }
     
     internal fun doSearch(search: String = "") {
-        when (activeFragment) {
-            is IconsFragment -> (activeFragment as IconsFragment).doSearch(search)
-            is WallpapersFragment -> (activeFragment as WallpapersFragment).applyFilter(search)
-            is ApplyFragment -> (activeFragment as ApplyFragment).applyFilter(search)
-            is RequestsFragment -> (activeFragment as RequestsFragment).applyFilter(search)
-        }
+        (activeFragment as? IconsFragment)?.doSearch(search)
+        (activeFragment as? WallpapersFragment)?.applyFilter(search)
+        (activeFragment as? ApplyFragment)?.applyFilter(search)
+        (activeFragment as? RequestsFragment)?.applyFilter(search)
     }
     
     internal fun refreshWallpapers() {

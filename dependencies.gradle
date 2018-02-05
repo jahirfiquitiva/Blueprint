@@ -26,8 +26,8 @@ ext.versions = [
         kotlin        : '1.2.21',
         libs          : '2.0',
         // Dependencies
-        archHelpers   : 'fe278c3',
-        kuper         : 'e87ef256eb',
+        archHelpers   : '818dbef',
+        kuper         : 'cc7cef9',
         materialDrawer: '6.0.4',
         fabsMenu      : 'cde8a62',
         counterFab    : '1.0.3',

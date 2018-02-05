@@ -40,6 +40,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_POSITION
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_TEMPLATES_POSITION
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
@@ -103,6 +104,10 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
             try {
                 when (drawerItem.identifier) {
+                    DEFAULT_TEMPLATES_POSITION.toLong() -> {
+                        drawer?.closeDrawer()
+                        launchKuperActivity()
+                    }
                     DEFAULT_HELP_POSITION.toLong() -> {
                         drawer?.closeDrawer()
                         launchHelpActivity()
@@ -136,6 +141,13 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         }
         
         drawerBuilder.addDrawerItems(DividerDrawerItem())
+        
+        if (hasTemplates)
+            drawerBuilder.addDrawerItems(
+                    SecondaryDrawerItem()
+                            .withIdentifier(DEFAULT_TEMPLATES_POSITION.toLong())
+                            .withName(R.string.templates)
+                            .withSelectable(false))
         
         drawerBuilder.addDrawerItems(
                 SecondaryDrawerItem()

@@ -34,7 +34,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 
 class FilterDrawerItem : BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewHolder>() {
     
-    private lateinit var nameHolder: StringHolder
+    private var nameHolder: StringHolder? = null
     private var listener: FilterCheckBoxHolder.StateChangeListener? = null
     private var showDivider = true
     var checkBoxHolder = FilterCheckBoxHolder()
@@ -71,7 +71,7 @@ class FilterDrawerItem : BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewH
     override fun bindView(holder: ViewHolder?, payloads: MutableList<Any>) {
         super.bindView(holder, payloads)
         holder?.let {
-            nameHolder.applyTo(it.title)
+            nameHolder?.applyTo(it.title)
             it.title?.setBackgroundColor(color)
             val context = it.itemView?.context
             it.title?.setTextColor(context?.getPrimaryTextColorFor(color) ?: Color.BLACK)
@@ -82,7 +82,7 @@ class FilterDrawerItem : BaseDrawerItem<FilterDrawerItem, FilterDrawerItem.ViewH
             } else it.divider?.gone()
             checkBoxHolder = FilterCheckBoxHolder()
             it.checkBox?.let { checkBox ->
-                checkBoxHolder.setup(checkBox, nameHolder.text.toString(), listener)
+                checkBoxHolder.setup(checkBox, nameHolder?.text.toString(), listener)
             }
             it.itemView?.setOnClickListener { checkBoxHolder.apply(!checkBoxHolder.isChecked()) }
             onPostBindView(this, holder.itemView)

@@ -59,10 +59,18 @@
             tools:ignore="AppCompatResource"/>
 
     <item
+            android:id="@+id/templates"
+            android:icon="@drawable/ic_widgets"
+            android:title="@string/templates"
+            android:orderInCategory="600"
+            app:showAsAction="never"
+            tools:ignore="AppCompatResource"/>
+
+    <item
             android:id="@+id/about"
             android:icon="@drawable/ic_about"
             android:title="@string/section_about"
-            android:orderInCategory="600"
+            android:orderInCategory="700"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
@@ -70,7 +78,7 @@
             android:id="@+id/settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/settings"
-            android:orderInCategory="700"
+            android:orderInCategory="800"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
@@ -78,7 +86,7 @@
             android:id="@+id/help"
             android:icon="@drawable/ic_help"
             android:title="@string/section_help"
-            android:orderInCategory="800"
+            android:orderInCategory="900"
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 

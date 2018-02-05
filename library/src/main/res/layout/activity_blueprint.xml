@@ -48,8 +48,8 @@
 
     </jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout>
 
-    <FrameLayout
-            android:id="@+id/fragments_container"
+    <jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
+            android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>

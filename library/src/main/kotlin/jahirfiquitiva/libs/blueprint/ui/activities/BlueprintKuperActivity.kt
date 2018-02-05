@@ -16,6 +16,7 @@
 package jahirfiquitiva.libs.blueprint.ui.activities
 
 import com.github.javiersantos.piracychecker.PiracyChecker
+import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.kuper.ui.activities.KuperActivity
 
 class BlueprintKuperActivity : KuperActivity() {
@@ -25,4 +26,5 @@ class BlueprintKuperActivity : KuperActivity() {
     override fun checkLPF(): Boolean = false
     override fun checkStores(): Boolean = false
     override var donationsEnabled: Boolean = false
+    override fun getActivityTitle(): String = getString(R.string.templates)
 }

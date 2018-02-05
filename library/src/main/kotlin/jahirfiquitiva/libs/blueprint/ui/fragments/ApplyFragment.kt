@@ -36,26 +36,37 @@ import jahirfiquitiva.libs.kauextensions.ui.fragments.Fragment
 
 @Suppress("DEPRECATION")
 class ApplyFragment : Fragment<Launcher>() {
+    
     override fun getContentLayout(): Int = R.layout.section_layout
     
+    private var recyclerView: EmptyViewRecyclerView? = null
     private val list = ArrayList<Launcher>()
     private val adapter: LaunchersAdapter by lazy { LaunchersAdapter { onItemClicked(it, false) } }
     
     override fun initUI(content: View) {
-        val rv: EmptyViewRecyclerView? by content.bind(R.id.list_rv)
+        recyclerView = content.findViewById(R.id.list_rv)
         val fastScroller: RecyclerFastScroller? by content.bind(R.id.fast_scroller)
-        rv?.emptyView = content.findViewById(R.id.empty_view)
-        rv?.textView = content.findViewById(R.id.empty_text)
-        rv?.adapter = adapter
+    
+        recyclerView?.emptyView = content.findViewById(R.id.empty_view)
+        recyclerView?.setEmptyImage(R.drawable.empty_section)
+    
+        recyclerView?.textView = content.findViewById(R.id.empty_text)
+        recyclerView?.setEmptyText(R.string.empty_section)
+    
+        recyclerView?.loadingView = content.findViewById(R.id.loading_view)
+        recyclerView?.setLoadingText(R.string.loading_section)
+        
+        recyclerView?.adapter = adapter
         val columns = ctxt.getInteger(R.integer.icons_columns) - 1
-        rv?.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
-        rv?.addItemDecoration(
+        recyclerView?.layoutManager =
+                GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
+        recyclerView?.addItemDecoration(
                 GridSpacingItemDecoration(columns, dimenPixelSize(R.dimen.cards_margin)))
-        rv?.state = EmptyViewRecyclerView.State.LOADING
-        fastScroller?.attachRecyclerView(rv)
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
+        fastScroller?.attachRecyclerView(recyclerView)
         ctxt.supportedLaunchers.forEach { list.add(it) }
         setAdapterItems(list)
-        rv?.state = EmptyViewRecyclerView.State.NORMAL
+        recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
     }
     
     fun applyFilter(filter: String = "") {
@@ -84,5 +95,9 @@ class ApplyFragment : Fragment<Launcher>() {
                 context?.executeLauncherIntent(item.name)
             else context?.showLauncherNotInstalledDialog(item)
         }
+    }
+    
+    fun scrollToTop() {
+        recyclerView?.post { recyclerView?.scrollToPosition(0) }
     }
 }

@@ -53,12 +53,14 @@ class HelpActivity : ThemedActivity() {
     override fun autoTintNavigationBar() = true
     
     private val toolbar: Toolbar? by bind(R.id.toolbar)
-    private val rv: EmptyViewRecyclerView? by bind(R.id.list_rv)
+    private val recyclerView: EmptyViewRecyclerView? by bind(R.id.list_rv)
     private val fastScroll: RecyclerFastScroller? by bind(R.id.fast_scroller)
     
-    var searchView: CustomSearchView? = null
-    val faqs = ArrayList<HelpItem>()
-    val adapter = HelpAdapter()
+    private var searchItem: MenuItem? = null
+    private var searchView: CustomSearchView? = null
+    
+    private val faqs = ArrayList<HelpItem>()
+    private val adapter = HelpAdapter()
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,24 +81,24 @@ class HelpActivity : ThemedActivity() {
         val refreshLayout: SwipeRefreshLayout? by bind(R.id.swipe_to_refresh)
         refreshLayout?.isEnabled = false
         
-        rv?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv?.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        rv?.itemAnimator = DefaultItemAnimator()
-        rv?.state = EmptyViewRecyclerView.State.LOADING
+        recyclerView?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerView?.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerView?.itemAnimator = DefaultItemAnimator()
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         
         adapter.setItems(faqs)
-        rv?.adapter = adapter
+        recyclerView?.adapter = adapter
         
-        fastScroll?.attachRecyclerView(rv)
+        fastScroll?.attachRecyclerView(recyclerView)
         
-        rv?.state = EmptyViewRecyclerView.State.NORMAL
+        recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
     }
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater?.inflate(R.menu.menu_help, menu)
         menu?.let {
-            val searchItem = it.findItem(R.id.search)
-            searchView = searchItem.actionView as? CustomSearchView
+            searchItem = it.findItem(R.id.search)
+            searchView = searchItem?.actionView as? CustomSearchView
             searchView?.onExpand = {
                 it.hideAllItems()
             }

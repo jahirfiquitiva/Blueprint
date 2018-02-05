@@ -45,7 +45,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     private var iconsModel: IconsViewModel? = null
     private var wallsModel: WallpapersViewModel? = null
     
-    private var rv: EmptyViewRecyclerView? = null
+    private var recyclerView: EmptyViewRecyclerView? = null
     private val homeAdapter: HomeAdapter? by lazy {
         HomeAdapter(
                 WeakReference(activity),
@@ -64,7 +64,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     override fun registerObserver() {
         model?.observe(this) {
             homeAdapter?.updateItems(ArrayList(it))
-            rv?.state = EmptyViewRecyclerView.State.NORMAL
+            recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
         }
         iconsModel?.observe(this) { homeAdapter?.updateIconsCount(it.size) }
         wallsModel?.observe(this) { homeAdapter?.updateWallsCount(it.size) }
@@ -87,22 +87,33 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     override fun getContentLayout(): Int = R.layout.section_layout
     
     override fun initUI(content: View) {
-        rv = content.findViewById(R.id.list_rv)
-        rv?.let { (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(it) }
+        recyclerView = content.findViewById(R.id.list_rv)
+        recyclerView?.let {
+            (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(
+                    it)
+        }
         
         val bottomNavigationHeight =
                 (activity as? BottomNavigationBlueprintActivity)?.bottomBar?.height ?: 0
-        rv?.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        recyclerView?.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
         
-        rv?.emptyView = content.findViewById(R.id.empty_view)
-        rv?.textView = content.findViewById(R.id.empty_text)
-        rv?.state = EmptyViewRecyclerView.State.LOADING
-        rv?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rv?.setHasFixedSize(true)
-        rv?.adapter = homeAdapter
+        recyclerView?.emptyView = content.findViewById(R.id.empty_view)
+        recyclerView?.setEmptyImage(R.drawable.empty_section)
+        
+        recyclerView?.textView = content.findViewById(R.id.empty_text)
+        recyclerView?.setEmptyText(R.string.empty_section)
+        
+        recyclerView?.loadingView = content.findViewById(R.id.loading_view)
+        recyclerView?.setLoadingText(R.string.loading_section)
+        
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
+        recyclerView?.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerView?.setHasFixedSize(true)
+        recyclerView?.adapter = homeAdapter
         
         val fastScroller: RecyclerFastScroller? by content.bind(R.id.fast_scroller)
-        fastScroller?.attachRecyclerView(rv)
+        fastScroller?.attachRecyclerView(recyclerView)
     }
     
     override fun onItemClicked(item: HomeItem, longClick: Boolean) {
@@ -110,5 +121,14 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
             if (item.intent != null) context?.startActivity(item.intent)
             else context?.openLink(item.url)
         }
+    }
+    
+    fun scrollToTop() {
+        recyclerView?.post { recyclerView?.scrollToPosition(0) }
+    }
+    
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser && !allowReloadAfterVisibleToUser()) recyclerView?.updateEmptyState()
     }
 }

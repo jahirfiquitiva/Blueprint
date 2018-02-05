@@ -18,6 +18,7 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 import jahirfiquitiva.libs.frames.data.models.Wallpaper
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseWallpapersFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kuper.ui.fragments.WallpapersFragment
 
 class WallpapersFragment : BaseWallpapersFragment() {
     override fun fromCollectionActivity(): Boolean = false
@@ -29,5 +30,10 @@ class WallpapersFragment : BaseWallpapersFragment() {
         super.doOnWallpapersChange(data, fromCollectionActivity)
         wallsAdapter.setItems(data)
         recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
+    }
+    
+    companion object {
+        fun create(hasChecker: Boolean) =
+                WallpapersFragment().apply { this.hasChecker = hasChecker }
     }
 }

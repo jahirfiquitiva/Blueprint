@@ -18,7 +18,6 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.arch.lifecycle.ViewModelProviders
-import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -33,7 +32,6 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
-import jahirfiquitiva.libs.blueprint.helpers.extensions.getUriFromResource
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.IconDialog
@@ -45,8 +43,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.getUri
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import java.io.File
-import java.io.FileOutputStream
 
 @Suppress("DEPRECATION")
 class IconsFragment : ViewModelFragment<Icon>() {
@@ -60,7 +56,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     private var model: IconsViewModel? = null
-    private var rv: EmptyViewRecyclerView? = null
+    private var recyclerView: EmptyViewRecyclerView? = null
     private var fastScroller: RecyclerFastScroller? = null
     
     private var dialog: IconDialog? = null
@@ -80,6 +76,10 @@ class IconsFragment : ViewModelFragment<Icon>() {
         model?.getData()?.let {
             setAdapterItems(ArrayList(it), search)
         }
+    }
+    
+    fun scrollToTop() {
+        recyclerView?.post { recyclerView?.scrollToPosition(0) }
     }
     
     override fun initViewModel() {
@@ -115,7 +115,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             else icons.addAll(it.icons)
         }
         adapter.setItems(ArrayList(icons.distinct().sorted()))
-        rv?.state = EmptyViewRecyclerView.State.NORMAL
+        recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
     }
     
     override fun unregisterObserver() {
@@ -138,15 +138,24 @@ class IconsFragment : ViewModelFragment<Icon>() {
     override fun getContentLayout(): Int = R.layout.section_layout
     
     override fun initUI(content: View) {
-        rv = content.findViewById(R.id.list_rv)
+        recyclerView = content.findViewById(R.id.list_rv)
         fastScroller = content.findViewById(R.id.fast_scroller)
-        rv?.emptyView = content.findViewById(R.id.empty_view)
-        rv?.textView = content.findViewById(R.id.empty_text)
-        rv?.adapter = adapter
+    
+        recyclerView?.emptyView = content.findViewById(R.id.empty_view)
+        recyclerView?.setEmptyImage(R.drawable.empty_section)
+    
+        recyclerView?.textView = content.findViewById(R.id.empty_text)
+        recyclerView?.setEmptyText(R.string.empty_section)
+    
+        recyclerView?.loadingView = content.findViewById(R.id.loading_view)
+        recyclerView?.setLoadingText(R.string.loading_section)
+        
+        recyclerView?.adapter = adapter
         val columns = ctxt.getInteger(R.integer.icons_columns)
-        rv?.layoutManager = GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
-        rv?.state = EmptyViewRecyclerView.State.LOADING
-        fastScroller?.attachRecyclerView(rv)
+        recyclerView?.layoutManager =
+                GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
+        fastScroller?.attachRecyclerView(recyclerView)
     }
     
     override fun onItemClicked(item: Icon, longClick: Boolean) {
@@ -180,30 +189,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
                     val iconRes = Intent.ShortcutIconResource.fromContext(activity, item.icon)
                     intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconRes)
                 } else if (pickerKey == IMAGE_PICKER) {
-                    var uri: Uri? = null
-                    val icon = File(activity.cacheDir, item.name + ".png")
-                    val fos: FileOutputStream
-                    try {
-                        fos = FileOutputStream(icon)
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos)
-                        fos.flush()
-                        fos.close()
-                        uri = icon.getUri(activity)
-                    } catch (ignored: Exception) {
-                    }
-                    
-                    if (uri == null) {
-                        try {
-                            uri = activity.getUriFromResource(item.icon)
-                        } catch (e: Exception) {
-                            try {
-                                uri = Uri.parse(
-                                        "${ContentResolver.SCHEME_ANDROID_RESOURCE}://" +
-                                                "${activity.packageName}/${item.icon}")
-                            } catch (ignored: Exception) {
-                            }
-                        }
-                    }
+                    val uri: Uri? = bitmap.getUri(activity, item.name)
                     if (uri != null) {
                         intent.putExtra(Intent.EXTRA_STREAM, uri)
                         intent.data = uri
@@ -220,5 +206,10 @@ class IconsFragment : ViewModelFragment<Icon>() {
             }
             activity.finish()
         }
+    }
+    
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser && !allowReloadAfterVisibleToUser()) recyclerView?.updateEmptyState()
     }
 }

@@ -22,7 +22,7 @@ import android.preference.SwitchPreference
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
-import jahirfiquitiva.libs.frames.ui.fragments.SettingsFragment
+import jahirfiquitiva.libs.kuper.ui.fragments.SettingsFragment
 import jahirfiquitiva.libs.kauextensions.extensions.actv
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 

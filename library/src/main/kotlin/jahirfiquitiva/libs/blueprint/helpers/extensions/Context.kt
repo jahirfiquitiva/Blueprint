@@ -15,9 +15,7 @@
  */
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
-import android.content.ContentResolver
 import android.content.Context
-import android.net.Uri
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.PREFERENCES_NAME
@@ -49,11 +47,3 @@ fun Context.millisToText(millis: Long): String {
 
 private fun Long.toWeeks() = TimeUnit.MILLISECONDS.toDays(this) / 7
 private fun Long.toMonths() = toWeeks() / 4
-
-internal fun Context.getUriFromResource(id: Int): Uri? {
-    return Uri.parse(
-            "${ContentResolver.SCHEME_ANDROID_RESOURCE}://" +
-                    "${resources.getResourcePackageName(id)}/" +
-                    "${resources.getResourceTypeName(id)}/" +
-                    resources.getResourceEntryName(id))
-}
