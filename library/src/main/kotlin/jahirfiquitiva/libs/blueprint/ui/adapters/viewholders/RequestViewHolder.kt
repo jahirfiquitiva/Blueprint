@@ -19,11 +19,14 @@ import android.support.v7.widget.AppCompatCheckBox
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import ca.allanwang.kau.utils.drawable
-import ca.allanwang.kau.utils.gone
+import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
+import com.bumptech.glide.RequestManager
+import com.bumptech.glide.request.RequestOptions
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.context
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
@@ -31,19 +34,27 @@ import jahirfiquitiva.libs.quest.App
 import jahirfiquitiva.libs.quest.IconRequest
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val progress: ProgressBar? by bind(R.id.progress)
     private val icon: ImageView? by bind(R.id.icon)
     private val text: TextView? by bind(R.id.name)
     private val checkbox: AppCompatCheckBox? by bind(R.id.checkbox)
     
-    fun setItem(app: App, listener: (checkbox: AppCompatCheckBox, item: App) -> Unit) {
-        app.loadIcon(icon) { success ->
-            if (success) {
-                progress?.gone()
-            } else {
-                icon?.setImageDrawable(context.drawable(R.drawable.ic_na_launcher))
-            }
+    fun setItem(
+            manager: RequestManager?,
+            app: App,
+            listener: (checkbox: AppCompatCheckBox, item: App) -> Unit
+               ) {
+        icon?.let {
+            (manager ?: Glide.with(context))
+                    .load(app.icon)
+                    .apply(
+                            RequestOptions()
+                                    .priority(Priority.IMMEDIATE)
+                                    .placeholder(context.drawable(R.drawable.ic_na_launcher))
+                                    .error(context.drawable(R.drawable.ic_na_launcher)))
+                    .into(it)
+                    .clearOnDetach()
         }
+        
         text?.text = app.name.formatCorrectly().replace("_", " ")
         val request = IconRequest.get()
         checkbox?.isChecked = (request != null && request.isAppSelected(app))
@@ -56,6 +67,6 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     
     fun unbind() {
-        icon?.setImageDrawable(null)
+        icon?.releaseFromGlide()
     }
 }

@@ -15,6 +15,7 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.widgets
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
@@ -36,10 +37,14 @@ class ClickableRecyclerView : RecyclerView {
     }
     
     override fun onTouchEvent(e: MotionEvent?): Boolean {
-        val par = parent
-        if (par != null) {
-            if (par is View) return par.performClick()
+        e?.let {
+            if (it.action == MotionEvent.ACTION_UP) {
+                (parent as? View)?.performClick()
+            }
         }
-        return false
+        return super.onTouchEvent(e)
     }
+    
+    @SuppressLint("ClickableViewAccessibility")
+    override fun performClick(): Boolean = false
 }

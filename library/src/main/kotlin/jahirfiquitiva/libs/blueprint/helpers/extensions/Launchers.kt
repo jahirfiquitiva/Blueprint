@@ -28,8 +28,8 @@ import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 
-val Context.supportedLaunchers: Array<Launcher>
-    get() = arrayOf(
+val Context.supportedLaunchers: ArrayList<Launcher>
+    get() = arrayListOf(
             Launcher(
                     "Action Launcher", arrayOf("com.actionlauncher.playstore"),
                     color(R.color.action_launcher_color)),

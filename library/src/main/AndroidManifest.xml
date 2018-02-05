@@ -75,13 +75,11 @@
         <!-- Icons -->
         <activity
                 android:name=".ui.activities.base.BaseBlueprintActivity"
-                android:label="@string/app_name"
                 android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
                 android:exported="false"/>
 
         <activity
                 android:name=".ui.activities.BlueprintKuperActivity"
-                android:label="@string/app_name"
                 android:exported="false"/>
         <activity
                 android:name=".ui.activities.HelpActivity"

@@ -23,14 +23,15 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import ca.allanwang.kau.utils.dimenPixelSize
 import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.afollestad.materialdialogs.MaterialDialog
 import com.andremion.counterfab.CounterFab
+import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
-import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
@@ -54,12 +55,14 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     private var recyclerView: EmptyViewRecyclerView? = null
     private var adapter: RequestsAdapter? = null
-    private var fastScroll: RecyclerFastScroller? = null
+    private var fastScroller: RecyclerFastScroller? = null
     
     private var spanCount = 0
     private var spacingDecoration: GridSpacingItemDecoration? = null
     private var dialog: RequestLimitDialog? = null
     private var otherDialog: MaterialDialog? = null
+    
+    private var actuallyVisible = false
     
     private val progressDialog: MaterialDialog? by lazy {
         activity?.buildMaterialDialog {
@@ -75,9 +78,8 @@ class RequestsFragment : ViewModelFragment<App>() {
     override fun initUI(content: View) {
         recyclerView = content.findViewById(R.id.list_rv)
         
-        val bottomNavigationHeight =
-                (activity as? BottomNavigationBlueprintActivity)?.bottomBar?.height ?: 0
-        recyclerView?.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
+        recyclerView?.setPaddingBottom(64.dpToPx * (if (hasBottomNav) 2 else 1))
         
         recyclerView?.itemAnimator =
                 if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
@@ -106,27 +108,28 @@ class RequestsFragment : ViewModelFragment<App>() {
                     }
                 })
         
-        adapter = RequestsAdapter { updateFabCount() }
+        ctxt {
+            adapter = RequestsAdapter(Glide.with(it)) { updateFabCount() }
+        }
         recyclerView?.adapter = adapter
-        fastScroll = content.findViewById(R.id.fast_scroller)
-        fastScroll?.attachRecyclerView(recyclerView)
-        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
+        fastScroller = content.findViewById(R.id.fast_scroller)
+        recyclerView?.let { fastScroller?.attachRecyclerView(it) }
         updateFabCount()
-        loadDataFromViewModel()
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
+        postDelayed(10) { refresh() }
     }
     
     override fun onResume() {
         super.onResume()
-        loadDataFromViewModel()
+        postDelayed(50) { loadDataFromViewModel() }
     }
     
     private fun updateFabCount() {
-        val ir = IconRequest.get()
-        ir?.let { doToFab { fab -> fab.count = it.selectedApps.size } }
+        IconRequest.get()?.let { doToFab { fab -> fab.count = it.selectedApps.size } }
     }
     
     private fun doToFab(what: (CounterFab) -> Unit) {
-        (activity as? BaseBlueprintActivity)?.fab?.let { what(it) }
+        (activity as? BaseBlueprintActivity)?.postToFab(what)
     }
     
     fun scrollToTop() {
@@ -134,6 +137,8 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     fun refresh() {
+        unselectAll()
+        doToFab { it.hide() }
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         canShowProgress = true
         internalLoadData(true)
@@ -163,12 +168,17 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     fun applyFilter(filter: String = "") {
         if (filter.hasContent()) {
+            recyclerView?.setEmptyImage(R.drawable.no_results)
+            recyclerView?.setEmptyText(R.string.search_no_results)
             viewModel?.getData()?.let {
                 adapter?.setItems(ArrayList(it.filter { it.name.contains(filter, true) }))
             }
         } else {
+            recyclerView?.setEmptyImage(R.drawable.empty_section)
+            recyclerView?.setEmptyText(R.string.empty_section)
             viewModel?.getData()?.let { adapter?.setItems(ArrayList(it)) }
         }
+        scrollToTop()
     }
     
     override fun initViewModel() {
@@ -177,15 +187,23 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     override fun registerObserver() {
         viewModel?.observe(this) {
-            if (it.isNotEmpty()) {
-                adapter?.setItems(ArrayList(it))
+            adapter?.setItems(ArrayList(it))
+            if (actuallyVisible) {
+                if (it.isEmpty()) {
+                    unselectAll()
+                    doToFab { it.hide() }
+                } else {
+                    doToFab { it.show() }
+                }
+                progressDialog?.dismiss()
             }
-            progressDialog?.dismiss()
         }
     }
     
     override fun loadDataFromViewModel() {
+        if (actuallyVisible) doToFab { it.hide() }
         canShowProgress = true
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         internalLoadData(false)
     }
     
@@ -198,14 +216,14 @@ class RequestsFragment : ViewModelFragment<App>() {
                     content(R.string.no_selected_apps_content)
                     positiveText(android.R.string.ok)
                 }
-                otherDialog?.show()
+                if (actuallyVisible) otherDialog?.show()
             }, { reason, appsLeft, millis ->
                         try {
                             dialog = RequestLimitDialog()
                             if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
-                                dialog?.show(actv, millis)
+                                if (actuallyVisible) dialog?.show(actv, millis)
                             } else {
-                                dialog?.show(actv, appsLeft)
+                                if (actuallyVisible) dialog?.show(actv, appsLeft)
                             }
                         } catch (e: Exception) {
                             e.printStackTrace()
@@ -221,7 +239,7 @@ class RequestsFragment : ViewModelFragment<App>() {
                             if (progress >= 100) {
                                 progressDialog?.dismiss()
                             } else {
-                                progressDialog?.show()
+                                if (actuallyVisible) progressDialog?.show()
                             }
                         }
                     }
@@ -255,6 +273,11 @@ class RequestsFragment : ViewModelFragment<App>() {
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         if (isVisibleToUser) canShowProgress = true
         super.setUserVisibleHint(isVisibleToUser)
-        if (isVisibleToUser && !allowReloadAfterVisibleToUser()) recyclerView?.updateEmptyState()
+        actuallyVisible = isVisibleToUser
+        if (isVisibleToUser) {
+            updateFabCount()
+        } else {
+            doToFab { it.hide() }
+        }
     }
 }

@@ -72,6 +72,7 @@ import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER
 import jahirfiquitiva.libs.frames.helpers.utils.IMAGE_PICKER
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.frames.ui.activities.base.BaseFramesActivity
+import jahirfiquitiva.libs.frames.ui.fragments.base.BaseWallpapersFragment
 import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
@@ -118,7 +119,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
     internal val toolbar: CustomToolbar? by bind(R.id.toolbar)
     internal val fabsMenu: FABsMenu? by bind(R.id.fabs_menu)
-    internal val fab: CounterFab? by bind(R.id.fab)
+    private val fab: CounterFab? by bind(R.id.fab)
     
     private var searchItem: MenuItem? = null
     private var searchView: CustomSearchView? = null
@@ -156,7 +157,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     }
     
     override fun onBackPressed() {
-        invalidateOptionsMenu()
         val isOpen = searchView?.isOpen ?: false
         if (isOpen) {
             searchItem?.collapseActionView()
@@ -167,13 +167,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                 supportFinishAfterTransition()
             }
         }
-    }
-    
-    @SuppressLint("MissingSuperCall")
-    override fun onResume() {
-        super.onResume()
-        if (currentItemId < 0) defaultNavigation(true)
-        else navigateToItem(getNavigationItemWithId(currentItemId), false)
     }
     
     override fun onPause() {
@@ -211,6 +204,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         initFAB()
         initFABsMenu()
         initFiltersDrawer(savedInstance)
+        lockFiltersDrawer(true)
         RequestsViewModel.initAndLoadRequestApps(
                 this, string(R.string.arctic_backend_host), string(R.string.arctic_backend_api_key))
     }
@@ -219,14 +213,15 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         fragmentsAdapter = FragmentsAdapter(supportFragmentManager)
         loop@ for (item in getNavigationItems()) {
             when (item.id) {
-                DEFAULT_HOME_POSITION -> fragmentsAdapter?.addFragment(HomeFragment())
+                DEFAULT_HOME_POSITION -> fragmentsAdapter?.addFragmentAt(HomeFragment(), item.id)
                 DEFAULT_ICONS_POSITION ->
-                    fragmentsAdapter?.addFragment(IconsFragment.create(pickerKey))
+                    fragmentsAdapter?.addFragmentAt(IconsFragment.create(pickerKey), item.id)
                 DEFAULT_WALLPAPERS_POSITION ->
-                    fragmentsAdapter?.addFragment(
-                            WallpapersFragment.create(getLicenseChecker() != null))
-                DEFAULT_APPLY_POSITION -> fragmentsAdapter?.addFragment(ApplyFragment())
-                DEFAULT_REQUEST_POSITION -> fragmentsAdapter?.addFragment(RequestsFragment())
+                    fragmentsAdapter?.addFragmentAt(
+                            WallpapersFragment.create(getLicenseChecker() != null), item.id)
+                DEFAULT_APPLY_POSITION -> fragmentsAdapter?.addFragmentAt(ApplyFragment(), item.id)
+                DEFAULT_REQUEST_POSITION ->
+                    fragmentsAdapter?.addFragmentAt(RequestsFragment(), item.id)
                 else -> continue@loop
             }
         }
@@ -407,6 +402,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
             force: Boolean = false
                                     ) {
         try {
+            searchItem?.collapseActionView()
             postDelayed(10) {
                 if (currentItemId != item.id) {
                     pager?.setCurrentItem(item.id, true)
@@ -414,14 +410,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                     invalidateOptionsMenu()
                     updateUI(item)
                 } else {
-                    if (hasBottomNavigation()) {
-                        val activeFragment = fragmentsAdapter?.get(pager?.currentItem ?: -1)
-                        (activeFragment as? HomeFragment)?.scrollToTop()
-                        (activeFragment as? IconsFragment)?.scrollToTop()
-                        (activeFragment as? WallpapersFragment)?.scrollToTop()
-                        (activeFragment as? ApplyFragment)?.scrollToTop()
-                        (activeFragment as? RequestsFragment)?.scrollToTop()
-                    }
+                    if (hasBottomNavigation()) scrollToTop()
                 }
             }
         } catch (e: Exception) {
@@ -561,15 +550,23 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         (activeFragment as? IconsFragment)?.applyFilters(filters)
     }
     
+    internal fun scrollToTop() {
+        (activeFragment as? HomeFragment)?.scrollToTop()
+        (activeFragment as? IconsFragment)?.scrollToTop()
+        (activeFragment as? BaseWallpapersFragment)?.scrollToTop()
+        (activeFragment as? ApplyFragment)?.scrollToTop()
+        (activeFragment as? RequestsFragment)?.scrollToTop()
+    }
+    
     internal fun doSearch(search: String = "") {
         (activeFragment as? IconsFragment)?.doSearch(search)
-        (activeFragment as? WallpapersFragment)?.applyFilter(search)
+        (activeFragment as? BaseWallpapersFragment)?.applyFilter(search)
         (activeFragment as? ApplyFragment)?.applyFilter(search)
         (activeFragment as? RequestsFragment)?.applyFilter(search)
     }
     
     internal fun refreshWallpapers() {
-        (activeFragment as? WallpapersFragment)?.reloadData(1)
+        (activeFragment as? BaseWallpapersFragment)?.reloadData(1)
     }
     
     internal fun refreshRequests() {
@@ -590,5 +587,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
     internal fun launchKuperActivity() {
         startActivity(Intent(this, BlueprintKuperActivity::class.java))
+    }
+    
+    internal fun postToFab(post: (CounterFab) -> Unit) {
+        (activeFragment as? RequestsFragment)?.let { fab?.let { post(it) } }
     }
 }

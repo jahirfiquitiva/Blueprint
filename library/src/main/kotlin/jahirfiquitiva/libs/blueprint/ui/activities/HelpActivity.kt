@@ -54,7 +54,7 @@ class HelpActivity : ThemedActivity() {
     
     private val toolbar: Toolbar? by bind(R.id.toolbar)
     private val recyclerView: EmptyViewRecyclerView? by bind(R.id.list_rv)
-    private val fastScroll: RecyclerFastScroller? by bind(R.id.fast_scroller)
+    private val fastScroller: RecyclerFastScroller? by bind(R.id.fast_scroller)
     
     private var searchItem: MenuItem? = null
     private var searchView: CustomSearchView? = null
@@ -88,8 +88,8 @@ class HelpActivity : ThemedActivity() {
         
         adapter.setItems(faqs)
         recyclerView?.adapter = adapter
-        
-        fastScroll?.attachRecyclerView(recyclerView)
+    
+        recyclerView?.let { fastScroller?.attachRecyclerView(it) }
         
         recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
     }

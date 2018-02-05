@@ -14,37 +14,29 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
-<RelativeLayout
+<android.support.v4.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/section_layout"
+        android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:clipChildren="false"
-        android:animateLayoutChanges="true"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <include layout="@layout/extra_empty_views"/>
-
-    <jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-            android:id="@+id/list_rv"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:clipChildren="false"
-            android:scrollbars="none"
-            android:overScrollMode="ifContentScrolls"
-            android:splitMotionEvents="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <com.pluscubed.recyclerfastscroll.RecyclerFastScroller
-            android:id="@+id/fast_scroller"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="end"/>
+        <include
+                layout="@layout/item_home_icons_preview"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-</RelativeLayout>
+        <include
+                layout="@layout/section_layout"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

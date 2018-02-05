@@ -17,26 +17,29 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
+import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.RequestViewHolder
 import jahirfiquitiva.libs.quest.App
 import jahirfiquitiva.libs.quest.IconRequest
 
-class RequestsAdapter(private val onItemsChanged: () -> Unit) :
+class RequestsAdapter(
+        private val manager: RequestManager?,
+        private val onItemsChanged: () -> Unit
+                     ) :
         ListAdapter<App, RequestViewHolder>() {
     override fun doCreateVH(parent: ViewGroup, viewType: Int): RequestViewHolder =
             RequestViewHolder(parent.inflate(R.layout.item_app_to_request))
     
     override fun doBind(holder: RequestViewHolder, position: Int, shouldAnimate: Boolean) {
-        holder.setItem(
-                list[position], { checkbox, item ->
+        holder.setItem(manager, list[position]) { checkbox, item ->
             IconRequest.get()?.let {
                 it.toggleAppSelected(item)
                 checkbox.isChecked = !checkbox.isChecked
                 onItemsChanged()
             }
-        })
+        }
     }
     
     override fun onViewRecycled(holder: RequestViewHolder?) {

@@ -33,10 +33,12 @@ internal fun Context.getInstalledApps(
         
         var name: CharSequence? = ri.loadLabel(packageManager)
         if (name == null) name = ri.activityInfo.packageName
-        apps.add(
-                App(
-                        this.getLocalizedName(launchStr, name.toString()), launchStr,
-                        ri.activityInfo.packageName))
+        
+        val appToAdd = App(
+                this.getLocalizedName(launchStr, name.toString()), launchStr,
+                ri.activityInfo.packageName)
+        appToAdd.loadIcon(this)
+        apps.add(appToAdd)
         loaded++
         
         try {

@@ -26,6 +26,9 @@ import android.net.Uri
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
+import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.setPaddingBottom
+import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
@@ -33,6 +36,7 @@ import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
+import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.IconDialog
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER
@@ -61,7 +65,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
     
     private var dialog: IconDialog? = null
     
-    private val adapter: IconsAdapter by lazy { IconsAdapter(false) { onItemClicked(it, false) } }
+    private var adapter: IconsAdapter? = null
     
     fun applyFilters(filters: ArrayList<String>) {
         val list = ArrayList(model?.getData().orEmpty())
@@ -73,9 +77,15 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     fun doSearch(search: String = "") {
-        model?.getData()?.let {
-            setAdapterItems(ArrayList(it), search)
+        if (search.hasContent()) {
+            recyclerView?.setEmptyImage(R.drawable.no_results)
+            recyclerView?.setEmptyText(R.string.search_no_results)
+        } else {
+            recyclerView?.setEmptyImage(R.drawable.empty_section)
+            recyclerView?.setEmptyText(R.string.empty_section)
         }
+        setAdapterItems(ArrayList(model?.getData().orEmpty()), search)
+        scrollToTop()
     }
     
     fun scrollToTop() {
@@ -114,8 +124,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
                         })
             else icons.addAll(it.icons)
         }
-        adapter.setItems(ArrayList(icons.distinct().sorted()))
-        recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
+        adapter?.setItems(ArrayList(icons.distinct().sorted()))
     }
     
     override fun unregisterObserver() {
@@ -140,22 +149,29 @@ class IconsFragment : ViewModelFragment<Icon>() {
     override fun initUI(content: View) {
         recyclerView = content.findViewById(R.id.list_rv)
         fastScroller = content.findViewById(R.id.fast_scroller)
-    
+        
+        val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
+        if (hasBottomNav) recyclerView?.setPaddingBottom(64.dpToPx)
+        
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)
-    
+        
         recyclerView?.textView = content.findViewById(R.id.empty_text)
         recyclerView?.setEmptyText(R.string.empty_section)
-    
+        
         recyclerView?.loadingView = content.findViewById(R.id.loading_view)
         recyclerView?.setLoadingText(R.string.loading_section)
+        
+        ctxt {
+            adapter = IconsAdapter(Glide.with(it), false) { onItemClicked(it, false) }
+        }
         
         recyclerView?.adapter = adapter
         val columns = ctxt.getInteger(R.integer.icons_columns)
         recyclerView?.layoutManager =
                 GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
-        fastScroller?.attachRecyclerView(recyclerView)
+        recyclerView?.let { fastScroller?.attachRecyclerView(it) }
     }
     
     override fun onItemClicked(item: Icon, longClick: Boolean) {

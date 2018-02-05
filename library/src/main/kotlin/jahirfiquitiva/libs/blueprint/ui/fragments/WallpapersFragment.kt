@@ -15,6 +15,10 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
+import android.view.View
+import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.setPaddingBottom
+import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.frames.data.models.Wallpaper
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseWallpapersFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
@@ -25,6 +29,12 @@ class WallpapersFragment : BaseWallpapersFragment() {
     override fun autoStartLoad(): Boolean = true
     override fun fromFavorites(): Boolean = false
     override fun showFavoritesIcon(): Boolean = false
+    
+    override fun initUI(content: View) {
+        super.initUI(content)
+        val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
+        if (hasBottomNav) recyclerView?.setPaddingBottom(64.dpToPx)
+    }
     
     override fun doOnWallpapersChange(data: ArrayList<Wallpaper>, fromCollectionActivity: Boolean) {
         super.doOnWallpapersChange(data, fromCollectionActivity)

@@ -21,6 +21,7 @@ import android.view.View
 import android.widget.ImageView
 import ca.allanwang.kau.utils.scaleXY
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
@@ -37,14 +38,14 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var lastPosition = -1
     val icon: ImageView? by bind(R.id.icon)
     
-    fun bind(animate: Boolean, item: Icon) = with(itemView) {
+    fun bind(manager: RequestManager?, animate: Boolean, item: Icon) = with(itemView) {
         icon?.loadResource(
-                Glide.with(context), item.icon, true, animate, true,
+                manager ?: Glide.with(context), item.icon, true, animate, true,
                 object : GlideRequestCallback<Drawable>() {
                     override fun onLoadSucceed(resource: Drawable): Boolean {
                         if (context.bpKonfigs.animationsEnabled && animate) {
                             scaleXY = 0F
-                            setIconResource(resource)
+                            lastPosition = adapterPosition
                             animate().scaleX(1F)
                                     .scaleY(1F)
                                     .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
@@ -54,7 +55,7 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                             icon?.setImageDrawable(resource)
                             itemView.clearChildrenAnimations()
                         }
-                        return true
+                        return false
                     }
                 })
         icon?.isClickable = false
@@ -63,18 +64,17 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.isFocusable = false
     }
     
-    fun bind(animate: Boolean, item: Icon, listener: (Icon) -> Unit = {}) = with(itemView) {
-        bind(animate, item)
+    fun bind(
+            manager: RequestManager?,
+            animate: Boolean,
+            item: Icon,
+            listener: (Icon) -> Unit = {}
+            ) = with(itemView) {
+        bind(manager, animate, item)
         setOnClickListener { listener(item) }
-    }
-    
-    private fun setIconResource(resource: Drawable) {
-        icon?.setImageDrawable(resource)
-        lastPosition = adapterPosition
     }
     
     fun unbind() {
         icon?.releaseFromGlide()
-        icon?.setImageDrawable(null)
     }
 }

@@ -27,7 +27,7 @@ ext.versions = [
         libs          : '2.0',
         // Dependencies
         archHelpers   : '818dbef',
-        kuper         : 'cc7cef9',
+        kuper         : '5106c88',
         materialDrawer: '6.0.5',
         fabsMenu      : 'cde8a62',
         counterFab    : '1.0.3',

@@ -28,7 +28,6 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.support.v4.content.res.ResourcesCompat
 import android.util.DisplayMetrics
-import android.widget.ImageView
 import jahirfiquitiva.libs.quest.utils.formatCorrectly
 
 /**
@@ -44,8 +43,10 @@ class App : Parcelable {
     var pckg: String = ""
         private set
     
-    @Transient private var hiResIcon: Drawable? = null
-    @Transient private var icon: Drawable? = null
+    var hiResIcon: Drawable? = null
+        private set
+    var icon: Drawable? = null
+        private set
     
     private val appDefaultIcon: Drawable?
         get() = getAppIconFromRes(Resources.getSystem(), android.R.mipmap.sym_def_app_icon)
@@ -57,17 +58,18 @@ class App : Parcelable {
     }
     
     @SuppressLint("NewApi")
-    fun getHighResIcon(context: Context): Drawable? {
-        if (hiResIcon != null) return hiResIcon
-        try {
-            hiResIcon = getIconFromInfo(context) ?:
-                    context.packageManager.getApplicationIcon(pckg) ?: icon ?: appDefaultIcon
-        } catch (e: Exception) {
+    internal fun getHighResIcon(context: Context): Drawable? {
+        if (hiResIcon == null) {
+            try {
+                hiResIcon = loadIcon(context) ?: context.packageManager.getApplicationIcon(pckg) ?:
+                        icon ?: appDefaultIcon
+            } catch (e: Exception) {
+            }
         }
         return hiResIcon
     }
     
-    private fun getIconFromInfo(context: Context): Drawable? {
+    internal fun loadIcon(context: Context): Drawable? {
         if (icon == null) {
             val ai = getAppInfo(context)
             if (ai != null) {
@@ -77,6 +79,7 @@ class App : Parcelable {
                 }
             }
         }
+        if (icon == null) icon = appDefaultIcon
         return icon
     }
     
@@ -93,14 +96,6 @@ class App : Parcelable {
             null
         }
         return d
-    }
-    
-    fun loadIcon(into: ImageView?, listener: (success: Boolean) -> Unit = {}) {
-        into ?: return
-        getIconFromInfo(into.context)?.let {
-            listener(true)
-            into.setImageDrawable(it)
-        } ?: listener(false)
     }
     
     private fun getAppInfo(context: Context): ApplicationInfo? {

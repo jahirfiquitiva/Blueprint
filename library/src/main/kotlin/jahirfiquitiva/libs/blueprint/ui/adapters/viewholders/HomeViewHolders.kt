@@ -40,15 +40,16 @@ import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import java.util.Collections
 
-class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
+class PreviewCardHolder(
+        private val iconsAdapter: IconsAdapter,
+        itemView: View
+                       ) : SectionedViewHolder(itemView) {
     
     private val decoration: GridSpacingItemDecoration by lazy {
         GridSpacingItemDecoration(
                 integer(R.integer.icons_columns),
                 dimenPixelSize(R.dimen.cards_margin))
     }
-    
-    private val iconsAdapter: IconsAdapter by lazy { IconsAdapter(true) }
     
     private val image: ImageView? by bind(R.id.wallpaper)
     private val iconsPreviewRV: RecyclerView? by bind(R.id.icons_preview_grid)
@@ -61,6 +62,7 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
     
     private fun initIconsPreview() {
         iconsPreviewRV?.removeItemDecoration(decoration)
+        iconsPreviewRV?.isNestedScrollingEnabled = false
         iconsPreviewRV?.layoutManager =
                 object : GridLayoutManager(context, integer(R.integer.icons_columns)) {
                     override fun canScrollVertically(): Boolean = false

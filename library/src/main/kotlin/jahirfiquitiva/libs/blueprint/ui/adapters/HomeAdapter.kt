@@ -16,9 +16,7 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.app.Activity
-import android.app.WallpaperManager
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -39,17 +37,14 @@ import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.AppLinkItemHolder
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.ApplyCardHolder
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.CounterItemHolder
-import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.PreviewCardHolder
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.SectionedHeaderViewHolder
 import jahirfiquitiva.libs.kauextensions.extensions.SimpleAnimationListener
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.chipsColor
 import jahirfiquitiva.libs.kauextensions.extensions.chipsIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
-import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import java.lang.ref.WeakReference
@@ -89,15 +84,15 @@ class HomeAdapter(
     
     fun updateIconsCount(newCount: Int) {
         iconsCount = newCount
-        notifySectionChanged(2)
+        notifySectionChanged(1)
     }
     
     fun updateWallsCount(newCount: Int) {
         wallsCount = newCount
-        notifySectionChanged(2)
+        notifySectionChanged(1)
     }
     
-    override fun getSectionCount(): Int = 5
+    override fun getSectionCount(): Int = 4
     
     override fun getItemViewType(section: Int, relativePosition: Int, absolutePosition: Int): Int =
             section
@@ -109,9 +104,9 @@ class HomeAdapter(
                                        ) {
         (holder as? SectionedHeaderViewHolder)?.let {
             when (section) {
-                2 -> it.setTitle(R.string.general_info)
-                3 -> it.setTitle(R.string.more_apps)
-                4 -> it.setTitle(R.string.useful_links)
+                1 -> it.setTitle(R.string.general_info)
+                2 -> it.setTitle(R.string.more_apps)
+                3 -> it.setTitle(R.string.useful_links)
                 else -> it.setTitle("")
             }
         }
@@ -121,13 +116,10 @@ class HomeAdapter(
             parent?.let {
                 when (viewType) {
                     0 ->
-                        PreviewCardHolder(
-                                it.inflate(R.layout.item_home_icons_preview))
-                    1 ->
                         ApplyCardHolder(it.inflate(R.layout.item_home_apply_card))
-                    2 ->
+                    1 ->
                         CounterItemHolder(it.inflate(R.layout.item_home_counters))
-                    3, 4 ->
+                    2, 3 ->
                         AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
                     else -> SectionedHeaderViewHolder(it.inflate(R.layout.item_section_header))
                 }
@@ -135,11 +127,10 @@ class HomeAdapter(
     
     override fun getItemCount(section: Int): Int {
         return when (section) {
-            0 -> 1
-            1 -> if (shouldShowApplyCard) 1 else 0
-            2 -> 1
-            3 -> list.filter { it.isAnApp }.size
-            4 -> list.filter { !it.isAnApp }.size
+            0 -> if (shouldShowApplyCard) 1 else 0
+            1 -> 1
+            2 -> list.filter { it.isAnApp }.size
+            3 -> list.filter { !it.isAnApp }.size
             else -> 0
         }
     }
@@ -150,42 +141,12 @@ class HomeAdapter(
             relativePosition: Int,
             absolutePosition: Int
                                  ) {
-        (holder as? PreviewCardHolder)?.let { bindPreviewCard(it) }
         (holder as? ApplyCardHolder)?.let { bindApplyCard(it) }
         (holder as? CounterItemHolder)?.let { bindCounters(it) }
         (holder as? AppLinkItemHolder)?.let { bindAppsAndLinks(it, section, relativePosition) }
     }
     
     override fun onBindFooterViewHolder(holder: SectionedViewHolder?, section: Int) {}
-    
-    private fun bindPreviewCard(holder: PreviewCardHolder) {
-        val wallManager: WallpaperManager? = WallpaperManager.getInstance(activity)
-        val drawable: Drawable? =
-                if (activity?.bpKonfigs?.wallpaperInIconsPreview == true) {
-                    try {
-                        wallManager?.fastDrawable
-                    } catch (e: Exception) {
-                        defaultPicture
-                    }
-                } else {
-                    defaultPicture
-                }
-        holder.bind(drawable)
-    }
-    
-    private val defaultPicture: Drawable?
-        get() {
-            val picName = activity?.getString(R.string.icons_preview_picture)
-            return if (picName.orEmpty().hasContent()) {
-                activity?.let {
-                    try {
-                        picName?.getDrawable(it)
-                    } catch (ignored: Exception) {
-                        null
-                    }
-                }
-            } else null
-        }
     
     private fun bindApplyCard(holder: ApplyCardHolder) {
         activity?.accentColor?.let {
@@ -309,6 +270,6 @@ class HomeAdapter(
     
     private fun bindAppsAndLinks(holder: AppLinkItemHolder, section: Int, position: Int) {
         holder.setItem(
-                list.filter { if (section == 3) it.isAnApp else !it.isAnApp }[position], listener)
+                list.filter { if (section == 2) it.isAnApp else !it.isAnApp }[position], listener)
     }
 }

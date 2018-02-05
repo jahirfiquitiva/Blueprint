@@ -17,12 +17,14 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
+import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.IconViewHolder
 
 class IconsAdapter(
+        private val manager: RequestManager?,
         private val fromPreviews: Boolean = false,
         private val listener: (Icon) -> Unit = {}
                   ) :
@@ -33,9 +35,9 @@ class IconsAdapter(
     
     override fun doBind(holder: IconViewHolder, position: Int, shouldAnimate: Boolean) {
         if (fromPreviews) {
-            (holder as? IconViewHolder)?.bind(true, list[position])
+            (holder as? IconViewHolder)?.bind(manager, true, list[position])
         } else {
-            (holder as? IconViewHolder)?.bind(shouldAnimate, list[position], listener)
+            (holder as? IconViewHolder)?.bind(manager, shouldAnimate, list[position], listener)
         }
     }
     

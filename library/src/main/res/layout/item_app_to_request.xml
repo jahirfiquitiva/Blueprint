@@ -37,15 +37,6 @@
             android:layout_gravity="center"
             android:gravity="center">
 
-        <ProgressBar
-                android:id="@+id/progress"
-                style="?android:progressBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:visibility="visible"/>
-
         <ImageView
                 android:id="@+id/icon"
                 android:layout_width="match_parent"

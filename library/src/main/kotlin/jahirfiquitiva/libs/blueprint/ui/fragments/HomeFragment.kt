@@ -15,24 +15,32 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
+import android.app.WallpaperManager
 import android.arch.lifecycle.ViewModelProviders
+import android.graphics.drawable.Drawable
+import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
-import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
+import com.bumptech.glide.Glide
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
+import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
-import jahirfiquitiva.libs.blueprint.ui.activities.BottomNavigationBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.HomeAdapter
+import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
+import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.PreviewCardHolder
 import jahirfiquitiva.libs.frames.providers.viewmodels.WallpapersViewModel
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.bind
+import jahirfiquitiva.libs.kauextensions.extensions.ctxt
+import jahirfiquitiva.libs.kauextensions.extensions.getAppName
+import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
+import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import java.lang.ref.WeakReference
 
@@ -46,6 +54,9 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     private var wallsModel: WallpapersViewModel? = null
     
     private var recyclerView: EmptyViewRecyclerView? = null
+    private var nestedScroll: NestedScrollView? = null
+    private var previewCardHolder: PreviewCardHolder? = null
+    
     private val homeAdapter: HomeAdapter? by lazy {
         HomeAdapter(
                 WeakReference(activity),
@@ -54,6 +65,20 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
             onItemClicked(it, false)
         }
     }
+    
+    private val defaultPicture: Drawable?
+        get() {
+            val picName = activity?.getString(R.string.icons_preview_picture)
+            return if (picName.orEmpty().hasContent()) {
+                activity?.let {
+                    try {
+                        picName?.getDrawable(it)
+                    } catch (ignored: Exception) {
+                        null
+                    }
+                }
+            } else null
+        }
     
     override fun initViewModel() {
         model = ViewModelProviders.of(this).get(HomeItemViewModel::class.java)
@@ -84,17 +109,34 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         }
     }
     
-    override fun getContentLayout(): Int = R.layout.section_layout
+    override fun getContentLayout(): Int = R.layout.section_home
     
     override fun initUI(content: View) {
+        ctxt {
+            previewCardHolder = PreviewCardHolder(
+                    IconsAdapter(Glide.with(it), true),
+                    content.findViewById(R.id.icons_preview_card))
+        }
+        
+        nestedScroll = content.findViewById(R.id.nested_scroll)
+        
         recyclerView = content.findViewById(R.id.list_rv)
+        recyclerView?.isNestedScrollingEnabled = false
         recyclerView?.let {
             (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(it)
         }
+    
+        recyclerView?.emptyView = content.findViewById(R.id.empty_view)
+        recyclerView?.setEmptyImage(R.drawable.empty_section)
+    
+        recyclerView?.textView = content.findViewById(R.id.empty_text)
+        recyclerView?.setEmptyText(R.string.empty_section)
+    
+        recyclerView?.loadingView = content.findViewById(R.id.loading_view)
+        recyclerView?.setLoadingText(R.string.loading_section)
         
-        val bottomNavigationHeight =
-                (activity as? BottomNavigationBlueprintActivity)?.bottomBar?.height ?: 0
-        recyclerView?.setPaddingBottom(64F.dpToPx.toInt() + bottomNavigationHeight)
+        val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
+        recyclerView?.setPaddingBottom(64.dpToPx * (if (hasBottomNav) 2 else 1))
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)
@@ -108,11 +150,18 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         recyclerView?.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recyclerView?.setHasFixedSize(true)
         recyclerView?.adapter = homeAdapter
+    
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         
-        val fastScroller: RecyclerFastScroller? by content.bind(R.id.fast_scroller)
-        fastScroller?.attachRecyclerView(recyclerView)
+        actv {
+            (it as? BaseBlueprintActivity)?.let {
+                it.requestStoragePermission(
+                        it.getString(R.string.permission_request_wallpaper, it.getAppName())) {
+                    bindPreviewCard()
+                }
+            }
+        }
     }
     
     override fun onItemClicked(item: HomeItem, longClick: Boolean) {
@@ -123,11 +172,27 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     }
     
     fun scrollToTop() {
-        recyclerView?.post { recyclerView?.scrollToPosition(0) }
+        nestedScroll?.post { nestedScroll?.scrollTo(0, 0) }
     }
     
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         if (isVisibleToUser && !allowReloadAfterVisibleToUser()) recyclerView?.updateEmptyState()
+        if (isVisibleToUser) scrollToTop()
+    }
+    
+    private fun bindPreviewCard() {
+        val wallManager: WallpaperManager? = WallpaperManager.getInstance(activity)
+        val drawable: Drawable? =
+                if (activity?.bpKonfigs?.wallpaperInIconsPreview == true) {
+                    try {
+                        wallManager?.fastDrawable
+                    } catch (e: Exception) {
+                        defaultPicture
+                    }
+                } else {
+                    defaultPicture
+                }
+        previewCardHolder?.bind(drawable)
     }
 }

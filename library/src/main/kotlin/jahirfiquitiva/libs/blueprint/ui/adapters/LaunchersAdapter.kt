@@ -17,18 +17,23 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
+import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.LauncherViewHolder
 
-class LaunchersAdapter(val listener: (Launcher) -> Unit = {}) :
+class LaunchersAdapter(
+        private val manager: RequestManager?,
+        private val listener: (Launcher) -> Unit = {}
+                      ) :
         ListAdapter<Launcher, LauncherViewHolder>() {
+    
     override fun doCreateVH(parent: ViewGroup, viewType: Int): LauncherViewHolder =
             LauncherViewHolder(parent.inflate(R.layout.item_launcher))
     
     override fun doBind(holder: LauncherViewHolder, position: Int, shouldAnimate: Boolean) =
-            holder.bind(list[position], listener)
+            holder.bind(manager, list[position], listener)
     
     override fun onViewRecycled(holder: LauncherViewHolder?) {
         super.onViewRecycled(holder)
