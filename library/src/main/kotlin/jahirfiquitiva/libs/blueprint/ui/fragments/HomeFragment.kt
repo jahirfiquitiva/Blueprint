@@ -89,8 +89,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     override fun initUI(content: View) {
         recyclerView = content.findViewById(R.id.list_rv)
         recyclerView?.let {
-            (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(
-                    it)
+            (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(it)
         }
         
         val bottomNavigationHeight =
