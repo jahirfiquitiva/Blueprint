@@ -25,11 +25,15 @@
 
     <!--    These arrays are for the list of apps or links in main section. -->
     <string-array name="home_list_titles">
+        <item>IconShowcase</item>
     </string-array>
     <string-array name="home_list_descriptions">
+        <item>It is the old version of this awesome dashboard</item>
     </string-array>
     <string-array name="home_list_icons">
+        <item>ic_na_launcher</item>
     </string-array>
     <string-array name="home_list_links">
+        <item>https://github.com/jahirfiquitiva/Blueprint</item>
     </string-array>
 </resources>

@@ -26,10 +26,10 @@ ext.versions = [
         kotlin        : '1.2.21',
         libs          : '2.0',
         // Dependencies
-        archHelpers   : '818dbef',
-        kuper         : '78f46f3',
+        archHelpers   : '4755fe0',
+        kuper         : '1d2a8ef',
         materialDrawer: '6.0.5',
-        fabsMenu      : 'cde8a62',
+        fabsMenu      : '1.1.2',
         counterFab    : '1.0.3',
         oneSignal     : '3.7.1'
 ]
