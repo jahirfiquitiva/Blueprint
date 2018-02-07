@@ -15,16 +15,21 @@
   ~ limitations under the License.
   -->
 <resources>
-    <!-- Your app name -->
-    <string name="app_name">Blueprint</string>
+    <!-- Launcher Activity Name
+    if the activity is:
+    com.packagename.appname.Activity
+    then write Activity
+    -->
+    <string name="main_activity_name">MainActivity</string>
+    <string name="main_activity_fullname">com.packagename.appname.MainActivity</string>
 
-    <!--    This one applies for Muzei too. Try not to exceed a tweet length (140 characters) -->
-    <string name="app_description">A great icon pack app with hundreds of cool icons.</string>
-
-    <!--    TODO: Change this link -->
-    <!--    This is the link for the JSON file where you have listed your wallpapers -->
-    <string name="json_url">https://jahirfiquitiva.me/frames/wallpapers.json</string>
-
-    <!--    Default wallpapers download folder. Always write it like '%1$s/xxxxxxx' -->
-    <string name="default_download_folder">%1$s/Blueprint/Wallpapers</string>
+    <!--    These arrays are for the list of apps or links in main section. -->
+    <string-array name="home_list_titles">
+    </string-array>
+    <string-array name="home_list_descriptions">
+    </string-array>
+    <string-array name="home_list_icons">
+    </string-array>
+    <string-array name="home_list_links">
+    </string-array>
 </resources>

@@ -27,25 +27,4 @@
 
     <!--    Default wallpapers download folder. Always write it like '%1$s/xxxxxxx' -->
     <string name="default_download_folder">%1$s/Blueprint/Wallpapers</string>
-
-    <!-- Icon Pack designer/owner e-mail -->
-    <string name="email">someone@email.com</string>
-
-    <!-- Mail subjects for simple e-mail and requests e-mail -->
-    <string name="email_subject">Blueprint</string>
-    <string name="request_title">Blueprint Icon Request</string>
-
-    <!-- This are the strings for the cards in the main screen -->
-    <string name="welcome_title">Welcome to Blueprint</string>
-
-    <!-- Strings for Wallpapers and Requests -->
-    <string name="request_save_location">%1$s/Blueprint/Requests/</string>
-
-    <!-- Launcher Activity Name
-    if the activity is:
-    com.packagename.appname.Activity
-    then write Activity
-    -->
-    <string name="main_activity_name">MainActivity</string>
-    <string name="main_activity_fullname">com.packagename.appname.MainActivity</string>
 </resources>

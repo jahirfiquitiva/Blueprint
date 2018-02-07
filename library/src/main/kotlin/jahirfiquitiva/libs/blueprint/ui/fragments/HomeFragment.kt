@@ -125,13 +125,13 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         recyclerView?.let {
             (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(it)
         }
-    
+        
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)
-    
+        
         recyclerView?.textView = content.findViewById(R.id.empty_text)
         recyclerView?.setEmptyText(R.string.empty_section)
-    
+        
         recyclerView?.loadingView = content.findViewById(R.id.loading_view)
         recyclerView?.setLoadingText(R.string.loading_section)
         
@@ -151,12 +151,12 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         recyclerView?.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView?.adapter = homeAdapter
-    
+        
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         
         actv {
             (it as? BaseBlueprintActivity)?.let {
-                it.requestStoragePermission(
+                it.requestWallpaperPermission(
                         it.getString(R.string.permission_request_wallpaper, it.getAppName())) {
                     bindPreviewCard()
                 }

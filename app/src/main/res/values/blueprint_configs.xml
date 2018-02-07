@@ -16,40 +16,24 @@
   -->
 <!--suppress CheckTagEmptyBody -->
 <resources>
+    <!-- Icon Pack designer/owner e-mail -->
+    <string name="email">someone@email.com</string>
+
+    <!-- Mail subjects for simple e-mail and requests e-mail -->
+    <string name="email_subject">Blueprint</string>
+    <string name="request_title">Blueprint Icon Request</string>
+
+    <!-- This are the strings for the cards in the main screen -->
+    <string name="welcome_title">Welcome to Blueprint</string>
+
+    <!-- Strings for Wallpapers and Requests -->
+    <string name="request_save_location">%1$s/Blueprint/Requests/</string>
+
     <!--
         Set a drawable name in case you want to use a static picture for icons preview.
         Leave empty if you don't want to use a static one.
     -->
     <string name="icons_preview_picture"></string>
-
-    <!--    These arrays are for the list of apps or links in main section. -->
-    <string-array name="home_list_titles">
-        <item>IconShowcase</item>
-        <item>Title</item>
-        <item>Title2</item>
-        <item>Title3</item>
-    </string-array>
-
-    <string-array name="home_list_descriptions">
-        <item>IconShowcase is the old version of this new cool dashboard</item>
-        <item>Desc</item>
-        <item>Desc2</item>
-        <item>Desc3</item>
-    </string-array>
-
-    <string-array name="home_list_icons">
-        <item>ic_na_launcher</item>
-        <item>ic_na_launcher</item>
-        <item>ic_na_launcher</item>
-        <item>ic_na_launcher</item>
-    </string-array>
-
-    <string-array name="home_list_links">
-        <item>https://play.google.com/store/apps/details?id=jahirfiquitiva.apps.iconshowcase.demo</item>
-        <item>https://github.com/jahirfiquitiva/Blueprint</item>
-        <item>https://github.com/jahirfiquitiva/Blueprint</item>
-        <item>https://github.com/jahirfiquitiva/Blueprint</item>
-    </string-array>
 
     <!--
         Do you want the app to read the icons from res/xml/drawable.xml ? (true)

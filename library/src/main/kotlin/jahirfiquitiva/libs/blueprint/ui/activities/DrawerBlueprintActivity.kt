@@ -140,14 +140,17 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
                             .withIconTintingEnabled(true))
         }
         
-        drawerBuilder.addDrawerItems(DividerDrawerItem())
-        
-        if (hasTemplates)
+        if (hasTemplates) {
             drawerBuilder.addDrawerItems(
-                    SecondaryDrawerItem()
+                    PrimaryDrawerItem()
                             .withIdentifier(DEFAULT_TEMPLATES_POSITION.toLong())
                             .withName(R.string.templates)
+                            .withIcon(drawable(R.drawable.ic_widgets, null))
+                            .withIconTintingEnabled(true)
                             .withSelectable(false))
+        }
+        
+        drawerBuilder.addDrawerItems(DividerDrawerItem())
         
         drawerBuilder.addDrawerItems(
                 SecondaryDrawerItem()

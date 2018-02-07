@@ -51,19 +51,19 @@
             tools:ignore="AppCompatResource"/>
 
     <item
-            android:id="@+id/changelog"
-            android:icon="@drawable/ic_changes"
-            android:title="@string/kau_changelog"
+            android:id="@+id/templates"
+            android:icon="@drawable/ic_widgets"
+            android:title="@string/templates"
             android:orderInCategory="500"
             app:showAsAction="ifRoom"
             tools:ignore="AppCompatResource"/>
 
     <item
-            android:id="@+id/templates"
-            android:icon="@drawable/ic_widgets"
-            android:title="@string/templates"
+            android:id="@+id/changelog"
+            android:icon="@drawable/ic_changes"
+            android:title="@string/kau_changelog"
             android:orderInCategory="600"
-            app:showAsAction="never"
+            app:showAsAction="ifRoom"
             tools:ignore="AppCompatResource"/>
 
     <item

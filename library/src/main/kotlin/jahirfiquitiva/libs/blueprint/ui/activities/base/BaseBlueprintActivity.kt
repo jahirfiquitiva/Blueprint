@@ -19,6 +19,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
@@ -591,5 +592,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
     internal fun postToFab(post: (CounterFab) -> Unit) {
         (activeFragment as? RequestsFragment)?.let { fab?.let { post(it) } }
+    }
+    
+    internal fun requestWallpaperPermission(explanation: String, onGranted: () -> Unit) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            requestStoragePermission(explanation, onGranted)
+        } else {
+            onGranted()
+        }
     }
 }
