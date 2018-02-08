@@ -101,6 +101,36 @@
     <item>Warum benötigt die App die Berechtigung, Netzwerkverbindungen einzusehen?</item>
     <item>Warum benötigt die App die Berechtigung, Wallpaper festzulegen?</item>
     <item>Warum benötigt die App die Berechtigung, die Wallpaper-Größe anzupassen?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
+    <item>Warum benötigt die App die Berechtigung, den Schlafmodus des Geräts zu verhindern?</item>
+  </string-array>
+  <string-array name="answers">
+    <item>Du benötigst einen Launcher mit Icon Pack-Unterstützung. Schau in der Play Store-Beschreibung für unterstützte Launcher. Wenn du dir nicht sicher bist, welchen Launcher du nutzen solltest, gehe einfach in den Abschnitt \"Anwenden\" und wähle einen aus der Liste aus.</item>
+    <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Anwenden\", oder gehe zurück zum Hauptbildschirm der App und tippe auf den FAB. Wähle den Launcher, den du möchtest, und wende die Icons auf ihn an. Wenn dein Launcher hier nicht aufgeführt ist, aber das Icon Pack damit kompatibel ist (schaue in der Play Store-Beschreibung für die Liste unterstützter Launcher), dann kannst du es manuell in den Launcher-Einstellungen anwenden.</item>
+    <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Icons\", oder gehe zurück zum Hauptbildschirm der App und tippe auf den \"Icons\"-Button. </item>
+    <item>Es ist abhängig vom Launcher, den du verwendest. Nicht jeder Launcher unterstützt Icon-Bearbeitung. Jedoch ist es in den meisten Fällen möglich, das Icon durch langes Drücken oder doppelt Tippen zu bearbeiten.</item>
+    <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.
+        </item>
+    <item>It happened because the icon pack was moved to SD Card, you should install it in
+            internal storage.
+        </item>
+    <item>The problem might come with the launcher you are using, when handling big resolution.
+            You can fix it by increasing icon size to 115 - 120%.
+            Or try using another launcher.
+        </item>
+    <item>Send an icon request.</item>
+    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section.
+            Then check the \"Hide icon from launcher\" option.
+        </item>
+    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\".</item>
+    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section.
+            Then uncheck the \"Hide icon from launcher\" option.
+        </item>
+    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers download location.</item>
+    <item>It\'s needed to be able to load the cloud based wallpapers and download them.</item>
+    <item>It\'s needed to be able to check if your device has internet connection.</item>
+    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.
+        </item>
+    <item>It\'s needed by Muzei Live Wallpaper.</item>
   </string-array>
 </resources>
