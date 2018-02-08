@@ -65,6 +65,15 @@ A full-of-features, easy-to-customize, free and open source, light-weight, Andro
 - License Checker.
 - Donations.
 - OneSignal notifications ready.
+- Changelog shown with every update.
+- Previews section, where user can see and search for themed icons which organized by categories.
+- In-app icon request tool. Fully functional. Without duplicates and incredibly fast. This tool generates 'appfilter.xml', 'theme_resources.xml' and 'appmap.xml' which are the needed files for icon packs designers to be able to provide support the most of launchers.
+- Support for [Arctic Manager](https://arcticmanager.com/)
+- Apply section with 26 supported launchers. Launchers are sorted by installed first, and alphabetically.
+- Help section, to answer the questions your users have.
+- Analog clock widget.
+- Widget/Shortcut to open the app. (In case users hide the icon).
+- App works as a gallery so users are able to pick pictures to use them in other apps.
 - Cloud based (only) wallpapers.
 - Support for Zooper templates, Kustom Wallpapers, Widgets, Lockscreens and Komponents.
 - App can work offline.
@@ -79,7 +88,7 @@ A full-of-features, easy-to-customize, free and open source, light-weight, Andro
 	- Option to change the columns amount in wallpapers section.
 	- Option to clear app cache.
 	- Option to change where to download wallpapers.
-	- Option to clear favorites database.
+	- Option to hide icon.
 - Tablet layouts.
 - Lots of customizations.
 - Works with Android 4.1 and newer.
