@@ -117,6 +117,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
     
     private var filtersDrawer: Drawer? = null
+    private var iconsFilters: ArrayList<String> = ArrayList()
     
     internal val toolbar: CustomToolbar? by bind(R.id.toolbar)
     internal val fabsMenu: FABsMenu? by bind(R.id.fabs_menu)
@@ -125,16 +126,14 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     private var searchItem: MenuItem? = null
     private var searchView: CustomSearchView? = null
     
-    private var iconsFilters: ArrayList<String> = ArrayList()
+    private val pager: PseudoViewPager? by bind(R.id.pager)
+    private var fragmentsAdapter: FragmentsAdapter? = null
     internal var currentItemId: Int = DEFAULT_HOME_POSITION
+    private val activeFragment: Fragment?
+        get() = fragmentsAdapter?.get(pager?.currentItem ?: -1)
     
     internal val isIconsPicker: Boolean
         get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
-    
-    private val pager: PseudoViewPager? by bind(R.id.pager)
-    private var fragmentsAdapter: FragmentsAdapter? = null
-    private val activeFragment: Fragment?
-        get() = fragmentsAdapter?.get(currentItemId)
     
     internal val hasTemplates: Boolean
         get() {
@@ -153,43 +152,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         toolbar?.bindToActivity(this, false)
-        initMainComponents(savedInstanceState)
-        defaultNavigation()
-    }
-    
-    override fun onBackPressed() {
-        val isOpen = searchView?.isOpen ?: false
-        if (isOpen) {
-            searchItem?.collapseActionView()
-        } else {
-            if (!isIconsPicker && !hasBottomNavigation() && currentItemId != DEFAULT_HOME_POSITION) {
-                navigateToItem(getNavigationItemWithId(DEFAULT_HOME_POSITION), false)
-            } else {
-                supportFinishAfterTransition()
-            }
+        postDelayed(50) {
+            initMainComponents(savedInstanceState)
         }
-    }
-    
-    override fun onPause() {
-        super.onPause()
-        if (searchView?.isOpen == true) searchItem?.collapseActionView()
-    }
-    
-    @SuppressLint("MissingSuperCall")
-    override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putString("toolbarTitle", toolbar?.title?.toString() ?: getAppName())
-        outState?.putInt("currentItemId", currentItemId)
-        super.onSaveInstanceState(outState)
-    }
-    
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-        toolbar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
-        supportActionBar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
-        val rightItem = savedInstanceState?.getInt("currentItemId", -1) ?: -1
-        if (rightItem >= 0) {
-            navigateToItem(getNavigationItemWithId(rightItem), false)
-        } else defaultNavigation()
     }
     
     private fun defaultNavigation(force: Boolean = false) {
@@ -202,10 +167,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
     private fun initMainComponents(savedInstance: Bundle?) {
         initFragments()
-        initFAB()
         initFABsMenu()
+        initFAB()
         initFiltersDrawer(savedInstance)
-        lockFiltersDrawer(true)
+        updateUI(getNavigationItemWithId(currentItemId))
         RequestsViewModel.initAndLoadRequestApps(
                 this, string(R.string.arctic_backend_host), string(R.string.arctic_backend_api_key))
     }
@@ -214,15 +179,14 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         fragmentsAdapter = FragmentsAdapter(supportFragmentManager)
         loop@ for (item in getNavigationItems()) {
             when (item.id) {
-                DEFAULT_HOME_POSITION -> fragmentsAdapter?.addFragmentAt(HomeFragment(), item.id)
+                DEFAULT_HOME_POSITION -> fragmentsAdapter?.addFragment(HomeFragment())
                 DEFAULT_ICONS_POSITION ->
-                    fragmentsAdapter?.addFragmentAt(IconsFragment.create(pickerKey), item.id)
+                    fragmentsAdapter?.addFragment(IconsFragment.create(pickerKey))
                 DEFAULT_WALLPAPERS_POSITION ->
-                    fragmentsAdapter?.addFragmentAt(
-                            WallpapersFragment.create(getLicenseChecker() != null), item.id)
-                DEFAULT_APPLY_POSITION -> fragmentsAdapter?.addFragmentAt(ApplyFragment(), item.id)
-                DEFAULT_REQUEST_POSITION ->
-                    fragmentsAdapter?.addFragmentAt(RequestsFragment(), item.id)
+                    fragmentsAdapter?.addFragment(
+                            WallpapersFragment.create(getLicenseChecker() != null))
+                DEFAULT_APPLY_POSITION -> fragmentsAdapter?.addFragment(ApplyFragment())
+                DEFAULT_REQUEST_POSITION -> fragmentsAdapter?.addFragment(RequestsFragment())
                 else -> continue@loop
             }
         }
@@ -283,57 +247,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         helpFab?.titleTextColor = primaryTextColor
         helpFab?.rippleColor = rippleColor
         helpFab?.setOnClickListener { launchHelpActivity() }
-    }
-    
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        menu?.let {
-            updateToolbarMenuItems(getNavigationItemWithId(currentItemId), it)
-            
-            searchItem = it.findItem(R.id.search)
-            searchView = searchItem?.actionView as? CustomSearchView
-            searchView?.onCollapse = { doSearch() }
-            searchView?.onQueryChanged = { doSearch(it) }
-            searchView?.onQuerySubmit = { doSearch(it) }
-            searchView?.bindToItem(searchItem)
-            
-            searchView?.queryHint = when (currentItemId) {
-                DEFAULT_ICONS_POSITION -> getString(R.string.search_icons)
-                DEFAULT_WALLPAPERS_POSITION -> getString(R.string.search_wallpapers)
-                DEFAULT_APPLY_POSITION -> getString(R.string.search_launchers)
-                DEFAULT_REQUEST_POSITION -> getString(R.string.search_apps)
-                else -> getString(R.string.search)
-            }
-            
-            searchView?.tint(getPrimaryTextColorFor(primaryColor, 0.6F))
-            it.tint(getActiveIconsColorFor(primaryColor, 0.6F))
-        }
-        toolbar?.tint(
-                getPrimaryTextColorFor(primaryColor, 0.6F),
-                getSecondaryTextColorFor(primaryColor, 0.6F),
-                getActiveIconsColorFor(primaryColor, 0.6F))
-        return super.onCreateOptionsMenu(menu)
-    }
-    
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        item?.let {
-            when (it.itemId) {
-                R.id.filters -> filtersDrawer?.openDrawer()
-                R.id.refresh -> {
-                    refreshWallpapers()
-                    refreshRequests()
-                }
-                R.id.changelog -> showChangelog(R.xml.changelog, secondaryTextColor)
-                R.id.select_all -> toggleSelectAll()
-                R.id.templates -> launchKuperActivity()
-                R.id.help -> launchHelpActivity()
-                R.id.about -> startActivity(Intent(this, CreditsActivity::class.java))
-                R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
-                else -> {
-                }
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
     
     private fun initFiltersDrawer(savedInstance: Bundle?) {
@@ -397,24 +310,111 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         filtersDrawer = filtersDrawerBuilder.build()
     }
     
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        menu?.let {
+            updateToolbarMenuItems(getNavigationItemWithId(currentItemId), it)
+            
+            searchItem = it.findItem(R.id.search)
+            searchView = searchItem?.actionView as? CustomSearchView
+            searchView?.onCollapse = { doSearch() }
+            searchView?.onQueryChanged = { doSearch(it) }
+            searchView?.onQuerySubmit = { doSearch(it) }
+            searchView?.bindToItem(searchItem)
+            
+            searchView?.queryHint = when (currentItemId) {
+                DEFAULT_ICONS_POSITION -> getString(R.string.search_icons)
+                DEFAULT_WALLPAPERS_POSITION -> getString(R.string.search_wallpapers)
+                DEFAULT_APPLY_POSITION -> getString(R.string.search_launchers)
+                DEFAULT_REQUEST_POSITION -> getString(R.string.search_apps)
+                else -> getString(R.string.search)
+            }
+            
+            searchView?.tint(getPrimaryTextColorFor(primaryColor, 0.6F))
+            it.tint(getActiveIconsColorFor(primaryColor, 0.6F))
+        }
+        toolbar?.tint(
+                getPrimaryTextColorFor(primaryColor, 0.6F),
+                getSecondaryTextColorFor(primaryColor, 0.6F),
+                getActiveIconsColorFor(primaryColor, 0.6F))
+        return super.onCreateOptionsMenu(menu)
+    }
+    
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        item?.let {
+            when (it.itemId) {
+                R.id.filters -> filtersDrawer?.openDrawer()
+                R.id.refresh -> {
+                    refreshWallpapers()
+                    refreshRequests()
+                }
+                R.id.changelog -> showChangelog(R.xml.changelog, secondaryTextColor)
+                R.id.select_all -> toggleSelectAll()
+                R.id.templates -> launchKuperActivity()
+                R.id.help -> launchHelpActivity()
+                R.id.about -> startActivity(Intent(this, CreditsActivity::class.java))
+                R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
+                else -> {
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    
+    override fun onBackPressed() {
+        val isOpen = searchView?.isOpen ?: false
+        if (isOpen) {
+            searchItem?.collapseActionView()
+        } else {
+            if (!isIconsPicker && !hasBottomNavigation() && currentItemId != DEFAULT_HOME_POSITION) {
+                navigateToItem(getNavigationItemWithId(DEFAULT_HOME_POSITION), false)
+            } else {
+                supportFinishAfterTransition()
+            }
+        }
+    }
+    
+    override fun onPause() {
+        super.onPause()
+        if (searchView?.isOpen == true) searchItem?.collapseActionView()
+    }
+    
+    @SuppressLint("MissingSuperCall")
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.putString("toolbarTitle", toolbar?.title?.toString() ?: getAppName())
+        outState?.putInt("currentItemId", currentItemId)
+        super.onSaveInstanceState(outState)
+    }
+    
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        toolbar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
+        supportActionBar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
+        val default = if (isIconsPicker) DEFAULT_ICONS_POSITION else DEFAULT_HOME_POSITION
+        currentItemId = savedInstanceState?.getInt("currentItemId", default) ?: default
+        navigateToItem(getNavigationItemWithId(currentItemId), false)
+    }
+    
     internal open fun navigateToItem(
             item: NavigationItem,
             fromClick: Boolean,
             force: Boolean = false
-                                    ) {
-        try {
-            searchItem?.collapseActionView()
-            postDelayed(10) {
-                if (currentItemId != item.id) {
-                    pager?.setCurrentItem(item.id, true)
-                    currentItemId = item.id
-                    invalidateOptionsMenu()
+                                    ): Boolean {
+        return try {
+            if (currentItemId != item.id) {
+                pager?.setCurrentItem(getIndexOfItem(item)) {
                     updateUI(item)
-                } else {
-                    if (hasBottomNavigation()) scrollToTop()
                 }
+                currentItemId = item.id
+                invalidateOptionsMenu()
+                updateUI(item)
+                true
+            } else {
+                if (hasBottomNavigation()) scrollToTop()
+                false
             }
         } catch (e: Exception) {
+            false
         }
     }
     
@@ -462,6 +462,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                     NavigationItem.WALLPAPERS,
                     NavigationItem.APPLY,
                     NavigationItem.REQUESTS)
+    
+    private fun getIndexOfItem(item: NavigationItem): Int {
+        getNavigationItems().forEachIndexed { i, it ->
+            if (it.id == item.id) return i
+        }
+        return -1
+    }
     
     internal fun getNavigationItemWithId(id: Int): NavigationItem {
         getNavigationItems().forEach { if (it.id == id) return it }

@@ -51,21 +51,21 @@ abstract class BottomNavigationBlueprintActivity : BaseBlueprintActivity() {
                     addItem(AHBottomNavigationItem(getString(it.title), it.icon))
                 }
                 setOnTabSelectedListener { position, _ ->
-                    navigateToItem(getNavigationItems()[position], true)
-                    return@setOnTabSelectedListener true
+                    return@setOnTabSelectedListener navigateToItem(
+                            getNavigationItems()[position], true)
                 }
                 visible()
             }
         }
     }
     
-    override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean) {
+    override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean): Boolean {
         if (!fromClick) bottomBar?.setCurrentItem(item.id, false)
-        super.navigateToItem(item, fromClick, force)
         if (!hasBottomNavigation()) {
             bottomBar?.hideBottomNavigation()
             bottomBar?.gone()
         }
+        return super.navigateToItem(item, fromClick, force)
     }
     
     override fun hasBottomNavigation(): Boolean = !isIconsPicker

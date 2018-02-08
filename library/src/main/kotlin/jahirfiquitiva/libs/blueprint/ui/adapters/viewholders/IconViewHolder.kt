@@ -20,7 +20,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import ca.allanwang.kau.utils.scaleXY
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
@@ -40,7 +39,7 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     
     fun bind(manager: RequestManager?, animate: Boolean, item: Icon) = with(itemView) {
         icon?.loadResource(
-                manager ?: Glide.with(context), item.icon, true, animate, true,
+                manager, item.icon, true, animate, true,
                 object : GlideRequestCallback<Drawable>() {
                     override fun onLoadSucceed(resource: Drawable): Boolean {
                         if (context.bpKonfigs.animationsEnabled && animate) {

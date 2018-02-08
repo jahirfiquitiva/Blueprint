@@ -26,14 +26,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.isAppInstalled
 import ca.allanwang.kau.utils.toBitmap
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.request.RequestOptions
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
-import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
 import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
@@ -74,30 +76,42 @@ class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 text?.background = null
                 text?.setTextColor(context.secondaryTextColor)
                 
-                iconView?.loadResource(
-                        manager ?: Glide.with(context), iconRes, true, false, true,
-                        object : GlideRequestCallback<Drawable>() {
-                            override fun onLoadSucceed(resource: Drawable): Boolean {
-                                val isInstalled = isLauncherInstalled(context, item.packageNames)
-                                iconView?.colorFilter = if (isInstalled) null else bnwFilter
-                                resource.toBitmap().bestSwatch?.let {
-                                    val rightColor =
-                                            if (isInstalled) it.rgb else context.secondaryTextColor
-                                    if (boolean(R.bool.enable_colored_cards)) {
-                                        itemLayout?.radius = 0F
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                                            itemLayout?.elevation = 0F
-                                        itemLayout?.cardElevation = 0F
-                                        itemLayout?.maxCardElevation = 0F
-                                        bg?.setBackgroundColor(rightColor.withAlpha(0.8F))
+                iconView?.let {
+                    (manager ?: Glide.with(context))
+                            .load(iconRes)
+                            .apply(
+                                    RequestOptions()
+                                            .priority(Priority.IMMEDIATE)
+                                            .placeholder(
+                                                    context.drawable(R.drawable.ic_na_launcher))
+                                            .error(context.drawable(R.drawable.ic_na_launcher)))
+                            .listener(object : GlideRequestCallback<Drawable>() {
+                                override fun onLoadSucceed(resource: Drawable): Boolean {
+                                    val isInstalled =
+                                            isLauncherInstalled(context, item.packageNames)
+                                    iconView?.colorFilter = if (isInstalled) null else bnwFilter
+                                    resource.toBitmap().bestSwatch?.let {
+                                        val rightColor =
+                                                if (isInstalled) it.rgb else context.secondaryTextColor
+                                        if (boolean(R.bool.enable_colored_cards)) {
+                                            itemLayout?.radius = 0F
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                                                itemLayout?.elevation = 0F
+                                            itemLayout?.cardElevation = 0F
+                                            itemLayout?.maxCardElevation = 0F
+                                            bg?.setBackgroundColor(rightColor.withAlpha(0.8F))
+                                        }
+                                        text?.setBackgroundColor(rightColor)
+                                        text?.setTextColor(
+                                                context.getPrimaryTextColorFor(rightColor, 0.6F))
                                     }
-                                    text?.setBackgroundColor(rightColor)
-                                    text?.setTextColor(
-                                            context.getPrimaryTextColorFor(rightColor, 0.6F))
+                                    return false
                                 }
-                                return false
-                            }
-                        })
+                            })
+                            .into(it)
+                            .clearOnDetach()
+                }
+                
                 setOnClickListener { listener(item) }
             }
     

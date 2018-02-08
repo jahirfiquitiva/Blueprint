@@ -43,8 +43,11 @@ import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoratio
 class ApplyFragment : ViewModelFragment<Launcher>() {
     
     private var recyclerView: EmptyViewRecyclerView? = null
-    private var adapter: LaunchersAdapter? = null
     private var launchersViewModel: LaunchersViewModel? = null
+    
+    private val adapter: LaunchersAdapter? by lazy {
+        LaunchersAdapter(Glide.with(this)) { onItemClicked(it, false) }
+    }
     
     override fun initViewModel() {
         launchersViewModel = ViewModelProviders.of(this).get(LaunchersViewModel::class.java)
@@ -77,10 +80,6 @@ class ApplyFragment : ViewModelFragment<Launcher>() {
         
         recyclerView?.loadingView = content.findViewById(R.id.loading_view)
         recyclerView?.setLoadingText(R.string.loading_section)
-        
-        ctxt {
-            adapter = LaunchersAdapter(Glide.with(it)) { onItemClicked(it, false) }
-        }
         
         recyclerView?.adapter = adapter
         val columns = ctxt.getInteger(R.integer.icons_columns) - 1

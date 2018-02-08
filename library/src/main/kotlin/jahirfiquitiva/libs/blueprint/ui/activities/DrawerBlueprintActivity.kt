@@ -121,9 +121,9 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
                         startActivity(Intent(this, SettingsActivity::class.java))
                     }
                     else -> {
-                        navigateToItem(getNavigationItemWithId(drawerItem.identifier.toInt()), true)
                         drawer?.closeDrawer()
-                        return@withOnDrawerItemClickListener true
+                        return@withOnDrawerItemClickListener navigateToItem(
+                                getNavigationItemWithId(drawerItem.identifier.toInt()), true)
                     }
                 }
             } catch (e: Exception) {
@@ -194,10 +194,10 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         }
     }
     
-    override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean) {
+    override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean): Boolean {
         if (!fromClick) drawer?.setSelection(item.id.toLong(), false)
-        super.navigateToItem(item, fromClick, force)
         if (isIconsPicker) lockDrawer()
+        return super.navigateToItem(item, fromClick, force)
     }
     
     private fun lockDrawer() {

@@ -37,7 +37,6 @@ import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.PreviewCardHolder
 import jahirfiquitiva.libs.frames.providers.viewmodels.WallpapersViewModel
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
@@ -112,11 +111,8 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     override fun getContentLayout(): Int = R.layout.section_home
     
     override fun initUI(content: View) {
-        ctxt {
-            previewCardHolder = PreviewCardHolder(
-                    IconsAdapter(Glide.with(it), true),
-                    content.findViewById(R.id.icons_preview_card))
-        }
+        previewCardHolder = PreviewCardHolder(
+                IconsAdapter(Glide.with(this), true), content.findViewById(R.id.icons_preview_card))
         
         nestedScroll = content.findViewById(R.id.nested_scroll)
         

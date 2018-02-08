@@ -54,8 +54,10 @@ class RequestsFragment : ViewModelFragment<App>() {
     private var viewModel: RequestsViewModel? = null
     
     private var recyclerView: EmptyViewRecyclerView? = null
-    private var adapter: RequestsAdapter? = null
     private var fastScroller: RecyclerFastScroller? = null
+    private val adapter: RequestsAdapter? by lazy {
+        RequestsAdapter(Glide.with(this)) { updateFabCount() }
+    }
     
     private var spanCount = 0
     private var spacingDecoration: GridSpacingItemDecoration? = null
@@ -108,9 +110,6 @@ class RequestsFragment : ViewModelFragment<App>() {
                     }
                 })
         
-        ctxt {
-            adapter = RequestsAdapter(Glide.with(it)) { updateFabCount() }
-        }
         recyclerView?.adapter = adapter
         fastScroller = content.findViewById(R.id.fast_scroller)
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }

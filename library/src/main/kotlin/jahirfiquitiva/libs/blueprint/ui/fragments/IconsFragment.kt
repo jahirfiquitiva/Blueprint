@@ -65,7 +65,9 @@ class IconsFragment : ViewModelFragment<Icon>() {
     
     private var dialog: IconDialog? = null
     
-    private var adapter: IconsAdapter? = null
+    private val adapter: IconsAdapter? by lazy {
+        IconsAdapter(Glide.with(this), false) { onItemClicked(it, false) }
+    }
     
     fun applyFilters(filters: ArrayList<String>) {
         val list = ArrayList(model?.getData().orEmpty())
@@ -161,10 +163,6 @@ class IconsFragment : ViewModelFragment<Icon>() {
         
         recyclerView?.loadingView = content.findViewById(R.id.loading_view)
         recyclerView?.setLoadingText(R.string.loading_section)
-        
-        ctxt {
-            adapter = IconsAdapter(Glide.with(it), false) { onItemClicked(it, false) }
-        }
         
         recyclerView?.adapter = adapter
         val columns = ctxt.getInteger(R.integer.icons_columns)
