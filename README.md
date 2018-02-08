@@ -34,10 +34,27 @@ A full-of-features, easy-to-customize, free and open source, light-weight, Andro
 
 ### Customizable styles
 
-### Credits / Settings / Muzei Settings
+### Home / Icons
+<p align="center">
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/1.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/2.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/4.png" height="350"/>
+</p>
+
+### Wallpapers / Apply / Requests / Templates (Zooper & Kustom)
 <p align="center">
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/5.png" height="350"/>
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/6.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/7.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/8.png" height="350"/>
+</p>
+
+### Help / Credits / Settings / Legacy Navigation Drawer
+<p align="center">
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/10.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/11.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/12.png" height="350"/>
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/13.png" height="350"/>
 </p>
 
