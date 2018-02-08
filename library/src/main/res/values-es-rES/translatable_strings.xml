@@ -93,16 +93,15 @@
     <item>¿Cómo solicitar iconos?</item>
     <item>Después de reiniciar mi dispositivo, el paquete de iconos ya no se aplica. Se restauraron los iconos por defecto.        </item>
     <item>¿Por qué parecen los iconos pixelados en mi dispositivo?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.
-        </item>
-    <item>How to hide app icon from launcher?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Puedo ver un icono de X aplicación en los iconos incluidos, pero el icono no se aplica.        </item>
+    <item>¿Cómo ocultar el icono de la aplicación del launcher?</item>
+    <item>¿Cómo abrir la aplicación después de que oculté su icono?</item>
+    <item>¿Cómo mostar el ícono de la aplicación en el launcher de nuevo?</item>
+    <item>¿Por qué la aplicacióno necesita permiso para modificar o eliminar el contenido de mi almacenamiento?</item>
+    <item>¿Por qué la aplicación necesita permiso para acceder a la red?</item>
+    <item>¿Por qué la aplicación necesita permiso para ver las conexiones?</item>
+    <item>¿Por qué la aplicación necesita permiso para establecer fondos de pantalla?</item>
+    <item>¿Por qué la aplicación necesita permiso para ajustar el tamaño del fondo de pantalla?</item>
     <item>Why does the app need permission to prevent phone from sleeping?</item>
   </string-array>
 </resources>
