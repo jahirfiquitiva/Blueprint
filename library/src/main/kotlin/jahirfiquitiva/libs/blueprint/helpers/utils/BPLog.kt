@@ -18,4 +18,4 @@ package jahirfiquitiva.libs.blueprint.helpers.utils
 import ca.allanwang.kau.logging.KauLogger
 import jahirfiquitiva.libs.blueprint.BuildConfig
 
-object BPLog : KauLogger("Quest", { BuildConfig.DEBUG })
+internal object BPLog : KauLogger("Quest", { BuildConfig.DEBUG })
