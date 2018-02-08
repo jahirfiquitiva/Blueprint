@@ -84,3 +84,5 @@ tasks.whenTaskAdded { task ->
         task.enabled = false
     }
 }
+
+apply from: '../lib-artifacts.gradle'
