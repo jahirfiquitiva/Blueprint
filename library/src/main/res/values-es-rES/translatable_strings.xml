@@ -51,7 +51,58 @@
   <string name="launcher_icon_restorer_error">Hay un problema con el código de %1$s. Por favor contacta a su desarrollador.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Widget restaurador de ícono</string>
+  <string name="clock_widget_title">Reloj analógico</string>
+  <string name="search_icons">Buscar iconos</string>
+  <string name="search_wallpapers">Buscar fondos de pantalla</string>
+  <string name="search_launchers">Buscar launchers</string>
+  <string name="search_apps">Buscar aplicaciones</string>
+  <string name="seconds">Segundos</string>
+  <string name="minutes">Minutos</string>
+  <string name="hours">Horas</string>
+  <string name="days">Días</string>
+  <string name="weeks">Semanas</string>
+  <string name="months">Meses</string>
   <!-- Requests -->
+  <string name="select_all">Seleccionar todo</string>
+  <string name="no_selected_apps_title">No hay aplicaciones seleccionadas</string>
+  <string name="no_selected_apps_content">No has seleccionado ninguna app para solicitar. Selecciona algunas antes de pulsar el FAB.</string>
+  <string name="apps_limit_dialog">Lo sentimos, pero sólo se pueden seleccionar %1$s aplicaciones para solicitar.</string>
+  <string name="apps_limit_dialog_more">Lo sentimos, pero sólo se puede solicitar %1$s más aplicaciones por ahora.</string>
+  <string name="apps_limit_dialog_day">Lo sentimos, pero sólo se puede solicitar los iconos cada %1$s.</string>
+  <string name="apps_limit_dialog_day_extra">Podrás realizar una petición de iconos de nuevo, en %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Podrás realizar una petición de iconos de nuevo, en menos de un minuto.</string>
+  <string name="requests_error">Hubo un error al cargar las aplicaciones para solicitar. \nPresiona aquí para reintentar.</string>
+  <string name="loading_apps_to_request">Cargando aplicaciones para solicitar…</string>
+  <string name="building_request_dialog">Creando archivos de petición…</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">Habilitar el uso de fondo de pantalla en vista previa de iconos</string>
+  <string name="pref_summary_wall_header">Aparecerá tu fondo de pantalla actual.</string>
+  <string name="pref_header_launcher_icon">Icono en launcher</string>
+  <string name="pref_title_launcher_icon">Ocultar el icono en el Launcher</string>
+  <string name="pref_summary_launcher_icon">Cuando está marcada, se oculta el icono en el launcher.</string>
+  <string name="clearcache_dialog_content">¿Estás seguro que deseas eliminar la configuración, caché y datos de la aplicación? Los iconos aplicados no se verán afectados.    </string>
+  <string name="hideicon_dialog_title">¡Atención!</string>
+  <string name="hideicon_dialog_content">¿Está seguro que desea ocultar el icono de la aplicación en el launcher?         \nLa app puede cerrarse inesperadamente y las notificaciones serán completamente desactivadas. \nPuedes leer las FAQs para aprender a hacerlo aparecer de nuevo, antes de ocultarlo.    </string>
+  <string name="send_using">Enviar con…</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>¿Cómo utilizar el paquete de iconos?</item>
+    <item>¿Cómo aplicar el paquete de iconos?</item>
+    <item>¿Cómo ver todos los iconos incluidos?</item>
+    <item>¿Cómo reemplazar ciertos iconos con alternativas?</item>
+    <item>¿Cómo solicitar iconos?</item>
+    <item>Después de reiniciar mi dispositivo, el paquete de iconos ya no se aplica. Se restauraron los iconos por defecto.        </item>
+    <item>¿Por qué parecen los iconos pixelados en mi dispositivo?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.
+        </item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
 </resources>
