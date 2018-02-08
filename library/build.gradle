@@ -76,9 +76,11 @@ dependencies {
     api(libraries.materialDrawer) {
         transitive = true
     }
-    // Icon Requests Tool
-    def withoutAnnotations = { exclude group: 'com.intellij', module: 'annotations' }
-    api project(path: ':quest'), withoutAnnotations
+    // Bridge
+    api(libraries.bridge) {
+        exclude group: 'org.json', module: 'json'
+        exclude group: 'com.intellij', module: 'annotations'
+    }
     // FABs Menu
     api libraries.fabsMenu
     // CounterFab

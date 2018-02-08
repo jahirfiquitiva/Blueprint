@@ -31,6 +31,7 @@ ext.versions = [
         materialDrawer: '6.0.6',
         fabsMenu      : '1.1.2',
         counterFab    : '1.0.3',
+        bridge        : '5.1.2',
         oneSignal     : '3.7.1'
 ]
 
@@ -51,6 +52,8 @@ ext.libraries = [
         fabsMenu      : 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu,
         // CounterFab
         counterFab    : 'com.github.andremion:counterfab:' + versions.counterFab,
+        // Bridge
+        bridge        : 'com.afollestad:bridge:' + versions.bridge,
         // OneSignal
         oneSignal     : 'com.onesignal:OneSignal:' + versions.oneSignal
 ]

@@ -52,6 +52,8 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.events.OnRequestProgress
 import jahirfiquitiva.libs.blueprint.ui.activities.BlueprintKuperActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.CreditsActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
@@ -101,8 +103,6 @@ import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
-import jahirfiquitiva.libs.blueprint.quest.IconRequest
-import jahirfiquitiva.libs.quest.events.OnRequestProgress
 
 abstract class BaseBlueprintActivity : BaseFramesActivity() {
     
