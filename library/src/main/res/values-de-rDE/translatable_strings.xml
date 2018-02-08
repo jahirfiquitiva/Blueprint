@@ -110,20 +110,17 @@
     <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Icons\", oder gehe zurück zum Hauptbildschirm der App und tippe auf den \"Icons\"-Button. </item>
     <item>Es ist abhängig vom Launcher, den du verwendest. Nicht jeder Launcher unterstützt Icon-Bearbeitung. Jedoch ist es in den meisten Fällen möglich, das Icon durch langes Drücken oder doppelt Tippen zu bearbeiten.</item>
     <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Anfragen\".</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in
-            internal storage.
-        </item>
+    <item>Das ist passiert, weil das Icon Pack auf die SD-Karte verschoben wurde. Du solltest es auf dem internen Speicher installieren.</item>
     <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Du kannst das Problem lösen, indem du die Icon-Größe auf 115 - 120 % erhöhst. Du kannst auch versuchen, einen anderen Launcher zu verwenden.</item>
     <item>Sende eine Icon-Anfrage.</item>
     <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Einstellungen\". Aktiviere dort die Option \"Launcher-Icon ausblenden\".</item>
     <item>Gehe zu deinem Startbildschirm und erstelle ein Widget für die App mit dem Namen \"Widget zur Icon-Wiederherstellung\".</item>
     <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Einstellungen\". Deaktiviere dort die Option \"Launcher-Icon ausblenden\".</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers download location.</item>
-    <item>It\'s needed to be able to load the cloud based wallpapers and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.
-        </item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
+    <item>Diese wird verwendet, um Daten für Icon-Anfragen speichern zu können, genauso wie für das Speichern der Wallpaper und zur Änderung des Download-Verzeichnisses.</item>
+    <item>Diese wird verwendet, um Wallpaper aus der Cloud herunterladen zu können.</item>
+    <item>Diese wird verwendet, um zu prüfen, ob dein Gerät eine Internet-Verbindung besitzt.</item>
+    <item>Diese wird verwendet, um das Wallpaper direkt aus der App heraus anwenden zu können.</item>
+    <item>Diese wird verwendet, um die Größe des Wallpapers an deine Bildschirmauflösung anzupassen.</item>
+    <item>Diese wird durch Muzei Live Wallpaper benötigt.</item>
   </string-array>
 </resources>
