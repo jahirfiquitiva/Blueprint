@@ -35,6 +35,7 @@
 }
 
 -keep class android.arch.** { *; }
+-keep class jahirfiquitiva.libs.** { *; }
 
 -keep class com.google.**
 -keep class autovalue.shaded.com.google.**
@@ -45,6 +46,10 @@
 -dontwarn com.google.**
 -dontwarn autovalue.shaded.com.google.**
 -dontwarn com.android.vending.billing.**
+
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
 
 -dontwarn
 -ignorewarnings
