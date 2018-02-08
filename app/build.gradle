@@ -88,8 +88,8 @@ android {
 }
 
 dependencies {
-    // Frames
-    implementation('me.jahirfiquitiva:Blueprint:1.0.1@aar') {
+    // Blueprint
+    implementation('me.jahirfiquitiva:Blueprint:1.0.2@aar') {
         transitive = true
     }
     // TODO: Remove comment marks to enable
