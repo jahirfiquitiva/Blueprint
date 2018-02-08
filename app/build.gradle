@@ -50,8 +50,8 @@ android {
         applicationId "jahirfiquitiva.apps.blueprint.demo"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 100
-        versionName "1.0.0"
+        versionCode 101
+        versionName "1.0.1"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
@@ -89,7 +89,7 @@ android {
 
 dependencies {
     // Frames
-    implementation('me.jahirfiquitiva:Blueprint:1.0.0@aar') {
+    implementation('me.jahirfiquitiva:Blueprint:1.0.1@aar') {
         transitive = true
     }
     // TODO: Remove comment marks to enable
