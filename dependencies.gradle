@@ -19,14 +19,14 @@ ext.versions = [
         targetSdk     : 27,
         buildTools    : '27.0.3',
         // Versions:
-        versionCode   : 103,
-        versionName   : '1.0.3',
+        versionCode   : 104,
+        versionName   : '1.0.4',
         // Gradle Plugins
         gradle        : '3.0.1',
         kotlin        : '1.2.21',
         libs          : '2.0',
         // Dependencies
-        kuper         : '1.1.9',
+        kuper         : '1.2.0',
         materialDrawer: '6.0.6',
         fabsMenu      : '1.1.2',
         counterFab    : '1.0.3',
