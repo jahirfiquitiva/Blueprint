@@ -71,8 +71,6 @@ dependencies {
     // Kuper
     api(libraries.kuper) {
         transitive = true
-        exclude group: 'android.arch.persistence.room'
-        exclude group: 'android.arch.room'
     }
     // Navigation
     api(libraries.materialDrawer) {
