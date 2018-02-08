@@ -132,8 +132,7 @@ class RequestsViewModel : ViewModel() {
             onProgress: (progress: Int) -> Unit = {}
                             ) {
         if (IconRequest.get() != null && !forceLoad) {
-            postResult(ArrayList(
-                    IconRequest.get()?.apps.orEmpty()))
+            postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
             return
         }
         initAndLoadRequestApps(param, host, apiKey, callback, onProgress)

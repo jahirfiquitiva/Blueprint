@@ -43,17 +43,11 @@ import com.afollestad.bridge.Bridge.post
 import com.afollestad.bridge.MultipartForm
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.kauextensions.extensions.getUri
-import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import jahirfiquitiva.libs.kauextensions.extensions.readBoolean
-import jahirfiquitiva.libs.kauextensions.extensions.readEnum
-import jahirfiquitiva.libs.kauextensions.extensions.writeBoolean
-import jahirfiquitiva.libs.kauextensions.extensions.writeEnum
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPLog
 import jahirfiquitiva.libs.blueprint.quest.events.EventState
 import jahirfiquitiva.libs.blueprint.quest.events.OnRequestProgress
 import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
 import jahirfiquitiva.libs.blueprint.quest.prm.RemoteValidator
-import jahirfiquitiva.libs.blueprint.quest.utils.QuestLog
 import jahirfiquitiva.libs.blueprint.quest.utils.TimeUtils
 import jahirfiquitiva.libs.blueprint.quest.utils.getInstalledApps
 import jahirfiquitiva.libs.blueprint.quest.utils.safeDrawableName
@@ -61,6 +55,12 @@ import jahirfiquitiva.libs.blueprint.quest.utils.saveAll
 import jahirfiquitiva.libs.blueprint.quest.utils.saveIcon
 import jahirfiquitiva.libs.blueprint.quest.utils.wipe
 import jahirfiquitiva.libs.blueprint.quest.utils.zip
+import jahirfiquitiva.libs.kauextensions.extensions.getUri
+import jahirfiquitiva.libs.kauextensions.extensions.hasContent
+import jahirfiquitiva.libs.kauextensions.extensions.readBoolean
+import jahirfiquitiva.libs.kauextensions.extensions.readEnum
+import jahirfiquitiva.libs.kauextensions.extensions.writeBoolean
+import jahirfiquitiva.libs.kauextensions.extensions.writeEnum
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import java.io.File
@@ -148,7 +148,7 @@ class IconRequest private constructor() {
             if (savedTime == -1) return -1
             val elapsedTime = TimeUtils.currentTimeInMillis - savedTime
             val sdf = SimpleDateFormat("MMM dd,yyyy HH:mm:ss")
-            QuestLog.d {
+            BPLog.d {
                 "Timer: [Last request was on: " + sdf.format(savedTime) + "] - [Right" +
                         " now is: " + sdf.format(Date(TimeUtils.currentTimeInMillis)) + "] - " +
                         "[Time Left: ~" +
@@ -448,7 +448,7 @@ class IconRequest private constructor() {
                                     }
                                 }
                             } catch (e: Exception) {
-                                QuestLog.d { "Error adding parsed appfilter item! Due to Exception: ${e.message}" }
+                                BPLog.d { "Error adding parsed appfilter item! Due to Exception: ${e.message}" }
                             }
                         }
                     }
@@ -467,7 +467,7 @@ class IconRequest private constructor() {
         builder?.isLoading = true
         Thread {
             val filter = loadFilterApps() ?: return@Thread
-            QuestLog.d { "Loading unthemed installed apps..." }
+            BPLog.d { "Loading unthemed installed apps..." }
             apps.clear()
             apps.addAll(builder?.context?.getInstalledApps(filter, onProgress).orEmpty())
             builder?.isLoading = false
@@ -477,17 +477,17 @@ class IconRequest private constructor() {
     
     fun loadHighResIcons() {
         if (apps.isEmpty()) {
-            QuestLog.d { "High res load failed; app list is empty" }
+            BPLog.d { "High res load failed; app list is empty" }
             return
         }
         Thread {
-            QuestLog.d { "Getting high res icons for all apps..." }
+            BPLog.d { "Getting high res icons for all apps..." }
             apps.let {
                 for (app in it) {
                     builder?.context?.let { app.getHighResIcon(it) }
                 }
             }
-            QuestLog.d { "High res icon retrieval finished..." }
+            BPLog.d { "High res icon retrieval finished..." }
         }.start()
     }
     
@@ -546,11 +546,11 @@ class IconRequest private constructor() {
     
     @WorkerThread
     private fun postError(msg: String, baseError: Exception?) {
-        QuestLog.e { "$msg -- Error: ${baseError?.message}" }
+        BPLog.e { "$msg -- Error: ${baseError?.message}" }
     }
     
     fun send(onRequestProgress: OnRequestProgress?) {
-        QuestLog.d { "Preparing your request to send..." }
+        BPLog.d { "Preparing your request to send..." }
         
         var requestError = false
         
@@ -591,7 +591,7 @@ class IconRequest private constructor() {
                 builder?.saveDir?.mkdirs()
                 
                 // Save app icons
-                QuestLog.d { "Saving icons..." }
+                BPLog.d { "Saving icons..." }
                 val appNames = ArrayList<String>()
                 var prevName = ""
                 var count = 1
@@ -624,7 +624,7 @@ class IconRequest private constructor() {
                 }
                 
                 // Create request files
-                QuestLog.d { "Creating request files..." }
+                BPLog.d { "Creating request files..." }
                 var xmlSb: StringBuilder? = null
                 var amSb: StringBuilder? = null
                 var trSb: StringBuilder? = null
@@ -791,7 +791,7 @@ class IconRequest private constructor() {
                 }
                 
                 // Zip everything into an archive
-                QuestLog.d { "Creating ZIP..." }
+                BPLog.d { "Creating ZIP..." }
                 val zipFile = File(builder?.saveDir, "IconRequest-$date.zip")
                 try {
                     zipFile.zip(filesToZip)
@@ -803,7 +803,7 @@ class IconRequest private constructor() {
                 }
                 
                 // Cleanup files
-                QuestLog.d { "Cleaning up files..." }
+                BPLog.d { "Cleaning up files..." }
                 val files = builder?.saveDir?.listFiles()
                 files?.forEach {
                     if (!it.isDirectory && (it.name.endsWith(".png") || it.name.endsWith(".xml"))) {
@@ -826,17 +826,17 @@ class IconRequest private constructor() {
                         form.add("archive", zipFile)
                         form.add("apps", JSONObject(jsonSb?.toString()).toString())
                         post("/v1/request").throwIfNotSuccess().body(form).request()
-                        QuestLog.d { "Request uploaded to the server!" }
+                        BPLog.d { "Request uploaded to the server!" }
                         
                         val amount = requestsLeft - selectedApps.size
-                        QuestLog.d { "Request: Allowing $amount more requests." }
+                        BPLog.d { "Request: Allowing $amount more requests." }
                         saveRequestsLeft(if (amount < 0) 0 else amount)
                         
                         if (requestsLeft == 0) saveRequestMoment()
                         
                         onRequestProgress?.doWhenReady()
                     } catch (e: Exception) {
-                        QuestLog.e { "Failed to send icons to the backend: ${e.message}" }
+                        BPLog.e { "Failed to send icons to the backend: ${e.message}" }
                         sendRequestViaEmail(zipFile, onRequestProgress)
                     }
                 } else {
@@ -853,7 +853,7 @@ class IconRequest private constructor() {
     
     private fun sendRequestViaEmail(zipFile: File, onRequestProgress: OnRequestProgress?) {
         try {
-            QuestLog.d { "Launching intent!" }
+            BPLog.d { "Launching intent!" }
             val zipUri = builder?.context?.let { zipFile.getUri(it) }
             val emailIntent = Intent(Intent.ACTION_SEND)
                     .putExtra(Intent.EXTRA_EMAIL, arrayOf(builder?.email.orEmpty()))
@@ -867,7 +867,7 @@ class IconRequest private constructor() {
                     .setType("application/zip")
             
             val amount = requestsLeft - selectedApps.size
-            QuestLog.d { "Request: Allowing $amount more requests." }
+            BPLog.d { "Request: Allowing $amount more requests." }
             saveRequestsLeft(if (amount < 0) 0 else amount)
             
             if (requestsLeft == 0)
@@ -897,27 +897,27 @@ class IconRequest private constructor() {
         if (max <= 0 || limit <= 0) return STATE_NORMAL
         
         val sum = if (toSend) 0 else 1
-        QuestLog.d { "Selected apps: ${selectedApps.size} - Requests left: $requestsLeft" }
+        BPLog.d { "Selected apps: ${selectedApps.size} - Requests left: $requestsLeft" }
         
         if (selectedApps.size + sum > requestsLeft) {
             if (millisToFinish > 0) {
-                QuestLog.d { "RequestState: Limited by time" }
-                QuestLog.d {
+                BPLog.d { "RequestState: Limited by time" }
+                BPLog.d {
                     "RequestState: Millis to finish: $millisToFinish - " +
                             "Request limit: ${builder?.timeLimit}"
                 }
                 return STATE_TIME_LIMITED
             } else if (requestsLeft == 0) {
                 saveRequestsLeft(-1)
-                QuestLog.d { "RequestState: Restarting requests left." }
+                BPLog.d { "RequestState: Restarting requests left." }
                 return STATE_NORMAL
             }
-            QuestLog.d { "RequestState: Limited by requests - Requests left: $requestsLeft" }
+            BPLog.d { "RequestState: Limited by requests - Requests left: $requestsLeft" }
             return STATE_LIMITED
         } else {
             if (millisToFinish > 0) {
-                QuestLog.d { "RequestState: Limited by time" }
-                QuestLog.d {
+                BPLog.d { "RequestState: Limited by time" }
+                BPLog.d {
                     "RequestState: Millis to finish: $millisToFinish - " +
                             "Request limit: ${builder?.timeLimit}"
                 }
