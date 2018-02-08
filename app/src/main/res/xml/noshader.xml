@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2017 Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Special thanks to the project contributors and collaborators
+  ~ 	https://github.com/jahirfiquitiva/IconShowcase#special-thanks
+  -->
+
+<!--
+The IconShader in ADW Launcher implements a very basic machine
+for manipulating color values in icons. 
+
+Change this document to shader.xml to enable.
+(Or add your own shader.xml)
+-->
+
+<shader version="1.0">
+    <exec
+            m="W"
+            t="OA"
+            v="IA"/>
+    <exec
+            m="W"
+            t="OR"
+            v="IR"/>
+    <exec
+            m="W"
+            t="OG"
+            v="IG"/>
+    <exec
+            m="W"
+            t="OB"
+            v="IB"/>
+
+    <exec
+            m="S"
+            t="OR"
+            v="II"/>
+    <exec
+            m="S"
+            t="OG"
+            v="II"/>
+    <exec
+            m="S"
+            t="OB"
+            v="II"/>
+
+    <exec
+            m="M"
+            t="OR"
+            v="1.4"/>
+    <exec
+            m="M"
+            t="OG"
+            v="1.4"/>
+    <exec
+            m="M"
+            t="OB"
+            v="1.4"/>
+
+    <exec
+            m="A"
+            t="OR"
+            v="II"/>
+    <exec
+            m="A"
+            t="OG"
+            v="II"/>
+    <exec
+            m="A"
+            t="OB"
+            v="II"/>
+
+    <exec
+            m="S"
+            t="OR"
+            v="IH"/>
+    <exec
+            m="S"
+            t="OG"
+            v="IH"/>
+    <exec
+            m="S"
+            t="OB"
+            v="IH"/>
+
+    <exec
+            m="M"
+            t="OR"
+            v="1.2"/>
+    <exec
+            m="M"
+            t="OG"
+            v="1.2"/>
+    <exec
+            m="M"
+            t="OB"
+            v="1.2"/>
+
+    <exec
+            m="A"
+            t="OR"
+            v="IH"/>
+    <exec
+            m="A"
+            t="OG"
+            v="IH"/>
+    <exec
+            m="A"
+            t="OB"
+            v="IH"/>
+
+</shader>
+
+        <!-- Information
+
+        There are 3 image registers: Icon, Buffer, Output.
+        Each register has 4 channels: Alpha, Red, Green, Blue.
+
+        Each instruction performs a computation. Instructions can only
+        apply one operation to one channel at a time.
+
+        Instructions are of the form:
+
+          <exec t="(TargetRegister)(TargetChannel)" m="(Mode)"
+           v="(InputRegister)(InputChannel or RegisterValue) or (Value)"/>
+
+        where:
+
+          TargetRegister - Register to modify (B, O)
+
+          TargetChannel - Channel to modify (A, R, G, B)
+
+          Mode - Operation to apply:
+            W - Write
+            M - Multiply
+            D - Divide
+            A - Add
+            S - Subtract
+
+          InputRegister - Data is taken from here and applied to
+            TargetRegister via the operation
+
+          InputChannel - Channel of InputRegister to use (I, B, O)
+
+          RegisterValue - Instead of taking a channel from the input
+            register, use a value calculated from that register:
+            I - Intensity (at each pixel)
+            H - Overall brightness of image
+
+          Value - Apply operation with given number (signed decimal)
+
+        The order of parameters in each instruction must be as shown.
+        Parameters much be capitalized. Uninterpretable instructions
+        are dropped.
+
+        The final result is taken from the Output register. The Icon
+        register contains the original image and cannot be written to.
+
+        All registers store data as single precision floats.
+        Data in the Output register is converted to 32bit color format
+        once all instructions have been executed.
+
+        Using RegisterValue (I, H) is more expensive (about 2x) than a
+        standard instruction. They are cached so, as long as no
+        instructions target that register, they can be used again with
+        no overhead. E.g.:
+
+            <exec t="OA" m="W" v="BH"/>  expensive
+            <exec t="OR" m="W" v="BH"/>  standard
+
+            <exec t="OA" m="W" v="BH"/>  expensive
+            <exec t="OR" m="W" v="BI"/>  expensive
+            <exec t="OA" m="W" v="BH"/>  standard
+            <exec t="OR" m="W" v="BI"/>  standard
+
+            <exec t="OA" m="W" v="BH"/>  expensive
+            <exec t="BG" m="W" v="BG"/>
+            <exec t="OR" m="W" v="BH"/>  expensive
+
+
+        Debugging hints:
+
+          - Check that OA, OR, OG, OB have been written to.
+          - Check that values are in the range [0,255].
+          - Start from the end and work backwards.
+
+        -->
+
+        <!-- Examples -->
+
+        <!-- simple component swap
+            <exec t="OA" m="W" v="IA"/>
+            <exec t="OR" m="W" v="IB"/>
+            <exec t="OG" m="W" v="IR"/>
+            <exec t="OB" m="W" v="IG"/>
+             -->
+
+        <!-- invert
+        <exec t="OA" m="W" v="IA"/>
+        <exec t="OR" m="W" v="255"/>
+        <exec t="OG" m="W" v="255"/>
+        <exec t="OB" m="W" v="255"/>
+
+        <exec t="OR" m="S" v="IR"/>
+        <exec t="OG" m="S" v="IG"/>
+        <exec t="OB" m="S" v="IB"/>
+        -->
+
+        <!-- saturation
+        <exec t="OA" m="W" v="IA"/>
+        <exec t="OR" m="W" v="IR"/>
+        <exec t="OG" m="W" v="IG"/>
+        <exec t="OB" m="W" v="IB"/>
+
+        <exec t="OR" m="S" v="II"/>
+        <exec t="OG" m="S" v="II"/>
+        <exec t="OB" m="S" v="II"/>
+
+        <exec t="OR" m="M" v="1.4"/>
+        <exec t="OG" m="M" v="1.4"/>
+        <exec t="OB" m="M" v="1.4"/>
+
+        <exec t="OR" m="A" v="II"/>
+        <exec t="OG" m="A" v="II"/>
+        <exec t="OB" m="A" v="II"/>
+        -->
+
+        <!-- contrast
+        <exec t="OA" m="W" v="IA"/>
+        <exec t="OR" m="W" v="IR"/>
+        <exec t="OG" m="W" v="IG"/>
+        <exec t="OB" m="W" v="IB"/>
+
+        <exec t="OR" m="S" v="IH"/>
+        <exec t="OG" m="S" v="IH"/>
+        <exec t="OB" m="S" v="IH"/>
+
+        <exec t="OR" m="M" v="1.2"/>
+        <exec t="OG" m="M" v="1.2"/>
+        <exec t="OB" m="M" v="1.2"/>
+
+        <exec t="OR" m="A" v="IH"/>
+        <exec t="OG" m="A" v="IH"/>
+        <exec t="OB" m="A" v="IH"/>
+        -->

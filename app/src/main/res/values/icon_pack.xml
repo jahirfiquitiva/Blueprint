@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2018. Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike 
+  ~ 4.0 International License. You may not use this file except in compliance 
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!-- Make sure to put at least 8 icons -->
+    <string-array name="icons_preview">
+        <item>amber_circle</item>
+        <item>amber_rectangle</item>
+        <item>amber_square</item>
+        <item>blue_circle</item>
+        <item>blue_rectangle</item>
+        <item>blue_square</item>
+        <item>purple_circle</item>
+        <item>purple_rectangle</item>
+        <item>purple_square</item>
+        <item>red_circle</item>
+        <item>red_rectangle</item>
+        <item>red_square</item>
+    </string-array>
+
+    <!-- These sections below are for your "Previews" section -->
+    <!-- These names should match YOUR actual icon names
+    	 the names used below are just for sampling purposes -->
+
+    <!-- Make sure the filters names are the same as the other arrays -->
+    <string-array name="icon_filters">
+        <item>all</item>
+        <item>amber</item>
+        <item>blue</item>
+        <item>purple</item>
+        <item>red</item>
+        <item>circles</item>
+        <item>rectangles</item>
+        <item>squares</item>
+    </string-array>
+    
+    <string-array name="all">
+        <item>amber_circle</item>
+        <item>amber_rectangle</item>
+        <item>amber_square</item>
+        <item>blue_circle</item>
+        <item>blue_rectangle</item>
+        <item>blue_square</item>
+        <item>purple_circle</item>
+        <item>purple_rectangle</item>
+        <item>purple_square</item>
+        <item>red_circle</item>
+        <item>red_rectangle</item>
+        <item>red_square</item>
+    </string-array>
+
+    <string-array name="amber">
+        <item>amber_circle</item>
+        <item>amber_rectangle</item>
+        <item>amber_square</item>
+    </string-array>
+
+    <string-array name="blue">
+        <item>blue_circle</item>
+        <item>blue_rectangle</item>
+        <item>blue_square</item>
+    </string-array>
+
+    <string-array name="purple">
+        <item>purple_circle</item>
+        <item>purple_rectangle</item>
+        <item>purple_square</item>
+    </string-array>
+
+    <string-array name="red">
+        <item>red_circle</item>
+        <item>red_rectangle</item>
+        <item>red_square</item>
+    </string-array>
+
+    <string-array name="circles">
+        <item>amber_circle</item>
+        <item>blue_circle</item>
+        <item>purple_circle</item>
+        <item>red_circle</item>
+    </string-array>
+
+    <string-array name="rectangles">
+        <item>amber_rectangle</item>
+        <item>blue_rectangle</item>
+        <item>purple_rectangle</item>
+        <item>red_rectangle</item>
+    </string-array>
+
+    <string-array name="squares">
+        <item>amber_square</item>
+        <item>blue_square</item>
+        <item>purple_square</item>
+        <item>red_square</item>
+    </string-array>
+
+</resources>

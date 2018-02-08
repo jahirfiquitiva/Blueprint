@@ -1,0 +1,63 @@
+language: android
+
+env:
+  global:
+  - ANDROID_API=27
+  - ANDROID_BUILD_TOOLS=27.0.3
+
+android:
+  components:
+  - platform-tools
+  - tools
+  - build-tools-$ANDROID_BUILD_TOOLS
+  - android-$ANDROID_API
+  - extra-android-support
+  - extra-google-m2repository
+  - extra-android-m2repository
+  licenses:
+  - ".+"
+  
+jdk:
+- oraclejdk8
+
+script: if [[ "$TRAVIS_TAG" ]]; then ./gradlew clean :app:assembleRelease --stacktrace; else ./gradlew clean test --stacktrace; fi
+
+branches:
+  except:
+  - images
+  - gh-pages
+  - travis-build
+  - i18n
+  
+notifications:
+  email: false
+  slack:
+    rooms: jahirfiquitiva:StCMaxV85iad38DdSMBY43xW
+    template:
+    - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}: ''%{commit_subject}''>)  by
+      %{author} for %{repository_name}@%{branch}, %{result} in %{duration}. <%{build_url}|Check
+      details>.'
+      
+sudo: false
+
+cache:
+  directories:
+  - "$HOME/.android/build-cache"
+  - "$HOME/.m2"
+  - "$HOME/.gradle"
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+before_script:
+- rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
+- chmod +x gradlew
+
+before_install:
+- yes | sdkmanager "platforms;android-27"
+
+after_success:
+- chmod +x ./publish_apk.sh; ./publish_apk.sh

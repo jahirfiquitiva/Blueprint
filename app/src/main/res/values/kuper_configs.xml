@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018. Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <!--    Set to 'true' if your app requires Kolorette. 'false' otherwise. -->
+    <bool name="kolorette_required">false</bool>
+
+
+    <!--    ZOOPER EXCLUSIVE CONFIGS -->
+
+    <!-- These texts are shown in Zooper -->
+    <string name="zooper_pack_name">@string/app_name</string>
+    <string name="zooper_pack_desc">Cool widgets.</string>
+    <string name="zooper_pack_author">Your name</string>
+
+    <!--    If set to 0, the user will not be allowed to save the templates you provide -->
+    <integer name="zooper_pack_allowsave">1</integer>
+
+    <!-- This is the icon that will be shown in Zooper -->
+    <drawable name="zooper_pack_icon">@mipmap/ic_launcher</drawable>
+
+    <!--    Set to 'true' if your app requires Media Utils. 'false' otherwise. -->
+    <bool name="media_utils_required">false</bool>
+
+
+    <!--    KUSTOM EXCLUSIVE CONFIGS -->
+
+    <!--    Name of the skin to be shown inside the Kustom app -->
+    <string name="kustom_pack_title">@string/app_name</string>
+
+    <!--    A brief description of the pack contents -->
+    <string name="kustom_pack_description">Cool Kustom komponents, wallpapers and widgets.</string>
+</resources>

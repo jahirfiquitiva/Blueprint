@@ -1,0 +1,291 @@
+<!--
+  ~ Copyright (c) 2018. Jahir Fiquitiva
+  ~
+  ~ Licensed under the CreativeCommons Attribution-ShareAlike
+  ~ 4.0 International License. You may not use this file except in compliance
+  ~ with the License. You may obtain a copy of the License at
+  ~
+  ~    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="jahirfiquitiva.apps.blueprint.demo">
+
+    <!-- Permission required for donations -->
+    <uses-permission android:name="com.android.vending.BILLING"/>
+
+    <application
+            android:allowBackup="true"
+            android:fullBackupContent="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/MySplashScreen">
+
+        <!-- TODO: Remove comment marks to enable Zooper
+        <provider
+                android:name=".ZooperProvider"
+                android:authorities="${applicationId}.zwprovider"
+                tools:ignore="ExportedContentProvider"/>
+        -->
+
+
+        <!-- TODO: Remove comment marks to enable Kustom Skins
+        * Remove intent-filter action lines according to your needs.
+		* If you're not going to provide one of the options, remove its respective line.
+
+        <provider
+                android:name="org.kustom.api.Provider"
+                android:authorities="${applicationId}.kustom.provider"
+                android:exported="true"
+                tools:ignore="ExportedContentProvider">
+            <intent-filter>
+                <action android:name="org.kustom.provider.WALLPAPERS"/>
+                <action android:name="org.kustom.provider.WIDGETS"/>
+                <action android:name="org.kustom.provider.KOMPONENTS"/>
+                <action android:name="org.kustom.provider.LOCKSCREENS"/>
+            </intent-filter>
+        </provider>
+        -->
+
+        <!-- OneSignal Notifications Service -->
+        <!-- TODO: Remove comment marks to enable
+        <service
+                android:name=".NotificationService"
+                android:permission="android.permission.BIND_JOB_SERVICE"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.onesignal.NotificationExtender"/>
+            </intent-filter>
+        </service>
+        -->
+
+        <activity
+                android:name=".MainActivity"
+                android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
+
+            <!-- TODO: Remove comment marks to enable Zooper
+            <intent-filter>
+                <action android:name="org.zooper.zw.TEMPLATES"/>
+            </intent-filter>
+            -->
+
+            <!-- TODO: Do NOT remove the intent-filter tags -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter tools:ignore="GoogleAppIndexingDeepLinkError,GoogleAppIndexingUrlError,
+                GoogleAppIndexingWarning">
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.OPENABLE"/>
+
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PICK"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.OPENABLE"/>
+            </intent-filter>
+            <!-- ADW Launcher -->
+            <intent-filter>
+                <action android:name="org.adw.launcher.THEMES"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.adw.launcher.icons.ACTION_PICK_ICON"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Apex Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.anddoes.launcher.THEME"/>
+            </intent-filter>
+            <!-- Atom Launcher -->
+            <intent-filter>
+                <action android:name="com.dlto.atom.launcher.THEME"/>
+            </intent-filter>
+            <!-- GO Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.gau.go.launcherex.theme"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.gau.go.launcherex.theme"/>
+                <action android:name="com.zeroteam.zerolauncher.theme"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.gau.go.launcherex.theme"/>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.THEME_SCENE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- LauncherPro / Holo -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="com.fede.launcher.THEME_ICONPACK"/>
+            </intent-filter>
+            <!-- Next Launcher -->
+            <intent-filter>
+                <action android:name="com.gtp.nextlauncher.theme"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Nine Launcher -->
+            <intent-filter>
+                <action android:name="com.gridappsinc.launcher.theme.apk_action"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Nova Launcher-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.teslacoilsw.launcher.THEME"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.novalauncher.THEME"/>
+                <category android:name="com.novalauncher.category.CUSTOM_ICON_PICKER"/>
+            </intent-filter>
+            <!-- LG Home -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.lge.launcher2.THEME"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Smart Launcher -->
+            <intent-filter>
+                <action android:name="ginlemon.smartlauncher.THEMES"/>
+                <action android:name="ginlemon.smartlauncher.BUBBLESTYLE"/>
+                <action android:name="ginlemon.smartlauncher.BUBBLEICONS"/>
+                <action android:name="ginlemon.smartlauncher.CLOCKS"/>
+                <action android:name="ginlemon.smartlauncher.CLOCKFONTS"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Solo Launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="home.solo.launcher.free.THEMES"/>
+                <action android:name="home.solo.launcher.free.ACTION_ICON"/>
+            </intent-filter>
+            <!-- Sony Launcher -->
+            <intent-filter>
+                <action android:name="com.sonymobile.home.ICON_PACK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- TSF Shell -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.tsf.shell.themes"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Turbo Launcher -->
+            <intent-filter>
+                <action android:name="com.phonemetra.turbo.launcher.THEMES"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.phonemetra.turbo.launcher.icons.ACTION_PICK_ICON"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Xperia Home Launcher -->
+            <intent-filter>
+                <action android:name="com.sonymobile.home.ICON_PACK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Random launchers -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="org.adw.launcher.THEMES"/>
+                <action android:name="mobi.bbase.ahome.THEME"/>
+                <action android:name="com.rogro.GDE.THEME.1"/>
+                <action android:name="com.android.dxtop.launcher.THEME"/>
+
+                <category android:name="com.fede.launcher.THEME_ICONPACK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.adw.launcher.icons.ACTION_PICK_ICON"/>
+                <action android:name="mobi.bbase.ahome.THEME"/>
+                <action android:name="com.rogro.GDE.THEME.1"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="cdproductions.crazyicons.TWO"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!-- Theme Manager -->
+            <intent-filter>
+                <action android:name="com.daeva112.manager.MAIN"/>
+
+                <category android:name="com.daeva112.manager.THEME"/>
+            </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.INFO"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Muzei Service -->
+        <service
+                android:name=".MuzeiService"
+                android:label="@string/app_name"
+                android:description="@string/app_description"
+                android:icon="@drawable/ic_muzei_icon"
+                tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.google.android.apps.muzei.api.MuzeiArtSource"/>
+            </intent-filter>
+
+            <meta-data
+                    android:name="color"
+                    android:value="@color/muzei_color"/>
+            <meta-data
+                    android:name="settingsActivity"
+                    android:value="jahirfiquitiva.libs.frames.ui.activities.MuzeiSettingsActivity"/>
+        </service>
+
+        <!-- Required for files access !!! DO NOT REMOVE !!! -->
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="${applicationId}.fileProvider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_providers"/>
+        </provider>
+
+    </application>
+
+</manifest>
