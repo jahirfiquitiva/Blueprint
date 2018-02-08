@@ -40,8 +40,31 @@
   <string name="columns">Spaltenanzahl</string>
   <string name="lni_content">%1$s ist derzeit nicht auf deinem Gerät installiert.\nMöchtest du es aus dem Google Play Store installieren?     </string>
   <string name="no_compatible_launcher_title">Dieser Launcher ist NICHT kompatibel</string>
+  <string name="no_compatible_launcher_content">Dieser Lauchner ist mit KEINEM Icon Pack kompatibel und du kannst dieses Icon Pack nicht damit verwenden. Bitte bewerte deshalb das Icon Pack nicht negativ. Es gibt eine Lösung dafür, die du selbst probieren kannst, jedoch muss dafür eine externe App genutzt werden. Möchstest du sie herunterladen?</string>
+  <string name="impossible_open_themes">Theme-App konnte nicht geöffnet werden</string>
+  <string name="themes_app_not_installed">Theme-App ist nicht auf diesem Gerät installiert</string>
+  <string name="included_templates">%1$s Vorlagen</string>
+  <string name="apply_title">%1$s anwenden</string>
+  <string name="apply_content">Wir haben festgestellt, dass du %1$s verwendest. Um unser Icon Pack zu nutzen, wende es einfach in deinem Lauchner an.</string>
+  <string name="launcher_icon_restored">%1$s Launcher-Icon wurde wiederhergestellt</string>
+  <string name="launcher_icon_not_restored">%1$s Launcher-Icon ist bereits sichtbar</string>
+  <string name="launcher_icon_restorer_error">Es gibt ein Problem mit dem Code von %1$s. Bitte kontaktiere den Entwickler.</string>
   <!-- Widgets Names -->
+  <string name="clock_widget_title">Analoge Uhr</string>
+  <string name="search_icons">Icons suchen</string>
+  <string name="search_wallpapers">Wallpaper suchen</string>
+  <string name="search_launchers">Launcher suchen</string>
+  <string name="search_apps">Apps suchen</string>
+  <string name="seconds">Sekunden</string>
+  <string name="minutes">Minuten</string>
+  <string name="hours">Stunden</string>
+  <string name="days">Tage</string>
+  <string name="weeks">Wochen</string>
+  <string name="months">Monate</string>
   <!-- Requests -->
+  <string name="select_all">Alles auswählen</string>
+  <string name="no_selected_apps_title">Keine Apps ausgewählt</string>
+  <string name="no_selected_apps_content">Du hast keine App für deine Anfrage ausgewählt. Wähle etwas aus, bevor du den FAB erneut drückst.</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
