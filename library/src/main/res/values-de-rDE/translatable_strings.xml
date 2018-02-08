@@ -65,6 +65,43 @@
   <string name="select_all">Alles auswählen</string>
   <string name="no_selected_apps_title">Keine Apps ausgewählt</string>
   <string name="no_selected_apps_content">Du hast keine App für deine Anfrage ausgewählt. Wähle etwas aus, bevor du den FAB erneut drückst.</string>
+  <string name="apps_limit_dialog">Entschuldigung, aber du darfst nur %1$s Apps für deine Anfrage auswählen.</string>
+  <string name="apps_limit_dialog_more">Entschuldigung, aber du darfst aktuell nur %1$s Apps für deine Anfrage auswählen.</string>
+  <string name="apps_limit_dialog_day">Entschuldigung, aber du darfst nur alle %1$s Icons anfragen.</string>
+  <string name="apps_limit_dialog_day_extra">Du kannst in %1$s wieder Icons anfragen.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Du kannst in weniger als einer Minute wieder Icons anfragen.</string>
+  <string name="requests_error">Es gab einen Fehler beim Laden der Apps für deine Anfrage.\nTippe hier, um es erneut zu versuchen.</string>
+  <string name="loading_apps_to_request">Lade Apps für die Anfrage…</string>
+  <string name="building_request_dialog">Anfrage-Dateien werden erstellt…</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">Wallpaper-Verwendung in der Icon-Vorschau</string>
+  <string name="pref_summary_wall_header">Dein aktuelles Wallpaper wird angezeigt.</string>
+  <string name="pref_header_launcher_icon">Launcher-Icon</string>
+  <string name="pref_title_launcher_icon">Launcher-Icon ausblenden</string>
+  <string name="pref_summary_launcher_icon">Wenn ausgewählt, wird das Launcher-Icon ausgeblendet werden.</string>
+  <string name="clearcache_dialog_content">Bist du sicher, dass du App-Daten, Cache und Einstellungen löschen möchtest? Angewendete Icons werden davon nicht betroffen.</string>
+  <string name="hideicon_dialog_title">Achtung!</string>
+  <string name="hideicon_dialog_content">Bist du sicher, dass du das App-Icon im Launcher ausblenden möchtest?\nDie App könnte unerwartet geschlossen werden und Benachrichtigungen werden komplett deaktiviert.\nMöglicherweise möchtest du die FAQs lesen, um zu erfahren, wie das Icon wiederhergestellt werden kann, bevor du es ausblendest.</string>
+  <string name="send_using">Senden mit…</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>Wie verwende ich das Icon Pack?</item>
+    <item>Wie wende ich das Icon Pack an?</item>
+    <item>Wie kann ich alle enthaltenen Icons sehen?</item>
+    <item>Wie kann ich bestimmte Icons durch Alternativen ersetzen?</item>
+    <item>Wie kann ich Icons ohne Theme anfragen?</item>
+    <item>Nach einem Neustart meines Geräts ist das Icon Pack nicht mehr angewendet. Die Icons wurden auf Standard zurückgesetzt.</item>
+    <item>Warum sind Icons auf meinem Gerät verpixelt?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.
+        </item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
 </resources>
