@@ -26,8 +26,7 @@ ext.versions = [
         kotlin        : '1.2.21',
         libs          : '2.0',
         // Dependencies
-        archHelpers   : '4755fe0',
-        kuper         : '1.1.7',
+        kuper         : '1.1.9',
         materialDrawer: '6.0.6',
         fabsMenu      : '1.1.2',
         counterFab    : '1.0.3',
@@ -42,8 +41,6 @@ ext.gradlePlugins = [
 ]
 
 ext.libraries = [
-        // Arch Helpers
-        archHelpers   : 'me.jahirfiquitiva.KAUExtensions:archhelpers:' + versions.archHelpers + '@aar',
         // Kuper
         kuper         : 'me.jahirfiquitiva:Kuper:' + versions.kuper + '@aar',
         // Material Drawer
