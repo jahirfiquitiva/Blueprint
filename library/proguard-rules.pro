@@ -40,11 +40,18 @@
 -keep class autovalue.shaded.com.google.**
 -keep class com.android.vending.billing.**
 -keep public class com.android.vending.licensing.ILicensingService
+-keep class jahirfiquitiva.libs.frames.**
+-keep class com.pluscubed.recyclerfastscroll.**
+-keep class com.hendraanggrian.reveallayout.**
 
 -dontwarn org.apache.**
 -dontwarn com.google.**
 -dontwarn autovalue.shaded.com.google.**
 -dontwarn com.android.vending.billing.**
+
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
 
 -dontwarn
 -ignorewarnings
