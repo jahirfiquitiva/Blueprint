@@ -1,9 +1,7 @@
-package jahirfiquitiva.libs.quest.prm
+package jahirfiquitiva.libs.blueprint.quest.prm
 
 import com.afollestad.bridge.Response
 import com.afollestad.bridge.ResponseValidator
-
-import org.json.JSONObject
 
 /**
  * @author Aidan Follestad (afollestad)

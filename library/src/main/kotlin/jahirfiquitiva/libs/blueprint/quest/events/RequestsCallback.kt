@@ -1,9 +1,9 @@
-package jahirfiquitiva.libs.quest.events
+package jahirfiquitiva.libs.blueprint.quest.events
 
 import android.content.Context
 
-import jahirfiquitiva.libs.quest.App
-import jahirfiquitiva.libs.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.App
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
 
 import java.util.ArrayList
 

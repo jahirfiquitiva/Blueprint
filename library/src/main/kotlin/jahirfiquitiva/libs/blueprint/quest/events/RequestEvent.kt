@@ -1,4 +1,4 @@
-package jahirfiquitiva.libs.quest.events
+package jahirfiquitiva.libs.blueprint.quest.events
 
 /**
  * Created by Allan Wang on 2016-08-27.

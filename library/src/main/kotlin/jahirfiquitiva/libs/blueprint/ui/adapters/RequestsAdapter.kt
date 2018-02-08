@@ -21,8 +21,8 @@ import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.RequestViewHolder
-import jahirfiquitiva.libs.quest.App
-import jahirfiquitiva.libs.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.App
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
 
 class RequestsAdapter(
         private val manager: RequestManager?,

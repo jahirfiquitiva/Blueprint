@@ -1,8 +1,9 @@
-package jahirfiquitiva.libs.quest.utils
+package jahirfiquitiva.libs.blueprint.quest.utils
 
 import android.content.Context
 import android.content.Intent
-import jahirfiquitiva.libs.quest.App
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPLog
+import jahirfiquitiva.libs.blueprint.quest.App
 import java.util.ArrayList
 import java.util.HashSet
 
@@ -48,7 +49,7 @@ internal fun Context.getInstalledApps(
         }
     }
     
-    QuestLog.d { "Loaded ${apps.size} total app(s), filtered out $filtered app(s)." }
+    BPLog.d { "Loaded ${apps.size} total app(s), filtered out $filtered app(s)." }
     try {
         onProgress(100)
     } catch (e: Exception) {

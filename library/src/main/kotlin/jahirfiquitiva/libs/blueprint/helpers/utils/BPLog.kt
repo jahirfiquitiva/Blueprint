@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.quest.utils
+package jahirfiquitiva.libs.blueprint.helpers.utils
 
 import ca.allanwang.kau.logging.KauLogger
 import jahirfiquitiva.libs.quest.BuildConfig
 
-object QuestLog : KauLogger("Quest", { BuildConfig.DEBUG })
+object BPLog : KauLogger("Quest", { BuildConfig.DEBUG })

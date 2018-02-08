@@ -1,6 +1,6 @@
-package jahirfiquitiva.libs.quest.events
+package jahirfiquitiva.libs.blueprint.quest.events
 
-import jahirfiquitiva.libs.quest.App
+import jahirfiquitiva.libs.blueprint.quest.App
 
 import java.util.ArrayList
 

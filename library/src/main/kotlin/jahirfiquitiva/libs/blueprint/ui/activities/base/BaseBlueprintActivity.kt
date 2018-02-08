@@ -101,7 +101,7 @@ import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
-import jahirfiquitiva.libs.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.quest.events.OnRequestProgress
 
 abstract class BaseBlueprintActivity : BaseFramesActivity() {

@@ -39,6 +39,7 @@ android {
         versionCode versions.versionCode
         versionName versions.versionName
         vectorDrawables.useSupportLibrary = true
+        buildConfigField("String", "LIB_VERSION", "\"${versions.versionName.toString()}\"")
     }
 
     buildTypes {

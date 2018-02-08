@@ -1,4 +1,4 @@
-package jahirfiquitiva.libs.quest.utils
+package jahirfiquitiva.libs.blueprint.quest.utils
 
 import android.graphics.Bitmap
 import java.io.Closeable

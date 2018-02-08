@@ -1,4 +1,4 @@
-package jahirfiquitiva.libs.quest.events
+package jahirfiquitiva.libs.blueprint.quest.events
 
 import java.util.Locale
 
