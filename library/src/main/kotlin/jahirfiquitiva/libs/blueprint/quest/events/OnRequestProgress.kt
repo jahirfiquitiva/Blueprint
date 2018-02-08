@@ -1,4 +1,4 @@
-package jahirfiquitiva.libs.quest.events
+package jahirfiquitiva.libs.blueprint.quest.events
 
 @Suppress("unused", "UNUSED_PARAMETER")
 abstract class OnRequestProgress {

@@ -15,7 +15,7 @@
  */
 @file:Suppress("unused", "MemberVisibilityCanBePrivate", "DEPRECATION", "ProtectedInFinal")
 
-package jahirfiquitiva.libs.quest
+package jahirfiquitiva.libs.blueprint.quest
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -41,24 +41,26 @@ import ca.allanwang.kau.utils.toBitmap
 import com.afollestad.bridge.Bridge
 import com.afollestad.bridge.Bridge.post
 import com.afollestad.bridge.MultipartForm
+import jahirfiquitiva.libs.blueprint.BuildConfig
+import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.kauextensions.extensions.getUri
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.readBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.readEnum
 import jahirfiquitiva.libs.kauextensions.extensions.writeBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.writeEnum
-import jahirfiquitiva.libs.quest.events.EventState
-import jahirfiquitiva.libs.quest.events.OnRequestProgress
-import jahirfiquitiva.libs.quest.events.RequestsCallback
-import jahirfiquitiva.libs.quest.prm.RemoteValidator
-import jahirfiquitiva.libs.quest.utils.QuestLog
-import jahirfiquitiva.libs.quest.utils.TimeUtils
-import jahirfiquitiva.libs.quest.utils.getInstalledApps
-import jahirfiquitiva.libs.quest.utils.safeDrawableName
-import jahirfiquitiva.libs.quest.utils.saveAll
-import jahirfiquitiva.libs.quest.utils.saveIcon
-import jahirfiquitiva.libs.quest.utils.wipe
-import jahirfiquitiva.libs.quest.utils.zip
+import jahirfiquitiva.libs.blueprint.quest.events.EventState
+import jahirfiquitiva.libs.blueprint.quest.events.OnRequestProgress
+import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
+import jahirfiquitiva.libs.blueprint.quest.prm.RemoteValidator
+import jahirfiquitiva.libs.blueprint.quest.utils.QuestLog
+import jahirfiquitiva.libs.blueprint.quest.utils.TimeUtils
+import jahirfiquitiva.libs.blueprint.quest.utils.getInstalledApps
+import jahirfiquitiva.libs.blueprint.quest.utils.safeDrawableName
+import jahirfiquitiva.libs.blueprint.quest.utils.saveAll
+import jahirfiquitiva.libs.blueprint.quest.utils.saveIcon
+import jahirfiquitiva.libs.blueprint.quest.utils.wipe
+import jahirfiquitiva.libs.blueprint.quest.utils.zip
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import java.io.File

@@ -27,9 +27,9 @@ import jahirfiquitiva.libs.archhelpers.tasks.EasyAsync
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
-import jahirfiquitiva.libs.quest.App
-import jahirfiquitiva.libs.quest.IconRequest
-import jahirfiquitiva.libs.quest.events.RequestsCallback
+import jahirfiquitiva.libs.blueprint.quest.App
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
 import java.io.File
 import java.lang.ref.WeakReference
 
@@ -132,7 +132,8 @@ class RequestsViewModel : ViewModel() {
             onProgress: (progress: Int) -> Unit = {}
                             ) {
         if (IconRequest.get() != null && !forceLoad) {
-            postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
+            postResult(ArrayList(
+                    IconRequest.get()?.apps.orEmpty()))
             return
         }
         initAndLoadRequestApps(param, host, apiKey, callback, onProgress)

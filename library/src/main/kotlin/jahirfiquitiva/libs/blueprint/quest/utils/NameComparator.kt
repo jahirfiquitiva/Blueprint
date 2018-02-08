@@ -13,9 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.quest.utils
+package jahirfiquitiva.libs.blueprint.quest.utils
 
-import ca.allanwang.kau.logging.KauLogger
-import jahirfiquitiva.libs.quest.BuildConfig
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 
-object QuestLog : KauLogger("Quest", { BuildConfig.DEBUG })
+internal class NameComparator(private val mPM: PackageManager) : Comparator<ResolveInfo> {
+    override fun compare(ra: ResolveInfo, rb: ResolveInfo): Int {
+        var sa: CharSequence = ra.loadLabel(mPM) ?: ""
+        if (!sa.hasContent()) {
+            sa = ra.activityInfo.packageName
+        }
+        var sb: CharSequence = rb.loadLabel(mPM) ?: ""
+        if (!sa.hasContent()) {
+            sb = rb.activityInfo.packageName
+        }
+        return sa.toString().compareTo(sb.toString())
+    }
+}

@@ -39,6 +39,7 @@ android {
         versionCode versions.versionCode
         versionName versions.versionName
         vectorDrawables.useSupportLibrary = true
+        buildConfigField("String", "LIB_VERSION", "\"${versions.versionName.toString()}\"")
     }
 
     buildTypes {
@@ -70,18 +71,28 @@ dependencies {
     // Kuper
     api(libraries.kuper) {
         transitive = true
+        exclude group: 'android.arch.persistence.room'
+        exclude group: 'android.arch.room'
     }
     // Navigation
     api(libraries.materialDrawer) {
         transitive = true
+        exclude group: 'com.android.support'
     }
-    // Icon Requests Tool
-    def withoutAnnotations = { exclude group: 'com.intellij', module: 'annotations' }
-    api project(path: ':quest'), withoutAnnotations
     // FABs Menu
-    api libraries.fabsMenu
+    api(libraries.fabsMenu) {
+        exclude group: 'com.android.support'
+    }
     // CounterFab
-    api libraries.counterFab
+    api(libraries.counterFab) {
+        exclude group: 'com.android.support'
+    }
+    // Bridge
+    api(libraries.bridge) {
+        exclude group: 'com.intellij', module: 'annotations'
+        exclude group: 'org.json', module: 'json'
+        exclude group: 'com.android.support'
+    }
 }
 
 tasks.whenTaskAdded { task ->

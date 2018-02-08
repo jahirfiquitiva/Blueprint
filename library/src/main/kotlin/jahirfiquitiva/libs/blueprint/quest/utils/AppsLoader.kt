@@ -1,8 +1,8 @@
-package jahirfiquitiva.libs.quest.utils
+package jahirfiquitiva.libs.blueprint.quest.utils
 
 import android.content.Context
 import android.content.Intent
-import jahirfiquitiva.libs.quest.App
+import jahirfiquitiva.libs.blueprint.quest.App
 import java.util.ArrayList
 import java.util.HashSet
 

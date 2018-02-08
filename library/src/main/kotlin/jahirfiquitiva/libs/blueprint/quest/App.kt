@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.quest
+package jahirfiquitiva.libs.blueprint.quest
 
 import android.annotation.SuppressLint
 import android.content.ComponentName
@@ -28,7 +28,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.support.v4.content.res.ResourcesCompat
 import android.util.DisplayMetrics
-import jahirfiquitiva.libs.quest.utils.formatCorrectly
+import jahirfiquitiva.libs.blueprint.quest.utils.formatCorrectly
 
 /**
  * Created by Allan Wang on 2016-08-20.

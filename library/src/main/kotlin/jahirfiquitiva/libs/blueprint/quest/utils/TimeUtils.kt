@@ -1,4 +1,4 @@
-package jahirfiquitiva.libs.quest.utils
+package jahirfiquitiva.libs.blueprint.quest.utils
 
 import java.util.Calendar
 

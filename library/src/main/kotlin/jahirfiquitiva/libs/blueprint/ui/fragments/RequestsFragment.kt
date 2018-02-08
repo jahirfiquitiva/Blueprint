@@ -44,8 +44,8 @@ import jahirfiquitiva.libs.kauextensions.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kauextensions.extensions.isLowRamDevice
 import jahirfiquitiva.libs.kauextensions.extensions.runOnUiThread
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
-import jahirfiquitiva.libs.quest.App
-import jahirfiquitiva.libs.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.App
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
 
 @Suppress("DEPRECATION")
 @SuppressLint("MissingSuperCall")

@@ -19,18 +19,18 @@ ext.versions = [
         targetSdk     : 27,
         buildTools    : '27.0.3',
         // Versions:
-        versionCode   : 100,
-        versionName   : '1.0.0',
+        versionCode   : 102,
+        versionName   : '1.0.2',
         // Gradle Plugins
         gradle        : '3.0.1',
         kotlin        : '1.2.21',
         libs          : '2.0',
         // Dependencies
-        archHelpers   : '4755fe0',
         kuper         : '1.1.7',
         materialDrawer: '6.0.6',
         fabsMenu      : '1.1.2',
         counterFab    : '1.0.3',
+        bridge        : '5.1.2',
         oneSignal     : '3.7.1'
 ]
 
@@ -41,8 +41,6 @@ ext.gradlePlugins = [
 ]
 
 ext.libraries = [
-        // Arch Helpers
-        archHelpers   : 'me.jahirfiquitiva.KAUExtensions:archhelpers:' + versions.archHelpers + '@aar',
         // Kuper
         kuper         : 'me.jahirfiquitiva:Kuper:' + versions.kuper + '@aar',
         // Material Drawer
@@ -51,6 +49,8 @@ ext.libraries = [
         fabsMenu      : 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu,
         // CounterFab
         counterFab    : 'com.github.andremion:counterfab:' + versions.counterFab,
+        // Bridge
+        bridge        : 'com.afollestad:bridge:' + versions.bridge,
         // OneSignal
         oneSignal     : 'com.onesignal:OneSignal:' + versions.oneSignal
 ]

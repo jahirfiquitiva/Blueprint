@@ -1,6 +1,6 @@
-package jahirfiquitiva.libs.quest.events
+package jahirfiquitiva.libs.blueprint.quest.events
 
-import jahirfiquitiva.libs.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
 
 /**
  * Created by Allan Wang on 2016-08-27.

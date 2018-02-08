@@ -30,8 +30,8 @@ import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.context
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
-import jahirfiquitiva.libs.quest.App
-import jahirfiquitiva.libs.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.App
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val icon: ImageView? by bind(R.id.icon)
