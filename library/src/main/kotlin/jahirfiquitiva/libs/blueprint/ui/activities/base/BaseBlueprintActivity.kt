@@ -19,6 +19,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -27,12 +28,9 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import ca.allanwang.kau.utils.dpToPx
-import ca.allanwang.kau.utils.goneIf
-import ca.allanwang.kau.utils.hideIf
-import ca.allanwang.kau.utils.isHidden
+import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.setMarginBottom
 import ca.allanwang.kau.utils.setMarginRight
-import ca.allanwang.kau.utils.shareText
 import ca.allanwang.kau.utils.showIf
 import ca.allanwang.kau.utils.snackbar
 import ca.allanwang.kau.utils.statusBarLight
@@ -45,6 +43,8 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
+import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
+import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
@@ -65,35 +65,26 @@ import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
 import jahirfiquitiva.libs.blueprint.ui.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
-import jahirfiquitiva.libs.fabsmenu.FABsMenu
-import jahirfiquitiva.libs.fabsmenu.FABsMenuLayout
-import jahirfiquitiva.libs.fabsmenu.TitleFAB
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_APPLIER
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER
 import jahirfiquitiva.libs.frames.helpers.utils.IMAGE_PICKER
-import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.frames.ui.activities.base.BaseFramesActivity
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseWallpapersFragment
 import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
-import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.changeOptionVisibility
 import jahirfiquitiva.libs.kauextensions.extensions.enableTranslucentStatusBar
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
-import jahirfiquitiva.libs.kauextensions.extensions.openLink
-import jahirfiquitiva.libs.kauextensions.extensions.overlayColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
-import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
-import jahirfiquitiva.libs.kauextensions.extensions.rippleColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import jahirfiquitiva.libs.kauextensions.extensions.tint
@@ -120,7 +111,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     private val activeFilters: ArrayList<String> = ArrayList()
     
     internal val toolbar: CustomToolbar? by bind(R.id.toolbar)
-    internal val fabsMenu: FABsMenu? by bind(R.id.fabs_menu)
     private val fab: CounterFab? by bind(R.id.fab)
     
     private var searchItem: MenuItem? = null
@@ -165,7 +155,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     
     private fun initMainComponents(savedInstance: Bundle?) {
         initFragments()
-        initFABsMenu()
         initFAB()
         initFiltersDrawer(iconsFilters, savedInstance)
         updateUI(getNavigationItemWithId(currentItemId))
@@ -193,58 +182,31 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     }
     
     private fun initFAB() {
-        fab?.setImageDrawable(
-                "ic_send".getDrawable(this)?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
         fab?.setMarginRight(16F.dpToPx.toInt())
         fab?.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
-        fab?.setOnClickListener { startRequestsProcess() }
+        fab?.setOnClickListener {
+            if (currentItemId == DEFAULT_HOME_POSITION) {
+                executeLauncherIntent(defaultLauncher?.name.orEmpty())
+            } else if (currentItemId == DEFAULT_REQUEST_POSITION) {
+                startRequestsProcess()
+            }
+        }
+        updateFAB()
     }
     
-    private fun initFABsMenu() {
-        val fabsMenuOverlay: FABsMenuLayout? by bind(R.id.fabs_menu_overlay)
-        fabsMenuOverlay?.overlayColor = overlayColor
-        
-        if (hasBottomNavigation()) {
-            fabsMenu?.menuBottomMargin = 72F.dpToPx.toInt()
+    private fun updateFAB() {
+        fab?.hide()
+        val launcherName = defaultLauncher?.name.orEmpty()
+        if (currentItemId == DEFAULT_HOME_POSITION) fab?.count = 0
+        val icon: Drawable? = when (currentItemId) {
+            DEFAULT_HOME_POSITION -> drawable(R.drawable.ic_apply)
+            DEFAULT_REQUEST_POSITION -> drawable(R.drawable.ic_send)
+            else -> null
         }
-        fabsMenu?.menuButtonIcon =
-                "ic_plus".getDrawable(this)?.tint(getActiveIconsColorFor(accentColor, 0.6F))
-        fabsMenu?.menuButtonRippleColor = rippleColor
-        
-        val rateFab: TitleFAB? by bind(R.id.rate_fab)
-        rateFab?.setImageDrawable("ic_rate".getDrawable(this)?.tint(activeIconsColor))
-        rateFab?.titleTextColor = primaryTextColor
-        rateFab?.rippleColor = rippleColor
-        rateFab?.setOnClickListener { openLink(PLAY_STORE_LINK_PREFIX + packageName) }
-        
-        val shareFab: TitleFAB? by bind(R.id.share_fab)
-        shareFab?.setImageDrawable("ic_share".getDrawable(this)?.tint(activeIconsColor))
-        shareFab?.titleTextColor = primaryTextColor
-        shareFab?.rippleColor = rippleColor
-        shareFab?.setOnClickListener {
-            shareText(
-                    getString(
-                            R.string.share_this_app, getAppName(),
-                            PLAY_STORE_LINK_PREFIX + packageName))
-        }
-        
-        val donateFab: TitleFAB? by bind(R.id.donate_fab)
-        if (donationsEnabled) {
-            donateFab?.setImageDrawable("ic_donate".getDrawable(this)?.tint(activeIconsColor))
-            donateFab?.titleTextColor = primaryTextColor
-            donateFab?.rippleColor = rippleColor
-            donateFab?.setOnClickListener {
-                doDonation()
-            }
-        } else {
-            fabsMenu?.removeButton(donateFab)
-        }
-        
-        val helpFab: TitleFAB? by bind(R.id.help_fab)
-        helpFab?.setImageDrawable("ic_help".getDrawable(this)?.tint(activeIconsColor))
-        helpFab?.titleTextColor = primaryTextColor
-        helpFab?.rippleColor = rippleColor
-        helpFab?.setOnClickListener { launchHelpActivity() }
+        fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
+        fab?.showIf(
+                (currentItemId == DEFAULT_HOME_POSITION && launcherName.hasContent())
+                        || currentItemId == DEFAULT_REQUEST_POSITION)
     }
     
     fun initFiltersDrawer(filters: ArrayList<String>, savedInstance: Bundle? = null) {
@@ -427,13 +389,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     }
     
     private fun updateUI(item: NavigationItem) {
-        fabsMenu?.collapse()
-        if (fabsMenu?.menuButton?.isShown == true)
-            fabsMenu?.menuButton?.hideIf(item.id != DEFAULT_HOME_POSITION)
-        fabsMenu?.goneIf(item.id != DEFAULT_HOME_POSITION)
-        if (fabsMenu?.menuButton?.isHidden == true)
-            fabsMenu?.menuButton?.showIf(item.id == DEFAULT_HOME_POSITION)
-        fab?.showIf(item.id == DEFAULT_REQUEST_POSITION)
+        updateFAB()
         
         toolbar?.title = getString(
                 if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
@@ -455,6 +411,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
                 item.id == DEFAULT_WALLPAPERS_POSITION || item.id == DEFAULT_REQUEST_POSITION)
         menu.changeOptionVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_POSITION)
         menu.changeOptionVisibility(R.id.templates, hasTemplates)
+        menu.changeOptionVisibility(R.id.about, hasBottomNavigation())
+        menu.changeOptionVisibility(R.id.settings, hasBottomNavigation())
+        menu.changeOptionVisibility(R.id.help, hasBottomNavigation())
     }
     
     private fun lockFiltersDrawer(lock: Boolean) {
@@ -544,10 +503,18 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
                             }
                         }
                         
-                        override fun doWhenReady() {
+                        override fun doWhenReady(forArctic: Boolean) {
                             runOnUiThread {
                                 destroyDialog()
                                 unselectAll()
+                                if (forArctic) {
+                                    dialog = buildMaterialDialog {
+                                        title(R.string.request_upload_success)
+                                        content(R.string.request_upload_success_content)
+                                        positiveText(android.R.string.ok)
+                                    }
+                                    dialog?.show()
+                                }
                             }
                         }
                     })

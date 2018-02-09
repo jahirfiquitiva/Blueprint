@@ -44,8 +44,6 @@
   <string name="impossible_open_themes">Imposible abrir aplicación de temas</string>
   <string name="themes_app_not_installed">Aplicación de temas no está instalada en este dispositivo</string>
   <string name="included_templates">%1$s plantillas</string>
-  <string name="apply_title">Aplicar %1$s</string>
-  <string name="apply_content">Hemos detectado que está utilizando %1$s. Para comenzar a utilizar nuestro pack de iconos, solo aplicalo a tu launcher.</string>
   <string name="launcher_icon_restored">El ícono de %1$s fue restaurado</string>
   <string name="launcher_icon_not_restored">El ícono de %1$s ya es visible</string>
   <string name="launcher_icon_restorer_error">Hay un problema con el código de %1$s. Por favor contacta a su desarrollador.</string>

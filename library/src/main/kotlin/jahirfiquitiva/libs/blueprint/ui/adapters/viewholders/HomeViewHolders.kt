@@ -17,7 +17,6 @@ package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -94,7 +93,7 @@ class PreviewCardHolder(
                 icons.add(Icon(it, it.getIconResource(context)))
             }
             if (icons.isNotEmpty()) {
-                icons.distinct().sorted()
+                icons.distinctBy { it.name }
                 Collections.shuffle(icons)
                 correctList.clear()
                 for (i in 0 until integer(R.integer.icons_columns)) {
@@ -110,13 +109,6 @@ class PreviewCardHolder(
         } catch (ignored: Exception) {
         }
     }
-}
-
-class ApplyCardHolder(itemView: View) : SectionedViewHolder(itemView) {
-    val applyTitle: TextView? by bind(R.id.apply_title)
-    val applyContent: TextView? by bind(R.id.apply_content)
-    val dismissButton: AppCompatButton? by bind(R.id.apply_dismiss)
-    val applyButton: AppCompatButton? by bind(R.id.apply_ok)
 }
 
 class CounterItemHolder(itemView: View) : SectionedViewHolder(itemView) {

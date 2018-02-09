@@ -27,10 +27,6 @@ class BPKonfigs(nm: String, cntxt: Context) : KuperKonfigs(nm, cntxt) {
         get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, false)
         set(shown) = prefsEditor.putBoolean(LAUNCHER_ICON_SHOWN, shown).apply()
     
-    var isApplyCardDismissed: Boolean
-        get() = prefs.getBoolean(APPLY_CARD_DISMISSED, false)
-        set(dismissed) = prefsEditor.putBoolean(APPLY_CARD_DISMISSED, dismissed).apply()
-    
     var wallpaperInIconsPreview: Boolean
         get() = prefs.getBoolean(WALLPAPER_IN_ICONS_PREVIEW, true)
         set(enabled) = prefsEditor.putBoolean(WALLPAPER_IN_ICONS_PREVIEW, enabled).apply()

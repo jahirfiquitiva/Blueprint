@@ -798,27 +798,6 @@ class IconRequest private constructor() {
                     return@Thread
                 }
                 
-                // Zip everything into an archive
-                BPLog.d { "Creating ZIP..." }
-                val zipFile = File(builder?.saveDir, "IconRequest-$date.zip")
-                try {
-                    zipFile.zip(filesToZip)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    postError("Failed to create the request ZIP file: " + e.message, e)
-                    onRequestProgress?.doOnError()
-                    return@Thread
-                }
-                
-                // Cleanup files
-                BPLog.d { "Cleaning up files..." }
-                val files = builder?.saveDir?.listFiles()
-                files?.forEach {
-                    if (!it.isDirectory && (it.name.endsWith(".png") || it.name.endsWith(".xml"))) {
-                        it.delete()
-                    }
-                }
-                
                 val host = builder?.apiHost.orEmpty()
                 val apiKey = builder?.apiKey.orEmpty()
                 
@@ -830,19 +809,27 @@ class IconRequest private constructor() {
                             .defaultHeader("User-Agent", "afollestad/icon-request")
                             .validators(RemoteValidator())
                     try {
-                        val form = MultipartForm()
-                        form.add("archive", zipFile)
-                        form.add("apps", JSONObject(jsonSb?.toString().orEmpty()).toString())
-                        post("/v1/request").throwIfNotSuccess().body(form).request()
-                        BPLog.d { "Request uploaded to the server!" }
-                        
-                        val amount = requestsLeft - selectedApps.size
-                        BPLog.d { "Request: Allowing $amount more requests." }
-                        saveRequestsLeft(if (amount < 0) 0 else amount)
-                        
-                        if (requestsLeft == 0) saveRequestMoment()
-                        
-                        onRequestProgress?.doWhenReady()
+                        val zipFile = buildZip(
+                                date,
+                                ArrayList(filesToZip.filter { it.name.endsWith("png", true) }))
+                        if (zipFile != null) {
+                            val form = MultipartForm()
+                            form.add("archive", zipFile)
+                            form.add("apps", JSONObject(jsonSb?.toString().orEmpty()).toString())
+                            post("/v1/request").throwIfNotSuccess().body(form).request()
+                            BPLog.d { "Request uploaded to the server!" }
+                            
+                            val amount = requestsLeft - selectedApps.size
+                            BPLog.d { "Request: Allowing $amount more requests." }
+                            saveRequestsLeft(if (amount < 0) 0 else amount)
+                            
+                            if (requestsLeft == 0) saveRequestMoment()
+                            
+                            cleanFiles(true)
+                            onRequestProgress?.doWhenReady(true)
+                        } else {
+                            onRequestProgress?.doOnError()
+                        }
                     } catch (e: Exception) {
                         Log.e(
                                 builder?.context?.getAppName() ?: "Blueprint",
@@ -853,10 +840,20 @@ class IconRequest private constructor() {
                             Log.e(builder?.context?.getAppName() ?: "Blueprint", errors.toString())
                         } catch (ignored: Exception) {
                         }
-                        sendRequestViaEmail(zipFile, onRequestProgress)
+                        val zipFile = buildZip(date, filesToZip)
+                        if (zipFile != null) {
+                            sendRequestViaEmail(zipFile, onRequestProgress)
+                        } else {
+                            onRequestProgress?.doOnError()
+                        }
                     }
                 } else {
-                    sendRequestViaEmail(zipFile, onRequestProgress)
+                    val zipFile = buildZip(date, filesToZip)
+                    if (zipFile != null) {
+                        sendRequestViaEmail(zipFile, onRequestProgress)
+                    } else {
+                        onRequestProgress?.doOnError()
+                    }
                 }
             }.start()
         } else {
@@ -866,8 +863,23 @@ class IconRequest private constructor() {
         }
     }
     
+    private fun buildZip(date: String, filesToZip: ArrayList<File>): File? {
+        // Zip everything into an archive
+        BPLog.d { "Creating ZIP..." }
+        val zipFile = File(builder?.saveDir, "IconRequest-$date.zip")
+        return try {
+            zipFile.zip(filesToZip)
+            zipFile
+        } catch (e: Exception) {
+            BPLog.e { e.message }
+            postError("Failed to create the request ZIP file: " + e.message, e)
+            null
+        }
+    }
+    
     private fun sendRequestViaEmail(zipFile: File, onRequestProgress: OnRequestProgress?) {
         try {
+            cleanFiles()
             BPLog.d { "Launching intent!" }
             val zipUri = builder?.context?.let { zipFile.getUri(it) }
             val emailIntent = Intent(Intent.ACTION_SEND)
@@ -888,7 +900,7 @@ class IconRequest private constructor() {
             if (requestsLeft == 0)
                 saveRequestMoment()
             
-            onRequestProgress?.doWhenReady()
+            onRequestProgress?.doWhenReady(false)
             
             (builder?.context as? Activity)?.startActivityForResult(
                     Intent.createChooser(
@@ -901,6 +913,21 @@ class IconRequest private constructor() {
         } catch (e: Exception) {
             e.printStackTrace()
             onRequestProgress?.doOnError()
+        }
+    }
+    
+    private fun cleanFiles(everything: Boolean = false) {
+        BPLog.d { "Cleaning up files..." }
+        try {
+            val files = builder?.saveDir?.listFiles()
+            files?.forEach {
+                if (!it.isDirectory &&
+                        (everything || (it.name.endsWith(".png") || it.name.endsWith(".xml")))) {
+                    it.delete()
+                }
+            }
+        } catch (e: Exception) {
+            BPLog.e { e.message }
         }
     }
     

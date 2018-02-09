@@ -18,8 +18,6 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 import android.app.Activity
 import android.graphics.Color
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.inflate
@@ -30,23 +28,14 @@ import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
-import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
-import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
-import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.AppLinkItemHolder
-import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.ApplyCardHolder
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.CounterItemHolder
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.SectionedHeaderViewHolder
-import jahirfiquitiva.libs.kauextensions.extensions.SimpleAnimationListener
-import jahirfiquitiva.libs.kauextensions.extensions.accentColor
-import jahirfiquitiva.libs.kauextensions.extensions.chipsColor
-import jahirfiquitiva.libs.kauextensions.extensions.chipsIconsColor
-import jahirfiquitiva.libs.kauextensions.extensions.getAppName
+import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
-import jahirfiquitiva.libs.kauextensions.extensions.primaryTextColor
-import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
+import jahirfiquitiva.libs.kuper.helpers.extensions.tilesColor
 import java.lang.ref.WeakReference
 
 class HomeAdapter(
@@ -57,12 +46,6 @@ class HomeAdapter(
                  ) : SectionedRecyclerViewAdapter<SectionedViewHolder>() {
     
     private val list: ArrayList<HomeItem> = ArrayList()
-    
-    private var shouldShowApplyCard: Boolean = false
-        get() {
-            val initCard = activity?.defaultLauncher?.isActuallySupported == true
-            return if (initCard) activity?.bpKonfigs?.isApplyCardDismissed == false else false
-        }
     
     private val activity: Activity?
         get() = actv.get()
@@ -84,15 +67,15 @@ class HomeAdapter(
     
     fun updateIconsCount(newCount: Int) {
         iconsCount = newCount
-        notifySectionChanged(1)
+        notifySectionChanged(0)
     }
     
     fun updateWallsCount(newCount: Int) {
         wallsCount = newCount
-        notifySectionChanged(1)
+        notifySectionChanged(0)
     }
     
-    override fun getSectionCount(): Int = 4
+    override fun getSectionCount(): Int = 3
     
     override fun getItemViewType(section: Int, relativePosition: Int, absolutePosition: Int): Int =
             section
@@ -104,9 +87,9 @@ class HomeAdapter(
                                        ) {
         (holder as? SectionedHeaderViewHolder)?.let {
             when (section) {
-                1 -> it.setTitle(R.string.general_info)
-                2 -> it.setTitle(R.string.more_apps)
-                3 -> it.setTitle(R.string.useful_links)
+                0 -> it.setTitle(R.string.general_info)
+                1 -> it.setTitle(R.string.more_apps)
+                2 -> it.setTitle(R.string.useful_links)
                 else -> it.setTitle("")
             }
         }
@@ -115,11 +98,8 @@ class HomeAdapter(
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SectionedViewHolder? =
             parent?.let {
                 when (viewType) {
-                    0 ->
-                        ApplyCardHolder(it.inflate(R.layout.item_home_apply_card))
-                    1 ->
-                        CounterItemHolder(it.inflate(R.layout.item_home_counters))
-                    2, 3 ->
+                    0 -> CounterItemHolder(it.inflate(R.layout.item_home_counters))
+                    1, 2 ->
                         AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
                     else -> SectionedHeaderViewHolder(it.inflate(R.layout.item_section_header))
                 }
@@ -127,10 +107,9 @@ class HomeAdapter(
     
     override fun getItemCount(section: Int): Int {
         return when (section) {
-            0 -> if (shouldShowApplyCard) 1 else 0
-            1 -> 1
-            2 -> list.filter { it.isAnApp }.size
-            3 -> list.filter { !it.isAnApp }.size
+            0 -> 1
+            1 -> list.filter { it.isAnApp }.size
+            2 -> list.filter { !it.isAnApp }.size
             else -> 0
         }
     }
@@ -141,57 +120,18 @@ class HomeAdapter(
             relativePosition: Int,
             absolutePosition: Int
                                  ) {
-        (holder as? ApplyCardHolder)?.let { bindApplyCard(it) }
         (holder as? CounterItemHolder)?.let { bindCounters(it) }
         (holder as? AppLinkItemHolder)?.let { bindAppsAndLinks(it, section, relativePosition) }
     }
     
     override fun onBindFooterViewHolder(holder: SectionedViewHolder?, section: Int) {}
     
-    private fun bindApplyCard(holder: ApplyCardHolder) {
-        activity?.accentColor?.let {
-            val titleColor = activity?.getPrimaryTextColorFor(it)
-            val contentColor = activity?.getSecondaryTextColorFor(it)
-            titleColor?.let {
-                holder.applyTitle?.setTextColor(it)
-                holder.dismissButton?.setTextColor(it)
-                holder.applyButton?.setTextColor(it)
-            }
-            if (contentColor != null)
-                holder.applyContent?.setTextColor(contentColor)
-        }
-        
-        holder.applyTitle?.text = activity?.getString(
-                R.string.apply_title, activity?.getAppName())
-        holder.applyContent?.text = activity?.getString(
-                R.string.apply_content, activity?.defaultLauncher?.name)
-        
-        holder.dismissButton?.setOnClickListener {
-            val anim = AnimationUtils.loadAnimation(
-                    activity, android.R.anim.slide_out_right)
-            anim.setAnimationListener(
-                    object : SimpleAnimationListener() {
-                        override fun onAnimationEnd(animation: Animation?) {
-                            super.onAnimationEnd(animation)
-                            activity?.bpKonfigs?.isApplyCardDismissed = true
-                            shouldShowApplyCard = false
-                            notifyItemRemoved(0)
-                            notifyDataSetChanged()
-                        }
-                    })
-            holder.itemView.startAnimation(anim)
-        }
-        
-        holder.applyButton?.setOnClickListener {
-            activity?.executeLauncherIntent(activity?.defaultLauncher?.name ?: "")
-        }
-    }
-    
     private fun bindCounters(holder: CounterItemHolder) {
-        val labelColor = activity?.primaryTextColor ?: Color.parseColor("#de000000")
-        val counterColor = activity?.secondaryTextColor ?: Color.parseColor("#8a000000")
-        val iconColor = activity?.chipsIconsColor ?: Color.parseColor("#8a000000")
-        val bgColor = activity?.chipsColor ?: Color.parseColor("#e0e0e0")
+        val bgColor = activity?.tilesColor ?: Color.parseColor("#e0e0e0")
+        val labelColor = activity?.getPrimaryTextColorFor(bgColor) ?: Color.parseColor("#de000000")
+        val counterColor =
+                activity?.getSecondaryTextColorFor(bgColor) ?: Color.parseColor("#8a000000")
+        val iconColor = activity?.getActiveIconsColorFor(bgColor) ?: Color.parseColor("#8a000000")
         
         if (iconsCount > MINIMAL_AMOUNT) {
             holder.iconsCounter?.setBackgroundColor(bgColor)
@@ -270,6 +210,6 @@ class HomeAdapter(
     
     private fun bindAppsAndLinks(holder: AppLinkItemHolder, section: Int, position: Int) {
         holder.setItem(
-                list.filter { if (section == 2) it.isAnApp else !it.isAnApp }[position], listener)
+                list.filter { if (section == 1) it.isAnApp else !it.isAnApp }[position], listener)
     }
 }

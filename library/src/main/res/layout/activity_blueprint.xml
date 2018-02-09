@@ -62,10 +62,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="bottom|end"
-            android:visibility="gone"
+            android:visibility="visible"
             app:fabSize="normal"
             app:backgroundTint="?attr/colorAccent"/>
-
-    <include layout="@layout/extra_fabs_menu"/>
 
 </jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout>

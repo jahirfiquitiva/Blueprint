@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
+import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
@@ -91,13 +92,13 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
             recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
         }
         iconsModel?.observe(this) { categories ->
-            var count = 0
+            val allIcons = ArrayList<Icon>()
             val filters = ArrayList<String>()
             categories.forEach {
-                count += it.icons.size
+                allIcons.addAll(it.getIcons())
                 filters += it.title
             }
-            homeAdapter?.updateIconsCount(count)
+            homeAdapter?.updateIconsCount(ArrayList(allIcons.distinctBy { it.name }).size)
             (activity as? BaseBlueprintActivity)?.initFiltersDrawer(filters)
         }
         wallsModel?.observe(this) { homeAdapter?.updateWallsCount(it.size) }
@@ -127,9 +128,6 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         
         recyclerView = content.findViewById(R.id.list_rv)
         recyclerView?.isNestedScrollingEnabled = false
-        recyclerView?.let {
-            (activity as? BaseBlueprintActivity)?.fabsMenu?.attachToRecyclerView(it)
-        }
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)

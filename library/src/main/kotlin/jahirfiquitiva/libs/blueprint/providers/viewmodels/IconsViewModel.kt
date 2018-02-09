@@ -75,19 +75,23 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
         } else {
             param.stringArray(R.array.icon_filters).forEach {
                 val icons = ArrayList<Icon>()
-                val list = ArrayList<String>()
-                list.addAll(
-                        param.stringArray(
-                                param.resources.getIdentifier(it, "array", param.packageName)))
-                list.forEach {
-                    icons.add(
-                            Icon(it.formatCorrectly().blueprintFormat(), it.getIconResource(param)))
+                param.stringArray(
+                        param.resources.getIdentifier(it, "array", param.packageName)).forEach {
+                    val iconRes = it.getIconResource(param)
+                    if (iconRes > 0) {
+                        icons += Icon(it.formatCorrectly().blueprintFormat(), iconRes)
+                    } else {
+                        Log.e(param.getAppName(), "Could NOT find icon with name '$it'")
+                    }
                 }
-                val category = IconsCategory(it)
-                category.setIcons(ArrayList(icons.distinct().sortedBy { it.name }))
-                categories.add(category)
+                val filteredIcons = ArrayList(icons.distinctBy { it.name }.sortedBy { it.name })
+                if (filteredIcons.isNotEmpty()) {
+                    val category = IconsCategory(it.formatCorrectly().blueprintFormat())
+                    category.setIcons(filteredIcons)
+                    categories.add(category)
+                }
             }
         }
-        return ArrayList(categories.distinct().sortedBy { it.title })
+        return ArrayList(categories.distinctBy { it.title }.sortedBy { it.title })
     }
 }

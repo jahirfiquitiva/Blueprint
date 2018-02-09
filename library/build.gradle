@@ -81,8 +81,6 @@ dependencies {
         exclude group: 'org.json', module: 'json'
         exclude group: 'com.intellij', module: 'annotations'
     }
-    // FABs Menu
-    api libraries.fabsMenu
     // CounterFab
     api libraries.counterFab
 }

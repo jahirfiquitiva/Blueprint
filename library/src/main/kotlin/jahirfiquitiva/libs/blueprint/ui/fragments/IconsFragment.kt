@@ -25,7 +25,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.GridLayoutManager
-import android.util.Log
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
@@ -114,10 +113,11 @@ class IconsFragment : ViewModelFragment<Icon>() {
         val icons = ArrayList<Icon>()
         categories.forEach { category ->
             if (filteredBy.hasContent())
-                icons.addAll(category.icons.filter { validIconFilter(filteredBy, it, category) })
-            else icons.addAll(category.icons)
+                icons.addAll(
+                        category.getIcons().filter { validIconFilter(filteredBy, it, category) })
+            else icons.addAll(category.getIcons())
         }
-        adapter?.setItems(ArrayList(icons.distinct().sortedBy { it.name }))
+        adapter?.setItems(ArrayList(icons.distinctBy { it.name }.sortedBy { it.name }))
     }
     
     private fun validFilter(title: String, filters: ArrayList<String>): Boolean {

@@ -38,6 +38,10 @@
     <!-- Material Drawer Colors -->
     <color name="material_drawer_selected_text">@color/light_theme_accent</color>
     <color name="material_drawer_dark_selected_text">@color/dark_theme_accent</color>
+    <color name="material_drawer_background">@color/light_theme_background</color>
+    <color name="material_drawer_dark_background">@color/dark_theme_background</color>
+    <color name="material_drawer_selected">@color/light_theme_primary_dark</color>
+    <color name="material_drawer_dark_selected">@color/dark_theme_primary_dark</color>
 
     <!-- FILTERS COLORS -->
     <!-- Used Material Design 100 shade values -->

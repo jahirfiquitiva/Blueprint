@@ -19,16 +19,15 @@ ext.versions = [
         targetSdk     : 27,
         buildTools    : '27.0.3',
         // Versions:
-        versionCode   : 106,
-        versionName   : '1.0.6',
+        versionCode   : 107,
+        versionName   : '1.0.7',
         // Gradle Plugins
         gradle        : '3.0.1',
         kotlin        : '1.2.21',
         libs          : '2.0',
         // Dependencies
-        kuper         : '1.2.1',
+        kuper         : '1.2.3',
         materialDrawer: '6.0.6',
-        fabsMenu      : '1.1.2',
         counterFab    : '1.0.3',
         bridge        : '5.1.2',
         oneSignal     : '3.7.1'
@@ -45,8 +44,6 @@ ext.libraries = [
         kuper         : 'me.jahirfiquitiva:Kuper:' + versions.kuper + '@aar',
         // Material Drawer
         materialDrawer: 'com.mikepenz:materialdrawer:' + versions.materialDrawer + '@aar',
-        // FABsMenu
-        fabsMenu      : 'me.jahirfiquitiva:FABsMenu:' + versions.fabsMenu,
         // CounterFab
         counterFab    : 'com.github.andremion:counterfab:' + versions.counterFab,
         // Bridge

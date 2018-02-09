@@ -39,7 +39,10 @@ data class Icon(val name: String, @DrawableRes val icon: Int) : Comparable<Icon>
 }
 
 data class IconsCategory(val title: String) {
-    val icons: ArrayList<Icon> = ArrayList()
+    private val icons: ArrayList<Icon> = ArrayList()
+    
+    fun getIcons(): ArrayList<Icon> = ArrayList(icons.distinctBy { it.name }.sortedBy { it.name })
+    
     fun setIcons(newIcons: ArrayList<Icon>) {
         icons.clear()
         icons.addAll(newIcons)
