@@ -34,12 +34,12 @@ A full-of-features, easy-to-customize, free and open source, light-weight, Andro
 
 ### Customizable styles
 
-### Home / Icons
+### Home / Icons / Changelog
 <p align="center">
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/1.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/2.png" height="350"/>
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png" height="350"/>
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/4.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/9.png" height="350"/>
 </p>
 
 ### Wallpapers / Apply / Requests / Templates (Zooper & Kustom)
