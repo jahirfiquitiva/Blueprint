@@ -22,10 +22,10 @@ import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 
-class FilterTitleDrawerItem :
+class FilterTitleDrawerItem(
+        private var listener: ButtonListener? = null
+                           ) :
         BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
-    
-    private var listener: ButtonListener? = null
     
     fun withButtonListener(listener: ButtonListener): FilterTitleDrawerItem {
         this.listener = listener

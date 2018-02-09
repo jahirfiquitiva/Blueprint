@@ -32,6 +32,8 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
+import jahirfiquitiva.libs.blueprint.quest.App
+import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
@@ -44,8 +46,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kauextensions.extensions.isLowRamDevice
 import jahirfiquitiva.libs.kauextensions.extensions.runOnUiThread
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
-import jahirfiquitiva.libs.blueprint.quest.App
-import jahirfiquitiva.libs.blueprint.quest.IconRequest
 
 @Suppress("DEPRECATION")
 @SuppressLint("MissingSuperCall")
@@ -79,9 +79,11 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     override fun initUI(content: View) {
         recyclerView = content.findViewById(R.id.list_rv)
+        fastScroller = content.findViewById(R.id.fast_scroller)
         
         val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
         recyclerView?.setPaddingBottom(64.dpToPx * (if (hasBottomNav) 2 else 1))
+        if (hasBottomNav) fastScroller?.setPaddingBottom(48.dpToPx)
         
         recyclerView?.itemAnimator =
                 if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
@@ -111,7 +113,6 @@ class RequestsFragment : ViewModelFragment<App>() {
                 })
         
         recyclerView?.adapter = adapter
-        fastScroller = content.findViewById(R.id.fast_scroller)
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
         updateFabCount()
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING

@@ -16,6 +16,7 @@
 package jahirfiquitiva.libs.blueprint.providers.viewmodels
 
 import android.content.Context
+import android.util.Log
 import ca.allanwang.kau.utils.boolean
 import jahirfiquitiva.libs.archhelpers.viewmodels.ListViewModel
 import jahirfiquitiva.libs.blueprint.R
@@ -23,14 +24,15 @@ import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
+import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import org.xmlpull.v1.XmlPullParser
 
 class IconsViewModel : ListViewModel<Context, IconsCategory>() {
     override fun internalLoad(param: Context): ArrayList<IconsCategory> {
+        val categories: ArrayList<IconsCategory> = ArrayList()
         if (param.boolean(R.bool.xml_drawable_enabled)) {
-            val list = ArrayList<IconsCategory>()
             val parser = param.resources.getXml(R.xml.drawable)
             try {
                 var event = parser.eventType
@@ -39,18 +41,29 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                     when (event) {
                         XmlPullParser.START_TAG -> {
                             val tag = parser.name
-                            if (tag == "category")
+                            if (tag == "category") {
+                                if (category != null && category.hasIcons()) {
+                                    categories.add(category)
+                                }
                                 category = IconsCategory(
                                         parser.getAttributeValue(null, "title")
                                                 .formatCorrectly().blueprintFormat())
-                            else if (tag == "item")
+                            } else if (tag == "item") {
                                 if (category != null) {
                                     val iconName = parser.getAttributeValue(null, "drawable")
-                                    category.icons.add(
-                                            Icon(
-                                                    iconName.formatCorrectly().blueprintFormat(),
-                                                    iconName.getIconResource(param)))
+                                    val iconRes = iconName.getIconResource(param)
+                                    if (iconRes > 0) {
+                                        category.addIcon(
+                                                Icon(
+                                                        iconName.formatCorrectly().blueprintFormat(),
+                                                        iconRes))
+                                    } else {
+                                        Log.e(
+                                                param.getAppName(),
+                                                "Could NOT find icon with name '$iconName'")
+                                    }
                                 }
+                            }
                         }
                     }
                     event = parser.next()
@@ -59,17 +72,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
             } finally {
                 parser?.close()
             }
-            if (list.size > 0) {
-                val finalList = ArrayList<IconsCategory>()
-                list.forEach {
-                    if (it.icons.size > 0) finalList.add(it)
-                }
-                list.clear()
-                list.addAll(finalList)
-            }
-            return list
         } else {
-            val categories: ArrayList<IconsCategory> = ArrayList()
             param.stringArray(R.array.icon_filters).forEach {
                 val icons = ArrayList<Icon>()
                 val list = ArrayList<String>()
@@ -80,9 +83,11 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                     icons.add(
                             Icon(it.formatCorrectly().blueprintFormat(), it.getIconResource(param)))
                 }
-                categories.add(IconsCategory(it, ArrayList(icons.distinct().sorted())))
+                val category = IconsCategory(it)
+                category.setIcons(ArrayList(icons.distinct().sortedBy { it.name }))
+                categories.add(category)
             }
-            return categories
         }
+        return ArrayList(categories.distinct().sortedBy { it.title })
     }
 }

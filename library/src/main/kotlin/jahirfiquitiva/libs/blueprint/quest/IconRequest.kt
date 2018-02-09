@@ -36,6 +36,7 @@ import android.support.annotation.IntRange
 import android.support.annotation.WorkerThread
 import android.support.annotation.XmlRes
 import android.text.Html
+import android.util.Log
 import ca.allanwang.kau.utils.toBitmap
 import com.afollestad.bridge.Bridge
 import com.afollestad.bridge.Bridge.post
@@ -54,6 +55,7 @@ import jahirfiquitiva.libs.blueprint.quest.utils.saveAll
 import jahirfiquitiva.libs.blueprint.quest.utils.saveIcon
 import jahirfiquitiva.libs.blueprint.quest.utils.wipe
 import jahirfiquitiva.libs.blueprint.quest.utils.zip
+import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getUri
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.readBoolean
@@ -63,6 +65,8 @@ import jahirfiquitiva.libs.kauextensions.extensions.writeEnum
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import java.io.File
+import java.io.PrintWriter
+import java.io.StringWriter
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import java.util.Date
@@ -257,7 +261,7 @@ class IconRequest private constructor() {
         
         fun withAPIHost(host: String): Builder {
             if (host.hasContent()) apiHost = host
-            return generateAppFilterJson(host.hasContent())
+            return generateAppFilterJson(apiHost.hasContent())
         }
         
         fun withAPIKey(key: String?): Builder {
@@ -310,7 +314,7 @@ class IconRequest private constructor() {
             return this
         }
         
-        fun generateAppFilterJson(generate: Boolean): Builder {
+        private fun generateAppFilterJson(generate: Boolean): Builder {
             generateAppFilterJson = generate
             return this
         }
@@ -463,14 +467,20 @@ class IconRequest private constructor() {
     }
     
     fun loadApps(onProgress: (progress: Int) -> Unit = {}) {
+        if (builder?.isLoading == true) return
         builder?.isLoading = true
+        if (apps.isNotEmpty()) {
+            builder?.callback?.onAppsLoaded(apps)
+            builder?.isLoading = false
+            return
+        }
         Thread {
-            val filter = loadFilterApps() ?: return@Thread
             BPLog.d { "Loading unthemed installed apps..." }
+            val filter = loadFilterApps() ?: return@Thread
             apps.clear()
             apps.addAll(builder?.context?.getInstalledApps(filter, onProgress).orEmpty())
             builder?.isLoading = false
-            apps.let { builder?.callback?.onAppsLoaded(it) }
+            builder?.callback?.onAppsLoaded(apps)
         }.start()
     }
     
@@ -712,14 +722,13 @@ class IconRequest private constructor() {
                                 .append("\t\t\t\"name\": \"$name\",\n")
                                 .append("\t\t\t\"pkg\": \"${app.pckg}\",\n")
                                 .append("\t\t\t\"componentInfo\": \"${app.code}\",\n")
-                                .append("\t\t\t\"drawable\": \"$drawableName\",\n")
+                                .append("\t\t\t\"drawable\": \"$drawableName\"")
                                 .append("\t\t}")
                     }
                     appNames.add(iconName)
                 }
                 
-                val date = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
-                        .format(Date())
+                val date = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
                 
                 if (xmlSb != null) {
                     xmlSb.append("\n\n</resources>")
@@ -781,7 +790,6 @@ class IconRequest private constructor() {
                         onRequestProgress?.doOnError()
                         return@Thread
                     }
-                    
                 }
                 
                 if (filesToZip.size == 0) {
@@ -836,7 +844,15 @@ class IconRequest private constructor() {
                         
                         onRequestProgress?.doWhenReady()
                     } catch (e: Exception) {
-                        BPLog.e { "Failed to send icons to the backend: ${e.message}" }
+                        Log.e(
+                                builder?.context?.getAppName() ?: "Blueprint",
+                                "Failed to send icons to the backend: ${e.message}")
+                        try {
+                            val errors = StringWriter()
+                            e.printStackTrace(PrintWriter(errors))
+                            Log.e(builder?.context?.getAppName() ?: "Blueprint", errors.toString())
+                        } catch (ignored: Exception) {
+                        }
                         sendRequestViaEmail(zipFile, onRequestProgress)
                     }
                 } else {
@@ -845,8 +861,7 @@ class IconRequest private constructor() {
             }.start()
         } else {
             builder?.context?.let {
-                builder?.callback?.onRequestLimited(
-                        it, currentState, requestsLeft, millisToFinish)
+                builder?.callback?.onRequestLimited(it, currentState, requestsLeft, millisToFinish)
             }
         }
     }

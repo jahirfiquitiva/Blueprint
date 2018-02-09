@@ -37,7 +37,7 @@ class IconsAdapter(
         if (fromPreviews) {
             (holder as? IconViewHolder)?.bind(manager, true, list[position])
         } else {
-            (holder as? IconViewHolder)?.bind(manager, shouldAnimate, list[position], listener)
+            (holder as? IconViewHolder)?.bind(manager, false, list[position], listener)
         }
     }
     

@@ -90,7 +90,16 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
             homeAdapter?.updateItems(ArrayList(it))
             recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
         }
-        iconsModel?.observe(this) { homeAdapter?.updateIconsCount(it.size) }
+        iconsModel?.observe(this) { categories ->
+            var count = 0
+            val filters = ArrayList<String>()
+            categories.forEach {
+                count += it.icons.size
+                filters += it.title
+            }
+            homeAdapter?.updateIconsCount(count)
+            (activity as? BaseBlueprintActivity)?.initFiltersDrawer(filters)
+        }
         wallsModel?.observe(this) { homeAdapter?.updateWallsCount(it.size) }
     }
     

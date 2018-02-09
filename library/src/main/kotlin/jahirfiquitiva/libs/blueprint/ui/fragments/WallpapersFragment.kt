@@ -33,7 +33,10 @@ class WallpapersFragment : BaseWallpapersFragment() {
     override fun initUI(content: View) {
         super.initUI(content)
         val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
-        if (hasBottomNav) recyclerView?.setPaddingBottom(64.dpToPx)
+        if (hasBottomNav) {
+            recyclerView?.setPaddingBottom(64.dpToPx)
+            fastScroller?.setPaddingBottom(48.dpToPx)
+        }
     }
     
     override fun doOnWallpapersChange(data: ArrayList<Wallpaper>, fromCollectionActivity: Boolean) {

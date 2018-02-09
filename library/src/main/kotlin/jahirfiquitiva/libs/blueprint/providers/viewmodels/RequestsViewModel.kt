@@ -148,7 +148,7 @@ class RequestsViewModel : ViewModel() {
                                            ) {
             IconRequest.start(context)
                     .withAppName(context.getString(R.string.app_name))
-                    .withFooter("Blueprint version: ${BuildConfig.VERSION_NAME}")
+                    .withFooter("Blueprint version: ${BuildConfig.LIB_VERSION}")
                     .withSubject(context.getString(R.string.request_title))
                     .toEmail(context.getString(R.string.email))
                     .withAPIHost(host.orEmpty())
@@ -158,7 +158,6 @@ class RequestsViewModel : ViewModel() {
                                     context.getString(
                                             R.string.request_save_location,
                                             Environment.getExternalStorageDirectory())))
-                    .generateAppFilterJson(false)
                     .debugMode(BuildConfig.DEBUG)
                     .filterXmlId(R.xml.appfilter)
                     .withTimeLimit(

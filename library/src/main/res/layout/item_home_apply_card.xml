@@ -31,6 +31,8 @@
             android:layout_margin="@dimen/cards_margin"
             android:paddingLeft="@dimen/cards_margin"
             android:paddingStart="@dimen/cards_margin"
+            android:paddingRight="@dimen/cards_margin"
+            android:paddingEnd="@dimen/cards_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="RtlSymmetry">

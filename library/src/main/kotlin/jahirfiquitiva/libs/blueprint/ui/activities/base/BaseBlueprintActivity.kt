@@ -30,7 +30,6 @@ import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.goneIf
 import ca.allanwang.kau.utils.hideIf
 import ca.allanwang.kau.utils.isHidden
-import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setMarginBottom
 import ca.allanwang.kau.utils.setMarginRight
 import ca.allanwang.kau.utils.shareText
@@ -104,7 +103,7 @@ import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
 
-abstract class BaseBlueprintActivity : BaseFramesActivity() {
+abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerItem.ButtonListener {
     
     override fun lightTheme(): Int = R.style.BlueprintLightTheme
     override fun darkTheme(): Int = R.style.BlueprintDarkTheme
@@ -117,7 +116,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
     
     private var filtersDrawer: Drawer? = null
-    private var iconsFilters: ArrayList<String> = ArrayList()
+    private val iconsFilters: ArrayList<String> = ArrayList()
+    private val activeFilters: ArrayList<String> = ArrayList()
     
     internal val toolbar: CustomToolbar? by bind(R.id.toolbar)
     internal val fabsMenu: FABsMenu? by bind(R.id.fabs_menu)
@@ -152,9 +152,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         toolbar?.bindToActivity(this, false)
-        postDelayed(50) {
-            initMainComponents(savedInstanceState)
-        }
+        initMainComponents(savedInstanceState)
     }
     
     private fun defaultNavigation(force: Boolean = false) {
@@ -169,7 +167,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         initFragments()
         initFABsMenu()
         initFAB()
-        initFiltersDrawer(savedInstance)
+        initFiltersDrawer(iconsFilters, savedInstance)
         updateUI(getNavigationItemWithId(currentItemId))
         RequestsViewModel.initAndLoadRequestApps(
                 this, string(R.string.arctic_backend_host), string(R.string.arctic_backend_api_key))
@@ -249,65 +247,69 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         helpFab?.setOnClickListener { launchHelpActivity() }
     }
     
-    private fun initFiltersDrawer(savedInstance: Bundle?) {
-        val filtersDrawerBuilder = DrawerBuilder().withActivity(this)
-        val hadFilters = iconsFilters.isNotEmpty()
+    fun initFiltersDrawer(filters: ArrayList<String>, savedInstance: Bundle? = null) {
+        val filtersDrawerBuilder = DrawerBuilder().withActivity(this).withDrawerGravity(Gravity.END)
         
-        filtersDrawerBuilder.addDrawerItems(FilterTitleDrawerItem().withButtonListener(
-                object : FilterTitleDrawerItem.ButtonListener {
-                    override fun onButtonPressed() {
-                        filtersDrawer?.drawerItems?.forEach {
-                            (it as? FilterDrawerItem)?.checkBoxHolder?.apply(false, false)
-                        }
-                        if (hadFilters) {
-                            iconsFilters.clear()
-                            onFiltersUpdated(iconsFilters)
-                        }
-                    }
-                }))
+        if (savedInstance != null) filtersDrawerBuilder.withSavedInstance(savedInstance)
         
+        filtersDrawer?.removeAllItems()
+        
+        if (filters.isNotEmpty()) {
+            filtersDrawerBuilder.addDrawerItems(FilterTitleDrawerItem(this))
+            setupFiltersDrawerItems(filtersDrawerBuilder, filters)
+        }
+        
+        filtersDrawer = filtersDrawerBuilder.build()
+        
+        this.iconsFilters.clear()
+        this.iconsFilters.addAll(filters)
+        
+        val item = getNavigationItemWithId(currentItemId)
+        lockFiltersDrawer(item.id != DEFAULT_ICONS_POSITION || filters.size <= 1)
+    }
+    
+    private fun setupFiltersDrawerItems(builder: DrawerBuilder, filters: ArrayList<String>) {
         var index = 0
         var colorIndex = 0
         val colors = stringArray(R.array.filters_colors)
-        val filters = stringArray(R.array.icon_filters)
+        val listener = object : FilterCheckBoxHolder.StateChangeListener {
+            override fun onStateChanged(
+                    checked: Boolean, title: String,
+                    fireFiltersListener: Boolean
+                                       ) {
+                if (activeFilters.contains(title) && !checked) {
+                    activeFilters.remove(title)
+                    if (fireFiltersListener) applyIconFilters()
+                } else if (checked) {
+                    activeFilters.add(title)
+                    if (fireFiltersListener) applyIconFilters()
+                }
+            }
+        }
+        
         if (filters.size > 1) {
             filters.forEach {
                 if (colorIndex >= colors.size) colorIndex = 0
                 val name = it.formatCorrectly().blueprintFormat()
                 if (!(name.equals("all", true))) {
-                    filtersDrawerBuilder.addDrawerItems(
+                    builder.addDrawerItems(
                             FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
                                     .withColor(Color.parseColor(colors[colorIndex]))
-                                    .withListener(
-                                            object : FilterCheckBoxHolder.StateChangeListener {
-                                                override fun onStateChanged(
-                                                        checked: Boolean, title: String,
-                                                        fireFiltersListener: Boolean
-                                                                           ) {
-                                                    if (iconsFilters.contains(title)) {
-                                                        if (!checked) {
-                                                            iconsFilters.remove(title)
-                                                            if (fireFiltersListener)
-                                                                onFiltersUpdated(iconsFilters)
-                                                        }
-                                                    } else {
-                                                        if (checked) {
-                                                            iconsFilters.add(title)
-                                                            if (fireFiltersListener)
-                                                                onFiltersUpdated(iconsFilters)
-                                                        }
-                                                    }
-                                                }
-                                            })
+                                    .withListener(listener)
                                     .withDivider(index < (filters.size - 1)))
                     index += 1
                     colorIndex += 1
                 }
             }
         }
-        filtersDrawerBuilder.withDrawerGravity(Gravity.END)
-        if (savedInstance != null) filtersDrawerBuilder.withSavedInstance(savedInstance)
-        filtersDrawer = filtersDrawerBuilder.build()
+    }
+    
+    override fun onButtonPressed() {
+        filtersDrawer?.drawerItems?.forEach {
+            (it as? FilterDrawerItem)?.checkBoxHolder?.apply(false, false)
+        }
+        activeFilters.clear()
+        applyIconFilters()
     }
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -343,7 +345,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         item?.let {
             when (it.itemId) {
-                R.id.filters -> filtersDrawer?.openDrawer()
+                R.id.filters -> if (iconsFilters.isNotEmpty()) filtersDrawer?.openDrawer()
                 R.id.refresh -> {
                     refreshWallpapers()
                     refreshRequests()
@@ -372,6 +374,12 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
                 supportFinishAfterTransition()
             }
         }
+    }
+    
+    @SuppressLint("MissingSuperCall")
+    override fun onResume() {
+        super.onResume()
+        (activeFragment as? HomeFragment)?.scrollToTop()
     }
     
     override fun onPause() {
@@ -432,16 +440,16 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         supportActionBar?.title = getString(
                 if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
         
-        lockFiltersDrawer(
-                item.id != DEFAULT_ICONS_POSITION || stringArray(R.array.icon_filters).size <= 1)
+        lockFiltersDrawer(item.id != DEFAULT_ICONS_POSITION || iconsFilters.size <= 1)
     }
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
+        val isInIconsSection = item.id == DEFAULT_ICONS_POSITION
         menu.changeOptionVisibility(R.id.donate, donationsEnabled)
-        menu.changeOptionVisibility(R.id.search, item.id != DEFAULT_HOME_POSITION)
         menu.changeOptionVisibility(
-                R.id.filters,
-                item.id == DEFAULT_ICONS_POSITION && stringArray(R.array.icon_filters).size > 1)
+                R.id.search,
+                if (isInIconsSection) iconsFilters.isNotEmpty() else item.id != DEFAULT_HOME_POSITION)
+        menu.changeOptionVisibility(R.id.filters, isInIconsSection && iconsFilters.size > 1)
         menu.changeOptionVisibility(
                 R.id.refresh,
                 item.id == DEFAULT_WALLPAPERS_POSITION || item.id == DEFAULT_REQUEST_POSITION)
@@ -554,8 +562,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity() {
         }
     }
     
-    internal fun onFiltersUpdated(filters: ArrayList<String>) {
-        (activeFragment as? IconsFragment)?.applyFilters(filters)
+    internal fun applyIconFilters() {
+        (activeFragment as? IconsFragment)?.applyFilters(activeFilters)
     }
     
     internal fun scrollToTop() {

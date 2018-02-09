@@ -38,7 +38,19 @@ data class Icon(val name: String, @DrawableRes val icon: Int) : Comparable<Icon>
     override fun compareTo(other: Icon): Int = this.name.compareTo(other.name)
 }
 
-data class IconsCategory(val title: String, val icons: ArrayList<Icon> = ArrayList())
+data class IconsCategory(val title: String) {
+    val icons: ArrayList<Icon> = ArrayList()
+    fun setIcons(newIcons: ArrayList<Icon>) {
+        icons.clear()
+        icons.addAll(newIcons)
+    }
+    
+    fun addIcon(icon: Icon) {
+        icons.add(icon)
+    }
+    
+    fun hasIcons(): Boolean = icons.isNotEmpty()
+}
 
 @Suppress("ArrayInDataClass")
 data class Launcher(

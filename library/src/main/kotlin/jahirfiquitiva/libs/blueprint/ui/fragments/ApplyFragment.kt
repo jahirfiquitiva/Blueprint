@@ -70,7 +70,10 @@ class ApplyFragment : ViewModelFragment<Launcher>() {
         val fastScroller: RecyclerFastScroller? by content.bind(R.id.fast_scroller)
         
         val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
-        if (hasBottomNav) recyclerView?.setPaddingBottom(64.dpToPx)
+        if (hasBottomNav) {
+            recyclerView?.setPaddingBottom(64.dpToPx)
+            fastScroller?.setPaddingBottom(48.dpToPx)
+        }
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)

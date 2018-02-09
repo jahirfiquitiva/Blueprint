@@ -25,6 +25,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
@@ -74,7 +75,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         if (filters.isNotEmpty()) {
             setAdapterItems(ArrayList(list.filter { validFilter(it.title, filters) }))
         } else {
-            setAdapterItems(ArrayList(list))
+            setAdapterItems(list)
         }
     }
     
@@ -99,9 +100,24 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     override fun registerObserver() {
-        model?.observe(this) {
-            setAdapterItems(ArrayList(it))
+        model?.observe(this) { icons ->
+            setAdapterItems(ArrayList(icons))
+            (activity as? BaseBlueprintActivity)?.let {
+                val filters = ArrayList<String>()
+                icons.forEach { filters += it.title }
+                it.initFiltersDrawer(filters)
+            }
         }
+    }
+    
+    private fun setAdapterItems(categories: ArrayList<IconsCategory>, filteredBy: String = "") {
+        val icons = ArrayList<Icon>()
+        categories.forEach { category ->
+            if (filteredBy.hasContent())
+                icons.addAll(category.icons.filter { validIconFilter(filteredBy, it, category) })
+            else icons.addAll(category.icons)
+        }
+        adapter?.setItems(ArrayList(icons.distinct().sortedBy { it.name }))
     }
     
     private fun validFilter(title: String, filters: ArrayList<String>): Boolean {
@@ -109,24 +125,15 @@ class IconsFragment : ViewModelFragment<Icon>() {
         return false
     }
     
-    private fun setAdapterItems(categories: ArrayList<IconsCategory>, filteredBy: String = "") {
-        val icons = ArrayList<Icon>()
-        categories.forEach {
-            val category = it
-            if (filteredBy.hasContent())
-                icons.addAll(
-                        it.icons.filter {
-                            val deep = context?.bpKonfigs?.deepSearchEnabled ?: false
-                            if (deep) {
-                                it.name.contains(filteredBy, true) ||
-                                        category.title.contains(filteredBy, true)
-                            } else {
-                                it.name.contains(filteredBy, true)
-                            }
-                        })
-            else icons.addAll(it.icons)
-        }
-        adapter?.setItems(ArrayList(icons.distinct().sorted()))
+    private fun validIconFilter(filter: String, icon: Icon, category: IconsCategory): Boolean {
+        return if (filter.hasContent()) {
+            val deep = context?.bpKonfigs?.deepSearchEnabled ?: false
+            if (deep) {
+                icon.name.contains(filter, true) || category.title.contains(filter, true)
+            } else {
+                icon.name.contains(filter, true)
+            }
+        } else true
     }
     
     override fun unregisterObserver() {
@@ -153,7 +160,10 @@ class IconsFragment : ViewModelFragment<Icon>() {
         fastScroller = content.findViewById(R.id.fast_scroller)
         
         val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
-        if (hasBottomNav) recyclerView?.setPaddingBottom(64.dpToPx)
+        if (hasBottomNav) {
+            recyclerView?.setPaddingBottom(64.dpToPx)
+            fastScroller?.setPaddingBottom(48.dpToPx)
+        }
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)
