@@ -19,12 +19,17 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/icons_preview_card"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/icons_preview">
+        android:layout_height="@dimen/icons_preview"
+        android:foreground="?selectableItemBackground"
+        android:descendantFocusability="blocksDescendants">
 
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
+            android:descendantFocusability="blocksDescendants">
 
         <ImageView
                 android:id="@+id/wallpaper"

@@ -37,39 +37,52 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var lastPosition = -1
     val icon: ImageView? by bind(R.id.icon)
     
-    fun bind(manager: RequestManager?, animate: Boolean, item: Icon) = with(itemView) {
-        icon?.loadResource(
-                manager, item.icon, true, animate, true,
-                object : GlideRequestCallback<Drawable>() {
-                    override fun onLoadSucceed(resource: Drawable): Boolean {
-                        if (context.bpKonfigs.animationsEnabled && animate) {
-                            scaleXY = 0F
-                            lastPosition = adapterPosition
-                            animate().scaleX(1F)
-                                    .scaleY(1F)
-                                    .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
-                                    .setDuration(ICONS_ANIMATION_DURATION)
-                                    .start()
-                        } else {
-                            icon?.setImageDrawable(resource)
-                            itemView.clearChildrenAnimations()
-                        }
-                        return false
-                    }
-                })
-        icon?.isClickable = false
-        icon?.isFocusable = false
-        itemView.isClickable = false
-        itemView.isFocusable = false
-    }
+    fun bind(
+            manager: RequestManager?,
+            animate: Boolean,
+            item: Icon,
+            clickable: Boolean = true
+            ) =
+            with(itemView) {
+                icon?.loadResource(
+                        manager, item.icon, true, animate, true,
+                        object : GlideRequestCallback<Drawable>() {
+                            override fun onLoadSucceed(resource: Drawable): Boolean {
+                                if (context.bpKonfigs.animationsEnabled && animate) {
+                                    scaleXY = 0F
+                                    lastPosition = adapterPosition
+                                    animate().scaleX(1F)
+                                            .scaleY(1F)
+                                            .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
+                                            .setDuration(ICONS_ANIMATION_DURATION)
+                                            .start()
+                                } else {
+                                    icon?.setImageDrawable(resource)
+                                    itemView.clearChildrenAnimations()
+                                }
+                                return false
+                            }
+                        })
+                if (!clickable) {
+                    icon?.isClickable = false
+                    icon?.isFocusable = false
+                    itemView.isClickable = false
+                    itemView.isFocusable = false
+                    icon?.isEnabled = false
+                    icon?.background = null
+                    itemView.isEnabled = false
+                    itemView.background = null
+                }
+            }
     
     fun bind(
             manager: RequestManager?,
             animate: Boolean,
             item: Icon,
+            clickable: Boolean = true,
             listener: (Icon) -> Unit = {}
             ) = with(itemView) {
-        bind(manager, animate, item)
+        bind(manager, animate, item, clickable)
         setOnClickListener { listener(item) }
     }
     

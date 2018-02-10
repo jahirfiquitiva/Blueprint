@@ -25,11 +25,11 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
-        android:clickable="true"
-        android:focusable="true"
+        android:clickable="false"
+        android:focusable="false"
         android:descendantFocusability="blocksDescendants">
 
-    <jahirfiquitiva.libs.blueprint.ui.widgets.ClickableRecyclerView
+    <jahirfiquitiva.libs.blueprint.ui.widgets.NonClickableRecyclerView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/icons_preview_grid"
             android:layout_width="match_parent"

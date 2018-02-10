@@ -20,9 +20,9 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.MotionEvent
-import android.view.View
 
-class ClickableRecyclerView : RecyclerView {
+@SuppressLint("ClickableViewAccessibility")
+class NonClickableRecyclerView : RecyclerView {
     constructor(context: Context) : super(context) {
         isNestedScrollingEnabled = false
     }
@@ -36,15 +36,7 @@ class ClickableRecyclerView : RecyclerView {
         isNestedScrollingEnabled = false
     }
     
-    override fun onTouchEvent(e: MotionEvent?): Boolean {
-        e?.let {
-            if (it.action == MotionEvent.ACTION_UP) {
-                (parent as? View)?.performClick()
-            }
-        }
-        return super.onTouchEvent(e)
-    }
+    override fun onTouchEvent(e: MotionEvent?): Boolean = false
     
-    @SuppressLint("ClickableViewAccessibility")
     override fun performClick(): Boolean = false
 }

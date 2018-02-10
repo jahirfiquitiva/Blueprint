@@ -37,6 +37,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
 import jahirfiquitiva.libs.kauextensions.extensions.integer
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
 import java.util.Collections
 
 class PreviewCardHolder(
@@ -50,6 +51,7 @@ class PreviewCardHolder(
                 dimenPixelSize(R.dimen.cards_margin))
     }
     
+    private val card: CustomCardView? by bind(R.id.icons_preview_card)
     private val image: ImageView? by bind(R.id.wallpaper)
     private val iconsPreviewRV: RecyclerView? by bind(R.id.icons_preview_grid)
     private val correctList = ArrayList<Icon>()
@@ -79,9 +81,7 @@ class PreviewCardHolder(
                                                               ): Boolean = false
                 }
         iconsPreviewRV?.addItemDecoration(decoration)
-        itemView.findViewById<LinearLayout>(R.id.icons_preview_container).setOnClickListener {
-            loadIconsIntoAdapter()
-        }
+        card?.setOnClickListener { loadIconsIntoAdapter() }
         loadIconsIntoAdapter()
     }
     

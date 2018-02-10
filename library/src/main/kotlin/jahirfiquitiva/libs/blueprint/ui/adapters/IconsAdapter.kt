@@ -35,9 +35,9 @@ class IconsAdapter(
     
     override fun doBind(holder: IconViewHolder, position: Int, shouldAnimate: Boolean) {
         if (fromPreviews) {
-            (holder as? IconViewHolder)?.bind(manager, true, list[position])
+            (holder as? IconViewHolder)?.bind(manager, true, list[position], false)
         } else {
-            (holder as? IconViewHolder)?.bind(manager, false, list[position], listener)
+            (holder as? IconViewHolder)?.bind(manager, false, list[position], true, listener)
         }
     }
     
