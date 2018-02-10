@@ -24,7 +24,7 @@ class BPKonfigs(nm: String, cntxt: Context) : KuperKonfigs(nm, cntxt) {
     }
     
     var launcherIconShown: Boolean
-        get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, false)
+        get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, true)
         set(shown) = prefsEditor.putBoolean(LAUNCHER_ICON_SHOWN, shown).apply()
     
     var wallpaperInIconsPreview: Boolean
