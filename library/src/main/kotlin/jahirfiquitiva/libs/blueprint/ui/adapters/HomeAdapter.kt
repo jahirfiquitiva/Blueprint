@@ -128,10 +128,12 @@ class HomeAdapter(
     
     private fun bindCounters(holder: CounterItemHolder) {
         val bgColor = activity?.tilesColor ?: Color.parseColor("#e0e0e0")
-        val labelColor = activity?.getPrimaryTextColorFor(bgColor) ?: Color.parseColor("#de000000")
+        val labelColor =
+                activity?.getPrimaryTextColorFor(bgColor, 0.6F) ?: Color.parseColor("#de000000")
         val counterColor =
-                activity?.getSecondaryTextColorFor(bgColor) ?: Color.parseColor("#8a000000")
-        val iconColor = activity?.getActiveIconsColorFor(bgColor) ?: Color.parseColor("#8a000000")
+                activity?.getSecondaryTextColorFor(bgColor, 0.6F) ?: Color.parseColor("#8a000000")
+        val iconColor =
+                activity?.getActiveIconsColorFor(bgColor, 0.6F) ?: Color.parseColor("#8a000000")
         
         if (iconsCount > MINIMAL_AMOUNT) {
             holder.iconsCounter?.setBackgroundColor(bgColor)

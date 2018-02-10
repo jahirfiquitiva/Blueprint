@@ -43,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:transitionName="actionBar"
+                app:popupTheme="?attr/popupMenuStyle"
                 app:layout_collapseMode="pin"
                 tools:ignore="UnusedAttribute"/>
 
