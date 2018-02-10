@@ -27,7 +27,6 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:focusable="true"
-        android:background="?selectableItemBackgroundBorderless"
         android:descendantFocusability="blocksDescendants">
 
     <jahirfiquitiva.libs.blueprint.ui.widgets.ClickableRecyclerView
