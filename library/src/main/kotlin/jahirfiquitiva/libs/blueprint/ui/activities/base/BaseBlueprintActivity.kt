@@ -142,15 +142,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         toolbar?.bindToActivity(this, false)
+        currentItemId = getNavigationItems().firstOrNull()?.id ?: DEFAULT_HOME_POSITION
         initMainComponents(savedInstanceState)
-    }
-    
-    private fun defaultNavigation(force: Boolean = false) {
-        if (isIconsPicker) {
-            navigateToItem(getNavigationItemWithId(DEFAULT_ICONS_POSITION), false, force)
-        } else {
-            navigateToItem(getNavigationItemWithId(DEFAULT_HOME_POSITION), false, force)
-        }
     }
     
     private fun initMainComponents(savedInstance: Bundle?) {
@@ -228,6 +221,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
         
         val item = getNavigationItemWithId(currentItemId)
         lockFiltersDrawer(item.id != DEFAULT_ICONS_POSITION || filters.size <= 1)
+        if (currentItemId == DEFAULT_ICONS_POSITION) invalidateOptionsMenu()
     }
     
     private fun setupFiltersDrawerItems(builder: DrawerBuilder, filters: ArrayList<String>) {
