@@ -23,9 +23,6 @@
     <string name="email_subject">Blueprint</string>
     <string name="request_title">Blueprint Icon Request</string>
 
-    <!-- This are the strings for the cards in the main screen -->
-    <string name="welcome_title">Welcome to Blueprint</string>
-
     <!-- Strings for Wallpapers and Requests -->
     <string name="request_save_location">%1$s/Blueprint/Requests/</string>
 
