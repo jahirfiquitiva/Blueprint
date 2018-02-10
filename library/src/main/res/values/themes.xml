@@ -67,9 +67,9 @@
         </item>
     </style>
 
-    <style name="BlueprintTransparentTheme" parent="Frames.TransparentTheme">
-        <!-- MaterialDrawer specific values -->
-        <item name="material_drawer_background">#30000000</item>
+    <style name="BlueprintTransparentTheme" parent="BlueprintAmoledTheme">
+        <item name="android:windowShowWallpaper">true</item>
+        <item name="android:windowBackground">@color/clear_bg</item>
     </style>
 
 </resources>

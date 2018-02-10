@@ -47,6 +47,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
+import jahirfiquitiva.libs.kuper.helpers.extensions.tilesColor
 
 abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
     
@@ -137,7 +138,8 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
                     PrimaryDrawerItem().withIdentifier(it.id.toLong())
                             .withName(it.title)
                             .withIcon(drawable(it.icon, null))
-                            .withIconTintingEnabled(true))
+                            .withIconTintingEnabled(true)
+                            .withSelectedColor(tilesColor))
         }
         
         if (hasTemplates) {
