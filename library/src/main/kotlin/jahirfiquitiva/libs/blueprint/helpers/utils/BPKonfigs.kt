@@ -18,11 +18,7 @@ package jahirfiquitiva.libs.blueprint.helpers.utils
 import android.content.Context
 import jahirfiquitiva.libs.kuper.helpers.utils.KuperKonfigs
 
-class BPKonfigs(nm: String, cntxt: Context) : KuperKonfigs(nm, cntxt) {
-    companion object {
-        fun newInstance(name: String, context: Context) = BPKonfigs(name, context)
-    }
-    
+class BPKonfigs(cntxt: Context) : KuperKonfigs(cntxt) {
     var launcherIconShown: Boolean
         get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, true)
         set(shown) = prefsEditor.putBoolean(LAUNCHER_ICON_SHOWN, shown).apply()

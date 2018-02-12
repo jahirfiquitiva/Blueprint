@@ -124,7 +124,7 @@
         <item>How to use the Icon Pack?</item>
         <item>How to apply the Icon Pack?</item>
         <item>How to see all the included icons?</item>
-        <item>How to replace certain icons with alternatives?</item>
+        <item>How to replace an icon with an alternative one?</item>
         <item>How to request unthemed icons?</item>
         <item>After restarting my device, icon pack is not applied anymore. Icons were restored to
             default.
@@ -156,9 +156,7 @@
             you can apply it manually from launcher settings.
         </item>
         <item>Slide the NavigationDrawer from the left, and go to \"Icons\" section, or go back to main section of the app, then tap the button that says \"Icons\".</item>
-        <item>It depends on the launcher you are using. Not every launcher support icon editing.
-            But, in most of them, you can edit the icon by long-pressing it or doing a double tap.
-        </item>
+        <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
         <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.
         </item>
         <item>It happened because the icon pack was moved to SD Card, you should install it in

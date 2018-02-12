@@ -17,11 +17,14 @@
 <jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/icons_preview_card"
         android:layout_width="match_parent"
         android:layout_height="@dimen/icons_preview"
         android:foreground="?selectableItemBackground"
-        android:descendantFocusability="blocksDescendants">
+        android:descendantFocusability="blocksDescendants"
+        app:cardCornerRadius="0dp"
+        app:cardPreventCornerOverlap="false">
 
     <FrameLayout
             android:layout_width="match_parent"

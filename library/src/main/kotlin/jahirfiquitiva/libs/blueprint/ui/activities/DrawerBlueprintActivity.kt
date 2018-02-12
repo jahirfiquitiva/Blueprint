@@ -33,7 +33,6 @@ import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_POSITION
@@ -42,12 +41,12 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_TEMPLATES_POSITION
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
+import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
-import jahirfiquitiva.libs.kuper.helpers.extensions.tilesColor
 
 abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
     
@@ -155,21 +154,27 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         drawerBuilder.addDrawerItems(DividerDrawerItem())
         
         drawerBuilder.addDrawerItems(
-                SecondaryDrawerItem()
+                PrimaryDrawerItem()
                         .withIdentifier(DEFAULT_CREDITS_POSITION.toLong())
                         .withName(R.string.section_about)
+                        .withIcon(drawable(R.drawable.ic_info, null))
+                        .withIconTintingEnabled(true)
                         .withSelectable(false))
         
         drawerBuilder.addDrawerItems(
-                SecondaryDrawerItem()
+                PrimaryDrawerItem()
                         .withIdentifier(DEFAULT_SETTINGS_POSITION.toLong())
                         .withName(R.string.settings)
+                        .withIcon(drawable(R.drawable.ic_settings, null))
+                        .withIconTintingEnabled(true)
                         .withSelectable(false))
         
         drawerBuilder.addDrawerItems(
-                SecondaryDrawerItem()
+                PrimaryDrawerItem()
                         .withIdentifier(DEFAULT_HELP_POSITION.toLong())
                         .withName(R.string.section_help)
+                        .withIcon(drawable(R.drawable.ic_help, null))
+                        .withIconTintingEnabled(true)
                         .withSelectable(false))
         
         drawerBuilder.withHasStableIds(true)

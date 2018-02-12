@@ -31,11 +31,11 @@ import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.AppLinkItemHolder
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.CounterItemHolder
+import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.SectionedHeaderViewHolder
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
-import jahirfiquitiva.libs.kuper.helpers.extensions.tilesColor
 import java.lang.ref.WeakReference
 
 class HomeAdapter(

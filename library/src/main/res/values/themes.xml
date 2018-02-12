@@ -31,7 +31,6 @@
         <item name="material_drawer_header_selection_text">
             @color/material_drawer_header_selection_text
         </item>
-        <item name="popupMenuStyle">@style/BlueprintLightPopUp</item>
     </style>
 
     <style name="BlueprintDarkTheme" parent="Frames.DarkTheme">
@@ -49,7 +48,6 @@
         <item name="material_drawer_header_selection_text">
             @color/material_drawer_dark_header_selection_text
         </item>
-        <item name="popupMenuStyle">@style/BlueprintDarkPopUp</item>
     </style>
 
     <style name="BlueprintAmoledTheme" parent="Frames.AmoledTheme">
@@ -67,24 +65,11 @@
         <item name="material_drawer_header_selection_text">
             @color/material_drawer_dark_header_selection_text
         </item>
-        <item name="popupMenuStyle">@style/BlueprintAmoledPopUp</item>
     </style>
 
     <style name="BlueprintTransparentTheme" parent="BlueprintAmoledTheme">
         <item name="android:windowShowWallpaper">true</item>
         <item name="android:windowBackground">@color/clear_bg</item>
-    </style>
-
-    <style name="BlueprintLightPopUp" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:colorBackground">@color/light_theme_card_background</item>
-    </style>
-
-    <style name="BlueprintDarkPopUp" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="android:colorBackground">@color/dark_theme_card_background</item>
-    </style>
-
-    <style name="BlueprintAmoledPopUp" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="android:colorBackground">#101010</item>
     </style>
 
 </resources>

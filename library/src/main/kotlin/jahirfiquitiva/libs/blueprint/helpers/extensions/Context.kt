@@ -18,11 +18,10 @@ package jahirfiquitiva.libs.blueprint.helpers.extensions
 import android.content.Context
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
-import jahirfiquitiva.libs.blueprint.helpers.utils.PREFERENCES_NAME
 import java.util.concurrent.TimeUnit
 
 val Context.bpKonfigs: BPKonfigs
-    get() = BPKonfigs.newInstance(PREFERENCES_NAME, this)
+    get() = BPKonfigs(this)
 
 fun Context.millisToText(millis: Long): String {
     when {
