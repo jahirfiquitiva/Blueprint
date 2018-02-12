@@ -20,7 +20,7 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import java.util.concurrent.TimeUnit
 
-val Context.bpKonfigs: BPKonfigs
+internal val Context.bpKonfigs: BPKonfigs
     get() = BPKonfigs(this)
 
 fun Context.millisToText(millis: Long): String {
