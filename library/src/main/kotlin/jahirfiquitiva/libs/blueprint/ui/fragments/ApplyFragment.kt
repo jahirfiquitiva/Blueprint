@@ -19,6 +19,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.integer
 import ca.allanwang.kau.utils.isAppInstalled
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
@@ -35,7 +36,6 @@ import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.dimenPixelSize
-import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 
@@ -85,7 +85,7 @@ class ApplyFragment : ViewModelFragment<Launcher>() {
         recyclerView?.setLoadingText(R.string.loading_section)
         
         recyclerView?.adapter = adapter
-        val columns = ctxt.getInteger(R.integer.icons_columns) - 1
+        val columns = ctxt.integer(R.integer.icons_columns) - 1
         recyclerView?.layoutManager =
                 GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
         recyclerView?.addItemDecoration(
@@ -125,7 +125,8 @@ class ApplyFragment : ViewModelFragment<Launcher>() {
     
     override fun onItemClicked(item: Launcher, longClick: Boolean) {
         if (!longClick) {
-            if (isLauncherInstalled(item.packageNames) || item.name.contains("lineage", true))
+            if (isLauncherInstalled(item.packageNames) || item.name.contains("lineage", true)
+                    || item.name.contains("google", true) || item.name.contains("pixel", true))
                 context?.executeLauncherIntent(item.name)
             else context?.showLauncherNotInstalledDialog(item)
         }

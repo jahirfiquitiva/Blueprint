@@ -23,6 +23,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
+import ca.allanwang.kau.utils.startLink
 import com.bumptech.glide.Glide
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
@@ -41,7 +42,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.actv
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import java.lang.ref.WeakReference
 
 @Suppress("DEPRECATION")
@@ -72,7 +72,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
             return if (picName.orEmpty().hasContent()) {
                 activity?.let {
                     try {
-                        picName?.getDrawable(it)
+                        picName?.let { s -> it.getDrawable(s) }
                     } catch (ignored: Exception) {
                         null
                     }
@@ -122,7 +122,8 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun initUI(content: View) {
         previewCardHolder = PreviewCardHolder(
-                IconsAdapter(context?.let { Glide.with(it) }, true), content.findViewById(R.id.icons_preview_card))
+                IconsAdapter(context?.let { Glide.with(it) }, true),
+                content.findViewById(R.id.icons_preview_card))
         
         nestedScroll = content.findViewById(R.id.nested_scroll)
         
@@ -170,7 +171,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     override fun onItemClicked(item: HomeItem, longClick: Boolean) {
         if (!longClick) {
             if (item.intent != null) context?.startActivity(item.intent)
-            else context?.openLink(item.url)
+            else context?.startLink(item.url)
         }
     }
     

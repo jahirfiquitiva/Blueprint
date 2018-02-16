@@ -27,6 +27,7 @@ import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.integer
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
@@ -44,7 +45,6 @@ import jahirfiquitiva.libs.frames.helpers.utils.IMAGE_PICKER
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.actv
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
-import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import jahirfiquitiva.libs.kauextensions.extensions.getUri
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 
@@ -175,7 +175,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         recyclerView?.setLoadingText(R.string.loading_section)
         
         recyclerView?.adapter = adapter
-        val columns = ctxt.getInteger(R.integer.icons_columns)
+        val columns = ctxt.integer(R.integer.icons_columns)
         recyclerView?.layoutManager =
                 GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING

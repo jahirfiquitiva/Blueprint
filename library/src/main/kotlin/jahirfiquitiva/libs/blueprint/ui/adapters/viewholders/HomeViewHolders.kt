@@ -33,7 +33,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.context
 import jahirfiquitiva.libs.kauextensions.extensions.dimenPixelSize
-import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
+import jahirfiquitiva.libs.kauextensions.extensions.getResource
 import jahirfiquitiva.libs.kauextensions.extensions.integer
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
@@ -90,7 +90,7 @@ class PreviewCardHolder(
             val icons = ArrayList<Icon>()
             val list = stringArray(R.array.icons_preview)
             list.forEach {
-                icons.add(Icon(it, it.getIconResource(context)))
+                icons.add(Icon(it, context.getResource(it)))
             }
             if (icons.isNotEmpty()) {
                 icons.distinctBy { it.name }

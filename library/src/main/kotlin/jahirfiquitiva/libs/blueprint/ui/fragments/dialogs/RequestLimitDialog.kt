@@ -18,12 +18,12 @@ package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import ca.allanwang.kau.utils.integer
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.millisToText
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
 import jahirfiquitiva.libs.kauextensions.extensions.actv
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
-import jahirfiquitiva.libs.kauextensions.extensions.getInteger
 import java.util.concurrent.TimeUnit
 
 @Suppress("DEPRECATION")
@@ -64,8 +64,7 @@ class RequestLimitDialog : BasicDialogFragment() {
                     R.string.apps_limit_dialog_day,
                     ctxt.millisToText(
                             TimeUnit.MINUTES.toMillis(
-                                    ctxt.getInteger(
-                                            R.integer.time_limit_in_minutes).toLong())))
+                                    ctxt.integer(R.integer.time_limit_in_minutes).toLong())))
             
             val contentExtra = when {
                 TimeUnit.MILLISECONDS.toSeconds(millis) >= 60 ->
@@ -77,7 +76,7 @@ class RequestLimitDialog : BasicDialogFragment() {
             preContent + " " + contentExtra
         } else {
             when (appsLeft) {
-                ctxt.getInteger(R.integer.max_apps_to_request) ->
+                ctxt.integer(R.integer.max_apps_to_request) ->
                     ctxt.getString(R.string.apps_limit_dialog, appsLeft.toString())
                 else -> ctxt.getString(R.string.apps_limit_dialog_more, appsLeft.toString())
             }

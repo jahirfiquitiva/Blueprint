@@ -73,11 +73,21 @@ dependencies {
     // Kuper
     api(libraries.kuper) {
         transitive = true
+        exclude module: 'constraint'
+        exclude module: 'transition'
+        exclude module: 'mediarouter-v7'
+        exclude module: 'support-media-compat'
+        exclude module: 'support-v4'
     }
     // Navigation
     api(libraries.materialDrawer) {
         transitive = true
         exclude group: 'com.android.support'
+        exclude module: 'constraint'
+        exclude module: 'transition'
+        exclude module: 'mediarouter-v7'
+        exclude module: 'support-media-compat'
+        exclude module: 'support-v4'
     }
     // Bridge
     api(libraries.bridge) {
@@ -96,8 +106,8 @@ configurations {
     all*.exclude module: 'mediarouter-v7'
     all*.exclude module: 'support-media-compat'
     all*.exclude module: 'support-v4'
-    all*.exclude module: 'iconics-core'
-    all*.exclude module: 'fastadapter-extensions-expandable'
+    // all*.exclude module: 'iconics-core'
+    // all*.exclude module: 'fastadapter-extensions-expandable'
     all*.exclude group: 'com.google.code'
 }
 

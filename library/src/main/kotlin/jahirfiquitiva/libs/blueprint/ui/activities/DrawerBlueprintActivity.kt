@@ -66,7 +66,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         val v: View? by bind(R.id.bottom_navigation)
         v?.gone()
         val accountHeaderBuilder = AccountHeaderBuilder().withActivity(this)
-        val header: Drawable? = "drawer_header".getDrawable(this)
+        val header: Drawable? = getDrawable("drawer_header")
         if (header != null) {
             accountHeaderBuilder.withHeaderBackground(header)
         } else {

@@ -22,6 +22,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.CoordinatorLayout
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import android.view.Menu
@@ -76,7 +77,6 @@ import jahirfiquitiva.libs.frames.ui.fragments.base.BaseFramesFragment
 import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.changeOptionVisibility
 import jahirfiquitiva.libs.kauextensions.extensions.enableTranslucentStatusBar
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
@@ -88,10 +88,10 @@ import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
 import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
+import jahirfiquitiva.libs.kauextensions.extensions.setItemVisibility
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.ui.fragments.adapters.FragmentsPagerAdapter
-import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
@@ -105,7 +105,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     
     abstract fun hasBottomNavigation(): Boolean
     
-    private val coordinatorLayout: CustomCoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
+    private val coordinatorLayout: CoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
     private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
     
     private var filtersDrawer: Drawer? = null
@@ -416,20 +416,20 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
         val isInIconsSection = item.id == DEFAULT_ICONS_POSITION
-        menu.changeOptionVisibility(
+        menu.setItemVisibility(
                 R.id.donate, donationsEnabled && item.id != DEFAULT_HOME_POSITION)
-        menu.changeOptionVisibility(
+        menu.setItemVisibility(
                 R.id.search,
                 if (isInIconsSection) iconsFilters.isNotEmpty() else item.id != DEFAULT_HOME_POSITION)
-        menu.changeOptionVisibility(R.id.filters, isInIconsSection && iconsFilters.size > 1)
-        menu.changeOptionVisibility(
+        menu.setItemVisibility(R.id.filters, isInIconsSection && iconsFilters.size > 1)
+        menu.setItemVisibility(
                 R.id.refresh,
                 item.id == DEFAULT_WALLPAPERS_POSITION || item.id == DEFAULT_REQUEST_POSITION)
-        menu.changeOptionVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_POSITION)
-        menu.changeOptionVisibility(R.id.templates, hasTemplates)
-        menu.changeOptionVisibility(R.id.about, hasBottomNavigation())
-        menu.changeOptionVisibility(R.id.settings, hasBottomNavigation())
-        menu.changeOptionVisibility(R.id.help, hasBottomNavigation())
+        menu.setItemVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_POSITION)
+        menu.setItemVisibility(R.id.templates, hasTemplates)
+        menu.setItemVisibility(R.id.about, hasBottomNavigation())
+        menu.setItemVisibility(R.id.settings, hasBottomNavigation())
+        menu.setItemVisibility(R.id.help, hasBottomNavigation())
     }
     
     private fun lockFiltersDrawer(lock: Boolean) {

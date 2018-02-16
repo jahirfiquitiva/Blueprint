@@ -17,6 +17,6 @@ class RemoteValidator : ResponseValidator() {
         }
         return true
     }
-
+    
     override fun id(): String = "backend-validator"
 }

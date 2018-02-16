@@ -42,8 +42,8 @@ import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.boolean
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
-import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
+import jahirfiquitiva.libs.kauextensions.extensions.getResource
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.withAlpha
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
@@ -67,9 +67,9 @@ class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 val iconName = formattedName.toLowerCase()
                 text?.text = formattedName.blueprintFormat()
                 val iconRes = try {
-                    ("ic_" + iconName).getIconResource(context)
+                    context.getResource("ic_" + iconName)
                 } catch (ignored: Exception) {
-                    "ic_na_launcher".getIconResource(context)
+                    context.getResource("ic_na_launcher")
                 }
                 
                 iconView?.colorFilter = null

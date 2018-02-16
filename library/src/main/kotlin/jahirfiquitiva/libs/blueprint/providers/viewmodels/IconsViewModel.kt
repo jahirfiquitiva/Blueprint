@@ -25,7 +25,7 @@ import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
+import jahirfiquitiva.libs.kauextensions.extensions.getResource
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import org.xmlpull.v1.XmlPullParser
 
@@ -51,7 +51,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                             } else if (tag == "item") {
                                 if (category != null) {
                                     val iconName = parser.getAttributeValue(null, "drawable")
-                                    val iconRes = iconName.getIconResource(param)
+                                    val iconRes = param.getResource(iconName)
                                     if (iconRes > 0) {
                                         category.addIcon(
                                                 Icon(
@@ -77,7 +77,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                 val icons = ArrayList<Icon>()
                 param.stringArray(
                         param.resources.getIdentifier(it, "array", param.packageName)).forEach {
-                    val iconRes = it.getIconResource(param)
+                    val iconRes = param.getResource(it)
                     if (iconRes > 0) {
                         icons += Icon(it.formatCorrectly().blueprintFormat(), iconRes)
                     } else {

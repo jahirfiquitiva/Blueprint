@@ -22,10 +22,10 @@ import android.content.pm.PackageManager
 import ca.allanwang.kau.utils.color
 import ca.allanwang.kau.utils.isAppInstalled
 import ca.allanwang.kau.utils.materialDialog
+import ca.allanwang.kau.utils.startLink
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
-import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 
 val Context.supportedLaunchers: ArrayList<Launcher>
@@ -149,7 +149,7 @@ private fun Context.executeIconPacksNotSupportedIntent() {
         content(R.string.no_compatible_launcher_content)
         positiveText(android.R.string.ok)
         negativeText(android.R.string.cancel)
-        onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts") }
+        onPositive { _, _ -> startLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts") }
     }
 }
 
@@ -159,7 +159,7 @@ fun Context.showLauncherNotInstalledDialog(item: Launcher) {
         content(getString(R.string.lni_content, item.name))
         positiveText(android.R.string.ok)
         negativeText(android.R.string.cancel)
-        onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0]) }
+        onPositive { _, _ -> startLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0]) }
     }
 }
 

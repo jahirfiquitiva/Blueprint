@@ -44,7 +44,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.ctxt
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kauextensions.extensions.isLowRamDevice
-import jahirfiquitiva.libs.kauextensions.extensions.runOnUiThread
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 
 @Suppress("DEPRECATION")
@@ -233,7 +232,7 @@ class RequestsFragment : ViewModelFragment<App>() {
                     force) { progress ->
                 if (canShowProgress) {
                     actv {
-                        runOnUiThread {
+                        it.runOnUiThread {
                             progressDialog?.setProgress(progress)
                             progressDialog?.setOnDismissListener { canShowProgress = false }
                             if (progress >= 100) {
