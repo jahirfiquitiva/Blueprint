@@ -18,7 +18,7 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
 import com.bumptech.glide.RequestManager
-import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
+import jahirfiquitiva.libs.archhelpers.ui.adapters.RecyclerViewListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.IconViewHolder
@@ -28,7 +28,7 @@ class IconsAdapter(
         private val fromPreviews: Boolean = false,
         private val listener: (Icon) -> Unit = {}
                   ) :
-        ListAdapter<Icon, IconViewHolder>() {
+        RecyclerViewListAdapter<Icon, IconViewHolder>() {
     
     override fun doCreateVH(parent: ViewGroup, viewType: Int): IconViewHolder =
             IconViewHolder(parent.inflate(R.layout.item_icon))

@@ -122,7 +122,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun initUI(content: View) {
         previewCardHolder = PreviewCardHolder(
-                IconsAdapter(Glide.with(this), true), content.findViewById(R.id.icons_preview_card))
+                IconsAdapter(context?.let { Glide.with(it) }, true), content.findViewById(R.id.icons_preview_card))
         
         nestedScroll = content.findViewById(R.id.nested_scroll)
         

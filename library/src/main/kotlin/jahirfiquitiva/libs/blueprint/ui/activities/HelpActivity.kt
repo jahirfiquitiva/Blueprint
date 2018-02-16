@@ -88,7 +88,7 @@ class HelpActivity : ThemedActivity() {
         
         adapter.setItems(faqs)
         recyclerView?.adapter = adapter
-    
+        
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
         
         recyclerView?.state = EmptyViewRecyclerView.State.NORMAL

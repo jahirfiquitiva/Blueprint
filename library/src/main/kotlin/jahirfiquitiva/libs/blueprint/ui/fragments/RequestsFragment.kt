@@ -56,7 +56,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     private var recyclerView: EmptyViewRecyclerView? = null
     private var fastScroller: RecyclerFastScroller? = null
     private val adapter: RequestsAdapter? by lazy {
-        RequestsAdapter(Glide.with(this)) { updateFabCount() }
+        RequestsAdapter(context?.let { Glide.with(it) }) { updateFabCount() }
     }
     
     private var spanCount = 0

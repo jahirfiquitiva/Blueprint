@@ -20,13 +20,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import ca.allanwang.kau.utils.scaleXY
+import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
-import jahirfiquitiva.libs.frames.helpers.extensions.loadResource
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
 import jahirfiquitiva.libs.kauextensions.extensions.bind
@@ -35,7 +38,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.clearChildrenAnimations
 class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     
     private var lastPosition = -1
-    val icon: ImageView? by bind(R.id.icon)
+    private val icon: ImageView? by bind(R.id.icon)
     
     fun bind(
             manager: RequestManager?,
@@ -44,25 +47,33 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             clickable: Boolean = true
             ) =
             with(itemView) {
-                icon?.loadResource(
-                        manager, item.icon, true, animate, true,
-                        object : GlideRequestCallback<Drawable>() {
-                            override fun onLoadSucceed(resource: Drawable): Boolean {
-                                if (context.bpKonfigs.animationsEnabled && animate) {
-                                    scaleXY = 0F
-                                    lastPosition = adapterPosition
-                                    animate().scaleX(1F)
-                                            .scaleY(1F)
-                                            .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
-                                            .setDuration(ICONS_ANIMATION_DURATION)
-                                            .start()
-                                } else {
-                                    icon?.setImageDrawable(resource)
-                                    itemView.clearChildrenAnimations()
+                icon?.let {
+                    val man = manager ?: Glide.with(context)
+                    val options = RequestOptions().dontTransform().priority(Priority.IMMEDIATE)
+                    if (!animate) options.dontAnimate()
+                    
+                    man.load(item.icon)
+                            .apply(options)
+                            .listener(object : GlideRequestCallback<Drawable>() {
+                                override fun onLoadSucceed(resource: Drawable): Boolean {
+                                    return if (context.bpKonfigs.animationsEnabled && animate) {
+                                        scaleXY = 0F
+                                        lastPosition = adapterPosition
+                                        animate().scaleX(1F)
+                                                .scaleY(1F)
+                                                .setStartDelay(ICONS_ANIMATION_DURATION_DELAY)
+                                                .setDuration(ICONS_ANIMATION_DURATION)
+                                                .start()
+                                        false
+                                    } else {
+                                        icon?.setImageDrawable(resource)
+                                        itemView.clearChildrenAnimations()
+                                        true
+                                    }
                                 }
-                                return false
-                            }
-                        })
+                            })
+                            .into(it)
+                }
                 if (!clickable) {
                     icon?.isClickable = false
                     icon?.isFocusable = false

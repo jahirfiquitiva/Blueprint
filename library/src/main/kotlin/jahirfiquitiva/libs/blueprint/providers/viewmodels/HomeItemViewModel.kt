@@ -27,17 +27,15 @@ import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 
 class HomeItemViewModel : ListViewModel<Context, HomeItem>() {
     override fun internalLoad(param: Context): ArrayList<HomeItem> {
-        val everything = ArrayList<HomeItem>()
-        val apps = ArrayList<HomeItem>()
-        val links = ArrayList<HomeItem>()
+        val list = ArrayList<HomeItem>()
         val titles = param.stringArray(R.array.home_list_titles)
         val descriptions = param.stringArray(R.array.home_list_descriptions)
         val icons = param.stringArray(R.array.home_list_icons)
         val urls = param.stringArray(R.array.home_list_links)
         if (titles.size == descriptions.size && descriptions.size == icons.size
                 && icons.size == urls.size) {
-            val maxSize = (if (titles.size > 4) 4 else titles.size) - 1
-            for (i in 0..maxSize) {
+            for (i in 0 until titles.size) {
+                if (list.size >= 6) continue
                 val url = urls[i]
                 val isAnApp = url.toLowerCase().startsWith(PLAY_STORE_LINK_PREFIX)
                 var isInstalled = false
@@ -47,18 +45,18 @@ class HomeItemViewModel : ListViewModel<Context, HomeItem>() {
                     isInstalled = param.isAppInstalled(packageName)
                     intent = param.packageManager.getLaunchIntentForPackage(packageName)
                 }
-                val item = HomeItem(
-                        titles[i], descriptions[i], urls[i],
-                        // TODO: Remove !!
-                        icons[i].getDrawable(param)!!,
-                        (if (isAnApp) if (isInstalled) "ic_open_app" else "ic_download"
-                        else "ic_open_app").getDrawable(param),
-                        isAnApp, isInstalled, intent)
-                if (isAnApp) apps.add(item) else links.add(item)
+                icons[i].getDrawable(param)?.let {
+                    list.add(
+                            HomeItem(
+                                    titles[i], descriptions[i], urls[i], it,
+                                    (if (isAnApp)
+                                        if (isInstalled) "ic_open_app" else "ic_download"
+                                    else "ic_open_app").getDrawable(param),
+                                    isAnApp, isInstalled, intent)
+                            )
+                }
             }
         }
-        everything.addAll(apps)
-        everything.addAll(links)
-        return everything
+        return list
     }
 }

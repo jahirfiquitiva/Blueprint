@@ -90,4 +90,12 @@
             app:showAsAction="never"
             tools:ignore="AppCompatResource"/>
 
+    <item
+            android:id="@+id/donate"
+            android:title="@string/donate"
+            android:icon="@drawable/ic_donate"
+            android:orderInCategory="1000"
+            app:showAsAction="never"
+            tools:ignore="AppCompatResource"/>
+
 </menu>

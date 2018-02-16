@@ -22,7 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?listPreferredItemHeight"
-        android:background="?attr/cardBackgroundColor"
         android:foreground="?selectableItemBackground"
         android:animateLayoutChanges="true"
         android:focusable="false"

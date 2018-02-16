@@ -18,17 +18,17 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
 import com.bumptech.glide.RequestManager
-import jahirfiquitiva.libs.archhelpers.ui.adapters.ListAdapter
+import jahirfiquitiva.libs.archhelpers.ui.adapters.RecyclerViewListAdapter
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.RequestViewHolder
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.RequestViewHolder
 
 class RequestsAdapter(
         private val manager: RequestManager?,
         private val onItemsChanged: () -> Unit
                      ) :
-        ListAdapter<App, RequestViewHolder>() {
+        RecyclerViewListAdapter<App, RequestViewHolder>() {
     override fun doCreateVH(parent: ViewGroup, viewType: Int): RequestViewHolder =
             RequestViewHolder(parent.inflate(R.layout.item_app_to_request))
     

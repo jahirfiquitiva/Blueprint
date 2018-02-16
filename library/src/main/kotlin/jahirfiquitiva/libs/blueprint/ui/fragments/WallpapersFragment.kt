@@ -45,6 +45,14 @@ class WallpapersFragment : BaseWallpapersFragment() {
         recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
     }
     
+    override fun applyFilter(filter: String) {
+        try {
+            super.applyFilter(filter)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+    
     companion object {
         fun create(hasChecker: Boolean) =
                 WallpapersFragment().apply { this.hasChecker = hasChecker }

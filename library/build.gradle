@@ -40,6 +40,8 @@ android {
         versionName versions.versionName
         vectorDrawables.useSupportLibrary = true
         buildConfigField("String", "LIB_VERSION", "\"${versions.versionName.toString()}\"")
+        proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+        consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
     }
 
     buildTypes {
@@ -75,6 +77,7 @@ dependencies {
     // Navigation
     api(libraries.materialDrawer) {
         transitive = true
+        exclude group: 'com.android.support'
     }
     // Bridge
     api(libraries.bridge) {
@@ -82,7 +85,20 @@ dependencies {
         exclude group: 'com.intellij', module: 'annotations'
     }
     // CounterFab
-    api libraries.counterFab
+    api(libraries.counterFab) {
+        exclude group: 'com.android.support'
+    }
+}
+
+configurations {
+    all*.exclude module: 'constraint'
+    all*.exclude module: 'transition'
+    all*.exclude module: 'mediarouter-v7'
+    all*.exclude module: 'support-media-compat'
+    all*.exclude module: 'support-v4'
+    all*.exclude module: 'iconics-core'
+    all*.exclude module: 'fastadapter-extensions-expandable'
+    all*.exclude group: 'com.google.code'
 }
 
 tasks.whenTaskAdded { task ->

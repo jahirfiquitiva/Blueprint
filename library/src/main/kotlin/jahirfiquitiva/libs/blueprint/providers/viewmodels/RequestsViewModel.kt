@@ -22,8 +22,7 @@ import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.os.Environment
 import ca.allanwang.kau.utils.integer
-import jahirfiquitiva.libs.archhelpers.tasks.Async
-import jahirfiquitiva.libs.archhelpers.tasks.EasyAsync
+import jahirfiquitiva.libs.archhelpers.tasks.QAsync
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
@@ -39,7 +38,7 @@ class RequestsViewModel : ViewModel() {
     
     private var taskStarted = false
     private val data = MutableLiveData<MutableList<App>>()
-    private var task: EasyAsync<Context, Unit>? = null
+    private var task: QAsync<Context, Unit>? = null
     
     fun loadData(
             parameter: Context,
@@ -52,9 +51,9 @@ class RequestsViewModel : ViewModel() {
                 ) {
         if (!taskStarted || forceLoad) {
             cancelTask(true)
-            task = EasyAsync<Context, Unit>(
+            task = QAsync<Context, Unit>(
                     WeakReference(parameter),
-                    object : Async.Callback<Context, Unit>() {
+                    object : QAsync.Callback<Context, Unit>() {
                         override fun doLoad(param: Context): Unit? =
                                 safeInternalLoad(
                                         param, object : RequestsCallback() {

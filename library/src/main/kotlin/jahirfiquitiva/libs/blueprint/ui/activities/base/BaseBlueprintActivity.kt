@@ -22,13 +22,14 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.drawable
+import ca.allanwang.kau.utils.gone
+import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setMarginBottom
 import ca.allanwang.kau.utils.setMarginRight
 import ca.allanwang.kau.utils.showIf
@@ -36,6 +37,7 @@ import ca.allanwang.kau.utils.snackbar
 import ca.allanwang.kau.utils.statusBarLight
 import ca.allanwang.kau.utils.string
 import ca.allanwang.kau.utils.tint
+import ca.allanwang.kau.utils.visible
 import ca.allanwang.kau.xml.showChangelog
 import com.andremion.counterfab.CounterFab
 import com.mikepenz.materialdrawer.Drawer
@@ -70,7 +72,7 @@ import jahirfiquitiva.libs.frames.helpers.utils.ICONS_APPLIER
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER
 import jahirfiquitiva.libs.frames.helpers.utils.IMAGE_PICKER
 import jahirfiquitiva.libs.frames.ui.activities.base.BaseFramesActivity
-import jahirfiquitiva.libs.frames.ui.fragments.base.BaseWallpapersFragment
+import jahirfiquitiva.libs.frames.ui.fragments.base.BaseFramesFragment
 import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
@@ -88,7 +90,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import jahirfiquitiva.libs.kauextensions.extensions.tint
-import jahirfiquitiva.libs.kauextensions.ui.fragments.adapters.FragmentsAdapter
+import jahirfiquitiva.libs.kauextensions.ui.fragments.adapters.FragmentsPagerAdapter
 import jahirfiquitiva.libs.kauextensions.ui.layouts.CustomCoordinatorLayout
 import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
@@ -117,10 +119,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     private var searchView: CustomSearchView? = null
     
     private val pager: PseudoViewPager? by bind(R.id.pager)
-    private var fragmentsAdapter: FragmentsAdapter? = null
     internal var currentItemId: Int = DEFAULT_HOME_POSITION
-    private val activeFragment: Fragment?
-        get() = fragmentsAdapter?.get(pager?.currentItem ?: -1)
     
     internal val isIconsPicker: Boolean
         get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
@@ -156,21 +155,21 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     }
     
     private fun initFragments() {
-        fragmentsAdapter = FragmentsAdapter(supportFragmentManager)
+        val fragmentsAdapter = FragmentsPagerAdapter(supportFragmentManager)
         loop@ for (item in getNavigationItems()) {
             when (item.id) {
-                DEFAULT_HOME_POSITION -> fragmentsAdapter?.addFragment(HomeFragment())
+                DEFAULT_HOME_POSITION -> fragmentsAdapter.addFragment(HomeFragment())
                 DEFAULT_ICONS_POSITION ->
-                    fragmentsAdapter?.addFragment(IconsFragment.create(pickerKey))
+                    fragmentsAdapter.addFragment(IconsFragment.create(pickerKey))
                 DEFAULT_WALLPAPERS_POSITION ->
-                    fragmentsAdapter?.addFragment(
+                    fragmentsAdapter.addFragment(
                             WallpapersFragment.create(getLicenseChecker() != null))
-                DEFAULT_APPLY_POSITION -> fragmentsAdapter?.addFragment(ApplyFragment())
-                DEFAULT_REQUEST_POSITION -> fragmentsAdapter?.addFragment(RequestsFragment())
+                DEFAULT_APPLY_POSITION -> fragmentsAdapter.addFragment(ApplyFragment())
+                DEFAULT_REQUEST_POSITION -> fragmentsAdapter.addFragment(RequestsFragment())
                 else -> continue@loop
             }
         }
-        pager?.offscreenPageLimit = fragmentsAdapter?.count ?: 1
+        pager?.offscreenPageLimit = fragmentsAdapter.count
         pager?.adapter = fragmentsAdapter
     }
     
@@ -312,6 +311,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
                 R.id.help -> launchHelpActivity()
                 R.id.about -> startActivity(Intent(this, CreditsActivity::class.java))
                 R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
+                R.id.donate -> doDonation()
                 else -> {
                 }
             }
@@ -335,7 +335,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     @SuppressLint("MissingSuperCall")
     override fun onResume() {
         super.onResume()
-        (activeFragment as? HomeFragment)?.scrollToTop()
+        invalidateOptionsMenu()
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? HomeFragment)
+                ?.scrollToTop()
     }
     
     override fun onPause() {
@@ -356,7 +358,22 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
         supportActionBar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         val default = if (isIconsPicker) DEFAULT_ICONS_POSITION else DEFAULT_HOME_POSITION
         currentItemId = savedInstanceState?.getInt("currentItemId", default) ?: default
-        navigateToItem(getNavigationItemWithId(currentItemId), false)
+        dialog = buildMaterialDialog {
+            content(R.string.loading)
+            progress(true, 0)
+            cancelable(false)
+            canceledOnTouchOutside(false)
+        }
+        postDelayed(10) {
+            dialog?.show()
+            pager?.gone()
+            initFragments()
+            updateUI(getNavigationItemWithId(currentItemId))
+            postDelayed(90) {
+                pager?.visible()
+                destroyDialog()
+            }
+        }
     }
     
     internal open fun navigateToItem(
@@ -365,13 +382,17 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
             force: Boolean = false
                                     ): Boolean {
         return try {
-            if (currentItemId != item.id) {
-                pager?.setCurrentItem(getIndexOfItem(item)) {
+            if (currentItemId != item.id || force) {
+                postDelayed(10) {
+                    pager?.setCurrentItem(getIndexOfItem(item)) {
+                        updateUI(item)
+                        pager?.visible()
+                        destroyDialog()
+                    }
+                    currentItemId = item.id
+                    invalidateOptionsMenu()
                     updateUI(item)
                 }
-                currentItemId = item.id
-                invalidateOptionsMenu()
-                updateUI(item)
                 true
             } else {
                 if (hasBottomNavigation()) scrollToTop()
@@ -395,7 +416,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
         val isInIconsSection = item.id == DEFAULT_ICONS_POSITION
-        menu.changeOptionVisibility(R.id.donate, donationsEnabled)
+        menu.changeOptionVisibility(
+                R.id.donate, donationsEnabled && item.id != DEFAULT_HOME_POSITION)
         menu.changeOptionVisibility(
                 R.id.search,
                 if (isInIconsSection) iconsFilters.isNotEmpty() else item.id != DEFAULT_HOME_POSITION)
@@ -524,38 +546,45 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     }
     
     internal fun applyIconFilters() {
-        (activeFragment as? IconsFragment)?.applyFilters(activeFilters)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? IconsFragment)
+                ?.applyFilters(activeFilters)
     }
     
     internal fun scrollToTop() {
+        val activeFragment = (pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId)
         (activeFragment as? HomeFragment)?.scrollToTop()
         (activeFragment as? IconsFragment)?.scrollToTop()
-        (activeFragment as? BaseWallpapersFragment)?.scrollToTop()
+        (activeFragment as? BaseFramesFragment<*, *>)?.scrollToTop()
         (activeFragment as? ApplyFragment)?.scrollToTop()
         (activeFragment as? RequestsFragment)?.scrollToTop()
     }
     
     internal fun doSearch(search: String = "") {
+        val activeFragment = (pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId)
         (activeFragment as? IconsFragment)?.doSearch(search)
-        (activeFragment as? BaseWallpapersFragment)?.applyFilter(search)
+        (activeFragment as? BaseFramesFragment<*, *>)?.applyFilter(search)
         (activeFragment as? ApplyFragment)?.applyFilter(search)
         (activeFragment as? RequestsFragment)?.applyFilter(search)
     }
     
     internal fun refreshWallpapers() {
-        (activeFragment as? BaseWallpapersFragment)?.reloadData(1)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId)
+                as? BaseFramesFragment<*, *>)?.reloadData(1)
     }
     
     internal fun refreshRequests() {
-        (activeFragment as? RequestsFragment)?.refresh()
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? RequestsFragment)
+                ?.refresh()
     }
     
     internal fun toggleSelectAll() {
-        (activeFragment as? RequestsFragment)?.toggleSelectAll()
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? RequestsFragment)
+                ?.toggleSelectAll()
     }
     
     internal fun unselectAll() {
-        (activeFragment as? RequestsFragment)?.unselectAll()
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? RequestsFragment)
+                ?.unselectAll()
     }
     
     internal fun launchHelpActivity() {
@@ -567,7 +596,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     }
     
     internal fun postToFab(post: (CounterFab) -> Unit) {
-        (activeFragment as? RequestsFragment)?.let { fab?.let { post(it) } }
+        ((pager?.adapter as? FragmentsPagerAdapter)
+                ?.get(currentItemId) as? RequestsFragment)?.let { fab?.let { post(it) } }
     }
     
     internal fun requestWallpaperPermission(explanation: String, onGranted: () -> Unit) {

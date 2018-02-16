@@ -30,6 +30,7 @@ import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.AppLinkItemHolder
+import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.ButtonsItemHolder
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.CounterItemHolder
 import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.SectionedHeaderViewHolder
@@ -67,15 +68,15 @@ class HomeAdapter(
     
     fun updateIconsCount(newCount: Int) {
         iconsCount = newCount
-        notifySectionChanged(0)
+        notifySectionChanged(1)
     }
     
     fun updateWallsCount(newCount: Int) {
         wallsCount = newCount
-        notifySectionChanged(0)
+        notifySectionChanged(1)
     }
     
-    override fun getSectionCount(): Int = 3
+    override fun getSectionCount(): Int = 4
     
     override fun getItemViewType(section: Int, relativePosition: Int, absolutePosition: Int): Int =
             section
@@ -87,9 +88,9 @@ class HomeAdapter(
                                        ) {
         (holder as? SectionedHeaderViewHolder)?.let {
             when (section) {
-                0 -> it.setTitle(R.string.general_info)
-                1 -> it.setTitle(R.string.more_apps)
-                2 -> it.setTitle(R.string.useful_links)
+                1 -> it.setTitle(R.string.general_info)
+                2 -> it.setTitle(R.string.more_apps)
+                3 -> it.setTitle(R.string.useful_links)
                 else -> it.setTitle("")
             }
         }
@@ -98,8 +99,9 @@ class HomeAdapter(
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SectionedViewHolder? =
             parent?.let {
                 when (viewType) {
-                    0 -> CounterItemHolder(it.inflate(R.layout.item_home_counters))
-                    1, 2 ->
+                    0 -> ButtonsItemHolder(it.inflate(R.layout.item_home_buttons))
+                    1 -> CounterItemHolder(it.inflate(R.layout.item_home_counters))
+                    2, 3 ->
                         AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
                     else -> SectionedHeaderViewHolder(it.inflate(R.layout.item_section_header))
                 }
@@ -107,9 +109,9 @@ class HomeAdapter(
     
     override fun getItemCount(section: Int): Int {
         return when (section) {
-            0 -> 1
-            1 -> list.filter { it.isAnApp }.size
-            2 -> list.filter { !it.isAnApp }.size
+            0, 1 -> 1
+            2 -> list.filter { it.isAnApp }.size
+            3 -> list.filter { !it.isAnApp }.size
             else -> 0
         }
     }
@@ -120,11 +122,19 @@ class HomeAdapter(
             relativePosition: Int,
             absolutePosition: Int
                                  ) {
+        (holder as? ButtonsItemHolder)?.let { bindButtons(it) }
         (holder as? CounterItemHolder)?.let { bindCounters(it) }
         (holder as? AppLinkItemHolder)?.let { bindAppsAndLinks(it, section, relativePosition) }
     }
     
     override fun onBindFooterViewHolder(holder: SectionedViewHolder?, section: Int) {}
+    
+    private fun bindButtons(holder: ButtonsItemHolder) {
+        val enabled = (activity as? BaseBlueprintActivity)?.donationsEnabled ?: false
+        holder.bind(enabled) {
+            (activity as? BaseBlueprintActivity)?.doDonation()
+        }
+    }
     
     private fun bindCounters(holder: CounterItemHolder) {
         val bgColor = activity?.tilesColor ?: Color.parseColor("#e0e0e0")
@@ -212,6 +222,6 @@ class HomeAdapter(
     
     private fun bindAppsAndLinks(holder: AppLinkItemHolder, section: Int, position: Int) {
         holder.setItem(
-                list.filter { if (section == 1) it.isAnApp else !it.isAnApp }[position], listener)
+                list.filter { if (section == 2) it.isAnApp else !it.isAnApp }[position], listener)
     }
 }

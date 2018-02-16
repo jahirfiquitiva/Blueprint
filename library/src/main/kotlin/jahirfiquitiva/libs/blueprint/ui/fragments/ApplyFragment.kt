@@ -46,7 +46,7 @@ class ApplyFragment : ViewModelFragment<Launcher>() {
     private var launchersViewModel: LaunchersViewModel? = null
     
     private val adapter: LaunchersAdapter? by lazy {
-        LaunchersAdapter(Glide.with(this)) { onItemClicked(it, false) }
+        LaunchersAdapter(context?.let { Glide.with(it) }) { onItemClicked(it, false) }
     }
     
     override fun initViewModel() {
