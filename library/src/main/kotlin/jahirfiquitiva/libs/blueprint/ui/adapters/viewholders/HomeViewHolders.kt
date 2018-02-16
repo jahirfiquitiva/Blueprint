@@ -17,30 +17,24 @@ package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import ca.allanwang.kau.utils.gone
-import ca.allanwang.kau.utils.shareText
 import ca.allanwang.kau.utils.tint
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
-import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.context
 import jahirfiquitiva.libs.kauextensions.extensions.dimenPixelSize
-import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getIconResource
 import jahirfiquitiva.libs.kauextensions.extensions.integer
-import jahirfiquitiva.libs.kauextensions.extensions.openLink
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
@@ -113,29 +107,6 @@ class PreviewCardHolder(
                     iconsPreviewRV?.adapter = iconsAdapter
             }
         } catch (ignored: Exception) {
-        }
-    }
-}
-
-class ButtonsItemHolder(itemView: View) : SectionedViewHolder(itemView) {
-    private val rateBtn: AppCompatButton? by bind(R.id.rate_btn)
-    private val shareBtn: AppCompatButton? by bind(R.id.share_btn)
-    private val donateBtn: AppCompatButton? by bind(R.id.donate_btn)
-    
-    fun bind(showDonateBtn: Boolean = false, onDonate: () -> Unit = {}) {
-        rateBtn?.setOnClickListener {
-            context.openLink(PLAY_STORE_LINK_PREFIX + context.packageName)
-        }
-        shareBtn?.setOnClickListener {
-            context.shareText(
-                    context.getString(
-                            R.string.share_this_app, context.getAppName(),
-                            PLAY_STORE_LINK_PREFIX + context.packageName))
-        }
-        if (showDonateBtn) {
-            donateBtn?.setOnClickListener { onDonate() }
-        } else {
-            donateBtn?.gone()
         }
     }
 }
