@@ -146,20 +146,21 @@ If you found this app/library helpful and want to thank me, you can:
 
 **Thanks in advance!** :pray:
 
-## Special Thanks:
+## Special thanks 🙌
 
-- [Sherry Sabatine](https://plus.google.com/+SherrySabatine). Thanks to her, Blueprint is completely free and open-source.
-- [Allan Wang](https://www.allanwang.ca/)
-- [James Fenn](https://theandroidmaster.github.io/)
-- [Maximilian Keppeler](https://plus.google.com/+MaxKeppeler)
-- [Sasi Kanth](https://plus.google.com/+Sasikanth)
-- [Alexandre Piveteau](https://github.com/alexandrepiveteau)
-- [Lukas Koller](https://github.com/kollerlukas)
-- [Patryk Goworowski](https://plus.google.com/+PatrykGoworowski)
-- [Lumiq Creative](https://plus.google.com/+LumiqCreative)
-- [Kevin Aguilar](http://kevaguilar.com/)
-- [Eduardo Pratti](https://plus.google.com/+EduardoPratti/posts)
-- [Anthony Nguyen](https://plus.google.com/+AHNguyen)
+- [Sherry Sabatine](https://plus.google.com/+SherrySabatine) 💵
+- [Allan Wang](https://www.allanwang.ca/) 💻
+- [James Fenn](https://theandroidmaster.github.io/) 🔌
+- [Maximilian Keppeler](https://plus.google.com/+MaxKeppeler) 🔌
+- [Sasi Kanth](https://plus.google.com/+Sasikanth) 🔌
+- [Alexandre Piveteau](https://github.com/alexandrepiveteau) 💻
+- [Lukas Koller](https://github.com/kollerlukas) 🔌
+- [Patryk Goworowski](https://plus.google.com/+PatrykGoworowski) 🎨
+- [Lumiq Creative](https://plus.google.com/+LumiqCreative) 🎨
+- [Jackson Hayes](https://jacksonhayes.xyz/) 📖
+- [Kevin Aguilar](http://kevaguilar.com/) 🎨
+- [Eduardo Pratti](https://plus.google.com/+EduardoPratti) 🎨
+- [Anthony Nguyen](https://plus.google.com/+AHNguyen) 🎨
 
 ---
 

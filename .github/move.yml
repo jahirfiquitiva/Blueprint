@@ -1,0 +1,6 @@
+# Delete the command comment. Ignored when the comment also contains other content
+deleteCommand: true
+# Close the source issue after moving
+closeSourceIssue: true
+# Lock the source issue after moving
+lockSourceIssue: true

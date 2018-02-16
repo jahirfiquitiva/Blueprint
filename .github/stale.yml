@@ -6,15 +6,15 @@ exemptLabels:
 staleLabel: stale
 
 markComment: >
-  This issue has been automatically marked as stale because it has not had activity in the last three (3) days. It will be closed if no further activity occurs within the next seven (7) days. Thank you for your contributions.
+  This issue has been automatically marked as stale because it has not had activity in the last three (3) days. It will be closed if no further activity occurs within the next four (4) days. Thank you for your contributions.
 unmarkComment: >
   Thanks for updating this issue. It is no longer marked as stale.
 closeComment: false
 
 pulls:
-  daysUntilStale: 10
-  daysUntilClose: 30
+  daysUntilStale: 5
+  daysUntilClose: 10
   markComment: >
-   This pull request has been automatically marked as stale because it has not had activity in the last ten (10) days. It will be closed if no further activity occurs within the next thirty (30) days. Thank you for your contributions.
+   This pull request has been automatically marked as stale because it has not had activity in the last five (5) days. It will be closed if no further activity occurs within the next five (5) days. Thank you for your contributions.
   unmarkComment: >
     Thanks for updating this pull request. It is no longer marked as stale.
