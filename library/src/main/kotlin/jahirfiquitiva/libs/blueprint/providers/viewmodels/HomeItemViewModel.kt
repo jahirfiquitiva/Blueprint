@@ -35,7 +35,7 @@ class HomeItemViewModel : ListViewModel<Context, HomeItem>() {
         if (titles.size == descriptions.size && descriptions.size == icons.size
                 && icons.size == urls.size) {
             for (i in 0 until titles.size) {
-                if (list.size >= 6) continue
+                if (list.size >= 6) break
                 val url = urls[i]
                 val isAnApp = url.toLowerCase().startsWith(PLAY_STORE_LINK_PREFIX)
                 var isInstalled = false
