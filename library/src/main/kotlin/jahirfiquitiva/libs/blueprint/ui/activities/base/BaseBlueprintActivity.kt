@@ -246,7 +246,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
             filters.forEach {
                 if (colorIndex >= colors.size) colorIndex = 0
                 val name = it.formatCorrectly().blueprintFormat()
-                if (!(name.equals("all", true))) {
+                if (!(name.contains("all", true))) {
                     builder.addDrawerItems(
                             FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
                                     .withColor(Color.parseColor(colors[colorIndex]))
@@ -432,7 +432,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
         menu.setItemVisibility(R.id.help, hasBottomNavigation())
     }
     
-    private fun lockFiltersDrawer(lock: Boolean) {
+    fun lockFiltersDrawer(lock: Boolean) {
         filtersDrawer?.drawerLayout?.setDrawerLockMode(
                 if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
                 Gravity.END)

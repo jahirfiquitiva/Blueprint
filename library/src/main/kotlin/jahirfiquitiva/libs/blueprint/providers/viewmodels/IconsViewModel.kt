@@ -68,27 +68,36 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                     }
                     event = parser.next()
                 }
-            } catch (ignored: Exception) {
+                if (category != null && category.hasIcons()) {
+                    categories.add(category)
+                }
+            } catch (e: Exception) {
+                Log.e(param.getAppName(), e.message)
+                e.printStackTrace()
             } finally {
                 parser?.close()
             }
         } else {
             param.stringArray(R.array.icon_filters).forEach {
-                val icons = ArrayList<Icon>()
-                param.stringArray(
-                        param.resources.getIdentifier(it, "array", param.packageName)).forEach {
-                    val iconRes = param.getResource(it)
-                    if (iconRes > 0) {
-                        icons += Icon(it.formatCorrectly().blueprintFormat(), iconRes)
-                    } else {
-                        Log.e(param.getAppName(), "Could NOT find icon with name '$it'")
+                try {
+                    val icons = ArrayList<Icon>()
+                    param.stringArray(
+                            param.resources.getIdentifier(it, "array", param.packageName)).forEach {
+                        val iconRes = param.getResource(it)
+                        if (iconRes > 0) {
+                            icons += Icon(it.formatCorrectly().blueprintFormat(), iconRes)
+                        } else {
+                            Log.e(param.getAppName(), "Could NOT find icon with name '$it'")
+                        }
                     }
-                }
-                val filteredIcons = ArrayList(icons.distinctBy { it.name }.sortedBy { it.name })
-                if (filteredIcons.isNotEmpty()) {
-                    val category = IconsCategory(it.formatCorrectly().blueprintFormat())
-                    category.setIcons(filteredIcons)
-                    categories.add(category)
+                    val filteredIcons = ArrayList(icons.distinctBy { it.name }.sortedBy { it.name })
+                    if (filteredIcons.isNotEmpty()) {
+                        val category = IconsCategory(it.formatCorrectly().blueprintFormat())
+                        category.setIcons(filteredIcons)
+                        categories.add(category)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         }

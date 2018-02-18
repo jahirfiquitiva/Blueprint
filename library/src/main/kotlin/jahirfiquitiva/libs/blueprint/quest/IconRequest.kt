@@ -584,6 +584,7 @@ class IconRequest private constructor() {
         }
         
         if (requestError) {
+            cleanFiles(true)
             onRequestProgress?.doOnError()
             return
         }
@@ -595,7 +596,8 @@ class IconRequest private constructor() {
             Thread {
                 onRequestProgress?.doWhenStarted()
                 
-                val filesToZip = ArrayList<File>()
+                val emailZipFiles = ArrayList<File>()
+                val arcticZipFiles = ArrayList<File>()
                 
                 builder?.saveDir?.wipe()
                 builder?.saveDir?.mkdirs()
@@ -619,13 +621,17 @@ class IconRequest private constructor() {
                     icon ?: continue
                     
                     val file = File(builder?.saveDir, "$iconName.png")
+                    val arcticFile = File(builder?.saveDir, "${app.pckg}.png")
                     appNames.add(iconName)
-                    filesToZip.add(file)
+                    emailZipFiles.add(file)
+                    arcticZipFiles.add(arcticFile)
                     try {
                         file.saveIcon(icon)
+                        arcticFile.saveIcon(icon)
                     } catch (e: Exception) {
                         e.printStackTrace()
                         postError("Failed to save icon \'$iconName\' due to error: ${e.message}", e)
+                        cleanFiles(true)
                         onRequestProgress?.doOnError()
                         return@Thread
                     }
@@ -733,13 +739,13 @@ class IconRequest private constructor() {
                 if (xmlSb != null) {
                     xmlSb.append("\n\n</resources>")
                     val newAppFilter = File(builder?.saveDir, "appfilter_$date.xml")
-                    filesToZip.add(newAppFilter)
+                    emailZipFiles.add(newAppFilter)
                     try {
                         newAppFilter.saveAll(xmlSb.toString())
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        postError(
-                                "Failed to write your request appfilter.xml file: ${e.message}", e)
+                        postError("Failed to save appfilter.xml file: ${e.message}", e)
+                        cleanFiles(true)
                         onRequestProgress?.doOnError()
                         return@Thread
                     }
@@ -749,12 +755,13 @@ class IconRequest private constructor() {
                 if (amSb != null) {
                     amSb.append("\n\n</appmap>")
                     val newAppFilter = File(builder?.saveDir, "appmap_$date.xml")
-                    filesToZip.add(newAppFilter)
+                    emailZipFiles.add(newAppFilter)
                     try {
                         newAppFilter.saveAll(amSb.toString())
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        postError("Failed to write your request appmap.xml file: ${e.message}", e)
+                        postError("Failed to save appmap.xml file: ${e.message}", e)
+                        cleanFiles(true)
                         onRequestProgress?.doOnError()
                         return@Thread
                     }
@@ -763,14 +770,13 @@ class IconRequest private constructor() {
                 if (trSb != null) {
                     trSb.append("\n\n</Theme>")
                     val newAppFilter = File(builder?.saveDir, "theme_resources_$date.xml")
-                    filesToZip.add(newAppFilter)
+                    emailZipFiles.add(newAppFilter)
                     try {
                         newAppFilter.saveAll(trSb.toString())
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        postError(
-                                "Failed to write your request theme_resources.xml file: ${e.message}",
-                                e)
+                        postError("Failed to save theme_resources.xml file: ${e.message}", e)
+                        cleanFiles(true)
                         onRequestProgress?.doOnError()
                         return@Thread
                     }
@@ -779,21 +785,11 @@ class IconRequest private constructor() {
                 
                 if (jsonSb != null) {
                     jsonSb.append("\n\t]\n}")
-                    val newAppFilter = File(builder?.saveDir, "appfilter_$date.json")
-                    filesToZip.add(newAppFilter)
-                    try {
-                        newAppFilter.saveAll(jsonSb.toString())
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                        postError(
-                                "Failed to write your request appfilter.json file: ${e.message}", e)
-                        onRequestProgress?.doOnError()
-                        return@Thread
-                    }
                 }
                 
-                if (filesToZip.size == 0) {
+                if (emailZipFiles.isEmpty() || arcticZipFiles.isEmpty()) {
                     postError("There are no files to put into the ZIP archive.", null)
+                    cleanFiles(true)
                     onRequestProgress?.doOnError()
                     return@Thread
                 }
@@ -811,7 +807,8 @@ class IconRequest private constructor() {
                     try {
                         val zipFile = buildZip(
                                 date,
-                                ArrayList(filesToZip.filter { it.name.endsWith("png", true) }))
+                                ArrayList(arcticZipFiles.filter { it.name.endsWith("png", true) }))
+                        cleanFiles()
                         if (zipFile != null) {
                             val form = MultipartForm()
                             form.add("archive", zipFile)
@@ -828,6 +825,7 @@ class IconRequest private constructor() {
                             cleanFiles(true)
                             onRequestProgress?.doWhenReady(true)
                         } else {
+                            cleanFiles(true)
                             onRequestProgress?.doOnError()
                         }
                     } catch (e: Exception) {
@@ -840,18 +838,20 @@ class IconRequest private constructor() {
                             Log.e(builder?.context?.getAppName() ?: "Blueprint", errors.toString())
                         } catch (ignored: Exception) {
                         }
-                        val zipFile = buildZip(date, filesToZip)
+                        val zipFile = buildZip(date, emailZipFiles)
                         if (zipFile != null) {
                             sendRequestViaEmail(zipFile, onRequestProgress)
                         } else {
+                            cleanFiles(true)
                             onRequestProgress?.doOnError()
                         }
                     }
                 } else {
-                    val zipFile = buildZip(date, filesToZip)
+                    val zipFile = buildZip(date, emailZipFiles)
                     if (zipFile != null) {
                         sendRequestViaEmail(zipFile, onRequestProgress)
                     } else {
+                        cleanFiles(true)
                         onRequestProgress?.doOnError()
                     }
                 }

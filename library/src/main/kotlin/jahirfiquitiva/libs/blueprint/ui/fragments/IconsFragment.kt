@@ -25,6 +25,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.GridLayoutManager
+import android.view.MotionEvent
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.integer
@@ -99,11 +100,11 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     override fun registerObserver() {
-        model?.observe(this) { icons ->
-            setAdapterItems(ArrayList(icons))
+        model?.observe(this) { categories ->
+            setAdapterItems(ArrayList(categories))
             (activity as? BaseBlueprintActivity)?.let {
                 val filters = ArrayList<String>()
-                icons.forEach { filters += it.title }
+                categories.forEach { filters += it.title }
                 it.initFiltersDrawer(filters)
             }
         }
@@ -163,6 +164,18 @@ class IconsFragment : ViewModelFragment<Icon>() {
         if (hasBottomNav) {
             recyclerView?.setPaddingBottom(64.dpToPx)
             fastScroller?.setPaddingBottom(48.dpToPx)
+        }
+        
+        fastScroller?.setOnHandleTouchListener { _, e ->
+            when (e.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    (activity as? BaseBlueprintActivity)?.lockFiltersDrawer(true)
+                }
+                MotionEvent.ACTION_UP -> {
+                    (activity as? BaseBlueprintActivity)?.lockFiltersDrawer(false)
+                }
+            }
+            true
         }
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)

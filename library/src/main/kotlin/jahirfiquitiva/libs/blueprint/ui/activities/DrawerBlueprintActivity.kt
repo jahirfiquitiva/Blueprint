@@ -138,7 +138,8 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
                             .withName(it.title)
                             .withIcon(drawable(it.icon, null))
                             .withIconTintingEnabled(true)
-                            .withSelectedColor(tilesColor))
+                            .withSelectedColor(tilesColor)
+                            .withSelectedBackgroundAnimated(false))
         }
         
         if (hasTemplates) {
