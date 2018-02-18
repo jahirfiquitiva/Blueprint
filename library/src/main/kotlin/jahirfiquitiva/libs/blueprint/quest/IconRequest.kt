@@ -596,6 +596,10 @@ class IconRequest private constructor() {
             Thread {
                 onRequestProgress?.doWhenStarted()
                 
+                val host = builder?.apiHost.orEmpty()
+                val apiKey = builder?.apiKey.orEmpty()
+                val uploadToArctic = host.hasContent() && apiKey.hasContent()
+                
                 val emailZipFiles = ArrayList<File>()
                 val arcticZipFiles = ArrayList<File>()
                 
@@ -621,13 +625,18 @@ class IconRequest private constructor() {
                     icon ?: continue
                     
                     val file = File(builder?.saveDir, "$iconName.png")
-                    val arcticFile = File(builder?.saveDir, "${app.pckg}.png")
                     appNames.add(iconName)
                     emailZipFiles.add(file)
-                    arcticZipFiles.add(arcticFile)
+                    
+                    val arcticFile: File? = if (uploadToArctic) {
+                        val ff = File(builder?.saveDir, "${app.pckg}.png")
+                        arcticZipFiles.add(ff)
+                        ff
+                    } else null
+                    
                     try {
                         file.saveIcon(icon)
-                        arcticFile.saveIcon(icon)
+                        arcticFile?.saveIcon(icon)
                     } catch (e: Exception) {
                         e.printStackTrace()
                         postError("Failed to save icon \'$iconName\' due to error: ${e.message}", e)
@@ -787,17 +796,14 @@ class IconRequest private constructor() {
                     jsonSb.append("\n\t]\n}")
                 }
                 
-                if (emailZipFiles.isEmpty() || arcticZipFiles.isEmpty()) {
+                if (emailZipFiles.isEmpty() || (uploadToArctic && arcticZipFiles.isEmpty())) {
                     postError("There are no files to put into the ZIP archive.", null)
                     cleanFiles(true)
                     onRequestProgress?.doOnError()
                     return@Thread
                 }
                 
-                val host = builder?.apiHost.orEmpty()
-                val apiKey = builder?.apiKey.orEmpty()
-                
-                if (host.hasContent() && apiKey.hasContent()) {
+                if (uploadToArctic) {
                     Bridge.config()
                             .host(host)
                             .defaultHeader("TokenID", apiKey)
