@@ -1,6 +1,6 @@
 requestInfoReplyComment: >
   I would appreciate it if you could provide us with more info about this issue/pr!
-requestInfoLabelToAdd: needs info
+requestInfoLabelToAdd: "needs info"
 
 newPRWelcomeComment: >
   Thanks so much for opening your first PR here :smiley:. Please be sure to check the [contribution guidelines](https://github.com/jahirfiquitiva/Blueprint/blob/sample/.github/CONTRIBUTING.md)! :wink:
