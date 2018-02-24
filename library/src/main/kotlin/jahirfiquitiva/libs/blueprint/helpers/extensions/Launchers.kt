@@ -91,7 +91,7 @@ val Context.supportedLaunchers: ArrayList<Launcher>
                     "Pixel Launcher", arrayOf("com.google.android.apps.nexuslauncher"),
                     color(R.color.pixel_launcher_color), false),
             Launcher(
-                    "S Launcher", arrayOf("com.s.launcher"),
+                    "S Launcher", arrayOf("com.galaxy.s.launcher"),
                     color(R.color.s_launcher_color)),
             Launcher(
                     "Smart Launcher", arrayOf("ginlemon.flowerfree"),

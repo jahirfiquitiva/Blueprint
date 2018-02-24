@@ -416,8 +416,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
         val isInIconsSection = item.id == DEFAULT_ICONS_POSITION
-        menu.setItemVisibility(
-                R.id.donate, donationsEnabled && item.id != DEFAULT_HOME_POSITION)
+        menu.setItemVisibility(R.id.donate, donationsEnabled)
         menu.setItemVisibility(
                 R.id.search,
                 if (isInIconsSection) iconsFilters.isNotEmpty() else item.id != DEFAULT_HOME_POSITION)
