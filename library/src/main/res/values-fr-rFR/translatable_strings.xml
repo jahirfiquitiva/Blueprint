@@ -38,6 +38,12 @@
   <string name="general_info">Informations générales</string>
   <string name="useful_links">Liens utiles</string>
   <string name="columns">Nombre de colonnes</string>
+  <string name="lni_content">%1$s n\'est actuellement pas installée sur votre appareil.\nVoulez vous l\'installer depuis le Google Play Store?</string>
+  <string name="no_compatible_launcher_title">Ce launcher n\'est PAS compatible</string>
+  <string name="no_compatible_launcher_content">Ce launcher n\'est PAS compatible avec les Packs d\'icônes et par conséquent, vous ne pouvez pas utiliser ce pack d\'icônes avec ce launcher. Veuillez ne pas noter ce pack d\'icônes de façon négative pour ce motif. Il existe une solution que vous pouvez essayer par vous-même, mais elle nécessite l\'utilisation d\'une application externe. Souhaitez vous la télécharger?</string>
+  <string name="impossible_open_themes">Impossible d\'ouvrir l\'application de thèmes</string>
+  <string name="themes_app_not_installed">L\'application de thèmes n\'est pas installé sur cet appareil</string>
+  <string name="included_templates">%1$s thèmes</string>
   <!-- Widgets Names -->
   <!-- Requests -->
   <!-- Preferences -->
