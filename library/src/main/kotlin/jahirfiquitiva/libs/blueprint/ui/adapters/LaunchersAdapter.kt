@@ -23,7 +23,7 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.LauncherViewHolder
 
-class LaunchersAdapter(
+internal class LaunchersAdapter(
         private val manager: RequestManager?,
         private val listener: (Launcher) -> Unit = {}
                       ) :

@@ -27,87 +27,119 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
+import jahirfiquitiva.libs.kauextensions.extensions.stringArray
 
-val Context.supportedLaunchers: ArrayList<Launcher>
+internal val Context.supportedLaunchers: ArrayList<Launcher>
     get() = arrayListOf(
             Launcher(
+                    "action",
                     "Action Launcher", arrayOf("com.actionlauncher.playstore"),
                     color(R.color.action_launcher_color)),
             Launcher(
+                    "adw",
                     "ADW Launcher", arrayOf("org.adw.launcher"),
                     color(R.color.adw_launcher_color)),
             Launcher(
+                    "adwex",
                     "ADW Ex Launcher", arrayOf("org.adwfreak.launcher"),
                     color(R.color.adw_ex_launcher_color)),
             Launcher(
+                    "apex",
                     "Apex Launcher", arrayOf("com.anddoes.launcher"),
                     color(R.color.apex_launcher_color)),
             Launcher(
+                    "atom",
                     "Atom Launcher", arrayOf("com.dlto.atom.launcher"),
                     color(R.color.atom_launcher_color)),
             Launcher(
+                    "aviate",
                     "Aviate Launcher", arrayOf("com.tul.aviate"),
                     color(R.color.aviate_launcher_color)),
             Launcher(
+                    "lineageos",
                     "LineageOS Theme Engine",
                     arrayOf(
                             "org.cyanogenmod.theme.chooser", "org.cyanogenmod.theme.chooser2",
                             "com.cyngn.theme.chooser"),
                     color(R.color.cm_theme_engine_color)),
             Launcher(
+                    "go",
                     "Go Launcher", arrayOf("com.gau.go.launcherex"),
                     color(R.color.go_launcher_color)),
             Launcher(
+                    "googlenow",
                     "Google Now Launcher", arrayOf("com.google.android.launcher"),
                     color(R.color.google_now_launcher_color), false),
             Launcher(
+                    "holo",
                     "Holo Launcher", arrayOf("com.mobint.hololauncher"),
                     color(R.color.holo_launcher_color)),
             Launcher(
+                    "holoics",
                     "Holo Launcher ICS", arrayOf("com.mobint.hololauncher.hd"),
                     color(R.color.holo_ics_launcher_color)),
             Launcher(
+                    "kk",
                     "KK Launcher", arrayOf("com.kk.launcher"),
                     color(R.color.kk_launcher_color)),
             Launcher(
+                    "lg",
                     "LG Home", arrayOf("com.lge.launcher2"),
                     color(R.color.lg_home_color)),
             Launcher(
+                    "l",
                     "L Launcher", arrayOf("com.l.launcher"),
                     color(R.color.l_launcher_color)),
             Launcher(
+                    "lucid",
                     "Lucid Launcher", arrayOf("com.powerpoint45.launcher"),
                     color(R.color.lucid_launcher_color)),
             Launcher(
+                    "mini",
                     "Mini Launcher", arrayOf("com.jiubang.go.mini.launcher"),
                     color(R.color.mini_launcher_color)),
             Launcher(
+                    "next",
                     "Next Launcher", arrayOf("com.gtp.nextlauncher"),
                     color(R.color.next_launcher_color)),
             Launcher(
+                    "nova",
                     "Nova Launcher", arrayOf("com.teslacoilsw.launcher"),
                     color(R.color.nova_launcher_color)),
             Launcher(
+                    "pixel",
                     "Pixel Launcher", arrayOf("com.google.android.apps.nexuslauncher"),
                     color(R.color.pixel_launcher_color), false),
             Launcher(
+                    "s",
                     "S Launcher", arrayOf("com.galaxy.s.launcher"),
                     color(R.color.s_launcher_color)),
             Launcher(
+                    "smart",
                     "Smart Launcher", arrayOf("ginlemon.flowerfree"),
                     color(R.color.smart_launcher_color)),
             Launcher(
+                    "smartpro",
                     "Smart Launcher Pro", arrayOf("ginlemon.flowerpro"),
                     color(R.color.smart_pro_launcher_color)),
             Launcher(
+                    "solo",
                     "Solo Launcher", arrayOf("home.solo.launcher.free"),
                     color(R.color.solo_launcher_color)),
             Launcher(
+                    "tsf",
                     "TSF Launcher", arrayOf("com.tsf.shell"),
                     color(R.color.tsf_launcher_color)),
             Launcher(
+                    "unicon",
                     "Unicon", arrayOf("sg.ruqqq.IconThemer"),
                     color(R.color.unicon_pro_color)))
+
+internal val Context.enabledLaunchers: ArrayList<Launcher>
+    get() {
+        val enabled = stringArray(R.array.launchers)
+        return ArrayList(supportedLaunchers.filter { enabled.contains(it.key) })
+    }
 
 fun Context.executeLauncherIntent(launcherKey: String) {
     if (launcherKey.isEmpty()) return
@@ -153,7 +185,7 @@ private fun Context.executeIconPacksNotSupportedIntent() {
     }
 }
 
-fun Context.showLauncherNotInstalledDialog(item: Launcher) {
+internal fun Context.showLauncherNotInstalledDialog(item: Launcher) {
     materialDialog {
         title(item.name)
         content(getString(R.string.lni_content, item.name))
@@ -363,7 +395,7 @@ private fun Context.executeUniconIntent() {
     startActivity(unicon)
 }
 
-val Context.defaultLauncher: Launcher?
+internal val Context.defaultLauncher: Launcher?
     get() {
         val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
         val resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)

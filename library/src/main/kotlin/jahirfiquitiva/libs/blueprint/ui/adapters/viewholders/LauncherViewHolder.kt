@@ -48,7 +48,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
 import jahirfiquitiva.libs.kauextensions.extensions.withAlpha
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
 
-class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val itemLayout: CustomCardView? by bind(R.id.launcher_item)
     val bg: LinearLayout? by bind(R.id.launcher_bg)
     val iconView: ImageView? by bind(R.id.launcher_icon)

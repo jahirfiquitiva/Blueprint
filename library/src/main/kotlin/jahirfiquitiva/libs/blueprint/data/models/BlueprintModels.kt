@@ -56,10 +56,13 @@ data class IconsCategory(val title: String) {
 }
 
 @Suppress("ArrayInDataClass")
-data class Launcher(
-        val name: String, val packageNames: Array<String>, @ColorInt val color: Int,
+internal data class Launcher(
+        val key: String,
+        val name: String,
+        val packageNames: Array<String>,
+        @ColorInt val color: Int,
         val isActuallySupported: Boolean = true
-                   ) {
+                            ) {
     fun hasPackage(packageName: String): Boolean {
         packageNames.forEach {
             if (it.equals(packageName, true)) return true

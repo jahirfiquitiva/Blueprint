@@ -40,7 +40,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.hasContent
 import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
 
 @Suppress("DEPRECATION")
-class ApplyFragment : ViewModelFragment<Launcher>() {
+internal class ApplyFragment : ViewModelFragment<Launcher>() {
     
     private var recyclerView: EmptyViewRecyclerView? = null
     private var launchersViewModel: LaunchersViewModel? = null
@@ -100,9 +100,10 @@ class ApplyFragment : ViewModelFragment<Launcher>() {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
             setAdapterItems(
-                    ArrayList(launchersViewModel?.getData().orEmpty().filter {
-                        it.name.contains(filter, true)
-                    }))
+                    ArrayList(
+                            launchersViewModel?.getData().orEmpty().filter {
+                                it.name.contains(filter, true)
+                            }))
         } else {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)
