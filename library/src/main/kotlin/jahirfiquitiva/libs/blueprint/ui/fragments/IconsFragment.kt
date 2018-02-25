@@ -166,6 +166,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             fastScroller?.setPaddingBottom(48.dpToPx)
         }
         
+        /*
         fastScroller?.setOnHandleTouchListener { _, e ->
             when (e.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
@@ -177,6 +178,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             }
             true
         }
+        */
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)
