@@ -72,6 +72,8 @@
   <string name="requests_error">Hubo un error al cargar las aplicaciones para solicitar. \nPresiona aquí para reintentar.</string>
   <string name="loading_apps_to_request">Cargando aplicaciones para solicitar…</string>
   <string name="building_request_dialog">Creando archivos de petición…</string>
+  <string name="request_upload_success">Correcto!</string>
+  <string name="request_upload_success_content">La solicitud se ha subido a nuestro servidor con éxito.</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">Habilitar el uso de fondo de pantalla en vista previa de iconos</string>
   <string name="pref_summary_wall_header">Aparecerá tu fondo de pantalla actual.</string>
@@ -103,10 +105,10 @@
     <item>¿Por qué la aplicación necesita permiso para evitar que el teléfono de dormir?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
+    <item>Necesitas un launcher con soporte para paquetes de íconos. Revisa la descripción de Google Play Store para ver los launchers compatibles. Si no estás seguro de qué launcher usar, sólo ve a la sección \"Aplicar\" y escoge uno de la lista.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
     <item>Deslice el NavigationDrawer desde la izquierda, ir a la sección \"Iconos\", o volver a la sección principal de la aplicación y pulse el botón que dice \"Iconos\".</item>
-    <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
+    <item>Según el lanzador que usas, el proceso puede ser ligeramente diferente o no estar disponible. En la mayoría de los casos, sin embargo, elegir un icono personalizado es posible mediante una pulsación larga sobre el icono que deseas modificar o arrastrando hasta el campo de edición en la parte superior de la pantalla.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
     <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
