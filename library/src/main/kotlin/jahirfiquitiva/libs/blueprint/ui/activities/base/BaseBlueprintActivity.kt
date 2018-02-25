@@ -364,16 +364,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerIt
             cancelable(false)
             canceledOnTouchOutside(false)
         }
-        postDelayed(10) {
-            dialog?.show()
-            pager?.gone()
-            initFragments()
-            updateUI(getNavigationItemWithId(currentItemId))
-            postDelayed(90) {
-                pager?.visible()
-                destroyDialog()
-            }
-        }
+        pager?.gone()
+        dialog?.show()
+        initFragments()
+        navigateToItem(getNavigationItemWithId(currentItemId), true, true)
     }
     
     internal open fun navigateToItem(
