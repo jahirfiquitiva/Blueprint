@@ -44,8 +44,25 @@
   <string name="impossible_open_themes">Impossible d\'ouvrir l\'application de thèmes</string>
   <string name="themes_app_not_installed">L\'application de thèmes n\'est pas installé sur cet appareil</string>
   <string name="included_templates">%1$s thèmes</string>
+  <string name="launcher_icon_restored">L\'icône de l\'application %1$s a été restauré</string>
+  <string name="launcher_icon_not_restored">L\'icône de l\'application %1$s est déjà visible</string>
+  <string name="launcher_icon_restorer_error">Il y a un problème avec le code de %1$s. S’il vous plaît contacter son développeur.</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">Widget restaurateur d\'icône</string>
+  <string name="clock_widget_title">Horloge analogique</string>
+  <string name="search_icons">Rechercher d\'icônes</string>
+  <string name="search_wallpapers">Recherche de fonds d’écran</string>
+  <string name="search_launchers">Recherche de launchers</string>
+  <string name="search_apps">Recherche d\'applications</string>
+  <string name="seconds">Secondes</string>
+  <string name="minutes">Minutes</string>
+  <string name="hours">Heures</string>
+  <string name="days">Jours</string>
+  <string name="weeks">Semaines</string>
+  <string name="months">Mois</string>
   <!-- Requests -->
+  <string name="select_all">Tout selectionner</string>
+  <string name="no_selected_apps_title">Aucune applications sélectionnées</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
