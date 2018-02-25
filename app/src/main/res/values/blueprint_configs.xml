@@ -23,11 +23,15 @@
     <string name="email_subject">Blueprint</string>
     <string name="request_title">Blueprint Icon Request</string>
 
-    <!-- This are the strings for the cards in the main screen -->
-    <string name="welcome_title">Welcome to Blueprint</string>
-
     <!-- Strings for Wallpapers and Requests -->
     <string name="request_save_location">%1$s/Blueprint/Requests/</string>
+
+    <!--
+        Do you want to show the general information in home section?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="show_info">true</bool>
 
     <!--
         Set a drawable name in case you want to use a static picture for icons preview.
