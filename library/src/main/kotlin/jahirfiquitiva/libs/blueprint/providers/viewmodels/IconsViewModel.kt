@@ -101,6 +101,6 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                 }
             }
         }
-        return ArrayList(categories.distinctBy { it.title }.sortedBy { it.title })
+        return ArrayList(categories.distinctBy { it.title })
     }
 }
