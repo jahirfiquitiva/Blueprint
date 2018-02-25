@@ -17,6 +17,8 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
   <!-- List Of Drawer Sections -->
+  <string name="section_home">ホーム</string>
+  <string name="section_apply">適用</string>
   <!-- Icons filters -->
   <!-- Widgets Names -->
   <!-- Requests -->
