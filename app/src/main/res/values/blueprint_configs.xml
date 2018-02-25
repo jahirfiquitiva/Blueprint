@@ -27,6 +27,13 @@
     <string name="request_save_location">%1$s/Blueprint/Requests/</string>
 
     <!--
+        Do you want to show the general information in home section?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="show_info">true</bool>
+
+    <!--
         Set a drawable name in case you want to use a static picture for icons preview.
         Leave empty if you don't want to use a static one.
     -->

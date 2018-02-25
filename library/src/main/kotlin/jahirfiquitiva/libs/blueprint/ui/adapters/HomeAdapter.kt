@@ -18,6 +18,7 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 import android.app.Activity
 import android.graphics.Color
 import android.view.ViewGroup
+import ca.allanwang.kau.utils.boolean
 import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.inflate
@@ -50,6 +51,8 @@ class HomeAdapter(
     private val activity: Activity?
         get() = actv.get()
     
+    private val showInfo: Boolean = activity?.boolean(R.bool.show_info) ?: true
+    
     init {
         shouldShowHeadersForEmptySections(false)
         shouldShowFooters(false)
@@ -66,16 +69,20 @@ class HomeAdapter(
     }
     
     fun updateIconsCount(newCount: Int) {
-        iconsCount = newCount
-        notifySectionChanged(0)
+        if (showInfo) {
+            iconsCount = newCount
+            notifySectionChanged(0)
+        }
     }
     
     fun updateWallsCount(newCount: Int) {
-        wallsCount = newCount
-        notifySectionChanged(0)
+        if (showInfo) {
+            wallsCount = newCount
+            notifySectionChanged(0)
+        }
     }
     
-    override fun getSectionCount(): Int = 3
+    override fun getSectionCount(): Int = if (showInfo) 3 else 2
     
     override fun getItemViewType(section: Int, relativePosition: Int, absolutePosition: Int): Int =
             section
@@ -87,8 +94,14 @@ class HomeAdapter(
                                        ) {
         (holder as? SectionedHeaderViewHolder)?.let {
             when (section) {
-                0 -> it.setTitle(R.string.general_info)
-                1 -> it.setTitle(R.string.more_apps)
+                0 -> {
+                    if (showInfo) it.setTitle(R.string.general_info)
+                    else it.setTitle(R.string.more_apps)
+                }
+                1 -> {
+                    if (showInfo) it.setTitle(R.string.more_apps)
+                    else it.setTitle(R.string.useful_links)
+                }
                 2 -> it.setTitle(R.string.useful_links)
                 else -> it.setTitle("")
             }
@@ -98,7 +111,10 @@ class HomeAdapter(
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SectionedViewHolder? =
             parent?.let {
                 when (viewType) {
-                    0 -> CounterItemHolder(it.inflate(R.layout.item_home_counters))
+                    0 -> {
+                        if (showInfo) CounterItemHolder(it.inflate(R.layout.item_home_counters))
+                        else AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
+                    }
                     1, 2 ->
                         AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
                     else -> SectionedHeaderViewHolder(it.inflate(R.layout.item_section_header))
@@ -107,8 +123,8 @@ class HomeAdapter(
     
     override fun getItemCount(section: Int): Int {
         return when (section) {
-            0 -> 1
-            1 -> list.filter { it.isAnApp }.size
+            0 -> if (showInfo) 1 else list.filter { it.isAnApp }.size
+            1 -> list.filter { if (showInfo) it.isAnApp else !it.isAnApp }.size
             2 -> list.filter { !it.isAnApp }.size
             else -> 0
         }
@@ -211,7 +227,9 @@ class HomeAdapter(
     }
     
     private fun bindAppsAndLinks(holder: AppLinkItemHolder, section: Int, position: Int) {
+        val correctSection = if (showInfo) 1 else 0
         holder.setItem(
-                list.filter { if (section == 1) it.isAnApp else !it.isAnApp }[position], listener)
+                list.filter { if (section == correctSection) it.isAnApp else !it.isAnApp }[position],
+                listener)
     }
 }
