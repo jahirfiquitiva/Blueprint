@@ -22,16 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
-            android:id="@+id/bottom_navigation"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:clipToPadding="false"
-            app:elevation="8dp"/>
-
     <jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
@@ -66,5 +56,15 @@
             android:visibility="visible"
             app:fabSize="normal"
             app:backgroundTint="?attr/colorAccent"/>
+
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+            android:id="@+id/bottom_navigation"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:clipToPadding="false"
+            app:elevation="8dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
