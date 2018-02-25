@@ -16,8 +16,28 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">Blueprint Tableau de bord</string>
+  <string name="coming_soon">Prochainement</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">Accueil</string>
+  <string name="section_icons">Icônes</string>
+  <string name="section_apply">Appliquer</string>
+  <string name="section_wallpapers">Fonds d\'écran</string>
+  <string name="section_icon_request">Demande d\'icônes</string>
+  <string name="section_donate">Donation</string>
+  <string name="section_about">A Propos</string>
+  <string name="section_help">Aide</string>
+  <string name="section_zooper">Configuration Zooper</string>
+  <string name="section_widgets">Widgets</string>
+  <string name="share_this_app">J\'utilise %1$s et je l\'adore. Regarde ça: %2$s</string>
+  <string name="rate">Evaluer</string>
   <!-- Icons filters -->
+  <string name="filter">Filtrer</string>
+  <string name="clear">Effacer</string>
+  <string name="more_apps">Plus d\'applications</string>
+  <string name="general_info">Informations générales</string>
+  <string name="useful_links">Liens utiles</string>
+  <string name="columns">Nombre de colonnes</string>
   <!-- Widgets Names -->
   <!-- Requests -->
   <!-- Preferences -->
