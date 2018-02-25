@@ -63,7 +63,7 @@
   <!-- Requests -->
   <string name="select_all">Seleccionar todo</string>
   <string name="no_selected_apps_title">No hay aplicaciones seleccionadas</string>
-  <string name="no_selected_apps_content">No has seleccionado ninguna app para solicitar. Selecciona algunas antes de pulsar el FAB.</string>
+  <string name="no_selected_apps_content">No has seleccionado ninguna app para solicitar. Por favor, selecciona algunas y presiona el botón de nuevo.</string>
   <string name="apps_limit_dialog">Lo sentimos, pero sólo se pueden seleccionar %1$s aplicaciones para solicitar.</string>
   <string name="apps_limit_dialog_more">Lo sentimos, pero sólo se puede solicitar %1$s más aplicaciones por ahora.</string>
   <string name="apps_limit_dialog_day">Lo sentimos, pero sólo se puede solicitar los iconos cada %1$s.</string>
