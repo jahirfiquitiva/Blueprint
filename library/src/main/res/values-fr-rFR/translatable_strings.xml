@@ -63,6 +63,13 @@
   <!-- Requests -->
   <string name="select_all">Tout selectionner</string>
   <string name="no_selected_apps_title">Aucune applications sélectionnées</string>
+  <string name="no_selected_apps_content">Vous n\'avez pas sélectionné d\'applications pour votre demande. Merci de selectionnez quelques applications, puis pressez ce bouton à nouveau.</string>
+  <string name="apps_limit_dialog">Désolé, mais vous êtes seulement autorisé à sélectionner %1$s applications pour votre demande d\'icônes.</string>
+  <string name="apps_limit_dialog_more">Désolé, mais vous êtes seulement autorisé à demander %1$s applications pour l\'instant.</string>
+  <string name="apps_limit_dialog_day">Désolé, mais vous êtes seulement autorisé à demander des icônes chaque %1$s .</string>
+  <string name="apps_limit_dialog_day_extra">Vous serez en mesure de demander à nouveau des icônes, dans %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Vous serez en mesure de demander à nouveau des icônes, dans moins d\'une minute.</string>
+  <string name="requests_error">Une erreur est survenue lors du chargement de votre demande d\'icônes.\nAppuyez ici à nouveau.</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
