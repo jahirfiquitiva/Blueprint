@@ -16,10 +16,104 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">Blueprint 仪表盘</string>
+  <string name="coming_soon">即将到来</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">主页</string>
+  <string name="section_icons">图标</string>
+  <string name="section_apply">应用图标</string>
+  <string name="section_wallpapers">壁纸</string>
+  <string name="section_icon_request">申请图标适配</string>
+  <string name="section_donate">捐赠</string>
+  <string name="section_about">关于本应用</string>
+  <string name="section_help">帮助</string>
+  <string name="section_zooper">Zooper 部件设定</string>
+  <string name="section_widgets">小部件</string>
+  <string name="share_this_app">我正在使用%1$s，超喜欢它。快去看看！链接在此：%2$s</string>
+  <string name="rate">评分</string>
   <!-- Icons filters -->
+  <string name="filter">筛选</string>
+  <string name="clear">清除</string>
+  <string name="more_apps">更多应用</string>
+  <string name="general_info">信息概览</string>
+  <string name="useful_links">友情链接</string>
+  <string name="columns">列数</string>
+  <string name="no_compatible_launcher_title">该启动器不兼容</string>
+  <string name="impossible_open_themes">无法打开主题应用程序</string>
+  <string name="themes_app_not_installed">此设备尚未安装主题应用程序</string>
+  <string name="included_templates">%1$s个范例</string>
+  <string name="launcher_icon_restored">%1$s 启动器的图标已重置</string>
+  <string name="launcher_icon_not_restored">%1$s 启动器图标已可见</string>
+  <string name="launcher_icon_restorer_error">%1$s 的代码发生了一个问题。请联系它的开发者。</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">重置图标小部件</string>
+  <string name="clock_widget_title">模拟时钟</string>
+  <string name="search_icons">搜索图标</string>
+  <string name="search_wallpapers">搜索壁纸</string>
+  <string name="search_launchers">搜索启动器</string>
+  <string name="search_apps">搜索应用程序</string>
+  <string name="seconds">秒</string>
+  <string name="minutes">分钟</string>
+  <string name="hours">小时</string>
+  <string name="days">天</string>
+  <string name="weeks">周</string>
+  <string name="months">月</string>
   <!-- Requests -->
+  <string name="select_all">全选</string>
+  <string name="no_selected_apps_title">未选择应用程序</string>
+  <string name="apps_limit_dialog">很抱歉，您只被允许选择 %1$s 个应用程序来申请适配。</string>
+  <string name="apps_limit_dialog_more">很抱歉，您目前只被允许再选择另外 %1$s 个应用程序来申请适配。</string>
+  <string name="apps_limit_dialog_day">很抱歉，您只被允许每%1$s申请一次图标。</string>
+  <string name="apps_limit_dialog_day_extra">您将能够在%1$s后再次申请图标。</string>
+  <string name="apps_limit_dialog_day_extra_sec">您将能够在不到一分钟后再次申请适配。</string>
+  <string name="requests_error">加载可申请应用程序时发生了错误。\n点此重试。</string>
+  <string name="loading_apps_to_request">正在加载可申请的应用程序…</string>
+  <string name="building_request_dialog">正在生成申请文件…</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">启用图标预览中的壁纸</string>
+  <string name="pref_summary_wall_header">您当前使用的壁纸将被显示。</string>
+  <string name="pref_header_launcher_icon">启动器图标</string>
+  <string name="pref_title_launcher_icon">隐藏启动器图标</string>
+  <string name="pref_summary_launcher_icon">选中时，启动器图标将被隐藏。</string>
+  <string name="hideicon_dialog_title">警告！</string>
+  <string name="send_using">通过以下应用发送</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>如何使用图标包？</item>
+    <item>如何应用图标包？</item>
+    <item>如何查看所有包含的图标？</item>
+    <item>How to replace an icon with an alternative one?</item>
+    <item>如何申请未适配程序的图标？</item>
+    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>为什么图标们在我的设备上看起来效果不好（失真）？</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>如何从启动其中隐藏应用程序图标？</item>
+    <item>应用图标隐藏之后如何打开？</item>
+    <item>如何再次显示应用图标？</item>
+    <item>为什么此应用程序需要修改或删除设备内容的权限？</item>
+    <item>为什么该应用程序需要完全的网络访问权限？</item>
+    <item>为什么该应用程序需要检查连接的权限？</item>
+    <item>为什么该应用程序需要设定壁纸的权限？</item>
+    <item>为什么该应用程序需要调整壁纸大小的权限？</item>
+    <item>为什么该应用程序需要保持设备唤醒状态的权限？</item>
+  </string-array>
+  <string-array name="answers">
+    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
+    <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
+    <item>从左侧滑出导航抽屉，选择 “图标” 前往图标页面，或者后退至应用程序主页，然后点击 “图标” 按钮。。</item>
+    <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
+    <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
+    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+    <item>发送图标适配请求。</item>
+    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+    <item>前往您的主屏幕，然后为应用程序创建一个名为 “IconRestorer” 的小部件。</item>
+    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+    <item>需要能够写入图标适配申请的数据和文件，以及保存壁纸，以及能够改变壁纸下载路径。</item>
+    <item>需要能够加载云端壁纸并下载它们。</item>
+    <item>需要能够检查您的设备是否具有互联网连接。</item>
+    <item>需要能够从应用程序中直接应用壁纸。</item>
+    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+    <item>这是 Muzei 动态壁纸所需要的。</item>
+  </string-array>
 </resources>
