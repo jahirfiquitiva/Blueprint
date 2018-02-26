@@ -38,7 +38,9 @@
   <string name="general_info">Informazioni generali</string>
   <string name="useful_links">Link utili</string>
   <string name="columns">Numero di colonne</string>
+  <string name="lni_content">%1$s attualmente non è installato sul tuo dispositivo.\nVuoi installarlo dal Google Play Store?</string>
   <string name="no_compatible_launcher_title">Questo launcher non è compatibile</string>
+  <string name="no_compatible_launcher_content">Questo launcher non è compatibile con qualsiasi pacchetto di icone e di conseguenza non è possibile utilizzare questo icon pack con questo launcher. Per favore non votare l\'icon pack negativamente per questo motivo. C\'è una soluzione che si può provare per te, ma richiede l\'utilizzo di un\'app esterna vuoi scaricarla?</string>
   <string name="impossible_open_themes">Impossibile aprire app temi</string>
   <string name="themes_app_not_installed">Applicazione di temi non è installata in questo dispositivo</string>
   <string name="included_templates">%1$s modelli</string>
@@ -69,22 +71,26 @@
   <string name="requests_error">Si è verificato un errore durante il caricamento delle app da richiedere.\nPremi qui per riprovare.</string>
   <string name="loading_apps_to_request">Caricamento delle app da richiedere…</string>
   <string name="building_request_dialog">Creazione file di richiesta…</string>
+  <string name="request_upload_success">Completato!</string>
+  <string name="request_upload_success_content">La richiesta è stata caricata sul nostro server con successo.</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">Abilita l\'uso dello sfondo nell\'anteprima delle icone</string>
   <string name="pref_summary_wall_header">Verrà mostrato l\'attuale sfondo del dispositivo.</string>
   <string name="pref_header_launcher_icon">Icona del menù delle app</string>
   <string name="pref_title_launcher_icon">Nascondi l\'icona dal menù delle app</string>
   <string name="pref_summary_launcher_icon">Quando selezionata, l\'icona sarà nascosta dal menù delle app.</string>
+  <string name="clearcache_dialog_content">Sei sicuro di voler eliminare i dati, la cache e le impostazioni dell\'app? Le icone applicate non verranno cambiate.</string>
   <string name="hideicon_dialog_title">Attenzione!</string>
+  <string name="hideicon_dialog_content">Sei sicuro di voler nascondere l\'icona dell\'app dal menù delle app?\nL\'app potrebbe chiudersi inaspettatamente e le notifiche saranno disabilitate completamente.\nPotresti voler leggere le FAQ per saperne di più su come farla riapparire, prima di nasconderla.</string>
   <string name="send_using">Invia tramite…</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Come usare l\'Icon Pack?</item>
     <item>Come applicare l\'Icon Pack?</item>
     <item>Come visualizzare tutte le icone?</item>
-    <item>How to replace an icon with an alternative one?</item>
+    <item>Come rimpiazzare una icona con quella alternativa?</item>
     <item>Come richiedere le icone non a tema?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Dopo aver riavviato il mio dispositivo, l\'icon pack non è più applicato. Le icone sono state ripristinate per impostazione predefinita.</item>
     <item>Perché le icone appaiono sgranate nel mio dispositivo?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
     <item>Come nascondere l\'icona dell\'app dal menù delle app?</item>
