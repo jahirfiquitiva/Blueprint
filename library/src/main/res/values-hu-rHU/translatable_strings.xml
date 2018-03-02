@@ -20,7 +20,7 @@
   <!-- List Of Drawer Sections -->
   <string name="section_home">Kezdőlap</string>
   <string name="section_icons">Ikonok</string>
-  <string name="section_apply">Alkamaz</string>
+  <string name="section_apply">Alkalmaz</string>
   <string name="section_wallpapers">Háttérképek</string>
   <string name="section_icon_request">Ikon kérés</string>
   <string name="section_donate">Támogatás</string>
@@ -36,10 +36,16 @@
   <string name="useful_links">Hasznos linkek</string>
   <string name="columns">Oszlopok száma</string>
   <string name="lni_content">%1$s jelenleg nincs telepítve az eszközön. \nWould szeretnéd telepíteni a Google Play áruházból?</string>
-  <string name="no_compatible_launcher_title">Ezt az indító NEMkompatibilis</string>
+  <string name="no_compatible_launcher_title">Ezt az indító NEM kompatibilis</string>
   <string name="no_compatible_launcher_content">Ez az indító NEM kompatibilis SEMELYIK ikon csomaggal, ezért nem tudod használni a csomagot ebben az indítóban sem. Kérlek ne értékeld le az ikon csomagot emiatt. Van egy megoldás, amit ki tudsz próbálni, de ehhez szükséged lesz egy másik alkalmazásra. Szeretnéd letölteni?</string>
+  <string name="included_templates">%1$s sablonok</string>
+  <string name="launcher_icon_restorer_error">Probléma van a(z) %1$s kódjával. Kérlek vedd fel a kapcsolatot a fejlesztővel.</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">Ikon visszaállító modul</string>
   <string name="clock_widget_title">Analóg óra</string>
+  <string name="search_icons">Ikonok keresése</string>
+  <string name="search_wallpapers">Háttérképek keresése</string>
+  <string name="search_launchers">Indítók keresése</string>
   <string name="search_apps">Alkalmazások keresése</string>
   <string name="seconds">Másodperc</string>
   <string name="minutes">Perc</string>
@@ -50,11 +56,32 @@
   <!-- Requests -->
   <string name="select_all">Összes kijelölése</string>
   <string name="no_selected_apps_title">Nincs kiválasztott alkalmazás</string>
+  <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>
   <!-- Preferences -->
   <string name="pref_summary_wall_header">A jelenlegi háttérkép lesz látható.</string>
   <string name="pref_header_launcher_icon">Alkalmazásindító ikon</string>
   <string name="pref_title_launcher_icon">Alkalmazásindító elrejtése</string>
+  <string name="hideicon_dialog_title">Figyelem!</string>
   <string name="send_using">Küldés a következővel…</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>Hogyan használd az ikon csomagot?</item>
+    <item>Hogyan alkalmazd az ikon csomagot?</item>
+    <item>Hogyan láthatod a tartalmazott ikonokat?</item>
+    <item>Hogyan helyettesítsd az ikont egy másikkal?</item>
+    <item>How to request unthemed icons?</item>
+    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Why do icons look pixelated on my device?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
 </resources>
