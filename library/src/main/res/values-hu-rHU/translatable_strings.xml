@@ -36,6 +36,8 @@
   <string name="useful_links">Hasznos linkek</string>
   <string name="columns">Oszlopok száma</string>
   <string name="lni_content">%1$s jelenleg nincs telepítve az eszközön. \nWould szeretnéd telepíteni a Google Play áruházból?</string>
+  <string name="no_compatible_launcher_title">Ezt az indító NEMkompatibilis</string>
+  <string name="no_compatible_launcher_content">Ez az indító NEM kompatibilis SEMELYIK ikon csomaggal, ezért nem tudod használni a csomagot ebben az indítóban sem. Kérlek ne értékeld le az ikon csomagot emiatt. Van egy megoldás, amit ki tudsz próbálni, de ehhez szükséged lesz egy másik alkalmazásra. Szeretnéd letölteni?</string>
   <!-- Widgets Names -->
   <string name="clock_widget_title">Analóg óra</string>
   <string name="search_apps">Alkalmazások keresése</string>
