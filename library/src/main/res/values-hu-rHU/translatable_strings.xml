@@ -39,6 +39,8 @@
   <string name="no_compatible_launcher_title">Ezt az indító NEM kompatibilis</string>
   <string name="no_compatible_launcher_content">Ez az indító NEM kompatibilis SEMELYIK ikon csomaggal, ezért nem tudod használni a csomagot ebben az indítóban sem. Kérlek ne értékeld le az ikon csomagot emiatt. Van egy megoldás, amit ki tudsz próbálni, de ehhez szükséged lesz egy másik alkalmazásra. Szeretnéd letölteni?</string>
   <string name="included_templates">%1$s sablonok</string>
+  <string name="launcher_icon_restored">%1$s ikon helyreállítva</string>
+  <string name="launcher_icon_not_restored">%1$s ikon már látható</string>
   <string name="launcher_icon_restorer_error">Probléma van a(z) %1$s kódjával. Kérlek vedd fel a kapcsolatot a fejlesztővel.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Ikon visszaállító modul</string>
@@ -56,6 +58,7 @@
   <!-- Requests -->
   <string name="select_all">Összes kijelölése</string>
   <string name="no_selected_apps_title">Nincs kiválasztott alkalmazás</string>
+  <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
   <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>
   <!-- Preferences -->
