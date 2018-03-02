@@ -18,9 +18,41 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
   <string name="coming_soon">Hamarosan</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">Kezdőlap</string>
+  <string name="section_icons">Ikonok</string>
+  <string name="section_apply">Alkamaz</string>
+  <string name="section_wallpapers">Háttérképek</string>
+  <string name="section_icon_request">Ikon kérés</string>
+  <string name="section_donate">Támogatás</string>
+  <string name="section_about">Az alkalmazásról</string>
+  <string name="section_help">Súgó</string>
+  <string name="section_zooper">Zooper widget</string>
+  <string name="section_widgets">Modulok</string>
+  <string name="rate">Értékelés</string>
   <!-- Icons filters -->
+  <string name="filter">Szűrő</string>
+  <string name="more_apps">További alkalmazások</string>
+  <string name="general_info">Általános információk</string>
+  <string name="useful_links">Hasznos linkek</string>
+  <string name="columns">Oszlopok száma</string>
+  <string name="lni_content">%1$s jelenleg nincs telepítve az eszközön. \nWould szeretnéd telepíteni a Google Play áruházból?</string>
   <!-- Widgets Names -->
+  <string name="clock_widget_title">Analóg óra</string>
+  <string name="search_apps">Alkalmazások keresése</string>
+  <string name="seconds">Másodperc</string>
+  <string name="minutes">Perc</string>
+  <string name="hours">Óra</string>
+  <string name="days">Nap</string>
+  <string name="weeks">Hét</string>
+  <string name="months">Hónap</string>
   <!-- Requests -->
+  <string name="select_all">Összes kijelölése</string>
+  <string name="no_selected_apps_title">Nincs kiválasztott alkalmazás</string>
+  <string name="request_upload_success">Siker!</string>
   <!-- Preferences -->
+  <string name="pref_summary_wall_header">A jelenlegi háttérkép lesz látható.</string>
+  <string name="pref_header_launcher_icon">Alkalmazásindító ikon</string>
+  <string name="pref_title_launcher_icon">Alkalmazásindító elrejtése</string>
+  <string name="send_using">Küldés a következővel…</string>
   <!-- HELP SECTION -->
 </resources>
