@@ -16,6 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="coming_soon">Hamarosan</string>
   <!-- List Of Drawer Sections -->
   <!-- Icons filters -->
   <!-- Widgets Names -->
