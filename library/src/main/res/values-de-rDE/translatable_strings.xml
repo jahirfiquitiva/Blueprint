@@ -93,10 +93,10 @@
     <item>Wie kann ich Symbole ohne Theme anfragen?</item>
     <item>Nach einem Neustart meines Geräts ist die Symbolbibliothek nicht mehr angewendet. Die Symbole wurden auf Standard zurückgesetzt.</item>
     <item>Warum sind Symbole auf meinem Gerät verpixelt?</item>
-    <item>Ich sehe eine Icon für eine App in den enthaltenen Icons, aber es wird nicht angewendet.</item>
-    <item>Wie kann ich das App-Icon im Launcher ausblenden?</item>
-    <item>Wie öffne ich die App, nachdem das App-Icon im Launcher ausgeblendet wurde?</item>
-    <item>Wie kann ich das App-Icon im Launcher wieder anzeigen?</item>
+    <item>Ich sehe ein Symbol für eine App in den enthaltenen Symbolen, aber es wird nicht übernommen.</item>
+    <item>Wie kann ich das App-Symbol im Launcher ausblenden?</item>
+    <item>Wie öffne ich die App, nachdem das App-Symbol im Launcher ausgeblendet wurde?</item>
+    <item>Wie kann ich das App-Symbol im Launcher erneut anzeigen?</item>
     <item>Warum benötigt die App die Berechtigung, Inhalte auf meinem Speicher zu bearbeiten oder zu löschen?</item>
     <item>Warum benötigt die App die Berechtigung für vollständigen Netzwerkzugriff?</item>
     <item>Warum benötigt die App die Berechtigung, Netzwerkverbindungen einzusehen?</item>
@@ -105,17 +105,17 @@
     <item>Warum benötigt die App die Berechtigung, den Schlafmodus des Geräts zu verhindern?</item>
   </string-array>
   <string-array name="answers">
-    <item>Du benötigst einen Launcher mit Icon Pack-Unterstützung. Schau in der Play Store-Beschreibung für unterstützte Launcher. Wenn du dir nicht sicher bist, welchen Launcher du nutzen solltest, gehe einfach in den Abschnitt \"Anwenden\" und wähle einen aus der Liste aus.</item>
-    <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Anwenden\", oder gehe zurück zum Hauptbildschirm der App und tippe auf den FAB. Wähle den Launcher, den du möchtest, und wende die Icons auf ihn an. Wenn dein Launcher hier nicht aufgeführt ist, aber das Icon Pack damit kompatibel ist (schaue in der Play Store-Beschreibung für die Liste unterstützter Launcher), dann kannst du es manuell in den Launcher-Einstellungen anwenden.</item>
-    <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Icons\", oder gehe zurück zum Hauptbildschirm der App und tippe auf den \"Icons\"-Button. </item>
-    <item>Es ist abhängig vom Launcher, den du verwendest. Nicht jeder Launcher unterstützt Icon-Bearbeitung. Jedoch ist es in den meisten Fällen möglich, das Icon durch langes Drücken oder doppelt Tippen zu bearbeiten.</item>
+    <item>Sie benötigen einen Launcher mit Symbolbibliothek-Unterstützung. Schauen Sie in der Play Store-Beschreibung für unterstützte Launcher. Wenn Sie sich nicht sicher sind, welchen Launcher Sie nutzen, wechseln Sie einfach in den Abschnitt „Anwenden” und wähle einen aus der Liste aus.</item>
+    <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Anwenden\", oder gehe zurück zum Hauptbildschirm der App und tippe auf den FAB. Wähle den Launcher, den du möchtest, und wende die Symbole auf ihn an. Wenn dein Launcher hier nicht aufgeführt ist, aber die Symbolbibliothek damit kompatibel ist (schaue in der Play Store-Beschreibung für die Liste unterstützter Launcher), dann kannst du es manuell in den Launcher-Einstellungen anwenden.</item>
+    <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Symbole\", oder wechseln zurück zum Hauptbildschirm der App und tippe auf die Schaltfläche \"Symbole\". </item>
+    <item>Es ist abhängig vom Launcher, den du verwendest. Nicht jeder Launcher unterstützt das Bearbeiten von Symbolen. Jedoch ist es in den meisten Fällen möglich, das Symbol durch langes Drücken oder doppeltes Antippen zu bearbeiten.</item>
     <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Anfragen\".</item>
-    <item>Das ist passiert, weil das Icon Pack auf die SD-Karte verschoben wurde. Du solltest es auf dem internen Speicher installieren.</item>
-    <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Du kannst das Problem lösen, indem du die Icon-Größe auf 115 - 120 % erhöhst. Du kannst auch versuchen, einen anderen Launcher zu verwenden.</item>
-    <item>Sende eine Icon-Anfrage.</item>
-    <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Einstellungen\". Aktiviere dort die Option \"Launcher-Icon ausblenden\".</item>
-    <item>Gehe zu deinem Startbildschirm und erstelle ein Widget für die App mit dem Namen \"Widget zur Icon-Wiederherstellung\".</item>
-    <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Einstellungen\". Deaktiviere dort die Option \"Launcher-Icon ausblenden\".</item>
+    <item>Das ist passiert, weil die Symbolbibliothek auf die SD-Karte verschoben wurde. Sie sollten es auf dem internen Speicher installieren.</item>
+    <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Sie können das Problem beheben, indem Sie die Symbolgröße auf 115 - 120 % erhöhen. Sie können auch versuchen, einen anderen Launcher zu verwenden.</item>
+    <item>Eine Symbol-Anfrage senden.</item>
+    <item>Öffnen Sie den Drawer von der linken Seite und wechseln zum Abschnitt \"Einstellungen\". Aktivieren Sie dort dort die Option \"Launcher-Symbol ausblenden\".</item>
+    <item>Wechseln Sie zu Ihrem Startbildschirm und erstelle ein Widget für die App mit dem Namen \"Widget zur Symbol-Wiederherstellung\".</item>
+    <item>Öffnen Sie den Drawer von der linken Seite und wechseln zum Abschnitt \"Einstellungen\". Deaktivieren Sie dort die Option \"Launcher-Symbol ausblenden\".</item>
     <item>Diese wird verwendet, um Daten für Symbol-Anfragen speichern zu können, genauso wie für das Speichern der Hintergrundbildern und zur Änderung des Download-Verzeichnisses.</item>
     <item>Diese wird verwendet, um Hintergrundbildern aus der Cloud herunterladen zu können.</item>
     <item>Diese wird verwendet, um zu prüfen, ob dein Gerät eine Internet-Verbindung besitzt.</item>
