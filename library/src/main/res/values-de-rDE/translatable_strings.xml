@@ -20,10 +20,10 @@
   <string name="coming_soon">Demnächst verfügbar</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Home</string>
-  <string name="section_icons">Icons</string>
+  <string name="section_icons">Symbole</string>
   <string name="section_apply">Anwenden</string>
-  <string name="section_wallpapers">Wallpaper</string>
-  <string name="section_icon_request">Icon-Anfrage</string>
+  <string name="section_wallpapers">Hintergrundbildern</string>
+  <string name="section_icon_request">Symbol-Anfrage</string>
   <string name="section_donate">Spenden</string>
   <string name="section_about">Über die App</string>
   <string name="section_help">Hilfe</string>
@@ -50,8 +50,8 @@
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Widget zur Icon-Wiederherstellung</string>
   <string name="clock_widget_title">Analoge Uhr</string>
-  <string name="search_icons">Icons suchen</string>
-  <string name="search_wallpapers">Wallpaper suchen</string>
+  <string name="search_icons">Symbole suchen</string>
+  <string name="search_wallpapers">Hintergrundbildern suchen</string>
   <string name="search_launchers">Launcher suchen</string>
   <string name="search_apps">Apps suchen</string>
   <string name="seconds">Sekunden</string>
@@ -72,9 +72,11 @@
   <string name="requests_error">Es gab einen Fehler beim Laden der Apps für deine Anfrage.\nTippe hier, um es erneut zu versuchen.</string>
   <string name="loading_apps_to_request">Lade Apps für die Anfrage…</string>
   <string name="building_request_dialog">Anfrage-Dateien werden erstellt…</string>
+  <string name="request_upload_success">Erfolgreich!</string>
+  <string name="request_upload_success_content">Die Anfrage wurde erfolgreich auf unseren Server hochgeladen.</string>
   <!-- Preferences -->
-  <string name="pref_title_wall_header">Wallpaper-Verwendung in der Icon-Vorschau</string>
-  <string name="pref_summary_wall_header">Dein aktuelles Wallpaper wird angezeigt.</string>
+  <string name="pref_title_wall_header">Verwendung der Hintergrundbildern als Symbolvorschau aktivieren</string>
+  <string name="pref_summary_wall_header">Ihr aktuelles Hintergrundbild wird angezeigt.</string>
   <string name="pref_header_launcher_icon">Launcher-Icon</string>
   <string name="pref_title_launcher_icon">Launcher-Icon ausblenden</string>
   <string name="pref_summary_launcher_icon">Wenn ausgewählt, wird das Launcher-Icon ausgeblendet werden.</string>
@@ -98,8 +100,8 @@
     <item>Warum benötigt die App die Berechtigung, Inhalte auf meinem Speicher zu bearbeiten oder zu löschen?</item>
     <item>Warum benötigt die App die Berechtigung für vollständigen Netzwerkzugriff?</item>
     <item>Warum benötigt die App die Berechtigung, Netzwerkverbindungen einzusehen?</item>
-    <item>Warum benötigt die App die Berechtigung, Wallpaper festzulegen?</item>
-    <item>Warum benötigt die App die Berechtigung, die Wallpaper-Größe anzupassen?</item>
+    <item>Warum benötigt die App die Berechtigung zum Festlegen von Hintergrundbildern?</item>
+    <item>Warum benötigt die App die Berechtigung zum Ändern der Größe von Hintergrundbildern?</item>
     <item>Warum benötigt die App die Berechtigung, den Schlafmodus des Geräts zu verhindern?</item>
   </string-array>
   <string-array name="answers">
@@ -114,11 +116,11 @@
     <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Einstellungen\". Aktiviere dort die Option \"Launcher-Icon ausblenden\".</item>
     <item>Gehe zu deinem Startbildschirm und erstelle ein Widget für die App mit dem Namen \"Widget zur Icon-Wiederherstellung\".</item>
     <item>Öffne den Drawer von der linken Seite und gehe zum Abschnitt \"Einstellungen\". Deaktiviere dort die Option \"Launcher-Icon ausblenden\".</item>
-    <item>Diese wird verwendet, um Daten für Icon-Anfragen speichern zu können, genauso wie für das Speichern der Wallpaper und zur Änderung des Download-Verzeichnisses.</item>
-    <item>Diese wird verwendet, um Wallpaper aus der Cloud herunterladen zu können.</item>
+    <item>Diese wird verwendet, um Daten für Symbol-Anfragen speichern zu können, genauso wie für das Speichern der Hintergrundbildern und zur Änderung des Download-Verzeichnisses.</item>
+    <item>Diese wird verwendet, um Hintergrundbildern aus der Cloud herunterladen zu können.</item>
     <item>Diese wird verwendet, um zu prüfen, ob dein Gerät eine Internet-Verbindung besitzt.</item>
-    <item>Diese wird verwendet, um das Wallpaper direkt aus der App heraus anwenden zu können.</item>
-    <item>Diese wird verwendet, um die Größe des Wallpapers an deine Bildschirmauflösung anzupassen.</item>
-    <item>Diese wird durch Muzei Live Wallpaper benötigt.</item>
+    <item>Diese wird verwendet, um das Hintergrundbild direkt aus der App heraus anwenden zu können.</item>
+    <item>Diese wird verwendet, um die Größe des Hintergrundbildes an deine Bildschirmauflösung anzupassen.</item>
+    <item>Dies wird von „Muzei Live Wallpaper” benötigt.</item>
   </string-array>
 </resources>
