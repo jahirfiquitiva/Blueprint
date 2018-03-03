@@ -27,7 +27,7 @@
   <string name="section_donate">Spenden</string>
   <string name="section_about">Über die App</string>
   <string name="section_help">Hilfe</string>
-  <string name="section_zooper">Zooper-Setup</string>
+  <string name="section_zooper">Zooper einrichten</string>
   <string name="section_widgets">Widgets</string>
   <string name="share_this_app">Ich verwende %1$s und ich liebe es. Hole es dir hier: %2$s</string>
   <string name="rate">Bewerten</string>
@@ -40,15 +40,15 @@
   <string name="columns">Spaltenanzahl</string>
   <string name="lni_content">%1$s ist derzeit nicht auf deinem Gerät installiert.\nMöchtest du es aus dem Google Play Store installieren?     </string>
   <string name="no_compatible_launcher_title">Dieser Launcher ist NICHT kompatibel</string>
-  <string name="no_compatible_launcher_content">Dieser Lauchner ist mit KEINEM Icon Pack kompatibel und du kannst dieses Icon Pack nicht damit verwenden. Bitte bewerte deshalb das Icon Pack nicht negativ. Es gibt eine Lösung dafür, die du selbst probieren kannst, jedoch muss dafür eine externe App genutzt werden. Möchstest du sie herunterladen?</string>
+  <string name="no_compatible_launcher_content">Dieser Lauchner ist mit KEINEM Symbolbibliothek kompatibel und Sie können dieses Symbolbibliothek nicht damit verwenden. Bitte bewerten Sie deshalb die Symbolbibliothek nicht negativ. Es gibt eine Lösung dafür, die Sie selbst versuchen können, jedoch muss dafür eine externe App genutzt werden. Möchsten Sie diese App jetzt herunterladen?</string>
   <string name="impossible_open_themes">Theme-App konnte nicht geöffnet werden</string>
   <string name="themes_app_not_installed">Theme-App ist nicht auf diesem Gerät installiert</string>
   <string name="included_templates">%1$s Vorlagen</string>
-  <string name="launcher_icon_restored">%1$s Launcher-Icon wurde wiederhergestellt</string>
-  <string name="launcher_icon_not_restored">%1$s Launcher-Icon ist bereits sichtbar</string>
+  <string name="launcher_icon_restored">%1$s Launcher-Symbol wurde wiederhergestellt</string>
+  <string name="launcher_icon_not_restored">%1$s Launcher-Symbol ist bereits sichtbar</string>
   <string name="launcher_icon_restorer_error">Es gibt ein Problem mit dem Code von %1$s. Bitte kontaktiere den Entwickler.</string>
   <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Widget zur Icon-Wiederherstellung</string>
+  <string name="iconrestorer_widget_title">Widget zur Symbol-Wiederherstellung</string>
   <string name="clock_widget_title">Analoge Uhr</string>
   <string name="search_icons">Symbole suchen</string>
   <string name="search_wallpapers">Hintergrundbildern suchen</string>
@@ -66,9 +66,9 @@
   <string name="no_selected_apps_content">Du hast keine App für deine Anfrage ausgewählt. Wähle etwas aus, bevor du den FAB erneut drückst.</string>
   <string name="apps_limit_dialog">Entschuldigung, aber du darfst nur %1$s Apps für deine Anfrage auswählen.</string>
   <string name="apps_limit_dialog_more">Entschuldigung, aber du darfst aktuell nur %1$s Apps für deine Anfrage auswählen.</string>
-  <string name="apps_limit_dialog_day">Entschuldigung, aber du darfst nur alle %1$s Icons anfragen.</string>
-  <string name="apps_limit_dialog_day_extra">Du kannst in %1$s wieder Icons anfragen.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Du kannst in weniger als einer Minute wieder Icons anfragen.</string>
+  <string name="apps_limit_dialog_day">Es tut uns leid, aber Sie dürfen nur alle %1$s Symbole anfragen.</string>
+  <string name="apps_limit_dialog_day_extra">Sie dürfen in %1$s wieder Symbole anfragen.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Sie können in weniger als einer Minute wieder Symbole anfragen.</string>
   <string name="requests_error">Es gab einen Fehler beim Laden der Apps für deine Anfrage.\nTippe hier, um es erneut zu versuchen.</string>
   <string name="loading_apps_to_request">Lade Apps für die Anfrage…</string>
   <string name="building_request_dialog">Anfrage-Dateien werden erstellt…</string>
@@ -77,22 +77,22 @@
   <!-- Preferences -->
   <string name="pref_title_wall_header">Verwendung der Hintergrundbildern als Symbolvorschau aktivieren</string>
   <string name="pref_summary_wall_header">Ihr aktuelles Hintergrundbild wird angezeigt.</string>
-  <string name="pref_header_launcher_icon">Launcher-Icon</string>
-  <string name="pref_title_launcher_icon">Launcher-Icon ausblenden</string>
-  <string name="pref_summary_launcher_icon">Wenn ausgewählt, wird das Launcher-Icon ausgeblendet werden.</string>
-  <string name="clearcache_dialog_content">Bist du sicher, dass du App-Daten, Cache und Einstellungen löschen möchtest? Angewendete Icons werden davon nicht betroffen.</string>
+  <string name="pref_header_launcher_icon">Launcher-Symbol</string>
+  <string name="pref_title_launcher_icon">Launcher-Symbol ausblenden</string>
+  <string name="pref_summary_launcher_icon">Wenn ausgewählt, wird das Launcher-Symbol ausgeblendet.</string>
+  <string name="clearcache_dialog_content">Möchten Sie die App-Daten, Zwischenspeicher und Einstellungen wirklich löschen? Angewendete Symbole sind davon nicht betroffen.</string>
   <string name="hideicon_dialog_title">Achtung!</string>
-  <string name="hideicon_dialog_content">Bist du sicher, dass du das App-Icon im Launcher ausblenden möchtest?\nDie App könnte unerwartet geschlossen werden und Benachrichtigungen werden komplett deaktiviert.\nMöglicherweise möchtest du die FAQs lesen, um zu erfahren, wie das Icon wiederhergestellt werden kann, bevor du es ausblendest.</string>
+  <string name="hideicon_dialog_content">Möchen Sie wirklich das App-Symbol im Launcher ausblenden?\nDie App könnte unerwartet geschlossen werden und Benachrichtigungen werden komplett deaktiviert.\nMöglicherweise möchten Sie die FAQs lesen, um zu erfahren, wie das Symbol wiederhergestellt werden kann, bevor Sie es ausblenden.</string>
   <string name="send_using">Senden mit…</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
-    <item>Wie verwende ich das Icon Pack?</item>
-    <item>Wie wende ich das Icon Pack an?</item>
-    <item>Wie kann ich alle enthaltenen Icons sehen?</item>
-    <item>Wie kann ich bestimmte Icons durch Alternativen ersetzen?</item>
-    <item>Wie kann ich Icons ohne Theme anfragen?</item>
-    <item>Nach einem Neustart meines Geräts ist das Icon Pack nicht mehr angewendet. Die Icons wurden auf Standard zurückgesetzt.</item>
-    <item>Warum sind Icons auf meinem Gerät verpixelt?</item>
+    <item>Wie verwende ich diese Symbolbibliothek?</item>
+    <item>Wie übernehme ich die Symbolbibliothek?</item>
+    <item>Wie kann ich alle enthaltenen Symbole anzeigen?</item>
+    <item>Wie kann ich bestimmte Symbole durch Alternativen ersetzen?</item>
+    <item>Wie kann ich Symbole ohne Theme anfragen?</item>
+    <item>Nach einem Neustart meines Geräts ist die Symbolbibliothek nicht mehr angewendet. Die Symbole wurden auf Standard zurückgesetzt.</item>
+    <item>Warum sind Symbole auf meinem Gerät verpixelt?</item>
     <item>Ich sehe eine Icon für eine App in den enthaltenen Icons, aber es wird nicht angewendet.</item>
     <item>Wie kann ich das App-Icon im Launcher ausblenden?</item>
     <item>Wie öffne ich die App, nachdem das App-Icon im Launcher ausgeblendet wurde?</item>
