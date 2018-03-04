@@ -38,6 +38,7 @@
   <string name="general_info">Informacje ogólne</string>
   <string name="useful_links">Przydatne linki</string>
   <string name="columns">Liczba kolumn</string>
+  <string name="lni_content">%1$s nie jest zainstalowany na urządzeniu.\nCzy chcesz zainstalować ze Sklepu Google Play?</string>
   <string name="no_compatible_launcher_title">Ten launch-er NIE jest kompatybilny</string>
   <string name="impossible_open_themes">Nie można otworzyć motywów aplikacji</string>
   <string name="themes_app_not_installed">Motywy aplikacji nie są zainstalowane na tym urządzeniu</string>
@@ -61,6 +62,7 @@
   <!-- Requests -->
   <string name="select_all">Zaznacz wszystko</string>
   <string name="no_selected_apps_title">Brak wybranych aplikacji</string>
+  <string name="no_selected_apps_content">Nie wybrałeś aplikacji do wysłania prośby. Zaznacz ich kilka, i kliknij ten przycisk ponownie.</string>
   <string name="apps_limit_dialog">Przepraszamy, ale możesz wybrać tylko %1$s aplikacji na żądanie.</string>
   <string name="apps_limit_dialog_more">Przepraszamy, ale możesz zażądać teraz %1$s więcej aplikacji.</string>
   <string name="apps_limit_dialog_day">Przepraszamy, ale możesz żądać ikony każdego %1$s.</string>
@@ -69,13 +71,17 @@
   <string name="requests_error">Wystąpił błąd podczas ładowania żądania aplikacji.\n Przyciśnij tutaj, aby spróbować ponownie.</string>
   <string name="loading_apps_to_request">Ładowanie aplikacji do zażądania…</string>
   <string name="building_request_dialog">Tworzenie plików żądania…</string>
+  <string name="request_upload_success">Sukces!</string>
+  <string name="request_upload_success_content">Prośba wysłana na nasz serwer pomyślnie.</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">Zezwala na użycie tapety w podglądzie ikon</string>
   <string name="pref_summary_wall_header">Twoja aktualna tapeta na urządzeniu pojawi się.</string>
   <string name="pref_header_launcher_icon">Ikona launch-era</string>
   <string name="pref_title_launcher_icon">Ukryj ikonę launch-era</string>
   <string name="pref_summary_launcher_icon">Po zaznaczeniu, ikona launch-era zostanie ukryta.</string>
+  <string name="clearcache_dialog_content">Czy chcesz usunąć dane aplikacji, pamięć cache i ustawienia? Nie tyczy się to zastosowanych ikonek.</string>
   <string name="hideicon_dialog_title">Ostrzeżenie!</string>
+  <string name="hideicon_dialog_content">Czy napewno chcesz ukryć ikonę aplikacji w swoim launcherze?\nAplikacja może się niespodziewanie zamknąć, a powiadomienia się wyłączyć\nMoże chcesz przeczytać FAQ (często zadawane pytania) i dowiedzieć się, jak sprawić by pojawiły się znowu, zanim to ukryjesz.</string>
   <string name="send_using">Wyślij za pomocą…</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
@@ -84,7 +90,7 @@
     <item>Jak zobaczyć wszystkie zawarte ikony?</item>
     <item>How to replace an icon with an alternative one?</item>
     <item>Jak zażądać ikon bez motywu?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Po zrestartowaniu mojego urządzenia, paczka ikon już nie jest zastosowana. Ikony zostały przywrócone do domyślnych.</item>
     <item>Dlaczego ikony na moim urządzeniu są rozmazane?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
     <item>Jak ukryć ikonę aplikacji z launch-era?</item>
@@ -98,7 +104,7 @@
     <item>Dlaczego aplikacja wymaga uprawnienia do zapobiegania przechodzenia telefonu w stan uśpienia?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
+    <item>Potrzebujesz launchera, który wspiera Paczki Ikon. Zobacz Opis w sklepie Google Play, aby sprawdzić wspierane Launchery. Jeśli nie jesteś pewien, którego użyć- po prostu wejdź na sekcje \"Zastosuj\" i wybierz jakąś z listy.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
     <item>Przesuń pasek nawigacji z lewej i przejdź do sekcji \"ikony\", lub wróć do głównej sekcji aplikacji, następnie naciśnij przycisk \"Ikony\".</item>
     <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
