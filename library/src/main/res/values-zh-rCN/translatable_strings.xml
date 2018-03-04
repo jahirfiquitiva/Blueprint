@@ -63,6 +63,7 @@
   <!-- Requests -->
   <string name="select_all">全选</string>
   <string name="no_selected_apps_title">未选择应用程序</string>
+  <string name="no_selected_apps_content">您没有选择要请求的任何应用程序。请选择几个应用程序, 然后再次点击此按钮。</string>
   <string name="apps_limit_dialog">很抱歉，您只被允许选择 %1$s 个应用程序来申请适配。</string>
   <string name="apps_limit_dialog_more">很抱歉，您目前只被允许再选择另外 %1$s 个应用程序来申请适配。</string>
   <string name="apps_limit_dialog_day">很抱歉，您只被允许每%1$s申请一次图标。</string>
@@ -104,17 +105,17 @@
     <item>为什么该应用程序需要保持设备唤醒状态的权限？</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
+    <item>您需要一个支持图标包的启动器。查看 Google Play 商店的描述内容里所包含的受支持的启动器。如果您不清楚应该用哪一个启动器，只需前往 “应用” 页面，从列表中选取一个即可。</item>
+    <item>从左侧向右滑出导航抽屉，前往 “应用” 页面，或者后退至应用程序主页，然后点击浮动按钮。选择您希望应用到的启动器。如果您的启动器不在列表内，但图标包的确兼容（查看 Google Play 商店描述页面包含的受支持的启动器），您可以在启动器设定中手动应用。</item>
     <item>从左侧滑出导航抽屉，选择 “图标” 前往图标页面，或者后退至应用程序主页，然后点击 “图标” 按钮。。</item>
     <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+    <item>从左侧滑出导航抽屉，前往 “图标申请” 页面。</item>
+    <item>当图标包被移动到 SD 卡中时会发生这种情况，您应当把图标包程序安装在内置存储器中。</item>
+    <item>这个问题可能与您当前使用的启动器处理高分辨率的方式有关。您可以通过调整图标大小至 115 - 120% 的方式来解决这个问题。或者换一个启动器。</item>
     <item>发送图标适配请求。</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+    <item>从左侧滑出导航抽屉，前往 “设定” 页面。然后检查 “从启动器隐藏图标” 选项。</item>
     <item>前往您的主屏幕，然后为应用程序创建一个名为 “IconRestorer” 的小部件。</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+    <item>从左侧滑出导航抽屉，前往 “设定” 页面。然后检查 “从启动器隐藏图标” 选项。</item>
     <item>需要能够写入图标适配申请的数据和文件，以及保存壁纸，以及能够改变壁纸下载路径。</item>
     <item>需要能够加载云端壁纸并下载它们。</item>
     <item>需要能够检查您的设备是否具有互联网连接。</item>
