@@ -72,7 +72,7 @@
   <string name="requests_error">加载可申请应用程序时发生了错误。\n点此重试。</string>
   <string name="loading_apps_to_request">正在加载可申请的应用程序…</string>
   <string name="building_request_dialog">正在生成申请文件…</string>
-  <string name="request_upload_success">成功！</string>
+  <string name="request_upload_success">申请成功！</string>
   <string name="request_upload_success_content">该请求已成功上传到我们的服务器。</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">启用图标预览中的壁纸</string>
