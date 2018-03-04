@@ -16,6 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">Blueprint Dashboard</string>
   <string name="coming_soon">Hamarosan</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Kezdőlap</string>
@@ -73,7 +74,7 @@
     <item>Hogyan alkalmazd az ikon csomagot?</item>
     <item>Hogyan láthatod a tartalmazott ikonokat?</item>
     <item>Hogyan helyettesítsd az ikont egy másikkal?</item>
-    <item>How to request unthemed icons?</item>
+    <item>Hogyan kérheted a témázatlan ikonokat?</item>
     <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
     <item>Why do icons look pixelated on my device?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
