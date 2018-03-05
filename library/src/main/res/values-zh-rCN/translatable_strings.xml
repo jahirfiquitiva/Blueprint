@@ -108,7 +108,7 @@
     <item>您需要一个支持图标包的启动器。查看 Google Play 商店的描述内容里所包含的受支持的启动器。如果您不清楚应该用哪一个启动器，只需前往 “应用” 页面，从列表中选取一个即可。</item>
     <item>从左侧向右滑出导航抽屉，前往 “应用” 页面，或者后退至应用程序主页，然后点击浮动按钮。选择您希望应用到的启动器。如果您的启动器不在列表内，但图标包的确兼容（查看 Google Play 商店描述页面包含的受支持的启动器），您可以在启动器设定中手动应用。</item>
     <item>从左侧滑出导航抽屉，选择 “图标” 前往图标页面，或者后退至应用程序主页，然后点击 “图标” 按钮。。</item>
-    <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
+    <item>根据你所使用的启动器，这一过程可能有所不同甚至不可用。但大多数情况下，可以通过长按图标或拖动它到屏幕顶部编辑区域的方式来选择自定义图标。</item>
     <item>从左侧滑出导航抽屉，前往 “图标申请” 页面。</item>
     <item>当图标包被移动到 SD 卡中时会发生这种情况，您应当把图标包程序安装在内置存储器中。</item>
     <item>这个问题可能与您当前使用的启动器处理高分辨率的方式有关。您可以通过调整图标大小至 115 - 120% 的方式来解决这个问题。或者换一个启动器。</item>
@@ -120,7 +120,7 @@
     <item>需要能够加载云端壁纸并下载它们。</item>
     <item>需要能够检查您的设备是否具有互联网连接。</item>
     <item>需要能够从应用程序中直接应用壁纸。</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+    <item>需要能够根据您设备的屏幕分辨率来调整壁纸尺寸。</item>
     <item>这是 Muzei 动态壁纸所需要的。</item>
   </string-array>
 </resources>
