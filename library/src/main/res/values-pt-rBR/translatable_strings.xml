@@ -16,10 +16,91 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">Blueprint Dashboard</string>
+  <string name="coming_soon">Em breve</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">Casa</string>
+  <string name="section_icons">Icons</string>
+  <string name="section_apply">Apply</string>
+  <string name="section_wallpapers">Wallpapers</string>
+  <string name="section_icon_request">Icon request</string>
+  <string name="section_donate">Donate</string>
+  <string name="section_about">About the app</string>
+  <string name="section_help">Help</string>
+  <string name="section_zooper">Configuração do Zooper</string>
+  <string name="section_widgets">Widgets</string>
+  <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
+  <string name="rate">Taxa</string>
   <!-- Icons filters -->
+  <string name="filter">Filtro</string>
+  <string name="clear">Claro</string>
+  <string name="more_apps">More apps</string>
+  <string name="general_info">General information</string>
+  <string name="useful_links">Useful links</string>
+  <string name="columns">Columns number</string>
+  <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to install it from the Google Play Store?</string>
+  <string name="no_compatible_launcher_title">This launcher is NOT Compatible</string>
+  <string name="no_compatible_launcher_content">Este iniciador NÃO é compatível com QUALQUER Pacote de ícones e, portanto, você não pode usar este pacote de ícones com este iniciador. Por favor, não classifique o pacote de ícones negativamente por esse motivo. Existe uma solução que você pode tentar por si mesmo, mas requer o uso de um aplicativo externo. Gostaria de baixá-lo?</string>
+  <string name="impossible_open_themes">Impossible to open themes app</string>
+  <string name="themes_app_not_installed">O aplicativo Temas não está instalado neste dispositivo</string>
+  <string name="included_templates">Modelos de % 1 $ s</string>
+  <string name="launcher_icon_restored">% 1 $ s ícone do iniciador foi restaurado</string>
+  <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
+  <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">Icon Restorer Widget</string>
+  <string name="clock_widget_title">Analog Clock</string>
+  <string name="search_icons">Ícones de pesquisa</string>
+  <string name="search_wallpapers">Search wallpapers</string>
+  <string name="search_launchers">Search launchers</string>
+  <string name="seconds">Seconds</string>
+  <string name="minutes">Minutes</string>
+  <string name="hours">Horas</string>
+  <string name="days">Days</string>
+  <string name="weeks">Weeks</string>
+  <string name="months">Months</string>
   <!-- Requests -->
+  <string name="select_all">Select all</string>
+  <string name="no_selected_apps_title">Nenhum aplicativo selecionado</string>
+  <string name="no_selected_apps_content">Você não selecionou nenhum aplicativo para solicitar. Selecione alguns aplicativos e, em seguida, toque neste botão novamente.</string>
+  <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
+  <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
+  <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
+  <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
+  <string name="requests_error">There was an error loading apps to request.\nPress here to retry.</string>
+  <string name="loading_apps_to_request">Loading apps to request…</string>
+  <string name="building_request_dialog">Building request files…</string>
+  <string name="request_upload_success">Success!</string>
+  <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
+  <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
+  <string name="pref_header_launcher_icon">Launcher icon</string>
+  <string name="pref_title_launcher_icon">Hide launcher icon</string>
+  <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
+  <string name="clearcache_dialog_content">Tem certeza de que deseja excluir dados do aplicativo, cache e configurações? Os ícones aplicados não serão afetados.</string>
+  <string name="hideicon_dialog_title">Atenção!</string>
+  <string name="hideicon_dialog_content">Tem certeza de que deseja esconder o ícone do aplicativo no seu iniciador? \ n A aplicação pode fechar inesperadamente e as notificações serão completamente desabilitadas. \ n Você pode querer ler as Perguntas frequentes para saber como fazê-lo aparecer novamente, antes de esconder.</string>
+  <string name="send_using">Enviar usando…</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>How to use the Icon Pack?</item>
+    <item>How to apply the Icon Pack?</item>
+    <item>How to see all the included icons?</item>
+    <item>How to replace an icon with an alternative one?</item>
+    <item>How to request unthemed icons?</item>
+    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Why do icons look pixelated on my device?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
 </resources>
