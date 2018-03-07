@@ -16,15 +16,15 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint Tableau de bord</string>
-  <string name="coming_soon">Prochainement</string>
+  <string name="frames_dashboard">Tableau de bord Blueprint</string>
+  <string name="coming_soon">Bientôt disponible</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Accueil</string>
   <string name="section_icons">Icônes</string>
   <string name="section_apply">Appliquer</string>
   <string name="section_wallpapers">Fonds d\'écran</string>
   <string name="section_icon_request">Demande d\'icônes</string>
-  <string name="section_donate">Donation</string>
+  <string name="section_donate">Faire un don</string>
   <string name="section_about">A Propos</string>
   <string name="section_help">Aide</string>
   <string name="section_zooper">Configuration Zooper</string>
@@ -83,6 +83,25 @@
   <string name="clearcache_dialog_content">Êtes-vous sûr de que vouloir supprimer les paramètres, les cache et les données de l’application ? Les icônes appliquées ne seront pas affectées.</string>
   <string name="hideicon_dialog_title">Attention !</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>Comment utiliser le Pack d’icônes ?</item>
+    <item>Comment appliquer le Pack d’icônes ?</item>
+    <item>Comment faire pour voir toutes les icônes incluses ?</item>
+    <item>How to replace an icon with an alternative one?</item>
+    <item>Comment demander des icônes pas encore modifiées ?</item>
+    <item>Après le redémarrage de mon appareil, le pack d’icônes ne s’applique plus. Les icônes ont été restaurées par défaut.</item>
+    <item>Pourquoi les icônes sont-elles pixelisées sur mon appareil ?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
   <string-array name="answers">
     <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
