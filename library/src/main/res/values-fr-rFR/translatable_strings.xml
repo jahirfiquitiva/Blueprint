@@ -24,7 +24,7 @@
   <string name="section_apply">Appliquer</string>
   <string name="section_wallpapers">Fonds d\'écran</string>
   <string name="section_icon_request">Demande d\'icônes</string>
-  <string name="section_donate">Faire un don</string>
+  <string name="section_donate">Donation</string>
   <string name="section_about">A Propos</string>
   <string name="section_help">Aide</string>
   <string name="section_zooper">Configuration Zooper</string>
@@ -32,7 +32,7 @@
   <string name="share_this_app">J\'utilise %1$s et je l\'adore. Regarde ça: %2$s</string>
   <string name="rate">Evaluer</string>
   <!-- Icons filters -->
-  <string name="filter">Filtre</string>
+  <string name="filter">Filtrer</string>
   <string name="clear">Effacer</string>
   <string name="more_apps">Plus d\'applications</string>
   <string name="general_info">Informations générales</string>
