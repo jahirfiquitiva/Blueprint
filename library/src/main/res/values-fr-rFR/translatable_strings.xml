@@ -32,7 +32,7 @@
   <string name="share_this_app">J\'utilise %1$s et je l\'adore. Regarde ça: %2$s</string>
   <string name="rate">Evaluer</string>
   <!-- Icons filters -->
-  <string name="filter">Filtrer</string>
+  <string name="filter">Filtre</string>
   <string name="clear">Effacer</string>
   <string name="more_apps">Plus d\'applications</string>
   <string name="general_info">Informations générales</string>
@@ -40,20 +40,20 @@
   <string name="columns">Nombre de colonnes</string>
   <string name="lni_content">%1$s n\'est actuellement pas installée sur votre appareil.\nVoulez vous l\'installer depuis le Google Play Store?</string>
   <string name="no_compatible_launcher_title">Ce launcher n\'est PAS compatible</string>
-  <string name="no_compatible_launcher_content">Ce launcher n\'est PAS compatible avec les Packs d\'icônes et par conséquent, vous ne pouvez pas utiliser ce pack d\'icônes avec ce launcher. Veuillez ne pas noter ce pack d\'icônes de façon négative pour ce motif. Il existe une solution que vous pouvez essayer par vous-même, mais elle nécessite l\'utilisation d\'une application externe. Souhaitez vous la télécharger?</string>
+  <string name="no_compatible_launcher_content">Ce launcher n\'est PAS compatible avec les Packs d\'icônes et par conséquent, vous ne pouvez pas utiliser ce pack d\'icônes avec ce launcher. Veuillez ne pas noter ce pack d\'icônes négativement pour ce motif. Il existe une solution que vous pouvez essayer par vous-même, mais elle nécessite l\'utilisation d\'une application externe. Souhaitez vous la télécharger?</string>
   <string name="impossible_open_themes">Impossible d\'ouvrir l\'application de thèmes</string>
   <string name="themes_app_not_installed">L\'application de thèmes n\'est pas installé sur cet appareil</string>
   <string name="included_templates">%1$s thèmes</string>
   <string name="launcher_icon_restored">L\'icône de l\'application %1$s a été restauré</string>
   <string name="launcher_icon_not_restored">L\'icône de l\'application %1$s est déjà visible</string>
-  <string name="launcher_icon_restorer_error">Il y a un problème avec le code de %1$s. S’il vous plaît contacter son développeur.</string>
+  <string name="launcher_icon_restorer_error">Il y a un problème avec le code de %1$s. Merci contacter son développeur.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Widget restaurateur d\'icône</string>
   <string name="clock_widget_title">Horloge analogique</string>
-  <string name="search_icons">Rechercher d\'icônes</string>
-  <string name="search_wallpapers">Recherche de fonds d’écran</string>
-  <string name="search_launchers">Recherche de launchers</string>
-  <string name="search_apps">Recherche d\'applications</string>
+  <string name="search_icons">Rechercher des icônes</string>
+  <string name="search_wallpapers">Rechercher un fonds d’écran</string>
+  <string name="search_launchers">Rechercher des lanceurs</string>
+  <string name="search_apps">Rechercher des applications</string>
   <string name="seconds">Secondes</string>
   <string name="minutes">Minutes</string>
   <string name="hours">Heures</string>
@@ -62,7 +62,7 @@
   <string name="months">Mois</string>
   <!-- Requests -->
   <string name="select_all">Tout selectionner</string>
-  <string name="no_selected_apps_title">Aucune applications sélectionnées</string>
+  <string name="no_selected_apps_title">Aucune application sélectionnée</string>
   <string name="no_selected_apps_content">Vous n\'avez pas sélectionné d\'applications pour votre demande. Merci de selectionnez quelques applications, puis pressez ce bouton à nouveau.</string>
   <string name="apps_limit_dialog">Désolé, mais vous êtes seulement autorisé à sélectionner %1$s applications pour votre demande d\'icônes.</string>
   <string name="apps_limit_dialog_more">Désolé, mais vous êtes seulement autorisé à demander %1$s applications pour l\'instant.</string>
