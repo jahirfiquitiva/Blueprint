@@ -40,4 +40,29 @@
     <color name="dark_theme_snackbar">@color/dark_theme_card_background</color>
     <color name="dark_theme_dialogs_button_color">@color/dark_theme_accent</color>
     <color name="splash_dark_status_bar">@color/dark_theme_primary_dark</color>
+  
+      <!-- FILTERS COLORS -->
+    <!-- Used Material Design 100 shade values -->
+    <string-array name="filters_colors">
+        <item>#ffcdd2</item>
+        <item>#e1bee7</item>
+        <item>#c5cae9</item>
+        <item>#b3e5fc</item>
+        <item>#b2dfdb</item>
+        <item>#dcedc8</item>
+        <item>#fff9c4</item>
+        <item>#ffe0b2</item>
+        <item>#d7ccc8</item>
+        <item>#cfd8dc</item>
+        <item>#f8bbd0</item>
+        <item>#d1c4e9</item>
+        <item>#bbdefb</item>
+        <item>#b2ebf2</item>
+        <item>#c8e6c9</item>
+        <item>#f0f4c3</item>
+        <item>#ffecb3</item>
+        <item>#ffccbc</item>
+    </string-array>
+  
 </resources>
+
