@@ -70,7 +70,7 @@
   <string name="request_upload_success">Uspjeh!</string>
   <string name="request_upload_success_content">Zahtjev je uspješno učitan na naš poslužitelj.</string>
   <!-- Preferences -->
-  <string name="pref_title_wall_header">Omogući korištenje pozadine u pregledu ikona</string>
+  <string name="pref_title_wall_header">Koristi pozadinu u pregl. ikona</string>
   <string name="pref_summary_wall_header">Prikazati će se vaša trenutna pozadina.</string>
   <string name="pref_header_launcher_icon">Ikona pokretača</string>
   <string name="pref_title_launcher_icon">Sakrij ikonu pokretača</string>
