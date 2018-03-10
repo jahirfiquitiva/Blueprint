@@ -16,8 +16,8 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Panel Blueprint</string>
-  <string name="coming_soon">Już wkrótce</string>
+  <string name="frames_dashboard">Aplikacja bazowa Blueprint</string>
+  <string name="coming_soon">Dostępne wkrótce</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Strona główna</string>
   <string name="section_icons">Ikony</string>
@@ -67,11 +67,11 @@
   <string name="apps_limit_dialog">Przepraszamy, ale możesz wybrać tylko %1$s aplikacji na żądanie.</string>
   <string name="apps_limit_dialog_more">Przepraszamy, ale możesz zażądać teraz %1$s więcej aplikacji.</string>
   <string name="apps_limit_dialog_day">Przepraszamy, ale możesz żądać ikony każdego %1$s.</string>
-  <string name="apps_limit_dialog_day_extra">Będziesz mógł ponownie zażądać ikon za %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Będziesz mógł ponownie zażądać ikon, w mniej niż minutę.</string>
-  <string name="requests_error">Wystąpił błąd podczas ładowania żądania aplikacji.\n Przyciśnij tutaj, aby spróbować ponownie.</string>
-  <string name="loading_apps_to_request">Ładowanie aplikacji do zażądania…</string>
-  <string name="building_request_dialog">Tworzenie plików żądania…</string>
+  <string name="apps_limit_dialog_day_extra">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za mniej niż minutę.</string>
+  <string name="requests_error">Wystąpił błąd podczas ładowania listy aplikacji.\n Tapnijj tutaj, aby spróbować ponownie.</string>
+  <string name="loading_apps_to_request">Ładowanie listy aplikacji…</string>
+  <string name="building_request_dialog">Tworzenie plików prośby o dodanie ikon…</string>
   <string name="request_upload_success">Sukces!</string>
   <string name="request_upload_success_content">Prośba wysłana na nasz serwer pomyślnie.</string>
   <!-- Preferences -->
