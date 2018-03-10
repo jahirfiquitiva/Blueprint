@@ -52,8 +52,8 @@
   <string name="clock_widget_title">Zegar analogowy</string>
   <string name="search_icons">Szukaj ikon</string>
   <string name="search_wallpapers">Szukaj tapet</string>
-  <string name="search_launchers">Wyszukaj launch-ery</string>
-  <string name="search_apps">Wyszukaj aplikacje</string>
+  <string name="search_launchers">Szukaj launcher\'ów</string>
+  <string name="search_apps">Szukaj aplikacji</string>
   <string name="seconds">Sekundy</string>
   <string name="minutes">Minuty</string>
   <string name="hours">Godziny</string>
@@ -63,24 +63,24 @@
   <!-- Requests -->
   <string name="select_all">Zaznacz wszystko</string>
   <string name="no_selected_apps_title">Brak wybranych aplikacji</string>
-  <string name="no_selected_apps_content">Nie wybrałeś aplikacji do wysłania prośby. Zaznacz ich kilka, i kliknij ten przycisk ponownie.</string>
-  <string name="apps_limit_dialog">Przepraszamy, ale możesz wybrać tylko %1$s aplikacji na żądanie.</string>
-  <string name="apps_limit_dialog_more">Przepraszamy, ale możesz zażądać teraz %1$s więcej aplikacji.</string>
+  <string name="no_selected_apps_content">Nie wybrałeś aplikacji do wysłania prośby. Zaznacz kilka z nich i kliknij ten przycisk ponownie.</string>
+  <string name="apps_limit_dialog">Przepraszamy, ale możesz dodać tylko %1$s aplikacji do swojej prośby.</string>
+  <string name="apps_limit_dialog_more">Przepraszamy, ale chwilowo możesz wysłać prośbę tylko o %1$s ikon.</string>
   <string name="apps_limit_dialog_day">Przepraszamy, ale możesz żądać ikony każdego %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za mniej niż minutę.</string>
-  <string name="requests_error">Wystąpił błąd podczas ładowania listy aplikacji.\n Tapnijj tutaj, aby spróbować ponownie.</string>
+  <string name="requests_error">Wystąpił błąd podczas ładowania listy aplikacji.\n Stuknij tutaj, aby spróbować ponownie.</string>
   <string name="loading_apps_to_request">Ładowanie listy aplikacji…</string>
   <string name="building_request_dialog">Tworzenie plików prośby o dodanie ikon…</string>
   <string name="request_upload_success">Sukces!</string>
-  <string name="request_upload_success_content">Prośba wysłana na nasz serwer pomyślnie.</string>
+  <string name="request_upload_success_content">Prośba została pomyślnie wysłana na nasz serwer.</string>
   <!-- Preferences -->
-  <string name="pref_title_wall_header">Zezwala na użycie tapety w podglądzie ikon</string>
-  <string name="pref_summary_wall_header">Twoja aktualna tapeta na urządzeniu pojawi się.</string>
-  <string name="pref_header_launcher_icon">Ikona launch-era</string>
-  <string name="pref_title_launcher_icon">Ukryj ikonę launch-era</string>
-  <string name="pref_summary_launcher_icon">Po zaznaczeniu, ikona launch-era zostanie ukryta.</string>
-  <string name="clearcache_dialog_content">Czy chcesz usunąć dane aplikacji, pamięć cache i ustawienia? Nie tyczy się to zastosowanych ikonek.</string>
+  <string name="pref_title_wall_header">Używaj tapety w podglądzie ikon</string>
+  <string name="pref_summary_wall_header">Aktualna tapeta twojego urządzenia będzie wyświetlana.</string>
+  <string name="pref_header_launcher_icon">Ikona launchera</string>
+  <string name="pref_title_launcher_icon">Ukryj ikonę launchera</string>
+  <string name="pref_summary_launcher_icon">Po zaznaczeniu, ikona launchera zostanie ukryta.</string>
+  <string name="clearcache_dialog_content">Czy chcesz usunąć dane aplikacji, pamięć cache i ustawienia? Nie ma to wpływu na zastosowane ikony.</string>
   <string name="hideicon_dialog_title">Ostrzeżenie!</string>
   <string name="hideicon_dialog_content">Czy napewno chcesz ukryć ikonę aplikacji w swoim launcherze?\nAplikacja może się niespodziewanie zamknąć, a powiadomienia się wyłączyć\nMoże chcesz przeczytać FAQ (często zadawane pytania) i dowiedzieć się, jak sprawić by pojawiły się znowu, zanim to ukryjesz.</string>
   <string name="send_using">Wyślij za pomocą…</string>
@@ -94,9 +94,9 @@
     <item>Po zrestartowaniu mojego urządzenia, paczka ikon już nie jest zastosowana. Ikony zostały przywrócone do domyślnych.</item>
     <item>Dlaczego ikony na moim urządzeniu są rozmazane?</item>
     <item>Widzę ikone dla aplikacji X w zawartych ikonach, ale ikona nie jest zastosowana.</item>
-    <item>Jak ukryć ikonę aplikacji z launch-era?</item>
-    <item>Jak otworzyć aplikację po ukryciu ikony aplikacji z launch-era?</item>
-    <item>Jak ponownie pokazać ikonę aplikacji w launch-erze?</item>
+    <item>Jak ukryć ikonę aplikacji z launcher\'a?</item>
+    <item>Jak otworzyć aplikację po ukryciu ikony aplikacji z launcher\'a?</item>
+    <item>Jak ponownie pokazać ikonę aplikacji w launcherze?</item>
     <item>Czemu aplikacja wymaga uprawnień, w celu modyfikowania, lub usuwania zawartości mojej pamięci?</item>
     <item>Dlaczego aplikacja wymaga uprawnienia do pełnego dostępu do sieci?</item>
     <item>Dlaczego aplikacja wymaga uprawnień do przeglądania połączeń?</item>
@@ -105,22 +105,22 @@
     <item>Dlaczego aplikacja wymaga uprawnienia do zapobiegania przechodzenia telefonu w stan uśpienia?</item>
   </string-array>
   <string-array name="answers">
-    <item>Potrzebujesz launchera, który wspiera Paczki Ikon. Zobacz Opis w sklepie Google Play, aby sprawdzić wspierane Launchery. Jeśli nie jesteś pewien, którego użyć- po prostu wejdź na sekcje \"Zastosuj\" i wybierz jakąś z listy.</item>
-    <item>Przesuń pasek nawigacji od lewej, wejdź do sekcji \"Zastosuj\", lub wróć do głównej sekcji aplikacji i dotknij \"Unoszący się\" przycisk akcji. Wybierz launcher, na który chcesz zastosować te ikony. Gdy twój launcher nie jest na tej liście, a ta paczka ikon jest z nim kompatybilna(zobacz w opisie w sklepie Google Play listę wspieranych launcherów), możesz ją zastosować manualnie z ustawień launchera.</item>
+    <item>Potrzebujesz launchera, który wspiera Paczki Ikon. Zobacz Opis aplikacji w sklepie Google Play, aby sprawdzić wspierane Launchery. Jeśli nie jesteś pewien, którego użyć - po prostu wejdź do sekcji \"Zastosuj\" i wybierz jakąś z listy.</item>
+    <item>Przesuń szufladę nawigacji od lewej, wejdź do sekcji \"Zastosuj\", lub wróć do głównej sekcji aplikacji i dotknij \"Unoszący się\" przycisk akcji. Wybierz launcher, na który chcesz zastosować te ikony. Gdy twój launcher nie jest na tej liście, a ta paczka ikon jest z nim kompatybilna (zobacz w opisie w sklepie Google Play listę wspieranych launcherów), możesz ją zastosować manualnie z ustawień launchera.</item>
     <item>Przesuń pasek nawigacji z lewej i przejdź do sekcji \"ikony\", lub wróć do głównej sekcji aplikacji, następnie naciśnij przycisk \"Ikony\".</item>
-    <item>W zależności od launchera, którego używasz- proces może być trochę inny lub niedostępny. W wielu przypadkach- wybieranie własnych ikon jest możliwe, poprzez przytrzymanie ikony, którą chcesz zmienić lub przesuwając ją to Pola Edytuj na górze ekranu.</item>
-    <item>Przesuń pasek nawigacji od lewej i wybierz \"Żądania\".</item>
+    <item>W zależności od launchera, którego używasz - proces może być trochę inny lub niedostępny. W wielu przypadkach wybieranie własnych ikon jest możliwe, poprzez przytrzymanie ikony, którą chcesz zmienić lub przesuwając ją do pola Edytuj na górze ekranu.</item>
+    <item>Przesuń szufladę nawigacji od lewej i wybierz \"Prośba o dodanie ikon\".</item>
     <item>Stało się to, ponieważ paczka ikon została przeniesiona na kartę SD(pamięci). Powinienieś zainstalować ją w pamięci wewnętrznej (normalnej).</item>
     <item>Problem może wynikać z launchera, którego używasz, podczas obsługi dużej rozdzielczości. Możesz to naprawić, zwiększając rozmiar ikony do 115 - 120%. Albo spróbuj użyć innego launchera.</item>
-    <item>Wyślij żądanie ikony.</item>
-    <item>Przesuń pasek nawigacji od lewej, pójdź do Ustawień. Na końcu sprawdź opcję \"Ukryj ikonę z launchera\".</item>
-    <item>Przejdź do ekranu głównego, następnie utwórz widżet dla aplikacji, nazwanych \"Przywracane ikon\".</item>
-    <item>Przesuń pasek nawigacji od lewej i pójdź do Ustawień. Potem odznacz opcję \"Ukryj ikonę z launchera\".</item>
-    <item>Jest wymagane, aby móc spisać pliki danych z żądaniami ikon, a także umożliwia zapisywanie tapet i zmianę lokalizacji ich miejsca pobrania.</item>
+    <item>Wyślij prośbę o dodanie ikon.</item>
+    <item>Przesuń szufladę nawigacji od lewej, przejdź do Ustawień. Na końcu sprawdź opcję \"Ukryj ikonę z launchera\".</item>
+    <item>Przejdź do ekranu głównego, następnie utwórz widżet aplikacji o nazwie \"Przywracane ikon\".</item>
+    <item>Przesuń szufladę nawigacji od lewej i przejdź do Ustawień. Potem odznacz opcję \"Ukryj ikonę z launchera\".</item>
+    <item>Jest wymagane, aby móc zapisać pliki danych prośby o dodanie ikon, a także umożliwia zapisywanie tapet i zmianę lokalizacji ich miejsca pobrania.</item>
     <item>Jest wymagany, aby móc załadować tapety z chmury i być w stanie je pobierać.</item>
     <item>Jest wymagane, aby móc sprawdzić czy twoje urządzenie ma połączenie z internetem.</item>
     <item>Jest wymagane, aby zastosować tapetę bezpośrednio z aplikacji.</item>
-    <item>Wymagane jest, by móc dostosować rozmiar i wymiary tapety, patrząc na wielkość/rozdzielczość ekranu.</item>
+    <item>Wymagane jest, by móc dostosować rozmiar i wymiary tapety, w zalezności od rozdzielczość ekranu.</item>
     <item>Jest wymagane przez Muzei Live Wallpaper.</item>
   </string-array>
 </resources>
