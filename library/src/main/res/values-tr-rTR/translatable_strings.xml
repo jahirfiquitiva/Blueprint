@@ -69,6 +69,7 @@
   <string name="requests_error">İstek yapmak için uygulama yüklenirken bir hata oluştu.\nYeniden denemek için burayı tıklayın.</string>
   <string name="loading_apps_to_request">İstek yapmak için uygulamalar yükleniyor…</string>
   <string name="building_request_dialog">İstek dosyaları oluşturuluyor…</string>
+  <string name="request_upload_success">Başarılı!</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">Simgeleri ön izlemede duvar kağıdı kullanılmasını etkinleştir</string>
   <string name="pref_summary_wall_header">Mevcut cihaz duvar kağıdınız gösterilecektir.</string>
@@ -84,9 +85,9 @@
     <item>Dahili tüm simgeler nasıl görülür?</item>
     <item>How to replace an icon with an alternative one?</item>
     <item>Temasız simgeleri nasıl isteyebilirim?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Cihazımı yeniden başlattıktan sonra simge paketi artık uygulanmıyor. Simgeler varsayılana döndürüldü.</item>
     <item>Neden bazı simgeler cihazımda piksel piksel gözüküyor?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>Dahil edilen simgeler içerisinde X uygulaması için bir simge görüyorum fakat simge uygulanmıyor.</item>
     <item>Uygulama simgesini başlatıcıdan nasıl gizleyebilirim?</item>
     <item>Uygulama simgesi başlatıcıdan gizlendikten sonra uygulamayı nasıl açabilirim?</item>
     <item>Uygulama simgesini başlatıcıda nasıl tekrar gösterebilirim?</item>
