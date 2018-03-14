@@ -29,8 +29,26 @@
   <string name="section_zooper">Настройка Zooper</string>
   <string name="section_widgets">Виджеты</string>
   <string name="share_this_app">Я использую %1$s, и мне нравится. Проверь на: %2$s</string>
+  <string name="rate">Оценить</string>
   <!-- Icons filters -->
+  <string name="more_apps">Другие приложения</string>
+  <string name="general_info">Общие сведения</string>
+  <string name="useful_links">Полезные ссылки</string>
+  <string name="columns">Число столбцов</string>
+  <string name="lni_content">%1$s в настоящее время не установлен на вашем устройства. \nХотите установить его из магазина Google Play?</string>
+  <string name="no_compatible_launcher_title">Данный лаунчер НЕ совместим</string>
+  <string name="no_compatible_launcher_content">Этот лаунчер не совместим с любым набором значков и, следовательно, вы не сможите использовать этот набор значков с этим лаунчером. Пожалуйста, не ставьте набору плохую оценку по этой причине. Вы можете попробовать воспользоваться внешним приложением. Хотите скачать его?</string>
+  <string name="included_templates">%1$s шаблоны</string>
+  <string name="launcher_icon_restored">значок запуска %1$s был восстановлен</string>
+  <string name="launcher_icon_not_restored">значок запуска %1$s уже отображается</string>
+  <string name="launcher_icon_restorer_error">Существует проблема с кодом %1$s. Пожалуйста, свяжитесь с его разработчиком.</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">Виджет восстановления иконок</string>
+  <string name="clock_widget_title">Аналоговые Часы</string>
+  <string name="search_icons">Искать значки</string>
+  <string name="search_wallpapers">Искать обои</string>
+  <string name="search_launchers">Искать лаунчеры</string>
+  <string name="search_apps">Искать приложения</string>
   <!-- Requests -->
   <!-- Preferences -->
   <!-- HELP SECTION -->
