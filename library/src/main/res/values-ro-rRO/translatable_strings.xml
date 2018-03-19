@@ -49,8 +49,27 @@
   <string name="no_selected_apps_title">Nicio aplicație selectată</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>How to use the Icon Pack?</item>
+    <item>How to apply the Icon Pack?</item>
+    <item>How to see all the included icons?</item>
+    <item>How to replace an icon with an alternative one?</item>
+    <item>How to request unthemed icons?</item>
+    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Why do icons look pixelated on my device?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>De ce aplicația cere permisiune pentru a aplica fundaluri?</item>
+    <item>De ce aplicația cere permisiune pentru a ajusta dimensiunile?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
+    <item>Un ecran principal cu suport pentru pictograme customizabile este necesar. Caută unul pe Play Store sau în secțiunea \"Aplică\".</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Icons\" section, or go back to main section of the app, then tap the button that says \"Icons\".</item>
     <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
