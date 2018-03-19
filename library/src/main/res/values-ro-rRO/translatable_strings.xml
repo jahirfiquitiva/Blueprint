@@ -72,7 +72,7 @@
     <item>Un ecran principal cu suport pentru pictograme customizabile este necesar. Caută unul pe Play Store sau în secțiunea \"Aplică\".</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Icons\" section, or go back to main section of the app, then tap the button that says \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
+    <item>Apasă lung pe pictograma respectivă pentru a o schimba. În funcție de ecranul principal utilizat, procesul poate fi diferit sau indisponibil.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
     <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
