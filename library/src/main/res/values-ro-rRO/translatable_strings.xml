@@ -16,8 +16,22 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="coming_soon">În curând</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">Acasă</string>
+  <string name="section_icons">Pictograme</string>
+  <string name="section_apply">Aplică</string>
+  <string name="section_wallpapers">Fundaluri</string>
+  <string name="section_donate">Donează</string>
+  <string name="section_about">Despre</string>
+  <string name="section_help">Ajutor</string>
+  <string name="section_widgets">Widget-uri</string>
+  <string name="rate">Evaluează</string>
   <!-- Icons filters -->
+  <string name="filter">Filtru</string>
+  <string name="clear">Șterge</string>
+  <string name="more_apps">Mai multe aplicații</string>
+  <string name="general_info">Informații generale</string>
   <!-- Widgets Names -->
   <!-- Requests -->
   <!-- Preferences -->
