@@ -20,14 +20,14 @@
   <string name="coming_soon">Demnächst verfügbar</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Home</string>
-  <string name="section_icons">Symbole</string>
+  <string name="section_icons">Icons</string>
   <string name="section_apply">Anwenden</string>
-  <string name="section_wallpapers">Hintergrundbildern</string>
-  <string name="section_icon_request">Symbol-Anfrage</string>
+  <string name="section_wallpapers">Hintergrundbilder</string>
+  <string name="section_icon_request">Icon-Anfrage</string>
   <string name="section_donate">Spenden</string>
   <string name="section_about">Über die App</string>
   <string name="section_help">Hilfe</string>
-  <string name="section_zooper">Zooper einrichten</string>
+  <string name="section_zooper">Zooper-Setup</string>
   <string name="section_widgets">Widgets</string>
   <string name="share_this_app">Ich verwende %1$s und ich liebe es. Hole es dir hier: %2$s</string>
   <string name="rate">Bewerten</string>
@@ -38,22 +38,22 @@
   <string name="general_info">Allgemeine Informationen</string>
   <string name="useful_links">Hilfreiche Links</string>
   <string name="columns">Spaltenanzahl</string>
-  <string name="lni_content">%1$s ist derzeit nicht auf deinem Gerät installiert.\nMöchtest du es aus dem Google Play Store installieren?     </string>
+  <string name="lni_content">%1$s ist momentan nicht auf deinem Gerät installiert.\nMöchtest du es aus dem Google Play Store installieren?</string>
   <string name="no_compatible_launcher_title">Dieser Launcher ist NICHT kompatibel</string>
-  <string name="no_compatible_launcher_content">Dieser Lauchner ist mit KEINEM Symbolbibliothek kompatibel und Sie können dieses Symbolbibliothek nicht damit verwenden. Bitte bewerten Sie deshalb die Symbolbibliothek nicht negativ. Es gibt eine Lösung dafür, die Sie selbst versuchen können, jedoch muss dafür eine externe App genutzt werden. Möchsten Sie diese App jetzt herunterladen?</string>
-  <string name="impossible_open_themes">Theme-App konnte nicht geöffnet werden</string>
-  <string name="themes_app_not_installed">Theme-App ist nicht auf diesem Gerät installiert</string>
+  <string name="no_compatible_launcher_content">Dieser Lauchner ist mit KEINEM Icon Pack kompatibel und du kannst dieses Icon Pack nicht damit verwenden. Bitte bewerte deshalb das Icon Pack nicht negativ. Es gibt eine Lösung dafür, die du selbst probieren kannst, jedoch muss dafür eine externe App genutzt werden. Möchstest du sie herunterladen?</string>
+  <string name="impossible_open_themes">Themes-App konnte nicht geöffnet werden</string>
+  <string name="themes_app_not_installed">Themes-App ist nicht auf diesem Gerät installiert</string>
   <string name="included_templates">%1$s Vorlagen</string>
-  <string name="launcher_icon_restored">%1$s Launcher-Symbol wurde wiederhergestellt</string>
-  <string name="launcher_icon_not_restored">%1$s Launcher-Symbol ist bereits sichtbar</string>
+  <string name="launcher_icon_restored">%1$s Launcher-Icon wurde wiederhergestellt</string>
+  <string name="launcher_icon_not_restored">%1$s Launcher-Icon ist bereits sichtbar</string>
   <string name="launcher_icon_restorer_error">Es gibt ein Problem mit dem Code von %1$s. Bitte kontaktiere den Entwickler.</string>
   <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Widget zur Symbol-Wiederherstellung</string>
-  <string name="clock_widget_title">Analoge Uhr</string>
-  <string name="search_icons">Symbole suchen</string>
-  <string name="search_wallpapers">Hintergrundbildern suchen</string>
-  <string name="search_launchers">Launcher suchen</string>
-  <string name="search_apps">Apps suchen</string>
+  <string name="iconrestorer_widget_title">Widget zur Icon-Wiederherstellung</string>
+  <string name="clock_widget_title">Analog Uhr</string>
+  <string name="search_icons">Icons durchsuchen</string>
+  <string name="search_wallpapers">Hintergrundbilder durchsuchen</string>
+  <string name="search_launchers">Launcher durchsuchen</string>
+  <string name="search_apps">Apps durchsuchen</string>
   <string name="seconds">Sekunden</string>
   <string name="minutes">Minuten</string>
   <string name="hours">Stunden</string>
@@ -61,7 +61,7 @@
   <string name="weeks">Wochen</string>
   <string name="months">Monate</string>
   <!-- Requests -->
-  <string name="select_all">Alles auswählen</string>
+  <string name="select_all">Alle auswählen</string>
   <string name="no_selected_apps_title">Keine Apps ausgewählt</string>
   <string name="no_selected_apps_content">Du hast keine App für deine Anfrage ausgewählt. Wähle etwas aus, bevor du den FAB erneut drückst.</string>
   <string name="apps_limit_dialog">Entschuldigung, aber du darfst nur %1$s Apps für deine Anfrage auswählen.</string>
