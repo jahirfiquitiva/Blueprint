@@ -34,6 +34,7 @@
   <string name="general_info">Informații generale</string>
   <string name="useful_links">Link-uri utile</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">Reactivează pictograma</string>
   <string name="search_icons">Caută pictograme</string>
   <string name="search_wallpapers">Caută fundaluri</string>
   <string name="search_launchers">Caută ecrane principale</string>
@@ -74,11 +75,11 @@
     <item>Slide the NavigationDrawer from the left, and go to \"Icons\" section, or go back to main section of the app, then tap the button that says \"Icons\".</item>
     <item>Apasă lung pe pictograma respectivă pentru a o schimba. În funcție de ecranul principal utilizat, procesul poate fi diferit sau indisponibil.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+    <item>S-a întâmplat deoarece aplicația a fost instalată pe cardul SD. Instalați aplicația în memoria internă.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
     <item>Trimite o cerere de pictograme.</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\".</item>
+    <item>Adaugă pe ecranul principal widget-ul \"Reactivează pictograma\".</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
     <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers download location.</item>
     <item>It\'s needed to be able to load the cloud based wallpapers and download them.</item>
