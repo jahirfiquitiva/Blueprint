@@ -22,10 +22,13 @@
   <string name="section_icons">Pictograme</string>
   <string name="section_apply">Aplică</string>
   <string name="section_wallpapers">Fundaluri</string>
+  <string name="section_icon_request">Cerere de pictograme noi</string>
   <string name="section_donate">Donează</string>
   <string name="section_about">Despre</string>
   <string name="section_help">Ajutor</string>
+  <string name="section_zooper">Setări Zooper</string>
   <string name="section_widgets">Widget-uri</string>
+  <string name="share_this_app">Recomand %1$s. %2$s</string>
   <string name="rate">Evaluează</string>
   <!-- Icons filters -->
   <string name="filter">Filtru</string>
@@ -33,8 +36,12 @@
   <string name="more_apps">Mai multe aplicații</string>
   <string name="general_info">Informații generale</string>
   <string name="useful_links">Link-uri utile</string>
+  <string name="columns">Număr de coloane</string>
+  <string name="lni_content">%1$s nu este instalat.\nDescarc din Play Store?</string>
+  <string name="no_compatible_launcher_title">Acest ecran principal NU este compatbil</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Reactivează pictograma</string>
+  <string name="clock_widget_title">Ceas analogic</string>
   <string name="search_icons">Caută pictograme</string>
   <string name="search_wallpapers">Caută fundaluri</string>
   <string name="search_launchers">Caută ecrane principale</string>
@@ -81,10 +88,10 @@
     <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
     <item>Adaugă pe ecranul principal widget-ul \"Reactivează pictograma\".</item>
     <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers download location.</item>
-    <item>It\'s needed to be able to load the cloud based wallpapers and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+    <item>Este necesar pentru descărcarea fundalurilor și înregistrarea cererilor pentru pictograme noi.</item>
+    <item>Este necesar pentru a vizualiza și descărca fundalurile.</item>
+    <item>Este necesar pentru verificarea conexiunii la internet.</item>
+    <item>Este necesar pentru a seta un fundal direct din aplicație.</item>
     <item>Este necesar pentru a putea ajusta fundalul în funcție de rezoluția ecranului tău.</item>
     <item>Este necesar pentru Muzei Live Wallpaper.</item>
   </string-array>
