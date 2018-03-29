@@ -63,6 +63,7 @@
   <!-- Requests -->
   <string name="select_all">Seleziona tutto</string>
   <string name="no_selected_apps_title">Nessuna app selezionata</string>
+  <string name="no_selected_apps_content">Non hai selezionato alcuna app da richiedere. Si prega di selezionarne alcune, poi premere nuovamente questo pulsante.</string>
   <string name="apps_limit_dialog">Ci dispiace, ma è consentito selezionare solo %1$s applicazioni da richiedere.</string>
   <string name="apps_limit_dialog_more">Ci dispiace, ma è consentito richiedere solo %1$s altre app per ora.</string>
   <string name="apps_limit_dialog_day">Ci dispiace, ma è consentito richiedere icone solo ogni %1$s.</string>
@@ -92,7 +93,7 @@
     <item>Come richiedere le icone non a tema?</item>
     <item>Dopo aver riavviato il mio dispositivo, l\'icon pack non è più applicato. Le icone sono state ripristinate per impostazione predefinita.</item>
     <item>Perché le icone appaiono sgranate nel mio dispositivo?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>Posso vedere un\'icona per l\'app X nelle icone incluse, ma l\'icona non si applica.</item>
     <item>Come nascondere l\'icona dell\'app dal menù delle app?</item>
     <item>Come aprire l\'app dopo che la sua icona è stata nascosta dal menù delle app?</item>
     <item>Come mostrare di nuovo l\'icona nel menù dell\'app?</item>
@@ -104,22 +105,22 @@
     <item>Perché l\'app necessita del permesso per evitare che il telefono dorma?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
+    <item>Hai bisogno di un launcher che supporti gli Icon Pack. Controlla la descrizione del Google Play Store dei launcher supportati. Se non sei sicuro quale launcher dovresti usare, ti basta andare nella sezione \"Applica\", poi scegline uno dalla lista.</item>
+    <item>Fai scorrere il NavigationDrawer da sinistra, e vai nella sezione \"Applica\", o torna indietro nella sezione principale dell\'app, poi tocca il Floating Action Button. Seleziona il launcher in cui vuoi applicare le icone. Se il tuo launcher non è presente nella lista, ma è compatibile con questo icon pack (vedi la descrizione nel Google Play Store per la lista dei launcher supportati),            puoi applicarlo manualmente dalle impostazioni del launcher.</item>
     <item>Fai scorrere il NavigationDrawer da sinistra verso destra, e vai nella sezione \"Icone\", o vai nella sezione principale dell\'app, poi premi il pulsante che dice:\" Icone\".</item>
-    <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+    <item>A seconda del launcher che si sta utilizzando, il processo potrebbe essere leggermente differente o non disponibile. Nella maggior parte dei casi, tuttavia, scegliendo un\'icona personalizzata è possibile tramite una pressione prolungata sull\'icona che si desidera modificare o trascinandola in campo di modifica nella parte superiore dello schermo.</item>
+    <item>Fai scorrere il NavigationDrawer da sinistra, e vai alla sezione \"Richieste\".</item>
+    <item>È successo perché l\'icon pack è stato spostato nella scheda SD, dovresti installarlo nella            memoria interna.</item>
+    <item>Il problema potrebbe provenire dal launcher che stai usando, quando si usa una grande risoluzione. Puoi risolvere il problema aumentando la grandezza delle icone a 115 - 120%.            O prova a usare un altro launcher.</item>
     <item>Invia una richiesta di icona.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+    <item>Fai scorrere il NavigationDrawer da sinistra, e vai alla sezione \"Impostazioni\". Poi seleziona l\'opzione \"Nascondi icona dal menù delle app\".</item>
     <item>Vai nella tua schermata home, poi crea il widget dell\'app con il nome di \"IconRestorer\".</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+    <item>Fai scorrere il NavigationDrawer da sinistra, e vai alla sezione \"Impostazioni\". Poi seleziona l\'opzione \"Nascondi icona dal menù delle app\".</item>
     <item>È necessario saper scrivere dati e file delle richieste di icone, così come salvare sfondi, e cambiare destinazione del download di sfondi.</item>
     <item>È necessario saper caricare gli sfondi del cloud e scaricarli.</item>
     <item>È necessario saper controllare se il tuo dispositivo ha una connessione ad internet.</item>
     <item>È necessario saper applicare sfondi direttamente dall\'app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+    <item>È necessario saper regolare la dimensione degli sfondi in base alla risoluzione del tuo schermo.</item>
     <item>È necessario Muzei Live Wallpaper.</item>
   </string-array>
 </resources>

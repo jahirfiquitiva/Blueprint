@@ -24,7 +24,7 @@
   <string name="section_apply">Appliquer</string>
   <string name="section_wallpapers">Fonds d\'écran</string>
   <string name="section_icon_request">Demande d\'icônes</string>
-  <string name="section_donate">Donation</string>
+  <string name="section_donate">Faire un don</string>
   <string name="section_about">A Propos</string>
   <string name="section_help">Aide</string>
   <string name="section_zooper">Configuration Zooper</string>
@@ -32,7 +32,7 @@
   <string name="share_this_app">J\'utilise %1$s et je l\'adore. Regarde ça: %2$s</string>
   <string name="rate">Evaluer</string>
   <!-- Icons filters -->
-  <string name="filter">Filtrer</string>
+  <string name="filter">Filtre</string>
   <string name="clear">Effacer</string>
   <string name="more_apps">Plus d\'applications</string>
   <string name="general_info">Informations générales</string>
@@ -82,6 +82,7 @@
   <string name="pref_summary_launcher_icon">Lorsque cochée, l\'icône de l\'application sera masquée.</string>
   <string name="clearcache_dialog_content">Êtes-vous sûr de que vouloir supprimer les paramètres, les cache et les données de l’application ? Les icônes appliquées ne seront pas affectées.</string>
   <string name="hideicon_dialog_title">Attention !</string>
+  <string name="send_using">Envoyer avec…</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Comment utiliser le Pack d’icônes ?</item>
@@ -91,8 +92,8 @@
     <item>Comment demander des icônes pas encore modifiées ?</item>
     <item>Après le redémarrage de mon appareil, le pack d’icônes ne s’applique plus. Les icônes ont été restaurées par défaut.</item>
     <item>Pourquoi les icônes sont-elles pixelisées sur mon appareil ?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
+    <item>Je peux voir une icône pour X app dans les icônes inclus, mais l’icône ne s’applique pas.</item>
+    <item>Comment faire pour masquer l’icône de l’application du lanceur ?</item>
     <item>How to open the app after app icon is hidden from launcher?</item>
     <item>How to show app icon in launcher again?</item>
     <item>Why does the app need permission to modify or delete content of my storage?</item>
