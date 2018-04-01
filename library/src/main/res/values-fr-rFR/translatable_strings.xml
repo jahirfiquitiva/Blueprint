@@ -25,26 +25,26 @@
   <string name="section_wallpapers">Fonds d\'écran</string>
   <string name="section_icon_request">Demande d\'icônes</string>
   <string name="section_donate">Faire un don</string>
-  <string name="section_about">A Propos</string>
+  <string name="section_about">À propos</string>
   <string name="section_help">Aide</string>
   <string name="section_zooper">Configuration Zooper</string>
   <string name="section_widgets">Widgets</string>
-  <string name="share_this_app">J\'utilise %1$s et je l\'adore. Regarde ça: %2$s</string>
-  <string name="rate">Evaluer</string>
+  <string name="share_this_app">J\'utilise %1$s et je l\'adore. Jettes-y un œil : %2$s</string>
+  <string name="rate">Évaluer</string>
   <!-- Icons filters -->
   <string name="filter">Filtre</string>
   <string name="clear">Effacer</string>
-  <string name="more_apps">Plus d\'applications</string>
+  <string name="more_apps">Plus d\'applis</string>
   <string name="general_info">Informations générales</string>
   <string name="useful_links">Liens utiles</string>
   <string name="columns">Nombre de colonnes</string>
-  <string name="lni_content">%1$s n\'est actuellement pas installée sur votre appareil.\nVoulez vous l\'installer depuis le Google Play Store?</string>
+  <string name="lni_content">%1$s n\'est actuellement pas installée sur votre appareil.\nVoulez-vous l\'installer depuis le Play Store ?</string>
   <string name="no_compatible_launcher_title">Ce launcher n\'est PAS compatible</string>
   <string name="no_compatible_launcher_content">Ce launcher n\'est PAS compatible avec les Packs d\'icônes et par conséquent, vous ne pouvez pas utiliser ce pack d\'icônes avec ce launcher. Veuillez ne pas noter ce pack d\'icônes négativement pour ce motif. Il existe une solution que vous pouvez essayer par vous-même, mais elle nécessite l\'utilisation d\'une application externe. Souhaitez vous la télécharger?</string>
   <string name="impossible_open_themes">Impossible d\'ouvrir l\'application de thèmes</string>
   <string name="themes_app_not_installed">L\'application de thèmes n\'est pas installé sur cet appareil</string>
   <string name="included_templates">%1$s thèmes</string>
-  <string name="launcher_icon_restored">L\'icône de l\'application %1$s a été restauré</string>
+  <string name="launcher_icon_restored">L\'icône de l\'application %1$s a été restaurée</string>
   <string name="launcher_icon_not_restored">L\'icône de l\'application %1$s est déjà visible</string>
   <string name="launcher_icon_restorer_error">Il y a un problème avec le code de %1$s. Merci contacter son développeur.</string>
   <!-- Widgets Names -->
