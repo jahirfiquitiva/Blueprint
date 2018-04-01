@@ -17,7 +17,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
   <string name="frames_dashboard">Tableau de bord Blueprint</string>
-  <string name="coming_soon">Bientôt disponible</string>
+  <string name="coming_soon">Prochainement</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Accueil</string>
   <string name="section_icons">Icônes</string>
@@ -51,9 +51,9 @@
   <string name="iconrestorer_widget_title">Widget Restaurer icône</string>
   <string name="clock_widget_title">Horloge analogique</string>
   <string name="search_icons">Rechercher des icônes</string>
-  <string name="search_wallpapers">Rechercher un fonds d’écran</string>
+  <string name="search_wallpapers">Rechercher des fonds d’écran</string>
   <string name="search_launchers">Rechercher des launchers</string>
-  <string name="search_apps">Rechercher des applications</string>
+  <string name="search_apps">Rechercher des applis</string>
   <string name="seconds">Secondes</string>
   <string name="minutes">Minutes</string>
   <string name="hours">Heures</string>
