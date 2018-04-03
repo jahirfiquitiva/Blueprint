@@ -64,6 +64,7 @@
   <string name="select_all">Összes kijelölése</string>
   <string name="no_selected_apps_title">Nincs kiválasztott alkalmazás</string>
   <string name="no_selected_apps_content">Nincs kijelölve aplikáció, kérjük jelöljön ki egy vagy több elemet majd próbálja újra. </string>
+  <string name="apps_limit_dialog">Sajnáljuk, nem vagy jogosult a következő alkalmazás letöltésére: %1$s</string>
   <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
   <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>
