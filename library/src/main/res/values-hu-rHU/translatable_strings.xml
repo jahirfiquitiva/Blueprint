@@ -29,9 +29,11 @@
   <string name="section_help">Súgó</string>
   <string name="section_zooper">Zooper widget</string>
   <string name="section_widgets">Modulok</string>
+  <string name="share_this_app">Használom a %1$s és imádom. Próbáld ki %2$s</string>
   <string name="rate">Értékelés</string>
   <!-- Icons filters -->
   <string name="filter">Szűrő</string>
+  <string name="clear"> Töröl</string>
   <string name="more_apps">További alkalmazások</string>
   <string name="general_info">Általános információk</string>
   <string name="useful_links">Hasznos linkek</string>
@@ -39,6 +41,8 @@
   <string name="lni_content">%1$s jelenleg nincs telepítve az eszközön. \nWould szeretnéd telepíteni a Google Play áruházból?</string>
   <string name="no_compatible_launcher_title">Ezt az indító NEM kompatibilis</string>
   <string name="no_compatible_launcher_content">Ez az indító NEM kompatibilis SEMELYIK ikon csomaggal, ezért nem tudod használni a csomagot ebben az indítóban sem. Kérlek ne értékeld le az ikon csomagot emiatt. Van egy megoldás, amit ki tudsz próbálni, de ehhez szükséged lesz egy másik alkalmazásra. Szeretnéd letölteni?</string>
+  <string name="impossible_open_themes">Nem lehetséges a témák megnyitása. </string>
+  <string name="themes_app_not_installed">A témák nincsenek telepítve az eszközre. </string>
   <string name="included_templates">%1$s sablonok</string>
   <string name="launcher_icon_restored">%1$s ikon helyreállítva</string>
   <string name="launcher_icon_not_restored">%1$s ikon már látható</string>
@@ -59,6 +63,8 @@
   <!-- Requests -->
   <string name="select_all">Összes kijelölése</string>
   <string name="no_selected_apps_title">Nincs kiválasztott alkalmazás</string>
+  <string name="no_selected_apps_content">Nincs kijelölve aplikáció, kérjük jelöljön ki egy vagy több elemet majd próbálja újra. </string>
+  <string name="apps_limit_dialog">Sajnáljuk, nem vagy jogosult a következő alkalmazás letöltésére: %1$s</string>
   <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
   <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>

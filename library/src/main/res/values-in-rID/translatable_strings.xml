@@ -38,6 +38,7 @@
   <string name="general_info">Informasi Umum</string>
   <string name="useful_links">Tautan yang bermanfaat</string>
   <string name="columns">Nomor Kolom</string>
+  <string name="lni_content">%1$s saat ini tidak terpasang pada perangkat anda.\nApakah anda ingin memasang dari Google Play Store?</string>
   <string name="no_compatible_launcher_title">Peluncur ini TIDAK Cocok</string>
   <string name="impossible_open_themes">Tidak mungkin untuk membuka tema aplikasi</string>
   <string name="themes_app_not_installed">Tema aplikasi tidak terpasang di perangkat ini</string>
@@ -69,6 +70,8 @@
   <string name="requests_error">Ada sebuah kesalahan saat memuat aplikasi untuk permintaan.\nTekan di sini untuk mencoba kembali.</string>
   <string name="loading_apps_to_request">Memuat aplikasi untuk meminta…</string>
   <string name="building_request_dialog">Membangun permintaan berkas…</string>
+  <string name="request_upload_success">Berhasil!</string>
+  <string name="request_upload_success_content">Permintaan telah berhasil di-upload ke server kami.</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">Mengaktifkan penggunaan wallpaper dalam peninjauan ikon</string>
   <string name="pref_summary_wall_header">Perangkat wallpaper anda saat ini akan ditampilkan.</string>
@@ -82,7 +85,7 @@
     <item>Bagaimana cara menggunakan Paket Ikon?</item>
     <item>Bagaimana cara menerapkan Paket Ikon?</item>
     <item>Bagaimana cara melihat semua ikon yang disertakan?</item>
-    <item>How to replace an icon with an alternative one?</item>
+    <item>Bagaimana cara mengganti ikon dengan alternatif ikon lain?</item>
     <item>Bagaimana cara meminta ikon yang tidak ada tema?</item>
     <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
     <item>Mengapa ikon terlihat pixelated pada perangkat saya?</item>
