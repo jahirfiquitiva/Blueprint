@@ -31,6 +31,8 @@
   <string name="share_this_app">Я использую %1$s, и мне нравится. Проверь на: %2$s</string>
   <string name="rate">Оценить</string>
   <!-- Icons filters -->
+  <string name="filter">Фильтр</string>
+  <string name="clear">Очистить</string>
   <string name="more_apps">Другие приложения</string>
   <string name="general_info">Общие сведения</string>
   <string name="useful_links">Полезные ссылки</string>
@@ -49,7 +51,15 @@
   <string name="search_wallpapers">Искать обои</string>
   <string name="search_launchers">Искать лаунчеры</string>
   <string name="search_apps">Искать приложения</string>
+  <string name="seconds">Секунд</string>
+  <string name="minutes">Минут</string>
+  <string name="hours">Часов</string>
+  <string name="days">Дней</string>
+  <string name="weeks">Недель</string>
+  <string name="months">Месяцев</string>
   <!-- Requests -->
+  <string name="select_all">Выделить все</string>
+  <string name="no_selected_apps_title">Нет выбранных приложений</string>
   <string name="no_selected_apps_content">Вы не выбрали ни одного приложения для запроса. Пожалуйста, выберите несколько приложений, а затем нажмите эту кнопку снова.</string>
   <string name="apps_limit_dialog">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
   <string name="building_request_dialog">Подготовка файлов запроса…</string>
