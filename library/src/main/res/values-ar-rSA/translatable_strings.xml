@@ -20,6 +20,7 @@
   <string name="coming_soon">Coming soon</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Home</string>
+  <string name="section_apply">تطبيق</string>
   <string name="rate">Rate</string>
   <!-- Icons filters -->
   <!-- Widgets Names -->
