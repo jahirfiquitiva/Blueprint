@@ -17,7 +17,20 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
   <!-- List Of Drawer Sections -->
+  <string name="section_about">앱 소개</string>
+  <string name="section_help">도움말</string>
+  <string name="section_zooper">Zooper 설치</string>
+  <string name="section_widgets">위젯</string>
+  <string name="rate">평가하기</string>
   <!-- Icons filters -->
+  <string name="filter">필터</string>
+  <string name="clear">비우기</string>
+  <string name="more_apps">앱 더보기</string>
+  <string name="general_info">일반 정보</string>
+  <string name="useful_links">유용한 링크</string>
+  <string name="lni_content">%1$s는 현재 당신의 장치에 설치되어 있지 않습니다.\n구글 플레이 스토어에서 설치하시겠습니까?</string>
+  <string name="no_compatible_launcher_title">이 장치에서는 호환되지 않습니다</string>
+  <string name="impossible_open_themes">앱의 테마를 여는것이 불가능합니다</string>
   <!-- Widgets Names -->
   <!-- Requests -->
   <!-- Preferences -->
