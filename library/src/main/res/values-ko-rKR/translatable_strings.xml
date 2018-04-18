@@ -66,6 +66,7 @@
   <string name="apps_limit_dialog_day_extra_sec">1분 안에 요청 아이콘을 다시 사용할 수 있을 것입니다.</string>
   <string name="requests_error">앱을 로딩 요청하는데 오류가 발생했습니다.\n 여기를 다시 눌러주세요.</string>
   <string name="loading_apps_to_request">앱 로딩을 요청중...</string>
+  <string name="request_upload_success">성공!</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
