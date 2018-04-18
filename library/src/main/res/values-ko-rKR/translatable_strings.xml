@@ -30,7 +30,11 @@
   <string name="useful_links">유용한 링크</string>
   <string name="lni_content">%1$s는 현재 당신의 장치에 설치되어 있지 않습니다.\n구글 플레이 스토어에서 설치하시겠습니까?</string>
   <string name="no_compatible_launcher_title">이 장치에서는 호환되지 않습니다</string>
-  <string name="impossible_open_themes">앱의 테마를 여는것이 불가능합니다</string>
+  <string name="impossible_open_themes">테마의 앱을 여는것이 불가능합니다</string>
+  <string name="themes_app_not_installed">테마의 앱이 장치에 설치되어있지 않습니다</string>
+  <string name="included_templates">%1$s 템플릿</string>
+  <string name="launcher_icon_restored">%1$s 런처 아이콘이 복원되었습니다</string>
+  <string name="launcher_icon_not_restored">%1$s 런처 아이콘이 표시 됩니다.</string>
   <!-- Widgets Names -->
   <!-- Requests -->
   <!-- Preferences -->
