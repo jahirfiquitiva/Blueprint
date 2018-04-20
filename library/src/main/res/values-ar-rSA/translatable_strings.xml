@@ -21,6 +21,7 @@
   <!-- List Of Drawer Sections -->
   <string name="section_home">Home</string>
   <string name="section_apply">تطبيق</string>
+  <string name="section_wallpapers">Wallpapers</string>
   <string name="rate">Rate</string>
   <!-- Icons filters -->
   <!-- Widgets Names -->
