@@ -115,7 +115,7 @@ allprojects {
 2. Add the dependency in your project `build.gradle` file
 ```gradle
 dependencies {
-    compile('me.jahirfiquitiva:Blueprint:{latest version}@aar') {
+    implementation('me.jahirfiquitiva:Blueprint:{latest version}@aar') {
         transitive = true
     }
 }
