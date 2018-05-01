@@ -16,6 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">Blueprint řídicí panel</string>
   <!-- List Of Drawer Sections -->
   <!-- Icons filters -->
   <!-- Widgets Names -->
