@@ -40,6 +40,7 @@ import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.IconDialog
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER
 import jahirfiquitiva.libs.frames.helpers.utils.IMAGE_PICKER
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
@@ -72,7 +73,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
     fun applyFilters(filters: ArrayList<String>) {
         val list = ArrayList(model.getData().orEmpty())
         if (filters.isNotEmpty()) {
-            setAdapterItems(ArrayList(list.filter { validFilter(it.title, filters) }))
+            setAdapterItems(list.jfilter { validFilter(it.title, filters) })
         } else {
             setAdapterItems(list)
         }
@@ -110,7 +111,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         categories.forEach { category ->
             if (filteredBy.hasContent())
                 icons.addAll(
-                        category.getIcons().filter { validIconFilter(filteredBy, it, category) })
+                        category.getIcons().jfilter { validIconFilter(filteredBy, it, category) })
             else icons.addAll(category.getIcons())
         }
         adapter?.setItems(ArrayList(icons.distinctBy { it.name }.sortedBy { it.name }))

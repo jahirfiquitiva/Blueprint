@@ -30,6 +30,7 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
@@ -140,12 +141,9 @@ class HelpActivity : ThemedActivity<BPKonfigs>() {
     
     private fun doSearch(filter: String = "") {
         if (filter.hasContent()) {
-            adapter.setItems(
-                    ArrayList(
-                            faqs.filter {
-                                (it.question.contains(filter, true) || it.answer.contains(
-                                        filter, true))
-                            }))
+            adapter.setItems(faqs.jfilter {
+                (it.question.contains(filter, true) || it.answer.contains(filter, true))
+            })
         } else {
             adapter.setItems(faqs)
         }

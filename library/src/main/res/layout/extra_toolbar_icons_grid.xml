@@ -20,7 +20,6 @@
     android:id="@+id/icons_preview_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/icons_preview_grid_margin"
     android:layout_centerInParent="true"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
@@ -34,7 +33,10 @@
         android:id="@+id/icons_preview_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/icons_preview_grid_margin"
         android:layout_gravity="center"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:clickable="false"
         android:focusable="false"
         android:descendantFocusability="blocksDescendants" />

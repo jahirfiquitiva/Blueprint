@@ -38,6 +38,7 @@ import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.actv
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
@@ -169,9 +170,10 @@ class RequestsFragment : ViewModelFragment<App>() {
         if (filter.hasContent()) {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
-            viewModel.getData()?.let {
-                adapter?.setItems(ArrayList(it.filter { it.name.contains(filter, true) }))
-            }
+            adapter?.setItems(
+                    ArrayList(viewModel.getData().orEmpty()).jfilter {
+                        it.name.contains(filter, true)
+                    })
         } else {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)

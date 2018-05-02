@@ -32,6 +32,7 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.showLauncherNotInstalled
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.LaunchersViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.LaunchersAdapter
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
@@ -95,11 +96,9 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
         if (filter.hasContent()) {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
-            setAdapterItems(
-                    ArrayList(
-                            launchersViewModel.getData().orEmpty().filter {
-                                it.name.contains(filter, true)
-                            }))
+            setAdapterItems(ArrayList(launchersViewModel.getData().orEmpty()).jfilter {
+                it.name.contains(filter, true)
+            })
         } else {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)

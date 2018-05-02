@@ -55,6 +55,7 @@ import jahirfiquitiva.libs.blueprint.quest.utils.saveAll
 import jahirfiquitiva.libs.blueprint.quest.utils.saveIcon
 import jahirfiquitiva.libs.blueprint.quest.utils.wipe
 import jahirfiquitiva.libs.blueprint.quest.utils.zip
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getUri
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
@@ -812,8 +813,7 @@ class IconRequest private constructor() {
                             .validators(RemoteValidator())
                     try {
                         val zipFile = buildZip(
-                                date,
-                                ArrayList(arcticZipFiles.filter { it.name.endsWith("png", true) }))
+                                date, arcticZipFiles.jfilter { it.name.endsWith("png", true) })
                         cleanFiles()
                         if (zipFile != null) {
                             val form = MultipartForm()
