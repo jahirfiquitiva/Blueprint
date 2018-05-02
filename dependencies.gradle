@@ -30,7 +30,7 @@ ext.versions = [
         materialDrawer: '6.0.7',
         counterFab    : '1.0.3',
         bridge        : '5.1.2',
-	fuel          : '1.13.0',
+        retrofit      : '2.4.0',
         oneSignal     : '3.8.3'
 ]
 
@@ -49,8 +49,8 @@ ext.libraries = [
         counterFab    : 'com.github.andremion:counterfab:' + versions.counterFab,
         // Bridge
         bridge        : 'com.afollestad:bridge:' + versions.bridge,
-	// Fuel
-	fuel          : 'com.github.kittinunf.fuel:fuel-android:' + versions.fuel,
+        // Retrofit
+        retrofit      : 'com.squareup.retrofit2:retrofit:' + versions.retrofit,
         // OneSignal
         oneSignal     : 'com.onesignal:OneSignal:' + versions.oneSignal
 ]

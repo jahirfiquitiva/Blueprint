@@ -63,6 +63,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.readBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.readEnum
 import jahirfiquitiva.libs.kauextensions.extensions.writeBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.writeEnum
+import okhttp3.MultipartBody
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import java.io.File
@@ -805,12 +806,14 @@ class IconRequest private constructor() {
                 }
                 
                 if (uploadToArctic) {
+                    
                     Bridge.config()
                             .host(host)
                             .defaultHeader("TokenID", apiKey)
                             .defaultHeader("Accept", "application/json")
                             .defaultHeader("User-Agent", "afollestad/icon-request")
                             .validators(RemoteValidator())
+                    
                     try {
                         val zipFile = buildZip(
                                 date, arcticZipFiles.jfilter { it.name.endsWith("png", true) })
@@ -819,7 +822,9 @@ class IconRequest private constructor() {
                             val form = MultipartForm()
                             form.add("archive", zipFile)
                             form.add("apps", JSONObject(jsonSb?.toString().orEmpty()).toString())
+                            
                             post("/v1/request").throwIfNotSuccess().body(form).request()
+                            
                             BPLog.d { "Request uploaded to the server!" }
                             
                             val amount = requestsLeft - selectedApps.size
