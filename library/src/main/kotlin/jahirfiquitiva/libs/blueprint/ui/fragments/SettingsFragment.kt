@@ -20,7 +20,7 @@ import android.content.pm.PackageManager
 import android.preference.Preference
 import android.preference.SwitchPreference
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
+import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
 import jahirfiquitiva.libs.kauextensions.extensions.actv
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
@@ -34,8 +34,8 @@ class SettingsFragment : SettingsFragment() {
         val toolbarHeaderPref = findPreference("wallpaper_in_icons_preview") as SwitchPreference
         toolbarHeaderPref.setOnPreferenceChangeListener { _, any ->
             val enable = any.toString().equals("true", true)
-            if (enable != context?.bpKonfigs?.wallpaperInIconsPreview)
-                context?.bpKonfigs?.wallpaperInIconsPreview = enable
+            if (enable != configs.wallpaperInIconsPreview)
+                configs.wallpaperInIconsPreview = enable
             true
         }
         
@@ -55,7 +55,7 @@ class SettingsFragment : SettingsFragment() {
         val hideIcon = findPreference("launcher_icon") as SwitchPreference
         
         if (className != null) {
-            hideIcon.isChecked = !ctxt.bpKonfigs.launcherIconShown
+            hideIcon.isChecked = !configs.launcherIconShown
             
             hideIcon.onPreferenceChangeListener =
                     Preference.OnPreferenceChangeListener { _, newValue ->
@@ -68,8 +68,8 @@ class SettingsFragment : SettingsFragment() {
                                 positiveText(android.R.string.yes)
                                 negativeText(android.R.string.no)
                                 onPositive { _, _ ->
-                                    if (ctxt.bpKonfigs.launcherIconShown) {
-                                        ctxt.bpKonfigs.launcherIconShown = false
+                                    if (configs.launcherIconShown) {
+                                        configs.launcherIconShown = false
                                         ctxt.packageManager.setComponentEnabledSetting(
                                                 component,
                                                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
@@ -86,8 +86,8 @@ class SettingsFragment : SettingsFragment() {
                             }
                             dialog?.show()
                         } else {
-                            if (!ctxt.bpKonfigs.launcherIconShown) {
-                                ctxt.bpKonfigs.launcherIconShown = true
+                            if (!configs.launcherIconShown) {
+                                configs.launcherIconShown = true
                                 ctxt.packageManager.setComponentEnabledSetting(
                                         component,
                                         PackageManager.COMPONENT_ENABLED_STATE_ENABLED,

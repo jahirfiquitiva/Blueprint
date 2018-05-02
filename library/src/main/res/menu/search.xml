@@ -19,12 +19,12 @@
       xmlns:tools="http://schemas.android.com/tools">
 
     <item
-            android:id="@+id/search"
-            android:title="@string/search"
-            android:icon="@drawable/ic_search"
-            android:orderInCategory="100"
-            app:showAsAction="always|collapseActionView"
-            app:actionViewClass="jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView"
-            tools:ignore="AppCompatResource"/>
+        android:id="@+id/search"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search"
+        android:orderInCategory="100"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView"
+        tools:ignore="AppCompatResource" />
 
 </menu>

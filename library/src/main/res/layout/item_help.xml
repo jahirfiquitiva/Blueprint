@@ -15,34 +15,34 @@
   ~ limitations under the License.
   -->
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/faq_card"
-        style="@style/CardContent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/faq_card"
+    style="@style/CardContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?listPreferredItemHeight"
+    android:foreground="?selectableItemBackground"
+    android:animateLayoutChanges="true"
+    android:focusable="false"
+    android:descendantFocusability="blocksDescendants"
+    tools:ignore="Overdraw">
+
+    <TextView
+        android:id="@+id/help_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?listPreferredItemHeight"
-        android:foreground="?selectableItemBackground"
-        android:animateLayoutChanges="true"
-        android:focusable="false"
-        android:descendantFocusability="blocksDescendants"
-        tools:ignore="Overdraw">
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="16sp"
+        tools:text="Question" />
 
     <TextView
-            android:id="@+id/help_question"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="16sp"
-            tools:text="Question"/>
-
-    <TextView
-            android:id="@+id/help_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/cards_margin"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textSize="14sp"
-            tools:text="Answer"/>
+        android:id="@+id/help_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/cards_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="14sp"
+        tools:text="Answer" />
 
 </LinearLayout>

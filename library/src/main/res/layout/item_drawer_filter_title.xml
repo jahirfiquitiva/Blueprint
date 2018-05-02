@@ -26,30 +26,30 @@
               android:gravity="center_vertical">
 
     <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:clickable="false">
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:clickable="false">
 
         <TextView
-                android:id="@+id/filters_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="@string/filter"/>
+            android:id="@+id/filters_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="@string/filter" />
 
     </LinearLayout>
 
     <android.support.v7.widget.AppCompatButton
-            android:id="@+id/clear_filters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:text="@string/clear"
-            android:textAllCaps="true"
-            android:textColor="?attr/colorAccent"/>
+        android:id="@+id/clear_filters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:text="@string/clear"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorAccent" />
 
 </LinearLayout>

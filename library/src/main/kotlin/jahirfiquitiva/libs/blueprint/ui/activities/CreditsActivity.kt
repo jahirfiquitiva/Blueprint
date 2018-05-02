@@ -16,9 +16,11 @@
 package jahirfiquitiva.libs.blueprint.ui.activities
 
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.frames.ui.activities.CreditsActivity
 
 class CreditsActivity : CreditsActivity() {
+    override val configs: BPKonfigs by lazy { BPKonfigs(this) }
     override fun lightTheme(): Int = R.style.BlueprintLightTheme
     override fun darkTheme(): Int = R.style.BlueprintDarkTheme
     override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme

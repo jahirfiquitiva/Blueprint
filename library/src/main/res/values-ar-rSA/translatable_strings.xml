@@ -16,17 +16,17 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">مخطط لوحة المعلومات</string>
-  <string name="coming_soon">Coming soon</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Home</string>
-  <string name="section_icons">الرموز</string>
-  <string name="section_apply">تطبيق</string>
-  <string name="section_wallpapers">Wallpapers</string>
-  <string name="rate">Rate</string>
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="frames_dashboard">مخطط لوحة المعلومات</string>
+    <string name="coming_soon">Coming soon</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Home</string>
+    <string name="section_icons">الرموز</string>
+    <string name="section_apply">تطبيق</string>
+    <string name="section_wallpapers">Wallpapers</string>
+    <string name="rate">Rate</string>
+    <!-- Icons filters -->
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>

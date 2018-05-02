@@ -16,7 +16,6 @@
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -29,6 +28,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.andremion.counterfab.CounterFab
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
+import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
@@ -50,7 +50,7 @@ import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoratio
 @SuppressLint("MissingSuperCall")
 class RequestsFragment : ViewModelFragment<App>() {
     
-    private var viewModel: RequestsViewModel? = null
+    private val viewModel: RequestsViewModel by lazyViewModel()
     
     private var recyclerView: EmptyViewRecyclerView? = null
     private var fastScroller: RecyclerFastScroller? = null
@@ -169,23 +169,19 @@ class RequestsFragment : ViewModelFragment<App>() {
         if (filter.hasContent()) {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
-            viewModel?.getData()?.let {
+            viewModel.getData()?.let {
                 adapter?.setItems(ArrayList(it.filter { it.name.contains(filter, true) }))
             }
         } else {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)
-            viewModel?.getData()?.let { adapter?.setItems(ArrayList(it)) }
+            viewModel.getData()?.let { adapter?.setItems(ArrayList(it)) }
         }
         scrollToTop()
     }
     
-    override fun initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(RequestsViewModel::class.java)
-    }
-    
-    override fun registerObserver() {
-        viewModel?.observe(this) {
+    override fun registerObservers() {
+        viewModel.observe(this) {
             adapter?.setItems(ArrayList(it))
             if (actuallyVisible) {
                 if (it.isEmpty()) {
@@ -208,7 +204,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     private fun internalLoadData(force: Boolean) {
         actv { actv ->
-            viewModel?.loadData(
+            viewModel.loadData(
                     actv, {
                 otherDialog = actv.buildMaterialDialog {
                     title(R.string.no_selected_apps_title)
@@ -247,8 +243,8 @@ class RequestsFragment : ViewModelFragment<App>() {
         }
     }
     
-    override fun unregisterObserver() {
-        viewModel?.destroy(this)
+    override fun unregisterObservers() {
+        viewModel.destroy(this)
     }
     
     override fun onDestroy() {

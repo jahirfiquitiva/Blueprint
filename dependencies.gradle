@@ -26,10 +26,11 @@ ext.versions = [
         kotlin        : '1.2.41',
         libs          : '2.0',
         // Dependencies
-        kuper         : '5693ee0',
+        kuper         : '8737bf1',
         materialDrawer: '6.0.7',
         counterFab    : '1.0.3',
         bridge        : '5.1.2',
+	fuel          : '1.13.0',
         oneSignal     : '3.8.3'
 ]
 
@@ -48,6 +49,8 @@ ext.libraries = [
         counterFab    : 'com.github.andremion:counterfab:' + versions.counterFab,
         // Bridge
         bridge        : 'com.afollestad:bridge:' + versions.bridge,
+	// Fuel
+	fuel          : 'com.github.kittinunf.fuel:fuel-android:' + versions.fuel,
         // OneSignal
         oneSignal     : 'com.onesignal:OneSignal:' + versions.oneSignal
 ]

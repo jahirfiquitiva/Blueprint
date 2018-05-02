@@ -16,11 +16,11 @@
   -->
 
 <AnalogClock
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/clockWidget"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:dial="@drawable/clock_bg"
-        android:hand_hour="@drawable/clock_hour_hand"
-        android:hand_minute="@drawable/clock_minute_hand"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/clockWidget"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:dial="@drawable/clock_bg"
+    android:hand_hour="@drawable/clock_hour_hand"
+    android:hand_minute="@drawable/clock_minute_hand" />
