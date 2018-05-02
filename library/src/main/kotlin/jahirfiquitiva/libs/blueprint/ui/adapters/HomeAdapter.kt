@@ -108,17 +108,15 @@ class HomeAdapter(
         }
     }
     
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SectionedViewHolder? =
-            parent?.let {
-                when (viewType) {
-                    0 -> {
-                        if (showInfo) CounterItemHolder(it.inflate(R.layout.item_home_counters))
-                        else AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
-                    }
-                    1, 2 ->
-                        AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
-                    else -> SectionedHeaderViewHolder(it.inflate(R.layout.item_section_header))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionedViewHolder =
+            when (viewType) {
+                0 -> {
+                    if (showInfo) CounterItemHolder(parent.inflate(R.layout.item_home_counters))
+                    else AppLinkItemHolder(parent.inflate(R.layout.item_home_app_link))
                 }
+                1, 2 ->
+                    AppLinkItemHolder(parent.inflate(R.layout.item_home_app_link))
+                else -> SectionedHeaderViewHolder(parent.inflate(R.layout.item_section_header))
             }
     
     override fun getItemCount(section: Int): Int {

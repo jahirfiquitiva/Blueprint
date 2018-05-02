@@ -15,8 +15,8 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
+import android.annotation.SuppressLint
 import android.app.WallpaperManager
-import android.arch.lifecycle.ViewModelProviders
 import android.graphics.drawable.Drawable
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.LinearLayoutManager
@@ -25,6 +25,7 @@ import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
 import ca.allanwang.kau.utils.startLink
 import com.bumptech.glide.Glide
+import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
@@ -49,9 +50,9 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun autoStartLoad(): Boolean = true
     
-    private var model: HomeItemViewModel? = null
-    private var iconsModel: IconsViewModel? = null
-    private var wallsModel: WallpapersViewModel? = null
+    private val model: HomeItemViewModel by lazyViewModel()
+    private val iconsModel: IconsViewModel by lazyViewModel()
+    private val wallsModel: WallpapersViewModel by lazyViewModel()
     
     private var recyclerView: EmptyViewRecyclerView? = null
     private var nestedScroll: NestedScrollView? = null
@@ -60,8 +61,8 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     private val homeAdapter: HomeAdapter? by lazy {
         HomeAdapter(
                 WeakReference(activity),
-                iconsModel?.getData().orEmpty().size,
-                wallsModel?.getData().orEmpty().size) {
+                iconsModel.getData().orEmpty().size,
+                wallsModel.getData().orEmpty().size) {
             onItemClicked(it, false)
         }
     }
@@ -80,18 +81,12 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
             } else null
         }
     
-    override fun initViewModel() {
-        model = ViewModelProviders.of(this).get(HomeItemViewModel::class.java)
-        iconsModel = ViewModelProviders.of(this).get(IconsViewModel::class.java)
-        wallsModel = ViewModelProviders.of(this).get(WallpapersViewModel::class.java)
-    }
-    
-    override fun registerObserver() {
-        model?.observe(this) {
+    override fun registerObservers() {
+        model.observe(this) {
             homeAdapter?.updateItems(ArrayList(it))
             recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
         }
-        iconsModel?.observe(this) { categories ->
+        iconsModel.observe(this) { categories ->
             val allIcons = ArrayList<Icon>()
             val filters = ArrayList<String>()
             categories.forEach {
@@ -101,20 +96,20 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
             homeAdapter?.updateIconsCount(ArrayList(allIcons.distinctBy { it.name }).size)
             (activity as? BaseBlueprintActivity)?.initFiltersDrawer(filters)
         }
-        wallsModel?.observe(this) { homeAdapter?.updateWallsCount(it.size) }
+        wallsModel.observe(this) { homeAdapter?.updateWallsCount(it.size) }
     }
     
-    override fun unregisterObserver() {
-        model?.destroy(this)
-        iconsModel?.destroy(this)
-        wallsModel?.destroy(this)
+    override fun unregisterObservers() {
+        model.destroy(this)
+        iconsModel.destroy(this)
+        wallsModel.destroy(this)
     }
     
     override fun loadDataFromViewModel() {
         actv {
-            model?.loadData(it)
-            iconsModel?.loadData(it)
-            wallsModel?.loadData(it)
+            model.loadData(it)
+            iconsModel.loadData(it)
+            wallsModel.loadData(it)
         }
     }
     
@@ -185,6 +180,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         if (isVisibleToUser) scrollToTop()
     }
     
+    @SuppressLint("MissingPermission")
     private fun bindPreviewCard() {
         val wallManager: WallpaperManager? = WallpaperManager.getInstance(activity)
         val drawable: Drawable? =

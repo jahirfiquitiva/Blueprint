@@ -26,17 +26,17 @@ import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.LauncherViewHolder
 internal class LaunchersAdapter(
         private val manager: RequestManager?,
         private val listener: (Launcher) -> Unit = {}
-                      ) :
+                               ) :
         RecyclerViewListAdapter<Launcher, LauncherViewHolder>() {
     
-    override fun doCreateVH(parent: ViewGroup, viewType: Int): LauncherViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LauncherViewHolder =
             LauncherViewHolder(parent.inflate(R.layout.item_launcher))
     
     override fun doBind(holder: LauncherViewHolder, position: Int, shouldAnimate: Boolean) =
             holder.bind(manager, list[position], listener)
     
-    override fun onViewRecycled(holder: LauncherViewHolder?) {
+    override fun onViewRecycled(holder: LauncherViewHolder) {
         super.onViewRecycled(holder)
-        holder?.unbind()
+        holder.unbind()
     }
 }

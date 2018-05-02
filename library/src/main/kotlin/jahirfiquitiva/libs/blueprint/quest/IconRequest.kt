@@ -176,7 +176,7 @@ class IconRequest private constructor() {
         request = this
     }
     
-    @IntDef(STATE_NORMAL.toLong(), STATE_LIMITED.toLong(), STATE_TIME_LIMITED.toLong())
+    @IntDef(STATE_NORMAL, STATE_LIMITED, STATE_TIME_LIMITED)
     @Retention(AnnotationRetention.SOURCE)
     annotation class State
     

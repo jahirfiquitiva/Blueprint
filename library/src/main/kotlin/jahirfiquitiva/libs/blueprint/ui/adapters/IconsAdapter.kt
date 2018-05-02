@@ -30,7 +30,7 @@ class IconsAdapter(
                   ) :
         RecyclerViewListAdapter<Icon, IconViewHolder>() {
     
-    override fun doCreateVH(parent: ViewGroup, viewType: Int): IconViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder =
             IconViewHolder(parent.inflate(R.layout.item_icon))
     
     override fun doBind(holder: IconViewHolder, position: Int, shouldAnimate: Boolean) {
@@ -41,8 +41,8 @@ class IconsAdapter(
         }
     }
     
-    override fun onViewRecycled(holder: IconViewHolder?) {
+    override fun onViewRecycled(holder: IconViewHolder) {
         super.onViewRecycled(holder)
-        holder?.unbind()
+        holder.unbind()
     }
 }
