@@ -15,7 +15,6 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
-import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
@@ -24,6 +23,7 @@ import ca.allanwang.kau.utils.isAppInstalled
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
+import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
@@ -32,6 +32,7 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.showLauncherNotInstalled
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.LaunchersViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.LaunchersAdapter
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.ctxt
@@ -43,26 +44,22 @@ import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoratio
 internal class ApplyFragment : ViewModelFragment<Launcher>() {
     
     private var recyclerView: EmptyViewRecyclerView? = null
-    private var launchersViewModel: LaunchersViewModel? = null
+    private val launchersViewModel: LaunchersViewModel by lazyViewModel()
     
     private val adapter: LaunchersAdapter? by lazy {
         LaunchersAdapter(context?.let { Glide.with(it) }) { onItemClicked(it, false) }
     }
     
-    override fun initViewModel() {
-        launchersViewModel = ViewModelProviders.of(this).get(LaunchersViewModel::class.java)
-    }
-    
-    override fun registerObserver() {
-        launchersViewModel?.observe(this) { setAdapterItems(it) }
+    override fun registerObservers() {
+        launchersViewModel.observe(this) { setAdapterItems(it) }
     }
     
     override fun loadDataFromViewModel() {
-        ctxt { launchersViewModel?.loadData(it) }
+        ctxt { launchersViewModel.loadData(it) }
     }
     
-    override fun unregisterObserver() {
-        launchersViewModel?.destroy(this)
+    override fun unregisterObservers() {
+        launchersViewModel.destroy(this)
     }
     
     override fun initUI(content: View) {
@@ -99,15 +96,13 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
         if (filter.hasContent()) {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
-            setAdapterItems(
-                    ArrayList(
-                            launchersViewModel?.getData().orEmpty().filter {
-                                it.name.contains(filter, true)
-                            }))
+            setAdapterItems(ArrayList(launchersViewModel.getData().orEmpty()).jfilter {
+                it.name.contains(filter, true)
+            })
         } else {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)
-            setAdapterItems(ArrayList(launchersViewModel?.getData().orEmpty()))
+            setAdapterItems(ArrayList(launchersViewModel.getData().orEmpty()))
         }
         scrollToTop()
     }

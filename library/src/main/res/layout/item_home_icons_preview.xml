@@ -15,37 +15,37 @@
   ~ limitations under the License.
   -->
 <jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/icons_preview_card"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/icons_preview"
-        android:foreground="?selectableItemBackground"
-        android:descendantFocusability="blocksDescendants"
-        app:cardCornerRadius="0dp"
-        app:cardPreventCornerOverlap="false">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/icons_preview_card"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/icons_preview"
+    android:foreground="?selectableItemBackground"
+    android:descendantFocusability="blocksDescendants"
+    app:cardCornerRadius="0dp"
+    app:cardPreventCornerOverlap="false">
 
     <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:clickable="false"
-            android:focusable="false"
-            android:descendantFocusability="blocksDescendants">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:clickable="false"
+        android:focusable="false"
+        android:descendantFocusability="blocksDescendants">
 
         <ImageView
-                android:id="@+id/wallpaper"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center"
-                tools:ignore="ContentDescription"/>
+            android:id="@+id/wallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription" />
 
         <include
-                layout="@layout/extra_toolbar_icons_grid"
-                android:layout_gravity="center"
-                tools:ignore="IncludeLayoutParam"/>
+            layout="@layout/extra_toolbar_icons_grid"
+            android:layout_gravity="center"
+            tools:ignore="IncludeLayoutParam" />
 
     </FrameLayout>
 

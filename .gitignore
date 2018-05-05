@@ -79,6 +79,8 @@ proguard/
 /.idea/dictionaries
 /.idea/inspectionProfiles
 /.idea/libraries
+/.idea/caches
+/.idea/codeStyles
 /.idea/markdown-navigator
 /.idea/*.xml
 #gradle.properties

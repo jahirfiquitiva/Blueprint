@@ -16,5 +16,5 @@
   -->
 
 <resources>
-    <integer name="icons_columns">8</integer>
+    <integer name="icons_columns">12</integer>
 </resources>

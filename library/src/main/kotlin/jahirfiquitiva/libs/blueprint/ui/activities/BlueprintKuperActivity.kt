@@ -17,9 +17,11 @@ package jahirfiquitiva.libs.blueprint.ui.activities
 
 import com.github.javiersantos.piracychecker.PiracyChecker
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.kuper.ui.activities.KuperActivity
 
 class BlueprintKuperActivity : KuperActivity() {
+    override val configs: BPKonfigs by lazy { BPKonfigs(this) }
     override fun getLicKey(): String? = ""
     override fun getLicenseChecker(): PiracyChecker? = null
     override fun amazonInstallsEnabled(): Boolean = false

@@ -25,7 +25,7 @@ import ca.allanwang.kau.utils.integer
 import jahirfiquitiva.libs.archhelpers.tasks.QAsync
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
@@ -161,7 +161,7 @@ class RequestsViewModel : ViewModel() {
                     .filterXmlId(R.xml.appfilter)
                     .withTimeLimit(
                             context.integer(R.integer.time_limit_in_minutes),
-                            context.bpKonfigs.prefs)
+                            BPKonfigs(context).prefs)
                     .maxSelectionCount(context.integer(R.integer.max_apps_to_request))
                     .setCallback(callback)
                     .build().loadApps(onProgress)

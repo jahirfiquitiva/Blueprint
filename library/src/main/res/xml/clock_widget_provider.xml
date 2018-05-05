@@ -16,11 +16,11 @@
   -->
 
 <appwidget-provider
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:initialLayout="@layout/widget_clock"
-        android:minHeight="144dip"
-        android:minWidth="144dip"
-        android:updatePeriodMillis="0"
-        android:widgetCategory="home_screen"
-        tools:ignore="UnusedAttribute"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:initialLayout="@layout/widget_clock"
+    android:minHeight="144dip"
+    android:minWidth="144dip"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen"
+    tools:ignore="UnusedAttribute" />

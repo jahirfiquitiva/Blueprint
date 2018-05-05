@@ -28,6 +28,6 @@ class HelpAdapter : RecyclerViewListAdapter<HelpItem, HelpViewHolder>() {
         holder.setQA(list[position])
     }
     
-    override fun doCreateVH(parent: ViewGroup, viewType: Int): HelpViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HelpViewHolder =
             HelpViewHolder(parent.inflate(R.layout.item_help))
 }

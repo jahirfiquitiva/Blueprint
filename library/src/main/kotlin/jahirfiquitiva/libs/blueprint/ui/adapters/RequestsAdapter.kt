@@ -29,7 +29,8 @@ class RequestsAdapter(
         private val onItemsChanged: () -> Unit
                      ) :
         RecyclerViewListAdapter<App, RequestViewHolder>() {
-    override fun doCreateVH(parent: ViewGroup, viewType: Int): RequestViewHolder =
+    
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RequestViewHolder =
             RequestViewHolder(parent.inflate(R.layout.item_app_to_request))
     
     override fun doBind(holder: RequestViewHolder, position: Int, shouldAnimate: Boolean) {
@@ -42,8 +43,8 @@ class RequestsAdapter(
         }
     }
     
-    override fun onViewRecycled(holder: RequestViewHolder?) {
+    override fun onViewRecycled(holder: RequestViewHolder) {
         super.onViewRecycled(holder)
-        holder?.unbind()
+        holder.unbind()
     }
 }

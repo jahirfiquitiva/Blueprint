@@ -16,12 +16,19 @@
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
 import android.content.Context
+import android.support.v4.app.Fragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
+import jahirfiquitiva.libs.kauextensions.extensions.ctxt
+import jahirfiquitiva.libs.kauextensions.ui.activities.ThemedActivity
 import java.util.concurrent.TimeUnit
 
-internal val Context.bpKonfigs: BPKonfigs
-    get() = BPKonfigs(this)
+@Suppress("DEPRECATION", "UNCHECKED_CAST")
+internal val Fragment.configs: BPKonfigs
+    get() = (activity as? ThemedActivity<BPKonfigs>)?.configs
+            ?: activity?.let { BPKonfigs(it) }
+            ?: context?.let { BPKonfigs(it) }
+            ?: BPKonfigs(ctxt)
 
 fun Context.millisToText(millis: Long): String {
     when {

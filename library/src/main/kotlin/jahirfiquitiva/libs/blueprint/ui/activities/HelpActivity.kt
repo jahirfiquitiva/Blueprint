@@ -27,8 +27,10 @@ import android.view.MenuItem
 import ca.allanwang.kau.email.sendEmail
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
@@ -44,7 +46,9 @@ import jahirfiquitiva.libs.kauextensions.ui.activities.ThemedActivity
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
 
 @SuppressLint("MissingSuperCall")
-class HelpActivity : ThemedActivity() {
+class HelpActivity : ThemedActivity<BPKonfigs>() {
+    
+    override val configs: BPKonfigs by lazy { BPKonfigs(this) }
     override fun lightTheme(): Int = R.style.BlueprintLightTheme
     override fun darkTheme(): Int = R.style.BlueprintDarkTheme
     override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme
@@ -137,12 +141,9 @@ class HelpActivity : ThemedActivity() {
     
     private fun doSearch(filter: String = "") {
         if (filter.hasContent()) {
-            adapter.setItems(
-                    ArrayList(
-                            faqs.filter {
-                                (it.question.contains(filter, true) || it.answer.contains(
-                                        filter, true))
-                            }))
+            adapter.setItems(faqs.jfilter {
+                (it.question.contains(filter, true) || it.answer.contains(filter, true))
+            })
         } else {
             adapter.setItems(faqs)
         }

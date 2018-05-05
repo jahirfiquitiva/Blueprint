@@ -25,6 +25,7 @@ import ca.allanwang.kau.utils.materialDialog
 import ca.allanwang.kau.utils.startLink
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kauextensions.extensions.showToast
 import jahirfiquitiva.libs.kauextensions.extensions.stringArray
@@ -138,7 +139,7 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
 internal val Context.enabledLaunchers: ArrayList<Launcher>
     get() {
         val enabled = stringArray(R.array.launchers)
-        return ArrayList(supportedLaunchers.filter { enabled.contains(it.key) })
+        return supportedLaunchers.jfilter { enabled.contains(it.key) }
     }
 
 fun Context.executeLauncherIntent(launcherKey: String) {
