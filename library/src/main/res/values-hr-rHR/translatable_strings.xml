@@ -40,6 +40,7 @@
   <string name="columns">Broj stupaca</string>
   <string name="lni_content">%1$s trenutno nije instaliran na vašem uređaju.\nŽelite li instalirati sa Play Trgovine?</string>
   <string name="no_compatible_launcher_title">Ovaj pokretač NIJE podržan</string>
+  <string name="no_compatible_launcher_content">Launcher นี้ไม่สามารถใช้ได้กับ Icon Packs ใด ๆ ดังนั้นคุณจึงไม่สามารถใช้ไอคอนแพ็คนี้กับ Launcher นี้ได้ โปรดอย่าให้คะแนนไอคอนแพ็คเป็นลบด้วยเหตุนี้ มีโซลูชันที่คุณสามารถลองใช้ด้วยตัวเอง แต่ต้องใช้แอปภายนอก คุณต้องการดาวน์โหลดหรือไม่?</string>
   <string name="impossible_open_themes">Nije moguće otvoriti aplikaciju tema</string>
   <string name="themes_app_not_installed">Teme nisu instalirane na ovom uređaju</string>
   <string name="included_templates">%1$s predložaka</string>
