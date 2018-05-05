@@ -19,10 +19,10 @@ ext.versions = [
         targetSdk     : 27,
         buildTools    : '27.0.3',
         // Gradle Plugins
-        gradle        : '3.0.1',
-        kotlin        : '1.2.21',
+        gradle        : '3.1.1',
+        kotlin        : '1.2.41',
 		// Dependencies
-        oneSignal     : '3.7.1'
+        oneSignal     : '3.8.3'
 ]
 
 ext.gradlePlugins = [
