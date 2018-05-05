@@ -94,13 +94,6 @@ dependencies {
         exclude group: 'org.json', module: 'json'
         exclude group: 'com.intellij', module: 'annotations'
     }
-    // Retrofit
-    /*
-    api(libraries.retrofit) {
-        exclude group: 'org.json', module: 'json'
-        exclude group: 'com.intellij', module: 'annotations'
-    }
-    */
     // CounterFab
     api(libraries.counterFab) {
         exclude group: 'com.android.support'
