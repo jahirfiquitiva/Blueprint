@@ -20,14 +20,19 @@ import android.content.pm.ResolveInfo
 
 internal class NameComparator(private val mPM: PackageManager) : Comparator<ResolveInfo> {
     override fun compare(ra: ResolveInfo, rb: ResolveInfo): Int {
-        var sa: CharSequence = ra.loadLabel(mPM) ?: ""
-        if (!sa.hasContent()) {
-            sa = ra.activityInfo.packageName
+        try {
+            var sa: CharSequence = ra.loadLabel(mPM) ?: ""
+            var sb: CharSequence = rb.loadLabel(mPM) ?: ""
+            
+            if (!sa.hasContent()) sa = ra.activityInfo.packageName
+            if (!sb.hasContent()) sb = rb.activityInfo.packageName
+            
+            if (!sa.hasContent() && !sb.hasContent()) return 0
+            if (!sa.hasContent()) return -1
+            if (!sb.hasContent()) return 1
+            return sa.toString().compareTo(sb.toString())
+        } catch (e: Exception) {
+            return 0
         }
-        var sb: CharSequence = rb.loadLabel(mPM) ?: ""
-        if (!sa.hasContent()) {
-            sb = rb.activityInfo.packageName
-        }
-        return sa.toString().compareTo(sb.toString())
     }
 }
