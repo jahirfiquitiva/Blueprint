@@ -82,13 +82,14 @@
   <string name="pref_summary_launcher_icon">Lorsque cochée, l\'icône de l\'application sera masquée.</string>
   <string name="clearcache_dialog_content">Êtes-vous sûr de vouloir supprimer les données, le cache et les paramètres de l’application ? Les icônes appliquées ne seront pas affectées.</string>
   <string name="hideicon_dialog_title">Attention !</string>
+  <string name="hideicon_dialog_content">Êtes-vous certain de vouloir cacher l’icône de l’application dans votre lanceur ? \nApp peut sz fermer de façon inattendue et les notifications seront complètement désactivées. \nVous pouvez lire la FAQ pour savoir comment le faire apparaître à nouveau, avant de le cacher.</string>
   <string name="send_using">Envoyer avec…</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Comment utiliser le pack d’icônes ?</item>
     <item>Comment appliquer le pack d’icônes ?</item>
     <item>Comment faire pour voir toutes les icônes inclues ?</item>
-    <item>How to replace an icon with an alternative one?</item>
+    <item>Comment remplacer une icône avec une autre ?</item>
     <item>Comment demander des icônes non modifiées ?</item>
     <item>Après le redémarrage de mon appareil, le pack d’icônes ne s’applique plus. Les icônes ont été restaurées par défaut.</item>
     <item>Pourquoi les icônes sont-elles pixelisées sur mon appareil ?</item>
