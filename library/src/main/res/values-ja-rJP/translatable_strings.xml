@@ -16,19 +16,19 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <!-- List Of Drawer Sections -->
-    <string name="section_home">ホーム</string>
-    <string name="section_apply">適用</string>
-    <string name="section_wallpapers">背景画面</string>
-    <string name="section_donate">寄付</string>
-    <string name="section_about">このアプリについて</string>
-    <string name="section_help">助け</string>
-    <string name="section_zooper">Zooper セットアップ</string>
-    <string name="section_widgets">ウィジェット</string>
-    <!-- Icons filters -->
-    <!-- Widgets Names -->
-    <string name="days">日々</string>
-    <!-- Requests -->
-    <!-- Preferences -->
-    <!-- HELP SECTION -->
+  <!-- List Of Drawer Sections -->
+  <string name="section_home">ホーム</string>
+  <string name="section_apply">適用</string>
+  <string name="section_wallpapers">背景画面</string>
+  <string name="section_donate">寄付</string>
+  <string name="section_about">このアプリについて</string>
+  <string name="section_help">助け</string>
+  <string name="section_zooper">Zooper セットアップ</string>
+  <string name="section_widgets">ウィジェット</string>
+  <!-- Icons filters -->
+  <!-- Widgets Names -->
+  <string name="days">日々</string>
+  <!-- Requests -->
+  <!-- Preferences -->
+  <!-- HELP SECTION -->
 </resources>
