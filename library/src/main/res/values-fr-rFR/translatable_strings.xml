@@ -16,110 +16,110 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Tableau de bord Blueprint</string>
-  <string name="coming_soon">Prochainement</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Accueil</string>
-  <string name="section_icons">Icônes</string>
-  <string name="section_apply">Appliquer</string>
-  <string name="section_wallpapers">Fonds d\'écran</string>
-  <string name="section_icon_request">Demande d\'icônes</string>
-  <string name="section_donate">Faire un don</string>
-  <string name="section_about">À propos</string>
-  <string name="section_help">Aide</string>
-  <string name="section_zooper">Configuration Zooper</string>
-  <string name="section_widgets">Widgets</string>
-  <string name="share_this_app">J\'utilise %1$s et je l\'adore. Jettes-y un œil : %2$s</string>
-  <string name="rate">Évaluer</string>
-  <!-- Icons filters -->
-  <string name="filter">Filtre</string>
-  <string name="clear">Effacer</string>
-  <string name="more_apps">Plus d\'applis</string>
-  <string name="general_info">Informations générales</string>
-  <string name="useful_links">Liens utiles</string>
-  <string name="columns">Nombre de colonnes</string>
-  <string name="lni_content">%1$s n\'est actuellement pas installée sur votre appareil.\nVoulez-vous l\'installer depuis le Play Store ?</string>
-  <string name="no_compatible_launcher_title">Ce launcher n\'est PAS compatible</string>
-  <string name="no_compatible_launcher_content">Ce launcher n\'est PAS compatible avec les Packs d\'icônes et par conséquent, vous ne pouvez pas utiliser ce pack d\'icônes avec ce launcher. Veuillez ne pas noter ce pack d\'icônes négativement pour ce motif. Il existe une solution que vous pouvez essayer par vous-même, mais elle nécessite l\'utilisation d\'une application externe. Souhaitez vous la télécharger?</string>
-  <string name="impossible_open_themes">Impossible d\'ouvrir l\'application de thèmes</string>
-  <string name="themes_app_not_installed">L\'application de thèmes n\'est pas installée sur cet appareil</string>
-  <string name="included_templates">%1$s thèmes</string>
-  <string name="launcher_icon_restored">L\'icône de l\'application %1$s a été restaurée</string>
-  <string name="launcher_icon_not_restored">L\'icône de l\'application %1$s est déjà visible</string>
-  <string name="launcher_icon_restorer_error">Il y a un problème avec le code de %1$s. Merci contacter son développeur.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Widget Restaurer icône</string>
-  <string name="clock_widget_title">Horloge analogique</string>
-  <string name="search_icons">Rechercher des icônes</string>
-  <string name="search_wallpapers">Rechercher des fonds d’écran</string>
-  <string name="search_launchers">Rechercher des launchers</string>
-  <string name="search_apps">Rechercher des applis</string>
-  <string name="seconds">Secondes</string>
-  <string name="minutes">Minutes</string>
-  <string name="hours">Heures</string>
-  <string name="days">Jours</string>
-  <string name="weeks">Semaines</string>
-  <string name="months">Mois</string>
-  <!-- Requests -->
-  <string name="select_all">Tout sélectionner</string>
-  <string name="no_selected_apps_title">Aucune application sélectionnée</string>
-  <string name="no_selected_apps_content">Vous n\'avez sélectionné aucune application pour votre demande. Veuillez sélectionner quelques applications, puis appuyez à nouveau sur ce bouton.</string>
-  <string name="apps_limit_dialog">Désolé, mais vous êtes autorisé à sélectionner uniquement %1$s applications pour votre demande.</string>
-  <string name="apps_limit_dialog_more">Désolé, mais vous êtes autorisé à demander uniquement %1$s applications pour l\'instant.</string>
-  <string name="apps_limit_dialog_day">Désolé, mais vous êtes autorisé à demander des icônes chaque %1$s uniquement.</string>
-  <string name="apps_limit_dialog_day_extra">Vous serez en mesure de demander à nouveau des icônes, dans %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Vous serez en mesure de demander à nouveau des icônes, dans moins d\'une minute.</string>
-  <string name="requests_error">Une erreur est survenue lors du chargement de votre demande d\'icônes.\nAppuyez ici pour ressayer.</string>
-  <string name="loading_apps_to_request">Chargement des applications à demander…</string>
-  <string name="building_request_dialog">Création de la demande d\'icônes…</string>
-  <string name="request_upload_success">Succès !</string>
-  <string name="request_upload_success_content">La demande a été téléchargée sur notre serveur avec succès.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">Activer l’utilisation du fond d\'écran dans l’aperçu des icônes</string>
-  <string name="pref_summary_wall_header">Votre fond d’écran actuel de l’appareil sera affiché.</string>
-  <string name="pref_header_launcher_icon">Icône du launcher</string>
-  <string name="pref_title_launcher_icon">Masquer l’icône de l\'application</string>
-  <string name="pref_summary_launcher_icon">Lorsque cochée, l\'icône de l\'application sera masquée.</string>
-  <string name="clearcache_dialog_content">Êtes-vous sûr de vouloir supprimer les données, le cache et les paramètres de l’application ? Les icônes appliquées ne seront pas affectées.</string>
-  <string name="hideicon_dialog_title">Attention !</string>
-  <string name="send_using">Envoyer avec…</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>Comment utiliser le pack d’icônes ?</item>
-    <item>Comment appliquer le pack d’icônes ?</item>
-    <item>Comment faire pour voir toutes les icônes inclues ?</item>
-    <item>How to replace an icon with an alternative one?</item>
-    <item>Comment demander des icônes non modifiées ?</item>
-    <item>Après le redémarrage de mon appareil, le pack d’icônes ne s’applique plus. Les icônes ont été restaurées par défaut.</item>
-    <item>Pourquoi les icônes sont-elles pixelisées sur mon appareil ?</item>
-    <item>Je peux voir une icône pour X app dans les icônes inclus, mais l’icône ne s’applique pas.</item>
-    <item>Comment faire pour masquer l’icône de l’application du lanceur ?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Icons\" section, or go back to main section of the app, then tap the button that says \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-    <item>Envoyer une demande d\'icône.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\".</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>C\'est nécessaire pour pouvoir écrire des données et des fichiers de demande d\'icône, ainsi que d\'enregistrer des fonds d\'écran, et de pouvoir modifier l\'emplacement de téléchargement des fonds d\'écran.</item>
-    <item>C\'est nécessaire pour pouvoir charger les fonds d\'écran basés sur le cloud et les télécharger.</item>
-    <item>C\'est nécessaire pour pouvoir vérifier si votre appareil est connecté à Internet.</item>
-    <item>C\'est nécessaire pour être en mesure d\'appliquer un fond d\'écran directement à partir de l\'application.</item>
-    <item>C\'est nécessaire pour pouvoir ajuster les dimensions du fond d\'écran en fonction de la résolution de votre écran.</item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
-  </string-array>
+    <string name="frames_dashboard">Tableau de bord Blueprint</string>
+    <string name="coming_soon">Prochainement</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Accueil</string>
+    <string name="section_icons">Icônes</string>
+    <string name="section_apply">Appliquer</string>
+    <string name="section_wallpapers">Fonds d\'écran</string>
+    <string name="section_icon_request">Demande d\'icônes</string>
+    <string name="section_donate">Faire un don</string>
+    <string name="section_about">À propos</string>
+    <string name="section_help">Aide</string>
+    <string name="section_zooper">Configuration Zooper</string>
+    <string name="section_widgets">Widgets</string>
+    <string name="share_this_app">J\'utilise %1$s et je l\'adore. Jettes-y un œil : %2$s</string>
+    <string name="rate">Évaluer</string>
+    <!-- Icons filters -->
+    <string name="filter">Filtre</string>
+    <string name="clear">Effacer</string>
+    <string name="more_apps">Plus d\'applis</string>
+    <string name="general_info">Informations générales</string>
+    <string name="useful_links">Liens utiles</string>
+    <string name="columns">Nombre de colonnes</string>
+    <string name="lni_content">%1$s n\'est actuellement pas installée sur votre appareil.\nVoulez-vous l\'installer depuis le Play Store ?</string>
+    <string name="no_compatible_launcher_title">Ce launcher n\'est PAS compatible</string>
+    <string name="no_compatible_launcher_content">Ce launcher n\'est PAS compatible avec les Packs d\'icônes et par conséquent, vous ne pouvez pas utiliser ce pack d\'icônes avec ce launcher. Veuillez ne pas noter ce pack d\'icônes négativement pour ce motif. Il existe une solution que vous pouvez essayer par vous-même, mais elle nécessite l\'utilisation d\'une application externe. Souhaitez vous la télécharger?</string>
+    <string name="impossible_open_themes">Impossible d\'ouvrir l\'application de thèmes</string>
+    <string name="themes_app_not_installed">L\'application de thèmes n\'est pas installée sur cet appareil</string>
+    <string name="included_templates">%1$s thèmes</string>
+    <string name="launcher_icon_restored">L\'icône de l\'application %1$s a été restaurée</string>
+    <string name="launcher_icon_not_restored">L\'icône de l\'application %1$s est déjà visible</string>
+    <string name="launcher_icon_restorer_error">Il y a un problème avec le code de %1$s. Merci contacter son développeur.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Widget Restaurer icône</string>
+    <string name="clock_widget_title">Horloge analogique</string>
+    <string name="search_icons">Rechercher des icônes</string>
+    <string name="search_wallpapers">Rechercher des fonds d’écran</string>
+    <string name="search_launchers">Rechercher des launchers</string>
+    <string name="search_apps">Rechercher des applis</string>
+    <string name="seconds">Secondes</string>
+    <string name="minutes">Minutes</string>
+    <string name="hours">Heures</string>
+    <string name="days">Jours</string>
+    <string name="weeks">Semaines</string>
+    <string name="months">Mois</string>
+    <!-- Requests -->
+    <string name="select_all">Tout sélectionner</string>
+    <string name="no_selected_apps_title">Aucune application sélectionnée</string>
+    <string name="no_selected_apps_content">Vous n\'avez sélectionné aucune application pour votre demande. Veuillez sélectionner quelques applications, puis appuyez à nouveau sur ce bouton.</string>
+    <string name="apps_limit_dialog">Désolé, mais vous êtes autorisé à sélectionner uniquement %1$s applications pour votre demande.</string>
+    <string name="apps_limit_dialog_more">Désolé, mais vous êtes autorisé à demander uniquement %1$s applications pour l\'instant.</string>
+    <string name="apps_limit_dialog_day">Désolé, mais vous êtes autorisé à demander des icônes chaque %1$s uniquement.</string>
+    <string name="apps_limit_dialog_day_extra">Vous serez en mesure de demander à nouveau des icônes, dans %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Vous serez en mesure de demander à nouveau des icônes, dans moins d\'une minute.</string>
+    <string name="requests_error">Une erreur est survenue lors du chargement de votre demande d\'icônes.\nAppuyez ici pour ressayer.</string>
+    <string name="loading_apps_to_request">Chargement des applications à demander…</string>
+    <string name="building_request_dialog">Création de la demande d\'icônes…</string>
+    <string name="request_upload_success">Succès !</string>
+    <string name="request_upload_success_content">La demande a été téléchargée sur notre serveur avec succès.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">Activer l’utilisation du fond d\'écran dans l’aperçu des icônes</string>
+    <string name="pref_summary_wall_header">Votre fond d’écran actuel de l’appareil sera affiché.</string>
+    <string name="pref_header_launcher_icon">Icône du launcher</string>
+    <string name="pref_title_launcher_icon">Masquer l’icône de l\'application</string>
+    <string name="pref_summary_launcher_icon">Lorsque cochée, l\'icône de l\'application sera masquée.</string>
+    <string name="clearcache_dialog_content">Êtes-vous sûr de vouloir supprimer les données, le cache et les paramètres de l’application ? Les icônes appliquées ne seront pas affectées.</string>
+    <string name="hideicon_dialog_title">Attention !</string>
+    <string name="send_using">Envoyer avec…</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Comment utiliser le pack d’icônes ?</item>
+        <item>Comment appliquer le pack d’icônes ?</item>
+        <item>Comment faire pour voir toutes les icônes inclues ?</item>
+        <item>How to replace an icon with an alternative one?</item>
+        <item>Comment demander des icônes non modifiées ?</item>
+        <item>Après le redémarrage de mon appareil, le pack d’icônes ne s’applique plus. Les icônes ont été restaurées par défaut.</item>
+        <item>Pourquoi les icônes sont-elles pixelisées sur mon appareil ?</item>
+        <item>Je peux voir une icône pour X app dans les icônes inclus, mais l’icône ne s’applique pas.</item>
+        <item>Comment faire pour masquer l’icône de l’application du lanceur ?</item>
+        <item>How to open the app after app icon is hidden from launcher?</item>
+        <item>How to show app icon in launcher again?</item>
+        <item>Why does the app need permission to modify or delete content of my storage?</item>
+        <item>Why does the app need permission to full network access?</item>
+        <item>Why does the app need permission to view connections?</item>
+        <item>Why does the app need permission to set wallpaper?</item>
+        <item>Why does the app need permission to adjust the wallpaper size?</item>
+        <item>Why does the app need permission to prevent phone from sleeping?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
+        <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
+        <item>Slide the NavigationDrawer from the left, and go to \"Icons\" section, or go back to main section of the app, then tap the button that says \"Icons\".</item>
+        <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
+        <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
+        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>Envoyer une demande d\'icône.</item>
+        <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\".</item>
+        <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>C\'est nécessaire pour pouvoir écrire des données et des fichiers de demande d\'icône, ainsi que d\'enregistrer des fonds d\'écran, et de pouvoir modifier l\'emplacement de téléchargement des fonds d\'écran.</item>
+        <item>C\'est nécessaire pour pouvoir charger les fonds d\'écran basés sur le cloud et les télécharger.</item>
+        <item>C\'est nécessaire pour pouvoir vérifier si votre appareil est connecté à Internet.</item>
+        <item>C\'est nécessaire pour être en mesure d\'appliquer un fond d\'écran directement à partir de l\'application.</item>
+        <item>C\'est nécessaire pour pouvoir ajuster les dimensions du fond d\'écran en fonction de la résolution de votre écran.</item>
+        <item>It\'s needed by Muzei Live Wallpaper.</item>
+    </string-array>
 </resources>

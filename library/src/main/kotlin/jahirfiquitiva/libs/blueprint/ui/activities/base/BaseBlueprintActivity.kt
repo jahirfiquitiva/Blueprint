@@ -48,6 +48,7 @@ import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
@@ -96,8 +97,10 @@ import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
 
-abstract class BaseBlueprintActivity : BaseFramesActivity(), FilterTitleDrawerItem.ButtonListener {
+abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
+                                       FilterTitleDrawerItem.ButtonListener {
     
+    override val configs: BPKonfigs by lazy { BPKonfigs(this) }
     override fun lightTheme(): Int = R.style.BlueprintLightTheme
     override fun darkTheme(): Int = R.style.BlueprintDarkTheme
     override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme

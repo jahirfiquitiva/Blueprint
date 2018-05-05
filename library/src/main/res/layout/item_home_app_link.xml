@@ -14,67 +14,67 @@
   ~ limitations under the License.
   -->
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        style="@style/HomeCardContent"
-        android:id="@+id/home_app_link_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:minHeight="@dimen/md_listitem_height"
-        android:layout_marginLeft="@dimen/cards_small_margin"
-        android:layout_marginStart="@dimen/cards_small_margin"
-        android:layout_marginRight="@dimen/cards_margin"
-        android:layout_marginEnd="@dimen/cards_margin"
-        android:layout_marginBottom="@dimen/cards_small_margin"
-        android:background="?selectableItemBackground"
-        android:orientation="horizontal"
-        tools:ignore="PrivateResource">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/HomeCardContent"
+    android:id="@+id/home_app_link_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/md_listitem_height"
+    android:layout_marginLeft="@dimen/cards_small_margin"
+    android:layout_marginStart="@dimen/cards_small_margin"
+    android:layout_marginRight="@dimen/cards_margin"
+    android:layout_marginEnd="@dimen/cards_margin"
+    android:layout_marginBottom="@dimen/cards_small_margin"
+    android:background="?selectableItemBackground"
+    android:orientation="horizontal"
+    tools:ignore="PrivateResource">
 
     <jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
-            android:id="@+id/home_app_link_image"
-            android:layout_width="@dimen/icon_medium"
-            android:layout_height="@dimen/icon_medium"
-            tools:ignore="ContentDescription"/>
+        android:id="@+id/home_app_link_image"
+        android:layout_width="@dimen/icon_medium"
+        android:layout_height="@dimen/icon_medium"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
-            android:layout_width="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/fabs_margin"
+        android:layout_marginStart="@dimen/fabs_margin"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/home_app_link_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/fabs_margin"
-            android:layout_marginStart="@dimen/fabs_margin"
-            android:gravity="center_vertical">
+            android:layout_gravity="start|center_vertical"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Something" />
 
         <TextView
-                android:id="@+id/home_app_link_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start|center_vertical"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                android:maxLines="1"
-                android:ellipsize="end"
-                tools:text="Something"/>
-
-        <TextView
-                android:id="@+id/home_app_link_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.2"
-                android:paddingTop="@dimen/cards_small_margin"
-                android:maxLines="3"
-                android:ellipsize="end"
-                tools:text="Something"/>
+            android:id="@+id/home_app_link_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingTop="@dimen/cards_small_margin"
+            android:maxLines="3"
+            android:ellipsize="end"
+            tools:text="Something" />
 
     </LinearLayout>
 
     <jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
-            android:id="@+id/home_app_link_open_icon"
-            android:layout_width="@dimen/materialize_touch_target"
-            android:layout_height="@dimen/materialize_touch_target"
-            android:scaleType="centerInside"
-            tools:ignore="ContentDescription"/>
+        android:id="@+id/home_app_link_open_icon"
+        android:layout_width="@dimen/materialize_touch_target"
+        android:layout_height="@dimen/materialize_touch_target"
+        android:scaleType="centerInside"
+        tools:ignore="ContentDescription" />
 
 </LinearLayout>

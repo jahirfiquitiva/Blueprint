@@ -17,7 +17,6 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -25,22 +24,23 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.GridLayoutManager
-import android.view.MotionEvent
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.integer
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
+import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
-import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
+import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.IconDialog
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER
 import jahirfiquitiva.libs.frames.helpers.utils.IMAGE_PICKER
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
@@ -60,7 +60,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         fun create(key: Int) = IconsFragment().apply { pickerKey = key }
     }
     
-    private var model: IconsViewModel? = null
+    private val model: IconsViewModel by lazyViewModel()
     private var recyclerView: EmptyViewRecyclerView? = null
     private var fastScroller: RecyclerFastScroller? = null
     
@@ -71,9 +71,9 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     fun applyFilters(filters: ArrayList<String>) {
-        val list = ArrayList(model?.getData().orEmpty())
+        val list = ArrayList(model.getData().orEmpty())
         if (filters.isNotEmpty()) {
-            setAdapterItems(ArrayList(list.filter { validFilter(it.title, filters) }))
+            setAdapterItems(list.jfilter { validFilter(it.title, filters) })
         } else {
             setAdapterItems(list)
         }
@@ -87,7 +87,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)
         }
-        setAdapterItems(ArrayList(model?.getData().orEmpty()), search)
+        setAdapterItems(ArrayList(model.getData().orEmpty()), search)
         scrollToTop()
     }
     
@@ -95,12 +95,8 @@ class IconsFragment : ViewModelFragment<Icon>() {
         recyclerView?.post { recyclerView?.scrollToPosition(0) }
     }
     
-    override fun initViewModel() {
-        model = ViewModelProviders.of(this).get(IconsViewModel::class.java)
-    }
-    
-    override fun registerObserver() {
-        model?.observe(this) { categories ->
+    override fun registerObservers() {
+        model.observe(this) { categories ->
             setAdapterItems(ArrayList(categories))
             (activity as? BaseBlueprintActivity)?.let {
                 val filters = ArrayList<String>()
@@ -115,7 +111,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         categories.forEach { category ->
             if (filteredBy.hasContent())
                 icons.addAll(
-                        category.getIcons().filter { validIconFilter(filteredBy, it, category) })
+                        category.getIcons().jfilter { validIconFilter(filteredBy, it, category) })
             else icons.addAll(category.getIcons())
         }
         adapter?.setItems(ArrayList(icons.distinctBy { it.name }.sortedBy { it.name }))
@@ -128,8 +124,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
     
     private fun validIconFilter(filter: String, icon: Icon, category: IconsCategory): Boolean {
         return if (filter.hasContent()) {
-            val deep = context?.bpKonfigs?.deepSearchEnabled ?: false
-            if (deep) {
+            if (configs.deepSearchEnabled) {
                 icon.name.contains(filter, true) || category.title.contains(filter, true)
             } else {
                 icon.name.contains(filter, true)
@@ -137,8 +132,8 @@ class IconsFragment : ViewModelFragment<Icon>() {
         } else true
     }
     
-    override fun unregisterObserver() {
-        model?.destroy(this)
+    override fun unregisterObservers() {
+        model.destroy(this)
     }
     
     override fun onDestroyView() {
@@ -152,7 +147,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         actv { dialog?.dismiss(it, IconDialog.TAG) }
     }
     
-    override fun loadDataFromViewModel() = actv { model?.loadData(it) }
+    override fun loadDataFromViewModel() = actv { model.loadData(it) }
     
     override fun getContentLayout(): Int = R.layout.section_layout
     
@@ -205,7 +200,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
                 actv {
                     dialog?.dismiss(it, IconDialog.TAG)
                     dialog = IconDialog()
-                    dialog?.show(it, item.name, item.icon, it.bpKonfigs.animationsEnabled)
+                    dialog?.show(it, item.name, item.icon, configs.animationsEnabled)
                 }
             }
         }

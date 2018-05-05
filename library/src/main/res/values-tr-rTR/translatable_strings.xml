@@ -16,109 +16,109 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint Kontrol Paneli</string>
-  <string name="coming_soon">Yakında geliyor</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Ana sayfa</string>
-  <string name="section_icons">Simgeler</string>
-  <string name="section_apply">Uygula</string>
-  <string name="section_wallpapers">Duvar kağıtları</string>
-  <string name="section_icon_request">Simge isteği</string>
-  <string name="section_donate">Bağış Yap</string>
-  <string name="section_about">Uygulamak hakkında</string>
-  <string name="section_help">Yardım</string>
-  <string name="section_zooper">Zooper Kurulumu</string>
-  <string name="section_widgets">Araçlar</string>
-  <string name="share_this_app">%1$s kullanıyorum ve onu seviyorum. Bu adresten kontrol et: %2$s</string>
-  <string name="rate">Derecelendir</string>
-  <!-- Icons filters -->
-  <string name="filter">Filtrele</string>
-  <string name="clear">Temizle</string>
-  <string name="more_apps">Daha fazla uygulama</string>
-  <string name="general_info">Genel bilgiler</string>
-  <string name="useful_links">Kullanışlı bağlantılar</string>
-  <string name="columns">Sütun numarası</string>
-  <string name="lni_content">%1$s şu anda cihazınızda kurulu değil.\nGoogle Play Store dan kurmak ister misiniz?</string>
-  <string name="no_compatible_launcher_title">Bu başlatıcı uyumlu DEĞİL</string>
-  <string name="no_compatible_launcher_content">Bu başlatıcı HİÇBİR Simge Paketi ile uyumlu DEĞİL ve bu yüzden bu simge paketini bu başlatıcı ile kullanamazsanız. Lütfen simge paketini bu sebepten dolayı olumsuz derecelendirmeyin. Kendi kendiniz deneyebileceğiniz bir çözüm var, fakat bu harici bir uygulama kullanmayı gerektiriyor. İndirmek ister misiniz?</string>
-  <string name="impossible_open_themes">Tema uygulamasını açmak mümkün değil</string>
-  <string name="themes_app_not_installed">Tema uygulaması bu cihaz da kurulu değil</string>
-  <string name="included_templates">%1$s şablon</string>
-  <string name="launcher_icon_restored">%1$s başlatıcı simgeleri kurtarıldı</string>
-  <string name="launcher_icon_not_restored">%1$s başlatıcı simgeleri zaten görülebilir</string>
-  <string name="launcher_icon_restorer_error">%1$s kodunda bir problem var. Lütfen geliştirici ile iletişime geçin.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Simge Onarıcı Araç</string>
-  <string name="clock_widget_title">Analog Saat</string>
-  <string name="search_icons">Simgeleri Ara</string>
-  <string name="search_wallpapers">Duvar Kağıtlarını Ara</string>
-  <string name="search_launchers">Başlatıcıları Ara</string>
-  <string name="search_apps">Uygulamaları ara</string>
-  <string name="seconds">Saniyeler</string>
-  <string name="minutes">Dakikalar</string>
-  <string name="hours">Saatler</string>
-  <string name="days">Günler</string>
-  <string name="weeks">Haftalar</string>
-  <string name="months">Aylar</string>
-  <!-- Requests -->
-  <string name="select_all">Hepsini seç</string>
-  <string name="no_selected_apps_title">Seçili uygulama yok</string>
-  <string name="apps_limit_dialog">Üzgünüz, fakat sadece istek yapmak için %1$s uygulama seçmeye izniniz var.</string>
-  <string name="apps_limit_dialog_more">Üzgünüz, ancak şimdilik yalnızca %1$s uygulama daha isteyebilirsin.</string>
-  <string name="apps_limit_dialog_day">Üzgünüz, fakat sadece her %1$s için simge isteği yapmaya izniniz var.</string>
-  <string name="apps_limit_dialog_day_extra">%1$s içinde tekrar simge isteği yapabileceksiniz.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Bir dakikadan daha az bir süre içinde tekrar simge isteği yapabileceksiniz.</string>
-  <string name="requests_error">İstek yapmak için uygulama yüklenirken bir hata oluştu.\nYeniden denemek için burayı tıklayın.</string>
-  <string name="loading_apps_to_request">İstek yapmak için uygulamalar yükleniyor…</string>
-  <string name="building_request_dialog">İstek dosyaları oluşturuluyor…</string>
-  <string name="request_upload_success">Başarılı!</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">Simgeleri ön izlemede duvar kağıdı kullanılmasını etkinleştir</string>
-  <string name="pref_summary_wall_header">Mevcut cihaz duvar kağıdınız gösterilecektir.</string>
-  <string name="pref_header_launcher_icon">Başlatıcı simgesi</string>
-  <string name="pref_title_launcher_icon">Başlatıcı simgesini gizle</string>
-  <string name="pref_summary_launcher_icon">İşaretlendiğinde başlatıcı simgesi gizlenecektir.</string>
-  <string name="clearcache_dialog_content">Uygulama verilerini, önbelleğini ve ayarlarını silmek istediğinizden emin misiniz? Uygulanmış simgeler etkilenmeyeceklerdir.</string>
-  <string name="hideicon_dialog_title">Uyarı!</string>
-  <string name="hideicon_dialog_content">Uygulama simgesini başlatıcınız içinde gizlemek istediğinize emin misiniz? Uygulama beklemendik şekilde kapanabilir ve bildirimler tamamen devre dışı kalacaklar.\nTekrar nasıl görünür yapmayı öğrenmek için SSS\'ı okumak isteyebilirsiniz, gizlemeden önce.\n.</string>
-  <string name="send_using">Kullanarak gönder…</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>Simge Paketi nasıl kullanılır?</item>
-    <item>Simge Paketini nasıl uygulanır?</item>
-    <item>Dahili tüm simgeler nasıl görülür?</item>
-    <item>How to replace an icon with an alternative one?</item>
-    <item>Temasız simgeleri nasıl isteyebilirim?</item>
-    <item>Cihazımı yeniden başlattıktan sonra simge paketi artık uygulanmıyor. Simgeler varsayılana döndürüldü.</item>
-    <item>Neden bazı simgeler cihazımda piksel piksel gözüküyor?</item>
-    <item>Dahil edilen simgeler içerisinde X uygulaması için bir simge görüyorum fakat simge uygulanmıyor.</item>
-    <item>Uygulama simgesini başlatıcıdan nasıl gizleyebilirim?</item>
-    <item>Uygulama simgesi başlatıcıdan gizlendikten sonra uygulamayı nasıl açabilirim?</item>
-    <item>Uygulama simgesini başlatıcıda nasıl tekrar gösterebilirim?</item>
-    <item>Uygulamanın depolama alanımın içeriğini değiştirmek veya silmek için neden izin gerektiriyor?</item>
-    <item>Uygulamanın ağa erişim izni neden gerekli?</item>
-    <item>Uygulamanın bağlantıları görüntülemek için neden izin alması gerekiyor?</item>
-    <item>Duvar kağıdını ayarlamak için uygulamaya neden izin verilmesi gerekiyor?</item>
-    <item>Uygulama, duvar kağıdı boyutunu ayarlamak için neden izin almaya ihtiyaç duyuyor?</item>
-    <item>Telefonun uyku halini engellemek için uygulamanın neden izne ihtiyacı var?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>Simge paketinin desteklediği bir başlatıcıya ihtiyacınız car. Desteklenen başlatıcılar için Google Play Store açıklamalarını kontrol edin. Eğer hangi başlatıcıyı kullanacağınızdan emin olamıyorsanız, \"Uygula\" bölümüne gidin, daha sonra listeden bir tane seçin.</item>
-    <item>Soldan GezinmeÇekmecesi\'ni kaydırın ve \"Uygula\" sekmesine gidin ya da uygulamanın ana sekmesine gidin, daha sonra Hareketli İşlem Düğmesi\'ne dokunun. Simgeleri uygulamak istediğiniz başlatıcıyı seçin. Eğer başlatıcınız burada listelenmemiş fakat simge paketi onunla uyumlu ise ( desteklenen başlatıcıları görmek için Google Play Store açıklamasına bakın), onu başlatıcı ayarlarınızdan manuel olarak uygulayabilirsiniz.</item>
-    <item>Soldan GezinmeÇekmecesi\'ni kaydırın ve \"Simgeler\" sekmesine yada uygulamanın ana sekmesine gidin daha sonra \"Simgeler\" yazan tuşa dokunun.</item>
-    <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
-    <item>Soldan GezinmeÇekmecesi\'ni kaydırın ve \"İstekler\" sekmesine gidin.</item>
-    <item>Bu simge paketi SD Karta taşındığı için oldu, onu dahili hafıza içine yüklemelisiniz.</item>
-    <item>Bu problem kullandığınız başlatıcı yüksek çözünürlüklerle uğraşırken olabilir. Simge boyutunu %115-120 arttırarak onarmayı deneyebilirsiniz. Yada başka bir başlatıcı kullanmayı deneyin.</item>
-    <item>Bir simge isteği gönderin.</item>
-    <item>Soldan GezinmeÇekmecesi\'ni kaydırın ve \"Ayarlar\" sekmesine gidin. Daha sonra \"Simgeyi başlatıcıdan gizleyin\" seçeneğine tıklayın.</item>
-    <item>Ana ekranınıza gidin, daha sonra \"IconRestorer\" isimli uygulama için bir araç oluşturun.</item>
-    <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>Simge isteklerinin veri ve dosyalarını yazmak aynı zamanda duvar kağıtlarını kaydetmek ve duvar kağıtlarının indirileceği konumu değiştirebilmek için lazımdır.</item>
-    <item>Bulut tabanlı duvar kağıtlarını yüklemek ve onları indirmek için gereklidir.</item>
-    <item>Cihazınızın internet bağlantısı olup olmadığını kontrol etmek için gereklidir.</item>
-    <item>Duvar kağıtlarını direk olarak uygulamadan uygulayabilmek için gereklidir.</item>
-    <item>Duvar kağıdı boyutlarını ekranınızın çözünürlüğüne göre ayarlayabilmek için gereklidir.</item>
-    <item>Muzei Live Wallpaper tarafından gereklidir.</item>
-  </string-array>
+    <string name="frames_dashboard">Blueprint Kontrol Paneli</string>
+    <string name="coming_soon">Yakında geliyor</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Ana sayfa</string>
+    <string name="section_icons">Simgeler</string>
+    <string name="section_apply">Uygula</string>
+    <string name="section_wallpapers">Duvar kağıtları</string>
+    <string name="section_icon_request">Simge isteği</string>
+    <string name="section_donate">Bağış Yap</string>
+    <string name="section_about">Uygulamak hakkında</string>
+    <string name="section_help">Yardım</string>
+    <string name="section_zooper">Zooper Kurulumu</string>
+    <string name="section_widgets">Araçlar</string>
+    <string name="share_this_app">%1$s kullanıyorum ve onu seviyorum. Bu adresten kontrol et: %2$s</string>
+    <string name="rate">Derecelendir</string>
+    <!-- Icons filters -->
+    <string name="filter">Filtrele</string>
+    <string name="clear">Temizle</string>
+    <string name="more_apps">Daha fazla uygulama</string>
+    <string name="general_info">Genel bilgiler</string>
+    <string name="useful_links">Kullanışlı bağlantılar</string>
+    <string name="columns">Sütun numarası</string>
+    <string name="lni_content">%1$s şu anda cihazınızda kurulu değil.\nGoogle Play Store dan kurmak ister misiniz?</string>
+    <string name="no_compatible_launcher_title">Bu başlatıcı uyumlu DEĞİL</string>
+    <string name="no_compatible_launcher_content">Bu başlatıcı HİÇBİR Simge Paketi ile uyumlu DEĞİL ve bu yüzden bu simge paketini bu başlatıcı ile kullanamazsanız. Lütfen simge paketini bu sebepten dolayı olumsuz derecelendirmeyin. Kendi kendiniz deneyebileceğiniz bir çözüm var, fakat bu harici bir uygulama kullanmayı gerektiriyor. İndirmek ister misiniz?</string>
+    <string name="impossible_open_themes">Tema uygulamasını açmak mümkün değil</string>
+    <string name="themes_app_not_installed">Tema uygulaması bu cihaz da kurulu değil</string>
+    <string name="included_templates">%1$s şablon</string>
+    <string name="launcher_icon_restored">%1$s başlatıcı simgeleri kurtarıldı</string>
+    <string name="launcher_icon_not_restored">%1$s başlatıcı simgeleri zaten görülebilir</string>
+    <string name="launcher_icon_restorer_error">%1$s kodunda bir problem var. Lütfen geliştirici ile iletişime geçin.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Simge Onarıcı Araç</string>
+    <string name="clock_widget_title">Analog Saat</string>
+    <string name="search_icons">Simgeleri Ara</string>
+    <string name="search_wallpapers">Duvar Kağıtlarını Ara</string>
+    <string name="search_launchers">Başlatıcıları Ara</string>
+    <string name="search_apps">Uygulamaları ara</string>
+    <string name="seconds">Saniyeler</string>
+    <string name="minutes">Dakikalar</string>
+    <string name="hours">Saatler</string>
+    <string name="days">Günler</string>
+    <string name="weeks">Haftalar</string>
+    <string name="months">Aylar</string>
+    <!-- Requests -->
+    <string name="select_all">Hepsini seç</string>
+    <string name="no_selected_apps_title">Seçili uygulama yok</string>
+    <string name="apps_limit_dialog">Üzgünüz, fakat sadece istek yapmak için %1$s uygulama seçmeye izniniz var.</string>
+    <string name="apps_limit_dialog_more">Üzgünüz, ancak şimdilik yalnızca %1$s uygulama daha isteyebilirsin.</string>
+    <string name="apps_limit_dialog_day">Üzgünüz, fakat sadece her %1$s için simge isteği yapmaya izniniz var.</string>
+    <string name="apps_limit_dialog_day_extra">%1$s içinde tekrar simge isteği yapabileceksiniz.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Bir dakikadan daha az bir süre içinde tekrar simge isteği yapabileceksiniz.</string>
+    <string name="requests_error">İstek yapmak için uygulama yüklenirken bir hata oluştu.\nYeniden denemek için burayı tıklayın.</string>
+    <string name="loading_apps_to_request">İstek yapmak için uygulamalar yükleniyor…</string>
+    <string name="building_request_dialog">İstek dosyaları oluşturuluyor…</string>
+    <string name="request_upload_success">Başarılı!</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">Simgeleri ön izlemede duvar kağıdı kullanılmasını etkinleştir</string>
+    <string name="pref_summary_wall_header">Mevcut cihaz duvar kağıdınız gösterilecektir.</string>
+    <string name="pref_header_launcher_icon">Başlatıcı simgesi</string>
+    <string name="pref_title_launcher_icon">Başlatıcı simgesini gizle</string>
+    <string name="pref_summary_launcher_icon">İşaretlendiğinde başlatıcı simgesi gizlenecektir.</string>
+    <string name="clearcache_dialog_content">Uygulama verilerini, önbelleğini ve ayarlarını silmek istediğinizden emin misiniz? Uygulanmış simgeler etkilenmeyeceklerdir.</string>
+    <string name="hideicon_dialog_title">Uyarı!</string>
+    <string name="hideicon_dialog_content">Uygulama simgesini başlatıcınız içinde gizlemek istediğinize emin misiniz? Uygulama beklemendik şekilde kapanabilir ve bildirimler tamamen devre dışı kalacaklar.\nTekrar nasıl görünür yapmayı öğrenmek için SSS\'ı okumak isteyebilirsiniz, gizlemeden önce.\n.</string>
+    <string name="send_using">Kullanarak gönder…</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Simge Paketi nasıl kullanılır?</item>
+        <item>Simge Paketini nasıl uygulanır?</item>
+        <item>Dahili tüm simgeler nasıl görülür?</item>
+        <item>How to replace an icon with an alternative one?</item>
+        <item>Temasız simgeleri nasıl isteyebilirim?</item>
+        <item>Cihazımı yeniden başlattıktan sonra simge paketi artık uygulanmıyor. Simgeler varsayılana döndürüldü.</item>
+        <item>Neden bazı simgeler cihazımda piksel piksel gözüküyor?</item>
+        <item>Dahil edilen simgeler içerisinde X uygulaması için bir simge görüyorum fakat simge uygulanmıyor.</item>
+        <item>Uygulama simgesini başlatıcıdan nasıl gizleyebilirim?</item>
+        <item>Uygulama simgesi başlatıcıdan gizlendikten sonra uygulamayı nasıl açabilirim?</item>
+        <item>Uygulama simgesini başlatıcıda nasıl tekrar gösterebilirim?</item>
+        <item>Uygulamanın depolama alanımın içeriğini değiştirmek veya silmek için neden izin gerektiriyor?</item>
+        <item>Uygulamanın ağa erişim izni neden gerekli?</item>
+        <item>Uygulamanın bağlantıları görüntülemek için neden izin alması gerekiyor?</item>
+        <item>Duvar kağıdını ayarlamak için uygulamaya neden izin verilmesi gerekiyor?</item>
+        <item>Uygulama, duvar kağıdı boyutunu ayarlamak için neden izin almaya ihtiyaç duyuyor?</item>
+        <item>Telefonun uyku halini engellemek için uygulamanın neden izne ihtiyacı var?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Simge paketinin desteklediği bir başlatıcıya ihtiyacınız car. Desteklenen başlatıcılar için Google Play Store açıklamalarını kontrol edin. Eğer hangi başlatıcıyı kullanacağınızdan emin olamıyorsanız, \"Uygula\" bölümüne gidin, daha sonra listeden bir tane seçin.</item>
+        <item>Soldan GezinmeÇekmecesi\'ni kaydırın ve \"Uygula\" sekmesine gidin ya da uygulamanın ana sekmesine gidin, daha sonra Hareketli İşlem Düğmesi\'ne dokunun. Simgeleri uygulamak istediğiniz başlatıcıyı seçin. Eğer başlatıcınız burada listelenmemiş fakat simge paketi onunla uyumlu ise ( desteklenen başlatıcıları görmek için Google Play Store açıklamasına bakın), onu başlatıcı ayarlarınızdan manuel olarak uygulayabilirsiniz.</item>
+        <item>Soldan GezinmeÇekmecesi\'ni kaydırın ve \"Simgeler\" sekmesine yada uygulamanın ana sekmesine gidin daha sonra \"Simgeler\" yazan tuşa dokunun.</item>
+        <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
+        <item>Soldan GezinmeÇekmecesi\'ni kaydırın ve \"İstekler\" sekmesine gidin.</item>
+        <item>Bu simge paketi SD Karta taşındığı için oldu, onu dahili hafıza içine yüklemelisiniz.</item>
+        <item>Bu problem kullandığınız başlatıcı yüksek çözünürlüklerle uğraşırken olabilir. Simge boyutunu %115-120 arttırarak onarmayı deneyebilirsiniz. Yada başka bir başlatıcı kullanmayı deneyin.</item>
+        <item>Bir simge isteği gönderin.</item>
+        <item>Soldan GezinmeÇekmecesi\'ni kaydırın ve \"Ayarlar\" sekmesine gidin. Daha sonra \"Simgeyi başlatıcıdan gizleyin\" seçeneğine tıklayın.</item>
+        <item>Ana ekranınıza gidin, daha sonra \"IconRestorer\" isimli uygulama için bir araç oluşturun.</item>
+        <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>Simge isteklerinin veri ve dosyalarını yazmak aynı zamanda duvar kağıtlarını kaydetmek ve duvar kağıtlarının indirileceği konumu değiştirebilmek için lazımdır.</item>
+        <item>Bulut tabanlı duvar kağıtlarını yüklemek ve onları indirmek için gereklidir.</item>
+        <item>Cihazınızın internet bağlantısı olup olmadığını kontrol etmek için gereklidir.</item>
+        <item>Duvar kağıtlarını direk olarak uygulamadan uygulayabilmek için gereklidir.</item>
+        <item>Duvar kağıdı boyutlarını ekranınızın çözünürlüğüne göre ayarlayabilmek için gereklidir.</item>
+        <item>Muzei Live Wallpaper tarafından gereklidir.</item>
+    </string-array>
 </resources>

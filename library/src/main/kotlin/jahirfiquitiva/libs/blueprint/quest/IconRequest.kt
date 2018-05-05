@@ -55,6 +55,7 @@ import jahirfiquitiva.libs.blueprint.quest.utils.saveAll
 import jahirfiquitiva.libs.blueprint.quest.utils.saveIcon
 import jahirfiquitiva.libs.blueprint.quest.utils.wipe
 import jahirfiquitiva.libs.blueprint.quest.utils.zip
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getUri
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
@@ -62,6 +63,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.readBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.readEnum
 import jahirfiquitiva.libs.kauextensions.extensions.writeBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.writeEnum
+import okhttp3.MultipartBody
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import java.io.File
@@ -176,7 +178,7 @@ class IconRequest private constructor() {
         request = this
     }
     
-    @IntDef(STATE_NORMAL.toLong(), STATE_LIMITED.toLong(), STATE_TIME_LIMITED.toLong())
+    @IntDef(STATE_NORMAL, STATE_LIMITED, STATE_TIME_LIMITED)
     @Retention(AnnotationRetention.SOURCE)
     annotation class State
     
@@ -804,22 +806,25 @@ class IconRequest private constructor() {
                 }
                 
                 if (uploadToArctic) {
+                    
                     Bridge.config()
                             .host(host)
                             .defaultHeader("TokenID", apiKey)
                             .defaultHeader("Accept", "application/json")
                             .defaultHeader("User-Agent", "afollestad/icon-request")
                             .validators(RemoteValidator())
+                    
                     try {
                         val zipFile = buildZip(
-                                date,
-                                ArrayList(arcticZipFiles.filter { it.name.endsWith("png", true) }))
+                                date, arcticZipFiles.jfilter { it.name.endsWith("png", true) })
                         cleanFiles()
                         if (zipFile != null) {
                             val form = MultipartForm()
                             form.add("archive", zipFile)
                             form.add("apps", JSONObject(jsonSb?.toString().orEmpty()).toString())
+                            
                             post("/v1/request").throwIfNotSuccess().body(form).request()
+                            
                             BPLog.d { "Request uploaded to the server!" }
                             
                             val amount = requestsLeft - selectedApps.size

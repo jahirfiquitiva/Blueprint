@@ -15,64 +15,64 @@
   ~ limitations under the License.
   -->
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/request_item"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:clipToPadding="false"
-        android:descendantFocusability="blocksDescendants"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        tools:ignore="Overdraw">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/request_item"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:clipToPadding="false"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    tools:ignore="Overdraw">
 
     <FrameLayout
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:maxHeight="64dp"
-            android:maxWidth="64dp"
-            android:padding="@dimen/cards_margin"
-            android:layout_gravity="center"
-            android:gravity="center">
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:maxHeight="64dp"
+        android:maxWidth="64dp"
+        android:padding="@dimen/cards_margin"
+        android:layout_gravity="center"
+        android:gravity="center">
 
         <ImageView
-                android:id="@+id/icon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:scaleType="centerCrop"
-                android:visibility="visible"
-                android:src="@drawable/ic_na_launcher"
-                tools:ignore="ContentDescription"/>
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            android:src="@drawable/ic_na_launcher"
+            tools:ignore="ContentDescription" />
 
     </FrameLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
-                android:id="@+id/name"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:padding="@dimen/cards_margin"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                tools:text="App Name And Some Other Texts Im testing right now"/>
+            android:id="@+id/name"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="@dimen/cards_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:text="App Name And Some Other Texts Im testing right now" />
 
         <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:padding="@dimen/cards_margin"/>
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:padding="@dimen/cards_margin" />
 
     </LinearLayout>
 

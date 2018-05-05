@@ -79,8 +79,8 @@ complexity:
   LabeledExpression:
     active: false
   LargeClass:
-    active: true
-    threshold: 200
+    active: false
+    threshold: 250
   LongMethod:
     active: false
     threshold: 20

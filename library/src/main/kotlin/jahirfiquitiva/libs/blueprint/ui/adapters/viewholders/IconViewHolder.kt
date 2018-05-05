@@ -26,7 +26,7 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
-import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
@@ -55,7 +55,7 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                             .apply(options)
                             .listener(object : GlideRequestCallback<Drawable>() {
                                 override fun onLoadSucceed(resource: Drawable): Boolean {
-                                    return if (context.bpKonfigs.animationsEnabled && animate) {
+                                    return if (BPKonfigs(context).animationsEnabled && animate) {
                                         scaleXY = 0F
                                         lastPosition = adapterPosition
                                         animate().scaleX(1F)

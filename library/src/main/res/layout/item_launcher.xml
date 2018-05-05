@@ -15,47 +15,47 @@
   ~ limitations under the License.
   -->
 <jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/launcher_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foreground="?attr/selectableItemBackground"
-        android:stateListAnimator="@anim/card_lift"
-        app:cardPreventCornerOverlap="false"
-        tools:ignore="UnusedAttribute">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/launcher_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:stateListAnimator="@anim/card_lift"
+    app:cardPreventCornerOverlap="false"
+    tools:ignore="UnusedAttribute">
 
     <LinearLayout
-            android:id="@+id/launcher_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        android:id="@+id/launcher_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
-                android:id="@+id/launcher_icon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/cards_margin"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_na_launcher"
-                tools:ignore="ContentDescription, UnusedAttribute"/>
+            android:id="@+id/launcher_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/cards_margin"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_na_launcher"
+            tools:ignore="ContentDescription, UnusedAttribute" />
 
         <TextView
-                android:id="@+id/launcher_name"
-                style="@style/ListsContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:paddingStart="@dimen/fabs_margin"
-                android:paddingEnd="@dimen/fabs_margin"
-                android:paddingTop="@dimen/cards_margin"
-                android:paddingBottom="@dimen/cards_margin"
-                android:ellipsize="end"
-                android:gravity="start|center_vertical"
-                android:maxLines="1"
-                android:textSize="16sp"
-                tools:text="Launcher Name"/>
+            android:id="@+id/launcher_name"
+            style="@style/ListsContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingStart="@dimen/fabs_margin"
+            android:paddingEnd="@dimen/fabs_margin"
+            android:paddingTop="@dimen/cards_margin"
+            android:paddingBottom="@dimen/cards_margin"
+            android:ellipsize="end"
+            android:gravity="start|center_vertical"
+            android:maxLines="1"
+            android:textSize="16sp"
+            tools:text="Launcher Name" />
 
     </LinearLayout>
 

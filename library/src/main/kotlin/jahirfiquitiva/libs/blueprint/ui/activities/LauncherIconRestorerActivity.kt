@@ -21,9 +21,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.helpers.extensions.bpKonfigs
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 
 class LauncherIconRestorerActivity : AppCompatActivity() {
+    
+    private val configs: BPKonfigs by lazy { BPKonfigs(this) }
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,15 +47,13 @@ class LauncherIconRestorerActivity : AppCompatActivity() {
         val content: String
         if (className != null) {
             val component = ComponentName(packageName, componentName)
-            if (!bpKonfigs.launcherIconShown) {
-                bpKonfigs.launcherIconShown = true
+            if (!configs.launcherIconShown) {
+                configs.launcherIconShown = true
                 pm.setComponentEnabledSetting(
                         component,
                         PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                         PackageManager.DONT_KILL_APP)
-                content = getString(
-                        R.string.launcher_icon_restored,
-                        getString(R.string.app_name))
+                content = getString(R.string.launcher_icon_restored, getString(R.string.app_name))
             } else {
                 content = getString(
                         R.string.launcher_icon_not_restored,

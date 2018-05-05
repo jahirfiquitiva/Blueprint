@@ -32,6 +32,7 @@ import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.AppLinkItemHolder
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.CounterItemHolder
+import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.SectionedHeaderViewHolder
 import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
@@ -108,24 +109,22 @@ class HomeAdapter(
         }
     }
     
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SectionedViewHolder? =
-            parent?.let {
-                when (viewType) {
-                    0 -> {
-                        if (showInfo) CounterItemHolder(it.inflate(R.layout.item_home_counters))
-                        else AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
-                    }
-                    1, 2 ->
-                        AppLinkItemHolder(it.inflate(R.layout.item_home_app_link))
-                    else -> SectionedHeaderViewHolder(it.inflate(R.layout.item_section_header))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionedViewHolder =
+            when (viewType) {
+                0 -> {
+                    if (showInfo) CounterItemHolder(parent.inflate(R.layout.item_home_counters))
+                    else AppLinkItemHolder(parent.inflate(R.layout.item_home_app_link))
                 }
+                1, 2 ->
+                    AppLinkItemHolder(parent.inflate(R.layout.item_home_app_link))
+                else -> SectionedHeaderViewHolder(parent.inflate(R.layout.item_section_header))
             }
     
     override fun getItemCount(section: Int): Int {
         return when (section) {
-            0 -> if (showInfo) 1 else list.filter { it.isAnApp }.size
-            1 -> list.filter { if (showInfo) it.isAnApp else !it.isAnApp }.size
-            2 -> list.filter { !it.isAnApp }.size
+            0 -> if (showInfo) 1 else list.jfilter { it.isAnApp }.size
+            1 -> list.jfilter { if (showInfo) it.isAnApp else !it.isAnApp }.size
+            2 -> list.jfilter { !it.isAnApp }.size
             else -> 0
         }
     }
@@ -229,7 +228,7 @@ class HomeAdapter(
     private fun bindAppsAndLinks(holder: AppLinkItemHolder, section: Int, position: Int) {
         val correctSection = if (showInfo) 1 else 0
         holder.setItem(
-                list.filter { if (section == correctSection) it.isAnApp else !it.isAnApp }[position],
+                list.jfilter { if (section == correctSection) it.isAnApp else !it.isAnApp }[position],
                 listener)
     }
 }

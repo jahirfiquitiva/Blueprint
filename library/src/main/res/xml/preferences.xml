@@ -18,103 +18,103 @@
                   android:key="preferences">
 
     <PreferenceCategory
-            android:key="ui_settings"
-            android:title="@string/ui_settings_title">
+        android:key="ui_settings"
+        android:title="@string/ui_settings_title">
 
         <Preference
-                android:key="theme"
-                android:persistent="true"
-                android:summary="@string/theme_setting_content"
-                android:title="@string/theme_setting_title"/>
+            android:key="theme"
+            android:persistent="true"
+            android:summary="@string/theme_setting_content"
+            android:title="@string/theme_setting_title" />
 
         <SwitchPreference
-                android:defaultValue="true"
-                android:key="color_navbar"
-                android:persistent="true"
-                android:summary="@string/navbar_color_setting_content"
-                android:title="@string/navbar_color_setting_title"/>
+            android:defaultValue="true"
+            android:key="color_navbar"
+            android:persistent="true"
+            android:summary="@string/navbar_color_setting_content"
+            android:title="@string/navbar_color_setting_title" />
 
         <Preference
-                android:key="columns"
-                android:persistent="true"
-                android:summary="@string/wallpapers_columns_setting_content"
-                android:title="@string/wallpapers_columns_setting_title"/>
+            android:key="columns"
+            android:persistent="true"
+            android:summary="@string/wallpapers_columns_setting_content"
+            android:title="@string/wallpapers_columns_setting_title" />
 
         <SwitchPreference
-                android:defaultValue="true"
-                android:key="animations"
-                android:persistent="true"
-                android:summary="@string/animations_setting_content"
-                android:title="@string/animations_setting_title"/>
+            android:defaultValue="true"
+            android:key="animations"
+            android:persistent="true"
+            android:summary="@string/animations_setting_content"
+            android:title="@string/animations_setting_title" />
 
         <SwitchPreference
-                android:defaultValue="true"
-                android:key="wallpaper_in_icons_preview"
-                android:persistent="true"
-                android:summary="@string/pref_summary_wall_header"
-                android:title="@string/pref_title_wall_header"/>
+            android:defaultValue="true"
+            android:key="wallpaper_in_icons_preview"
+            android:persistent="true"
+            android:summary="@string/pref_summary_wall_header"
+            android:title="@string/pref_title_wall_header" />
 
         <SwitchPreference
-                android:defaultValue="false"
-                android:key="hi_res_pics"
-                android:persistent="true"
-                android:summary="@string/load_hi_res_pictures_content"
-                android:title="@string/load_hi_res_pictures_title"/>
+            android:defaultValue="false"
+            android:key="hi_res_pics"
+            android:persistent="true"
+            android:summary="@string/load_hi_res_pictures_content"
+            android:title="@string/load_hi_res_pictures_title" />
 
         <SwitchPreference
-                android:defaultValue="true"
-                android:key="deep_search"
-                android:persistent="true"
-                android:summary="@string/deep_search_content"
-                android:title="@string/deep_search_title"/>
+            android:defaultValue="true"
+            android:key="deep_search"
+            android:persistent="true"
+            android:summary="@string/deep_search_content"
+            android:title="@string/deep_search_title" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-            android:key="storage_settings"
-            android:title="@string/storage_settings_title">
+        android:key="storage_settings"
+        android:title="@string/storage_settings_title">
 
         <Preference
-                android:key="wallpapers_download_location"
-                android:persistent="true"
-                android:summary="@string/wallpapers_download_location_setting_content"
-                android:title="@string/wallpapers_download_location_setting_title"/>
+            android:key="wallpapers_download_location"
+            android:persistent="true"
+            android:summary="@string/wallpapers_download_location_setting_content"
+            android:title="@string/wallpapers_download_location_setting_title" />
 
         <Preference
-                android:key="clear_data"
-                android:persistent="true"
-                android:summary="@string/data_cache_setting_content"
-                android:title="@string/data_cache_setting_title"/>
+            android:key="clear_data"
+            android:persistent="true"
+            android:summary="@string/data_cache_setting_content"
+            android:title="@string/data_cache_setting_title" />
 
         <Preference
-                android:key="clear_database"
-                android:persistent="true"
-                android:summary="@string/clear_favorites_setting_content"
-                android:title="@string/clear_favorites_setting_title"/>
+            android:key="clear_database"
+            android:persistent="true"
+            android:summary="@string/clear_favorites_setting_content"
+            android:title="@string/clear_favorites_setting_title" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-            android:key="notifications_settings"
-            android:title="@string/notifications_title">
+        android:key="notifications_settings"
+        android:title="@string/notifications_title">
 
         <SwitchPreference
-                android:key="enable_notifications"
-                android:persistent="true"
-                android:title="@string/enable_notifications"/>
+            android:key="enable_notifications"
+            android:persistent="true"
+            android:title="@string/enable_notifications" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-            android:key="launcher_icon_preference"
-            android:title="@string/pref_header_launcher_icon">
+        android:key="launcher_icon_preference"
+        android:title="@string/pref_header_launcher_icon">
 
         <SwitchPreference
-                android:defaultValue="false"
-                android:key="launcher_icon"
-                android:persistent="true"
-                android:summary="@string/pref_summary_launcher_icon"
-                android:title="@string/pref_title_launcher_icon"/>
+            android:defaultValue="false"
+            android:key="launcher_icon"
+            android:persistent="true"
+            android:summary="@string/pref_summary_launcher_icon"
+            android:title="@string/pref_title_launcher_icon" />
 
     </PreferenceCategory>
 
