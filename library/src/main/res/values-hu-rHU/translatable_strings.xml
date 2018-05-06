@@ -66,6 +66,7 @@
   <string name="no_selected_apps_content">Nincs kijelölve aplikáció, kérjük jelöljön ki egy vagy több elemet majd próbálja újra. </string>
   <string name="apps_limit_dialog">Sajnáljuk, nem vagy jogosult a következő alkalmazás letöltésére: %1$s</string>
   <string name="apps_limit_dialog_more">Sajnáljuk, de nem vagy jogosult a ennél több alkalmazás kérésére: %1$s.</string>
+  <string name="apps_limit_dialog_day">Sajnáljuk, de nem vagy jogosult ikon kérésére minden %1$s. nap.</string>
   <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
   <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>
