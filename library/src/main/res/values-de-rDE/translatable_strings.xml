@@ -105,11 +105,11 @@
     <item>Warum benötigt die App die Berechtigung, den Schlafmodus des Geräts zu verhindern?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+    <item>Du benötigst einen Lauchner mit Unterstützung für Icon Packs. Schaue in der Beschreibung im Google Play Store für unterstützte Launcher. Wenn du dir nicht sicher bist, welchen Launcher du nutzen solltest, gehe einfach zum Abschnitt \"Anwenden\" und wähle einen aus der Liste aus.</item>
+    <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anwenden\" antippen, oder du musst das vierte Icon in der unteren Navigationsleiste antippen. Dort kannst du einen Launcher auswählen, mit dem du die Icons anwenden möchtest. Einige Launcher unterstützen keine automatische Anwendung und du musst dies manuell in den Einstellungen des Launcher tun.</item>
+    <item>Gehe zurück zur Hauptseite der App und klicke auf die Karte mit dem Titel \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anfragen\" antippen, oder du musst das entsprechende Icon in der unteren Navigationsleiste antippen.</item>
     <item>Das ist passiert, weil die Symbolbibliothek auf die SD-Karte verschoben wurde. Sie sollten es auf dem internen Speicher installieren.</item>
     <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Sie können das Problem beheben, indem Sie die Symbolgröße auf 115 - 120 % erhöhen. Sie können auch versuchen, einen anderen Launcher zu verwenden.</item>
     <item>Eine Symbol-Anfrage senden.</item>
