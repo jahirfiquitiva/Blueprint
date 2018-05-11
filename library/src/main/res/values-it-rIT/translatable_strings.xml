@@ -105,9 +105,9 @@
     <item>Perché l\'app necessita del permesso per evitare che il telefono dorma?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+    <item>Hai bisogno di un launcher che supporti gli icon pack. Controlla la descrizione del Google Play Store dei launcher supportati. Se non sei sicuro riguardo a quale launcher usare, vai alla sezione \"Applica\" e scegline uno dalla lista.</item>
+    <item>A seconda del tipo di navigazione dell\'app, è necessario far scorrere il NavigationDrawer da sinistra e andare alla sezione \"Applica\" oppure scegliere la quarta icona dalla barra di navigazione in basso. Da lì puoi scegliere il launcher in cui vuoi applicare le icone. Alcuni launcher non supportano questa funzione quindi dovrai farlo manualmente dalle loro impostazioni.</item>
+    <item>Torna alla sezione principale dell\'app e tocca il riquadro intitolato \"Icone\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>È successo perché l\'icon pack è stato spostato nella scheda SD, dovresti installarlo nella            memoria interna.</item>
