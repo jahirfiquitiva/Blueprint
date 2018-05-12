@@ -19,32 +19,32 @@
   <string name="frames_dashboard">Blueprint Dashboard</string>
   <string name="coming_soon">Em breve</string>
   <!-- List Of Drawer Sections -->
-  <string name="section_home">Casa</string>
-  <string name="section_icons">Icons</string>
-  <string name="section_apply">Apply</string>
-  <string name="section_wallpapers">Wallpapers</string>
-  <string name="section_icon_request">Icon request</string>
-  <string name="section_donate">Donate</string>
-  <string name="section_about">About the app</string>
-  <string name="section_help">Help</string>
+  <string name="section_home">Início</string>
+  <string name="section_icons">Ícones</string>
+  <string name="section_apply">Aplicar</string>
+  <string name="section_wallpapers">Papéis de Parede</string>
+  <string name="section_icon_request">Sugestão de Ícones</string>
+  <string name="section_donate">Doar</string>
+  <string name="section_about">Sobre</string>
+  <string name="section_help">Ajuda</string>
   <string name="section_zooper">Configuração do Zooper</string>
   <string name="section_widgets">Widgets</string>
-  <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
-  <string name="rate">Taxa</string>
+  <string name="share_this_app">Estou usando %1$s e estou amando! Confira em: %2$s</string>
+  <string name="rate">Avaliação</string>
   <!-- Icons filters -->
   <string name="filter">Filtro</string>
-  <string name="clear">Claro</string>
-  <string name="more_apps">More apps</string>
-  <string name="general_info">General information</string>
-  <string name="useful_links">Useful links</string>
-  <string name="columns">Columns number</string>
-  <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to install it from the Google Play Store?</string>
-  <string name="no_compatible_launcher_title">This launcher is NOT Compatible</string>
-  <string name="no_compatible_launcher_content">Este iniciador NÃO é compatível com QUALQUER Pacote de ícones e, portanto, você não pode usar este pacote de ícones com este iniciador. Por favor, não classifique o pacote de ícones negativamente por esse motivo. Existe uma solução que você pode tentar por si mesmo, mas requer o uso de um aplicativo externo. Gostaria de baixá-lo?</string>
-  <string name="impossible_open_themes">Impossible to open themes app</string>
+  <string name="clear">Apagar</string>
+  <string name="more_apps">Mais apps</string>
+  <string name="general_info">Informações gerais</string>
+  <string name="useful_links">Links Úteis</string>
+  <string name="columns">Número de colunas</string>
+  <string name="lni_content">%1$s atualmente não está instalado no seu dispositivo. \nGostaria de instalá-lo?</string>
+  <string name="no_compatible_launcher_title">Este launcher NÃO é compatível</string>
+  <string name="no_compatible_launcher_content">Este launcher NÃO é compatível com NENHUM Pacote de ícones e, portanto, você não pode usar este pacote de ícones com este launcher. Por favor, não classifique o pacote de ícones negativamente por esse motivo. Existe uma solução que você pode tentar por si mesmo, mas requer o uso de um aplicativo externo. Gostaria de baixá-lo?</string>
+  <string name="impossible_open_themes">Impossível abrir o app de temas</string>
   <string name="themes_app_not_installed">O aplicativo Temas não está instalado neste dispositivo</string>
-  <string name="included_templates">Modelos de % 1 $ s</string>
-  <string name="launcher_icon_restored">% 1 $ s ícone do iniciador foi restaurado</string>
+  <string name="included_templates">Modelos de %1$s</string>
+  <string name="launcher_icon_restored">%1$s ícone do launcher foi restaurado</string>
   <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
   <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
   <!-- Widgets Names -->
@@ -116,8 +116,8 @@
     <item>Deslize o NavigationDrawer para a esquerda ou clique nos três pontinhos e vá até \"Opções\". Então marque a opção \"Esconder ícone do launcher\".</item>
     <item>Vá até sua home screen, crie um widget para o app com o nome \"IconRestorer\" e clique nele.</item>
     <item>Deslize o NavigationDrawer para a direita ou clique nos 3 pontinhos e vá até \"Opções\". Então desmarque a opção \"Esconder ícone do launcher\".</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+    <item>É necessário escrever arquivos e dados de solicitações de ícones, além de salvar papéis de parede e poder alterar o local de download de Papéis de parede.</item>
+    <item>É necessário ser capaz de carregar papéis de parede da nuvem e baixá-los.</item>
     <item>É necessário poder verificar se o seu dispositivo tem conexão com a internet.</item>
     <item>É necessário poder aplicar papel de parede diretamente do aplicativo.</item>
     <item>É necessário ajustar as dimensões dos papéis de parede com base na resolução da sua tela.</item>
