@@ -69,7 +69,7 @@
   <string name="apps_limit_dialog_day">Desculpe, mas você só pode solicitar ícones a cada %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Você será capaz de solicitar ícones novamente em %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Você será capaz de solicitar ícones de novo em menos de um minuto.</string>
-  <string name="requests_error">There was an error loading apps to request.\nPress here to retry.</string>
+  <string name="requests_error">Erro ao carregar apps para solicitação.\nTentar de novo.</string>
   <string name="loading_apps_to_request">Loading apps to request…</string>
   <string name="building_request_dialog">Building request files…</string>
   <string name="request_upload_success">Success!</string>
@@ -86,7 +86,7 @@
   <string name="send_using">Enviar usando…</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
-    <item>How to use the Icon Pack?</item>
+    <item>Como utilizar um Icon Pack?</item>
     <item>Como aplicar o Icon Pack?</item>
     <item>Como ver todos os ícones incluídos?</item>
     <item>Como substituir um ícone com um alternativo?</item>
