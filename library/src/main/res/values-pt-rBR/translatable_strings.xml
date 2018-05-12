@@ -108,14 +108,14 @@
     <item>Você precisa de um launcher com suporte à pacote de ícones. Verifique a descrição na Google Play Store os launchers compatíveis. Se você não tem certeza qual launcher deve usar, vá até a seção \"Aplicar\" e escolha um da lista.</item>
     <item>Dependendo do tipo de navegação da aplicação, você precisa deslizar o drawer para a esquerda, e ir na opção \"Aplicar\" ou escolha o 4º ícone da parte inferior da barra de navegação. De lá você pode escolher o launcher que deseja aplicar os ícones. Alguns launchers não suportam aplicação automática, é necessário aplicar manualmente, um por um.</item>
     <item>Volte ao início do aplicativo e clique na opção \"Ícones\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Dependendo do launcher que você use, é possível editar o ícone apenas pressionando sobre o ícone desejado, um pop-up surgirá e selecione a opção \"Editar\".</item>
+    <item>Dependendo do tipo de navegação do aplicativo, você pode deslizar o drawer para a esquerda e ir na seção de \"Pedidos\" ou escolher o ícone na barra de navegação inferior.</item>
     <item>Isso aconteceu porque o pacote de ícone foi transferido para o cartão SD, você deve instalá-lo no armazenamento interno.</item>
     <item>O problema pode vir com o lançador que você está usando, ao lidar com grande resolução. Você pode corrigi-lo, aumentando o tamanho do ícone de 115-120%. Ou tente usar outro lançador.</item>
     <item>Envie uma solicitação de ícone.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+    <item>Deslize o NavigationDrawer para a esquerda ou clique nos três pontinhos e vá até \"Opções\". Então marque a opção \"Esconder ícone do launcher\".</item>
+    <item>Vá até sua home screen, crie um widget para o app com o nome \"IconRestorer\" e clique nele.</item>
+    <item>Deslize o NavigationDrawer para a direita ou clique nos 3 pontinhos e vá até \"Opções\". Então desmarque a opção \"Esconder ícone do launcher\".</item>
     <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
     <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
     <item>É necessário poder verificar se o seu dispositivo tem conexão com a internet.</item>
