@@ -105,9 +105,9 @@
     <item>Por que o app precisa de permissão para impedir que o telefone dormindo?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+    <item>Você precisa de um launcher com suporte à pacote de ícones. Verifique a descrição na Google Play Store os launchers compatíveis. Se você não tem certeza qual launcher deve usar, vá até a seção \"Aplicar\" e escolha um da lista.</item>
+    <item>Dependendo do tipo de navegação da aplicação, você precisa deslizar o drawer para a esquerda, e ir na opção \"Aplicar\" ou escolha o 4º ícone da parte inferior da barra de navegação. De lá você pode escolher o launcher que deseja aplicar os ícones. Alguns launchers não suportam aplicação automática, é necessário aplicar manualmente, um por um.</item>
+    <item>Volte ao início do aplicativo e clique na opção \"Ícones\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>Isso aconteceu porque o pacote de ícone foi transferido para o cartão SD, você deve instalá-lo no armazenamento interno.</item>
