@@ -40,6 +40,7 @@
   <string name="lni_content">%1$s в настоящее время не установлен на вашем устройства. \nХотите установить его из магазина Google Play?</string>
   <string name="no_compatible_launcher_title">Данный лаунчер НЕ совместим</string>
   <string name="no_compatible_launcher_content">Этот лаунчер не совместим с любым набором значков и, следовательно, вы не сможите использовать этот набор значков с этим лаунчером. Пожалуйста, не ставьте набору плохую оценку по этой причине. Вы можете попробовать воспользоваться внешним приложением. Хотите скачать его?</string>
+  <string name="impossible_open_themes">Невозможно открыть темы приложения</string>
   <string name="included_templates">%1$s шаблоны</string>
   <string name="launcher_icon_restored">значок запуска %1$s был восстановлен</string>
   <string name="launcher_icon_not_restored">значок запуска %1$s уже отображается</string>
@@ -62,9 +63,15 @@
   <string name="no_selected_apps_title">Нет выбранных приложений</string>
   <string name="no_selected_apps_content">Вы не выбрали ни одного приложения для запроса. Пожалуйста, выберите несколько приложений, а затем нажмите эту кнопку снова.</string>
   <string name="apps_limit_dialog">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+  <string name="apps_limit_dialog_more">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+  <string name="apps_limit_dialog_day">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+  <string name="loading_apps_to_request">Загрузка приложений для запроса...</string>
   <string name="building_request_dialog">Подготовка файлов запроса…</string>
   <string name="request_upload_success">Успешно!</string>
+  <string name="request_upload_success_content">Запрос успешно был загружен на наш сервер.</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">Включить использование обоев в превью</string>
+  <string name="pref_summary_wall_header">Будут отображаться обои текущего устройства.</string>
   <string name="pref_title_launcher_icon">Скрыть значок приложения</string>
   <string name="clearcache_dialog_content">Вы уверены, что Вы хотите удалить данные приложения, кэш и параметры? Установленные значки не будут затронуты.</string>
   <string name="hideicon_dialog_title">Внимание!</string>
