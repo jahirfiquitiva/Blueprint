@@ -50,8 +50,8 @@ android {
         applicationId "jahirfiquitiva.apps.blueprint.demo"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 114
-        versionName "1.1.4"
+        versionCode 115
+        versionName "1.1.5"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
@@ -70,7 +70,7 @@ android {
     }
 
     aaptOptions {
-        noCompress 'zw', 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch'
+        noCompress 'zw', 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch', 'xml'
     }
 
     sourceSets {
@@ -87,7 +87,7 @@ android {
 
 dependencies {
     // Blueprint
-    implementation('me.jahirfiquitiva:Blueprint:1.1.4@aar') {
+    implementation('me.jahirfiquitiva:Blueprint:1.1.5@aar') {
         transitive = true
     }
     // TODO: Remove comment marks to enable
