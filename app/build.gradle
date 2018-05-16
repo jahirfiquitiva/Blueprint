@@ -80,7 +80,7 @@ android {
     }
 
     aaptOptions {
-        noCompress 'zw', 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch'
+        noCompress 'zw', 'zip', 'komp', 'klwp', 'kwgt', 'klck', 'kwch', 'xml'
     }
 
     sourceSets {

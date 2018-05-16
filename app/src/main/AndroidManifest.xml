@@ -22,6 +22,7 @@
     <uses-permission android:name="com.android.vending.BILLING"/>
 
     <application
+	    android:name=".MyApplication"
             android:allowBackup="true"
             android:fullBackupContent="true"
             android:icon="@mipmap/ic_launcher"
@@ -156,9 +157,16 @@
             <!-- Next Launcher -->
             <intent-filter>
                 <action android:name="com.gtp.nextlauncher.theme"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+			<intent-filter>
+            	<action android:name="com.gtp.nextlauncher.MAIN" />
+            	<category android:name="android.intent.category.DEFAULT" />
+        	</intent-filter>
+        	<intent-filter>
+            	<action android:name="com.gtp.nextlauncher.trial.MAIN" />
+            	<category android:name="android.intent.category.DEFAULT" />
+        	</intent-filter>
             <!-- Nine Launcher -->
             <intent-filter>
                 <action android:name="com.gridappsinc.launcher.theme.apk_action"/>
