@@ -25,6 +25,6 @@
     <themeName>IconShowcase Dashboard</themeName>
     <!-- Default Component Color -->
     <themePointColor>#00b0ff</themePointColor>
-    <themePreview img1="preview1"/>
-    <preview img1="preview1"/>
+    <themePreview img1="preview1" />
+    <preview img1="preview1" />
 </themeInfo>

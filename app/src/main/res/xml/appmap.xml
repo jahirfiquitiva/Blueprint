@@ -22,7 +22,7 @@
 
     <!-- Contacts App -->
     <item
-            class="com.android.contacts.DialtactsContactsEntryActivity"
-            name="people"/>
+        class="com.android.contacts.DialtactsContactsEntryActivity"
+        name="people" />
 
 </appmap>

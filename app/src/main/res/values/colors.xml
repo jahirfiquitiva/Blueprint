@@ -40,8 +40,8 @@
     <color name="dark_theme_snackbar">@color/dark_theme_card_background</color>
     <color name="dark_theme_dialogs_button_color">@color/dark_theme_accent</color>
     <color name="splash_dark_status_bar">@color/dark_theme_primary_dark</color>
-  
-      <!-- FILTERS COLORS -->
+
+    <!-- FILTERS COLORS -->
     <!-- Used Material Design 100 shade values -->
     <string-array name="filters_colors">
         <item>#ffcdd2</item>
@@ -63,6 +63,6 @@
         <item>#ffecb3</item>
         <item>#ffccbc</item>
     </string-array>
-  
+
 </resources>
 

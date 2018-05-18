@@ -21,47 +21,47 @@
 <resources>
 
     <item
-            component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
-            drawable="people"/>
+        component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
+        drawable="people" />
 
     <item
-            component="ComponentInfo{/com.android.contacts.DialtactsContactsEntryActivity}"
-            drawable="people"/>
+        component="ComponentInfo{/com.android.contacts.DialtactsContactsEntryActivity}"
+        drawable="people" />
 
     <item
-            component="ComponentInfo{com.android.contacts/}"
-            drawable="people"/>
+        component="ComponentInfo{com.android.contacts/}"
+        drawable="people" />
 
     <item
-            component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
-            drawable=""/>
+        component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
+        drawable="" />
 
     <item
-            component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
-            drawable="something"/>
+        component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
+        drawable="something" />
 
     <item
-            component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
-            drawable="icon"/>
+        component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
+        drawable="icon" />
 
     <item
-            component="ComponentInfo{/com.android.contacts.DialtactsContactsEntryActivity}"
-            drawable="phone"/>
+        component="ComponentInfo{/com.android.contacts.DialtactsContactsEntryActivity}"
+        drawable="phone" />
 
     <item
-            component="ComponentInfo{com.android.contacts/}"
-            drawable="contacts"/>
+        component="ComponentInfo{com.android.contacts/}"
+        drawable="contacts" />
 
     <item
-            component="ComponentInfo{}"
-            drawable="cell"/>
+        component="ComponentInfo{}"
+        drawable="cell" />
 
     <item
-            component="ComponentInfo{/}"
-            drawable="an_icon"/>
+        component="ComponentInfo{/}"
+        drawable="an_icon" />
 
     <item
-            component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
-            drawable=""/>
+        component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity}"
+        drawable="" />
 
 </resources>

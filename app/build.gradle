@@ -50,8 +50,8 @@ android {
         applicationId "jahirfiquitiva.apps.blueprint.demo"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 115
-        versionName "1.1.5"
+        versionCode 116
+        versionName "1.1.6"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
@@ -87,7 +87,7 @@ android {
 
 dependencies {
     // Blueprint
-    implementation('me.jahirfiquitiva:Blueprint:1.1.5@aar') {
+    implementation('com.jahirfiquitiva:Blueprint:1.1.6@aar') {
         transitive = true
     }
     // TODO: Remove comment marks to enable

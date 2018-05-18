@@ -56,7 +56,7 @@ class MainActivity : BottomNavigationBlueprintActivity() {
     /**
      * These are the main items that will be shown in the navigation drawer or bottom navigation.
      * Remove the ones you don't want to show.
-	 * You can also organize them however you want.
+     * You can also organize them however you want.
      * Templates (Zooper & Kustom), Credits, Settings and Help sections are added by default. So don't worry about those.
      */
     override fun getNavigationItems(): Array<NavigationItem> {

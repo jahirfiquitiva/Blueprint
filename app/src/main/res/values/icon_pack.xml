@@ -48,7 +48,7 @@
         <item>rectangles</item>
         <item>squares</item>
     </string-array>
-    
+
     <string-array name="all">
         <item>amber_circle</item>
         <item>amber_rectangle</item>

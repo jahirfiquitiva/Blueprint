@@ -4,19 +4,19 @@ Blueprint
 ======
 
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
-[![JitPack](https://jitpack.io/v/jahirfiquitiva/Blueprint.svg)](https://jitpack.io/#jahirfiquitiva/Blueprint)
+[![JitPack](https://jitpack.io/v/com.jahirfiquitiva/Blueprint.svg)](https://jitpack.io/#com.jahirfiquitiva/Blueprint)
 [![Build Status](https://travis-ci.org/jahirfiquitiva/Blueprint.svg?branch=master)](https://travis-ci.org/jahirfiquitiva/Blueprint)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9747a594949f49b9a8146909868adfba)](https://www.codacy.com/app/jahirfiquitiva/Blueprint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jahirfiquitiva/Blueprint&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/55f3f196492a4ea88f13da0f219b9125)](https://www.codacy.com/app/jahirfiquitiva/Blueprint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jahirfiquitiva/Blueprint&amp;utm_campaign=Badge_Grade)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/blueprint/localized.svg)](http://j.mp/BlueprintTranslations)
 
 A full-of-features, easy-to-customize, free and open source, light-weight, Android dashboard library for icon packs.
 
 <a target="_blank" href="http://j.mp/BlueprintAPK">
-<img src="http://jahirfiquitiva.me/share/download_sample.svg?maxAge=432000" width="200"/>
+<img src="https://jahirfiquitiva.com/share/download_sample.svg?maxAge=432000" width="200"/>
 </a>
 
-<a target="_blank" href="http://www.jahirfiquitiva.me/support/">
-<img src="http://jahirfiquitiva.me/share/support_my_work.svg?maxAge=432000" width="200"/>
+<a target="_blank" href="https://jahirfiquitiva.com/support/">
+<img src="https://jahirfiquitiva.com/share/support_my_work.svg?maxAge=432000" width="200"/>
 </a>
 
 ## Show some  :blue_heart:
@@ -115,7 +115,7 @@ allprojects {
 2. Add the dependency in your project `build.gradle` file
 ```gradle
 dependencies {
-    implementation('me.jahirfiquitiva:Blueprint:{latest version}@aar') {
+    compile('com.jahirfiquitiva:Blueprint:{latest version}@aar') {
         transitive = true
     }
 }
@@ -132,7 +132,7 @@ Just join our community and make a post. We'll help you as soon as possible. [![
 
 # Developed by
 
-### [Jahir Fiquitiva](https://www.jahirfiquitiva.me/)
+### [Jahir Fiquitiva](https://jahirfiquitiva.com/)
 
 [![Follow on GitHub](https://img.shields.io/github/followers/jahirfiquitiva.svg?style=social&label=Follow)](https://github.com/jahirfiquitiva)
 [![Twitter Follow](https://img.shields.io/twitter/follow/jahirfiquitiva.svg?style=social)](https://twitter.com/jahirfiquitiva)
@@ -140,8 +140,8 @@ Just join our community and make a post. We'll help you as soon as possible. [![
 
 If you found this app/library helpful and want to thank me, you can:
 
-<a target="_blank" href="http://www.jahirfiquitiva.me/support/">
-<img src="http://jahirfiquitiva.me/share/support_my_work.svg?maxAge=432000" width="200"/>
+<a target="_blank" href="https://jahirfiquitiva.com/support/">
+<img src="https://jahirfiquitiva.com/share/support_my_work.svg?maxAge=432000" width="200"/>
 </a>
 
 **Thanks in advance!** :pray:

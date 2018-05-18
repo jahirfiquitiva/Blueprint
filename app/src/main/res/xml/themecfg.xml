@@ -24,6 +24,6 @@
     <themeInfo>IconShowcase is a Material Design based Icon Pack dashboard template. Free and open
         source.
     </themeInfo>
-    <preview img1="preview1"/>
-    <preview img2="preview2"/>
+    <preview img1="preview1" />
+    <preview img2="preview2" />
 </theme>

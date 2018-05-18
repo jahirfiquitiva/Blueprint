@@ -21,6 +21,6 @@
 <resources>
     <version>1</version>
 
-    <category title="Category"/>
-    <item drawable="icon"/>
+    <category title="Category" />
+    <item drawable="icon" />
 </resources>

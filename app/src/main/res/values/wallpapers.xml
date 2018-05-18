@@ -18,8 +18,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Provide a list of wallpapers -->
     <string-array name="wallpapers">
-		<item></item>
-	</string-array>
+        <item></item>
+    </string-array>
     <!-- This wallpaper will be used when a user applies the theme -->
     <string name="default_wallpaper"></string>
 </resources>

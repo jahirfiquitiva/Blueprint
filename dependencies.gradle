@@ -15,14 +15,14 @@
  */
 ext.versions = [
         // Projects
-        minSdk        : 16,
-        targetSdk     : 27,
-        buildTools    : '27.0.3',
+        minSdk    : 16,
+        targetSdk : 27,
+        buildTools: '27.0.3',
         // Gradle Plugins
-        gradle        : '3.1.1',
-        kotlin        : '1.2.41',
-		// Dependencies
-        oneSignal     : '3.8.3'
+        gradle    : '3.1.1',
+        kotlin    : '1.2.41',
+        // Dependencies
+        oneSignal : '3.8.3'
 ]
 
 ext.gradlePlugins = [
@@ -33,5 +33,5 @@ ext.gradlePlugins = [
 
 ext.libraries = [
         // OneSignal
-        oneSignal     : 'com.onesignal:OneSignal:' + versions.oneSignal
+        oneSignal: 'com.onesignal:OneSignal:' + versions.oneSignal
 ]
