@@ -38,9 +38,7 @@ import jahirfiquitiva.libs.kauextensions.extensions.getAppName
 import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import jahirfiquitiva.libs.kauextensions.extensions.hideAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
-import jahirfiquitiva.libs.kauextensions.extensions.showAllItems
 import jahirfiquitiva.libs.kauextensions.extensions.tint
 import jahirfiquitiva.libs.kauextensions.ui.activities.ThemedActivity
 import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
@@ -103,13 +101,7 @@ class HelpActivity : ThemedActivity<BPKonfigs>() {
         menu?.let {
             searchItem = it.findItem(R.id.search)
             searchView = searchItem?.actionView as? CustomSearchView
-            searchView?.onExpand = {
-                it.hideAllItems()
-            }
-            searchView?.onCollapse = {
-                it.showAllItems()
-                doSearch()
-            }
+            searchView?.onCollapse = { doSearch() }
             searchView?.onQueryChanged = { doSearch(it) }
             searchView?.onQuerySubmit = { doSearch(it) }
             searchView?.bindToItem(searchItem)
