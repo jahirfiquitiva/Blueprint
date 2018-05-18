@@ -387,8 +387,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                                     ): Boolean {
         return try {
             if (currentSectionId != item.id || force) {
+                val index = getNavigationItems().indexOf(item)
+                if (index < 0) return false
                 postDelayed(10) {
-                    pager?.setCurrentItem(getIndexOfItem(item)) {
+                    pager?.setCurrentItem(index) {
                         updateUI(item)
                         pager?.visible()
                         destroyDialog()
@@ -448,13 +450,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                     NavigationItem.WALLPAPERS,
                     NavigationItem.APPLY,
                     NavigationItem.REQUESTS)
-    
-    private fun getIndexOfItem(item: NavigationItem): Int {
-        getNavigationItems().forEachIndexed { i, it ->
-            if (it.id == item.id) return i
-        }
-        return -1
-    }
     
     internal fun getNavigationItemWithId(id: Int): NavigationItem {
         return getNavigationItems().firstOrNull { it.id == id } ?: NavigationItem.HOME

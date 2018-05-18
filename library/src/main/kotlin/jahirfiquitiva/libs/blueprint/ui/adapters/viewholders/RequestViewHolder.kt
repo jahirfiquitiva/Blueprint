@@ -15,12 +15,14 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.AppCompatCheckBox
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import ca.allanwang.kau.utils.drawable
+import ca.allanwang.kau.utils.gone
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.RequestManager
@@ -29,14 +31,17 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
+import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
 import jahirfiquitiva.libs.kauextensions.extensions.bind
 import jahirfiquitiva.libs.kauextensions.extensions.context
 import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
+import jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val icon: ImageView? by bind(R.id.icon)
+    private val icon: SquaredImageView? by bind(R.id.icon)
     private val text: TextView? by bind(R.id.name)
     private val checkbox: AppCompatCheckBox? by bind(R.id.checkbox)
+    private val progressBar: ProgressBar? by bind(R.id.icon_progress)
     
     fun setItem(
             manager: RequestManager?,
@@ -49,8 +54,19 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     .apply(
                             RequestOptions()
                                     .priority(Priority.IMMEDIATE)
-                                    .placeholder(context.drawable(R.drawable.ic_na_launcher))
                                     .error(context.drawable(R.drawable.ic_na_launcher)))
+                    .listener(object : GlideRequestCallback<Drawable>() {
+                        override fun onLoadSucceed(resource: Drawable): Boolean {
+                            progressBar?.gone()
+                            return false
+                        }
+                        
+                        override fun onLoadFailed(): Boolean {
+                            progressBar?.gone()
+                            it.setImageDrawable(context.drawable(R.drawable.ic_na_launcher))
+                            return super.onLoadFailed()
+                        }
+                    })
                     .into(it)
                     .clearOnDetach()
         }
