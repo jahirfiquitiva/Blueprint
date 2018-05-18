@@ -435,7 +435,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         menu.setItemVisibility(R.id.help, hasBottomNavigation())
     }
     
-    fun lockFiltersDrawer(lock: Boolean) {
+    private fun lockFiltersDrawer(lock: Boolean) {
         filtersDrawer?.drawerLayout?.setDrawerLockMode(
                 if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
                 Gravity.END)
@@ -457,8 +457,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     }
     
     internal fun getNavigationItemWithId(id: Int): NavigationItem {
-        getNavigationItems().forEach { if (it.id == id) return it }
-        return NavigationItem.HOME
+        return getNavigationItems().firstOrNull { it.id == id } ?: NavigationItem.HOME
     }
     
     override fun onRequestPermissionsResult(
@@ -476,7 +475,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         }
     }
     
-    fun startRequestsProcess() {
+    private fun startRequestsProcess() {
         IconRequest.get()?.let {
             if (it.selectedApps.size > 0) {
                 requestStoragePermission(getString(R.string.permission_request, getAppName())) {
@@ -555,7 +554,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                 ?.applyFilters(activeFilters)
     }
     
-    internal fun scrollToTop() {
+    private fun scrollToTop() {
         val activeFragment =
                 (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
         (activeFragment as? HomeFragment)?.scrollToTop()
@@ -565,7 +564,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         (activeFragment as? RequestsFragment)?.scrollToTop()
     }
     
-    internal fun doSearch(search: String = "") {
+    private fun doSearch(search: String = "") {
         val activeFragment =
                 (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
         (activeFragment as? IconsFragment)?.doSearch(search)
@@ -574,18 +573,18 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         (activeFragment as? RequestsFragment)?.applyFilter(search)
     }
     
-    internal fun refreshWallpapers() {
+    private fun refreshWallpapers() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
                 as? BaseFramesFragment<*, *>)?.reloadData(1)
     }
     
-    internal fun refreshRequests() {
+    private fun refreshRequests() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
                 currentSectionPosition) as? RequestsFragment)
                 ?.refresh()
     }
     
-    internal fun toggleSelectAll() {
+    private fun toggleSelectAll() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
                 currentSectionPosition) as? RequestsFragment)
                 ?.toggleSelectAll()
