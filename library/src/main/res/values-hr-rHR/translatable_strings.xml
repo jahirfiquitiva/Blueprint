@@ -16,105 +16,110 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="frames_dashboard">Blueprint početna</string>
-    <string name="coming_soon">Ubrzo dolazi</string>
-    <!-- List Of Drawer Sections -->
-    <string name="section_home">Početna</string>
-    <string name="section_icons">Ikone</string>
-    <string name="section_apply">Primjeni</string>
-    <string name="section_wallpapers">Pozadine</string>
-    <string name="section_icon_request">Zahtjev za ikone</string>
-    <string name="section_donate">Doniraj</string>
-    <string name="section_about">O aplikaciji</string>
-    <string name="section_help">Pomoć</string>
-    <string name="section_zooper">Zooper postavljanje</string>
-    <string name="section_widgets">Widgeti</string>
-    <string name="share_this_app">Ja koristim %1$s i obožavam ga. Provjerite ga na: %2$s</string>
-    <string name="rate">Ocijeni</string>
-    <!-- Icons filters -->
-    <string name="filter">Filter</string>
-    <string name="clear">Očisti</string>
-    <string name="more_apps">Još aplikacija</string>
-    <string name="general_info">Općenite informacije</string>
-    <string name="useful_links">Korisne poveznice</string>
-    <string name="columns">Broj stupaca</string>
-    <string name="lni_content">%1$s trenutno nije instaliran na vašem uređaju.\nŽelite li instalirati sa Play Trgovine?</string>
-    <string name="no_compatible_launcher_title">Ovaj pokretač NIJE podržan</string>
-    <string name="impossible_open_themes">Nije moguće otvoriti aplikaciju tema</string>
-    <string name="themes_app_not_installed">Teme nisu instalirane na ovom uređaju</string>
-    <string name="included_templates">%1$s predložaka</string>
-    <string name="launcher_icon_restored">%1$s ikona pokretača je vraćena</string>
-    <string name="launcher_icon_not_restored">%1$s ikona pokretača je već vidljiva</string>
-    <string name="launcher_icon_restorer_error">Postoji problem sa kodom od %1$s. Molimo kontaktirajte njegovog razvojnog programera.</string>
-    <!-- Widgets Names -->
-    <string name="iconrestorer_widget_title">Widget za povratak ikona</string>
-    <string name="clock_widget_title">Analogni sat</string>
-    <string name="search_icons">Pretraži ikone</string>
-    <string name="search_wallpapers">Pretraži pozadine</string>
-    <string name="search_launchers">Pretraži pokretače</string>
-    <string name="search_apps">Pretraži aplikacije</string>
-    <string name="seconds">Sekunde</string>
-    <string name="minutes">Minute</string>
-    <string name="hours">Sati</string>
-    <string name="days">Dana</string>
-    <string name="weeks">Tjedana</string>
-    <string name="months">Mjeseci</string>
-    <!-- Requests -->
-    <string name="select_all">Odaberi sve</string>
-    <string name="no_selected_apps_title">Nema odabranih aplikacija</string>
-    <string name="apps_limit_dialog_day_extra">Bit ćete u mogućnosti zahtjevati ikone opet za %1$s.</string>
-    <string name="apps_limit_dialog_day_extra_sec">Bit ćete u mogućnosti zahtjevati ikone opet, za manje od minute.</string>
-    <string name="requests_error">Dogodila se pogreška prilikom učitavanja aplikacija za zahtjev. \nDodirnite ovdje kako bi ste pokušali ponovno.</string>
-    <string name="loading_apps_to_request">Učitavanje aplikacija za zahtjev…</string>
-    <string name="building_request_dialog">Stvaranje datoteke zahtjeva…</string>
-    <string name="request_upload_success">Uspjeh!</string>
-    <string name="request_upload_success_content">Zahtjev je uspješno učitan na naš poslužitelj.</string>
-    <!-- Preferences -->
-    <string name="pref_title_wall_header">Koristi pozadinu u pregl. ikona</string>
-    <string name="pref_summary_wall_header">Prikazati će se vaša trenutna pozadina.</string>
-    <string name="pref_header_launcher_icon">Ikona pokretača</string>
-    <string name="pref_title_launcher_icon">Sakrij ikonu pokretača</string>
-    <string name="pref_summary_launcher_icon">Kada je označeno, ikona pokretača će biti skrivena.</string>
-    <string name="clearcache_dialog_content">Jeste li sigurni da želite izbrisati podatke aplikacije, predmemoriju i postavke? Primijenjene ikone se neće ukloniti.</string>
-    <string name="hideicon_dialog_title">Upozorenje!</string>
-    <string name="send_using">Pošalji koristeći…</string>
-    <!-- HELP SECTION -->
-    <string-array name="questions">
-        <item>Kako koristiti paket ikona?</item>
-        <item>Kako primjeniti paket ikona?</item>
-        <item>Kako vidjeti sve uključene ikone?</item>
-        <item>Kako zamijeniti ikonu sa alternativnom?</item>
-        <item>Kako zatražiti ikone koje nedostaju?</item>
-        <item>Nakon ponovnog pokretanja uređaja, paket ikona se više ne primjenjuje. Ikone su vraćene na zadano.</item>
-        <item>Zašto ikone izgledaju pikselirano na mom uređaju?</item>
-        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-        <item>Kako sakriti ikonu aplikacije iz pokretača?</item>
-        <item>How to open the app after app icon is hidden from launcher?</item>
-        <item>Kako ponovno prikazati ikonu aplikacije u pokretaču?</item>
-        <item>Zašto aplikacija treba dozvolu za izmjenu ili brisanje sadržaja sa moje pohrane?</item>
-        <item>Zašto aplikacija treba dozvolu za potpuni mrežni pristup?</item>
-        <item>Zašto aplikacija treba dozvolu za prikaz veza?</item>
-        <item>Zašto aplikacija treba dozvolu za postavljanje pozadine?</item>
-        <item>Zašto aplikacija treba dozvolu za prilagođavanje veličine pozadine?</item>
-        <item>Zašto aplikacija treba dozvolu za sprječavanje spavanja uređaja?</item>
-    </string-array>
-    <string-array name="answers">
-        <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, then choose one from the list.</item>
-        <item>Slide the NavigationDrawer from the left, and go to \"Apply\" section, or go back to main section of the app, then tap the Floating Action Button. Choose the launcher you want to apply the icons to. If your launcher is not listed there, but this icon pack is compatible with it (see on Google Play Store description for the list of supported launchers), you can apply it manually from launcher settings.</item>
-        <item>Slide the NavigationDrawer from the left, and go to \"Icons\" section, or go back to main section of the app, then tap the button that says \"Icons\".</item>
-        <item>Depending on the launcher you\'re using, the process may be slightly different or unavailable. In most cases, however, choosing a custom icon is possible via a long press on the icon you\'d like to modify or dragging it to the Edit field at the top of the screen.</item>
-        <item>Slide the NavigationDrawer from the left, and go to \"Requests\" section.</item>
-        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-        <item>Pošalji zahtjev za ikone.</item>
-        <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-        <item>Idite na svoj početni zaslon, zatim stvorite widget za aplikaciju koja se zove \"IconRestorer\".</item>
-        <item>Slide the NavigationDrawer from the left, and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers download location.</item>
-        <item>It\'s needed to be able to load the cloud based wallpapers and download them.</item>
-        <item>It\'s needed to be able to check if your device has internet connection.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-        <item>Potrebno je za Muzei živu pozadinu.</item>
-    </string-array>
+  <string name="frames_dashboard">Blueprint početna</string>
+  <string name="coming_soon">Ubrzo dolazi</string>
+  <!-- List Of Drawer Sections -->
+  <string name="section_home">Početna</string>
+  <string name="section_icons">Ikone</string>
+  <string name="section_apply">Primjeni</string>
+  <string name="section_wallpapers">Pozadine</string>
+  <string name="section_icon_request">Zahtjev za ikone</string>
+  <string name="section_donate">Doniraj</string>
+  <string name="section_about">O aplikaciji</string>
+  <string name="section_help">Pomoć</string>
+  <string name="section_zooper">Zooper postavljanje</string>
+  <string name="section_widgets">Widgeti</string>
+  <string name="share_this_app">Ja koristim %1$s i obožavam ga. Provjerite ga na: %2$s</string>
+  <string name="rate">Ocijeni</string>
+  <!-- Icons filters -->
+  <string name="filter">Filter</string>
+  <string name="clear">Očisti</string>
+  <string name="more_apps">Još aplikacija</string>
+  <string name="general_info">Općenite informacije</string>
+  <string name="useful_links">Korisne poveznice</string>
+  <string name="columns">Broj stupaca</string>
+  <string name="lni_content">%1$s trenutno nije instaliran na vašem uređaju.\nŽelite li instalirati sa Play Trgovine?</string>
+  <string name="no_compatible_launcher_title">Ovaj pokretač NIJE podržan</string>
+  <string name="no_compatible_launcher_content">Launcher นี้ไม่สามารถใช้ได้กับ Icon Packs ใด ๆ ดังนั้นคุณจึงไม่สามารถใช้ไอคอนแพ็คนี้กับ Launcher นี้ได้ โปรดอย่าให้คะแนนไอคอนแพ็คเป็นลบด้วยเหตุนี้ มีโซลูชันที่คุณสามารถลองใช้ด้วยตัวเอง แต่ต้องใช้แอปภายนอก คุณต้องการดาวน์โหลดหรือไม่?</string>
+  <string name="impossible_open_themes">Nije moguće otvoriti aplikaciju tema</string>
+  <string name="themes_app_not_installed">Teme nisu instalirane na ovom uređaju</string>
+  <string name="included_templates">%1$s predložaka</string>
+  <string name="launcher_icon_restored">%1$s ikona pokretača je vraćena</string>
+  <string name="launcher_icon_not_restored">%1$s ikona pokretača je već vidljiva</string>
+  <string name="launcher_icon_restorer_error">Postoji problem sa kodom od %1$s. Molimo kontaktirajte njegovog razvojnog programera.</string>
+  <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">Widget za povratak ikona</string>
+  <string name="clock_widget_title">Analogni sat</string>
+  <string name="search_icons">Pretraži ikone</string>
+  <string name="search_wallpapers">Pretraži pozadine</string>
+  <string name="search_launchers">Pretraži pokretače</string>
+  <string name="search_apps">Pretraži aplikacije</string>
+  <string name="seconds">Sekunde</string>
+  <string name="minutes">Minute</string>
+  <string name="hours">Sati</string>
+  <string name="days">Dana</string>
+  <string name="weeks">Tjedana</string>
+  <string name="months">Mjeseci</string>
+  <!-- Requests -->
+  <string name="select_all">Odaberi sve</string>
+  <string name="no_selected_apps_title">Nema odabranih aplikacija</string>
+  <string name="no_selected_apps_content">Niste odabrali nijednu aplikaciju za zahtjev. Molimo odaberite neke aplikacije, pa zatim ponovno dodirnite ovaj gumb.</string>
+  <string name="apps_limit_dialog">Žao nam je, ali dopušteno vam je odabrati %1$s aplikacija za zahtjev.</string>
+  <string name="apps_limit_dialog_more">Žao nam je, ali dopušteno vam je odabrati još %1$s aplikacija za zahtjev.</string>
+  <string name="apps_limit_dialog_day">Žao nam je, ali dopušteno vam je zahtjevati ikone svakih %1$s.</string>
+  <string name="apps_limit_dialog_day_extra">Bit ćete u mogućnosti zahtjevati ikone opet za %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Bit ćete u mogućnosti zahtjevati ikone opet, za manje od minute.</string>
+  <string name="requests_error">Dogodila se pogreška prilikom učitavanja aplikacija za zahtjev. \nDodirnite ovdje kako bi ste pokušali ponovno.</string>
+  <string name="loading_apps_to_request">Učitavanje aplikacija za zahtjev…</string>
+  <string name="building_request_dialog">Stvaranje datoteke zahtjeva…</string>
+  <string name="request_upload_success">Uspjeh!</string>
+  <string name="request_upload_success_content">Zahtjev je uspješno učitan na naš poslužitelj.</string>
+  <!-- Preferences -->
+  <string name="pref_title_wall_header">Koristi pozadinu u pregl. ikona</string>
+  <string name="pref_summary_wall_header">Prikazati će se vaša trenutna pozadina.</string>
+  <string name="pref_header_launcher_icon">Ikona pokretača</string>
+  <string name="pref_title_launcher_icon">Sakrij ikonu pokretača</string>
+  <string name="pref_summary_launcher_icon">Kada je označeno, ikona pokretača će biti skrivena.</string>
+  <string name="clearcache_dialog_content">Jeste li sigurni da želite izbrisati podatke aplikacije, predmemoriju i postavke? Primijenjene ikone se neće ukloniti.</string>
+  <string name="hideicon_dialog_title">Upozorenje!</string>
+  <string name="send_using">Pošalji koristeći…</string>
+  <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>Kako koristiti paket ikona?</item>
+    <item>Kako primjeniti paket ikona?</item>
+    <item>Kako vidjeti sve uključene ikone?</item>
+    <item>Kako zamijeniti ikonu sa alternativnom?</item>
+    <item>Kako zatražiti ikone koje nedostaju?</item>
+    <item>Nakon ponovnog pokretanja uređaja, paket ikona se više ne primjenjuje. Ikone su vraćene na zadano.</item>
+    <item>Zašto ikone izgledaju pikselirano na mom uređaju?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>Kako sakriti ikonu aplikacije iz pokretača?</item>
+    <item>Kako otvoriti aplikaciju nakon što je skrivena iz pokretača?</item>
+    <item>Kako ponovno prikazati ikonu aplikacije u pokretaču?</item>
+    <item>Zašto aplikacija treba dozvolu za izmjenu ili brisanje sadržaja sa moje pohrane?</item>
+    <item>Zašto aplikacija treba dozvolu za potpuni mrežni pristup?</item>
+    <item>Zašto aplikacija treba dozvolu za prikaz veza?</item>
+    <item>Zašto aplikacija treba dozvolu za postavljanje pozadine?</item>
+    <item>Zašto aplikacija treba dozvolu za prilagođavanje veličine pozadine?</item>
+    <item>Zašto aplikacija treba dozvolu za sprječavanje spavanja uređaja?</item>
+  </string-array>
+  <string-array name="answers">
+    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
+    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
+    <item>Vratite se na glavni zaslon i dodirnite karticu \"Ikone\".</item>
+    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Dogodilo se zato jer je paket ikona premješten na SD karticu, trebali bi ga instalirati na internu pohranu.</item>
+    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+    <item>Pošalji zahtjev za ikone.</item>
+    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
+    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+    <item>It\'s needed to be able to check if your device has internet connection.</item>
+    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+    <item>Potrebno je za Muzei živu pozadinu.</item>
+  </string-array>
 </resources>
