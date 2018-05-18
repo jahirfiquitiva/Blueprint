@@ -47,7 +47,7 @@ class ClockWidget : AppWidgetProvider() {
         if (AppWidgetManager.ACTION_APPWIDGET_UPDATE == action) {
             val rViews = RemoteViews(context?.packageName, R.layout.widget_clock)
             var intent: Intent? = Intent()
-            packages.forEach breaker@ {
+            packages.forEach breaker@{
                 val installed = context?.isAppInstalled(it) == true
                 if (installed) {
                     intent = pm?.getLaunchIntentForPackage(it)

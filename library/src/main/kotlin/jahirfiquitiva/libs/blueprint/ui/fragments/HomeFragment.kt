@@ -30,6 +30,7 @@ import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.data.models.Icon
+import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
@@ -182,16 +183,15 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     @SuppressLint("MissingPermission")
     private fun bindPreviewCard() {
         val wallManager: WallpaperManager? = WallpaperManager.getInstance(activity)
-        val drawable: Drawable? =
-                if ((activity as? BaseBlueprintActivity)?.configs?.wallpaperInIconsPreview == true) {
-                    try {
-                        wallManager?.fastDrawable
-                    } catch (e: Exception) {
-                        defaultPicture
-                    }
-                } else {
-                    defaultPicture
-                }
+        val drawable: Drawable? = if (configs.wallpaperInIconsPreview) {
+            try {
+                wallManager?.fastDrawable
+            } catch (e: Exception) {
+                defaultPicture
+            }
+        } else {
+            defaultPicture
+        }
         previewCardHolder?.bind(drawable)
     }
 }

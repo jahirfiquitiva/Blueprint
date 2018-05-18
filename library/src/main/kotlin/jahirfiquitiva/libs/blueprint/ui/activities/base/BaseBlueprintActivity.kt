@@ -49,11 +49,11 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.quest.events.OnRequestProgress
@@ -122,10 +122,16 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     private var searchView: CustomSearchView? = null
     
     private val pager: PseudoViewPager? by bind(R.id.pager)
-    internal var currentItemId: Int = DEFAULT_HOME_POSITION
     
     internal val isIconsPicker: Boolean
         get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
+    
+    internal var currentSectionId: Int =
+            if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
+        private set
+    
+    private val currentSectionSECTION_ID: Int
+        get() = getNavigationItems().indexOfFirst { it.id == currentSectionId }
     
     internal val hasTemplates: Boolean
         get() {
@@ -144,7 +150,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         toolbar?.bindToActivity(this, false)
-        currentItemId = getNavigationItems().firstOrNull()?.id ?: DEFAULT_HOME_POSITION
+        currentSectionId = getNavigationItems().firstOrNull()?.id ?: DEFAULT_HOME_SECTION_ID
         initMainComponents(savedInstanceState)
     }
     
@@ -152,7 +158,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         initFragments()
         initFAB()
         initFiltersDrawer(iconsFilters, savedInstance)
-        updateUI(getNavigationItemWithId(currentItemId))
+        updateUI(getNavigationItemWithId(currentSectionId))
         RequestsViewModel.initAndLoadRequestApps(
                 this, string(R.string.arctic_backend_host), string(R.string.arctic_backend_api_key))
     }
@@ -161,14 +167,14 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         val fragmentsAdapter = FragmentsPagerAdapter(supportFragmentManager)
         loop@ for (item in getNavigationItems()) {
             when (item.id) {
-                DEFAULT_HOME_POSITION -> fragmentsAdapter.addFragment(HomeFragment())
-                DEFAULT_ICONS_POSITION ->
+                DEFAULT_HOME_SECTION_ID -> fragmentsAdapter.addFragment(HomeFragment())
+                DEFAULT_ICONS_SECTION_ID ->
                     fragmentsAdapter.addFragment(IconsFragment.create(pickerKey))
-                DEFAULT_WALLPAPERS_POSITION ->
+                DEFAULT_WALLPAPERS_SECTION_ID ->
                     fragmentsAdapter.addFragment(
                             WallpapersFragment.create(getLicenseChecker() != null))
-                DEFAULT_APPLY_POSITION -> fragmentsAdapter.addFragment(ApplyFragment())
-                DEFAULT_REQUEST_POSITION -> fragmentsAdapter.addFragment(RequestsFragment())
+                DEFAULT_APPLY_SECTION_ID -> fragmentsAdapter.addFragment(ApplyFragment())
+                DEFAULT_REQUEST_SECTION_ID -> fragmentsAdapter.addFragment(RequestsFragment())
                 else -> continue@loop
             }
         }
@@ -180,9 +186,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         fab?.setMarginRight(16F.dpToPx.toInt())
         fab?.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
         fab?.setOnClickListener {
-            if (currentItemId == DEFAULT_HOME_POSITION) {
+            if (currentSectionId == DEFAULT_HOME_SECTION_ID) {
                 executeLauncherIntent(defaultLauncher?.name.orEmpty())
-            } else if (currentItemId == DEFAULT_REQUEST_POSITION) {
+            } else if (currentSectionId == DEFAULT_REQUEST_SECTION_ID) {
                 startRequestsProcess()
             }
         }
@@ -192,16 +198,16 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     private fun updateFAB() {
         fab?.hide()
         val launcherName = defaultLauncher?.name.orEmpty()
-        if (currentItemId == DEFAULT_HOME_POSITION) fab?.count = 0
-        val icon: Drawable? = when (currentItemId) {
-            DEFAULT_HOME_POSITION -> drawable(R.drawable.ic_apply)
-            DEFAULT_REQUEST_POSITION -> drawable(R.drawable.ic_send)
+        if (currentSectionId == DEFAULT_HOME_SECTION_ID) fab?.count = 0
+        val icon: Drawable? = when (currentSectionId) {
+            DEFAULT_HOME_SECTION_ID -> drawable(R.drawable.ic_apply)
+            DEFAULT_REQUEST_SECTION_ID -> drawable(R.drawable.ic_send)
             else -> null
         }
         fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
         fab?.showIf(
-                (currentItemId == DEFAULT_HOME_POSITION && launcherName.hasContent())
-                        || currentItemId == DEFAULT_REQUEST_POSITION)
+                (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
+                        || currentSectionId == DEFAULT_REQUEST_SECTION_ID)
     }
     
     fun initFiltersDrawer(filters: ArrayList<String>, savedInstance: Bundle? = null) {
@@ -221,9 +227,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         this.iconsFilters.clear()
         this.iconsFilters.addAll(filters)
         
-        val item = getNavigationItemWithId(currentItemId)
-        lockFiltersDrawer(item.id != DEFAULT_ICONS_POSITION || filters.size <= 1)
-        if (currentItemId == DEFAULT_ICONS_POSITION) invalidateOptionsMenu()
+        val item = getNavigationItemWithId(currentSectionId)
+        lockFiltersDrawer(item.id != DEFAULT_ICONS_SECTION_ID || filters.size <= 1)
+        if (currentSectionId == DEFAULT_ICONS_SECTION_ID) invalidateOptionsMenu()
     }
     
     private fun setupFiltersDrawerItems(builder: DrawerBuilder, filters: ArrayList<String>) {
@@ -273,7 +279,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         menu?.let {
-            updateToolbarMenuItems(getNavigationItemWithId(currentItemId), it)
+            updateToolbarMenuItems(getNavigationItemWithId(currentSectionId), it)
             
             searchItem = it.findItem(R.id.search)
             searchView = searchItem?.actionView as? CustomSearchView
@@ -282,11 +288,11 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
             searchView?.onQuerySubmit = { doSearch(it) }
             searchView?.bindToItem(searchItem)
             
-            searchView?.queryHint = when (currentItemId) {
-                DEFAULT_ICONS_POSITION -> getString(R.string.search_icons)
-                DEFAULT_WALLPAPERS_POSITION -> getString(R.string.search_wallpapers)
-                DEFAULT_APPLY_POSITION -> getString(R.string.search_launchers)
-                DEFAULT_REQUEST_POSITION -> getString(R.string.search_apps)
+            searchView?.queryHint = when (currentSectionId) {
+                DEFAULT_ICONS_SECTION_ID -> getString(R.string.search_icons)
+                DEFAULT_WALLPAPERS_SECTION_ID -> getString(R.string.search_wallpapers)
+                DEFAULT_APPLY_SECTION_ID -> getString(R.string.search_launchers)
+                DEFAULT_REQUEST_SECTION_ID -> getString(R.string.search_apps)
                 else -> getString(R.string.search)
             }
             
@@ -327,8 +333,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         if (isOpen) {
             searchItem?.collapseActionView()
         } else {
-            if (!isIconsPicker && !hasBottomNavigation() && currentItemId != DEFAULT_HOME_POSITION) {
-                navigateToItem(getNavigationItemWithId(DEFAULT_HOME_POSITION), false)
+            if (!isIconsPicker && !hasBottomNavigation() && currentSectionId != DEFAULT_HOME_SECTION_ID) {
+                navigateToItem(getNavigationItemWithId(DEFAULT_HOME_SECTION_ID), false)
             } else {
                 supportFinishAfterTransition()
             }
@@ -339,7 +345,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     override fun onResume() {
         super.onResume()
         invalidateOptionsMenu()
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? HomeFragment)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionSECTION_ID) as? HomeFragment)
                 ?.scrollToTop()
     }
     
@@ -351,7 +357,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     @SuppressLint("MissingSuperCall")
     override fun onSaveInstanceState(outState: Bundle?) {
         outState?.putString("toolbarTitle", toolbar?.title?.toString() ?: getAppName())
-        outState?.putInt("currentItemId", currentItemId)
+        outState?.putInt("currentSectionId", currentSectionId)
         super.onSaveInstanceState(outState)
     }
     
@@ -359,8 +365,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         super.onRestoreInstanceState(savedInstanceState)
         toolbar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         supportActionBar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
-        val default = if (isIconsPicker) DEFAULT_ICONS_POSITION else DEFAULT_HOME_POSITION
-        currentItemId = savedInstanceState?.getInt("currentItemId", default) ?: default
+        val default = if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
+        currentSectionId = savedInstanceState?.getInt("currentSectionId", default) ?: default
         dialog = buildMaterialDialog {
             content(R.string.loading)
             progress(true, 0)
@@ -370,7 +376,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         pager?.gone()
         dialog?.show()
         initFragments()
-        navigateToItem(getNavigationItemWithId(currentItemId), true, true)
+        navigateToItem(getNavigationItemWithId(currentSectionId), true, true)
     }
     
     internal open fun navigateToItem(
@@ -379,14 +385,14 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
             force: Boolean = false
                                     ): Boolean {
         return try {
-            if (currentItemId != item.id || force) {
+            if (currentSectionId != item.id || force) {
                 postDelayed(10) {
                     pager?.setCurrentItem(getIndexOfItem(item)) {
                         updateUI(item)
                         pager?.visible()
                         destroyDialog()
                     }
-                    currentItemId = item.id
+                    currentSectionId = item.id
                     invalidateOptionsMenu()
                     updateUI(item)
                 }
@@ -404,24 +410,24 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         updateFAB()
         
         toolbar?.title = getString(
-                if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+                if (item.id == DEFAULT_HOME_SECTION_ID) R.string.app_name else item.title)
         supportActionBar?.title = getString(
-                if (item.id == DEFAULT_HOME_POSITION) R.string.app_name else item.title)
+                if (item.id == DEFAULT_HOME_SECTION_ID) R.string.app_name else item.title)
         
-        lockFiltersDrawer(item.id != DEFAULT_ICONS_POSITION || iconsFilters.size <= 1)
+        lockFiltersDrawer(item.id != DEFAULT_ICONS_SECTION_ID || iconsFilters.size <= 1)
     }
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
-        val isInIconsSection = item.id == DEFAULT_ICONS_POSITION
+        val isInIconsSection = item.id == DEFAULT_ICONS_SECTION_ID
         menu.setItemVisibility(R.id.donate, donationsEnabled)
         menu.setItemVisibility(
                 R.id.search,
-                if (isInIconsSection) iconsFilters.isNotEmpty() else item.id != DEFAULT_HOME_POSITION)
+                if (isInIconsSection) iconsFilters.isNotEmpty() else item.id != DEFAULT_HOME_SECTION_ID)
         menu.setItemVisibility(R.id.filters, isInIconsSection && iconsFilters.size > 1)
         menu.setItemVisibility(
                 R.id.refresh,
-                item.id == DEFAULT_WALLPAPERS_POSITION || item.id == DEFAULT_REQUEST_POSITION)
-        menu.setItemVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_POSITION)
+                item.id == DEFAULT_WALLPAPERS_SECTION_ID || item.id == DEFAULT_REQUEST_SECTION_ID)
+        menu.setItemVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_SECTION_ID)
         menu.setItemVisibility(R.id.templates, hasTemplates)
         menu.setItemVisibility(R.id.about, hasBottomNavigation())
         menu.setItemVisibility(R.id.settings, hasBottomNavigation())
@@ -455,7 +461,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     }
     
     override fun onRequestPermissionsResult(
-            requestCode: Int, permissions: Array<out String>,
+            requestCode: Int,
+            permissions: Array<out String>,
             grantResults: IntArray
                                            ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -542,12 +549,14 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     }
     
     internal fun applyIconFilters() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? IconsFragment)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(
+                currentSectionSECTION_ID) as? IconsFragment)
                 ?.applyFilters(activeFilters)
     }
     
     internal fun scrollToTop() {
-        val activeFragment = (pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId)
+        val activeFragment =
+                (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionSECTION_ID)
         (activeFragment as? HomeFragment)?.scrollToTop()
         (activeFragment as? IconsFragment)?.scrollToTop()
         (activeFragment as? BaseFramesFragment<*, *>)?.scrollToTop()
@@ -556,7 +565,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     }
     
     internal fun doSearch(search: String = "") {
-        val activeFragment = (pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId)
+        val activeFragment =
+                (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionSECTION_ID)
         (activeFragment as? IconsFragment)?.doSearch(search)
         (activeFragment as? BaseFramesFragment<*, *>)?.applyFilter(search)
         (activeFragment as? ApplyFragment)?.applyFilter(search)
@@ -564,22 +574,25 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     }
     
     internal fun refreshWallpapers() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionSECTION_ID)
                 as? BaseFramesFragment<*, *>)?.reloadData(1)
     }
     
     internal fun refreshRequests() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? RequestsFragment)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(
+                currentSectionSECTION_ID) as? RequestsFragment)
                 ?.refresh()
     }
     
     internal fun toggleSelectAll() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? RequestsFragment)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(
+                currentSectionSECTION_ID) as? RequestsFragment)
                 ?.toggleSelectAll()
     }
     
     internal fun unselectAll() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentItemId) as? RequestsFragment)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(
+                currentSectionSECTION_ID) as? RequestsFragment)
                 ?.unselectAll()
     }
     
@@ -593,7 +606,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     internal fun postToFab(post: (CounterFab) -> Unit) {
         ((pager?.adapter as? FragmentsPagerAdapter)
-                ?.get(currentItemId) as? RequestsFragment)?.let { fab?.let { post(it) } }
+                ?.get(currentSectionId) as? RequestsFragment)?.let { fab?.let { post(it) } }
     }
     
     internal fun requestWallpaperPermission(explanation: String, onGranted: () -> Unit) {

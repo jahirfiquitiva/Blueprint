@@ -19,55 +19,56 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="jahirfiquitiva.libs.blueprint">
 
-    <uses-permission android:name="com.android.vending.CHECK_LICENSE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
-                     tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
-    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <supports-screens
-            android:anyDensity="true"
-            android:largeScreens="true"
-            android:normalScreens="true"
-            android:resizeable="true"
-            android:smallScreens="true"
-            android:xlargeScreens="true"/>
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
     <application
-            android:allowBackup="true"
-            android:supportsRtl="true"
-            tools:ignore="AllowBackup,UnusedAttribute">
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        tools:ignore="AllowBackup,UnusedAttribute">
 
         <uses-library
-                android:name="com.sec.android.app.multiwindow"
-                android:required="false"/>
+            android:name="com.sec.android.app.multiwindow"
+            android:required="false" />
 
         <meta-data
-                android:name="com.sec.android.support.multiwindow"
-                android:value="true"/>
+            android:name="com.sec.android.support.multiwindow"
+            android:value="true" />
         <meta-data
-                android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W"
-                android:value="632.0dip"/>
+            android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W"
+            android:value="632.0dip" />
         <meta-data
-                android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H"
-                android:value="598.0dip"/>
+            android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H"
+            android:value="598.0dip" />
         <meta-data
-                android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W"
-                android:value="632.0dip"/>
+            android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W"
+            android:value="632.0dip" />
         <meta-data
-                android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H"
-                android:value="598.0dip"/>
+            android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H"
+            android:value="598.0dip" />
         <meta-data
-                android:name="com.lge.support.SPLIT_WINDOW"
-                android:value="true"/>
+            android:name="com.lge.support.SPLIT_WINDOW"
+            android:value="true" />
 
         <!--
         <activity
@@ -76,83 +77,83 @@
 
         <!-- Icons -->
         <activity
-                android:name=".ui.activities.base.BaseBlueprintActivity"
-                android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
-                android:exported="false"/>
+            android:name=".ui.activities.base.BaseBlueprintActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
+            android:exported="false" />
 
         <activity
-                android:name=".ui.activities.BlueprintKuperActivity"
-                android:exported="false"/>
+            android:name=".ui.activities.BlueprintKuperActivity"
+            android:exported="false" />
         <activity
-                android:name=".ui.activities.HelpActivity"
-                android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
-                android:exported="false"/>
+            android:name=".ui.activities.HelpActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
+            android:exported="false" />
         <activity
-                android:name=".ui.activities.CreditsActivity"
-                android:exported="false"/>
+            android:name=".ui.activities.CreditsActivity"
+            android:exported="false" />
         <activity android:name=".ui.activities.SettingsActivity">
             <intent-filter>
-                <action android:name="android.intent.action.APPLICATION_PREFERENCES"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <!-- WIDGETS -->
         <!-- Icon restorer Widget -->
         <receiver
-                android:name=".providers.appwidget.IconRestorerWidget"
-                android:icon="@drawable/app_logo"
-                android:label="@string/iconrestorer_widget_title">
+            android:name=".providers.appwidget.IconRestorerWidget"
+            android:icon="@drawable/app_logo"
+            android:label="@string/iconrestorer_widget_title">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/icon_restorer_widget_provider"/>
+                android:name="android.appwidget.provider"
+                android:resource="@xml/icon_restorer_widget_provider" />
         </receiver>
 
         <activity
-                android:name=".ui.activities.LauncherIconRestorerActivity"
-                android:excludeFromRecents="true"
-                android:label="@string/app_name"
-                android:noHistory="true"
-                android:theme="@style/EmptyActivity"/>
+            android:name=".ui.activities.LauncherIconRestorerActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:theme="@style/EmptyActivity" />
 
         <!-- Clock Widget -->
         <receiver
-                android:name=".providers.appwidget.ClockWidget"
-                android:label="@string/clock_widget_title">
+            android:name=".providers.appwidget.ClockWidget"
+            android:label="@string/clock_widget_title">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
-                    android:name="android.appwidget.oldName"
-                    android:value="com.android.deskclock.AnalogAppWidgetProvider"/>
+                android:name="android.appwidget.oldName"
+                android:value="com.android.deskclock.AnalogAppWidgetProvider" />
             <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/clock_widget_provider"/>
+                android:name="android.appwidget.provider"
+                android:resource="@xml/clock_widget_provider" />
         </receiver>
 
         <activity android:name="jahirfiquitiva.libs.kuper.ui.activities.KuperActivity">
-            <intent-filter tools:node="removeAll"/>
+            <intent-filter tools:node="removeAll" />
         </activity>
         <activity android:name="jahirfiquitiva.libs.kuper.ui.activities.CreditsActivity">
-            <intent-filter tools:node="removeAll"/>
+            <intent-filter tools:node="removeAll" />
         </activity>
         <activity android:name="jahirfiquitiva.libs.kuper.ui.activities.SettingsActivity">
-            <intent-filter tools:node="removeAll"/>
+            <intent-filter tools:node="removeAll" />
         </activity>
 
         <activity android:name="jahirfiquitiva.libs.frames.ui.activities.CreditsActivity">
-            <intent-filter tools:node="removeAll"/>
+            <intent-filter tools:node="removeAll" />
         </activity>
         <activity android:name="jahirfiquitiva.libs.frames.ui.activities.SettingsActivity">
-            <intent-filter tools:node="removeAll"/>
+            <intent-filter tools:node="removeAll" />
         </activity>
         <activity android:name="jahirfiquitiva.libs.frames.ui.activities.FramesActivity">
-            <intent-filter tools:node="removeAll"/>
+            <intent-filter tools:node="removeAll" />
         </activity>
 
     </application>

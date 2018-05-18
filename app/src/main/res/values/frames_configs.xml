@@ -36,7 +36,7 @@
     -       TransparentTheme.SplashScreen
     -       AmoledTheme.SplashScreen
     -->
-    <style name="MySplashScreen" parent="LightTheme.SplashScreen"/>
+    <style name="MySplashScreen" parent="LightTheme.SplashScreen" />
 
     <!--    Define the default app theme
     -       0 -> Light

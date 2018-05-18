@@ -21,11 +21,11 @@ import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
 import android.support.annotation.StringRes
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_POSITION
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_SECTION_ID
 
 data class HomeItem(
         val title: String, val description: String, val url: String,
@@ -75,14 +75,16 @@ enum class NavigationItem(
         val tag: String, val id: Int, @StringRes val title: Int,
         @DrawableRes val icon: Int
                          ) {
-    HOME("Home", DEFAULT_HOME_POSITION, R.string.section_home, R.drawable.ic_home),
-    ICONS("Previews", DEFAULT_ICONS_POSITION, R.string.section_icons, R.drawable.ic_icons_preview),
+    HOME("Home", DEFAULT_HOME_SECTION_ID, R.string.section_home, R.drawable.ic_home),
+    ICONS(
+                 "Previews", DEFAULT_ICONS_SECTION_ID, R.string.section_icons,
+                 R.drawable.ic_icons_preview),
     WALLPAPERS(
-                      "Wallpapers", DEFAULT_WALLPAPERS_POSITION, R.string.section_wallpapers,
+                      "Wallpapers", DEFAULT_WALLPAPERS_SECTION_ID, R.string.section_wallpapers,
                       R.drawable.ic_wallpapers),
-    APPLY("Apply", DEFAULT_APPLY_POSITION, R.string.section_apply, R.drawable.ic_apply),
+    APPLY("Apply", DEFAULT_APPLY_SECTION_ID, R.string.section_apply, R.drawable.ic_apply),
     REQUESTS(
-                    "Requests", DEFAULT_REQUEST_POSITION, R.string.section_icon_request,
+                    "Requests", DEFAULT_REQUEST_SECTION_ID, R.string.section_icon_request,
                     R.drawable.ic_request);
     
     override fun toString(): String = "NavigationItem[$tag - $id]"

@@ -63,7 +63,6 @@ import jahirfiquitiva.libs.kauextensions.extensions.readBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.readEnum
 import jahirfiquitiva.libs.kauextensions.extensions.writeBoolean
 import jahirfiquitiva.libs.kauextensions.extensions.writeEnum
-import okhttp3.MultipartBody
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import java.io.File

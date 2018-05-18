@@ -17,4 +17,4 @@ package jahirfiquitiva.libs.blueprint.helpers.utils
 
 import ca.allanwang.kau.logging.KauLogger
 
-internal object BPLog : KauLogger("Blueprint", { false })
+internal object BPLog : KauLogger("Blueprint")

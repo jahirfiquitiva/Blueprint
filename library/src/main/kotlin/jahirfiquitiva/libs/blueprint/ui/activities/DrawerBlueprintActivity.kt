@@ -35,11 +35,11 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_POSITION
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_TEMPLATES_POSITION
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_TEMPLATES_SECTION_ID
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
 import jahirfiquitiva.libs.kauextensions.extensions.accentColor
@@ -104,19 +104,19 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
             try {
                 when (drawerItem.identifier) {
-                    DEFAULT_TEMPLATES_POSITION.toLong() -> {
+                    DEFAULT_TEMPLATES_SECTION_ID.toLong() -> {
                         drawer?.closeDrawer()
                         launchKuperActivity()
                     }
-                    DEFAULT_HELP_POSITION.toLong() -> {
+                    DEFAULT_HELP_SECTION_ID.toLong() -> {
                         drawer?.closeDrawer()
                         launchHelpActivity()
                     }
-                    DEFAULT_CREDITS_POSITION.toLong() -> {
+                    DEFAULT_CREDITS_SECTION_ID.toLong() -> {
                         drawer?.closeDrawer()
                         startActivity(Intent(this, CreditsActivity::class.java))
                     }
-                    DEFAULT_SETTINGS_POSITION.toLong() -> {
+                    DEFAULT_SETTINGS_SECTION_ID.toLong() -> {
                         drawer?.closeDrawer()
                         startActivity(Intent(this, SettingsActivity::class.java))
                     }
@@ -145,7 +145,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         if (hasTemplates) {
             drawerBuilder.addDrawerItems(
                     PrimaryDrawerItem()
-                            .withIdentifier(DEFAULT_TEMPLATES_POSITION.toLong())
+                            .withIdentifier(DEFAULT_TEMPLATES_SECTION_ID.toLong())
                             .withName(R.string.templates)
                             .withIcon(drawable(R.drawable.ic_widgets, null))
                             .withIconTintingEnabled(true)
@@ -156,7 +156,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         
         drawerBuilder.addDrawerItems(
                 PrimaryDrawerItem()
-                        .withIdentifier(DEFAULT_CREDITS_POSITION.toLong())
+                        .withIdentifier(DEFAULT_CREDITS_SECTION_ID.toLong())
                         .withName(R.string.section_about)
                         .withIcon(drawable(R.drawable.ic_info, null))
                         .withIconTintingEnabled(true)
@@ -164,7 +164,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         
         drawerBuilder.addDrawerItems(
                 PrimaryDrawerItem()
-                        .withIdentifier(DEFAULT_SETTINGS_POSITION.toLong())
+                        .withIdentifier(DEFAULT_SETTINGS_SECTION_ID.toLong())
                         .withName(R.string.settings)
                         .withIcon(drawable(R.drawable.ic_settings, null))
                         .withIconTintingEnabled(true)
@@ -172,7 +172,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         
         drawerBuilder.addDrawerItems(
                 PrimaryDrawerItem()
-                        .withIdentifier(DEFAULT_HELP_POSITION.toLong())
+                        .withIdentifier(DEFAULT_HELP_SECTION_ID.toLong())
                         .withName(R.string.section_help)
                         .withIcon(drawable(R.drawable.ic_help, null))
                         .withIconTintingEnabled(true)
@@ -192,8 +192,8 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         if (!isIconsPicker) {
             when {
                 isDrawerOpen -> drawer?.closeDrawer()
-                currentItemId != DEFAULT_HOME_POSITION -> {
-                    drawer?.setSelection(DEFAULT_HOME_POSITION.toLong(), true)
+                currentSectionId != DEFAULT_HOME_SECTION_ID -> {
+                    drawer?.setSelection(DEFAULT_HOME_SECTION_ID.toLong(), true)
                 }
                 else -> super.onBackPressed()
             }
