@@ -63,6 +63,7 @@ import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.SettingsActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
+import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
@@ -150,9 +151,23 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         toolbar?.bindToActivity(this, false)
-        currentSectionId = getNavigationItems().firstOrNull()?.id ?:
-                if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
+        initCurrentSectionId()
         initMainComponents(savedInstanceState)
+        if (isIconsPicker) {
+            postDelayed(10) {
+                navigateToItem(getNavigationItemWithId(currentSectionId), true, true)
+            }
+        }
+    }
+    
+    private fun initCurrentSectionId(customId: Int = -1) {
+        val defaultSectionId =
+                if (customId != -1) customId
+                else getNavigationItems().firstOrNull()?.id ?: DEFAULT_HOME_SECTION_ID
+        currentSectionId = if (isIconsPicker) {
+            getNavigationItems().firstOrNull { it.id == DEFAULT_ICONS_SECTION_ID }?.id
+                    ?: defaultSectionId
+        } else defaultSectionId
     }
     
     private fun initMainComponents(savedInstance: Bundle?) {
@@ -160,22 +175,32 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         initFAB()
         initFiltersDrawer(iconsFilters, savedInstance)
         updateUI(getNavigationItemWithId(currentSectionId))
-        RequestsViewModel.initAndLoadRequestApps(
-                this, string(R.string.arctic_backend_host), string(R.string.arctic_backend_api_key))
+        if (!isIconsPicker) {
+            RequestsViewModel.initAndLoadRequestApps(
+                    this, string(R.string.arctic_backend_host),
+                    string(R.string.arctic_backend_api_key))
+        }
     }
     
     private fun initFragments() {
         val fragmentsAdapter = FragmentsPagerAdapter(supportFragmentManager)
+        val defFragment = EmptyFragment()
         loop@ for (item in getNavigationItems()) {
             when (item.id) {
-                DEFAULT_HOME_SECTION_ID -> fragmentsAdapter.addFragment(HomeFragment())
+                DEFAULT_HOME_SECTION_ID ->
+                    fragmentsAdapter.addFragment(if (isIconsPicker) defFragment else HomeFragment())
                 DEFAULT_ICONS_SECTION_ID ->
                     fragmentsAdapter.addFragment(IconsFragment.create(pickerKey))
                 DEFAULT_WALLPAPERS_SECTION_ID ->
                     fragmentsAdapter.addFragment(
-                            WallpapersFragment.create(getLicenseChecker() != null))
-                DEFAULT_APPLY_SECTION_ID -> fragmentsAdapter.addFragment(ApplyFragment())
-                DEFAULT_REQUEST_SECTION_ID -> fragmentsAdapter.addFragment(RequestsFragment())
+                            if (isIconsPicker) defFragment else
+                                WallpapersFragment.create(getLicenseChecker() != null))
+                DEFAULT_APPLY_SECTION_ID ->
+                    fragmentsAdapter.addFragment(
+                            if (isIconsPicker) defFragment else ApplyFragment())
+                DEFAULT_REQUEST_SECTION_ID ->
+                    fragmentsAdapter.addFragment(
+                            if (isIconsPicker) defFragment else RequestsFragment())
                 else -> continue@loop
             }
         }
@@ -366,8 +391,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         super.onRestoreInstanceState(savedInstanceState)
         toolbar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
         supportActionBar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
+        
         val default = if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
-        currentSectionId = savedInstanceState?.getInt("currentSectionId", default) ?: default
+        initCurrentSectionId(savedInstanceState?.getInt("currentSectionId", default) ?: default)
+        
         dialog = buildMaterialDialog {
             content(R.string.loading)
             progress(true, 0)
@@ -377,7 +404,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         pager?.gone()
         dialog?.show()
         initFragments()
-        navigateToItem(getNavigationItemWithId(currentSectionId), true, true)
+        postDelayed(25) {
+            navigateToItem(getNavigationItemWithId(currentSectionId), true, true)
+        }
     }
     
     internal open fun navigateToItem(
@@ -425,16 +454,17 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         menu.setItemVisibility(R.id.donate, donationsEnabled)
         menu.setItemVisibility(
                 R.id.search,
-                if (isInIconsSection) iconsFilters.isNotEmpty() else item.id != DEFAULT_HOME_SECTION_ID)
+                if (isInIconsSection) iconsFilters.isNotEmpty()
+                else item.id != DEFAULT_HOME_SECTION_ID)
         menu.setItemVisibility(R.id.filters, isInIconsSection && iconsFilters.size > 1)
         menu.setItemVisibility(
                 R.id.refresh,
                 item.id == DEFAULT_WALLPAPERS_SECTION_ID || item.id == DEFAULT_REQUEST_SECTION_ID)
         menu.setItemVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_SECTION_ID)
-        menu.setItemVisibility(R.id.templates, hasTemplates)
+        menu.setItemVisibility(R.id.templates, hasTemplates && !isIconsPicker)
         menu.setItemVisibility(R.id.about, hasBottomNavigation())
-        menu.setItemVisibility(R.id.settings, hasBottomNavigation())
-        menu.setItemVisibility(R.id.help, hasBottomNavigation())
+        menu.setItemVisibility(R.id.settings, hasBottomNavigation() && !isIconsPicker)
+        menu.setItemVisibility(R.id.help, hasBottomNavigation() && !isIconsPicker)
     }
     
     private fun lockFiltersDrawer(lock: Boolean) {
