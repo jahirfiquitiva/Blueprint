@@ -130,7 +130,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
             if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
         private set
     
-    private val currentSectionSECTION_ID: Int
+    private val currentSectionPosition: Int
         get() = getNavigationItems().indexOfFirst { it.id == currentSectionId }
     
     internal val hasTemplates: Boolean
@@ -150,7 +150,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         toolbar?.bindToActivity(this, false)
-        currentSectionId = getNavigationItems().firstOrNull()?.id ?: DEFAULT_HOME_SECTION_ID
+        currentSectionId = getNavigationItems().firstOrNull()?.id ?:
+                if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
         initMainComponents(savedInstanceState)
     }
     
@@ -345,7 +346,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     override fun onResume() {
         super.onResume()
         invalidateOptionsMenu()
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionSECTION_ID) as? HomeFragment)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition) as? HomeFragment)
                 ?.scrollToTop()
     }
     
@@ -550,13 +551,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     internal fun applyIconFilters() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-                currentSectionSECTION_ID) as? IconsFragment)
+                currentSectionPosition) as? IconsFragment)
                 ?.applyFilters(activeFilters)
     }
     
     internal fun scrollToTop() {
         val activeFragment =
-                (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionSECTION_ID)
+                (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
         (activeFragment as? HomeFragment)?.scrollToTop()
         (activeFragment as? IconsFragment)?.scrollToTop()
         (activeFragment as? BaseFramesFragment<*, *>)?.scrollToTop()
@@ -566,7 +567,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     internal fun doSearch(search: String = "") {
         val activeFragment =
-                (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionSECTION_ID)
+                (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
         (activeFragment as? IconsFragment)?.doSearch(search)
         (activeFragment as? BaseFramesFragment<*, *>)?.applyFilter(search)
         (activeFragment as? ApplyFragment)?.applyFilter(search)
@@ -574,25 +575,25 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     }
     
     internal fun refreshWallpapers() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionSECTION_ID)
+        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
                 as? BaseFramesFragment<*, *>)?.reloadData(1)
     }
     
     internal fun refreshRequests() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-                currentSectionSECTION_ID) as? RequestsFragment)
+                currentSectionPosition) as? RequestsFragment)
                 ?.refresh()
     }
     
     internal fun toggleSelectAll() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-                currentSectionSECTION_ID) as? RequestsFragment)
+                currentSectionPosition) as? RequestsFragment)
                 ?.toggleSelectAll()
     }
     
     internal fun unselectAll() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-                currentSectionSECTION_ID) as? RequestsFragment)
+                currentSectionPosition) as? RequestsFragment)
                 ?.unselectAll()
     }
     
