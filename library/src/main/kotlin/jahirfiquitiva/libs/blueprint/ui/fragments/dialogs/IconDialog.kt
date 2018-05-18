@@ -78,6 +78,7 @@ class IconDialog : BasicDialogFragment() {
                     if (resId > 0) {
                         if (animate) {
                             scaleXY = 0F
+                            alpha = 0F
                         }
                         
                         val icon = ContextCompat.getDrawable(actv, resId)?.toBitmap()
@@ -89,6 +90,7 @@ class IconDialog : BasicDialogFragment() {
                                         if (animate) {
                                             animate().scaleX(1F)
                                                     .scaleY(1F)
+                                                    .alpha(1F)
                                                     .setStartDelay(
                                                             ICONS_ANIMATION_DURATION_DELAY / 2)
                                                     .setDuration(ICONS_ANIMATION_DURATION)
