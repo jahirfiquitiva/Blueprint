@@ -6,7 +6,7 @@ Blueprint
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
 [![JitPack](https://jitpack.io/v/jahirfiquitiva/Blueprint.svg)](https://jitpack.io/#jahirfiquitiva/Blueprint)
 [![Build Status](https://travis-ci.org/jahirfiquitiva/Blueprint.svg?branch=master)](https://travis-ci.org/jahirfiquitiva/Blueprint)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9747a594949f49b9a8146909868adfba)](https://www.codacy.com/app/jahirfiquitiva/Blueprint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jahirfiquitiva/Blueprint&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/55f3f196492a4ea88f13da0f219b9125)](https://www.codacy.com/app/jahirfiquitiva/Blueprint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jahirfiquitiva/Blueprint&amp;utm_campaign=Badge_Grade)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/blueprint/localized.svg)](http://j.mp/BlueprintTranslations)
 
 A full-of-features, easy-to-customize, free and open source, light-weight, Android dashboard library for icon packs.
