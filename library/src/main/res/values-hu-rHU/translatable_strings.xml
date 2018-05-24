@@ -97,11 +97,11 @@
     <item>Hogyan nyissam meg az alkalmazást, ha elrejtettem az ikonját az indítóból?</item>
     <item>Hogyan jelenítsem meg újra az alkalmazásikont az indítóban?</item>
     <item>Miért van szűksége az alkalmazásnak engedélyre a belső tároló módosítására vagy törlésére?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
+    <item>Miért van szűksége az alkalmazásnak engedélyre teljes hálózati hozzáférésre?</item>
+    <item>Miért van szűksége az alkalmazásnak engedélyre a kapcsolatok megtekintéséhez?</item>
+    <item>Miért van szűksége az alkalmazásnak engedélyre a háttérkép beállításához?</item>
+    <item>Miért van szűksége az alkalmazásnak engedélyre a háttérkép méretezéséhez?</item>
+    <item>Miért van szűksége az alkalmazásnak engedélyre az alvó állapot megakadályozásához?</item>
   </string-array>
   <string-array name="answers">
     <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
