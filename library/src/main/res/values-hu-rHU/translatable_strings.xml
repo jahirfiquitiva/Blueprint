@@ -68,6 +68,7 @@
   <string name="apps_limit_dialog_day">Sajnáljuk, de nem vagy jogosult ikon kérésére minden %1$s. nap.</string>
   <string name="apps_limit_dialog_day_extra">Legközelebb ennyi idő múlva tehetsz újabb kérést: %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Egy percen belül újabb kérést tehetsz.</string>
+  <string name="requests_error">Hiba lépett fel a kérés közben.\nÚjrapróbálkozás</string>
   <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
   <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>
@@ -80,6 +81,7 @@
   <string name="pref_summary_launcher_icon">Ha be van jelölve, az indító ikon rejtve lesz.</string>
   <string name="clearcache_dialog_content">Biztos vagy benne, hogy törlöd az alkalmazásadatokat, a cache-t és a beállításokat? Ez az alkalmazott ikonokra nincs hatással.</string>
   <string name="hideicon_dialog_title">Figyelem!</string>
+  <string name="hideicon_dialog_content">Biztosan el akarod rejteni az alkalmazás ikonját az indítóból?\nAz alkalmazás váratlanul leállhat és az értesítések ki lesznek kapcsolva.\nOlvasd el a GYIK-et, hogy megtudd, hogyan teheted újra láthatóvá, mielőtt elrejtenéd.</string>
   <string name="send_using">Küldés a következővel…</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
@@ -88,13 +90,13 @@
     <item>Hogyan láthatod a tartalmazott ikonokat?</item>
     <item>Hogyan helyettesítsd az ikont egy másikkal?</item>
     <item>Hogyan kérheted a témázatlan ikonokat?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Why do icons look pixelated on my device?</item>
+    <item>Újraindítás után az ikonok nem maradnak alkalmazva. Visszaállnak az alapbeállításra.</item>
+    <item>Miért szemcsések az ikonok a készülékemen?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
     <item>Hogyan rejtsem el az alkalmazás ikonját az indítóból?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Hogyan nyissam meg az alkalmazást, ha elrejtettem az ikonját az indítóból?</item>
+    <item>Hogyan jelenítsem meg újra az alkalmazásikont az indítóban?</item>
+    <item>Miért van szűksége az alkalmazásnak engedélyre a belső tároló módosítására vagy törlésére?</item>
     <item>Why does the app need permission to full network access?</item>
     <item>Why does the app need permission to view connections?</item>
     <item>Why does the app need permission to set wallpaper?</item>
