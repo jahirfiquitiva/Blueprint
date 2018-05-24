@@ -27,9 +27,8 @@
   <string name="section_donate">Támogatás</string>
   <string name="section_about">Az alkalmazásról</string>
   <string name="section_help">Súgó</string>
-  <string name="section_zooper">Zooper widget</string>
   <string name="section_widgets">Modulok</string>
-  <string name="share_this_app">Használom a %1$s és imádom. Próbáld ki %2$s</string>
+  <string name="share_this_app">Használom a %1$s és imádom. Próbáld ki itt: %2$s</string>
   <string name="rate">Értékelés</string>
   <!-- Icons filters -->
   <string name="filter">Szűrő</string>
@@ -67,6 +66,8 @@
   <string name="apps_limit_dialog">Sajnáljuk, nem vagy jogosult a következő alkalmazás letöltésére: %1$s</string>
   <string name="apps_limit_dialog_more">Sajnáljuk, de nem vagy jogosult a ennél több alkalmazás kérésére: %1$s.</string>
   <string name="apps_limit_dialog_day">Sajnáljuk, de nem vagy jogosult ikon kérésére minden %1$s. nap.</string>
+  <string name="apps_limit_dialog_day_extra">Legközelebb ennyi idő múlva tehetsz újabb kérést: %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Egy percen belül újabb kérést tehetsz.</string>
   <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
   <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>
