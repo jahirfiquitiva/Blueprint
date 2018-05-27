@@ -16,6 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">청사진 대시보드</string>
   <string name="coming_soon">출시 예정</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">홈</string>

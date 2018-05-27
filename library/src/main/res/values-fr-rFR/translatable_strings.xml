@@ -100,27 +100,27 @@
     <item>Pourquoi l’application doit avoir l’autorisation de modifier ou de supprimer le contenu de mon stockage ?</item>
     <item>Pourquoi l’application doit avoir l\'autorisation d\'accès complet au réseau ?</item>
     <item>Pourquoi l’application doit-elle être autorisée à afficher les connexions ?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
+    <item>Pourquoi l\'application doit-elle être autorisée pour appliquer un fond d\'écran?</item>
+    <item>Pourquoi l\'application doit-elle être autorisé pour ajuster la taille du fond d\'écran?</item>
+    <item>Pourquoi l\'application doit-elle être autorisé pour maintenir le télephone en veille?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
+    <item>Vous avez besoin d\'un launcher qui support les pack d\'icônes. Verifiez la description sur le Google Play Store pour voir la liste des launchers supportés. Si vous ne savez pas quelle launcher utilisé, allez à la section \"Appliquer\", et choississez en un depuis la liste.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+    <item>Retournez à l\'accueil et appuyez sur le menu intitulé \"Icônes\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+    <item>Cela se produit lorsque le pack d\'icônes a été déplacé sur la Carte SD, vous devez l\'installer sur la mémoire interne.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
     <item>Envoyer une demande d\'icône.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+    <item>Allez sur votre écran d’accueil, puis créez un widget pour l’application dont le nom est « IconRestorer » et appuyez.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
     <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+    <item>Cela est nécessaire pour le chargement des fonds d\'écran depuis le cloud et les sauvegarder.</item>
     <item>C\'est nécessaire pour pouvoir vérifier si votre appareil est connecté à Internet.</item>
     <item>C\'est nécessaire pour être en mesure d\'appliquer un fond d\'écran directement à partir de l\'application.</item>
     <item>C\'est nécessaire pour pouvoir ajuster les dimensions du fond d\'écran en fonction de la résolution de votre écran.</item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
+    <item>Cela est nécessaire pour Muzei Live Wallpaper.</item>
   </string-array>
 </resources>
