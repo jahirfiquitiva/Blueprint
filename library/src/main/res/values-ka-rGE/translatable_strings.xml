@@ -21,6 +21,10 @@
   <!-- List Of Drawer Sections -->
   <string name="section_home">მთავარი</string>
   <string name="section_icons">იკონები</string>
+  <string name="section_apply">გამოყენება</string>
+  <string name="section_wallpapers">ფონები</string>
+  <string name="section_icon_request">იკონების მოთხოვნა</string>
+  <string name="section_donate">შემოწირულობა</string>
   <string name="section_about">აპლიკაციის შესახებ</string>
   <string name="section_help">დახმარება</string>
   <string name="section_zooper">Zooper მართვა</string>
@@ -36,7 +40,10 @@
   <string name="impossible_open_themes">შეუძლებელია თემების აპლიკაციის გახსნა</string>
   <string name="themes_app_not_installed">თემების აპლიკაცია არ არის ინსტალირებული მოწყობილობაში</string>
   <!-- Widgets Names -->
+  <string name="clock_widget_title">ისრებიანი საათი</string>
   <string name="search_icons">იკონების ძებნა</string>
+  <string name="search_wallpapers">ფონის ძებნა</string>
+  <string name="search_launchers">ლაუნჩერების ძებნა</string>
   <string name="search_apps">აპლიკაციების ძებნა</string>
   <string name="seconds">წამები</string>
   <string name="minutes">წუთები</string>
@@ -46,8 +53,32 @@
   <string name="months">თვეები</string>
   <!-- Requests -->
   <string name="select_all">ყველას მონიშვნა</string>
+  <string name="no_selected_apps_title">აპლიკაცია არ არის მონიშნული</string>
   <!-- Preferences -->
+  <string name="pref_header_launcher_icon">ლაუნჩერის იკონი</string>
+  <string name="pref_title_launcher_icon">ლაუნჩერის იკონის დამალვა</string>
+  <string name="hideicon_dialog_title">გაფრთხილება!</string>
+  <string name="send_using">გაგზავნე…</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>როგორ გამოვიყენო იკონების კრებული?</item>
+    <item>როგორ გამოვიყენო იკონების კრებული?</item>
+    <item>როგორ ვნახო ყველა თანდართული იკონები?</item>
+    <item>How to replace an icon with an alternative one?</item>
+    <item>How to request unthemed icons?</item>
+    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Why do icons look pixelated on my device?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
   <string-array name="answers">
     <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
