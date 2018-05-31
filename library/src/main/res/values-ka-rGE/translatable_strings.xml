@@ -29,6 +29,7 @@
   <string name="section_help">დახმარება</string>
   <string name="section_zooper">Zooper მართვა</string>
   <string name="section_widgets">ვიჯეტები</string>
+  <string name="share_this_app">მე ვიყენებ %1$s და მე მიყვარს ის. შეამოწმეთ იგი:%2$s</string>
   <string name="rate">შეფასება</string>
   <!-- Icons filters -->
   <string name="filter">ფილტრი</string>
@@ -61,6 +62,8 @@
   <string name="select_all">ყველას მონიშვნა</string>
   <string name="no_selected_apps_title">აპლიკაცია არ არის მონიშნული</string>
   <string name="no_selected_apps_content">თქვენ არ აგირჩევიათ არცერთი აპლიკაცია. გთხოვთ აირჩიოთ რამოდენიმე აპლიკაცია და ჩემდეგ დააჭირეთ ისევ ღილაკს.</string>
+  <string name="apps_limit_dialog">უკაცრავად, მაგრამ თქვენ ნება დართეთ %1$s მხოლოდ აპლიკაციების მოთხოვნას.</string>
+  <string name="apps_limit_dialog_day">ბოდიშს გიხდით, მაგრამ თქვენ უფლება გაქვთ იკონების მოითხოვნის ყოველ %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">რამოდენიმე ხნის შემდეგ ისევ შეძლებთ იკონების მოთხოვნის გაგზავნას.</string>
   <string name="loading_apps_to_request">იტვირთება აპლიკაციები მოთხოვნის გასაგზავნად…</string>
   <string name="building_request_dialog">მოთხოვნის ფაილების მომზადება…</string>
