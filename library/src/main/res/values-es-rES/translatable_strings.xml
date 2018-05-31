@@ -84,6 +84,7 @@
   <string name="hideicon_dialog_title">¡Atención!</string>
   <string name="hideicon_dialog_content">¿Está seguro que desea ocultar el icono de la aplicación en el launcher?         \nLa app puede cerrarse inesperadamente y las notificaciones serán completamente desactivadas. \nPuedes leer las FAQs para aprender a hacerlo aparecer de nuevo, antes de ocultarlo.    </string>
   <string name="send_using">Enviar con…</string>
+  <string name="no_mail">No se encontraron aplicaciones de correo electrónico instaladas</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>¿Cómo utilizar el paquete de iconos?</item>
