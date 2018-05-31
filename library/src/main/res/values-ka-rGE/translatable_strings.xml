@@ -67,8 +67,11 @@
   <string name="request_upload_success">წარმატება!</string>
   <string name="request_upload_success_content">მოთხოვნა წარმატებით აიტვირთა სერვერზე.</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">ჩართე იკონების გადასახედზე ფონის სურათი</string>
+  <string name="pref_summary_wall_header">თქვენი ამჟამინდელი მოწყობილობის ფონი გამოჩნდება.</string>
   <string name="pref_header_launcher_icon">ლაუნჩერის იკონი</string>
   <string name="pref_title_launcher_icon">ლაუნჩერის იკონის დამალვა</string>
+  <string name="pref_summary_launcher_icon">შემოწმებისას, აპლიკაციის იკონი დამალული იქნება.</string>
   <string name="hideicon_dialog_title">გაფრთხილება!</string>
   <string name="send_using">გაგზავნე…</string>
   <!-- HELP SECTION -->
@@ -76,19 +79,19 @@
     <item>როგორ გამოვიყენო იკონების კრებული?</item>
     <item>როგორ გამოვიყენო იკონების კრებული?</item>
     <item>როგორ ვნახო ყველა თანდართული იკონები?</item>
-    <item>How to replace an icon with an alternative one?</item>
-    <item>How to request unthemed icons?</item>
+    <item>როგორ შევცვალო იკონი ალტერნატიული იკონით?</item>
+    <item>როგორ გავაგზავნო მოთხოვნა სხვა იკონებზე?</item>
     <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
     <item>Why do icons look pixelated on my device?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
+    <item>როგორ დავმალო აპლიკაციის იკონი ლაუნჩერში?</item>
+    <item>როგორ გავხსნა აპლიკაცია მისი იკონის დამალვის შემთხვევაში?</item>
+    <item>როგორ გამოვაჩინო აპლიკაციის იკონი?</item>
     <item>Why does the app need permission to modify or delete content of my storage?</item>
     <item>Why does the app need permission to full network access?</item>
     <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>რატომ სჭირდება აპლიკაციას ნებართვა ფონის დასაყენებლად?</item>
+    <item>რატომ სჭირდება აპლიკაციას ნებართვა ფონის ზომის შესაცვლელად?</item>
     <item>Why does the app need permission to prevent phone from sleeping?</item>
   </string-array>
   <string-array name="answers">
