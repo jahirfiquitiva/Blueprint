@@ -16,10 +16,32 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">Blueprint Dashboard</string>
+  <string name="coming_soon">Binnenkort beschikbaar</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_wallpapers">Achtergronden</string>
+  <string name="section_donate">Doneer</string>
+  <string name="section_about">Over de app</string>
+  <string name="section_help">Help</string>
+  <string name="section_zooper">Zooper Setup</string>
+  <string name="section_widgets">Widgets</string>
+  <string name="rate">Beoordeel</string>
   <!-- Icons filters -->
+  <string name="more_apps">Meer apps</string>
+  <string name="general_info">Algemene informatie</string>
+  <string name="useful_links">Nuttige links</string>
+  <string name="columns">Aantal kolommen</string>
   <!-- Widgets Names -->
+  <string name="clock_widget_title">Analoge klok</string>
+  <string name="seconds">Seconden</string>
+  <string name="minutes">Minuten</string>
+  <string name="hours">Uren</string>
+  <string name="days">Dagen</string>
+  <string name="weeks">Weken</string>
+  <string name="months">Maanden</string>
   <!-- Requests -->
+  <string name="select_all">Selecteer alles</string>
+  <string name="no_selected_apps_title">Geen geselecteerde apps</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
