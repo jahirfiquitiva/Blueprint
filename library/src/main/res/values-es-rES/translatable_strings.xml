@@ -105,7 +105,7 @@
     <item>¿Por qué la aplicación necesita permiso para evitar que el teléfono de dormir?</item>
   </string-array>
   <string-array name="answers">
-    <item>Necesitas un launcher con soporte para paquetes de íconos. Revisa la descripción de Google Play Store para ver los launchers compatibles. Si no estás seguro de qué launcher usar, sólo ve a la sección \"Aplicar\" y escoge uno de la lista.</item>
+    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
     <item>Dependiendo del tipo de navegación de la aplicación, necesitarás deslizar el panel de la izquierda e ir a la sección \"Aplicar\" o elegir el cuarto ícono de la barra de navegación inferior. Desde allí podrás elegir un launcher al qué aplicar los iconos. Algunos launchers no admiten la aplicación automática y tienes que hacerlo manualmente a través de su configuración.</item>
     <item>Vuelve a la sección principal de la aplicación y pulse la ficha titulada \"Iconos\".</item>
     <item>Dependiendo del launcher que usas, mantén presionado el icono y seleccionar \"Editar\" en el menú emergente, o mantén presionado el icono y moverlo a la caja de \"Editar\".</item>
