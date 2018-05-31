@@ -36,10 +36,13 @@
   <string name="more_apps">მეტი აპლიკაციები</string>
   <string name="general_info">მთავარი ინფორმაცია</string>
   <string name="useful_links">საჭირო ბმულები</string>
+  <string name="columns">სვეტების ნომერი</string>
   <string name="no_compatible_launcher_title">ეს ლაუნჩერი არ არის თავსებადი</string>
   <string name="impossible_open_themes">შეუძლებელია თემების აპლიკაციის გახსნა</string>
   <string name="themes_app_not_installed">თემების აპლიკაცია არ არის ინსტალირებული მოწყობილობაში</string>
+  <string name="launcher_icon_restored">%1$s ლაუნჩერის იკონი აღდგენილია</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">იკონების აღმდგენი ვიჯეტი</string>
   <string name="clock_widget_title">ისრებიანი საათი</string>
   <string name="search_icons">იკონების ძებნა</string>
   <string name="search_wallpapers">ფონის ძებნა</string>
@@ -54,6 +57,8 @@
   <!-- Requests -->
   <string name="select_all">ყველას მონიშვნა</string>
   <string name="no_selected_apps_title">აპლიკაცია არ არის მონიშნული</string>
+  <string name="loading_apps_to_request">იტვირთება აპლიკაციები მოთხოვნის გასაგზავნად…</string>
+  <string name="request_upload_success">წარმატება!</string>
   <!-- Preferences -->
   <string name="pref_header_launcher_icon">ლაუნჩერის იკონი</string>
   <string name="pref_title_launcher_icon">ლაუნჩერის იკონის დამალვა</string>
