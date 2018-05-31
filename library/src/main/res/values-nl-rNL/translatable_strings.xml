@@ -27,12 +27,19 @@
   <string name="section_widgets">Widgets</string>
   <string name="rate">Beoordeel</string>
   <!-- Icons filters -->
+  <string name="filter">Filter</string>
   <string name="more_apps">Meer apps</string>
   <string name="general_info">Algemene informatie</string>
   <string name="useful_links">Nuttige links</string>
   <string name="columns">Aantal kolommen</string>
+  <string name="no_compatible_launcher_title">Deze launcher is niet compatibel</string>
+  <string name="no_compatible_launcher_content">Deze launcher is niet compatibel met alle beschikbare Icon Packs en dus is dit icon pack niet te gebruiken met deze launcher. Beoordeel alsjeblieft deze icon pack hierom niet negatief. Er is een oplossing die je zelf kunt proberen, maar het vereist het gebruik van een externe app. Wil je deze downloaden?</string>
+  <string name="impossible_open_themes">Onmogelijk om themes app te openen</string>
+  <string name="themes_app_not_installed">Themes app is niet geïnstalleerd op dit apparaat</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">Icoon Herstel Widget</string>
   <string name="clock_widget_title">Analoge klok</string>
+  <string name="search_icons">Zoek naar iconen</string>
   <string name="seconds">Seconden</string>
   <string name="minutes">Minuten</string>
   <string name="hours">Uren</string>
