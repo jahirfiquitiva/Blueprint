@@ -105,7 +105,7 @@
     <item>¿Por qué la aplicación necesita permiso para evitar que el teléfono de dormir?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
+    <item>Necesitas un launcher con soporte para paquetes de íconos. Revisa la descripción de Google Play Store para ver los launchers compatibles. Si no estás seguro de qué launcher usar, sólo ve a la sección \"Aplicar\" y escoge uno de la lista.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
     <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
