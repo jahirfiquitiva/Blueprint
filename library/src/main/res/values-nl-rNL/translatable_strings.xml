@@ -19,6 +19,7 @@
   <string name="frames_dashboard">Blueprint Dashboard</string>
   <string name="coming_soon">Binnenkort beschikbaar</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_icons">Iconen</string>
   <string name="section_wallpapers">Achtergronden</string>
   <string name="section_donate">Doneer</string>
   <string name="section_about">Over de app</string>
@@ -38,6 +39,9 @@
   <string name="no_compatible_launcher_content">Deze launcher is niet compatibel met alle beschikbare Icon Packs en dus is dit icon pack niet te gebruiken met deze launcher. Beoordeel alsjeblieft deze icon pack hierom niet negatief. Er is een oplossing die je zelf kunt proberen, maar het vereist het gebruik van een externe app. Wil je deze downloaden?</string>
   <string name="impossible_open_themes">Onmogelijk om themes app te openen</string>
   <string name="themes_app_not_installed">Themes app is niet geïnstalleerd op dit apparaat</string>
+  <string name="included_templates">%1$s sjablonen</string>
+  <string name="launcher_icon_restored">%1$s launcher icoon is hersteld</string>
+  <string name="launcher_icon_not_restored">%1$s launcher icoon is reeds zichtbaar</string>
   <string name="launcher_icon_restorer_error">Er is een probleem met de volgende code: %1$s. Neem alsjeblieft contact op met de ontwikkelaar.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Icoon Herstel Widget</string>
@@ -55,6 +59,9 @@
   <!-- Requests -->
   <string name="select_all">Selecteer alles</string>
   <string name="no_selected_apps_title">Geen geselecteerde apps</string>
+  <string name="no_selected_apps_content">Je hebt geen apps geselecteerd. Selecteer er eerst een paar en druk dan weer op deze knop.</string>
+  <string name="apps_limit_dialog">Sorry, maar het is alleen mogelijk om %1$s iconen aan te vragen.</string>
+  <string name="apps_limit_dialog_more">Sorry, maar het is op dit moment alleen mogelijk om nog %1$s iconen aan te vragen.</string>
   <string name="apps_limit_dialog_day">Sorry, maar het is alleen mogelijk om icon aan te vragen elke %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Het is weer mogelijk om iconen aan te vragen in %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Het is weer mogelijk om iconen aan te vragen in minder dan één minuut.</string>
@@ -64,6 +71,8 @@
   <string name="request_upload_success">Gelukt!</string>
   <string name="request_upload_success_content">Het verzoek is succesvol geüpload naar onze servers.</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">Sta het gebruik van je huidige achtergrond toe in de iconen voorvertoning</string>
+  <string name="pref_summary_wall_header">Je huidige achtergrond wordt weergegeven.</string>
   <string name="pref_header_launcher_icon">Launcher icoon</string>
   <string name="pref_title_launcher_icon">Verberg launcher icoon</string>
   <string name="pref_summary_launcher_icon">Launcher icoon wordt verborgen, indien aangevinkt.</string>
