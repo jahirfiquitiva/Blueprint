@@ -35,10 +35,11 @@ import android.support.annotation.IntRange
 import android.support.annotation.WorkerThread
 import android.support.annotation.XmlRes
 import android.text.Html
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.DataPart
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
-import jahirfiquitiva.libs.blueprint.quest.arctic.ArcticAPI
 import jahirfiquitiva.libs.blueprint.quest.events.OnRequestProgress
 import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
 import jahirfiquitiva.libs.blueprint.quest.utils.TimeUtils
@@ -56,13 +57,7 @@ import jahirfiquitiva.libs.kext.extensions.hasContent
 import jahirfiquitiva.libs.kext.extensions.readBoolean
 import jahirfiquitiva.libs.kext.extensions.toBitmap
 import jahirfiquitiva.libs.kext.extensions.writeBoolean
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import org.xmlpull.v1.XmlPullParser
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -769,39 +764,33 @@ class IconRequest private constructor() {
                             date, arcticZipFiles.jfilter { it.name.endsWith("png", true) })
                         cleanFiles()
                         if (zipFile != null) {
-                            val api = ArcticAPI.connect(host, apiKey)
-                            val archiveFileBody =
-                                RequestBody.create(MediaType.parse("multipart/form-data"), zipFile)
-                            val archiveFile = MultipartBody.Part.createFormData(
-                                "archive", "icons.zip", archiveFileBody)
-                            val appsJson = MultipartBody.Part.createFormData(
-                                "apps", jsonSb?.toString().orEmpty())
-                            api.sendRequest(archiveFile, appsJson)
-                                .apply {
-                                    enqueue(object : Callback<Void> {
-                                        override fun onResponse(
-                                            call: Call<Void>?,
-                                            response: Response<Void>?
-                                                               ) {
-                                            val success = response?.isSuccessful ?: false
-                                            if (success) {
-                                                BL.d("Request sent!")
-                                                val amount = requestsLeft - selectedApps.size
-                                                saveRequestsLeft(if (amount < 0) 0 else amount)
-                                                
-                                                if (requestsLeft == 0) saveRequestMoment()
-                                                
-                                                cleanFiles(true)
-                                                onRequestProgress?.doWhenReady(true)
-                                            } else onFailure(null, null)
-                                        }
+                            val rHost = if (host.endsWith("/")) host else "$host/"
+                            Fuel.upload(
+                                rHost,
+                                parameters = listOf("apps" to jsonSb?.toString().orEmpty()))
+                                .header(
+                                    "TokenID" to apiKey,
+                                    "Accept" to "application/json",
+                                    "User-Agent" to "afollestad/icon-request"
+                                       )
+                                .dataParts { _, _ -> listOf(DataPart(zipFile, "icons.zip")) }
+                                .response { _, response, _ ->
+                                    val success = response.statusCode in 200..299
+                                    if (success) {
+                                        BL.d("Request sent!")
+                                        val amount = requestsLeft - selectedApps.size
+                                        saveRequestsLeft(if (amount < 0) 0 else amount)
                                         
-                                        override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                                            BL.d("Request error!")
-                                            cleanFiles(true)
-                                            onRequestProgress?.doOnError()
-                                        }
-                                    })
+                                        if (requestsLeft == 0) saveRequestMoment()
+                                        
+                                        cleanFiles(true)
+                                        onRequestProgress?.doWhenReady(true)
+                                    } else {
+                                        BL.e("Request error!")
+                                        BL.e("Server response: $response")
+                                        cleanFiles(true)
+                                        onRequestProgress?.doOnError()
+                                    }
                                 }
                         } else {
                             cleanFiles(true)

@@ -89,8 +89,8 @@ dependencies {
         exclude module: 'support-media-compat'
         exclude module: 'support-v4'
     }
-    // Retrofit
-    api libraries.retrofit
+    // Fuel
+    api libraries.fuel
     // CounterFab
     api(libraries.counterFab) {
         exclude group: 'com.android.support'
