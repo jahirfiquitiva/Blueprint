@@ -40,7 +40,10 @@
   <string name="no_compatible_launcher_title">ეს ლაუნჩერი არ არის თავსებადი</string>
   <string name="impossible_open_themes">შეუძლებელია თემების აპლიკაციის გახსნა</string>
   <string name="themes_app_not_installed">თემების აპლიკაცია არ არის ინსტალირებული მოწყობილობაში</string>
+  <string name="included_templates">%1$s თარგები</string>
   <string name="launcher_icon_restored">%1$s ლაუნჩერის იკონი აღდგენილია</string>
+  <string name="launcher_icon_not_restored">%1$s ლაუნჩერის იკონი უკვე ჩანს</string>
+  <string name="launcher_icon_restorer_error">%1$s კოდის პრობლემაა. გთხოვთ დაუკავშირდეთ დეველოპერს.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">იკონების აღმდგენი ვიჯეტი</string>
   <string name="clock_widget_title">ისრებიანი საათი</string>
@@ -57,8 +60,12 @@
   <!-- Requests -->
   <string name="select_all">ყველას მონიშვნა</string>
   <string name="no_selected_apps_title">აპლიკაცია არ არის მონიშნული</string>
+  <string name="no_selected_apps_content">თქვენ არ აგირჩევიათ არცერთი აპლიკაცია. გთხოვთ აირჩიოთ რამოდენიმე აპლიკაცია და ჩემდეგ დააჭირეთ ისევ ღილაკს.</string>
+  <string name="apps_limit_dialog_day_extra_sec">რამოდენიმე ხნის შემდეგ ისევ შეძლებთ იკონების მოთხოვნის გაგზავნას.</string>
   <string name="loading_apps_to_request">იტვირთება აპლიკაციები მოთხოვნის გასაგზავნად…</string>
+  <string name="building_request_dialog">მოთხოვნის ფაილების მომზადება…</string>
   <string name="request_upload_success">წარმატება!</string>
+  <string name="request_upload_success_content">მოთხოვნა წარმატებით აიტვირთა სერვერზე.</string>
   <!-- Preferences -->
   <string name="pref_header_launcher_icon">ლაუნჩერის იკონი</string>
   <string name="pref_title_launcher_icon">ლაუნჩერის იკონის დამალვა</string>
