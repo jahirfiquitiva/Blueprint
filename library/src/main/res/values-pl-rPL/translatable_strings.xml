@@ -105,7 +105,7 @@
     <item>Dlaczego aplikacja wymaga uprawnienia do zapobiegania przechodzenia telefonu w stan uśpienia?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with Icon Pack support. Check the Google Play Store description for supported launchers. If you are not sure which launcher should you use, just go to \"Apply\" section, and choose one from the list.</item>
+    <item>Potrzebujesz launchera ze wsparciem dla paczek ikon. Lista wspieranych launcherów jest dostępna w aplikacji, w sekcji \"Zastosuj\", oraz opisie aplikacji w Sklepie Play.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
     <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
@@ -117,7 +117,7 @@
     <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
     <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+    <item>Jest wymagana do pobrania tapet z chmury.</item>
     <item>Jest wymagane, aby móc sprawdzić czy twoje urządzenie ma połączenie z internetem.</item>
     <item>Jest wymagane, aby zastosować tapetę bezpośrednio z aplikacji.</item>
     <item>Wymagane jest, by móc dostosować rozmiar i wymiary tapety, w zalezności od rozdzielczość ekranu.</item>
