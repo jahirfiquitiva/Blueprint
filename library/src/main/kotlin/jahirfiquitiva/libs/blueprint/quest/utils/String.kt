@@ -20,8 +20,8 @@ import java.util.Locale
 
 internal fun String.formatCorrectly(): String {
     return replace("[^\\w\\s]+".toRegex(), " ").trim { it <= ' ' }
-            .replace(" +".toRegex(), " ")
-            .replace("\\p{Z}".toRegex(), "_")
+        .replace(" +".toRegex(), " ")
+        .replace("\\p{Z}".toRegex(), "_")
 }
 
 internal fun CharSequence.hasContent(): Boolean = trim().isNotBlank() && trim().isNotEmpty()

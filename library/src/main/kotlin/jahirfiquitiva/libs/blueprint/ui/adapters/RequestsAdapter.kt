@@ -25,13 +25,13 @@ import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.RequestViewHolder
 
 class RequestsAdapter(
-        private val manager: RequestManager?,
-        private val onItemsChanged: () -> Unit
+    private val manager: RequestManager?,
+    private val onItemsChanged: () -> Unit
                      ) :
-        RecyclerViewListAdapter<App, RequestViewHolder>() {
+    RecyclerViewListAdapter<App, RequestViewHolder>() {
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RequestViewHolder =
-            RequestViewHolder(parent.inflate(R.layout.item_app_to_request))
+        RequestViewHolder(parent.inflate(R.layout.item_app_to_request))
     
     override fun doBind(holder: RequestViewHolder, position: Int, shouldAnimate: Boolean) {
         holder.setItem(manager, list[position]) { checkbox, item ->

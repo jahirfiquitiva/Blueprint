@@ -21,7 +21,6 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.os.Environment
-import ca.allanwang.kau.utils.integer
 import jahirfiquitiva.libs.archhelpers.tasks.QAsync
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
@@ -29,6 +28,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
+import jahirfiquitiva.libs.kext.extensions.int
 import java.io.File
 import java.lang.ref.WeakReference
 
@@ -41,40 +41,40 @@ class RequestsViewModel : ViewModel() {
     private var task: QAsync<Context, Unit>? = null
     
     fun loadData(
-            parameter: Context,
-            onEmpty: () -> Unit,
-            onLimited: (reason: Int, appsLeft: Int, millis: Long) -> Unit,
-            host: String? = null,
-            apiKey: String? = null,
-            forceLoad: Boolean = false,
-            onProgress: (progress: Int) -> Unit = {}
+        parameter: Context,
+        onEmpty: () -> Unit,
+        onLimited: (reason: Int, appsLeft: Int, millis: Long) -> Unit,
+        host: String? = null,
+        apiKey: String? = null,
+        forceLoad: Boolean = false,
+        onProgress: (progress: Int) -> Unit = {}
                 ) {
         if (!taskStarted || forceLoad) {
             cancelTask(true)
             task = QAsync<Context, Unit>(
-                    WeakReference(parameter),
-                    object : QAsync.Callback<Context, Unit>() {
-                        override fun doLoad(param: Context): Unit? =
-                                safeInternalLoad(
-                                        param, object : RequestsCallback() {
-                                    override fun onAppsLoaded(apps: ArrayList<App>) {
-                                        postResult(apps)
-                                    }
-                                    
-                                    override fun onRequestEmpty(context: Context) =
-                                            onEmpty()
-                                    
-                                    override fun onRequestLimited(
-                                            context: Context,
-                                            reason: Int,
-                                            requestsLeft: Int,
-                                            millis: Long
-                                                                 ) =
-                                            onLimited(reason, requestsLeft, millis)
-                                }, host, apiKey, forceLoad, onProgress)
-                        
-                        override fun onSuccess(result: Unit) {}
-                    })
+                WeakReference(parameter),
+                object : QAsync.Callback<Context, Unit>() {
+                    override fun doLoad(param: Context): Unit? =
+                        safeInternalLoad(
+                            param, object : RequestsCallback() {
+                            override fun onAppsLoaded(apps: ArrayList<App>) {
+                                postResult(apps)
+                            }
+                            
+                            override fun onRequestEmpty(context: Context) =
+                                onEmpty()
+                            
+                            override fun onRequestLimited(
+                                context: Context,
+                                reason: Int,
+                                requestsLeft: Int,
+                                millis: Long
+                                                         ) =
+                                onLimited(reason, requestsLeft, millis)
+                        }, host, apiKey, forceLoad, onProgress)
+                    
+                    override fun onSuccess(result: Unit) {}
+                })
             task?.execute()
             taskStarted = true
         }
@@ -92,12 +92,12 @@ class RequestsViewModel : ViewModel() {
     }
     
     private fun safeInternalLoad(
-            param: Context,
-            callback: RequestsCallback,
-            host: String? = null,
-            apiKey: String? = null,
-            forceLoad: Boolean = false,
-            onProgress: (progress: Int) -> Unit = {}
+        param: Context,
+        callback: RequestsCallback,
+        host: String? = null,
+        apiKey: String? = null,
+        forceLoad: Boolean = false,
+        onProgress: (progress: Int) -> Unit = {}
                                 ) {
         if (forceLoad) {
             internalLoad(param, callback, host, apiKey, forceLoad, onProgress)
@@ -123,12 +123,12 @@ class RequestsViewModel : ViewModel() {
     }
     
     private fun internalLoad(
-            param: Context,
-            callback: RequestsCallback,
-            host: String? = null,
-            apiKey: String? = null,
-            forceLoad: Boolean = false,
-            onProgress: (progress: Int) -> Unit = {}
+        param: Context,
+        callback: RequestsCallback,
+        host: String? = null,
+        apiKey: String? = null,
+        forceLoad: Boolean = false,
+        onProgress: (progress: Int) -> Unit = {}
                             ) {
         if (IconRequest.get() != null && !forceLoad) {
             postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
@@ -139,32 +139,32 @@ class RequestsViewModel : ViewModel() {
     
     companion object {
         internal fun initAndLoadRequestApps(
-                context: Context,
-                host: String? = null,
-                apiKey: String? = null,
-                callback: RequestsCallback? = null,
-                onProgress: (progress: Int) -> Unit = {}
+            context: Context,
+            host: String? = null,
+            apiKey: String? = null,
+            callback: RequestsCallback? = null,
+            onProgress: (progress: Int) -> Unit = {}
                                            ) {
             IconRequest.start(context)
-                    .withAppName(context.getString(R.string.app_name))
-                    .withFooter("Blueprint version: ${BuildConfig.LIB_VERSION}")
-                    .withSubject(context.getString(R.string.request_title))
-                    .toEmail(context.getString(R.string.email))
-                    .withAPIHost(host.orEmpty())
-                    .withAPIKey(apiKey)
-                    .saveDir(
-                            File(
-                                    context.getString(
-                                            R.string.request_save_location,
-                                            Environment.getExternalStorageDirectory())))
-                    .debugMode(BuildConfig.DEBUG)
-                    .filterXmlId(R.xml.appfilter)
-                    .withTimeLimit(
-                            context.integer(R.integer.time_limit_in_minutes),
-                            BPKonfigs(context).prefs)
-                    .maxSelectionCount(context.integer(R.integer.max_apps_to_request))
-                    .setCallback(callback)
-                    .build().loadApps(onProgress)
+                .withAppName(context.getString(R.string.app_name))
+                .withFooter("Blueprint version: ${BuildConfig.LIB_VERSION}")
+                .withSubject(context.getString(R.string.request_title))
+                .toEmail(context.getString(R.string.email))
+                .withAPIHost(host.orEmpty())
+                .withAPIKey(apiKey)
+                .saveDir(
+                    File(
+                        context.getString(
+                            R.string.request_save_location,
+                            Environment.getExternalStorageDirectory())))
+                .debugMode(BuildConfig.DEBUG)
+                .filterXmlId(R.xml.appfilter)
+                .withTimeLimit(
+                    context.int(R.integer.time_limit_in_minutes),
+                    BPKonfigs(context).prefs)
+                .maxSelectionCount(context.int(R.integer.max_apps_to_request))
+                .setCallback(callback)
+                .build().loadApps(onProgress)
         }
     }
 }

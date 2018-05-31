@@ -24,16 +24,16 @@ import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.LauncherViewHolder
 
 internal class LaunchersAdapter(
-        private val manager: RequestManager?,
-        private val listener: (Launcher) -> Unit = {}
+    private val manager: RequestManager?,
+    private val listener: (Launcher) -> Unit = {}
                                ) :
-        RecyclerViewListAdapter<Launcher, LauncherViewHolder>() {
+    RecyclerViewListAdapter<Launcher, LauncherViewHolder>() {
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LauncherViewHolder =
-            LauncherViewHolder(parent.inflate(R.layout.item_launcher))
+        LauncherViewHolder(parent.inflate(R.layout.item_launcher))
     
     override fun doBind(holder: LauncherViewHolder, position: Int, shouldAnimate: Boolean) =
-            holder.bind(manager, list[position], listener)
+        holder.bind(manager, list[position], listener)
     
     override fun onViewRecycled(holder: LauncherViewHolder) {
         super.onViewRecycled(holder)

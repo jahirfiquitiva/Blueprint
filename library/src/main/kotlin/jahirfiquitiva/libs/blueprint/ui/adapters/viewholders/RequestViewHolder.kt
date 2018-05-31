@@ -21,7 +21,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
-import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.gone
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
@@ -32,10 +31,11 @@ import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
-import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.context
-import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
-import jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
+import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.context
+import jahirfiquitiva.libs.kext.extensions.drawable
+import jahirfiquitiva.libs.kext.extensions.formatCorrectly
+import jahirfiquitiva.libs.kext.ui.widgets.SquaredImageView
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val icon: SquaredImageView? by bind(R.id.icon)
@@ -44,31 +44,31 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val progressBar: ProgressBar? by bind(R.id.icon_progress)
     
     fun setItem(
-            manager: RequestManager?,
-            app: App,
-            listener: (checkbox: AppCompatCheckBox, item: App) -> Unit
+        manager: RequestManager?,
+        app: App,
+        listener: (checkbox: AppCompatCheckBox, item: App) -> Unit
                ) {
         icon?.let {
             (manager ?: Glide.with(context))
-                    .load(app.icon)
-                    .apply(
-                            RequestOptions()
-                                    .priority(Priority.IMMEDIATE)
-                                    .error(context.drawable(R.drawable.ic_na_launcher)))
-                    .listener(object : GlideRequestCallback<Drawable>() {
-                        override fun onLoadSucceed(resource: Drawable): Boolean {
-                            progressBar?.gone()
-                            return false
-                        }
-                        
-                        override fun onLoadFailed(): Boolean {
-                            progressBar?.gone()
-                            it.setImageDrawable(context.drawable(R.drawable.ic_na_launcher))
-                            return super.onLoadFailed()
-                        }
-                    })
-                    .into(it)
-                    .clearOnDetach()
+                .load(app.icon)
+                .apply(
+                    RequestOptions()
+                        .priority(Priority.IMMEDIATE)
+                        .error(context.drawable(R.drawable.ic_na_launcher)))
+                .listener(object : GlideRequestCallback<Drawable>() {
+                    override fun onLoadSucceed(resource: Drawable): Boolean {
+                        progressBar?.gone()
+                        return false
+                    }
+                    
+                    override fun onLoadFailed(): Boolean {
+                        progressBar?.gone()
+                        it.setImageDrawable(context.drawable(R.drawable.ic_na_launcher))
+                        return super.onLoadFailed()
+                    }
+                })
+                .into(it)
+                .clearOnDetach()
         }
         
         text?.text = app.name.formatCorrectly().replace("_", " ")

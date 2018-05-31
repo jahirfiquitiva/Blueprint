@@ -25,8 +25,6 @@ import android.support.v4.widget.TextViewCompat
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
-import ca.allanwang.kau.utils.boolean
-import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.gone
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
@@ -42,11 +40,12 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_TEMPLATES_SECTION_ID
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
-import jahirfiquitiva.libs.kauextensions.extensions.accentColor
-import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getAppVersion
-import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
+import jahirfiquitiva.libs.kext.extensions.accentColor
+import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.boolean
+import jahirfiquitiva.libs.kext.extensions.drawable
+import jahirfiquitiva.libs.kext.extensions.getAppName
+import jahirfiquitiva.libs.kext.extensions.getAppVersion
 
 abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
     
@@ -66,7 +65,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         val v: View? by bind(R.id.bottom_navigation)
         v?.gone()
         val accountHeaderBuilder = AccountHeaderBuilder().withActivity(this)
-        val header: Drawable? = getDrawable("drawer_header")
+        val header: Drawable? = drawable("drawer_header")
         if (header != null) {
             accountHeaderBuilder.withHeaderBackground(header)
         } else {
@@ -77,9 +76,9 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
             accountHeaderBuilder.withSelectionSecondLine("v " + getAppVersion())
         }
         accountHeaderBuilder.withProfileImagesClickable(false)
-                .withResetDrawerOnProfileListClick(false)
-                .withSelectionListEnabled(false)
-                .withSelectionListEnabledForSingleProfile(false)
+            .withResetDrawerOnProfileListClick(false)
+            .withSelectionListEnabled(false)
+            .withSelectionListEnabledForSingleProfile(false)
         
         if (savedInstance != null)
             accountHeaderBuilder.withSavedInstance(savedInstance)
@@ -87,9 +86,9 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         val accountHeader = accountHeaderBuilder.build()
         
         val drawerTitle: TextView? by accountHeader.view.bind(
-                R.id.material_drawer_account_header_name)
+            R.id.material_drawer_account_header_name)
         val drawerSubtitle: TextView? by accountHeader.view.bind(
-                R.id.material_drawer_account_header_email)
+            R.id.material_drawer_account_header_email)
         
         drawerTitle?.let { TextViewCompat.setTextAppearance(it, R.style.DrawerTextsWithShadow) }
         drawerSubtitle?.let { TextViewCompat.setTextAppearance(it, R.style.DrawerTextsWithShadow) }
@@ -98,8 +97,8 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         toolbar?.let { drawerBuilder.withToolbar(it) }
         
         drawerBuilder.withAccountHeader(accountHeader)
-                .withDelayOnDrawerClose(-1)
-                .withActionBarDrawerToggle(!isIconsPicker)
+            .withDelayOnDrawerClose(-1)
+            .withActionBarDrawerToggle(!isIconsPicker)
         
         drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
             try {
@@ -123,7 +122,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
                     else -> {
                         drawer?.closeDrawer()
                         return@withOnDrawerItemClickListener navigateToItem(
-                                getNavigationItemWithId(drawerItem.identifier.toInt()), true)
+                            getNavigationItemWithId(drawerItem.identifier.toInt()), true)
                     }
                 }
             } catch (e: Exception) {
@@ -134,54 +133,54 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
         
         getNavigationItems().forEach {
             drawerBuilder.addDrawerItems(
-                    PrimaryDrawerItem().withIdentifier(it.id.toLong())
-                            .withName(it.title)
-                            .withIcon(drawable(it.icon, null))
-                            .withIconTintingEnabled(true)
-                            .withSelectedColor(tilesColor)
-                            .withSelectedBackgroundAnimated(false))
+                PrimaryDrawerItem().withIdentifier(it.id.toLong())
+                    .withName(it.title)
+                    .withIcon(drawable(it.icon))
+                    .withIconTintingEnabled(true)
+                    .withSelectedColor(tilesColor)
+                    .withSelectedBackgroundAnimated(false))
         }
         
         if (hasTemplates) {
             drawerBuilder.addDrawerItems(
-                    PrimaryDrawerItem()
-                            .withIdentifier(DEFAULT_TEMPLATES_SECTION_ID.toLong())
-                            .withName(R.string.templates)
-                            .withIcon(drawable(R.drawable.ic_widgets, null))
-                            .withIconTintingEnabled(true)
-                            .withSelectable(false))
+                PrimaryDrawerItem()
+                    .withIdentifier(DEFAULT_TEMPLATES_SECTION_ID.toLong())
+                    .withName(R.string.templates)
+                    .withIcon(drawable(R.drawable.ic_widgets))
+                    .withIconTintingEnabled(true)
+                    .withSelectable(false))
         }
         
         drawerBuilder.addDrawerItems(DividerDrawerItem())
         
         drawerBuilder.addDrawerItems(
-                PrimaryDrawerItem()
-                        .withIdentifier(DEFAULT_CREDITS_SECTION_ID.toLong())
-                        .withName(R.string.section_about)
-                        .withIcon(drawable(R.drawable.ic_info, null))
-                        .withIconTintingEnabled(true)
-                        .withSelectable(false))
+            PrimaryDrawerItem()
+                .withIdentifier(DEFAULT_CREDITS_SECTION_ID.toLong())
+                .withName(R.string.section_about)
+                .withIcon(drawable(R.drawable.ic_info))
+                .withIconTintingEnabled(true)
+                .withSelectable(false))
         
         drawerBuilder.addDrawerItems(
-                PrimaryDrawerItem()
-                        .withIdentifier(DEFAULT_SETTINGS_SECTION_ID.toLong())
-                        .withName(R.string.settings)
-                        .withIcon(drawable(R.drawable.ic_settings, null))
-                        .withIconTintingEnabled(true)
-                        .withSelectable(false))
+            PrimaryDrawerItem()
+                .withIdentifier(DEFAULT_SETTINGS_SECTION_ID.toLong())
+                .withName(R.string.settings)
+                .withIcon(drawable(R.drawable.ic_settings))
+                .withIconTintingEnabled(true)
+                .withSelectable(false))
         
         drawerBuilder.addDrawerItems(
-                PrimaryDrawerItem()
-                        .withIdentifier(DEFAULT_HELP_SECTION_ID.toLong())
-                        .withName(R.string.section_help)
-                        .withIcon(drawable(R.drawable.ic_help, null))
-                        .withIconTintingEnabled(true)
-                        .withSelectable(false))
+            PrimaryDrawerItem()
+                .withIdentifier(DEFAULT_HELP_SECTION_ID.toLong())
+                .withName(R.string.section_help)
+                .withIcon(drawable(R.drawable.ic_help))
+                .withIconTintingEnabled(true)
+                .withSelectable(false))
         
         drawerBuilder.withHasStableIds(true)
-                .withFireOnInitialOnClick(false)
-                .withDrawerGravity(Gravity.START)
-                .withSavedInstance(savedInstance)
+            .withFireOnInitialOnClick(false)
+            .withDrawerGravity(Gravity.START)
+            .withSavedInstance(savedInstance)
         
         drawer = drawerBuilder.build()
         if (isIconsPicker) lockDrawer()
@@ -211,7 +210,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
     private fun lockDrawer() {
         drawer?.closeDrawer()
         drawer?.drawerLayout?.setDrawerLockMode(
-                DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.START)
+            DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.START)
         drawer?.actionBarDrawerToggle = null
     }
     

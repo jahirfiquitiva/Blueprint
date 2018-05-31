@@ -20,12 +20,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.mikepenz.materialdrawer.model.BaseDrawerItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.kauextensions.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.bind
 
 class FilterTitleDrawerItem(
-        private var listener: ButtonListener? = null
+    private var listener: ButtonListener? = null
                            ) :
-        BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
+    BaseDrawerItem<FilterTitleDrawerItem, FilterTitleDrawerItem.ViewHolder>() {
     
     fun withButtonListener(listener: ButtonListener): FilterTitleDrawerItem {
         this.listener = listener

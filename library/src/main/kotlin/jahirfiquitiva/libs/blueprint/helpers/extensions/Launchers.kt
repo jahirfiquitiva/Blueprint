@@ -19,126 +19,126 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import ca.allanwang.kau.utils.color
-import ca.allanwang.kau.utils.isAppInstalled
-import ca.allanwang.kau.utils.materialDialog
-import ca.allanwang.kau.utils.startLink
+import ca.allanwang.kau.utils.openLink
+import ca.allanwang.kau.utils.toast
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
+import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
-import jahirfiquitiva.libs.kauextensions.extensions.showToast
-import jahirfiquitiva.libs.kauextensions.extensions.stringArray
+import jahirfiquitiva.libs.kext.extensions.color
+import jahirfiquitiva.libs.kext.extensions.stringArray
+import jahirfiquitiva.libs.kuper.helpers.extensions.isAppInstalled
 
 internal val Context.supportedLaunchers: ArrayList<Launcher>
     get() = arrayListOf(
-            Launcher(
-                    "action",
-                    "Action Launcher", arrayOf("com.actionlauncher.playstore"),
-                    color(R.color.action_launcher_color)),
-            Launcher(
-                    "adw",
-                    "ADW Launcher", arrayOf("org.adw.launcher"),
-                    color(R.color.adw_launcher_color)),
-            Launcher(
-                    "adwex",
-                    "ADW Ex Launcher", arrayOf("org.adwfreak.launcher"),
-                    color(R.color.adw_ex_launcher_color)),
-            Launcher(
-                    "apex",
-                    "Apex Launcher", arrayOf("com.anddoes.launcher"),
-                    color(R.color.apex_launcher_color)),
-            Launcher(
-                    "atom",
-                    "Atom Launcher", arrayOf("com.dlto.atom.launcher"),
-                    color(R.color.atom_launcher_color)),
-            Launcher(
-                    "aviate",
-                    "Aviate Launcher", arrayOf("com.tul.aviate"),
-                    color(R.color.aviate_launcher_color)),
-            Launcher(
-                    "lineageos",
-                    "LineageOS Theme Engine",
-                    arrayOf(
-                            "org.cyanogenmod.theme.chooser", "org.cyanogenmod.theme.chooser2",
-                            "com.cyngn.theme.chooser"),
-                    color(R.color.cm_theme_engine_color)),
-            Launcher(
-                    "go",
-                    "Go Launcher", arrayOf("com.gau.go.launcherex"),
-                    color(R.color.go_launcher_color)),
-            Launcher(
-                    "googlenow",
-                    "Google Now Launcher", arrayOf("com.google.android.launcher"),
-                    color(R.color.google_now_launcher_color), false),
-            Launcher(
-                    "holo",
-                    "Holo Launcher", arrayOf("com.mobint.hololauncher"),
-                    color(R.color.holo_launcher_color)),
-            Launcher(
-                    "holoics",
-                    "Holo Launcher ICS", arrayOf("com.mobint.hololauncher.hd"),
-                    color(R.color.holo_ics_launcher_color)),
-            Launcher(
-                    "kk",
-                    "KK Launcher", arrayOf("com.kk.launcher"),
-                    color(R.color.kk_launcher_color)),
-            Launcher(
-                    "lg",
-                    "LG Home", arrayOf("com.lge.launcher2"),
-                    color(R.color.lg_home_color)),
-            Launcher(
-                    "l",
-                    "L Launcher", arrayOf("com.l.launcher"),
-                    color(R.color.l_launcher_color)),
-            Launcher(
-                    "lucid",
-                    "Lucid Launcher", arrayOf("com.powerpoint45.launcher"),
-                    color(R.color.lucid_launcher_color)),
-            Launcher(
-                    "mini",
-                    "Mini Launcher", arrayOf("com.jiubang.go.mini.launcher"),
-                    color(R.color.mini_launcher_color)),
-            Launcher(
-                    "next",
-                    "Next Launcher", arrayOf("com.gtp.nextlauncher"),
-                    color(R.color.next_launcher_color)),
-            Launcher(
-                    "nova",
-                    "Nova Launcher", arrayOf("com.teslacoilsw.launcher"),
-                    color(R.color.nova_launcher_color)),
-            Launcher(
-                    "pixel",
-                    "Pixel Launcher", arrayOf("com.google.android.apps.nexuslauncher"),
-                    color(R.color.pixel_launcher_color), false),
-            Launcher(
-                    "s",
-                    "S Launcher", arrayOf("com.galaxy.s.launcher"),
-                    color(R.color.s_launcher_color)),
-            Launcher(
-                    "smart",
-                    "Smart Launcher", arrayOf("ginlemon.flowerfree"),
-                    color(R.color.smart_launcher_color)),
-            Launcher(
-                    "smartpro",
-                    "Smart Launcher Pro", arrayOf("ginlemon.flowerpro"),
-                    color(R.color.smart_pro_launcher_color)),
-            Launcher(
-                    "solo",
-                    "Solo Launcher", arrayOf("home.solo.launcher.free"),
-                    color(R.color.solo_launcher_color)),
-            Launcher(
-                    "tsf",
-                    "TSF Launcher", arrayOf("com.tsf.shell"),
-                    color(R.color.tsf_launcher_color)),
-            Launcher(
-                    "unicon",
-                    "Unicon", arrayOf("sg.ruqqq.IconThemer"),
-                    color(R.color.unicon_pro_color)))
+        Launcher(
+            "action",
+            "Action Launcher", arrayOf("com.actionlauncher.playstore"),
+            color(R.color.action_launcher_color)),
+        Launcher(
+            "adw",
+            "ADW Launcher", arrayOf("org.adw.launcher"),
+            color(R.color.adw_launcher_color)),
+        Launcher(
+            "adwex",
+            "ADW Ex Launcher", arrayOf("org.adwfreak.launcher"),
+            color(R.color.adw_ex_launcher_color)),
+        Launcher(
+            "apex",
+            "Apex Launcher", arrayOf("com.anddoes.launcher"),
+            color(R.color.apex_launcher_color)),
+        Launcher(
+            "atom",
+            "Atom Launcher", arrayOf("com.dlto.atom.launcher"),
+            color(R.color.atom_launcher_color)),
+        Launcher(
+            "aviate",
+            "Aviate Launcher", arrayOf("com.tul.aviate"),
+            color(R.color.aviate_launcher_color)),
+        Launcher(
+            "lineageos",
+            "LineageOS Theme Engine",
+            arrayOf(
+                "org.cyanogenmod.theme.chooser", "org.cyanogenmod.theme.chooser2",
+                "com.cyngn.theme.chooser"),
+            color(R.color.cm_theme_engine_color)),
+        Launcher(
+            "go",
+            "Go Launcher", arrayOf("com.gau.go.launcherex"),
+            color(R.color.go_launcher_color)),
+        Launcher(
+            "googlenow",
+            "Google Now Launcher", arrayOf("com.google.android.launcher"),
+            color(R.color.google_now_launcher_color), false),
+        Launcher(
+            "holo",
+            "Holo Launcher", arrayOf("com.mobint.hololauncher"),
+            color(R.color.holo_launcher_color)),
+        Launcher(
+            "holoics",
+            "Holo Launcher ICS", arrayOf("com.mobint.hololauncher.hd"),
+            color(R.color.holo_ics_launcher_color)),
+        Launcher(
+            "kk",
+            "KK Launcher", arrayOf("com.kk.launcher"),
+            color(R.color.kk_launcher_color)),
+        Launcher(
+            "lg",
+            "LG Home", arrayOf("com.lge.launcher2"),
+            color(R.color.lg_home_color)),
+        Launcher(
+            "l",
+            "L Launcher", arrayOf("com.l.launcher"),
+            color(R.color.l_launcher_color)),
+        Launcher(
+            "lucid",
+            "Lucid Launcher", arrayOf("com.powerpoint45.launcher"),
+            color(R.color.lucid_launcher_color)),
+        Launcher(
+            "mini",
+            "Mini Launcher", arrayOf("com.jiubang.go.mini.launcher"),
+            color(R.color.mini_launcher_color)),
+        Launcher(
+            "next",
+            "Next Launcher", arrayOf("com.gtp.nextlauncher"),
+            color(R.color.next_launcher_color)),
+        Launcher(
+            "nova",
+            "Nova Launcher", arrayOf("com.teslacoilsw.launcher"),
+            color(R.color.nova_launcher_color)),
+        Launcher(
+            "pixel",
+            "Pixel Launcher", arrayOf("com.google.android.apps.nexuslauncher"),
+            color(R.color.pixel_launcher_color), false),
+        Launcher(
+            "s",
+            "S Launcher", arrayOf("com.galaxy.s.launcher"),
+            color(R.color.s_launcher_color)),
+        Launcher(
+            "smart",
+            "Smart Launcher", arrayOf("ginlemon.flowerfree"),
+            color(R.color.smart_launcher_color)),
+        Launcher(
+            "smartpro",
+            "Smart Launcher Pro", arrayOf("ginlemon.flowerpro"),
+            color(R.color.smart_pro_launcher_color)),
+        Launcher(
+            "solo",
+            "Solo Launcher", arrayOf("home.solo.launcher.free"),
+            color(R.color.solo_launcher_color)),
+        Launcher(
+            "tsf",
+            "TSF Launcher", arrayOf("com.tsf.shell"),
+            color(R.color.tsf_launcher_color)),
+        Launcher(
+            "unicon",
+            "Unicon", arrayOf("sg.ruqqq.IconThemer"),
+            color(R.color.unicon_pro_color)))
 
 internal val Context.enabledLaunchers: ArrayList<Launcher>
     get() {
-        val enabled = stringArray(R.array.launchers)
+        val enabled = stringArray(R.array.launchers).orEmpty()
         return supportedLaunchers.jfilter { enabled.contains(it.key) }
     }
 
@@ -177,22 +177,22 @@ fun Context.executeLauncherIntent(launcherKey: String) {
 }
 
 private fun Context.executeIconPacksNotSupportedIntent() {
-    materialDialog {
+    mdDialog {
         title(R.string.no_compatible_launcher_title)
         content(R.string.no_compatible_launcher_content)
         positiveText(android.R.string.ok)
         negativeText(android.R.string.cancel)
-        onPositive { _, _ -> startLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts") }
+        onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts") }
     }
 }
 
 internal fun Context.showLauncherNotInstalledDialog(item: Launcher) {
-    materialDialog {
+    mdDialog {
         title(item.name)
         content(getString(R.string.lni_content, item.name))
         positiveText(android.R.string.ok)
         negativeText(android.R.string.cancel)
-        onPositive { _, _ -> startLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0]) }
+        onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0]) }
     }
 }
 
@@ -257,8 +257,8 @@ private fun Context.executeHoloLauncherIntent() {
 private fun Context.executeHoloLauncherICSIntent() {
     val holohdApply = Intent(Intent.ACTION_MAIN)
     holohdApply.component = ComponentName(
-            "com.mobint.hololauncher.hd",
-            "com.mobint.hololauncher.SettingsActivity")
+        "com.mobint.hololauncher.hd",
+        "com.mobint.hololauncher.SettingsActivity")
     startActivity(holohdApply)
 }
 
@@ -272,8 +272,8 @@ private fun Context.executeKkLauncherIntent() {
 private fun Context.executeLgHomeLauncherIntent() {
     val intent = Intent(Intent.ACTION_MAIN)
     intent.component = ComponentName(
-            "com.lge.launcher2",
-            "com.lge.launcher2.homesettings.HomeSettingsPrefActivity")
+        "com.lge.launcher2",
+        "com.lge.launcher2.homesettings.HomeSettingsPrefActivity")
     startActivity(intent)
 }
 
@@ -290,18 +290,18 @@ private fun Context.executeLineageOSThemeEngineIntent() {
     when {
         isAppInstalled("org.cyanogenmod.theme.chooser") -> {
             intent.component = ComponentName(
-                    "org.cyanogenmod.theme.chooser",
-                    "org.cyanogenmod.theme.chooser.ChooserActivity")
+                "org.cyanogenmod.theme.chooser",
+                "org.cyanogenmod.theme.chooser.ChooserActivity")
         }
         isAppInstalled("org.cyanogenmod.theme.chooser2") -> {
             intent.component = ComponentName(
-                    "org.cyanogenmod.theme.chooser2",
-                    "org.cyanogenmod.theme.chooser2.ChooserActivity")
+                "org.cyanogenmod.theme.chooser2",
+                "org.cyanogenmod.theme.chooser2.ChooserActivity")
         }
         isAppInstalled("com.cyngn.theme.chooser") -> {
             intent.component = ComponentName(
-                    "com.cyngn.theme.chooser",
-                    "com.cyngn.theme.chooser.ChooserActivity")
+                "com.cyngn.theme.chooser",
+                "com.cyngn.theme.chooser.ChooserActivity")
         }
         else -> themesAppInstalled = false
     }
@@ -311,10 +311,10 @@ private fun Context.executeLineageOSThemeEngineIntent() {
         try {
             startActivity(intent)
         } catch (e: Exception) {
-            showToast(R.string.impossible_open_themes)
+            toast(R.string.impossible_open_themes)
         }
     } else {
-        showToast(R.string.themes_app_not_installed)
+        toast(R.string.themes_app_not_installed)
     }
 }
 
@@ -327,8 +327,8 @@ private fun Context.executeLucidLauncherIntent() {
 private fun Context.executeMiniLauncherIntent() {
     val intent = Intent(Intent.ACTION_MAIN)
     intent.component = ComponentName(
-            "com.jiubang.go.mini.launcher",
-            "com.jiubang.go.mini.launcher.setting.MiniLauncherSettingActivity")
+        "com.jiubang.go.mini.launcher",
+        "com.jiubang.go.mini.launcher.setting.MiniLauncherSettingActivity")
     startActivity(intent)
 }
 

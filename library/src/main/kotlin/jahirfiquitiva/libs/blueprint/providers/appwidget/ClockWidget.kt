@@ -22,25 +22,25 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import ca.allanwang.kau.utils.isAppInstalled
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.kuper.helpers.extensions.isAppInstalled
 
 class ClockWidget : AppWidgetProvider() {
     @Suppress("NAME_SHADOWING")
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
         val packages: Array<String> = arrayOf(
-                "com.android.alarmclock",
-                "com.android.deskclock",
-                "com.google.android.deskclock",
-                "com.asus.alarmclock",
-                "com.asus.deskclock",
-                "com.htc.android.worldclock",
-                "com.lge.clock",
-                "com.motorola.blur.alarmclock",
-                "com.sec.android.app.clockpackage",
-                "com.sonyericsson.alarm",
-                "com.sonyericsson.organizer")
+            "com.android.alarmclock",
+            "com.android.deskclock",
+            "com.google.android.deskclock",
+            "com.asus.alarmclock",
+            "com.asus.deskclock",
+            "com.htc.android.worldclock",
+            "com.lge.clock",
+            "com.motorola.blur.alarmclock",
+            "com.sec.android.app.clockpackage",
+            "com.sonyericsson.alarm",
+            "com.sonyericsson.organizer")
         val action = intent?.action
         var foundApp = false
         val pm = context?.packageManager
@@ -59,11 +59,11 @@ class ClockWidget : AppWidgetProvider() {
             }
             if (foundApp) {
                 rViews.setOnClickPendingIntent(
-                        R.id.clockWidget,
-                        PendingIntent.getActivity(context, 0, intent, 0))
+                    R.id.clockWidget,
+                    PendingIntent.getActivity(context, 0, intent, 0))
             }
             val ids = AppWidgetManager.getInstance(context)
-                    .getAppWidgetIds(ComponentName(context, ClockWidget::class.java))
+                .getAppWidgetIds(ComponentName(context, ClockWidget::class.java))
             ids.forEach { AppWidgetManager.getInstance(context).updateAppWidget(it, rViews) }
         }
     }

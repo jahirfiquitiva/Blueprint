@@ -44,8 +44,8 @@ class NonSwipeableViewPager : ViewPager {
     
     internal class CustomScroller(context: Context) : Scroller(context, DecelerateInterpolator()) {
         override fun startScroll(
-                startX: Int, startY: Int, dx: Int, dy: Int,
-                duration: Int
+            startX: Int, startY: Int, dx: Int, dy: Int,
+            duration: Int
                                 ) = super.startScroll(startX, startY, dx, dy, 350)
     }
 }

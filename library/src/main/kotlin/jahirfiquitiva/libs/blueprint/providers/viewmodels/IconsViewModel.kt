@@ -17,16 +17,16 @@ package jahirfiquitiva.libs.blueprint.providers.viewmodels
 
 import android.content.Context
 import android.util.Log
-import ca.allanwang.kau.utils.boolean
 import jahirfiquitiva.libs.archhelpers.viewmodels.ListViewModel
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
-import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
-import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getResource
-import jahirfiquitiva.libs.kauextensions.extensions.stringArray
+import jahirfiquitiva.libs.kext.extensions.boolean
+import jahirfiquitiva.libs.kext.extensions.formatCorrectly
+import jahirfiquitiva.libs.kext.extensions.getAppName
+import jahirfiquitiva.libs.kext.extensions.resource
+import jahirfiquitiva.libs.kext.extensions.stringArray
 import org.xmlpull.v1.XmlPullParser
 
 class IconsViewModel : ListViewModel<Context, IconsCategory>() {
@@ -46,21 +46,21 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                                     categories.add(category)
                                 }
                                 category = IconsCategory(
-                                        parser.getAttributeValue(null, "title")
-                                                .formatCorrectly().blueprintFormat())
+                                    parser.getAttributeValue(null, "title")
+                                        .formatCorrectly().blueprintFormat())
                             } else if (tag == "item") {
                                 if (category != null) {
                                     val iconName = parser.getAttributeValue(null, "drawable")
-                                    val iconRes = param.getResource(iconName)
+                                    val iconRes = param.resource(iconName)
                                     if (iconRes > 0) {
                                         category.addIcon(
-                                                Icon(
-                                                        iconName.formatCorrectly().blueprintFormat(),
-                                                        iconRes))
+                                            Icon(
+                                                iconName.formatCorrectly().blueprintFormat(),
+                                                iconRes))
                                     } else {
                                         Log.e(
-                                                param.getAppName(),
-                                                "Could NOT find icon with name '$iconName'")
+                                            param.getAppName(),
+                                            "Could NOT find icon with name '$iconName'")
                                     }
                                 }
                             }
@@ -78,18 +78,19 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                 parser?.close()
             }
         } else {
-            param.stringArray(R.array.icon_filters).forEach {
+            param.stringArray(R.array.icon_filters).orEmpty().forEach {
                 try {
                     val icons = ArrayList<Icon>()
                     param.stringArray(
-                            param.resources.getIdentifier(it, "array", param.packageName)).forEach {
-                        val iconRes = param.getResource(it)
-                        if (iconRes > 0) {
-                            icons += Icon(it.formatCorrectly().blueprintFormat(), iconRes)
-                        } else {
-                            Log.e(param.getAppName(), "Could NOT find icon with name '$it'")
+                        param.resources.getIdentifier(it, "array", param.packageName)).orEmpty()
+                        .forEach {
+                            val iconRes = param.resource(it)
+                            if (iconRes > 0) {
+                                icons += Icon(it.formatCorrectly().blueprintFormat(), iconRes)
+                            } else {
+                                Log.e(param.getAppName(), "Could NOT find icon with name '$it'")
+                            }
                         }
-                    }
                     val filteredIcons = ArrayList(icons.distinctBy { it.name }.sortedBy { it.name })
                     if (filteredIcons.isNotEmpty()) {
                         val category = IconsCategory(it.formatCorrectly().blueprintFormat())

@@ -22,16 +22,16 @@ internal fun Context.getLocalizedName(pckg: String, defaultName: String): String
     var appName: String? = null
     try {
         val appInfo = packageManager.getApplicationInfo(
-                pckg, android.content.pm.PackageManager.GET_META_DATA)
+            pckg, android.content.pm.PackageManager.GET_META_DATA)
         try {
             val res = packageManager.getResourcesForApplication(pckg)
             val altCntxt =
-                    createPackageContext(pckg, Context.CONTEXT_IGNORE_SECURITY)
+                createPackageContext(pckg, Context.CONTEXT_IGNORE_SECURITY)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 val configuration = res.configuration
                 configuration.setLocale(java.util.Locale("en-US"))
                 appName = altCntxt.createConfigurationContext(configuration)
-                        .getString(appInfo.labelRes)
+                    .getString(appInfo.labelRes)
             }
         } catch (e: Exception) {
             // Do nothing

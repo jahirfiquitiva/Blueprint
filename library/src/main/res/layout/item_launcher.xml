@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
+<jahirfiquitiva.libs.kext.ui.widgets.CustomCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -32,7 +32,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
+        <jahirfiquitiva.libs.kext.ui.widgets.SquaredImageView
             android:id="@+id/launcher_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -59,4 +59,4 @@
 
     </LinearLayout>
 
-</jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView>
+</jahirfiquitiva.libs.kext.ui.widgets.CustomCardView>

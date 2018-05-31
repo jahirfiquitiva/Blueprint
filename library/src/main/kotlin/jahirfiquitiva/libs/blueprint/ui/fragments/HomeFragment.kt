@@ -22,8 +22,8 @@ import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.openLink
 import ca.allanwang.kau.utils.setPaddingBottom
-import ca.allanwang.kau.utils.startLink
 import com.bumptech.glide.Glide
 import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
@@ -39,10 +39,10 @@ import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.PreviewCardHolder
 import jahirfiquitiva.libs.frames.providers.viewmodels.WallpapersViewModel
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getDrawable
-import jahirfiquitiva.libs.kauextensions.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.activity
+import jahirfiquitiva.libs.kext.extensions.drawable
+import jahirfiquitiva.libs.kext.extensions.getAppName
+import jahirfiquitiva.libs.kext.extensions.hasContent
 import java.lang.ref.WeakReference
 
 @Suppress("DEPRECATION")
@@ -60,9 +60,9 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     private val homeAdapter: HomeAdapter? by lazy {
         HomeAdapter(
-                WeakReference(activity),
-                iconsModel.getData().orEmpty().size,
-                wallsModel.getData().orEmpty().size) {
+            WeakReference(activity),
+            iconsModel.getData().orEmpty().size,
+            wallsModel.getData().orEmpty().size) {
             onItemClicked(it, false)
         }
     }
@@ -73,7 +73,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
             return if (picName.orEmpty().hasContent()) {
                 activity?.let {
                     try {
-                        picName?.let { s -> it.getDrawable(s) }
+                        picName?.let { s -> it.drawable(s) }
                     } catch (ignored: Exception) {
                         null
                     }
@@ -106,7 +106,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     }
     
     override fun loadDataFromViewModel() {
-        actv {
+        activity {
             model.loadData(it)
             iconsModel.loadData(it)
             wallsModel.loadData(it)
@@ -117,8 +117,8 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun initUI(content: View) {
         previewCardHolder = PreviewCardHolder(
-                IconsAdapter(context?.let { Glide.with(it) }, true),
-                content.findViewById(R.id.icons_preview_card))
+            IconsAdapter(context?.let { Glide.with(it) }, true),
+            content.findViewById(R.id.icons_preview_card))
         
         nestedScroll = content.findViewById(R.id.nested_scroll)
         
@@ -148,15 +148,15 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         recyclerView?.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView?.adapter = homeAdapter
         
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         
-        actv {
+        activity {
             (it as? BaseBlueprintActivity)?.let {
                 it.requestWallpaperPermission(
-                        it.getString(R.string.permission_request_wallpaper, it.getAppName())) {
+                    it.getString(R.string.permission_request_wallpaper, it.getAppName())) {
                     bindPreviewCard()
                 }
             }
@@ -166,7 +166,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     override fun onItemClicked(item: HomeItem, longClick: Boolean) {
         if (!longClick) {
             if (item.intent != null) context?.startActivity(item.intent)
-            else context?.startLink(item.url)
+            else context?.openLink(item.url)
         }
     }
     

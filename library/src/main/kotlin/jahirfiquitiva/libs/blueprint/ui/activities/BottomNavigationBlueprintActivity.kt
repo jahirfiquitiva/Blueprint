@@ -23,10 +23,10 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
-import jahirfiquitiva.libs.kauextensions.extensions.accentColor
-import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.cardBackgroundColor
-import jahirfiquitiva.libs.kauextensions.extensions.inactiveIconsColor
+import jahirfiquitiva.libs.kext.extensions.accentColor
+import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.cardBackgroundColor
+import jahirfiquitiva.libs.kext.extensions.inactiveIconsColor
 
 abstract class BottomNavigationBlueprintActivity : BaseBlueprintActivity() {
     
@@ -52,7 +52,7 @@ abstract class BottomNavigationBlueprintActivity : BaseBlueprintActivity() {
                 }
                 setOnTabSelectedListener { position, _ ->
                     return@setOnTabSelectedListener navigateToItem(
-                            getNavigationItems()[position], true)
+                        getNavigationItems()[position], true)
                 }
                 visible()
             }

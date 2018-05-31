@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
+<jahirfiquitiva.libs.kext.ui.widgets.SquaredImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/icon"

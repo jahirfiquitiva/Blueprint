@@ -37,6 +37,7 @@
 -keep class jahirfiquitiva.libs.frames.** { *; }
 -keep class jahirfiquitiva.libs.kuper.** { *; }
 -keep class jahirfiquitiva.libs.blueprint.** { *; }
+-keep class jahirfiquitiva.libs.kext.** { *; }
 
 -keep class com.google.**
 -keep class autovalue.shaded.com.google.**
@@ -51,6 +52,15 @@
 -dontwarn okhttp3.**
 -dontwarn okio.**
 -dontwarn javax.annotation.**
+
+# Retain generic type information for use by reflection by converters and adapters.
+-keepattributes Signature
+# Retain service method parameters.
+-keepclassmembernames,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+# Ignore annotation used for build tooling.
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 
 -dontwarn
 -ignorewarnings

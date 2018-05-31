@@ -26,7 +26,6 @@ import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
-import ca.allanwang.kau.utils.integer
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
@@ -44,10 +43,11 @@ import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER
 import jahirfiquitiva.libs.frames.helpers.utils.IMAGE_PICKER
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.ctxt
-import jahirfiquitiva.libs.kauextensions.extensions.getUri
-import jahirfiquitiva.libs.kauextensions.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.activity
+import jahirfiquitiva.libs.kext.extensions.ctxt
+import jahirfiquitiva.libs.kext.extensions.getUri
+import jahirfiquitiva.libs.kext.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.int
 
 @Suppress("DEPRECATION")
 class IconsFragment : ViewModelFragment<Icon>() {
@@ -79,7 +79,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         }
     }
     
-    fun doSearch(search: String = "") {
+    fun doSearch(search: String = "", closed: Boolean = false) {
         if (search.hasContent()) {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
@@ -88,7 +88,8 @@ class IconsFragment : ViewModelFragment<Icon>() {
             recyclerView?.setEmptyText(R.string.empty_section)
         }
         setAdapterItems(ArrayList(model.getData().orEmpty()), search)
-        scrollToTop()
+        if (!closed)
+            scrollToTop()
     }
     
     fun scrollToTop() {
@@ -111,7 +112,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         categories.forEach { category ->
             if (filteredBy.hasContent())
                 icons.addAll(
-                        category.getIcons().jfilter { validIconFilter(filteredBy, it, category) })
+                    category.getIcons().jfilter { validIconFilter(filteredBy, it, category) })
             else icons.addAll(category.getIcons())
         }
         adapter?.setItems(ArrayList(icons.distinctBy { it.name }.sortedBy { it.name }))
@@ -138,16 +139,16 @@ class IconsFragment : ViewModelFragment<Icon>() {
     
     override fun onDestroyView() {
         super.onDestroyView()
-        actv { dialog?.dismiss(it, IconDialog.TAG) }
+        activity { dialog?.dismiss(it, IconDialog.TAG) }
     }
     
     @SuppressLint("MissingSuperCall")
     override fun onDestroy() {
         super.onDestroy()
-        actv { dialog?.dismiss(it, IconDialog.TAG) }
+        activity { dialog?.dismiss(it, IconDialog.TAG) }
     }
     
-    override fun loadDataFromViewModel() = actv { model.loadData(it) }
+    override fun loadDataFromViewModel() = activity { model.loadData(it) }
     
     override fun getContentLayout(): Int = R.layout.section_layout
     
@@ -185,9 +186,9 @@ class IconsFragment : ViewModelFragment<Icon>() {
         recyclerView?.setLoadingText(R.string.loading_section)
         
         recyclerView?.adapter = adapter
-        val columns = ctxt.integer(R.integer.icons_columns)
+        val columns = ctxt.int(R.integer.icons_columns)
         recyclerView?.layoutManager =
-                GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
+            GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
     }
@@ -197,7 +198,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             if (pickerKey != 0) {
                 pickIcon(item)
             } else {
-                actv {
+                activity {
                     dialog?.dismiss(it, IconDialog.TAG)
                     dialog = IconDialog()
                     dialog?.show(it, item.name, item.icon, configs.animationsEnabled)
@@ -207,11 +208,11 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     private fun pickIcon(item: Icon) {
-        actv { activity ->
+        activity { activity ->
             val intent = Intent()
             val bitmap: Bitmap? = try {
                 val drawable =
-                        ResourcesCompat.getDrawable(resources, item.icon, null) as BitmapDrawable?
+                    ResourcesCompat.getDrawable(resources, item.icon, null) as BitmapDrawable?
                 drawable?.bitmap ?: BitmapFactory.decodeResource(resources, item.icon)
             } catch (e: Exception) {
                 null

@@ -11,10 +11,10 @@ abstract class RequestsCallback {
     abstract fun onAppsLoaded(apps: ArrayList<App>)
     
     abstract fun onRequestLimited(
-            context: Context,
-            @IconRequest.State reason: Int,
-            requestsLeft: Int,
-            millis: Long
+        context: Context,
+        @IconRequest.State reason: Int,
+        requestsLeft: Int,
+        millis: Long
                                  )
     
     abstract fun onRequestEmpty(context: Context)

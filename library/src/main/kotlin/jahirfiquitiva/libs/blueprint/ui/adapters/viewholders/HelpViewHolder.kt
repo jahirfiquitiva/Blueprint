@@ -20,7 +20,7 @@ import android.view.View
 import android.widget.TextView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
-import jahirfiquitiva.libs.kauextensions.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.bind
 
 class HelpViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val question: TextView? by bind(R.id.help_question)

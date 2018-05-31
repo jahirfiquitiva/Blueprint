@@ -32,7 +32,7 @@ class NonClickableRecyclerView : RecyclerView {
     }
     
     constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int)
-            : super(context, attributeSet, defStyleAttr) {
+        : super(context, attributeSet, defStyleAttr) {
         isNestedScrollingEnabled = false
     }
     

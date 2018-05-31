@@ -25,5 +25,5 @@ class CreditsActivity : CreditsActivity() {
     override fun darkTheme(): Int = R.style.BlueprintDarkTheme
     override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme
     override fun transparentTheme(): Int = R.style.BlueprintTransparentTheme
-    override fun getTranslationSite(): String = "http://j.mp/BlueprintTranslations"
+    override fun getTranslationSite(): String = "http://j.mp/Trnsl8BP"
 }

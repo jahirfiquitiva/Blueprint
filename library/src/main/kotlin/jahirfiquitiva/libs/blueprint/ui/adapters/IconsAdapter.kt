@@ -24,14 +24,14 @@ import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.IconViewHolder
 
 class IconsAdapter(
-        private val manager: RequestManager?,
-        private val fromPreviews: Boolean = false,
-        private val listener: (Icon) -> Unit = {}
+    private val manager: RequestManager?,
+    private val fromPreviews: Boolean = false,
+    private val listener: (Icon) -> Unit = {}
                   ) :
-        RecyclerViewListAdapter<Icon, IconViewHolder>() {
+    RecyclerViewListAdapter<Icon, IconViewHolder>() {
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder =
-            IconViewHolder(parent.inflate(R.layout.item_icon))
+        IconViewHolder(parent.inflate(R.layout.item_icon))
     
     override fun doBind(holder: IconViewHolder, position: Int, shouldAnimate: Boolean) {
         if (fromPreviews) {

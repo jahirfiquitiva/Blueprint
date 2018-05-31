@@ -18,8 +18,6 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
-import ca.allanwang.kau.utils.integer
-import ca.allanwang.kau.utils.isAppInstalled
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
@@ -34,11 +32,14 @@ import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.LaunchersAdapter
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.ctxt
-import jahirfiquitiva.libs.kauextensions.extensions.dimenPixelSize
-import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.context
+import jahirfiquitiva.libs.kext.extensions.ctxt
+import jahirfiquitiva.libs.kext.extensions.dimenPixelSize
+import jahirfiquitiva.libs.kext.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.int
+import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.kuper.helpers.extensions.isAppInstalled
 
 @Suppress("DEPRECATION")
 internal class ApplyFragment : ViewModelFragment<Launcher>() {
@@ -55,7 +56,7 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
     }
     
     override fun loadDataFromViewModel() {
-        ctxt { launchersViewModel.loadData(it) }
+        context { launchersViewModel.loadData(it) }
     }
     
     override fun unregisterObservers() {
@@ -82,17 +83,17 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
         recyclerView?.setLoadingText(R.string.loading_section)
         
         recyclerView?.adapter = adapter
-        val columns = ctxt.integer(R.integer.icons_columns) - 1
+        val columns = ctxt.int(R.integer.icons_columns) - 1
         recyclerView?.layoutManager =
-                GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
+            GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
         recyclerView?.addItemDecoration(
-                GridSpacingItemDecoration(columns, dimenPixelSize(R.dimen.cards_margin)))
+            GridSpacingItemDecoration(columns, dimenPixelSize(R.dimen.cards_margin)))
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
     }
     
-    fun applyFilter(filter: String = "") {
+    fun applyFilter(filter: String = "", closed: Boolean = false) {
         if (filter.hasContent()) {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
@@ -104,12 +105,13 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
             recyclerView?.setEmptyText(R.string.empty_section)
             setAdapterItems(ArrayList(launchersViewModel.getData().orEmpty()))
         }
-        scrollToTop()
+        if (!closed)
+            scrollToTop()
     }
     
     private fun setAdapterItems(items: ArrayList<Launcher>) {
         adapter?.setItems(
-                ArrayList(items.distinct().sortedBy { !isLauncherInstalled(it.packageNames) }))
+            ArrayList(items.distinct().sortedBy { !isLauncherInstalled(it.packageNames) }))
     }
     
     private fun isLauncherInstalled(packages: Array<String>): Boolean {
@@ -122,7 +124,7 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
     override fun onItemClicked(item: Launcher, longClick: Boolean) {
         if (!longClick) {
             if (isLauncherInstalled(item.packageNames) || item.name.contains("lineage", true)
-                    || item.name.contains("google", true) || item.name.contains("pixel", true))
+                || item.name.contains("google", true) || item.name.contains("pixel", true))
                 context?.executeLauncherIntent(item.name)
             else context?.showLauncherNotInstalledDialog(item)
         }

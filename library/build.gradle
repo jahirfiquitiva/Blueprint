@@ -89,11 +89,8 @@ dependencies {
         exclude module: 'support-media-compat'
         exclude module: 'support-v4'
     }
-    // Bridge
-    api(libraries.bridge) {
-        exclude group: 'org.json', module: 'json'
-        exclude group: 'com.intellij', module: 'annotations'
-    }
+    // Retrofit
+    api libraries.retrofit
     // CounterFab
     api(libraries.counterFab) {
         exclude group: 'com.android.support'

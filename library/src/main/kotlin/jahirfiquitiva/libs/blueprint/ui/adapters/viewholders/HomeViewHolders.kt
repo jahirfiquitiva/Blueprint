@@ -23,32 +23,32 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.tint
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.HomeItem
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
-import jahirfiquitiva.libs.kauextensions.extensions.activeIconsColor
-import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.context
-import jahirfiquitiva.libs.kauextensions.extensions.dimenPixelSize
-import jahirfiquitiva.libs.kauextensions.extensions.getResource
-import jahirfiquitiva.libs.kauextensions.extensions.integer
-import jahirfiquitiva.libs.kauextensions.extensions.stringArray
-import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
-import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomCardView
-import java.util.Collections
+import jahirfiquitiva.libs.kext.extensions.activeIconsColor
+import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.context
+import jahirfiquitiva.libs.kext.extensions.dimenPixelSize
+import jahirfiquitiva.libs.kext.extensions.int
+import jahirfiquitiva.libs.kext.extensions.resource
+import jahirfiquitiva.libs.kext.extensions.stringArray
+import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.kext.ui.widgets.CustomCardView
 
 class PreviewCardHolder(
-        private val iconsAdapter: IconsAdapter,
-        itemView: View
+    private val iconsAdapter: IconsAdapter,
+    itemView: View
                        ) : SectionedViewHolder(itemView) {
     
     private val decoration: GridSpacingItemDecoration by lazy {
         GridSpacingItemDecoration(
-                integer(R.integer.icons_columns),
-                dimenPixelSize(R.dimen.cards_margin))
+            int(R.integer.icons_columns),
+            dimenPixelSize(R.dimen.cards_margin))
     }
     
     private val card: CustomCardView? by bind(R.id.icons_preview_card)
@@ -65,21 +65,21 @@ class PreviewCardHolder(
         iconsPreviewRV?.removeItemDecoration(decoration)
         iconsPreviewRV?.isNestedScrollingEnabled = false
         iconsPreviewRV?.layoutManager =
-                object : GridLayoutManager(context, integer(R.integer.icons_columns)) {
-                    override fun canScrollVertically(): Boolean = false
-                    override fun canScrollHorizontally(): Boolean = false
-                    override fun requestChildRectangleOnScreen(
-                            parent: RecyclerView?, child: View?,
-                            rect: Rect?,
-                            immediate: Boolean
-                                                              ): Boolean = false
-                    
-                    override fun requestChildRectangleOnScreen(
-                            parent: RecyclerView?, child: View?,
-                            rect: Rect?, immediate: Boolean,
-                            focusedChildVisible: Boolean
-                                                              ): Boolean = false
-                }
+            object : GridLayoutManager(context, int(R.integer.icons_columns)) {
+                override fun canScrollVertically(): Boolean = false
+                override fun canScrollHorizontally(): Boolean = false
+                override fun requestChildRectangleOnScreen(
+                    parent: RecyclerView?, child: View?,
+                    rect: Rect?,
+                    immediate: Boolean
+                                                          ): Boolean = false
+                
+                override fun requestChildRectangleOnScreen(
+                    parent: RecyclerView?, child: View?,
+                    rect: Rect?, immediate: Boolean,
+                    focusedChildVisible: Boolean
+                                                          ): Boolean = false
+            }
         iconsPreviewRV?.addItemDecoration(decoration)
         card?.setOnClickListener { loadIconsIntoAdapter() }
         loadIconsIntoAdapter()
@@ -89,14 +89,13 @@ class PreviewCardHolder(
         try {
             val icons = ArrayList<Icon>()
             val list = stringArray(R.array.icons_preview)
-            list.forEach {
-                icons.add(Icon(it, context.getResource(it)))
+            list?.forEach {
+                icons.add(Icon(it, context.resource(it)))
             }
             if (icons.isNotEmpty()) {
-                icons.distinctBy { it.name }
-                Collections.shuffle(icons)
+                icons.distinctBy { it.name }.shuffled()
                 correctList.clear()
-                for (i in 0 until integer(R.integer.icons_columns)) {
+                for (i in 0 until int(R.integer.icons_columns)) {
                     try {
                         correctList.add(icons[i])
                     } catch (ignored: Exception) {
@@ -142,7 +141,9 @@ class AppLinkItemHolder(itemView: View) : SectionedViewHolder(itemView) {
     fun setItem(item: HomeItem, listener: (HomeItem) -> Unit) = with(itemView) {
         title?.text = item.title
         description?.text = item.description
-        icon?.setImageDrawable(item.icon)
+        item.icon?.let {
+            icon?.setImageDrawable(it)
+        } ?: { icon?.gone() }()
         openIcon?.setImageDrawable(item.openIcon?.tint(context.activeIconsColor))
         itemView?.setOnClickListener { listener(item) }
     }

@@ -50,19 +50,19 @@ class LauncherIconRestorerActivity : AppCompatActivity() {
             if (!configs.launcherIconShown) {
                 configs.launcherIconShown = true
                 pm.setComponentEnabledSetting(
-                        component,
-                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                        PackageManager.DONT_KILL_APP)
+                    component,
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    PackageManager.DONT_KILL_APP)
                 content = getString(R.string.launcher_icon_restored, getString(R.string.app_name))
             } else {
                 content = getString(
-                        R.string.launcher_icon_not_restored,
-                        getString(R.string.app_name))
+                    R.string.launcher_icon_not_restored,
+                    getString(R.string.app_name))
             }
         } else {
             content = getString(
-                    R.string.launcher_icon_restorer_error,
-                    getString(R.string.app_name))
+                R.string.launcher_icon_restorer_error,
+                getString(R.string.app_name))
         }
         if (content.isNotEmpty()) Toast.makeText(this, content, Toast.LENGTH_LONG).show()
         finish()

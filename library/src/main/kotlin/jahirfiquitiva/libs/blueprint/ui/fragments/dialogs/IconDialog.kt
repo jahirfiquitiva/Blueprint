@@ -22,19 +22,18 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.graphics.Palette
 import android.widget.ImageView
 import ca.allanwang.kau.utils.isColorDark
-import ca.allanwang.kau.utils.scaleXY
-import ca.allanwang.kau.utils.toBitmap
 import com.afollestad.materialdialogs.DialogAction
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
-import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
-import jahirfiquitiva.libs.kauextensions.extensions.accentColor
-import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.bestSwatch
-import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
-import jahirfiquitiva.libs.kauextensions.extensions.usesDarkTheme
+import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
+import jahirfiquitiva.libs.kext.extensions.accentColor
+import jahirfiquitiva.libs.kext.extensions.actv
+import jahirfiquitiva.libs.kext.extensions.bestSwatch
+import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.isColorLight
+import jahirfiquitiva.libs.kext.extensions.toBitmap
+import jahirfiquitiva.libs.kext.extensions.usesDarkTheme
 
 @Suppress("DEPRECATION")
 class IconDialog : BasicDialogFragment() {
@@ -64,7 +63,7 @@ class IconDialog : BasicDialogFragment() {
     }
     
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = actv.buildMaterialDialog {
+        val dialog = actv.mdDialog {
             title(name)
             customView(R.layout.dialog_icon, false)
             positiveText(R.string.close)
@@ -77,7 +76,8 @@ class IconDialog : BasicDialogFragment() {
                 with(it) {
                     if (resId > 0) {
                         if (animate) {
-                            scaleXY = 0F
+                            scaleX = 0F
+                            scaleY = 0F
                             alpha = 0F
                         }
                         
@@ -86,44 +86,44 @@ class IconDialog : BasicDialogFragment() {
                         
                         icon?.let {
                             Palette.from(it).generate(
-                                    Palette.PaletteAsyncListener { palette ->
+                                Palette.PaletteAsyncListener { palette ->
+                                    if (animate) {
+                                        animate().scaleX(1F)
+                                            .scaleY(1F)
+                                            .alpha(1F)
+                                            .setStartDelay(
+                                                ICONS_ANIMATION_DURATION_DELAY / 2)
+                                            .setDuration(ICONS_ANIMATION_DURATION)
+                                            .start()
+                                    }
+                                    
+                                    val iconSwatch =
+                                        palette.bestSwatch ?: return@PaletteAsyncListener
+                                    val color = iconSwatch.rgb
+                                    val buttonText = dialog.getActionButton(
+                                        DialogAction.POSITIVE)
+                                        ?: return@PaletteAsyncListener
+                                    
+                                    val correctTextColor: Int
+                                    correctTextColor = if (actv.usesDarkTheme) {
+                                        if (color.isColorLight) color
+                                        else actv.accentColor
+                                    } else {
+                                        if (color.isColorDark) color
+                                        else actv.accentColor
+                                    }
+                                    
+                                    if (correctTextColor != 0) {
                                         if (animate) {
-                                            animate().scaleX(1F)
-                                                    .scaleY(1F)
-                                                    .alpha(1F)
-                                                    .setStartDelay(
-                                                            ICONS_ANIMATION_DURATION_DELAY / 2)
-                                                    .setDuration(ICONS_ANIMATION_DURATION)
-                                                    .start()
-                                        }
-                                        
-                                        val iconSwatch =
-                                                palette.bestSwatch ?: return@PaletteAsyncListener
-                                        val color = iconSwatch.rgb
-                                        val buttonText = dialog.getActionButton(
-                                                DialogAction.POSITIVE)
-                                                ?: return@PaletteAsyncListener
-                                        
-                                        val correctTextColor: Int
-                                        correctTextColor = if (actv.usesDarkTheme) {
-                                            if (color.isColorLight) color
-                                            else actv.accentColor
+                                            buttonText.alpha = 0F
+                                            buttonText.setTextColor(correctTextColor)
+                                            buttonText.animate().alpha(1F).setDuration(
+                                                ICONS_ANIMATION_DURATION).start()
                                         } else {
-                                            if (color.isColorDark) color
-                                            else actv.accentColor
+                                            buttonText.setTextColor(correctTextColor)
                                         }
-                                        
-                                        if (correctTextColor != 0) {
-                                            if (animate) {
-                                                buttonText.alpha = 0F
-                                                buttonText.setTextColor(correctTextColor)
-                                                buttonText.animate().alpha(1F).setDuration(
-                                                        ICONS_ANIMATION_DURATION).start()
-                                            } else {
-                                                buttonText.setTextColor(correctTextColor)
-                                            }
-                                        }
-                                    })
+                                    }
+                                })
                         }
                     }
                 }

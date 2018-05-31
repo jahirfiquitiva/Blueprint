@@ -22,5 +22,5 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.enabledLaunchers
 
 internal class LaunchersViewModel : ListViewModel<Context, Launcher>() {
     override fun internalLoad(param: Context): ArrayList<Launcher> =
-            ArrayList(param.enabledLaunchers)
+        ArrayList(param.enabledLaunchers)
 }

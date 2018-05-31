@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:gravity="center" />
 
-        <jahirfiquitiva.libs.kauextensions.ui.widgets.SquaredImageView
+        <jahirfiquitiva.libs.kext.ui.widgets.SquaredImageView
             android:id="@+id/icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

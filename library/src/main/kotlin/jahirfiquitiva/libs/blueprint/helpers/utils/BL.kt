@@ -13,11 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.blueprint.helpers.extensions
+package jahirfiquitiva.libs.blueprint.helpers.utils
 
-fun <A, B> ArrayList<Pair<A, B>>.getByKey(key: A): B? {
-    forEach {
-        if (it.first == key) return it.second
-    }
-    return null
-}
+import jahirfiquitiva.libs.kext.helpers.Rec
+
+internal object BL : Rec("Blueprint")

@@ -28,18 +28,14 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import ca.allanwang.kau.utils.dpToPx
-import ca.allanwang.kau.utils.drawable
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setMarginBottom
 import ca.allanwang.kau.utils.setMarginRight
-import ca.allanwang.kau.utils.showIf
 import ca.allanwang.kau.utils.snackbar
 import ca.allanwang.kau.utils.statusBarLight
-import ca.allanwang.kau.utils.string
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
-import ca.allanwang.kau.xml.showChangelog
 import com.andremion.counterfab.CounterFab
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
@@ -48,6 +44,7 @@ import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
+import jahirfiquitiva.libs.blueprint.helpers.extensions.showIf
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
@@ -70,32 +67,34 @@ import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
 import jahirfiquitiva.libs.blueprint.ui.items.FilterDrawerItem
 import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
-import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
+import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
+import jahirfiquitiva.libs.frames.helpers.extensions.showChanges
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_APPLIER
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER
 import jahirfiquitiva.libs.frames.helpers.utils.IMAGE_PICKER
 import jahirfiquitiva.libs.frames.ui.activities.base.BaseFramesActivity
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseFramesFragment
 import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
-import jahirfiquitiva.libs.kauextensions.extensions.accentColor
-import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.extensions.enableTranslucentStatusBar
-import jahirfiquitiva.libs.kauextensions.extensions.formatCorrectly
-import jahirfiquitiva.libs.kauextensions.extensions.getActiveIconsColorFor
-import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getPrimaryTextColorFor
-import jahirfiquitiva.libs.kauextensions.extensions.getSecondaryTextColorFor
-import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import jahirfiquitiva.libs.kauextensions.extensions.isColorLight
-import jahirfiquitiva.libs.kauextensions.extensions.primaryColor
-import jahirfiquitiva.libs.kauextensions.extensions.primaryDarkColor
-import jahirfiquitiva.libs.kauextensions.extensions.secondaryTextColor
-import jahirfiquitiva.libs.kauextensions.extensions.setItemVisibility
-import jahirfiquitiva.libs.kauextensions.extensions.stringArray
-import jahirfiquitiva.libs.kauextensions.extensions.tint
-import jahirfiquitiva.libs.kauextensions.ui.fragments.adapters.FragmentsPagerAdapter
-import jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
-import jahirfiquitiva.libs.kauextensions.ui.widgets.CustomSearchView
+import jahirfiquitiva.libs.kext.extensions.accentColor
+import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.drawable
+import jahirfiquitiva.libs.kext.extensions.enableTranslucentStatusBar
+import jahirfiquitiva.libs.kext.extensions.formatCorrectly
+import jahirfiquitiva.libs.kext.extensions.getActiveIconsColorFor
+import jahirfiquitiva.libs.kext.extensions.getAppName
+import jahirfiquitiva.libs.kext.extensions.getPrimaryTextColorFor
+import jahirfiquitiva.libs.kext.extensions.getSecondaryTextColorFor
+import jahirfiquitiva.libs.kext.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.isColorLight
+import jahirfiquitiva.libs.kext.extensions.primaryColor
+import jahirfiquitiva.libs.kext.extensions.primaryDarkColor
+import jahirfiquitiva.libs.kext.extensions.setItemVisibility
+import jahirfiquitiva.libs.kext.extensions.string
+import jahirfiquitiva.libs.kext.extensions.stringArray
+import jahirfiquitiva.libs.kext.extensions.tint
+import jahirfiquitiva.libs.kext.ui.fragments.adapters.FragmentsPagerAdapter
+import jahirfiquitiva.libs.kext.ui.layouts.FixedElevationAppBarLayout
+import jahirfiquitiva.libs.kext.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
 
 abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
@@ -128,7 +127,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
     
     internal var currentSectionId: Int =
-            if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
+        if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
         private set
     
     private val currentSectionPosition: Int
@@ -151,6 +150,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         toolbar?.bindToActivity(this, false)
+        toolbar?.enableScroll(true)
         initCurrentSectionId()
         initMainComponents(savedInstanceState)
         if (isIconsPicker) {
@@ -162,11 +162,11 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     private fun initCurrentSectionId(customId: Int = -1) {
         val defaultSectionId =
-                if (customId != -1) customId
-                else getNavigationItems().firstOrNull()?.id ?: DEFAULT_HOME_SECTION_ID
+            if (customId != -1) customId
+            else getNavigationItems().firstOrNull()?.id ?: DEFAULT_HOME_SECTION_ID
         currentSectionId = if (isIconsPicker) {
             getNavigationItems().firstOrNull { it.id == DEFAULT_ICONS_SECTION_ID }?.id
-                    ?: defaultSectionId
+                ?: defaultSectionId
         } else defaultSectionId
     }
     
@@ -177,8 +177,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         updateUI(getNavigationItemWithId(currentSectionId))
         if (!isIconsPicker) {
             RequestsViewModel.initAndLoadRequestApps(
-                    this, string(R.string.arctic_backend_host),
-                    string(R.string.arctic_backend_api_key))
+                this, string(R.string.arctic_backend_host),
+                string(R.string.arctic_backend_api_key))
         }
     }
     
@@ -193,14 +193,14 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                     fragmentsAdapter.addFragment(IconsFragment.create(pickerKey))
                 DEFAULT_WALLPAPERS_SECTION_ID ->
                     fragmentsAdapter.addFragment(
-                            if (isIconsPicker) defFragment else
-                                WallpapersFragment.create(getLicenseChecker() != null))
+                        if (isIconsPicker) defFragment else
+                            WallpapersFragment.create(getLicenseChecker() != null))
                 DEFAULT_APPLY_SECTION_ID ->
                     fragmentsAdapter.addFragment(
-                            if (isIconsPicker) defFragment else ApplyFragment())
+                        if (isIconsPicker) defFragment else ApplyFragment())
                 DEFAULT_REQUEST_SECTION_ID ->
                     fragmentsAdapter.addFragment(
-                            if (isIconsPicker) defFragment else RequestsFragment())
+                        if (isIconsPicker) defFragment else RequestsFragment())
                 else -> continue@loop
             }
         }
@@ -232,8 +232,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         }
         fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
         fab?.showIf(
-                (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
-                        || currentSectionId == DEFAULT_REQUEST_SECTION_ID)
+            (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
+                || currentSectionId == DEFAULT_REQUEST_SECTION_ID)
     }
     
     fun initFiltersDrawer(filters: ArrayList<String>, savedInstance: Bundle? = null) {
@@ -261,11 +261,11 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     private fun setupFiltersDrawerItems(builder: DrawerBuilder, filters: ArrayList<String>) {
         var index = 0
         var colorIndex = 0
-        val colors = stringArray(R.array.filters_colors)
+        val colors = stringArray(R.array.filters_colors).orEmpty()
         val listener = object : FilterCheckBoxHolder.StateChangeListener {
             override fun onStateChanged(
-                    checked: Boolean, title: String,
-                    fireFiltersListener: Boolean
+                checked: Boolean, title: String,
+                fireFiltersListener: Boolean
                                        ) {
                 if (activeFilters.contains(title) && !checked) {
                     activeFilters.remove(title)
@@ -283,10 +283,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                 val name = it.formatCorrectly().blueprintFormat()
                 if (!(name.contains("all", true))) {
                     builder.addDrawerItems(
-                            FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
-                                    .withColor(Color.parseColor(colors[colorIndex]))
-                                    .withListener(listener)
-                                    .withDivider(index < (filters.size - 1)))
+                        FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
+                            .withColor(Color.parseColor(colors[colorIndex]))
+                            .withListener(listener)
+                            .withDivider(index < (filters.size - 1)))
                     index += 1
                     colorIndex += 1
                 }
@@ -309,7 +309,11 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
             
             searchItem = it.findItem(R.id.search)
             searchView = searchItem?.actionView as? CustomSearchView
-            searchView?.onCollapse = { doSearch() }
+            searchView?.onExpand = { toolbar?.enableScroll(false) }
+            searchView?.onCollapse = {
+                toolbar?.enableScroll(true)
+                doSearch(closed = true)
+            }
             searchView?.onQueryChanged = { doSearch(it) }
             searchView?.onQuerySubmit = { doSearch(it) }
             searchView?.bindToItem(searchItem)
@@ -326,9 +330,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
             it.tint(getActiveIconsColorFor(primaryColor, 0.6F))
         }
         toolbar?.tint(
-                getPrimaryTextColorFor(primaryColor, 0.6F),
-                getSecondaryTextColorFor(primaryColor, 0.6F),
-                getActiveIconsColorFor(primaryColor, 0.6F))
+            getPrimaryTextColorFor(primaryColor, 0.6F),
+            getSecondaryTextColorFor(primaryColor, 0.6F),
+            getActiveIconsColorFor(primaryColor, 0.6F))
         return super.onCreateOptionsMenu(menu)
     }
     
@@ -340,7 +344,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                     refreshWallpapers()
                     refreshRequests()
                 }
-                R.id.changelog -> showChangelog(R.xml.changelog, secondaryTextColor)
+                R.id.changelog -> showChanges()
                 R.id.select_all -> toggleSelectAll()
                 R.id.templates -> launchKuperActivity()
                 R.id.help -> launchHelpActivity()
@@ -372,7 +376,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         super.onResume()
         invalidateOptionsMenu()
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition) as? HomeFragment)
-                ?.scrollToTop()
+            ?.scrollToTop()
     }
     
     override fun onPause() {
@@ -395,7 +399,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         val default = if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
         initCurrentSectionId(savedInstanceState?.getInt("currentSectionId", default) ?: default)
         
-        dialog = buildMaterialDialog {
+        dialog = mdDialog {
             content(R.string.loading)
             progress(true, 0)
             cancelable(false)
@@ -410,9 +414,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     }
     
     internal open fun navigateToItem(
-            item: NavigationItem,
-            fromClick: Boolean,
-            force: Boolean = false
+        item: NavigationItem,
+        fromClick: Boolean,
+        force: Boolean = false
                                     ): Boolean {
         return try {
             if (currentSectionId != item.id || force) {
@@ -442,9 +446,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         updateFAB()
         
         toolbar?.title = getString(
-                if (item.id == DEFAULT_HOME_SECTION_ID) R.string.app_name else item.title)
+            if (item.id == DEFAULT_HOME_SECTION_ID) R.string.app_name else item.title)
         supportActionBar?.title = getString(
-                if (item.id == DEFAULT_HOME_SECTION_ID) R.string.app_name else item.title)
+            if (item.id == DEFAULT_HOME_SECTION_ID) R.string.app_name else item.title)
         
         lockFiltersDrawer(item.id != DEFAULT_ICONS_SECTION_ID || iconsFilters.size <= 1)
     }
@@ -453,13 +457,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         val isInIconsSection = item.id == DEFAULT_ICONS_SECTION_ID
         menu.setItemVisibility(R.id.donate, donationsEnabled)
         menu.setItemVisibility(
-                R.id.search,
-                if (isInIconsSection) iconsFilters.isNotEmpty()
-                else item.id != DEFAULT_HOME_SECTION_ID)
+            R.id.search,
+            if (isInIconsSection) iconsFilters.isNotEmpty()
+            else item.id != DEFAULT_HOME_SECTION_ID)
         menu.setItemVisibility(R.id.filters, isInIconsSection && iconsFilters.size > 1)
         menu.setItemVisibility(
-                R.id.refresh,
-                item.id == DEFAULT_WALLPAPERS_SECTION_ID || item.id == DEFAULT_REQUEST_SECTION_ID)
+            R.id.refresh,
+            item.id == DEFAULT_WALLPAPERS_SECTION_ID || item.id == DEFAULT_REQUEST_SECTION_ID)
         menu.setItemVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_SECTION_ID)
         menu.setItemVisibility(R.id.templates, hasTemplates && !isIconsPicker)
         menu.setItemVisibility(R.id.about, hasBottomNavigation())
@@ -469,26 +473,26 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     private fun lockFiltersDrawer(lock: Boolean) {
         filtersDrawer?.drawerLayout?.setDrawerLockMode(
-                if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
-                Gravity.END)
+            if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
+            Gravity.END)
     }
     
     open fun getNavigationItems(): Array<NavigationItem> =
-            arrayOf(
-                    NavigationItem.HOME,
-                    NavigationItem.ICONS,
-                    NavigationItem.WALLPAPERS,
-                    NavigationItem.APPLY,
-                    NavigationItem.REQUESTS)
+        arrayOf(
+            NavigationItem.HOME,
+            NavigationItem.ICONS,
+            NavigationItem.WALLPAPERS,
+            NavigationItem.APPLY,
+            NavigationItem.REQUESTS)
     
     internal fun getNavigationItemWithId(id: Int): NavigationItem {
         return getNavigationItems().firstOrNull { it.id == id } ?: NavigationItem.HOME
     }
     
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
                                            ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 41) {
@@ -509,7 +513,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
             } else {
                 runOnUiThread {
                     destroyDialog()
-                    dialog = buildMaterialDialog {
+                    dialog = mdDialog {
                         title(R.string.no_selected_apps_title)
                         content(R.string.no_selected_apps_content)
                         positiveText(android.R.string.ok)
@@ -522,7 +526,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     private fun doSendRequest() {
         destroyDialog()
-        dialog = buildMaterialDialog {
+        dialog = mdDialog {
             content(R.string.building_request_dialog)
             progress(true, 0)
             cancelable(false)
@@ -530,41 +534,41 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         val ir = IconRequest.get()
         if (ir != null) {
             ir.send(
-                    object : OnRequestProgress() {
-                        override fun doWhenStarted() {
-                            runOnUiThread { dialog?.show() }
+                object : OnRequestProgress() {
+                    override fun doWhenStarted() {
+                        runOnUiThread { dialog?.show() }
+                    }
+                    
+                    override fun doOnError() {
+                        runOnUiThread {
+                            destroyDialog()
+                            dialog = mdDialog {
+                                title(R.string.error_title)
+                                content(R.string.requests_error)
+                                positiveText(android.R.string.ok)
+                            }
+                            dialog?.show()
                         }
-                        
-                        override fun doOnError() {
-                            runOnUiThread {
-                                destroyDialog()
-                                dialog = buildMaterialDialog {
-                                    title(R.string.error_title)
-                                    content(R.string.requests_error)
+                    }
+                    
+                    override fun doWhenReady(forArctic: Boolean) {
+                        runOnUiThread {
+                            destroyDialog()
+                            unselectAll()
+                            if (forArctic) {
+                                dialog = mdDialog {
+                                    title(R.string.request_upload_success)
+                                    content(R.string.request_upload_success_content)
                                     positiveText(android.R.string.ok)
                                 }
                                 dialog?.show()
                             }
                         }
-                        
-                        override fun doWhenReady(forArctic: Boolean) {
-                            runOnUiThread {
-                                destroyDialog()
-                                unselectAll()
-                                if (forArctic) {
-                                    dialog = buildMaterialDialog {
-                                        title(R.string.request_upload_success)
-                                        content(R.string.request_upload_success_content)
-                                        positiveText(android.R.string.ok)
-                                    }
-                                    dialog?.show()
-                                }
-                            }
-                        }
-                    })
+                    }
+                })
         } else {
             destroyDialog()
-            dialog = buildMaterialDialog {
+            dialog = mdDialog {
                 title(R.string.error_title)
                 content(R.string.requests_error)
                 positiveText(android.R.string.ok)
@@ -575,13 +579,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     internal fun applyIconFilters() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-                currentSectionPosition) as? IconsFragment)
-                ?.applyFilters(activeFilters)
+            currentSectionPosition) as? IconsFragment)
+            ?.applyFilters(activeFilters)
     }
     
     private fun scrollToTop() {
         val activeFragment =
-                (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
+            (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
         (activeFragment as? HomeFragment)?.scrollToTop()
         (activeFragment as? IconsFragment)?.scrollToTop()
         (activeFragment as? BaseFramesFragment<*, *>)?.scrollToTop()
@@ -589,36 +593,36 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         (activeFragment as? RequestsFragment)?.scrollToTop()
     }
     
-    private fun doSearch(search: String = "") {
+    private fun doSearch(search: String = "", closed: Boolean = false) {
         val activeFragment =
-                (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
-        (activeFragment as? IconsFragment)?.doSearch(search)
-        (activeFragment as? BaseFramesFragment<*, *>)?.applyFilter(search)
-        (activeFragment as? ApplyFragment)?.applyFilter(search)
-        (activeFragment as? RequestsFragment)?.applyFilter(search)
+            (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
+        (activeFragment as? IconsFragment)?.doSearch(search, closed)
+        (activeFragment as? BaseFramesFragment<*, *>)?.applyFilter(search, closed)
+        (activeFragment as? ApplyFragment)?.applyFilter(search, closed)
+        (activeFragment as? RequestsFragment)?.applyFilter(search, closed)
     }
     
     private fun refreshWallpapers() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
-                as? BaseFramesFragment<*, *>)?.reloadData(1)
+            as? BaseFramesFragment<*, *>)?.reloadData(1)
     }
     
     private fun refreshRequests() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-                currentSectionPosition) as? RequestsFragment)
-                ?.refresh()
+            currentSectionPosition) as? RequestsFragment)
+            ?.refresh()
     }
     
     private fun toggleSelectAll() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-                currentSectionPosition) as? RequestsFragment)
-                ?.toggleSelectAll()
+            currentSectionPosition) as? RequestsFragment)
+            ?.toggleSelectAll()
     }
     
     internal fun unselectAll() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-                currentSectionPosition) as? RequestsFragment)
-                ?.unselectAll()
+            currentSectionPosition) as? RequestsFragment)
+            ?.unselectAll()
     }
     
     internal fun launchHelpActivity() {
@@ -631,7 +635,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     internal fun postToFab(post: (CounterFab) -> Unit) {
         ((pager?.adapter as? FragmentsPagerAdapter)
-                ?.get(currentSectionId) as? RequestsFragment)?.let { fab?.let { post(it) } }
+            ?.get(currentSectionId) as? RequestsFragment)?.let { fab?.let { post(it) } }
     }
     
     internal fun requestWallpaperPermission(explanation: String, onGranted: () -> Unit) {

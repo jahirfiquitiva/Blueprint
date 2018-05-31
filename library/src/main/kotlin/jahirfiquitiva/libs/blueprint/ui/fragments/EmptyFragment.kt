@@ -20,8 +20,8 @@ import ca.allanwang.kau.utils.gone
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-import jahirfiquitiva.libs.kauextensions.extensions.bind
-import jahirfiquitiva.libs.kauextensions.ui.fragments.ItemFragment
+import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.ui.fragments.ItemFragment
 
 open class EmptyFragment : ItemFragment<Boolean>() {
     override fun getContentLayout(): Int = R.layout.section_layout

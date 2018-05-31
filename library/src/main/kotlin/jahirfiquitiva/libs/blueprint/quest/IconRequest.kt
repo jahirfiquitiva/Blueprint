@@ -22,7 +22,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageInfo
 import android.content.res.XmlResourceParser
 import android.os.Build
 import android.os.Bundle
@@ -36,18 +35,12 @@ import android.support.annotation.IntRange
 import android.support.annotation.WorkerThread
 import android.support.annotation.XmlRes
 import android.text.Html
-import android.util.Log
-import ca.allanwang.kau.utils.toBitmap
-import com.afollestad.bridge.Bridge
-import com.afollestad.bridge.Bridge.post
-import com.afollestad.bridge.MultipartForm
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.helpers.utils.BPLog
-import jahirfiquitiva.libs.blueprint.quest.events.EventState
+import jahirfiquitiva.libs.blueprint.helpers.utils.BL
+import jahirfiquitiva.libs.blueprint.quest.arctic.ArcticAPI
 import jahirfiquitiva.libs.blueprint.quest.events.OnRequestProgress
 import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
-import jahirfiquitiva.libs.blueprint.quest.prm.RemoteValidator
 import jahirfiquitiva.libs.blueprint.quest.utils.TimeUtils
 import jahirfiquitiva.libs.blueprint.quest.utils.getInstalledApps
 import jahirfiquitiva.libs.blueprint.quest.utils.safeDrawableName
@@ -56,15 +49,20 @@ import jahirfiquitiva.libs.blueprint.quest.utils.saveIcon
 import jahirfiquitiva.libs.blueprint.quest.utils.wipe
 import jahirfiquitiva.libs.blueprint.quest.utils.zip
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
-import jahirfiquitiva.libs.kauextensions.extensions.getAppName
-import jahirfiquitiva.libs.kauextensions.extensions.getUri
-import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import jahirfiquitiva.libs.kauextensions.extensions.readBoolean
-import jahirfiquitiva.libs.kauextensions.extensions.readEnum
-import jahirfiquitiva.libs.kauextensions.extensions.writeBoolean
-import jahirfiquitiva.libs.kauextensions.extensions.writeEnum
-import org.json.JSONObject
+import jahirfiquitiva.libs.kext.extensions.getAppVersion
+import jahirfiquitiva.libs.kext.extensions.getAppVersionCode
+import jahirfiquitiva.libs.kext.extensions.getUri
+import jahirfiquitiva.libs.kext.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.readBoolean
+import jahirfiquitiva.libs.kext.extensions.toBitmap
+import jahirfiquitiva.libs.kext.extensions.writeBoolean
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.xmlpull.v1.XmlPullParser
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -111,23 +109,19 @@ class IconRequest private constructor() {
             }
             
             if (builder?.includeDeviceInfo == true) {
-                sb.append("<br/><br/><br/>OS Version: ").append(System.getProperty("os.version"))
-                        .append("(").append(Build.VERSION.INCREMENTAL).append(")")
-                sb.append("<br/>OS API Level: ").append(Build.VERSION.SDK_INT)
-                sb.append("<br/>Device: ").append(Build.MODEL)
-                sb.append("<br/>Manufacturer: ").append(Build.MANUFACTURER)
-                sb.append("<br/>Model (and Product): ").append(Build.DEVICE).append(" (")
-                        .append(Build.PRODUCT).append(")")
-                val appInfo: PackageInfo?
-                try {
-                    appInfo = builder?.context?.packageManager?.getPackageInfo(
-                            builder?.context?.packageName, 0)
-                    sb.append("<br/>App Version Name: ").append(appInfo?.versionName ?: -1)
-                    sb.append("<br/>App Version Code: ").append(appInfo?.versionCode ?: -1)
-                } catch (e: Exception) {
-                    sb.append("<br/>There was an error getting application version.")
-                }
-                
+                sb.append(
+                    "<br/><br/><br/>OS Version: ${System.getProperty(
+                        "os.version")} (${Build.VERSION.INCREMENTAL})")
+                sb.append("<br/>OS API Level: ${Build.VERSION.SDK_INT}")
+                sb.append("<br/>Device: ${Build.MODEL}")
+                sb.append("<br/>Manufacturer:  ${Build.MANUFACTURER}")
+                sb.append("<br/>Model (and Product):  ${Build.DEVICE} (${Build.PRODUCT})")
+                sb.append("<br/>Blueprint Version: ${BuildConfig.LIB_VERSION}")
+                sb.append(
+                    "<br/>App Version: ${builder?.context?.getAppVersionCode()} " +
+                        "(${builder?.context?.getAppVersion()}) from " +
+                        "${builder?.context?.packageManager?.getInstallerPackageName(
+                            builder?.context?.packageName)}")
                 if (builder?.footer != null) {
                     sb.append("<br/>")
                     sb.append(builder?.footer?.replace("\n", "<br/>"))
@@ -152,12 +146,12 @@ class IconRequest private constructor() {
             if (savedTime == -1) return -1
             val elapsedTime = TimeUtils.currentTimeInMillis - savedTime
             val sdf = SimpleDateFormat("MMM dd,yyyy HH:mm:ss")
-            BPLog.d {
-                "Timer: [Last request was on: " + sdf.format(savedTime) + "] - [Right" +
-                        " now is: " + sdf.format(Date(TimeUtils.currentTimeInMillis)) + "] - " +
-                        "[Time Left: ~" +
-                        ((builder?.timeLimit ?: 0) - elapsedTime) / 1000 + " secs.]"
-            }
+            BL.d(
+                "Timer: [Last request was on: ${sdf.format(
+                    savedTime)}] - [Right now is: ${sdf.format(
+                    Date(TimeUtils.currentTimeInMillis))}] - [Time Left: ~${((builder?.timeLimit
+                    ?: 0) - elapsedTime) / 1000} secs.]"
+                )
             return (builder?.timeLimit ?: 0) - elapsedTime - 500
         }
     
@@ -208,10 +202,6 @@ class IconRequest private constructor() {
         var debugMode = false
         var prefs: SharedPreferences? = null
         var callback: RequestsCallback? = null
-        var loadingState: EventState? = EventState.DISABLED
-        var loadedState: EventState? = EventState.STICKIED
-        var selectionState: EventState? = EventState.DISABLED
-        var requestState: EventState? = EventState.DISABLED
         
         constructor()
         
@@ -281,7 +271,7 @@ class IconRequest private constructor() {
         fun withTimeLimit(minutes: Int, prefs: SharedPreferences?): Builder {
             timeLimit = TimeUnit.MINUTES.toMillis(minutes.toLong())
             this.prefs = prefs ?:
-                    context?.getSharedPreferences("RequestPrefs", Context.MODE_PRIVATE)
+                context?.getSharedPreferences("RequestPrefs", Context.MODE_PRIVATE)
             return this
         }
         
@@ -330,26 +320,6 @@ class IconRequest private constructor() {
             return this
         }
         
-        fun loadingEvents(state: EventState): Builder {
-            loadingState = state
-            return this
-        }
-        
-        fun loadedEvents(state: EventState): Builder {
-            loadedState = state
-            return this
-        }
-        
-        fun selectionEvents(state: EventState): Builder {
-            selectionState = state
-            return this
-        }
-        
-        fun requestEvents(state: EventState): Builder {
-            requestState = state
-            return this
-        }
-        
         fun setCallback(callback: RequestsCallback?): Builder {
             this.callback = callback
             return this
@@ -381,10 +351,6 @@ class IconRequest private constructor() {
             dest.writeBoolean(generateAppFilterJson)
             dest.writeBoolean(errorOnInvalidAppFilterDrawable)
             dest.writeBoolean(debugMode)
-            dest.writeEnum(loadingState)
-            dest.writeEnum(loadedState)
-            dest.writeEnum(selectionState)
-            dest.writeEnum(requestState)
         }
         
         protected constructor(parcel: Parcel) {
@@ -409,10 +375,6 @@ class IconRequest private constructor() {
             generateAppFilterJson = parcel.readBoolean()
             errorOnInvalidAppFilterDrawable = parcel.readBoolean()
             debugMode = parcel.readBoolean()
-            loadingState = parcel.readEnum<EventState>()
-            loadedState = parcel.readEnum<EventState>()
-            selectionState = parcel.readEnum<EventState>()
-            requestState = parcel.readEnum<EventState>()
         }
         
         companion object CREATOR : Parcelable.Creator<Builder> {
@@ -441,7 +403,7 @@ class IconRequest private constructor() {
                             try {
                                 // Read package and activity name
                                 val component =
-                                        parser?.getAttributeValue(null, "component").orEmpty()
+                                    parser?.getAttributeValue(null, "component").orEmpty()
                                 if (component.hasContent()) {
                                     if (!component.startsWith(":")) {
                                         appCode = component.substring(14, component.length - 1)
@@ -452,7 +414,8 @@ class IconRequest private constructor() {
                                     }
                                 }
                             } catch (e: Exception) {
-                                BPLog.d { "Error adding parsed appfilter item! Due to Exception: ${e.message}" }
+                                BL.e(
+                                    "Error adding parsed appfilter item! Due to Exception: ${e.message}")
                             }
                         }
                     }
@@ -476,7 +439,7 @@ class IconRequest private constructor() {
             return
         }
         Thread {
-            BPLog.d { "Loading unthemed installed apps..." }
+            BL.d("Loading unthemed installed apps...")
             val filter = loadFilterApps() ?: return@Thread
             apps.clear()
             apps.addAll(builder?.context?.getInstalledApps(filter, onProgress).orEmpty())
@@ -487,17 +450,17 @@ class IconRequest private constructor() {
     
     fun loadHighResIcons() {
         if (apps.isEmpty()) {
-            BPLog.d { "High res load failed; app list is empty" }
+            BL.d("High res load failed; app list is empty")
             return
         }
         Thread {
-            BPLog.d { "Getting high res icons for all apps..." }
+            BL.d("Getting high res icons for all apps...")
             apps.let {
                 for (app in it) {
                     builder?.context?.let { app.getHighResIcon(it) }
                 }
             }
-            BPLog.d { "High res icon retrieval finished..." }
+            BL.d("High res icon retrieval finished...")
         }.start()
     }
     
@@ -556,12 +519,10 @@ class IconRequest private constructor() {
     
     @WorkerThread
     private fun postError(msg: String, baseError: Exception?) {
-        BPLog.e { "$msg -- Error: ${baseError?.message}" }
+        BL.e("$msg -- Error: ${baseError?.message}")
     }
     
     fun send(onRequestProgress: OnRequestProgress?) {
-        BPLog.d { "Preparing your request to send..." }
-        
         var requestError = false
         
         if (apps.isEmpty()) {
@@ -608,7 +569,6 @@ class IconRequest private constructor() {
                 builder?.saveDir?.mkdirs()
                 
                 // Save app icons
-                BPLog.d { "Saving icons..." }
                 val appNames = ArrayList<String>()
                 var prevName = ""
                 var count = 1
@@ -650,7 +610,6 @@ class IconRequest private constructor() {
                 }
                 
                 // Create request files
-                BPLog.d { "Creating request files..." }
                 var xmlSb: StringBuilder? = null
                 var amSb: StringBuilder? = null
                 var trSb: StringBuilder? = null
@@ -658,11 +617,11 @@ class IconRequest private constructor() {
                 
                 if (builder?.generateAppFilterXml == true) {
                     xmlSb = StringBuilder(
-                            "<resources>\n" +
-                                    "\t<iconback img1=\"iconback\"/>\n" +
-                                    "\t<iconmask img1=\"iconmask\"/>\n" +
-                                    "\t<iconupon img1=\"iconupon\"/>\n" +
-                                    "\t<scale factor=\"1.0\"/>")
+                        "<resources>\n" +
+                            "\t<iconback img1=\"iconback\"/>\n" +
+                            "\t<iconmask img1=\"iconmask\"/>\n" +
+                            "\t<iconupon img1=\"iconupon\"/>\n" +
+                            "\t<scale factor=\"1.0\"/>")
                 }
                 
                 if (builder?.generateAppMapXml == true) {
@@ -671,19 +630,19 @@ class IconRequest private constructor() {
                 
                 if (builder?.generateThemeResourcesXml == true) {
                     trSb = StringBuilder(
-                            "<Theme version=\"1\">\n" +
-                                    "\t<Label value=\"" + builder?.appName +
-                                    "\"/>\n" +
-                                    "\t<Wallpaper image=\"wallpaper_01\"/>\n" +
-                                    "\t<LockScreenWallpaper " +
-                                    "image=\"wallpaper_02\"/>\n" +
-                                    "\t<ThemePreview image=\"preview1\"/>\n" +
-                                    "\t<ThemePreviewWork " +
-                                    "image=\"preview1\"/>\n" +
-                                    "\t<ThemePreviewMenu " +
-                                    "image=\"preview1\"/>\n" +
-                                    "\t<DockMenuAppIcon " +
-                                    "selector=\"drawer\"/>")
+                        "<Theme version=\"1\">\n" +
+                            "\t<Label value=\"" + builder?.appName +
+                            "\"/>\n" +
+                            "\t<Wallpaper image=\"wallpaper_01\"/>\n" +
+                            "\t<LockScreenWallpaper " +
+                            "image=\"wallpaper_02\"/>\n" +
+                            "\t<ThemePreview image=\"preview1\"/>\n" +
+                            "\t<ThemePreviewWork " +
+                            "image=\"preview1\"/>\n" +
+                            "\t<ThemePreviewMenu " +
+                            "image=\"preview1\"/>\n" +
+                            "\t<DockMenuAppIcon " +
+                            "selector=\"drawer\"/>")
                 }
                 
                 if (builder?.generateAppFilterJson == true) {
@@ -704,42 +663,42 @@ class IconRequest private constructor() {
                         xmlSb.append("\n\n")
                         if (builder?.comments == true) {
                             xmlSb.append("\t<!-- ")
-                                    .append(name)
-                                    .append(" -->\n")
+                                .append(name)
+                                .append(" -->\n")
                         }
                         xmlSb.append(
-                                "\t<item\n\t\tcomponent=\"ComponentInfo{${app.code}}\"\n\t\tdrawable=\"$drawableName\"/>")
+                            "\t<item\n\t\tcomponent=\"ComponentInfo{${app.code}}\"\n\t\tdrawable=\"$drawableName\"/>")
                     }
                     if (amSb != null) {
                         amSb.append("\n\n")
                         if (builder?.comments == true) {
                             amSb.append("\t<!-- ")
-                                    .append(name)
-                                    .append(" -->\n")
+                                .append(name)
+                                .append(" -->\n")
                         }
                         val rightCode = app.code.split(
-                                "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
+                            "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
                         amSb.append(
-                                "\t<item\n\t\tclass=\"$rightCode\"\n\t\tname=\"$drawableName\"/>")
+                            "\t<item\n\t\tclass=\"$rightCode\"\n\t\tname=\"$drawableName\"/>")
                     }
                     if (trSb != null) {
                         trSb.append("\n\n")
                         if (builder?.comments == true) {
                             trSb.append("\t<!-- ")
-                                    .append(name)
-                                    .append(" -->\n")
+                                .append(name)
+                                .append(" -->\n")
                         }
                         trSb.append(
-                                "\t<AppIcon\n\t\tname=\"${app.code}\"\n\t\timage=\"$drawableName\"/>")
+                            "\t<AppIcon\n\t\tname=\"${app.code}\"\n\t\timage=\"$drawableName\"/>")
                     }
                     if (jsonSb != null) {
                         if (index > 0) jsonSb.append(",")
                         jsonSb.append("\n\t\t{\n")
-                                .append("\t\t\t\"name\": \"$name\",\n")
-                                .append("\t\t\t\"pkg\": \"${app.pckg}\",\n")
-                                .append("\t\t\t\"componentInfo\": \"${app.code}\",\n")
-                                .append("\t\t\t\"drawable\": \"$drawableName\"")
-                                .append("\t\t}")
+                            .append("\t\t\t\"name\": \"$name\",\n")
+                            .append("\t\t\t\"pkg\": \"${app.pckg}\",\n")
+                            .append("\t\t\t\"componentInfo\": \"${app.code}\",\n")
+                            .append("\t\t\t\"drawable\": \"$drawableName\"")
+                            .append("\t\t}")
                     }
                     appNames.add(iconName)
                 }
@@ -805,47 +764,55 @@ class IconRequest private constructor() {
                 }
                 
                 if (uploadToArctic) {
-                    
-                    Bridge.config()
-                            .host(host)
-                            .defaultHeader("TokenID", apiKey)
-                            .defaultHeader("Accept", "application/json")
-                            .defaultHeader("User-Agent", "afollestad/icon-request")
-                            .validators(RemoteValidator())
-                    
                     try {
                         val zipFile = buildZip(
-                                date, arcticZipFiles.jfilter { it.name.endsWith("png", true) })
+                            date, arcticZipFiles.jfilter { it.name.endsWith("png", true) })
                         cleanFiles()
                         if (zipFile != null) {
-                            val form = MultipartForm()
-                            form.add("archive", zipFile)
-                            form.add("apps", JSONObject(jsonSb?.toString().orEmpty()).toString())
-                            
-                            post("/v1/request").throwIfNotSuccess().body(form).request()
-                            
-                            BPLog.d { "Request uploaded to the server!" }
-                            
-                            val amount = requestsLeft - selectedApps.size
-                            BPLog.d { "Request: Allowing $amount more requests." }
-                            saveRequestsLeft(if (amount < 0) 0 else amount)
-                            
-                            if (requestsLeft == 0) saveRequestMoment()
-                            
-                            cleanFiles(true)
-                            onRequestProgress?.doWhenReady(true)
+                            val api = ArcticAPI.connect(host, apiKey)
+                            val archiveFileBody =
+                                RequestBody.create(MediaType.parse("multipart/form-data"), zipFile)
+                            val archiveFile = MultipartBody.Part.createFormData(
+                                "archive", "icons.zip", archiveFileBody)
+                            val appsJson = MultipartBody.Part.createFormData(
+                                "apps", jsonSb?.toString().orEmpty())
+                            api.sendRequest(archiveFile, appsJson)
+                                .apply {
+                                    enqueue(object : Callback<Void> {
+                                        override fun onResponse(
+                                            call: Call<Void>?,
+                                            response: Response<Void>?
+                                                               ) {
+                                            val success = response?.isSuccessful ?: false
+                                            if (success) {
+                                                BL.d("Request sent!")
+                                                val amount = requestsLeft - selectedApps.size
+                                                saveRequestsLeft(if (amount < 0) 0 else amount)
+                                                
+                                                if (requestsLeft == 0) saveRequestMoment()
+                                                
+                                                cleanFiles(true)
+                                                onRequestProgress?.doWhenReady(true)
+                                            } else onFailure(null, null)
+                                        }
+                                        
+                                        override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                                            BL.d("Request error!")
+                                            cleanFiles(true)
+                                            onRequestProgress?.doOnError()
+                                        }
+                                    })
+                                }
                         } else {
                             cleanFiles(true)
                             onRequestProgress?.doOnError()
                         }
                     } catch (e: Exception) {
-                        Log.e(
-                                builder?.context?.getAppName() ?: "Blueprint",
-                                "Failed to send icons to the backend: ${e.message}")
+                        BL.e("Failed to send icons to the backend: ${e.message}")
                         try {
                             val errors = StringWriter()
                             e.printStackTrace(PrintWriter(errors))
-                            Log.e(builder?.context?.getAppName() ?: "Blueprint", errors.toString())
+                            BL.e(errors.toString())
                         } catch (ignored: Exception) {
                         }
                         val zipFile = buildZip(date, emailZipFiles)
@@ -875,13 +842,12 @@ class IconRequest private constructor() {
     
     private fun buildZip(date: String, filesToZip: ArrayList<File>): File? {
         // Zip everything into an archive
-        BPLog.d { "Creating ZIP..." }
         val zipFile = File(builder?.saveDir, "IconRequest-$date.zip")
         return try {
             zipFile.zip(filesToZip)
             zipFile
         } catch (e: Exception) {
-            BPLog.e { e.message }
+            BL.e(e.message)
             postError("Failed to create the request ZIP file: " + e.message, e)
             null
         }
@@ -890,21 +856,21 @@ class IconRequest private constructor() {
     private fun sendRequestViaEmail(zipFile: File, onRequestProgress: OnRequestProgress?) {
         try {
             cleanFiles()
-            BPLog.d { "Launching intent!" }
+            
             val zipUri = builder?.context?.let { zipFile.getUri(it) }
             val emailIntent = Intent(Intent.ACTION_SEND)
-                    .putExtra(Intent.EXTRA_EMAIL, arrayOf(builder?.email.orEmpty()))
-                    .putExtra(Intent.EXTRA_SUBJECT, builder?.subject)
-                    .putExtra(
-                            Intent.EXTRA_TEXT,
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                                Html.fromHtml(body, Html.FROM_HTML_MODE_LEGACY)
-                            else Html.fromHtml(body))
-                    .putExtra(Intent.EXTRA_STREAM, zipUri)
-                    .setType("application/zip")
+                .putExtra(Intent.EXTRA_EMAIL, arrayOf(builder?.email.orEmpty()))
+                .putExtra(Intent.EXTRA_SUBJECT, builder?.subject)
+                .putExtra(
+                    Intent.EXTRA_TEXT,
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                        Html.fromHtml(body, Html.FROM_HTML_MODE_LEGACY)
+                    else Html.fromHtml(body))
+                .putExtra(Intent.EXTRA_STREAM, zipUri)
+                .setType("application/zip")
             
             val amount = requestsLeft - selectedApps.size
-            BPLog.d { "Request: Allowing $amount more requests." }
+            
             saveRequestsLeft(if (amount < 0) 0 else amount)
             
             if (requestsLeft == 0)
@@ -913,12 +879,12 @@ class IconRequest private constructor() {
             onRequestProgress?.doWhenReady(false)
             
             (builder?.context as? Activity)?.startActivityForResult(
-                    Intent.createChooser(
-                            emailIntent, builder?.context?.getString(R.string.send_using)),
-                    INTENT_CODE) ?: {
+                Intent.createChooser(
+                    emailIntent, builder?.context?.getString(R.string.send_using)),
+                INTENT_CODE) ?: {
                 builder?.context?.startActivity(
-                        Intent.createChooser(
-                                emailIntent, builder?.context?.getString(R.string.send_using)))
+                    Intent.createChooser(
+                        emailIntent, builder?.context?.getString(R.string.send_using)))
             }()
         } catch (e: Exception) {
             e.printStackTrace()
@@ -927,17 +893,16 @@ class IconRequest private constructor() {
     }
     
     private fun cleanFiles(everything: Boolean = false) {
-        BPLog.d { "Cleaning up files..." }
         try {
             val files = builder?.saveDir?.listFiles()
             files?.forEach {
                 if (!it.isDirectory &&
-                        (everything || (it.name.endsWith(".png") || it.name.endsWith(".xml")))) {
+                    (everything || (it.name.endsWith(".png") || it.name.endsWith(".xml")))) {
                     it.delete()
                 }
             }
         } catch (e: Exception) {
-            BPLog.e { e.message }
+            BL.e(e.message)
         }
     }
     
@@ -948,30 +913,17 @@ class IconRequest private constructor() {
         if (max <= 0 || limit <= 0) return STATE_NORMAL
         
         val sum = if (toSend) 0 else 1
-        BPLog.d { "Selected apps: ${selectedApps.size} - Requests left: $requestsLeft" }
         
         if (selectedApps.size + sum > requestsLeft) {
             if (millisToFinish > 0) {
-                BPLog.d { "RequestState: Limited by time" }
-                BPLog.d {
-                    "RequestState: Millis to finish: $millisToFinish - " +
-                            "Request limit: ${builder?.timeLimit}"
-                }
                 return STATE_TIME_LIMITED
             } else if (requestsLeft == 0) {
                 saveRequestsLeft(-1)
-                BPLog.d { "RequestState: Restarting requests left." }
                 return STATE_NORMAL
             }
-            BPLog.d { "RequestState: Limited by requests - Requests left: $requestsLeft" }
             return STATE_LIMITED
         } else {
             if (millisToFinish > 0) {
-                BPLog.d { "RequestState: Limited by time" }
-                BPLog.d {
-                    "RequestState: Millis to finish: $millisToFinish - " +
-                            "Request limit: ${builder?.timeLimit}"
-                }
                 return STATE_TIME_LIMITED
             }
         }
@@ -980,7 +932,7 @@ class IconRequest private constructor() {
     
     private fun saveRequestMoment() {
         builder?.prefs?.edit()?.putLong(KEY_SAVED_TIME_MILLIS, TimeUtils.currentTimeInMillis)
-                ?.apply()
+            ?.apply()
     }
     
     private fun saveRequestsLeft(requestsLeft: Int) {

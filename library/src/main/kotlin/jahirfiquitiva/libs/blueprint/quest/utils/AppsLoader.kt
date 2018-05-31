@@ -4,21 +4,21 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
-import jahirfiquitiva.libs.blueprint.helpers.utils.BPLog
+import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.quest.App
 import java.util.ArrayList
 import java.util.HashSet
 
 internal fun Context.getInstalledApps(
-        filter: HashSet<String>,
-        onProgress: (progress: Int) -> Unit = {}
+    filter: HashSet<String>,
+    onProgress: (progress: Int) -> Unit = {}
                                      ): ArrayList<App> {
     
     val packagesList = try {
         packageManager.queryIntentActivities(
-                Intent("android.intent.action.MAIN")
-                        .addCategory("android.intent.category.LAUNCHER"),
-                PackageManager.GET_RESOLVED_FILTER)
+            Intent("android.intent.action.MAIN")
+                .addCategory("android.intent.category.LAUNCHER"),
+            PackageManager.GET_RESOLVED_FILTER)
     } catch (e: Exception) {
         ArrayList<ResolveInfo>()
     }
@@ -46,8 +46,8 @@ internal fun Context.getInstalledApps(
             if (name == null) name = ri.activityInfo.packageName
             
             val appToAdd = App(
-                    this.getLocalizedName(launchStr, name.toString()), launchStr,
-                    ri.activityInfo.packageName)
+                this.getLocalizedName(launchStr, name.toString()), launchStr,
+                ri.activityInfo.packageName)
             appToAdd.loadIcon(this)
             apps.add(appToAdd)
             loaded++
@@ -60,7 +60,7 @@ internal fun Context.getInstalledApps(
         }
     }
     
-    BPLog.d { "Loaded ${apps.size} total app(s), filtered out $filtered app(s)." }
+    BL.d("Loaded ${apps.size} total app(s), filtered out $filtered app(s).")
     try {
         onProgress(100)
     } catch (e: Exception) {

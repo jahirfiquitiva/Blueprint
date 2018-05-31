@@ -22,7 +22,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout
+    <jahirfiquitiva.libs.kext.ui.layouts.FixedElevationAppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             app:layout_collapseMode="pin"
             tools:ignore="UnusedAttribute" />
 
-    </jahirfiquitiva.libs.kauextensions.ui.layouts.FixedElevationAppBarLayout>
+    </jahirfiquitiva.libs.kext.ui.layouts.FixedElevationAppBarLayout>
 
     <jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
         android:id="@+id/pager"

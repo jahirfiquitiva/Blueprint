@@ -38,7 +38,7 @@ fun String.blueprintFormat(): String {
                 sb.append(it)
             } else {
                 sb.append(
-                        if (index == 0 || underscoreMode > 1) Character.toUpperCase(it) else it)
+                    if (index == 0 || underscoreMode > 1) Character.toUpperCase(it) else it)
             }
             if (underscoreMode < CAPS_LOCK) underscoreMode = 0
             foundFirstLetter = true

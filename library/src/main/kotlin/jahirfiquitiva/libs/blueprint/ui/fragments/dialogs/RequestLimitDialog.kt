@@ -18,12 +18,12 @@ package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
-import ca.allanwang.kau.utils.integer
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.millisToText
-import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
-import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.ctxt
+import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
+import jahirfiquitiva.libs.kext.extensions.actv
+import jahirfiquitiva.libs.kext.extensions.ctxt
+import jahirfiquitiva.libs.kext.extensions.int
 import java.util.concurrent.TimeUnit
 
 @Suppress("DEPRECATION")
@@ -61,28 +61,27 @@ class RequestLimitDialog : BasicDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val content = if (isTimeLimit) {
             val preContent = ctxt.getString(
-                    R.string.apps_limit_dialog_day,
-                    ctxt.millisToText(
-                            TimeUnit.MINUTES.toMillis(
-                                    ctxt.integer(R.integer.time_limit_in_minutes).toLong())))
+                R.string.apps_limit_dialog_day,
+                ctxt.millisToText(
+                    TimeUnit.MINUTES.toMillis(
+                        ctxt.int(R.integer.time_limit_in_minutes).toLong())))
             
             val contentExtra = when {
                 TimeUnit.MILLISECONDS.toSeconds(millis) >= 60 ->
                     ctxt.getString(
-                            R.string.apps_limit_dialog_day_extra,
-                            ctxt.millisToText(millis))
+                        R.string.apps_limit_dialog_day_extra, ctxt.millisToText(millis))
                 else -> ctxt.getString(R.string.apps_limit_dialog_day_extra_sec)
             }
-            preContent + " " + contentExtra
+            "$preContent $contentExtra"
         } else {
             when (appsLeft) {
-                ctxt.integer(R.integer.max_apps_to_request) ->
+                ctxt.int(R.integer.max_apps_to_request) ->
                     ctxt.getString(R.string.apps_limit_dialog, appsLeft.toString())
                 else -> ctxt.getString(R.string.apps_limit_dialog_more, appsLeft.toString())
             }
         }
         
-        return actv.buildMaterialDialog {
+        return actv.mdDialog {
             title(R.string.section_icon_request)
             content(content)
             positiveText(android.R.string.ok)

@@ -20,7 +20,6 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import ca.allanwang.kau.utils.dimenPixelSize
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setPaddingBottom
@@ -37,15 +36,16 @@ import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
-import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
+import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
-import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.ctxt
-import jahirfiquitiva.libs.kauextensions.extensions.hasContent
-import jahirfiquitiva.libs.kauextensions.extensions.isInHorizontalMode
-import jahirfiquitiva.libs.kauextensions.extensions.isLowRamDevice
-import jahirfiquitiva.libs.kauextensions.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.kext.extensions.activity
+import jahirfiquitiva.libs.kext.extensions.ctxt
+import jahirfiquitiva.libs.kext.extensions.dimenPixelSize
+import jahirfiquitiva.libs.kext.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.isInHorizontalMode
+import jahirfiquitiva.libs.kext.extensions.isLowRamDevice
+import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
 
 @Suppress("DEPRECATION")
 @SuppressLint("MissingSuperCall")
@@ -67,7 +67,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     private var actuallyVisible = false
     
     private val progressDialog: MaterialDialog? by lazy {
-        activity?.buildMaterialDialog {
+        activity?.mdDialog {
             content(R.string.loading_apps_to_request)
             progress(false, 100, true)
             positiveText(android.R.string.ok)
@@ -86,7 +86,7 @@ class RequestsFragment : ViewModelFragment<App>() {
         if (hasBottomNav) fastScroller?.setPaddingBottom(48.dpToPx)
         
         recyclerView?.itemAnimator =
-                if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
+            if (context?.isLowRamDevice == true) null else DefaultItemAnimator()
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)
@@ -100,17 +100,17 @@ class RequestsFragment : ViewModelFragment<App>() {
         spanCount = if (context?.isInHorizontalMode == true) 2 else 1
         recyclerView?.layoutManager = GridLayoutManager(context, spanCount)
         spacingDecoration = GridSpacingItemDecoration(
-                spanCount, ctxt.dimenPixelSize(R.dimen.cards_small_margin))
+            spanCount, ctxt.dimenPixelSize(R.dimen.cards_small_margin))
         recyclerView?.addItemDecoration(spacingDecoration)
         
         recyclerView?.addOnScrollListener(
-                object : RecyclerView.OnScrollListener() {
-                    override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                        super.onScrolled(recyclerView, dx, dy)
-                        if (dy > 0) doToFab { it -> it.hide() }
-                        else doToFab { it -> it.show() }
-                    }
-                })
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (dy > 0) doToFab { it -> it.hide() }
+                    else doToFab { it -> it.show() }
+                }
+            })
         
         recyclerView?.adapter = adapter
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
@@ -166,20 +166,21 @@ class RequestsFragment : ViewModelFragment<App>() {
         }
     }
     
-    fun applyFilter(filter: String = "") {
+    fun applyFilter(filter: String = "", closed: Boolean = false) {
         if (filter.hasContent()) {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
             adapter?.setItems(
-                    ArrayList(viewModel.getData().orEmpty()).jfilter {
-                        it.name.contains(filter, true)
-                    })
+                ArrayList(viewModel.getData().orEmpty()).jfilter {
+                    it.name.contains(filter, true)
+                })
         } else {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)
             viewModel.getData()?.let { adapter?.setItems(ArrayList(it)) }
         }
-        scrollToTop()
+        if (!closed)
+            scrollToTop()
     }
     
     override fun registerObservers() {
@@ -205,39 +206,37 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     private fun internalLoadData(force: Boolean) {
-        actv { actv ->
+        activity { actv ->
             viewModel.loadData(
-                    actv, {
-                otherDialog = actv.buildMaterialDialog {
+                actv, {
+                otherDialog = actv.mdDialog {
                     title(R.string.no_selected_apps_title)
                     content(R.string.no_selected_apps_content)
                     positiveText(android.R.string.ok)
                 }
                 if (actuallyVisible) otherDialog?.show()
             }, { reason, appsLeft, millis ->
-                        try {
-                            dialog = RequestLimitDialog()
-                            if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
-                                if (actuallyVisible) dialog?.show(actv, millis)
-                            } else {
-                                if (actuallyVisible) dialog?.show(actv, appsLeft)
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
+                    try {
+                        dialog = RequestLimitDialog()
+                        if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
+                            if (actuallyVisible) dialog?.show(actv, millis)
+                        } else {
+                            if (actuallyVisible) dialog?.show(actv, appsLeft)
                         }
-                    }, context?.getString(R.string.arctic_backend_host),
-                    context?.getString(R.string.arctic_backend_api_key),
-                    force) { progress ->
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }, context?.getString(R.string.arctic_backend_host),
+                context?.getString(R.string.arctic_backend_api_key),
+                force) { progress ->
                 if (canShowProgress) {
-                    actv {
-                        it.runOnUiThread {
-                            progressDialog?.setProgress(progress)
-                            progressDialog?.setOnDismissListener { canShowProgress = false }
-                            if (progress >= 100) {
-                                progressDialog?.dismiss()
-                            } else {
-                                if (actuallyVisible) progressDialog?.show()
-                            }
+                    actv.runOnUiThread {
+                        progressDialog?.setProgress(progress)
+                        progressDialog?.setOnDismissListener { canShowProgress = false }
+                        if (progress >= 100) {
+                            progressDialog?.dismiss()
+                        } else {
+                            if (actuallyVisible) progressDialog?.show()
                         }
                     }
                 }
@@ -259,7 +258,7 @@ class RequestsFragment : ViewModelFragment<App>() {
         otherDialog?.dismiss()
         otherDialog = null
         progressDialog?.dismiss()
-        actv { dialog?.dismiss(it, RequestLimitDialog.TAG) }
+        activity { dialog?.dismiss(it, RequestLimitDialog.TAG) }
         dialog = null
     }
     

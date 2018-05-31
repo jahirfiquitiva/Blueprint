@@ -62,7 +62,7 @@ class App : Parcelable {
         if (hiResIcon == null) {
             try {
                 hiResIcon = loadIcon(context) ?: context.packageManager.getApplicationIcon(pckg) ?:
-                        icon ?: appDefaultIcon
+                    icon ?: appDefaultIcon
             } catch (e: Exception) {
             }
         }
@@ -109,12 +109,12 @@ class App : Parcelable {
     fun getActivityInfo(context: Context): ActivityInfo? {
         return try {
             context.packageManager.getActivityInfo(
-                    ComponentName(
-                            code.split(
-                                    "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0],
-                            code.split(
-                                    "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]),
-                    PackageManager.GET_META_DATA)
+                ComponentName(
+                    code.split(
+                        "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0],
+                    code.split(
+                        "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]),
+                PackageManager.GET_META_DATA)
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }

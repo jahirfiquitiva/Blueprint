@@ -29,5 +29,5 @@ class HelpAdapter : RecyclerViewListAdapter<HelpItem, HelpViewHolder>() {
     }
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HelpViewHolder =
-            HelpViewHolder(parent.inflate(R.layout.item_help))
+        HelpViewHolder(parent.inflate(R.layout.item_help))
 }

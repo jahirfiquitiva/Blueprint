@@ -21,9 +21,9 @@ import android.preference.Preference
 import android.preference.SwitchPreference
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
-import jahirfiquitiva.libs.frames.helpers.extensions.buildMaterialDialog
-import jahirfiquitiva.libs.kauextensions.extensions.actv
-import jahirfiquitiva.libs.kauextensions.extensions.ctxt
+import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
+import jahirfiquitiva.libs.kext.extensions.actv
+import jahirfiquitiva.libs.kext.extensions.ctxt
 import jahirfiquitiva.libs.kuper.ui.fragments.SettingsFragment
 
 @Suppress("DEPRECATION")
@@ -40,7 +40,7 @@ class SettingsFragment : SettingsFragment() {
         }
         
         var componentName =
-                (context?.packageName ?: "") + "." + getString(R.string.main_activity_name)
+            (context?.packageName ?: "") + "." + getString(R.string.main_activity_name)
         val className: Class<*>? = try {
             Class.forName(componentName)
         } catch (e: Exception) {
@@ -58,44 +58,44 @@ class SettingsFragment : SettingsFragment() {
             hideIcon.isChecked = !configs.launcherIconShown
             
             hideIcon.onPreferenceChangeListener =
-                    Preference.OnPreferenceChangeListener { _, newValue ->
-                        val component = ComponentName(ctxt.packageName, componentName)
-                        if (newValue.toString().equals("true", true)) {
-                            clearDialog()
-                            dialog = actv.buildMaterialDialog {
-                                title(R.string.hideicon_dialog_title)
-                                content(R.string.hideicon_dialog_content)
-                                positiveText(android.R.string.yes)
-                                negativeText(android.R.string.no)
-                                onPositive { _, _ ->
-                                    if (configs.launcherIconShown) {
-                                        configs.launcherIconShown = false
-                                        ctxt.packageManager.setComponentEnabledSetting(
-                                                component,
-                                                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                                                PackageManager.DONT_KILL_APP)
-                                        hideIcon.isChecked = true
-                                    }
-                                }
-                                onNegative { _, _ ->
-                                    hideIcon.isChecked = false
-                                }
-                                dismissListener {
-                                    hideIcon.isChecked = false
+                Preference.OnPreferenceChangeListener { _, newValue ->
+                    val component = ComponentName(ctxt.packageName, componentName)
+                    if (newValue.toString().equals("true", true)) {
+                        clearDialog()
+                        dialog = actv.mdDialog {
+                            title(R.string.hideicon_dialog_title)
+                            content(R.string.hideicon_dialog_content)
+                            positiveText(android.R.string.yes)
+                            negativeText(android.R.string.no)
+                            onPositive { _, _ ->
+                                if (configs.launcherIconShown) {
+                                    configs.launcherIconShown = false
+                                    ctxt.packageManager.setComponentEnabledSetting(
+                                        component,
+                                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                                        PackageManager.DONT_KILL_APP)
+                                    hideIcon.isChecked = true
                                 }
                             }
-                            dialog?.show()
-                        } else {
-                            if (!configs.launcherIconShown) {
-                                configs.launcherIconShown = true
-                                ctxt.packageManager.setComponentEnabledSetting(
-                                        component,
-                                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                                        PackageManager.DONT_KILL_APP)
+                            onNegative { _, _ ->
+                                hideIcon.isChecked = false
+                            }
+                            dismissListener {
+                                hideIcon.isChecked = false
                             }
                         }
-                        true
+                        dialog?.show()
+                    } else {
+                        if (!configs.launcherIconShown) {
+                            configs.launcherIconShown = true
+                            ctxt.packageManager.setComponentEnabledSetting(
+                                component,
+                                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                                PackageManager.DONT_KILL_APP)
+                        }
                     }
+                    true
+                }
         } else {
             hideIcon.isEnabled = false
         }
