@@ -84,6 +84,7 @@
   <string name="hideicon_dialog_title">警告！</string>
   <string name="hideicon_dialog_content">您确定要在启动器中隐藏应用图标吗？\n应用可能会意外关闭，并且通知将被完全关闭。\n您可能需要在隐藏图标前阅读一下常见问题来了解如何重新显示应用图标。</string>
   <string name="send_using">通过以下应用发送</string>
+  <string name="no_mail">没有已安装的邮件应用</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>如何使用图标包？</item>
@@ -105,9 +106,9 @@
     <item>为什么该应用程序需要保持设备唤醒状态的权限？</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+    <item>你需要一个支持图标包的启动器。可以在本应用程序的“应用”页面中，或者 Play 商店的描述中找到受支持的启动器列表，</item>
+    <item>根据应用程序的导航方式类型，你需要侧滑调出导航抽屉并前往“应用图标”页面，或者通过点击底部导航栏的第4个图标。在那里你可以选择一个启动器来应用图标包。一些启动器不支持自动应用图标包，因此你需要在那样的启动器设定中手动应用。</item>
+    <item>回到本应用的主页并点击标题为“图标”的磁贴。</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>当图标包被移动到 SD 卡中时会发生这种情况，您应当把图标包程序安装在内置存储器中。</item>
