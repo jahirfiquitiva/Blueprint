@@ -782,7 +782,7 @@ class IconRequest private constructor() {
                                 .dataParts { _, _ ->
                                     listOf(DataPart(zipFile, "archive", fileType))
                                 }
-                                .response { request, response, _ ->
+                                .response { _, response, _ ->
                                     val success = response.statusCode in 200..299
                                     if (success) {
                                         BL.d("Request sent!")
