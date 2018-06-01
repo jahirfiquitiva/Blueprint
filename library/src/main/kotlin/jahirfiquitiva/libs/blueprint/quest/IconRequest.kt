@@ -61,6 +61,7 @@ import org.xmlpull.v1.XmlPullParser
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
+import java.net.URLConnection
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import java.util.Date
@@ -765,16 +766,23 @@ class IconRequest private constructor() {
                         cleanFiles()
                         if (zipFile != null) {
                             val rHost = if (host.endsWith("/")) host else "$host/"
+                            
+                            var fileType = URLConnection.guessContentTypeFromName(zipFile.name)
+                            if (fileType == null || fileType.trim().isEmpty())
+                                fileType = "application/octet-stream"
+                            
                             Fuel.upload(
-                                rHost,
+                                rHost + "v1/request",
                                 parameters = listOf("apps" to jsonSb?.toString().orEmpty()))
                                 .header(
                                     "TokenID" to apiKey,
                                     "Accept" to "application/json",
                                     "User-Agent" to "afollestad/icon-request"
                                        )
-                                .dataParts { _, _ -> listOf(DataPart(zipFile, "icons.zip")) }
-                                .response { _, response, _ ->
+                                .dataParts { _, _ ->
+                                    listOf(DataPart(zipFile, "archive", fileType))
+                                }
+                                .response { request, response, _ ->
                                     val success = response.statusCode in 200..299
                                     if (success) {
                                         BL.d("Request sent!")

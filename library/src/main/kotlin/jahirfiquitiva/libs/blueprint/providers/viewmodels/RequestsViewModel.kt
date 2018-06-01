@@ -164,7 +164,8 @@ class RequestsViewModel : ViewModel() {
                     BPKonfigs(context).prefs)
                 .maxSelectionCount(context.int(R.integer.max_apps_to_request))
                 .setCallback(callback)
-                .build().loadApps(onProgress)
+                .build()
+                .loadApps(onProgress)
         }
     }
 }
