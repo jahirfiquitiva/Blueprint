@@ -105,7 +105,7 @@
     <item>Warum benötigt die App die Berechtigung, den Schlafmodus des Geräts zu verhindern?</item>
   </string-array>
   <string-array name="answers">
-    <item>Du benötigst einen Lauchner mit Unterstützung für Icon Packs. Schaue in der Beschreibung im Google Play Store für unterstützte Launcher. Wenn du dir nicht sicher bist, welchen Launcher du nutzen solltest, gehe einfach zum Abschnitt \"Anwenden\" und wähle einen aus der Liste aus.</item>
+    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
     <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anwenden\" antippen, oder du musst das vierte Icon in der unteren Navigationsleiste antippen. Dort kannst du einen Launcher auswählen, mit dem du die Icons anwenden möchtest. Einige Launcher unterstützen keine automatische Anwendung und du musst dies manuell in den Einstellungen des Launcher tun.</item>
     <item>Gehe zurück zur Hauptseite der App und klicke auf die Karte mit dem Titel \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
