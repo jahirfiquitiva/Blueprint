@@ -107,9 +107,9 @@
   </string-array>
   <string-array name="answers">
     <item>你需要一个支持图标包的启动器。可以在本应用程序的“应用”页面中，或者 Play 商店的描述中找到受支持的启动器列表，</item>
-    <item>根据应用程序的导航方式类型，你需要侧滑调出导航抽屉并前往“应用图标”页面，或者通过点击底部导航栏的第4个图标。在那里你可以选择一个启动器来应用图标包。一些启动器不支持自动应用图标包，因此你需要在那样的启动器设定中手动应用。</item>
+    <item>根据应用程序的导航方式类型，你需要从左侧滑调出导航抽屉并前往“应用图标”页面，或者通过点击底部导航栏的第4个图标。在那里你可以选择一个启动器来应用图标包。一些启动器不支持自动应用图标包，因此你需要在那样的启动器设定中手动应用。</item>
     <item>回到本应用的主页并点击标题为“图标”的磁贴。</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+    <item>根据你所使用的启动器，你需要通过长按某个图标，在弹出菜单中选择“编辑”，或者长按某个图标拖拽至“编辑”框中。</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>当图标包被移动到 SD 卡中时会发生这种情况，您应当把图标包程序安装在内置存储器中。</item>
     <item>这个问题可能与您当前使用的启动器处理高分辨率的方式有关。您可以通过调整图标大小至 115 - 120% 的方式来解决这个问题。或者换一个启动器。</item>
