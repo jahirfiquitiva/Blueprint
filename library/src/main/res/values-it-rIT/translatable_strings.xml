@@ -105,7 +105,7 @@
     <item>Perché l\'app necessita del permesso per evitare che il telefono dorma?</item>
   </string-array>
   <string-array name="answers">
-    <item>Hai bisogno di un launcher che supporti gli icon pack. Controlla la descrizione del Google Play Store dei launcher supportati. Se non sei sicuro riguardo a quale launcher usare, vai alla sezione \"Applica\" e scegline uno dalla lista.</item>
+    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
     <item>A seconda del tipo di navigazione dell\'app, è necessario far scorrere il NavigationDrawer da sinistra e andare alla sezione \"Applica\" oppure scegliere la quarta icona dalla barra di navigazione in basso. Da lì puoi scegliere il launcher in cui vuoi applicare le icone. Alcuni launcher non supportano questa funzione quindi dovrai farlo manualmente dalle loro impostazioni.</item>
     <item>Torna alla sezione principale dell\'app e tocca il riquadro intitolato \"Icone\".</item>
     <item>A seconda del launcher che stai usando, o devi tenere premuto l\'icona e selezionare \"Modifica\" dal menu a comparsa, o tenere premuto l\'icona per poi spostarla in una casella di \"Modifica\".</item>
