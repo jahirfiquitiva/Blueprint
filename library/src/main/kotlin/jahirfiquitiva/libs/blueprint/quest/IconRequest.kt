@@ -448,40 +448,50 @@ class IconRequest private constructor() {
                 builder?.saveDir?.mkdirs()
                 
                 // Save app icons
-                val appNames = ArrayList<String>()
-                var prevName = ""
-                var count = 1
+                val correctList = ArrayList<Pair<String, App>>()
+                val iconsNames = ArrayList<Pair<String, Int>>()
+                
                 for (app in selectedApps) {
-                    var iconName = app.name.safeDrawableName()
-                    if (prevName.equals(iconName, true)) {
-                        iconName += "_" + count.toString()
-                        count += 1
-                    } else {
-                        count = 1
-                    }
                     val icon = builder?.context?.let {
                         app.getHighResIcon(it)?.toBitmap()
                     }
                     icon ?: continue
                     
+                    val iconName = app.name.safeDrawableName()
+                    var correctIconName = iconName
+                    
+                    val inList = iconsNames.find { it.first.equals(iconName, true) }
+                    if (inList != null) {
+                        correctIconName += "_${inList.second}"
+                    }
+                    
                     val iconFile: File? = File(
                         builder?.saveDir,
-                        if (uploadToArctic) "${app.pkg}.png"
-                        else "$iconName.png")
-                    appNames.add(iconName)
-                    iconFile?.let { emailZipFiles.add(it) }
+                        if (uploadToArctic) "${app.pkg}.png" else "$correctIconName.png")
                     
                     try {
                         iconFile?.saveIcon(icon)
+                        iconFile?.let { emailZipFiles.add(it) }
+                        
+                        val count =
+                            (iconsNames.find { it.first.equals(iconName, true) }?.second ?: 0) + 1
+                        try {
+                            iconsNames.removeAt(
+                                iconsNames.indexOfFirst { it.first.equals(iconName, true) }
+                                               )
+                        } catch (ignored: Exception) {
+                        }
+                        iconsNames += iconName to count
+                        
+                        correctList += correctIconName to app
                     } catch (e: Exception) {
-                        e.printStackTrace()
-                        postError("Failed to save icon \'$iconName\' due to error: ${e.message}", e)
+                        postError(
+                            "Failed to save icon \'$correctIconName\' due to error: ${e.message}",
+                            e)
                         cleanFiles(true)
                         sendRequestCallback?.doOnError()
                         return@Thread
                     }
-                    
-                    prevName = iconName
                 }
                 
                 // Create request files
@@ -514,51 +524,42 @@ class IconRequest private constructor() {
                     jsonSb = StringBuilder("{\n\t\"components\": [")
                 }
                 
-                var n = 1
-                appNames.clear()
-                for ((index, app) in selectedApps.withIndex()) {
-                    val name = app.name
-                    var iconName = name
-                    if (appNames.contains(iconName)) {
-                        iconName += "_$n"
-                        n += 1
-                    }
-                    
-                    val drawableName = iconName.safeDrawableName()
-                    
+                var isFirst = true
+                for ((iconName, app) in correctList) {
                     if (xmlSb != null) {
                         xmlSb.append("\n\n")
-                        xmlSb.append("\t<!-- $name -->\n")
+                        xmlSb.append("\t<!-- ${app.name} -->\n")
                         xmlSb.append(
-                            "\t<item\n\t\tcomponent=\"ComponentInfo{${app.comp}}\"\n\t\tdrawable=\"$drawableName\"/>")
+                            "\t<item\n\t\tcomponent=\"ComponentInfo{${app.comp}}\"\n\t\tdrawable=\"$iconName\"/>")
                     }
                     
                     if (amSb != null) {
                         amSb.append("\n\n")
-                        amSb.append("\t<!-- $name -->\n")
+                        amSb.append("\t<!-- ${app.name} -->\n")
                         val rightCode = app.comp.split(
                             "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
                         amSb.append(
-                            "\t<item\n\t\tclass=\"$rightCode\"\n\t\tname=\"$drawableName\"/>")
+                            "\t<item\n\t\tclass=\"$rightCode\"\n\t\tname=\"$iconName\"/>")
                     }
                     
                     if (trSb != null) {
                         trSb.append("\n\n")
-                        trSb.append("\t<!-- $name -->\n")
+                        trSb.append("\t<!-- ${app.name} -->\n")
                         trSb.append(
-                            "\t<AppIcon\n\t\tname=\"${app.comp}\"\n\t\timage=\"$drawableName\"/>")
+                            "\t<AppIcon\n\t\tname=\"${app.comp}\"\n\t\timage=\"$iconName\"/>")
                     }
                     
                     if (jsonSb != null) {
-                        if (index > 0) jsonSb.append(",")
+                        if (!isFirst) jsonSb.append(",")
                         jsonSb.append("\n\t\t{\n")
-                            .append("\t\t\t\"name\": \"$name\",\n")
+                            .append("\t\t\t\"name\": \"${app.name}\",\n")
                             .append("\t\t\t\"pkg\": \"${app.pkg}\",\n")
                             .append("\t\t\t\"componentInfo\": \"${app.comp}\",\n")
-                            .append("\t\t\t\"drawable\": \"$drawableName\"")
-                            .append("\t\t}")
+                            .append("\t\t\t\"drawable\": \"$iconName\"")
+                            .append("\n\t\t}")
                     }
-                    appNames.add(iconName)
+                    
+                    if (isFirst) isFirst = false
                 }
                 
                 val date = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
