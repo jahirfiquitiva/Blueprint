@@ -61,10 +61,19 @@ class MainActivity : BottomNavigationBlueprintActivity() {
      */
     override fun getNavigationItems(): Array<NavigationItem> {
         return arrayOf(
-                NavigationItem.HOME,
-                NavigationItem.ICONS,
-                NavigationItem.WALLPAPERS,
-                NavigationItem.APPLY,
-                NavigationItem.REQUESTS)
+            NavigationItem.HOME,
+            NavigationItem.ICONS,
+            NavigationItem.WALLPAPERS,
+            NavigationItem.APPLY,
+            NavigationItem.REQUESTS)
     }
+    
+    /**
+     * When set to true, the app will print warnings for duplicated components or missing icons from
+     * appfilter.xml
+     * 
+     * If set to BuildConfig.DEBUG, the app will print the warnings only while debugging the app
+     * (This is the safest option, so the apk you publish in PlayStore doesn't print them)
+     */
+    override fun debug(): Boolean = BuildConfig.DEBUG
 }
