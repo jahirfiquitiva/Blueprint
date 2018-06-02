@@ -1,6 +1,7 @@
 package jahirfiquitiva.libs.blueprint.quest.utils
 
 import android.graphics.Bitmap
+import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import java.io.Closeable
 import java.io.File
 import java.io.FileInputStream
@@ -37,7 +38,7 @@ internal fun File.saveIcon(icon: Bitmap) {
         icon.compress(Bitmap.CompressFormat.PNG, 100, os)
         os.flush()
     } catch (e: Exception) {
-        e.printStackTrace()
+        BL.e("Error", e)
     } finally {
         os?.closeQuietly()
     }
@@ -54,7 +55,7 @@ internal fun File.saveAll(content: ByteArray) {
         os.write(content)
         os.flush()
     } catch (e: Exception) {
-        e.printStackTrace()
+        BL.e("Error", e)
     } finally {
         os?.closeQuietly()
     }

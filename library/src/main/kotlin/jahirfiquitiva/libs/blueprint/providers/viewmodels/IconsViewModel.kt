@@ -16,15 +16,14 @@
 package jahirfiquitiva.libs.blueprint.providers.viewmodels
 
 import android.content.Context
-import android.util.Log
 import jahirfiquitiva.libs.archhelpers.viewmodels.ListViewModel
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.data.models.Icon
 import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
+import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.kext.extensions.boolean
 import jahirfiquitiva.libs.kext.extensions.formatCorrectly
-import jahirfiquitiva.libs.kext.extensions.getAppName
 import jahirfiquitiva.libs.kext.extensions.resource
 import jahirfiquitiva.libs.kext.extensions.stringArray
 import org.xmlpull.v1.XmlPullParser
@@ -32,7 +31,10 @@ import org.xmlpull.v1.XmlPullParser
 class IconsViewModel : ListViewModel<Context, IconsCategory>() {
     override fun internalLoad(param: Context): ArrayList<IconsCategory> {
         val categories: ArrayList<IconsCategory> = ArrayList()
-        if (param.boolean(R.bool.xml_drawable_enabled)) {
+        val readFromDrawableXml = param.boolean(R.bool.xml_drawable_enabled)
+        val fileName = if (readFromDrawableXml) "drawable.xml" else "icon_pack.xml"
+        
+        if (readFromDrawableXml) {
             val parser = param.resources.getXml(R.xml.drawable)
             try {
                 var event = parser.eventType
@@ -58,9 +60,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                                                 iconName.formatCorrectly().blueprintFormat(),
                                                 iconRes))
                                     } else {
-                                        Log.e(
-                                            param.getAppName(),
-                                            "Could NOT find icon with name '$iconName'")
+                                        reportIconNotFound(iconName, fileName)
                                     }
                                 }
                             }
@@ -72,8 +72,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                     categories.add(category)
                 }
             } catch (e: Exception) {
-                Log.e(param.getAppName(), e.message)
-                e.printStackTrace()
+                BL.e("Error", e)
             } finally {
                 parser?.close()
             }
@@ -88,7 +87,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                             if (iconRes > 0) {
                                 icons += Icon(it.formatCorrectly().blueprintFormat(), iconRes)
                             } else {
-                                Log.e(param.getAppName(), "Could NOT find icon with name '$it'")
+                                reportIconNotFound(it, fileName)
                             }
                         }
                     val filteredIcons = ArrayList(icons.distinctBy { it.name }.sortedBy { it.name })
@@ -98,10 +97,14 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                         categories.add(category)
                     }
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    BL.e("Error", e)
                 }
             }
         }
         return ArrayList(categories.distinctBy { it.title })
+    }
+    
+    private fun reportIconNotFound(iconName: String, fileName: String) {
+        BL.e("Could NOT find icon '$iconName' listed in '$fileName'")
     }
 }

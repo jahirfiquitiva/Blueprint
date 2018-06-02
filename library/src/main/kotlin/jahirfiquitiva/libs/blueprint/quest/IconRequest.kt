@@ -308,7 +308,7 @@ class IconRequest private constructor() {
                 eventType = parser?.next()
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            BL.e("Error", e)
         } finally {
             parser?.close()
         }
@@ -571,7 +571,7 @@ class IconRequest private constructor() {
                         appfilter.saveAll(xmlSb.toString())
                         emailZipFiles.add(appfilter)
                     } catch (e: Exception) {
-                        e.printStackTrace()
+                        BL.e("Error", e)
                         postError("Failed to save appfilter.xml file: ${e.message}", e)
                         cleanFiles(true)
                         sendRequestCallback?.doOnError()
@@ -586,7 +586,7 @@ class IconRequest private constructor() {
                         appmap.saveAll(amSb.toString())
                         emailZipFiles.add(appmap)
                     } catch (e: Exception) {
-                        e.printStackTrace()
+                        BL.e("Error", e)
                         postError("Failed to save appmap.xml file: ${e.message}", e)
                         cleanFiles(true)
                         sendRequestCallback?.doOnError()
@@ -601,7 +601,7 @@ class IconRequest private constructor() {
                         themeRes.saveAll(trSb.toString())
                         emailZipFiles.add(themeRes)
                     } catch (e: Exception) {
-                        e.printStackTrace()
+                        BL.e("Error", e)
                         postError("Failed to save theme_resources.xml file: ${e.message}", e)
                         cleanFiles(true)
                         sendRequestCallback?.doOnError()
@@ -745,7 +745,7 @@ class IconRequest private constructor() {
                         emailIntent, builder?.context?.getString(R.string.send_using)))
             }()
         } catch (e: Exception) {
-            e.printStackTrace()
+            BL.e("Error", e)
             sendRequestCallback?.doOnError()
         }
     }

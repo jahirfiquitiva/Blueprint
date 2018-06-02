@@ -175,11 +175,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         initFAB()
         initFiltersDrawer(iconsFilters, savedInstance)
         updateUI(getNavigationItemWithId(currentSectionId))
-        if (!isIconsPicker) {
-            RequestsViewModel.initAndLoadRequestApps(
-                this, string(R.string.arctic_backend_host),
-                string(R.string.arctic_backend_api_key))
-        }
     }
     
     private fun initFragments() {

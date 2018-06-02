@@ -30,6 +30,7 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
@@ -116,12 +117,11 @@ class RequestsFragment : ViewModelFragment<App>() {
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
         updateFabCount()
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
-        postDelayed(10) { refresh() }
     }
     
     override fun onResume() {
         super.onResume()
-        postDelayed(50) { loadDataFromViewModel() }
+        postDelayed(25) { loadDataFromViewModel() }
     }
     
     private fun updateFabCount() {
@@ -185,6 +185,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     override fun registerObservers() {
         viewModel.observe(this) {
+            recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
             adapter?.setItems(ArrayList(it))
             if (actuallyVisible) {
                 if (it.isEmpty()) {
@@ -224,7 +225,7 @@ class RequestsFragment : ViewModelFragment<App>() {
                             if (actuallyVisible) dialog?.show(actv, appsLeft)
                         }
                     } catch (e: Exception) {
-                        e.printStackTrace()
+                        BL.e("Error", e)
                     }
                 }, context?.getString(R.string.arctic_backend_host),
                 context?.getString(R.string.arctic_backend_api_key),
