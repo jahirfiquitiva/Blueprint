@@ -40,7 +40,6 @@ import com.andremion.counterfab.CounterFab
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
@@ -51,6 +50,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_SECTION_ID
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.quest.events.SendRequestCallback
 import jahirfiquitiva.libs.blueprint.ui.activities.BlueprintKuperActivity
@@ -525,20 +525,23 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
             progress(true, 0)
             cancelable(false)
         }
-        val ir = IconRequest.get()
-        if (ir != null) {
-            ir.send(
+        IconRequest.get()?.let {
+            it.send(
                 object : SendRequestCallback() {
                     override fun doWhenStarted() {
                         runOnUiThread { dialog?.show() }
                     }
                     
-                    override fun doOnError() {
+                    override fun doOnError(msg: String, uploading: Boolean) {
                         runOnUiThread {
                             destroyDialog()
                             dialog = mdDialog {
                                 title(R.string.error_title)
-                                content(R.string.requests_error)
+                                content(
+                                    getString(
+                                        if (uploading) R.string.requests_upload_error
+                                        else R.string.requests_error,
+                                        msg))
                                 positiveText(android.R.string.ok)
                             }
                             dialog?.show()
@@ -560,7 +563,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                         }
                     }
                 })
-        } else {
+        } ?: {
             destroyDialog()
             dialog = mdDialog {
                 title(R.string.error_title)
@@ -568,7 +571,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                 positiveText(android.R.string.ok)
             }
             dialog?.show()
-        }
+        }()
     }
     
     internal fun applyIconFilters() {

@@ -55,8 +55,10 @@ import jahirfiquitiva.libs.kext.extensions.getUri
 import jahirfiquitiva.libs.kext.extensions.hasContent
 import jahirfiquitiva.libs.kext.extensions.readBoolean
 import jahirfiquitiva.libs.kext.extensions.resource
+import jahirfiquitiva.libs.kext.extensions.string
 import jahirfiquitiva.libs.kext.extensions.toBitmap
 import jahirfiquitiva.libs.kext.extensions.writeBoolean
+import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import java.io.File
 import java.io.PrintWriter
@@ -473,8 +475,14 @@ class IconRequest private constructor() {
     }
     
     @WorkerThread
-    private fun postError(msg: String, baseError: Exception?) {
+    private fun postError(
+        msg: String,
+        baseError: Exception?,
+        callback: SendRequestCallback?,
+        uploading: Boolean = false
+                         ) {
         BL.e("$msg -- Error: ${baseError?.message}")
+        callback?.doOnError(msg, uploading)
     }
     
     fun send(sendRequestCallback: SendRequestCallback?) {
@@ -482,14 +490,16 @@ class IconRequest private constructor() {
         
         if (apps.isEmpty()) {
             requestError = true
-            postError("No apps were loaded from this device.", null)
+            postError("No apps were loaded from this device.", null, sendRequestCallback)
         } else if (!builder?.email.orEmpty().hasContent()) {
             requestError = true
-            postError("The recipient email for the request cannot be empty.", null)
+            postError(
+                "The recipient email for the request cannot be empty.", null, sendRequestCallback)
         } else if (selectedApps.size <= 0) {
             requestError = true
             builder?.context?.let { builder?.callback?.onRequestEmpty(it) }
-            postError("No apps have been selected for sending in the request.", null)
+            postError(
+                "No apps have been selected for sending in the request.", null, sendRequestCallback)
         } else if (builder?.subject.orEmpty().isEmpty()) {
             builder?.subject = "Icon Request"
             requestError = false
@@ -497,7 +507,6 @@ class IconRequest private constructor() {
         
         if (requestError) {
             cleanFiles(true)
-            sendRequestCallback?.doOnError()
             return
         }
         
@@ -557,9 +566,8 @@ class IconRequest private constructor() {
                     } catch (e: Exception) {
                         postError(
                             "Failed to save icon \'$correctIconName\' due to error: ${e.message}",
-                            e)
+                            e, sendRequestCallback)
                         cleanFiles(true)
-                        sendRequestCallback?.doOnError()
                         return@Thread
                     }
                 }
@@ -642,9 +650,10 @@ class IconRequest private constructor() {
                         emailZipFiles.add(appfilter)
                     } catch (e: Exception) {
                         BL.e("Error", e)
-                        postError("Failed to save appfilter.xml file: ${e.message}", e)
+                        postError(
+                            "Failed to save appfilter.xml file: ${e.message}", e,
+                            sendRequestCallback)
                         cleanFiles(true)
-                        sendRequestCallback?.doOnError()
                         return@Thread
                     }
                 }
@@ -657,9 +666,9 @@ class IconRequest private constructor() {
                         emailZipFiles.add(appmap)
                     } catch (e: Exception) {
                         BL.e("Error", e)
-                        postError("Failed to save appmap.xml file: ${e.message}", e)
+                        postError(
+                            "Failed to save appmap.xml file: ${e.message}", e, sendRequestCallback)
                         cleanFiles(true)
-                        sendRequestCallback?.doOnError()
                         return@Thread
                     }
                 }
@@ -672,9 +681,10 @@ class IconRequest private constructor() {
                         emailZipFiles.add(themeRes)
                     } catch (e: Exception) {
                         BL.e("Error", e)
-                        postError("Failed to save theme_resources.xml file: ${e.message}", e)
+                        postError(
+                            "Failed to save theme_resources.xml file: ${e.message}", e,
+                            sendRequestCallback)
                         cleanFiles(true)
-                        sendRequestCallback?.doOnError()
                         return@Thread
                     }
                 }
@@ -684,9 +694,10 @@ class IconRequest private constructor() {
                 }
                 
                 if (emailZipFiles.isEmpty()) {
-                    postError("There are no files to put into the ZIP archive.", null)
+                    postError(
+                        "There are no files to put into the ZIP archive.", null,
+                        sendRequestCallback)
                     cleanFiles(true)
-                    sendRequestCallback?.doOnError()
                     return@Thread
                 }
                 
@@ -713,8 +724,9 @@ class IconRequest private constructor() {
                                 .dataParts { _, _ ->
                                     listOf(DataPart(zipFile, "archive", fileType))
                                 }
-                                .response { _, response, _ ->
+                                .response { _, response, result ->
                                     val success = response.statusCode in 200..299
+                                    
                                     if (success) {
                                         BL.d("Request sent!")
                                         val amount = requestsLeft - selectedApps.size
@@ -725,31 +737,34 @@ class IconRequest private constructor() {
                                         cleanFiles(true)
                                         sendRequestCallback?.doWhenReady(true)
                                     } else {
-                                        BL.e("Request error!")
+                                        val responseMsg = try {
+                                            val body = String(response.data)
+                                            val error = JSONObject(body).string("error")
+                                            if (error.hasContent()) error else result.toString()
+                                        } catch (e: Exception) {
+                                            result.toString()
+                                        }
+                                        BL.e("Server error: $responseMsg")
                                         BL.e("Server response: $response")
+                                        
                                         cleanFiles(true)
-                                        sendRequestCallback?.doOnError()
+                                        postError(responseMsg, null, sendRequestCallback, true)
                                     }
                                 }
                         } else {
                             cleanFiles(true)
-                            sendRequestCallback?.doOnError()
+                            postError("Zip file could not be found", null, sendRequestCallback)
                         }
                     } catch (e: Exception) {
-                        BL.e("Failed to send icons to the backend: ${e.message}")
                         try {
                             val errors = StringWriter()
                             e.printStackTrace(PrintWriter(errors))
                             BL.e(errors.toString())
                         } catch (ignored: Exception) {
                         }
-                        val zipFile = buildZip(date, emailZipFiles)
-                        if (zipFile != null) {
-                            sendRequestViaEmail(zipFile, sendRequestCallback)
-                        } else {
-                            cleanFiles(true)
-                            sendRequestCallback?.doOnError()
-                        }
+                        postError(
+                            "Failed to send icons to the backend: ${e.message}", null,
+                            sendRequestCallback, true)
                     }
                 } else {
                     val zipFile = buildZip(date, emailZipFiles)
@@ -757,7 +772,7 @@ class IconRequest private constructor() {
                         sendRequestViaEmail(zipFile, sendRequestCallback)
                     } else {
                         cleanFiles(true)
-                        sendRequestCallback?.doOnError()
+                        postError("Zip file could not be found", null, sendRequestCallback)
                     }
                 }
             }.start()
@@ -776,7 +791,7 @@ class IconRequest private constructor() {
             zipFile
         } catch (e: Exception) {
             BL.e(e.message)
-            postError("Failed to create the request ZIP file: " + e.message, e)
+            postError("Failed to create the request ZIP file: " + e.message, e, null)
             null
         }
     }
@@ -816,7 +831,7 @@ class IconRequest private constructor() {
             }()
         } catch (e: Exception) {
             BL.e("Error", e)
-            sendRequestCallback?.doOnError()
+            postError("Error: ${e.message}", e, sendRequestCallback)
         }
     }
     

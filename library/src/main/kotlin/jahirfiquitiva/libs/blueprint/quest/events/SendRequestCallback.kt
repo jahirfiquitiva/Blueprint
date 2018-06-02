@@ -4,7 +4,7 @@ package jahirfiquitiva.libs.blueprint.quest.events
 abstract class SendRequestCallback {
     abstract fun doWhenStarted()
     
-    abstract fun doOnError()
+    abstract fun doOnError(msg: String, uploading: Boolean)
     
     open fun updateWithProgress(progress: Int) {}
     

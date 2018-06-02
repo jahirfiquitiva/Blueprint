@@ -192,16 +192,18 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     override fun registerObservers() {
         viewModel.observe(this) {
-            recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
-            adapter?.setItems(ArrayList(it))
-            if (actuallyVisible) {
-                if (it.isEmpty()) {
-                    unselectAll()
-                    doToFab { it.hide() }
-                } else {
-                    doToFab { it.show() }
+            postDelayed(10) {
+                recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
+                adapter?.setItems(ArrayList(it))
+                if (actuallyVisible) {
+                    if (it.isEmpty()) {
+                        unselectAll()
+                        doToFab { it.hide() }
+                    } else {
+                        doToFab { it.show() }
+                    }
+                    progressDialog?.dismiss()
                 }
-                progressDialog?.dismiss()
             }
         }
     }
@@ -280,6 +282,7 @@ class RequestsFragment : ViewModelFragment<App>() {
         actuallyVisible = isVisibleToUser
         if (isVisibleToUser) {
             updateFabCount()
+            postDelayed(25) { loadDataFromViewModel() }
         } else {
             doToFab { it.hide() }
         }
