@@ -69,7 +69,6 @@
   <string name="apps_limit_dialog_day">Es tut uns leid, aber Sie dürfen nur alle %1$s Symbole anfragen.</string>
   <string name="apps_limit_dialog_day_extra">Sie dürfen in %1$s wieder Symbole anfragen.</string>
   <string name="apps_limit_dialog_day_extra_sec">Sie können in weniger als einer Minute wieder Symbole anfragen.</string>
-  <string name="requests_error">Es gab einen Fehler beim Laden der Apps für deine Anfrage.\nTippe hier, um es erneut zu versuchen.</string>
   <string name="loading_apps_to_request">Lade Apps für die Anfrage…</string>
   <string name="building_request_dialog">Anfrage-Dateien werden erstellt…</string>
   <string name="request_upload_success">Erfolgreich!</string>
