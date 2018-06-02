@@ -24,7 +24,7 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.data.models.Launcher
+import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.helpers.extensions.showLauncherNotInstalledDialog
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.LaunchersViewModel

@@ -32,7 +32,7 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_SECTION_ID

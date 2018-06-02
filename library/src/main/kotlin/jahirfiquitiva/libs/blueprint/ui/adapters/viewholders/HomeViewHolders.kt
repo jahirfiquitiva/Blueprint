@@ -27,8 +27,8 @@ import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.tint
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.data.models.HomeItem
-import jahirfiquitiva.libs.blueprint.data.models.Icon
+import jahirfiquitiva.libs.blueprint.models.HomeItem
+import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.kext.extensions.activeIconsColor
 import jahirfiquitiva.libs.kext.extensions.bind

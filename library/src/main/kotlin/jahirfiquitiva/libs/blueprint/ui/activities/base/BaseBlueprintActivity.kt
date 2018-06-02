@@ -40,7 +40,7 @@ import com.andremion.counterfab.CounterFab
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.data.models.NavigationItem
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent

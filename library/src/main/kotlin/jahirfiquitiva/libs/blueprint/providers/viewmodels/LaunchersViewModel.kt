@@ -17,7 +17,7 @@ package jahirfiquitiva.libs.blueprint.providers.viewmodels
 
 import android.content.Context
 import jahirfiquitiva.libs.archhelpers.viewmodels.ListViewModel
-import jahirfiquitiva.libs.blueprint.data.models.Launcher
+import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.enabledLaunchers
 
 internal class LaunchersViewModel : ListViewModel<Context, Launcher>() {

@@ -18,8 +18,8 @@ package jahirfiquitiva.libs.blueprint.providers.viewmodels
 import android.content.Context
 import jahirfiquitiva.libs.archhelpers.viewmodels.ListViewModel
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.data.models.Icon
-import jahirfiquitiva.libs.blueprint.data.models.IconsCategory
+import jahirfiquitiva.libs.blueprint.models.Icon
+import jahirfiquitiva.libs.blueprint.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.kext.extensions.boolean
