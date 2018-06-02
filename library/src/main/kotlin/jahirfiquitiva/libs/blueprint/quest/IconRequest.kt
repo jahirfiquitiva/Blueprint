@@ -519,7 +519,8 @@ class IconRequest private constructor() {
                 
                 val host = builder?.apiHost.orEmpty()
                 val apiKey = builder?.apiKey.orEmpty()
-                val uploadToArctic = host.hasContent() && apiKey.hasContent()
+                val uploadToArctic =
+                    host.hasContent() && apiKey.hasContent() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
                 
                 val emailZipFiles = ArrayList<File>()
                 
