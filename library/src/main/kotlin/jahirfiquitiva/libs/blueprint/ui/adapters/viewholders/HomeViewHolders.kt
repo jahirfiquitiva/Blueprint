@@ -93,11 +93,11 @@ class PreviewCardHolder(
                 icons.add(Icon(it, context.resource(it)))
             }
             if (icons.isNotEmpty()) {
-                icons.distinctBy { it.name }.shuffled()
+                val shuffled = icons.distinctBy { it.name }.shuffled()
                 correctList.clear()
                 for (i in 0 until int(R.integer.icons_columns)) {
                     try {
-                        correctList.add(icons[i])
+                        correctList.add(shuffled[i])
                     } catch (ignored: Exception) {
                     }
                 }
