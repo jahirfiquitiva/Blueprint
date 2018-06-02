@@ -22,7 +22,6 @@ import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.os.Environment
 import jahirfiquitiva.libs.archhelpers.tasks.QAsync
-import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.quest.App
@@ -147,7 +146,6 @@ class RequestsViewModel : ViewModel() {
                                            ) {
             IconRequest.start(context)
                 .withAppName(context.getString(R.string.app_name))
-                .withFooter("Blueprint version: ${BuildConfig.LIB_VERSION}")
                 .withSubject(context.getString(R.string.request_title))
                 .toEmail(context.getString(R.string.email))
                 .withAPIHost(host.orEmpty())
@@ -157,8 +155,7 @@ class RequestsViewModel : ViewModel() {
                         context.getString(
                             R.string.request_save_location,
                             Environment.getExternalStorageDirectory())))
-                .debugMode(BuildConfig.DEBUG)
-                .filterXmlId(R.xml.appfilter)
+                .filterXml(R.xml.appfilter)
                 .withTimeLimit(
                     context.int(R.integer.time_limit_in_minutes),
                     BPKonfigs(context).prefs)

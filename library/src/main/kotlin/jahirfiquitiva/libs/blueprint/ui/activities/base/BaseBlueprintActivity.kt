@@ -53,7 +53,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
-import jahirfiquitiva.libs.blueprint.quest.events.OnRequestProgress
+import jahirfiquitiva.libs.blueprint.quest.events.SendRequestCallback
 import jahirfiquitiva.libs.blueprint.ui.activities.BlueprintKuperActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.CreditsActivity
 import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
@@ -534,7 +534,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         val ir = IconRequest.get()
         if (ir != null) {
             ir.send(
-                object : OnRequestProgress() {
+                object : SendRequestCallback() {
                     override fun doWhenStarted() {
                         runOnUiThread { dialog?.show() }
                     }

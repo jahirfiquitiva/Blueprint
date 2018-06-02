@@ -1,12 +1,12 @@
 package jahirfiquitiva.libs.blueprint.quest.events
 
 @Suppress("unused", "UNUSED_PARAMETER")
-abstract class OnRequestProgress {
+abstract class SendRequestCallback {
     abstract fun doWhenStarted()
     
     abstract fun doOnError()
     
-    fun updateWithProgress(progress: Int) {}
+    open fun updateWithProgress(progress: Int) {}
     
     abstract fun doWhenReady(forArctic: Boolean)
 }

@@ -35,9 +35,9 @@ internal fun Context.getInstalledApps(
         
         for (ri in packagesList) {
             val riPkg = ri.activityInfo.packageName
-            val launchStr = riPkg + "/" + ri.activityInfo.name
+            val component = riPkg + "/" + ri.activityInfo.name
             
-            if (filter.contains(launchStr) || packageName == riPkg) {
+            if (filter.contains(component) || packageName == riPkg) {
                 filtered++
                 continue
             }
@@ -46,8 +46,8 @@ internal fun Context.getInstalledApps(
             if (name == null) name = ri.activityInfo.packageName
             
             val appToAdd = App(
-                this.getLocalizedName(launchStr, name.toString()), launchStr,
-                ri.activityInfo.packageName)
+                this.getLocalizedName(component, name.toString()),
+                ri.activityInfo.packageName, component)
             appToAdd.loadIcon(this)
             apps.add(appToAdd)
             loaded++
@@ -65,5 +65,5 @@ internal fun Context.getInstalledApps(
         onProgress(100)
     } catch (e: Exception) {
     }
-    return ArrayList(apps.distinctBy { it.pckg }.sortedBy { it.name })
+    return ArrayList(apps.distinctBy { it.pkg }.sortedBy { it.name })
 }

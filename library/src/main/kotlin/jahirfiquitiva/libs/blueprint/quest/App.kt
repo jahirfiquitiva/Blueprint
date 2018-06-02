@@ -5,7 +5,7 @@
  * 4.0 International License. You may not use this file except in compliance
  * with the License. You may obtain a copy of the License at
  *
- *    http://creativecommons.org/licenses/by-sa/4.0/legalcode
+ *    http://creativecommons.org/licenses/by-sa/4.0/legalcomp
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,9 +16,7 @@
 package jahirfiquitiva.libs.blueprint.quest
 
 import android.annotation.SuppressLint
-import android.content.ComponentName
 import android.content.Context
-import android.content.pm.ActivityInfo
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.content.res.Resources
@@ -38,30 +36,29 @@ class App : Parcelable {
     var name: String = ""
         get() = field.formatCorrectly()
         private set
-    var code: String = ""
+    var pkg: String = ""
         private set
-    var pckg: String = ""
+    var comp: String = ""
         private set
     
-    var hiResIcon: Drawable? = null
-        private set
+    private var hiResIcon: Drawable? = null
     var icon: Drawable? = null
         private set
     
     private val appDefaultIcon: Drawable?
         get() = getAppIconFromRes(Resources.getSystem(), android.R.mipmap.sym_def_app_icon)
     
-    constructor(name: String, code: String, pkg: String) {
+    constructor(name: String, pkg: String, comp: String) {
         this.name = name.formatCorrectly()
-        this.code = code
-        this.pckg = pkg
+        this.pkg = pkg
+        this.comp = comp
     }
     
     @SuppressLint("NewApi")
     internal fun getHighResIcon(context: Context): Drawable? {
         if (hiResIcon == null) {
             try {
-                hiResIcon = loadIcon(context) ?: context.packageManager.getApplicationIcon(pckg) ?:
+                hiResIcon = loadIcon(context) ?: context.packageManager.getApplicationIcon(pkg) ?:
                     icon ?: appDefaultIcon
             } catch (e: Exception) {
             }
@@ -100,21 +97,7 @@ class App : Parcelable {
     
     private fun getAppInfo(context: Context): ApplicationInfo? {
         return try {
-            context.packageManager.getApplicationInfo(pckg, 0)
-        } catch (e: PackageManager.NameNotFoundException) {
-            null
-        }
-    }
-    
-    fun getActivityInfo(context: Context): ActivityInfo? {
-        return try {
-            context.packageManager.getActivityInfo(
-                ComponentName(
-                    code.split(
-                        "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0],
-                    code.split(
-                        "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]),
-                PackageManager.GET_META_DATA)
+            context.packageManager.getApplicationInfo(pkg, 0)
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
@@ -128,22 +111,28 @@ class App : Parcelable {
         }
     }
     
-    override fun toString(): String = code
+    override fun toString(): String = comp
     
-    override fun equals(other: Any?): Boolean = other is App && other.code == code
+    override fun equals(other: Any?): Boolean = other is App && other.comp == comp
     
-    protected constructor(parcel: Parcel) {
-        name = parcel.readString()
-        code = parcel.readString()
-        pckg = parcel.readString()
+    override fun hashCode(): Int {
+        var result = pkg.hashCode()
+        result = 31 * result + comp.hashCode()
+        return result
     }
     
     override fun describeContents(): Int = 0
     
+    private constructor(parcel: Parcel) {
+        name = parcel.readString()
+        comp = parcel.readString()
+        pkg = parcel.readString()
+    }
+    
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeString(name)
-        dest.writeString(code)
-        dest.writeString(pckg)
+        dest.writeString(comp)
+        dest.writeString(pkg)
     }
     
     companion object CREATOR : Parcelable.Creator<App> {
