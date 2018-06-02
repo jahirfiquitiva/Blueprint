@@ -69,7 +69,6 @@
   <string name="apps_limit_dialog_day">Lo sentimos, pero sólo se puede solicitar los iconos cada %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Podrás realizar una petición de iconos de nuevo, en %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Podrás realizar una petición de iconos de nuevo, en menos de un minuto.</string>
-  <string name="requests_error">Hubo un error al cargar las aplicaciones para solicitar. \nPresiona aquí para reintentar.</string>
   <string name="loading_apps_to_request">Cargando aplicaciones para solicitar…</string>
   <string name="building_request_dialog">Creando archivos de petición…</string>
   <string name="request_upload_success">Correcto!</string>
