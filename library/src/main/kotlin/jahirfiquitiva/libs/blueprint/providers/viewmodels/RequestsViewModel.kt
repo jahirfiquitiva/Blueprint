@@ -41,6 +41,7 @@ class RequestsViewModel : ViewModel() {
     
     fun loadData(
         parameter: Context,
+        debug: Boolean,
         onEmpty: () -> Unit,
         onLimited: (reason: Int, appsLeft: Int, millis: Long) -> Unit,
         host: String? = null,
@@ -55,22 +56,23 @@ class RequestsViewModel : ViewModel() {
                 object : QAsync.Callback<Context, Unit>() {
                     override fun doLoad(param: Context): Unit? =
                         safeInternalLoad(
-                            param, object : RequestsCallback() {
-                            override fun onAppsLoaded(apps: ArrayList<App>) {
-                                postResult(apps)
-                            }
-                            
-                            override fun onRequestEmpty(context: Context) =
-                                onEmpty()
-                            
-                            override fun onRequestLimited(
-                                context: Context,
-                                reason: Int,
-                                requestsLeft: Int,
-                                millis: Long
-                                                         ) =
-                                onLimited(reason, requestsLeft, millis)
-                        }, host, apiKey, forceLoad, onProgress)
+                            param, debug,
+                            object : RequestsCallback() {
+                                override fun onAppsLoaded(apps: ArrayList<App>) {
+                                    postResult(apps)
+                                }
+                                
+                                override fun onRequestEmpty(context: Context) =
+                                    onEmpty()
+                                
+                                override fun onRequestLimited(
+                                    context: Context,
+                                    reason: Int,
+                                    requestsLeft: Int,
+                                    millis: Long
+                                                             ) =
+                                    onLimited(reason, requestsLeft, millis)
+                            }, host, apiKey, forceLoad, onProgress)
                     
                     override fun onSuccess(result: Unit) {}
                 })
@@ -92,6 +94,7 @@ class RequestsViewModel : ViewModel() {
     
     private fun safeInternalLoad(
         param: Context,
+        debug: Boolean,
         callback: RequestsCallback,
         host: String? = null,
         apiKey: String? = null,
@@ -99,14 +102,14 @@ class RequestsViewModel : ViewModel() {
         onProgress: (progress: Int) -> Unit = {}
                                 ) {
         if (forceLoad) {
-            internalLoad(param, callback, host, apiKey, forceLoad, onProgress)
+            internalLoad(param, debug, callback, host, apiKey, forceLoad, onProgress)
         } else {
             if ((getData()?.size ?: 0) > 0) {
                 val list = ArrayList<App>()
                 getData()?.let { list.addAll(it.distinct()) }
                 postResult(list)
             } else {
-                internalLoad(param, callback, host, apiKey, forceLoad, onProgress)
+                internalLoad(param, debug, callback, host, apiKey, forceLoad, onProgress)
             }
         }
     }
@@ -123,6 +126,7 @@ class RequestsViewModel : ViewModel() {
     
     private fun internalLoad(
         param: Context,
+        debug: Boolean,
         callback: RequestsCallback,
         host: String? = null,
         apiKey: String? = null,
@@ -133,18 +137,20 @@ class RequestsViewModel : ViewModel() {
             postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
             return
         }
-        initAndLoadRequestApps(param, host, apiKey, callback, onProgress)
+        initAndLoadRequestApps(param, debug, host, apiKey, callback, onProgress)
     }
     
     companion object {
         internal fun initAndLoadRequestApps(
             context: Context,
+            debug: Boolean,
             host: String? = null,
             apiKey: String? = null,
             callback: RequestsCallback? = null,
             onProgress: (progress: Int) -> Unit = {}
                                            ) {
             IconRequest.start(context)
+                .enableDebug(debug)
                 .withAppName(context.getString(R.string.app_name))
                 .withSubject(context.getString(R.string.request_title))
                 .toEmail(context.getString(R.string.email))

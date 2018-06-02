@@ -52,6 +52,13 @@ import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
 @SuppressLint("MissingSuperCall")
 class RequestsFragment : ViewModelFragment<App>() {
     
+    companion object {
+        fun create(debug: Boolean): RequestsFragment =
+            RequestsFragment().apply { this.debug = debug }
+    }
+    
+    private var debug = false
+    
     private val viewModel: RequestsViewModel by lazyViewModel()
     
     private var recyclerView: EmptyViewRecyclerView? = null
@@ -209,7 +216,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     private fun internalLoadData(force: Boolean) {
         activity { actv ->
             viewModel.loadData(
-                actv, {
+                actv, debug, {
                 otherDialog = actv.mdDialog {
                     title(R.string.no_selected_apps_title)
                     content(R.string.no_selected_apps_content)

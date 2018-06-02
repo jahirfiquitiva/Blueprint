@@ -53,7 +53,10 @@ import jahirfiquitiva.libs.kext.extensions.getAppVersion
 import jahirfiquitiva.libs.kext.extensions.getAppVersionCode
 import jahirfiquitiva.libs.kext.extensions.getUri
 import jahirfiquitiva.libs.kext.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.readBoolean
+import jahirfiquitiva.libs.kext.extensions.resource
 import jahirfiquitiva.libs.kext.extensions.toBitmap
+import jahirfiquitiva.libs.kext.extensions.writeBoolean
 import org.xmlpull.v1.XmlPullParser
 import java.io.File
 import java.io.PrintWriter
@@ -156,23 +159,35 @@ class IconRequest private constructor() {
         
         @Transient var context: Context? = null
         var saveDir: File? = null
+            private set
         var appName: String = "Blueprint"
+            private set
         
         var subject: String = "Icon Request"
         var email: String = "someone@mail.co"
+            private set
         
         var apiHost: String = "http://arcticmanager.com/"
+            private set
         var apiKey: String? = null
+            private set
         
         var filterId = -1
+            private set
         
         var maxCount = 0
+            private set
         var timeLimit: Long = -1
+            private set
         
         var prefs: SharedPreferences? = null
+            private set
         var callback: RequestsCallback? = null
+            private set
         
         var isLoading = false
+        var debug = false
+            private set
         
         constructor()
         
@@ -234,6 +249,11 @@ class IconRequest private constructor() {
             return this
         }
         
+        fun enableDebug(enable: Boolean): Builder {
+            this.debug = enable
+            return this
+        }
+        
         fun build(): IconRequest = IconRequest(this)
         
         override fun describeContents(): Int = 0
@@ -248,6 +268,7 @@ class IconRequest private constructor() {
             dest.writeInt(filterId)
             dest.writeInt(maxCount)
             dest.writeLong(timeLimit)
+            dest.writeBoolean(debug)
         }
         
         protected constructor(parcel: Parcel) {
@@ -260,6 +281,7 @@ class IconRequest private constructor() {
             filterId = parcel.readInt()
             maxCount = parcel.readInt()
             timeLimit = parcel.readLong()
+            debug = parcel.readBoolean()
         }
         
         companion object CREATOR : Parcelable.Creator<Builder> {
@@ -272,36 +294,34 @@ class IconRequest private constructor() {
     @CheckResult
     private fun loadFilterApps(): HashSet<String>? {
         val defined = HashSet<String>()
-        if (builder?.filterId == -1) { //TODO add this
+        if (builder?.filterId == 0) {
             return defined
         }
+        
+        val componentsCount = ArrayList<Pair<String, Int>>()
+        
         var parser: XmlResourceParser? = null
         try {
             parser = builder?.context?.resources?.getXml(builder?.filterId ?: 0)
             var eventType = parser?.eventType
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                val appCode: String
-                when (eventType) {
-                    XmlPullParser.START_TAG -> {
-                        val tagName = parser?.name
-                        if (tagName == "item") {
+                if (eventType == XmlPullParser.START_TAG) {
+                    val tagName = parser?.name
+                    if (tagName == "item") {
+                        getComponentInAppFilter(parser) { component ->
+                            defined.add(component)
+                            
+                            val count =
+                                (componentsCount.find { it.first.equals(component, true) }?.second
+                                    ?: 0) + 1
                             try {
-                                // Read package and activity name
-                                val component =
-                                    parser?.getAttributeValue(null, "component").orEmpty()
-                                if (component.hasContent()) {
-                                    if (!component.startsWith(":")) {
-                                        appCode = component.substring(14, component.length - 1)
-                                        //wrapped in ComponentInfo{[Component]} TODO add checker?
-                                        //TODO check for valid drawable
-                                        // Add new info to our ArrayList and reset the object.
-                                        defined.add(appCode)
-                                    }
-                                }
-                            } catch (e: Exception) {
-                                BL.e(
-                                    "Error adding parsed appfilter item! Due to Exception: ${e.message}")
+                                componentsCount.removeAt(
+                                    componentsCount.indexOfFirst {
+                                        it.first.equals(component, true)
+                                    })
+                            } catch (ignored: Exception) {
                             }
+                            componentsCount += component to count
                         }
                     }
                 }
@@ -312,7 +332,57 @@ class IconRequest private constructor() {
         } finally {
             parser?.close()
         }
+        
+        if (builder?.debug == true) {
+            componentsCount.forEach {
+                val times = it.second
+                if (times > 0) {
+                    if (times > 1) {
+                        BL.w("Component \"${it.first}\" is duplicated ${it.second} times")
+                    } else {
+                        BL.w("Component \"${it.first}\" is duplicated once")
+                    }
+                }
+            }
+        }
+        
         return defined
+    }
+    
+    private fun getComponentInAppFilter(parser: XmlPullParser?, onSuccess: (String) -> Unit) {
+        try {
+            // Read package and activity name
+            val component =
+                parser?.getAttributeValue(null, "component").orEmpty()
+            
+            val drawable = parser?.getAttributeValue(null, "drawable").orEmpty()
+            
+            if (component.hasContent() && !component.startsWith(":")) {
+                val actualComponent = component.substring(14, component.length - 1)
+                if (actualComponent.hasContent() && !actualComponent.startsWith("/")
+                    && !actualComponent.endsWith("/")) {
+                    
+                    if (builder?.debug == true) {
+                        if (drawable.hasContent()) {
+                            val res = builder?.context?.resource(drawable)
+                            if (res == 0)
+                                BL.w(
+                                    "Drawable \"$drawable\" NOT found for component: \"$actualComponent\"")
+                        } else {
+                            BL.w("No drawable found for component: \"$actualComponent\"")
+                        }
+                    }
+                    
+                    onSuccess(actualComponent)
+                } else {
+                    if (builder?.debug == true)
+                        BL.w("Found invalid component: \"$actualComponent\"")
+                }
+            }
+        } catch (e: Exception) {
+            BL.e(
+                "Error adding parsed appfilter item! Due to Exception: ${e.message}")
+        }
     }
     
     fun loadApps(onProgress: (progress: Int) -> Unit = {}) {

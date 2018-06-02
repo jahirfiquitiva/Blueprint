@@ -29,7 +29,6 @@ internal fun Context.getInstalledApps(
     var filtered = 0
     
     if (packagesList.isNotEmpty()) {
-        
         val list = ArrayList(packagesList.distinct())
         list.sortWith(NameComparator(packageManager))
         

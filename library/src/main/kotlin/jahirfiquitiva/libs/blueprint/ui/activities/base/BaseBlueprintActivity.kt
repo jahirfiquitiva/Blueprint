@@ -51,7 +51,6 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_SECTION_ID
-import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.quest.events.SendRequestCallback
 import jahirfiquitiva.libs.blueprint.ui.activities.BlueprintKuperActivity
@@ -89,7 +88,6 @@ import jahirfiquitiva.libs.kext.extensions.isColorLight
 import jahirfiquitiva.libs.kext.extensions.primaryColor
 import jahirfiquitiva.libs.kext.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kext.extensions.setItemVisibility
-import jahirfiquitiva.libs.kext.extensions.string
 import jahirfiquitiva.libs.kext.extensions.stringArray
 import jahirfiquitiva.libs.kext.extensions.tint
 import jahirfiquitiva.libs.kext.ui.fragments.adapters.FragmentsPagerAdapter
@@ -107,6 +105,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     override fun transparentTheme(): Int = R.style.BlueprintTransparentTheme
     
     abstract fun hasBottomNavigation(): Boolean
+    open fun debug(): Boolean = false
     
     private val coordinatorLayout: CoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
     private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
@@ -195,7 +194,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
                         if (isIconsPicker) defFragment else ApplyFragment())
                 DEFAULT_REQUEST_SECTION_ID ->
                     fragmentsAdapter.addFragment(
-                        if (isIconsPicker) defFragment else RequestsFragment())
+                        if (isIconsPicker) defFragment else RequestsFragment.create(debug()))
                 else -> continue@loop
             }
         }

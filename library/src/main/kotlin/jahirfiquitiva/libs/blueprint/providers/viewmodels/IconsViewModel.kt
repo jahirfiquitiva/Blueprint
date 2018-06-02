@@ -54,7 +54,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                                 if (category != null) {
                                     val iconName = parser.getAttributeValue(null, "drawable")
                                     val iconRes = param.resource(iconName)
-                                    if (iconRes > 0) {
+                                    if (iconRes != 0) {
                                         category.addIcon(
                                             Icon(
                                                 iconName.formatCorrectly().blueprintFormat(),
@@ -84,7 +84,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
                         param.resources.getIdentifier(it, "array", param.packageName)).orEmpty()
                         .forEach {
                             val iconRes = param.resource(it)
-                            if (iconRes > 0) {
+                            if (iconRes != 0) {
                                 icons += Icon(it.formatCorrectly().blueprintFormat(), iconRes)
                             } else {
                                 reportIconNotFound(it, fileName)
