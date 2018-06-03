@@ -65,7 +65,6 @@
   <string name="apps_limit_dialog_day">Sorry, maar het is alleen mogelijk om icon aan te vragen elke %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Het is weer mogelijk om iconen aan te vragen in %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Het is weer mogelijk om iconen aan te vragen in minder dan één minuut.</string>
-  <string name="requests_error">Er trad een fout op tijdens het laden van de apps.\nKlik hier om het opnieuw te proberen.</string>
   <string name="loading_apps_to_request">Aan te vragen apps aan het laden…</string>
   <string name="building_request_dialog">Verzoek bestanden aan het maken…</string>
   <string name="request_upload_success">Gelukt!</string>

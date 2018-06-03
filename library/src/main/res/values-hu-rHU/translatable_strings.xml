@@ -68,7 +68,6 @@
   <string name="apps_limit_dialog_day">Sajnáljuk, de nem vagy jogosult ikon kérésére minden %1$s. nap.</string>
   <string name="apps_limit_dialog_day_extra">Legközelebb ennyi idő múlva tehetsz újabb kérést: %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Egy percen belül újabb kérést tehetsz.</string>
-  <string name="requests_error">Hiba lépett fel a kérés közben.\nÚjrapróbálkozás</string>
   <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
   <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>

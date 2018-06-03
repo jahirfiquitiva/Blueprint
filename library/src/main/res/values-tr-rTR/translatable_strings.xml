@@ -68,7 +68,6 @@
   <string name="apps_limit_dialog_day">Üzgünüz, fakat sadece her %1$s için simge isteği yapmaya izniniz var.</string>
   <string name="apps_limit_dialog_day_extra">%1$s içinde tekrar simge isteği yapabileceksiniz.</string>
   <string name="apps_limit_dialog_day_extra_sec">Bir dakikadan daha az bir süre içinde tekrar simge isteği yapabileceksiniz.</string>
-  <string name="requests_error">İstek yapmak için uygulama yüklenirken bir hata oluştu.\nYeniden denemek için burayı tıklayın.</string>
   <string name="loading_apps_to_request">İstek yapmak için uygulamalar yükleniyor…</string>
   <string name="building_request_dialog">İstek dosyaları oluşturuluyor…</string>
   <string name="request_upload_success">Başarılı!</string>
