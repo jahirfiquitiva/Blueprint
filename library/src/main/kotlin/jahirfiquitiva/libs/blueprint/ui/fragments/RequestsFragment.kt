@@ -126,11 +126,6 @@ class RequestsFragment : ViewModelFragment<App>() {
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
     }
     
-    override fun onResume() {
-        super.onResume()
-        postDelayed(25) { loadDataFromViewModel() }
-    }
-    
     private fun updateFabCount() {
         IconRequest.get()?.let { doToFab { fab -> fab.count = it.selectedApps.size } }
     }
@@ -282,7 +277,7 @@ class RequestsFragment : ViewModelFragment<App>() {
         actuallyVisible = isVisibleToUser
         if (isVisibleToUser) {
             updateFabCount()
-            postDelayed(25) { loadDataFromViewModel() }
+            postDelayed(50) { loadDataFromViewModel() }
         } else {
             doToFab { it.hide() }
         }
