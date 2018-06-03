@@ -19,6 +19,7 @@ import android.content.ComponentName
 import android.content.pm.PackageManager
 import android.preference.Preference
 import android.preference.SwitchPreference
+import ca.allanwang.kau.utils.toast
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog

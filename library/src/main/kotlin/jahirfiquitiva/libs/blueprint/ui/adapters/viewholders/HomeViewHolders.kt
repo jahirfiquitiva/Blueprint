@@ -56,9 +56,10 @@ class PreviewCardHolder(
     private val iconsPreviewRV: RecyclerView? by bind(R.id.icons_preview_grid)
     private val correctList = ArrayList<Icon>()
     
-    fun bind(wallpaper: Drawable?) {
+    fun bind(wallpaper: Drawable?, onlyPicture: Boolean = false) {
         image?.setImageDrawable(wallpaper)
-        initIconsPreview()
+        if (!onlyPicture)
+            initIconsPreview()
     }
     
     private fun initIconsPreview() {

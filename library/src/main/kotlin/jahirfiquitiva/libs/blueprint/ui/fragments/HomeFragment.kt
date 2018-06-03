@@ -180,8 +180,13 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         if (isVisibleToUser) scrollToTop()
     }
     
+    override fun onResume() {
+        super.onResume()
+        bindPreviewCard(true)
+    }
+    
     @SuppressLint("MissingPermission")
-    private fun bindPreviewCard() {
+    private fun bindPreviewCard(onlyPicture: Boolean = false) {
         val wallManager: WallpaperManager? = WallpaperManager.getInstance(activity)
         val drawable: Drawable? = if (configs.wallpaperInIconsPreview) {
             try {
@@ -192,6 +197,6 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         } else {
             defaultPicture
         }
-        previewCardHolder?.bind(drawable)
+        previewCardHolder?.bind(drawable, onlyPicture)
     }
 }
