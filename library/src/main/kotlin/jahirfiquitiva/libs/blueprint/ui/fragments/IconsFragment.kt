@@ -220,7 +220,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             
             if (bitmap != null) {
                 if (pickerKey == ICONS_PICKER) {
-                    intent.putExtra("icon", bitmap)
+                    intent.putExtra("icon", bitmap.copy(bitmap.config, false))
                     val iconRes = Intent.ShortcutIconResource.fromContext(activity, item.icon)
                     intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconRes)
                 } else if (pickerKey == IMAGE_PICKER) {
