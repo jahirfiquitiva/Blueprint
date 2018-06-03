@@ -69,7 +69,8 @@
   <string name="apps_limit_dialog_day">Es tut uns leid, aber Sie dürfen nur alle %1$s Symbole anfragen.</string>
   <string name="apps_limit_dialog_day_extra">Sie dürfen in %1$s wieder Symbole anfragen.</string>
   <string name="apps_limit_dialog_day_extra_sec">Sie können in weniger als einer Minute wieder Symbole anfragen.</string>
-  <string name="requests_error">Es gab einen Fehler beim Laden der Apps für deine Anfrage.\nTippe hier, um es erneut zu versuchen.</string>
+  <string name="requests_error">Es gab einer Fehler beim Laden der Apps für die Anfrage.\nUrsache: %1$s\nBitte versuche es später erneut.</string>
+  <string name="requests_upload_error">Es gab einen Fehler beim Upload der angefragten App auf unsere Server.\nUrsache: %1$s\nBitte versuche es später erneut.</string>
   <string name="loading_apps_to_request">Lade Apps für die Anfrage…</string>
   <string name="building_request_dialog">Anfrage-Dateien werden erstellt…</string>
   <string name="request_upload_success">Erfolgreich!</string>
@@ -84,6 +85,7 @@
   <string name="hideicon_dialog_title">Achtung!</string>
   <string name="hideicon_dialog_content">Möchen Sie wirklich das App-Symbol im Launcher ausblenden?\nDie App könnte unerwartet geschlossen werden und Benachrichtigungen werden komplett deaktiviert.\nMöglicherweise möchten Sie die FAQs lesen, um zu erfahren, wie das Symbol wiederhergestellt werden kann, bevor Sie es ausblenden.</string>
   <string name="send_using">Senden mit…</string>
+  <string name="no_mail">Es ist keine E-Mail-App installiert</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Wie verwende ich diese Symbolbibliothek?</item>
@@ -105,19 +107,19 @@
     <item>Warum benötigt die App die Berechtigung, den Schlafmodus des Geräts zu verhindern?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+    <item>Du benötigst einen Launcher mit Support für Icon-Packs. Die Liste der unterstützten Launcher könnte in der App im \"Anwenden\"-Abschnitt oder der Play Store Beschreibung gefunden werden.</item>
     <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anwenden\" antippen, oder du musst das vierte Icon in der unteren Navigationsleiste antippen. Dort kannst du einen Launcher auswählen, mit dem du die Icons anwenden möchtest. Einige Launcher unterstützen keine automatische Anwendung und du musst dies manuell in den Einstellungen des Launcher tun.</item>
     <item>Gehe zurück zur Hauptseite der App und klicke auf die Karte mit dem Titel \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+    <item>Abhängig vom Launcher, den du verwendest, musst du entweder lange auf das Icon tippen und auf \"Bearbeiten\" im Pop-up-Menü tippen oder das Icon auf ein \"Bearbeiten\"-Feld ziehen.</item>
     <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anfragen\" antippen, oder du musst das entsprechende Icon in der unteren Navigationsleiste antippen.</item>
     <item>Das ist passiert, weil die Symbolbibliothek auf die SD-Karte verschoben wurde. Sie sollten es auf dem internen Speicher installieren.</item>
-    <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Sie können das Problem beheben, indem Sie die Symbolgröße auf 115 – 120 % erhöhen. Sie können auch versuchen, einen anderen Launcher zu verwenden.</item>
+    <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Sie können das Problem beheben, indem Sie die Symbolgröße auf 115 - 120 % erhöhen. Sie können auch versuchen, einen anderen Launcher zu verwenden.</item>
     <item>Eine Symbol-Anfrage senden.</item>
     <item>Öffne das Navigationsmenü von der linken Seite oder tippe auf das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Symbol ausblenden\".</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+    <item>Gehe auf deinen Startbildschirm, erstelle ein Widget für die App, welches \"IconRestorer\" heißt, und tippe darauf.</item>
     <item>Öffne das Navigationsmenü von der linken Seite oder tippe auf das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Symbol ausblenden\" ab.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+    <item>Diese wird verwendet, um Daten für Symbol-Anfragen speichern zu können, genauso wie für das Speichern der Hintergrundbildern und zur Änderung des Download-Verzeichnisses.</item>
+    <item>Diese wird verwendet, um Hintergrundbilder aus der Cloud herunterladen zu können.</item>
     <item>Diese wird verwendet, um zu prüfen, ob dein Gerät eine Internet-Verbindung besitzt.</item>
     <item>Diese wird verwendet, um das Hintergrundbild direkt aus der App heraus anwenden zu können.</item>
     <item>Diese wird verwendet, um die Größe des Hintergrundbildes an deine Bildschirmauflösung anzupassen.</item>

@@ -69,7 +69,6 @@
   <string name="apps_limit_dialog_day">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
   <string name="apps_limit_dialog_day_extra">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
   <string name="apps_limit_dialog_day_extra_sec">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
-  <string name="requests_error">अनुरोध करने के लिए अनुप्रयोग लोड करने में कोई त्रुटि आई. \nPress के लिए यहां पुनर्प्रयास करें ।</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
   <string-array name="answers">

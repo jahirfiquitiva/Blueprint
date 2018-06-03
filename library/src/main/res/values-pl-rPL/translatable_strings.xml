@@ -69,7 +69,6 @@
   <string name="apps_limit_dialog_day">Przepraszamy, ale możesz żądać ikony każdego %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za mniej niż minutę.</string>
-  <string name="requests_error">Wystąpił błąd podczas ładowania listy aplikacji.\n Stuknij tutaj, aby spróbować ponownie.</string>
   <string name="loading_apps_to_request">Ładowanie listy aplikacji…</string>
   <string name="building_request_dialog">Tworzenie plików prośby o dodanie ikon…</string>
   <string name="request_upload_success">Sukces!</string>

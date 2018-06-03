@@ -69,7 +69,6 @@
   <string name="apps_limit_dialog_day">Žao nam je, ali dopušteno vam je zahtjevati ikone svakih %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Bit ćete u mogućnosti zahtjevati ikone opet za %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Bit ćete u mogućnosti zahtjevati ikone opet, za manje od minute.</string>
-  <string name="requests_error">Dogodila se pogreška prilikom učitavanja aplikacija za zahtjev. \nDodirnite ovdje kako bi ste pokušali ponovno.</string>
   <string name="loading_apps_to_request">Učitavanje aplikacija za zahtjev…</string>
   <string name="building_request_dialog">Stvaranje datoteke zahtjeva…</string>
   <string name="request_upload_success">Uspjeh!</string>
