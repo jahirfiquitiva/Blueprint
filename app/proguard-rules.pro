@@ -33,6 +33,10 @@
   **[] $VALUES;
   public *;
 }
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
 
 -keep class jahirfiquitiva.libs.frames.** { *; }
 -keep class jahirfiquitiva.libs.kuper.** { *; }

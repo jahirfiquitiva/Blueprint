@@ -17,7 +17,7 @@
 
 <resources>
 
-    <style name="BlueprintLightTheme" parent="Frames.LightTheme">
+    <style name="BlueprintLightTheme" parent="LightTheme">
         <item name="cardBackgroundColor">@color/light_theme_card_background</item>
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_background">@color/material_drawer_background</item>
@@ -33,7 +33,7 @@
         </item>
     </style>
 
-    <style name="BlueprintDarkTheme" parent="Frames.DarkTheme">
+    <style name="BlueprintDarkTheme" parent="DarkTheme">
         <item name="cardBackgroundColor">@color/dark_theme_card_background</item>
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_background">@color/material_drawer_dark_background</item>
@@ -50,7 +50,7 @@
         </item>
     </style>
 
-    <style name="BlueprintAmoledTheme" parent="Frames.AmoledTheme">
+    <style name="BlueprintAmoledTheme" parent="AmoledTheme">
         <item name="cardBackgroundColor">#101010</item>
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_background">@android:color/black</item>

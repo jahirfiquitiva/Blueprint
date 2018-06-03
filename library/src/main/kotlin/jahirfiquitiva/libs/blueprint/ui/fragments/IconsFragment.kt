@@ -32,11 +32,11 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
-import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
-import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.IconDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter

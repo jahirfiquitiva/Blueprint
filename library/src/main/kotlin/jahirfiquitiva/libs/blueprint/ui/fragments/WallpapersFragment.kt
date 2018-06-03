@@ -18,7 +18,7 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
-import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.frames.data.models.Wallpaper
 import jahirfiquitiva.libs.frames.ui.fragments.base.BaseWallpapersFragment
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView

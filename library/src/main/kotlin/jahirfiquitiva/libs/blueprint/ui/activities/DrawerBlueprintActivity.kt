@@ -32,14 +32,13 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_TEMPLATES_SECTION_ID
-import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
 import jahirfiquitiva.libs.kext.extensions.accentColor
 import jahirfiquitiva.libs.kext.extensions.bind

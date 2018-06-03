@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.blueprint.ui.activities.base
+package jahirfiquitiva.libs.blueprint.ui.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -53,10 +53,6 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.quest.events.SendRequestCallback
-import jahirfiquitiva.libs.blueprint.ui.activities.BlueprintKuperActivity
-import jahirfiquitiva.libs.blueprint.ui.activities.CreditsActivity
-import jahirfiquitiva.libs.blueprint.ui.activities.HelpActivity
-import jahirfiquitiva.libs.blueprint.ui.activities.SettingsActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment

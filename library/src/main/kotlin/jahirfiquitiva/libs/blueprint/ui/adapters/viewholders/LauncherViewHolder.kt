@@ -32,8 +32,8 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
+import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
 import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
 import jahirfiquitiva.libs.kext.extensions.bestSwatch

@@ -33,7 +33,7 @@ import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
-import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.HomeAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.PreviewCardHolder

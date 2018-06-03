@@ -27,7 +27,7 @@ import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
-import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.AppLinkItemHolder
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.CounterItemHolder
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter

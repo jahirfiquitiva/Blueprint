@@ -34,7 +34,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
-import jahirfiquitiva.libs.blueprint.ui.activities.base.BaseBlueprintActivity
+import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
