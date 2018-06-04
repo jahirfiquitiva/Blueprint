@@ -338,12 +338,8 @@ class IconRequest private constructor() {
         if (builder?.debug == true) {
             componentsCount.forEach {
                 val times = it.second
-                if (times > 0) {
-                    if (times > 1) {
-                        BL.w("Component \"${it.first}\" is duplicated ${it.second} times")
-                    } else {
-                        BL.w("Component \"${it.first}\" is duplicated once")
-                    }
+                if (times > 1) {
+                    BL.w("Component \"${it.first}\" is duplicated $times time(s)")
                 }
             }
         }
