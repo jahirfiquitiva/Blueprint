@@ -154,7 +154,7 @@ class FiltersBottomSheet : BottomSheetDialogFragment() {
     private var doOnFiltersChange: (ArrayList<Filter>) -> Unit = {}
     
     companion object {
-        private val TAG = "FiltersBottomSheet"
+        private const val TAG = "FiltersBottomSheet"
         
         fun build(
             filters: ArrayList<Filter>,

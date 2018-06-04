@@ -72,7 +72,7 @@ internal data class Launcher(
 }
 
 enum class NavigationItem(
-    val tag: String, val id: Int, @StringRes val title: Int,
+    private val tag: String, val id: Int, @StringRes val title: Int,
     @DrawableRes val icon: Int
                          ) {
     HOME("Home", DEFAULT_HOME_SECTION_ID, R.string.section_home, R.drawable.ic_home),

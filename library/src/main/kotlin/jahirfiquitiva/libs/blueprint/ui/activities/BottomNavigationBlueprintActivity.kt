@@ -29,7 +29,7 @@ import jahirfiquitiva.libs.kext.extensions.inactiveIconsColor
 
 abstract class BottomNavigationBlueprintActivity : BaseBlueprintActivity() {
     
-    internal val bottomBar: AHBottomNavigation? by bind(R.id.bottom_navigation)
+    private val bottomBar: AHBottomNavigation? by bind(R.id.bottom_navigation)
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

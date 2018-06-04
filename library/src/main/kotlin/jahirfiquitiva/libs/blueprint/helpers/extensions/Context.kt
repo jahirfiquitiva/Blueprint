@@ -16,13 +16,11 @@
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
 import android.content.Context
-import android.graphics.Color
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.kext.extensions.ctxt
-import jahirfiquitiva.libs.kext.extensions.usesDarkTheme
 import jahirfiquitiva.libs.kext.ui.activities.ThemedActivity
 import java.util.concurrent.TimeUnit
 
