@@ -69,6 +69,8 @@
   <string name="apps_limit_dialog_day">Désolé, mais vous êtes autorisé à demander des icônes chaque %1$s uniquement.</string>
   <string name="apps_limit_dialog_day_extra">Vous serez en mesure de demander à nouveau des icônes, dans %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Vous serez en mesure de demander à nouveau des icônes, dans moins d\'une minute.</string>
+  <string name="requests_error">Il y a eu une erreur lors du chargement des applications demandées. \nRaison : %1$s\nMerci de réessayer plus tard.</string>
+  <string name="requests_upload_error">Il y a eu une erreur lors de l\'envoie des applications demandées sur nos serveurs. \nRaison : %1$s\nMerci de réessayer plus tard.</string>
   <string name="loading_apps_to_request">Chargement des applications à demander…</string>
   <string name="building_request_dialog">Création de la demande d\'icônes…</string>
   <string name="request_upload_success">Succès !</string>
@@ -105,7 +107,7 @@
     <item>Pourquoi l\'application doit-elle être autorisé pour maintenir le télephone en veille?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+    <item>Vous avez besoin d’un lanceur avec support de packs d\'icônes. La liste des lanceurs pris en charge peut être trouvée dans l’application, dans la section « Appliquer » ou dans la description du Play Store.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
     <item>Retournez à l\'accueil et appuyez sur le menu intitulé \"Icônes\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
