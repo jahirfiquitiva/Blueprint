@@ -59,6 +59,3 @@ private fun Long.toMonths() = toWeeks() / 4
 
 internal fun FloatingActionButton.showIf(show: Boolean) =
     if (show) show() else hide()
-
-internal val Context.filterChipColor: Int
-    get() = if (usesDarkTheme) Color.parseColor("#424242") else Color.parseColor("#eeeeee")
