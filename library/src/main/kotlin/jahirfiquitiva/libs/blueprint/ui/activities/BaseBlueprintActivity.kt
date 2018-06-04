@@ -57,7 +57,6 @@ import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.FiltersBottomSheet
-import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.showChanges
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_APPLIER
@@ -87,8 +86,7 @@ import jahirfiquitiva.libs.kext.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kext.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
 
-abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
-                                       FilterTitleDrawerItem.ButtonListener {
+abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     
     override val configs: BPKonfigs by lazy { BPKonfigs(this) }
     override fun lightTheme(): Int = R.style.BlueprintLightTheme
@@ -242,11 +240,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         
         this.iconsFilters.clear()
         this.iconsFilters.addAll(newFilters)
-    }
-    
-    override fun onButtonPressed() {
-        activeFilters.clear()
-        applyIconFilters()
     }
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
