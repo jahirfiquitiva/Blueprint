@@ -23,8 +23,6 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.CoordinatorLayout
-import android.support.v4.widget.DrawerLayout
-import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import ca.allanwang.kau.utils.dpToPx
@@ -37,8 +35,6 @@ import ca.allanwang.kau.utils.statusBarLight
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
 import com.andremion.counterfab.CounterFab
-import com.mikepenz.materialdrawer.Drawer
-import com.mikepenz.materialdrawer.DrawerBuilder
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
@@ -50,17 +46,17 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_SECTION_ID
+import jahirfiquitiva.libs.blueprint.models.Filter
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.quest.events.SendRequestCallback
-import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterCheckBoxHolder
 import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
-import jahirfiquitiva.libs.blueprint.ui.items.FilterDrawerItem
+import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.FiltersBottomSheet
 import jahirfiquitiva.libs.blueprint.ui.items.FilterTitleDrawerItem
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.showChanges
@@ -106,9 +102,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     private val coordinatorLayout: CoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
     private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
     
-    private var filtersDrawer: Drawer? = null
-    private val iconsFilters: ArrayList<String> = ArrayList()
-    private val activeFilters: ArrayList<String> = ArrayList()
+    private val iconsFilters: ArrayList<Filter> = ArrayList()
+    private val activeFilters: ArrayList<Filter> = ArrayList()
     
     internal val toolbar: CustomToolbar? by bind(R.id.toolbar)
     private val fab: CounterFab? by bind(R.id.fab)
@@ -147,7 +142,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         toolbar?.bindToActivity(this, false)
         toolbar?.enableScroll(true)
         initCurrentSectionId()
-        initMainComponents(savedInstanceState)
+        initMainComponents()
         if (isIconsPicker) {
             postDelayed(10) {
                 navigateToItem(getNavigationItemWithId(currentSectionId), true, true)
@@ -165,10 +160,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         } else defaultSectionId
     }
     
-    private fun initMainComponents(savedInstance: Bundle?) {
+    private fun initMainComponents() {
         initFragments()
         initFAB()
-        initFiltersDrawer(iconsFilters, savedInstance)
         updateUI(getNavigationItemWithId(currentSectionId))
     }
     
@@ -202,10 +196,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         fab?.setMarginRight(16F.dpToPx.toInt())
         fab?.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
         fab?.setOnClickListener {
-            if (currentSectionId == DEFAULT_HOME_SECTION_ID) {
-                executeLauncherIntent(defaultLauncher?.name.orEmpty())
-            } else if (currentSectionId == DEFAULT_REQUEST_SECTION_ID) {
-                startRequestsProcess()
+            when (currentSectionId) {
+                DEFAULT_HOME_SECTION_ID -> executeLauncherIntent(defaultLauncher?.name.orEmpty())
+                DEFAULT_REQUEST_SECTION_ID -> startRequestsProcess()
+                DEFAULT_ICONS_SECTION_ID -> showFiltersBottomSheet()
             }
         }
         updateFAB()
@@ -218,76 +212,39 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         val icon: Drawable? = when (currentSectionId) {
             DEFAULT_HOME_SECTION_ID -> drawable(R.drawable.ic_apply)
             DEFAULT_REQUEST_SECTION_ID -> drawable(R.drawable.ic_send)
+            DEFAULT_ICONS_SECTION_ID -> drawable(R.drawable.ic_filter)
             else -> null
         }
         fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
         fab?.showIf(
             (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
-                || currentSectionId == DEFAULT_REQUEST_SECTION_ID)
+                || currentSectionId == DEFAULT_REQUEST_SECTION_ID
+                || (currentSectionId == DEFAULT_ICONS_SECTION_ID && iconsFilters.size > 1))
     }
     
-    fun initFiltersDrawer(filters: ArrayList<String>, savedInstance: Bundle? = null) {
-        val filtersDrawerBuilder = DrawerBuilder().withActivity(this).withDrawerGravity(Gravity.END)
-        
-        if (savedInstance != null) filtersDrawerBuilder.withSavedInstance(savedInstance)
-        
-        filtersDrawer?.removeAllItems()
-        
-        if (filters.isNotEmpty()) {
-            filtersDrawerBuilder.addDrawerItems(FilterTitleDrawerItem(this))
-            setupFiltersDrawerItems(filtersDrawerBuilder, filters)
-        }
-        
-        filtersDrawer = filtersDrawerBuilder.build()
-        
-        this.iconsFilters.clear()
-        this.iconsFilters.addAll(filters)
-        
-        val item = getNavigationItemWithId(currentSectionId)
-        lockFiltersDrawer(item.id != DEFAULT_ICONS_SECTION_ID || filters.size <= 1)
-        if (currentSectionId == DEFAULT_ICONS_SECTION_ID) invalidateOptionsMenu()
-    }
-    
-    private fun setupFiltersDrawerItems(builder: DrawerBuilder, filters: ArrayList<String>) {
+    fun initFiltersFromCategories(categories: ArrayList<String>) {
         var index = 0
         var colorIndex = 0
         val colors = stringArray(R.array.filters_colors).orEmpty()
-        val listener = object : FilterCheckBoxHolder.StateChangeListener {
-            override fun onStateChanged(
-                checked: Boolean, title: String,
-                fireFiltersListener: Boolean
-                                       ) {
-                if (activeFilters.contains(title) && !checked) {
-                    activeFilters.remove(title)
-                    if (fireFiltersListener) applyIconFilters()
-                } else if (checked) {
-                    activeFilters.add(title)
-                    if (fireFiltersListener) applyIconFilters()
-                }
-            }
-        }
         
-        if (filters.size > 1) {
-            filters.forEach {
+        val newFilters = ArrayList<Filter>()
+        if (categories.size > 1) {
+            categories.forEach {
                 if (colorIndex >= colors.size) colorIndex = 0
                 val name = it.formatCorrectly().blueprintFormat()
                 if (!(name.contains("all", true))) {
-                    builder.addDrawerItems(
-                        FilterDrawerItem().withName(it.formatCorrectly().blueprintFormat())
-                            .withColor(Color.parseColor(colors[colorIndex]))
-                            .withListener(listener)
-                            .withDivider(index < (filters.size - 1)))
+                    newFilters.add(Filter(name, Color.parseColor(colors[colorIndex]), false))
                     index += 1
                     colorIndex += 1
                 }
             }
         }
+        
+        this.iconsFilters.clear()
+        this.iconsFilters.addAll(newFilters)
     }
     
     override fun onButtonPressed() {
-        filtersDrawer?.drawerItems?.forEach {
-            (it as? FilterDrawerItem)?.checkBoxHolder?.apply(false, false)
-        }
         activeFilters.clear()
         applyIconFilters()
     }
@@ -329,7 +286,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         item?.let {
             when (it.itemId) {
-                R.id.filters -> if (iconsFilters.isNotEmpty()) filtersDrawer?.openDrawer()
                 R.id.refresh -> {
                     refreshWallpapers()
                     refreshRequests()
@@ -403,6 +359,15 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         }
     }
     
+    private fun showFiltersBottomSheet() {
+        FiltersBottomSheet.show(
+            this@BaseBlueprintActivity, iconsFilters, activeFilters) {
+            this.activeFilters.clear()
+            this.activeFilters.addAll(it)
+            this.applyIconFilters()
+        }
+    }
+    
     internal open fun navigateToItem(
         item: NavigationItem,
         fromClick: Boolean,
@@ -434,13 +399,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
     
     private fun updateUI(item: NavigationItem) {
         updateFAB()
-        
         toolbar?.title = getString(
             if (item.id == DEFAULT_HOME_SECTION_ID) R.string.app_name else item.title)
         supportActionBar?.title = getString(
             if (item.id == DEFAULT_HOME_SECTION_ID) R.string.app_name else item.title)
-        
-        lockFiltersDrawer(item.id != DEFAULT_ICONS_SECTION_ID || iconsFilters.size <= 1)
     }
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
@@ -450,7 +412,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
             R.id.search,
             if (isInIconsSection) iconsFilters.isNotEmpty()
             else item.id != DEFAULT_HOME_SECTION_ID)
-        menu.setItemVisibility(R.id.filters, isInIconsSection && iconsFilters.size > 1)
         menu.setItemVisibility(
             R.id.refresh,
             item.id == DEFAULT_WALLPAPERS_SECTION_ID || item.id == DEFAULT_REQUEST_SECTION_ID)
@@ -459,12 +420,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         menu.setItemVisibility(R.id.about, hasBottomNavigation())
         menu.setItemVisibility(R.id.settings, hasBottomNavigation() && !isIconsPicker)
         menu.setItemVisibility(R.id.help, hasBottomNavigation() && !isIconsPicker)
-    }
-    
-    private fun lockFiltersDrawer(lock: Boolean) {
-        filtersDrawer?.drawerLayout?.setDrawerLockMode(
-            if (lock) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED,
-            Gravity.END)
     }
     
     open fun getNavigationItems(): Array<NavigationItem> =
@@ -570,10 +525,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>(),
         }()
     }
     
-    internal fun applyIconFilters() {
+    private fun applyIconFilters() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-            currentSectionPosition) as? IconsFragment)
-            ?.applyFilters(activeFilters)
+            currentSectionPosition) as? IconsFragment)?.applyFilters(activeFilters)
     }
     
     private fun scrollToTop() {

@@ -16,11 +16,13 @@
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
 import android.content.Context
+import android.graphics.Color
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.kext.extensions.ctxt
+import jahirfiquitiva.libs.kext.extensions.usesDarkTheme
 import jahirfiquitiva.libs.kext.ui.activities.ThemedActivity
 import java.util.concurrent.TimeUnit
 
@@ -57,3 +59,6 @@ private fun Long.toMonths() = toWeeks() / 4
 
 internal fun FloatingActionButton.showIf(show: Boolean) =
     if (show) show() else hide()
+
+internal val Context.filterChipColor: Int
+    get() = if (usesDarkTheme) Color.parseColor("#424242") else Color.parseColor("#eeeeee")

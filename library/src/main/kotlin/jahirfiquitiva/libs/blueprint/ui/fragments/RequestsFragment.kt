@@ -16,6 +16,7 @@
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -40,7 +41,9 @@ import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
+import jahirfiquitiva.libs.kext.extensions.accentColor
 import jahirfiquitiva.libs.kext.extensions.activity
+import jahirfiquitiva.libs.kext.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kext.extensions.ctxt
 import jahirfiquitiva.libs.kext.extensions.dimenPixelSize
 import jahirfiquitiva.libs.kext.extensions.hasContent
@@ -63,6 +66,8 @@ class RequestsFragment : ViewModelFragment<App>() {
     
     private var recyclerView: EmptyViewRecyclerView? = null
     private var fastScroller: RecyclerFastScroller? = null
+    private var swipeToRefresh: SwipeRefreshLayout? = null
+    
     private val adapter: RequestsAdapter? by lazy {
         RequestsAdapter(context?.let { Glide.with(it) }) { updateFabCount() }
     }
@@ -88,6 +93,13 @@ class RequestsFragment : ViewModelFragment<App>() {
     override fun initUI(content: View) {
         recyclerView = content.findViewById(R.id.list_rv)
         fastScroller = content.findViewById(R.id.fast_scroller)
+        swipeToRefresh = content.findViewById(R.id.swipe_to_refresh)
+        
+        swipeToRefresh?.let {
+            it.setProgressBackgroundColorSchemeColor(it.context.cardBackgroundColor)
+            it.setColorSchemeColors(it.context.accentColor)
+            it.setOnRefreshListener { refresh() }
+        }
         
         val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
         recyclerView?.setPaddingBottom(64.dpToPx * (if (hasBottomNav) 2 else 1))
@@ -121,6 +133,7 @@ class RequestsFragment : ViewModelFragment<App>() {
             })
         
         recyclerView?.adapter = adapter
+        fastScroller?.attachSwipeRefreshLayout(swipeToRefresh)
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
         updateFabCount()
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
@@ -139,10 +152,13 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     fun refresh() {
+        val isRefreshing = swipeToRefresh?.isRefreshing ?: false
+        if (isRefreshing) swipeToRefresh?.isRefreshing = false
         unselectAll()
         doToFab { it.hide() }
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         canShowProgress = true
+        swipeToRefresh?.isRefreshing = true
         internalLoadData(true)
     }
     
@@ -188,6 +204,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     override fun registerObservers() {
         viewModel.observe(this) {
             postDelayed(10) {
+                swipeToRefresh?.isRefreshing = false
                 recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
                 adapter?.setItems(ArrayList(it))
                 if (actuallyVisible) {
@@ -240,6 +257,7 @@ class RequestsFragment : ViewModelFragment<App>() {
                         progressDialog?.setOnDismissListener { canShowProgress = false }
                         if (progress >= 100) {
                             progressDialog?.dismiss()
+                            swipeToRefresh?.isRefreshing = false
                         } else {
                             if (actuallyVisible) progressDialog?.show()
                         }
@@ -267,7 +285,7 @@ class RequestsFragment : ViewModelFragment<App>() {
         dialog = null
     }
     
-    override fun getContentLayout(): Int = R.layout.section_layout
+    override fun getContentLayout(): Int = R.layout.section_with_swipe_refresh
     override fun autoStartLoad(): Boolean = true
     override fun allowReloadAfterVisibleToUser(): Boolean = true
     

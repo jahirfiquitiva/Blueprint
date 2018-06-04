@@ -27,18 +27,10 @@
         tools:ignore="AppCompatResource" />
 
     <item
-        android:id="@+id/filters"
-        android:icon="@drawable/ic_filter"
-        android:title="@string/filter"
-        android:orderInCategory="200"
-        app:showAsAction="ifRoom"
-        tools:ignore="AppCompatResource" />
-
-    <item
         android:id="@+id/select_all"
         android:icon="@drawable/ic_select_all"
         android:title="@string/select_all"
-        android:orderInCategory="300"
+        android:orderInCategory="200"
         app:showAsAction="ifRoom"
         tools:ignore="AppCompatResource" />
 
@@ -46,7 +38,7 @@
         android:id="@+id/refresh"
         android:icon="@drawable/ic_refresh"
         android:title="@string/refresh"
-        android:orderInCategory="400"
+        android:orderInCategory="300"
         app:showAsAction="ifRoom"
         tools:ignore="AppCompatResource" />
 
@@ -54,7 +46,7 @@
         android:id="@+id/templates"
         android:icon="@drawable/ic_widgets"
         android:title="@string/templates"
-        android:orderInCategory="500"
+        android:orderInCategory="400"
         app:showAsAction="ifRoom"
         tools:ignore="AppCompatResource" />
 
@@ -62,7 +54,7 @@
         android:id="@+id/changelog"
         android:icon="@drawable/ic_changes"
         android:title="@string/changelog"
-        android:orderInCategory="600"
+        android:orderInCategory="500"
         app:showAsAction="ifRoom"
         tools:ignore="AppCompatResource" />
 
@@ -70,7 +62,7 @@
         android:id="@+id/about"
         android:icon="@drawable/ic_about"
         android:title="@string/section_about"
-        android:orderInCategory="700"
+        android:orderInCategory="600"
         app:showAsAction="never"
         tools:ignore="AppCompatResource" />
 
@@ -78,7 +70,7 @@
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/settings"
-        android:orderInCategory="800"
+        android:orderInCategory="700"
         app:showAsAction="never"
         tools:ignore="AppCompatResource" />
 
@@ -86,7 +78,7 @@
         android:id="@+id/help"
         android:icon="@drawable/ic_help"
         android:title="@string/section_help"
-        android:orderInCategory="900"
+        android:orderInCategory="800"
         app:showAsAction="never"
         tools:ignore="AppCompatResource" />
 
@@ -94,7 +86,7 @@
         android:id="@+id/donate"
         android:title="@string/donate"
         android:icon="@drawable/ic_donate"
-        android:orderInCategory="1000"
+        android:orderInCategory="900"
         app:showAsAction="never"
         tools:ignore="AppCompatResource" />
 

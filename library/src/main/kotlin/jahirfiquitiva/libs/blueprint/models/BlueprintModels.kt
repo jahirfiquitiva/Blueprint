@@ -89,3 +89,5 @@ enum class NavigationItem(
     
     override fun toString(): String = "NavigationItem[$tag - $id]"
 }
+
+data class Filter(val title: String, @ColorInt val color: Int, var selected: Boolean)
