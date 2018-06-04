@@ -94,7 +94,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
                 filters += it.title
             }
             homeAdapter?.updateIconsCount(ArrayList(allIcons.distinctBy { it.name }).size)
-            (activity as? BaseBlueprintActivity)?.initFiltersDrawer(filters)
+            (activity as? BaseBlueprintActivity)?.initFiltersFromCategories(filters)
         }
         wallsModel.observe(this) { homeAdapter?.updateWallsCount(it.size) }
     }
@@ -152,6 +152,8 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         recyclerView?.adapter = homeAdapter
         
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
+        
+        bindPreviewCard()
         
         activity {
             (it as? BaseBlueprintActivity)?.let {

@@ -33,6 +33,7 @@ import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
+import jahirfiquitiva.libs.blueprint.models.Filter
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
@@ -70,7 +71,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         IconsAdapter(context?.let { Glide.with(it) }, false) { onItemClicked(it, false) }
     }
     
-    fun applyFilters(filters: ArrayList<String>) {
+    fun applyFilters(filters: ArrayList<Filter>) {
         val list = ArrayList(model.getData().orEmpty())
         if (filters.isNotEmpty()) {
             setAdapterItems(list.jfilter { validFilter(it.title, filters) })
@@ -102,7 +103,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             (activity as? BaseBlueprintActivity)?.let {
                 val filters = ArrayList<String>()
                 categories.forEach { filters += it.title }
-                it.initFiltersDrawer(filters)
+                it.initFiltersFromCategories(filters)
             }
         }
     }
@@ -118,8 +119,8 @@ class IconsFragment : ViewModelFragment<Icon>() {
         adapter?.setItems(ArrayList(icons.distinctBy { it.name }.sortedBy { it.name }))
     }
     
-    private fun validFilter(title: String, filters: ArrayList<String>): Boolean {
-        filters.forEach { if (title.equals(it, true)) return true }
+    private fun validFilter(title: String, filters: ArrayList<Filter>): Boolean {
+        filters.forEach { if (title.equals(it.title, true)) return true }
         return false
     }
     
@@ -161,20 +162,6 @@ class IconsFragment : ViewModelFragment<Icon>() {
             recyclerView?.setPaddingBottom(64.dpToPx)
             fastScroller?.setPaddingBottom(48.dpToPx)
         }
-        
-        /*
-        fastScroller?.setOnHandleTouchListener { _, e ->
-            when (e.actionMasked) {
-                MotionEvent.ACTION_DOWN -> {
-                    (activity as? BaseBlueprintActivity)?.lockFiltersDrawer(true)
-                }
-                MotionEvent.ACTION_UP -> {
-                    (activity as? BaseBlueprintActivity)?.lockFiltersDrawer(false)
-                }
-            }
-            true
-        }
-        */
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)
