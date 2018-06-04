@@ -295,7 +295,7 @@ class RequestsFragment : ViewModelFragment<App>() {
         actuallyVisible = isVisibleToUser
         if (isVisibleToUser) {
             updateFabCount()
-            postDelayed(50) { loadDataFromViewModel() }
+            postDelayed(25) { loadDataFromViewModel() }
         } else {
             doToFab { it.hide() }
         }
