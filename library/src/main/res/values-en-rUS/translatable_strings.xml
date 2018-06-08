@@ -67,8 +67,9 @@
   <string name="apps_limit_dialog">Sorry, but you are only allowed to request %1$s more apps for now.</string>
   <string name="apps_limit_dialog_more">Sorry, but you are only allowed to select %1$s apps to request.</string>
   <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request %1$s more apps for now.</string>
-  <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
+  <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in less than a minute.</string>
+  <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in %1$s.</string>
+  <string name="requests_error">There was an error in uploading requests to our server.\nReason: %1$s\nPlease try again later.</string>
   <string name="loading_apps_to_request">Loading apps to request…</string>
   <string name="building_request_dialog">Building request files…</string>
   <string name="request_upload_success">Success!</string>
