@@ -31,7 +31,6 @@ import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setMarginBottom
 import ca.allanwang.kau.utils.setMarginRight
 import ca.allanwang.kau.utils.snackbar
-import ca.allanwang.kau.utils.statusBarLight
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
 import com.andremion.counterfab.CounterFab
@@ -68,16 +67,13 @@ import jahirfiquitiva.libs.frames.ui.widgets.CustomToolbar
 import jahirfiquitiva.libs.kext.extensions.accentColor
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.drawable
-import jahirfiquitiva.libs.kext.extensions.enableTranslucentStatusBar
 import jahirfiquitiva.libs.kext.extensions.formatCorrectly
 import jahirfiquitiva.libs.kext.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kext.extensions.getAppName
 import jahirfiquitiva.libs.kext.extensions.getPrimaryTextColorFor
 import jahirfiquitiva.libs.kext.extensions.getSecondaryTextColorFor
 import jahirfiquitiva.libs.kext.extensions.hasContent
-import jahirfiquitiva.libs.kext.extensions.isColorLight
 import jahirfiquitiva.libs.kext.extensions.primaryColor
-import jahirfiquitiva.libs.kext.extensions.primaryDarkColor
 import jahirfiquitiva.libs.kext.extensions.setItemVisibility
 import jahirfiquitiva.libs.kext.extensions.stringArray
 import jahirfiquitiva.libs.kext.extensions.tint
@@ -134,8 +130,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableTranslucentStatusBar()
-        statusBarLight = primaryDarkColor.isColorLight(0.6F)
         setContentView(R.layout.activity_blueprint)
         toolbar?.bindToActivity(this, false)
         toolbar?.enableScroll(true)
