@@ -24,6 +24,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
@@ -158,10 +159,8 @@ class IconsFragment : ViewModelFragment<Icon>() {
         fastScroller = content.findViewById(R.id.fast_scroller)
         
         val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
-        if (hasBottomNav) {
-            recyclerView?.setPaddingBottom(64.dpToPx)
-            fastScroller?.setPaddingBottom(48.dpToPx)
-        }
+        recyclerView?.setPaddingBottom(64.dpToPx * (if (hasBottomNav) 2 else 1))
+        if (hasBottomNav) fastScroller?.setPaddingBottom(48.dpToPx)
         
         recyclerView?.emptyView = content.findViewById(R.id.empty_view)
         recyclerView?.setEmptyImage(R.drawable.empty_section)
@@ -176,8 +175,20 @@ class IconsFragment : ViewModelFragment<Icon>() {
         val columns = ctxt.int(R.integer.icons_columns)
         recyclerView?.layoutManager =
             GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
-        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
+        
+        recyclerView?.addOnScrollListener(
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    (activity as? BaseBlueprintActivity)?.postToFab {
+                        if (dy > 0) it.hide() else it.show()
+                    }
+                }
+            })
+        
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
+        
+        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
     }
     
     override fun onItemClicked(item: Icon, longClick: Boolean) {

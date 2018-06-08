@@ -568,8 +568,11 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     internal fun postToFab(post: (CounterFab) -> Unit) {
-        ((pager?.adapter as? FragmentsPagerAdapter)
-            ?.get(currentSectionId) as? RequestsFragment)?.let { fab?.let { post(it) } }
+        val currentFragment =
+            (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
+        when (currentFragment) {
+            is RequestsFragment, is IconsFragment -> fab?.let { post(it) }
+        }
     }
     
     internal fun requestWallpaperPermission(explanation: String, onGranted: () -> Unit) {
