@@ -69,6 +69,8 @@
   <string name="apps_limit_dialog_day">Désolé, mais vous êtes autorisé à demander des icônes chaque %1$s uniquement.</string>
   <string name="apps_limit_dialog_day_extra">Vous serez en mesure de demander à nouveau des icônes, dans %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Vous serez en mesure de demander à nouveau des icônes, dans moins d\'une minute.</string>
+  <string name="requests_error">Il y a eu une erreur lors du chargement des applications demandées. \nRaison : %1$s\nMerci de réessayer plus tard.</string>
+  <string name="requests_upload_error">Il y a eu une erreur lors de l\'envoie des applications demandées sur nos serveurs. \nRaison : %1$s\nMerci de réessayer plus tard.</string>
   <string name="loading_apps_to_request">Chargement des applications à demander…</string>
   <string name="building_request_dialog">Création de la demande d\'icônes…</string>
   <string name="request_upload_success">Succès !</string>
@@ -105,18 +107,18 @@
     <item>Pourquoi l\'application doit-elle être autorisé pour maintenir le télephone en veille?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
+    <item>Vous avez besoin d’un lanceur avec support de packs d\'icônes. La liste des lanceurs pris en charge peut être trouvée dans l’application, dans la section « Appliquer » ou dans la description du Play Store.</item>
+    <item>Selon le type de navigation, vous devez soit faire glisser le panneau de navigation depuis la gauche et sélectionner \"Appliquer\", soit choisir la 4e icône depuis la barre de navigation du bas. Depuis cet endroit, vous pouvez choisir un launcher sur lequel appliquer les icônes. Certains launchers ne supportent pas l\'application auto et vous devez le faire manuellement depuis leurs paramètres.</item>
     <item>Retournez à l\'accueil et appuyez sur le menu intitulé \"Icônes\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Selon le launcher utilisé, vous devez soit maintenir appuyé l\'icône puis sélectionner \"Modifier\" depuis le menu, soit maintenir appuyé l\'icône puis le déplacer vers le message \"Modifier\".</item>
+    <item>Selon le type de navigation, vous devez soit faire glisser le panneau de navigation depuis la gauche et sélectionner \"Appliquer\", soit choisir l\'icône depuis la barre de navigation du bas.</item>
     <item>Cela se produit lorsque le pack d\'icônes a été déplacé sur la Carte SD, vous devez l\'installer sur la mémoire interne.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+    <item>Le problème peut venir de votre launcher, par rapport à la gestion de la haute résolution. Vous pouvez corriger le probème en augmentant la taille des icônes à 115 - 120%. Ou essayez un autre launcher.</item>
     <item>Envoyer une demande d\'icône.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+    <item>Faites glisser le panneau de navigation depuis la gauche, ou appuyez sur l\'icône du menu et accédez aux \"Paramètres\". Ensuite, cochez l\'option \"Masquer l\'icône de l\'application\".</item>
     <item>Allez sur votre écran d’accueil, puis créez un widget pour l’application dont le nom est « IconRestorer » et appuyez.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
+    <item>Faites glisser le panneau de navigation depuis la gauche, ou appuyez sur l\'icône du menu et accédez aux \"Paramètres\". Ensuite, décochez l\'option \"Masquer l\'icône de l\'application\".</item>
+    <item>Cela est nécessaire pour pouvoir écrire les données et fichiers des demandes d\'icônes, ainsi que sauvegarder les fonds d\'écran et être en mesure de changer l\'emplacement de stockage des fonds d\'écran téléchargés.</item>
     <item>Cela est nécessaire pour le chargement des fonds d\'écran depuis le cloud et les sauvegarder.</item>
     <item>C\'est nécessaire pour pouvoir vérifier si votre appareil est connecté à Internet.</item>
     <item>C\'est nécessaire pour être en mesure d\'appliquer un fond d\'écran directement à partir de l\'application.</item>
