@@ -15,6 +15,12 @@
   -->
 <notices>
     <notice>
+        <name>Blueprint</name>
+        <url>https://github.com/jahirfiquitiva/Blueprint</url>
+        <copyright>Copyright (c) 2018 Jahir Fiquitiva</copyright>
+        <license>CreativeCommons Attribution-ShareAlike 4.0 International License</license>
+    </notice>
+    <notice>
         <name>Kuper</name>
         <url>https://github.com/jahirfiquitiva/Kuper</url>
         <copyright>Copyright (c) 2018 Jahir Fiquitiva</copyright>
@@ -27,16 +33,16 @@
         <license>CreativeCommons Attribution-ShareAlike 4.0 International License</license>
     </notice>
     <notice>
-        <name>KAU Extensions</name>
+        <name>kext</name>
         <url>https://github.com/jahirfiquitiva/kext</url>
         <copyright>Copyright (c) 2018 Jahir Fiquitiva</copyright>
         <license>CreativeCommons Attribution-ShareAlike 4.0 International License</license>
     </notice>
     <notice>
-        <name>KAU</name>
-        <url>https://github.com/AllanWang/KAU</url>
-        <copyright>Copyright (c) 2018 Allan Wang</copyright>
-        <license>Educational Community License v2.0</license>
+        <name>ChipView</name>
+        <url>https://github.com/jahirfiquitiva/ChipView</url>
+        <copyright>Copyright (c) 2018 Jahir Fiquitiva</copyright>
+        <license>CreativeCommons Attribution-ShareAlike 4.0 International License</license>
     </notice>
     <notice>
         <name>Material Drawer</name>
@@ -58,7 +64,7 @@
     </notice>
     <notice>
         <name>Sectioned RecyclerView</name>
-        <url>https://github.com/afollestad/sectioned-recyclerview</url>
+        <url>https://github.com/jahirfiquitiva/sectioned-recyclerview</url>
         <copyright>Copyright (c) 2018 Aidan Michael Follestad</copyright>
         <license>Apache Software License 2.0</license>
     </notice>
@@ -81,6 +87,18 @@
         <license>Apache Software License 2.0</license>
     </notice>
     <notice>
+        <name>Fuel</name>
+        <url>https://github.com/kittinunf/Fuel/</url>
+        <copyright>Copyright 2018 Kittinun Vantasin</copyright>
+        <license>MIT License</license>
+    </notice>
+    <notice>
+        <name>KPermissions</name>
+        <url>https://github.com/Fondesa/KPermissions</url>
+        <copyright>Copyright 2018 Giorgio Antonioli</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
         <name>Android InApp Billing v3</name>
         <url>https://github.com/anjlab/android-inapp-billing-v3</url>
         <copyright>Copyright 2014-2018 AnjLab</copyright>
@@ -89,13 +107,13 @@
     <notice>
         <name>Muzei API</name>
         <url>https://github.com/romannurik/muzei</url>
-        <copyright>Copyright 2018 Roman Nurik</copyright>
+        <copyright>Copyright 2017 Roman Nurik</copyright>
         <license>Apache Software License 2.0</license>
     </notice>
     <notice>
         <name>Licenses Dialog</name>
         <url>https://github.com/PSDev/LicensesDialog/</url>
-        <copyright>Copyright 2013-2018 Philip Schiffer</copyright>
+        <copyright>Copyright 2013-2017 Philip Schiffer</copyright>
         <license>Apache Software License 2.0</license>
     </notice>
 </notices>
