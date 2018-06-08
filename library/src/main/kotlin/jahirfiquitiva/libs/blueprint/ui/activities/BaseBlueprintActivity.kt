@@ -187,13 +187,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     private fun initFAB() {
         fab?.setMarginRight(16F.dpToPx.toInt())
         fab?.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
-        fab?.setOnClickListener {
-            when (currentSectionId) {
-                DEFAULT_HOME_SECTION_ID -> executeLauncherIntent(defaultLauncher?.name.orEmpty())
-                DEFAULT_REQUEST_SECTION_ID -> startRequestsProcess()
-                DEFAULT_ICONS_SECTION_ID -> showFiltersBottomSheet()
-            }
-        }
         updateFAB()
     }
     
@@ -208,6 +201,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
             else -> null
         }
         fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
+        fab?.setOnClickListener {
+            when (currentSectionId) {
+                DEFAULT_HOME_SECTION_ID -> executeLauncherIntent(defaultLauncher?.name.orEmpty())
+                DEFAULT_REQUEST_SECTION_ID -> startRequestsProcess()
+                DEFAULT_ICONS_SECTION_ID -> showFiltersBottomSheet()
+            }
+        }
         fab?.showIf(
             (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
                 || currentSectionId == DEFAULT_REQUEST_SECTION_ID
@@ -234,6 +234,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
         
         this.iconsFilters.clear()
         this.iconsFilters.addAll(newFilters)
+        updateFAB()
+        invalidateOptionsMenu()
     }
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -393,8 +395,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
-        val isInIconsSection = item.id == DEFAULT_ICONS_SECTION_ID
-        menu.setItemVisibility(R.id.donate, donationsEnabled)
+        val isInIconsSection = item.id == DEFAULT_ICONS_SECTION_ID || isIconsPicker
+        menu.setItemVisibility(R.id.changelog, !isIconsPicker)
+        menu.setItemVisibility(R.id.donate, donationsEnabled && !isIconsPicker)
         menu.setItemVisibility(
             R.id.search,
             if (isInIconsSection) iconsFilters.isNotEmpty()
@@ -404,7 +407,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
             item.id == DEFAULT_WALLPAPERS_SECTION_ID || item.id == DEFAULT_REQUEST_SECTION_ID)
         menu.setItemVisibility(R.id.select_all, item.id == DEFAULT_REQUEST_SECTION_ID)
         menu.setItemVisibility(R.id.templates, hasTemplates && !isIconsPicker)
-        menu.setItemVisibility(R.id.about, hasBottomNavigation())
+        menu.setItemVisibility(R.id.about, hasBottomNavigation() && !isIconsPicker)
         menu.setItemVisibility(R.id.settings, hasBottomNavigation() && !isIconsPicker)
         menu.setItemVisibility(R.id.help, hasBottomNavigation() && !isIconsPicker)
     }
