@@ -187,6 +187,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     private fun initFAB() {
         fab?.setMarginRight(16F.dpToPx.toInt())
         fab?.setMarginBottom((if (hasBottomNavigation()) 72F else 16F).dpToPx.toInt())
+        fab?.setOnClickListener {
+            when (currentSectionId) {
+                DEFAULT_HOME_SECTION_ID -> executeLauncherIntent(defaultLauncher?.name.orEmpty())
+                DEFAULT_REQUEST_SECTION_ID -> startRequestsProcess()
+                DEFAULT_ICONS_SECTION_ID -> showFiltersBottomSheet()
+            }
+        }
         updateFAB()
     }
     
@@ -201,13 +208,6 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
             else -> null
         }
         fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
-        fab?.setOnClickListener {
-            when (currentSectionId) {
-                DEFAULT_HOME_SECTION_ID -> executeLauncherIntent(defaultLauncher?.name.orEmpty())
-                DEFAULT_REQUEST_SECTION_ID -> startRequestsProcess()
-                DEFAULT_ICONS_SECTION_ID -> showFiltersBottomSheet()
-            }
-        }
         fab?.showIf(
             (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
                 || currentSectionId == DEFAULT_REQUEST_SECTION_ID
