@@ -155,11 +155,13 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         
         bindPreviewCard()
         
-        activity {
-            (it as? BaseBlueprintActivity)?.let {
-                it.requestWallpaperPermission(
-                    it.getString(R.string.permission_request_wallpaper, it.getAppName())) {
-                    bindPreviewCard()
+        if (configs.wallpaperInIconsPreview) {
+            activity {
+                (it as? BaseBlueprintActivity)?.let {
+                    it.requestWallpaperPermission(
+                        it.getString(R.string.permission_request_wallpaper, it.getAppName())) {
+                        bindPreviewCard()
+                    }
                 }
             }
         }

@@ -16,14 +16,17 @@
 package jahirfiquitiva.libs.blueprint.helpers.utils
 
 import android.content.Context
+import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.kext.extensions.boolean
 import jahirfiquitiva.libs.kuper.helpers.utils.KuperKonfigs
 
-class BPKonfigs(cntxt: Context) : KuperKonfigs(cntxt) {
+class BPKonfigs(private val cntxt: Context) : KuperKonfigs(cntxt) {
     var launcherIconShown: Boolean
         get() = prefs.getBoolean(LAUNCHER_ICON_SHOWN, true)
         set(shown) = prefsEditor.putBoolean(LAUNCHER_ICON_SHOWN, shown).apply()
     
     var wallpaperInIconsPreview: Boolean
-        get() = prefs.getBoolean(WALLPAPER_IN_ICONS_PREVIEW, true)
+        get() = prefs.getBoolean(
+            WALLPAPER_IN_ICONS_PREVIEW, !cntxt.boolean(R.bool.static_preview_picture_by_default))
         set(enabled) = prefsEditor.putBoolean(WALLPAPER_IN_ICONS_PREVIEW, enabled).apply()
 }

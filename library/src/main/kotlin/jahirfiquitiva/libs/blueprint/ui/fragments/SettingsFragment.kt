@@ -24,6 +24,7 @@ import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.kext.extensions.actv
 import jahirfiquitiva.libs.kext.extensions.ctxt
+import jahirfiquitiva.libs.kext.extensions.getAppName
 import jahirfiquitiva.libs.kuper.ui.fragments.SettingsFragment
 
 @Suppress("DEPRECATION")
@@ -32,10 +33,18 @@ class SettingsFragment : SettingsFragment() {
         super.initPreferences()
         
         val toolbarHeaderPref = findPreference("wallpaper_in_icons_preview") as SwitchPreference
+        toolbarHeaderPref.isChecked = configs.wallpaperInIconsPreview
         toolbarHeaderPref.setOnPreferenceChangeListener { _, any ->
             val enable = any.toString().equals("true", true)
             if (enable != configs.wallpaperInIconsPreview)
-                configs.wallpaperInIconsPreview = enable
+                if (enable) {
+                    requestStoragePermission(
+                        getString(
+                            R.string.permission_request_wallpaper,
+                            context?.getAppName() ?: "Blueprint")) {
+                        configs.wallpaperInIconsPreview = enable
+                    }
+                } else configs.wallpaperInIconsPreview = enable
             true
         }
         
