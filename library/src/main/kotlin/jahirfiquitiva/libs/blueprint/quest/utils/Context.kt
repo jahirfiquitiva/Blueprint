@@ -18,23 +18,23 @@ package jahirfiquitiva.libs.blueprint.quest.utils
 import android.content.Context
 import android.os.Build
 
-internal fun Context.getLocalizedName(pckg: String, defaultName: String): String {
+internal fun Context.getLocalizedName(packageName: String, defaultName: String): String {
     var appName: String? = null
     try {
         val appInfo = packageManager.getApplicationInfo(
-            pckg, android.content.pm.PackageManager.GET_META_DATA)
-        try {
-            val res = packageManager.getResourcesForApplication(pckg)
-            val altCntxt =
-                createPackageContext(pckg, Context.CONTEXT_IGNORE_SECURITY)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            packageName, android.content.pm.PackageManager.GET_META_DATA)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            try {
+                val res = packageManager.getResourcesForApplication(packageName)
+                val altCntxt =
+                    createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY)
                 val configuration = res.configuration
                 configuration.setLocale(java.util.Locale("en-US"))
-                appName = altCntxt.createConfigurationContext(configuration)
-                    .getString(appInfo.labelRes)
+                appName =
+                    altCntxt.createConfigurationContext(configuration).getString(appInfo.labelRes)
+            } catch (e: Exception) {
+                // Do nothing
             }
-        } catch (e: Exception) {
-            // Do nothing
         }
         if (appName == null)
             appName = packageManager.getApplicationLabel(appInfo).toString()

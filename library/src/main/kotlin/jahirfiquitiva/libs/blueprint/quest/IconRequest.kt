@@ -95,7 +95,7 @@ class IconRequest private constructor() {
                 if (i > 0) sb.append("<br/><br/>")
                 val app = selectedApps[i]
                 sb.append("Name: <b>${app.name}</b><br/>")
-                sb.append("Code: <b>${app.pkg}</b><br/>")
+                sb.append("ComponentInfo: <b>${app.comp}</b><br/>")
                 sb.append("Link: https://play.google.com/store/apps/details?id=${app.pkg}<br/>")
             }
             
