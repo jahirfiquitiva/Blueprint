@@ -67,9 +67,10 @@
   <string name="apps_limit_dialog">Sorry, but you are only allowed to request %1$s more apps for now.</string>
   <string name="apps_limit_dialog_more">Sorry, but you are only allowed to select %1$s apps to request.</string>
   <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request %1$s more apps for now.</string>
-  <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in less than a minute.</string>
-  <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in %1$s.</string>
+  <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
   <string name="requests_error">There was an error in uploading requests to our server.\nReason: %1$s\nPlease try again later.</string>
+  <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
   <string name="loading_apps_to_request">Loading apps to request…</string>
   <string name="building_request_dialog">Building request files…</string>
   <string name="request_upload_success">Success!</string>
@@ -84,6 +85,7 @@
   <string name="hideicon_dialog_title">WARNING!</string>
   <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher? App may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.\n.</string>
   <string name="send_using">Send using…</string>
+  <string name="no_mail">There is no mail app installed</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>How to apply the Icon Pack?</item>
@@ -106,17 +108,17 @@
   </string-array>
   <string-array name="answers">
     <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
+    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
     <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 - 120%. Or try using another launcher.</item>
     <item>Send another request.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
     <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
+    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
     <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
     <item>It\'s needed to be able to check if your device has internet connection.</item>
     <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
