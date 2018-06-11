@@ -69,6 +69,7 @@
   <string name="apps_limit_dialog_day">Ci dispiace, ma è consentito richiedere icone solo ogni %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Sarete in grado di richiesta icone ancora una volta, in %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Sarete in grado di richiedere icone ancora una volta, in meno di un minuto.</string>
+  <string name="requests_error">C\'è un errore nel caricare le app richieste.\nMotivo: %1$s\nRiprova più tardi.</string>
   <string name="loading_apps_to_request">Caricamento delle app da richiedere…</string>
   <string name="building_request_dialog">Creazione file di richiesta…</string>
   <string name="request_upload_success">Completato!</string>
