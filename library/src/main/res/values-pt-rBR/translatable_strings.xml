@@ -69,6 +69,7 @@
   <string name="apps_limit_dialog_day">Desculpe, mas você só pode solicitar ícones a cada %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Você será capaz de solicitar ícones novamente em %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Você será capaz de solicitar ícones de novo em menos de um minuto.</string>
+  <string name="requests_error">%1$s</string>
   <string name="loading_apps_to_request">Loading apps to request…</string>
   <string name="building_request_dialog">Building request files…</string>
   <string name="request_upload_success">Success!</string>
