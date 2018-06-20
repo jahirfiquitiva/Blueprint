@@ -16,47 +16,47 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint Dashboard</string>
-  <string name="coming_soon">Coming soon</string>
+  <string name="frames_dashboard">مخطط لوحة المعلومات</string>
+  <string name="coming_soon">قريباً</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Home</string>
-  <string name="section_icons">Icons</string>
+  <string name="section_icons">أيقونات</string>
   <string name="section_apply">تطبيق</string>
-  <string name="section_wallpapers">Wallpapers</string>
-  <string name="section_icon_request">Icon request</string>
-  <string name="section_donate">Donate</string>
-  <string name="section_about">About the app</string>
-  <string name="section_help">Help</string>
-  <string name="section_zooper">Zooper Setup</string>
-  <string name="section_widgets">Widgets</string>
-  <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
-  <string name="rate">Rate</string>
+  <string name="section_wallpapers">الخلفيات</string>
+  <string name="section_icon_request">طلب رمز</string>
+  <string name="section_donate">التبرع</string>
+  <string name="section_about">حول هذا التطبيق</string>
+  <string name="section_help">المساعدة</string>
+  <string name="section_zooper">إعداد زوبير</string>
+  <string name="section_widgets">تطبيقات مصغّرة</string>
+  <string name="share_this_app">أنا باستخدام %1$s ، وأنا أحب ذلك. الذهاب التحقق من ذلك في: %2$s</string>
+  <string name="rate">تقييم</string>
   <!-- Icons filters -->
-  <string name="filter">Filter</string>
-  <string name="clear">Clear</string>
-  <string name="more_apps">More apps</string>
-  <string name="general_info">General information</string>
-  <string name="useful_links">Useful links</string>
-  <string name="columns">Columns number</string>
-  <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to install it from the Google Play Store؟</string>
-  <string name="no_compatible_launcher_title">This launcher is NOT Compatible</string>
-  <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs and therefore you cannot use this icon pack with this launcher. Please do not rate the icon pack negatively for this reason. There is a solution that you can try for yourself, but it requires the use of an external app. Would you like to download it?</string>
-  <string name="impossible_open_themes">Impossible to open themes app</string>
-  <string name="themes_app_not_installed">Themes app is not installed in this device</string>
-  <string name="included_templates">%1$s templates</string>
-  <string name="launcher_icon_restored">%1$s launcher icon was restored</string>
-  <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
-  <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
+  <string name="filter">الفلتر</string>
+  <string name="clear">إزالة</string>
+  <string name="more_apps">المزيد من التطبيقات</string>
+  <string name="general_info">بيانات عامة</string>
+  <string name="useful_links">روابط مفيدة</string>
+  <string name="columns">عدد الأعمدة</string>
+  <string name="lni_content">%1$s غير مثبت حاليا على الجهاز. \nWould ترغب في تثبيته من مخزن لعب جوجل؟</string>
+  <string name="no_compatible_launcher_title">هذا المشغل غير متوافق</string>
+  <string name="no_compatible_launcher_content">هذا المشغل غير متوافق مع أية \"حزم رمز\" ومن ثم لا يمكن استخدام هذا رمز حزمة مع هذا المشغل. يرجى عدم معدل حزمة رمز سلبيا لهذا السبب. هناك حل يمكنك أن تجرب بنفسك، ولكنه يتطلب استخدام التطبيق الخارجي الذي ترغب في تحميله؟</string>
+  <string name="impossible_open_themes">من المستحيل فتح التطبيق المواضيع</string>
+  <string name="themes_app_not_installed">لم يتم تثبيت التطبيق مواضيع في هذا الجهاز</string>
+  <string name="included_templates">%1$s قوالب</string>
+  <string name="launcher_icon_restored">تم استعادة أيقونة مشغل %1$s</string>
+  <string name="launcher_icon_not_restored">%1$s قاذفة الرمز مرئياً مسبقاً</string>
+  <string name="launcher_icon_restorer_error">هناك مشكلة في التعليمات البرمجية من %1$s. الرجاء الاتصال المطور.</string>
   <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Icon Restorer Widget</string>
-  <string name="clock_widget_title">Analog Clock</string>
-  <string name="search_icons">Search icons</string>
-  <string name="search_wallpapers">Search wallpapers</string>
-  <string name="search_launchers">Search launchers</string>
-  <string name="search_apps">Search apps</string>
-  <string name="seconds">Seconds</string>
-  <string name="minutes">Minutes</string>
-  <string name="hours">Hours</string>
+  <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
+  <string name="clock_widget_title">التناظرية على مدار الساعة</string>
+  <string name="search_icons">البحث عن الرموز</string>
+  <string name="search_wallpapers">تعيين خلفية</string>
+  <string name="search_launchers">البحث عن قاذفات</string>
+  <string name="search_apps">بحث في التطبيقات</string>
+  <string name="seconds">ثواني</string>
+  <string name="minutes">دقائق</string>
+  <string name="hours">ساعات</string>
   <string name="days">Days</string>
   <string name="weeks">Weeks</string>
   <string name="months">Months</string>
@@ -69,6 +69,8 @@
   <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
   <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
+  <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+  <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
   <string name="loading_apps_to_request">Loading apps to request…</string>
   <string name="building_request_dialog">Building request files…</string>
   <string name="request_upload_success">Success!</string>
@@ -101,13 +103,13 @@
     <item>Why does the app need permission to full network access?</item>
     <item>Why does the app need permission to view connections?</item>
     <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
+    <item>لماذا يحتاج التطبيق الإذن لضبط حجم ورق الحائط؟</item>
+    <item>لماذا يحتاج التطبيق الإذن لمنع الهاتف من النوم؟</item>
   </string-array>
   <string-array name="answers">
     <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
     <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+    <item>العودة إلى القسم الرئيسي من التطبيق ثم انقر على البلاط تحت عنوان \"الرموز\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
     <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
