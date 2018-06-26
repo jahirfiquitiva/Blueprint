@@ -85,6 +85,7 @@
   <string name="hideicon_dialog_title">Atenção!</string>
   <string name="hideicon_dialog_content">Tem certeza de que deseja esconder o ícone do aplicativo no seu iniciador? \ n A aplicação pode fechar inesperadamente e as notificações serão completamente desabilitadas. \ n Você pode querer ler as Perguntas frequentes para saber como fazê-lo aparecer novamente, antes de esconder.</string>
   <string name="send_using">Enviar usando…</string>
+  <string name="no_mail">Não há nenhum aplicativo de e-mail instalado</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Como utilizar um Icon Pack?</item>
@@ -106,7 +107,7 @@
     <item>Por que o app precisa de permissão para impedir que o telefone dormindo?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+    <item>Você precisa de um lançador com suporte a pacotes de ícones. A lista de ícones suportados pode ser encontrada no app em \"Aplicar\", ou na descrição do app na Play Store</item>
     <item>Dependendo do tipo de navegação da aplicação, você precisa deslizar o drawer para a esquerda, e ir na opção \"Aplicar\" ou escolha o 4º ícone da parte inferior da barra de navegação. De lá você pode escolher o launcher que deseja aplicar os ícones. Alguns launchers não suportam aplicação automática, é necessário aplicar manualmente, um por um.</item>
     <item>Volte ao início do aplicativo e clique na opção \"Ícones\".</item>
     <item>Dependendo do launcher que você use, é possível editar o ícone apenas pressionando sobre o ícone desejado, um pop-up surgirá e selecione a opção \"Editar\".</item>
