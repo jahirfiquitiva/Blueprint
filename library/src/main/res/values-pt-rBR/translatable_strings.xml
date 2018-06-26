@@ -88,7 +88,7 @@
   <string name="no_mail">Não há nenhum aplicativo de e-mail instalado</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
-    <item>Como utilizar um Icon Pack?</item>
+    <item>Como utilizar o pacote de ícones?</item>
     <item>Como aplicar o Icon Pack?</item>
     <item>Como ver todos os ícones incluídos?</item>
     <item>Como substituir um ícone com um alternativo?</item>
