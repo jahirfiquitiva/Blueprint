@@ -82,6 +82,7 @@
   <string name="clearcache_dialog_content">Jeste li sigurni da želite izbrisati podatke aplikacije, predmemoriju i postavke? Primijenjene ikone se neće ukloniti.</string>
   <string name="hideicon_dialog_title">Upozorenje!</string>
   <string name="send_using">Pošalji koristeći…</string>
+  <string name="no_mail">Aplikacija za e-poštu nije instalirana</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Kako koristiti paket ikona?</item>
