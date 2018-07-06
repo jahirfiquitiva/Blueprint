@@ -29,6 +29,7 @@
   <string name="section_help">도움말</string>
   <string name="section_zooper">Zooper 설치</string>
   <string name="section_widgets">위젯</string>
+  <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
   <string name="rate">평가하기</string>
   <!-- Icons filters -->
   <string name="filter">필터</string>
