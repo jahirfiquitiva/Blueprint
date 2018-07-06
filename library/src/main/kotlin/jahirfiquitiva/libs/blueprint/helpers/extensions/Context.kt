@@ -56,7 +56,7 @@ fun Context.millisToText(millis: Long): String {
 }
 
 @SuppressLint("PrivateResource")
-fun Context.getOptimalDrawerWidth(): Int {
+internal fun Context.getOptimalDrawerWidth(): Int {
     var actionBarHeight: Int = getThemeAttributeDimensionSize(R.attr.actionBarSize)
     if (actionBarHeight == 0) {
         actionBarHeight =
@@ -68,7 +68,7 @@ fun Context.getOptimalDrawerWidth(): Int {
     return Math.min(possibleMinDrawerWidth, maxDrawerWidth)
 }
 
-fun Context.getThemeAttributeDimensionSize(@AttrRes attr: Int): Int {
+internal fun Context.getThemeAttributeDimensionSize(@AttrRes attr: Int): Int {
     var a: TypedArray? = null
     try {
         a = theme.obtainStyledAttributes(intArrayOf(attr))
