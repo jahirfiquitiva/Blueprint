@@ -29,8 +29,8 @@ import com.bumptech.glide.request.RequestOptions
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
-import jahirfiquitiva.libs.frames.helpers.extensions.releaseFromGlide
-import jahirfiquitiva.libs.frames.helpers.utils.GlideRequestCallback
+import jahirfiquitiva.libs.frames.helpers.glide.FramesGlideListener
+import jahirfiquitiva.libs.frames.helpers.glide.releaseFromGlide
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.context
 import jahirfiquitiva.libs.kext.extensions.drawable
@@ -55,8 +55,8 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     RequestOptions()
                         .priority(Priority.IMMEDIATE)
                         .error(context.drawable(R.drawable.ic_na_launcher)))
-                .listener(object : GlideRequestCallback<Drawable>() {
-                    override fun onLoadSucceed(resource: Drawable): Boolean {
+                .listener(object : FramesGlideListener<Drawable>() {
+                    override fun onLoadSucceed(resource: Drawable, model: Any?): Boolean {
                         progressBar?.gone()
                         return false
                     }
