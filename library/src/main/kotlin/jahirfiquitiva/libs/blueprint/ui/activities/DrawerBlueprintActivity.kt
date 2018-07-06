@@ -34,6 +34,7 @@ import android.widget.TextView
 import ca.allanwang.kau.utils.gone
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.getOptimalDrawerWidth
+import jahirfiquitiva.libs.blueprint.helpers.extensions.setOptimalDrawerHeaderHeight
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_SECTION_ID
@@ -45,6 +46,7 @@ import jahirfiquitiva.libs.kext.extensions.accentColor
 import jahirfiquitiva.libs.kext.extensions.activeIconsColor
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.drawable
+import jahirfiquitiva.libs.kext.extensions.enableTranslucentStatusBar
 import jahirfiquitiva.libs.kext.extensions.getAppName
 import jahirfiquitiva.libs.kext.extensions.getAppVersion
 import jahirfiquitiva.libs.kext.extensions.primaryTextColor
@@ -64,13 +66,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity(),
         val v: View? by bind(R.id.bottom_navigation)
         v?.gone()
         
-        /*
-        // TODO: Enable translucent status bar
-        toolbar?.setMarginTop(getStatusBarHeight(true))
-        appbarLayout?.fitsSystemWindows = true
-        coordinatorLayout?.fitsSystemWindows = true
         enableTranslucentStatusBar()
-        */
         
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
         toggle?.let { drawerLayout?.addDrawerListener(it) }
@@ -79,6 +75,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity(),
         supportActionBar?.setHomeButtonEnabled(true)
         
         val header = navView?.getHeaderView(0)
+        header?.let { setOptimalDrawerHeaderHeight(it) }
         
         val drawerTitle: TextView? by header?.bind(R.id.drawer_title)
         drawerTitle?.text = getAppName()
