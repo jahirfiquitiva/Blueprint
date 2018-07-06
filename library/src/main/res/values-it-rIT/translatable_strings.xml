@@ -69,6 +69,8 @@
   <string name="apps_limit_dialog_day">Ci dispiace, ma è consentito richiedere icone solo ogni %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Sarete in grado di richiesta icone ancora una volta, in %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Sarete in grado di richiedere icone ancora una volta, in meno di un minuto.</string>
+  <string name="requests_error">C\'è un errore nel caricare le app richieste.\nMotivo: %1$s\nRiprova più tardi.</string>
+  <string name="requests_upload_error">C\'è un errore nel caricamento della richiesta delle app al nostro server.\nMotivo: %1$s\nRiprova più tardi.</string>
   <string name="loading_apps_to_request">Caricamento delle app da richiedere…</string>
   <string name="building_request_dialog">Creazione file di richiesta…</string>
   <string name="request_upload_success">Completato!</string>
@@ -83,6 +85,7 @@
   <string name="hideicon_dialog_title">Attenzione!</string>
   <string name="hideicon_dialog_content">Sei sicuro di voler nascondere l\'icona dell\'app dal menù delle app?\nL\'app potrebbe chiudersi inaspettatamente e le notifiche saranno disabilitate completamente.\nPotresti voler leggere le FAQ per saperne di più su come farla riapparire, prima di nasconderla.</string>
   <string name="send_using">Invia tramite…</string>
+  <string name="no_mail">Nessun\'app per e-mail installata</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Come usare l\'Icon Pack?</item>
@@ -104,7 +107,7 @@
     <item>Perché l\'app necessita del permesso per evitare che il telefono dorma?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+    <item>Hai bisogno di un launcher con il supporto ai pacchetti icone. Potrai trovare la lista dei launcher supportati nell\'app nella sezione \"Applica\", o nella descrizione del Play Store.</item>
     <item>A seconda del tipo di navigazione dell\'app, è necessario far scorrere il NavigationDrawer da sinistra e andare alla sezione \"Applica\" oppure scegliere la quarta icona dalla barra di navigazione in basso. Da lì puoi scegliere il launcher in cui vuoi applicare le icone. Alcuni launcher non supportano questa funzione quindi dovrai farlo manualmente dalle loro impostazioni.</item>
     <item>Torna alla sezione principale dell\'app e tocca il riquadro intitolato \"Icone\".</item>
     <item>A seconda del launcher che stai usando, o devi tenere premuto l\'icona e selezionare \"Modifica\" dal menu a comparsa, o tenere premuto l\'icona per poi spostarla in una casella di \"Modifica\".</item>

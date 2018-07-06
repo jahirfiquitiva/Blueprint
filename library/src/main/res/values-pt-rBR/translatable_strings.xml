@@ -33,7 +33,7 @@
   <string name="rate">Avaliação</string>
   <!-- Icons filters -->
   <string name="filter">Filtro</string>
-  <string name="clear">Apagar</string>
+  <string name="clear">Limpar</string>
   <string name="more_apps">Mais apps</string>
   <string name="general_info">Informações gerais</string>
   <string name="useful_links">Links Úteis</string>
@@ -69,10 +69,12 @@
   <string name="apps_limit_dialog_day">Desculpe, mas você só pode solicitar ícones a cada %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Você será capaz de solicitar ícones novamente em %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Você será capaz de solicitar ícones de novo em menos de um minuto.</string>
+  <string name="requests_error">%1$s</string>
+  <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
   <string name="loading_apps_to_request">Loading apps to request…</string>
   <string name="building_request_dialog">Building request files…</string>
-  <string name="request_upload_success">Success!</string>
-  <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
+  <string name="request_upload_success">Sucesso!</string>
+  <string name="request_upload_success_content">A solicitação foi enviada ao nosso servidor com sucesso</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
   <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
@@ -83,9 +85,10 @@
   <string name="hideicon_dialog_title">Atenção!</string>
   <string name="hideicon_dialog_content">Tem certeza de que deseja esconder o ícone do aplicativo no seu iniciador? \ n A aplicação pode fechar inesperadamente e as notificações serão completamente desabilitadas. \ n Você pode querer ler as Perguntas frequentes para saber como fazê-lo aparecer novamente, antes de esconder.</string>
   <string name="send_using">Enviar usando…</string>
+  <string name="no_mail">Não há nenhum aplicativo de e-mail instalado</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
-    <item>Como utilizar um Icon Pack?</item>
+    <item>Como utilizar o pacote de ícones?</item>
     <item>Como aplicar o Icon Pack?</item>
     <item>Como ver todos os ícones incluídos?</item>
     <item>Como substituir um ícone com um alternativo?</item>
@@ -104,7 +107,7 @@
     <item>Por que o app precisa de permissão para impedir que o telefone dormindo?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+    <item>Você precisa de um lançador com suporte a pacote de ícones. A lista de lançadores suportados pode ser encontrada no app em \"Aplicar\", ou na descrição do app na Play Store</item>
     <item>Dependendo do tipo de navegação da aplicação, você precisa deslizar o drawer para a esquerda, e ir na opção \"Aplicar\" ou escolha o 4º ícone da parte inferior da barra de navegação. De lá você pode escolher o launcher que deseja aplicar os ícones. Alguns launchers não suportam aplicação automática, é necessário aplicar manualmente, um por um.</item>
     <item>Volte ao início do aplicativo e clique na opção \"Ícones\".</item>
     <item>Dependendo do launcher que você use, é possível editar o ícone apenas pressionando sobre o ícone desejado, um pop-up surgirá e selecione a opção \"Editar\".</item>

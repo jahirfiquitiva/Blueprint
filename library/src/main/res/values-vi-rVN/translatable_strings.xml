@@ -17,6 +17,10 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
   <!-- List Of Drawer Sections -->
+  <string name="section_icons">Biểu tượng</string>
+  <string name="section_apply">Áp dụng</string>
+  <string name="section_wallpapers">Hình nền</string>
+  <string name="section_icon_request">Biểu tượng yêu cầu</string>
   <!-- Icons filters -->
   <!-- Widgets Names -->
   <!-- Requests -->
