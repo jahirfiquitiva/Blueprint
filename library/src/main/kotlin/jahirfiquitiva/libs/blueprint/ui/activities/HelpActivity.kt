@@ -75,7 +75,7 @@ class HelpActivity : ThemedActivity<BPKonfigs>() {
         questions.indices.mapTo(faqs) { HelpItem(questions[it], answers[it]) }
         
         setSupportActionBar(toolbar)
-        supportActionBar?.title = getString(R.string.about)
+        supportActionBar?.title = getString(R.string.section_help)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
