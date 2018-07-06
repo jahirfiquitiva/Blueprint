@@ -93,8 +93,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     abstract fun hasBottomNavigation(): Boolean
     open fun debug(): Boolean = false
     
-    private val coordinatorLayout: CoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
-    private val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
+    internal val coordinatorLayout: CoordinatorLayout? by bind(R.id.mainCoordinatorLayout)
+    internal val appbarLayout: FixedElevationAppBarLayout? by bind(R.id.appbar)
     
     private val iconsFilters: ArrayList<Filter> = ArrayList()
     private val activeFilters: ArrayList<Filter> = ArrayList()
@@ -130,7 +130,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_blueprint)
+        setContentView(
+            if (hasBottomNavigation()) R.layout.activity_blueprint else R.layout.activity_w_drawer)
         toolbar?.bindToActivity(this, false)
         toolbar?.enableScroll(true)
         initCurrentSectionId()

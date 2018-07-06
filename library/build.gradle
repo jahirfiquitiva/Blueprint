@@ -77,17 +77,6 @@ dependencies {
         exclude module: 'transition'
         exclude module: 'mediarouter-v7'
         exclude module: 'support-media-compat'
-        exclude module: 'support-v4'
-    }
-    // Navigation
-    api(libraries.materialDrawer) {
-        transitive = true
-        exclude group: 'com.android.support'
-        exclude module: 'constraint'
-        exclude module: 'transition'
-        exclude module: 'mediarouter-v7'
-        exclude module: 'support-media-compat'
-        exclude module: 'support-v4'
     }
     // Fuel
     api libraries.fuel
@@ -102,9 +91,6 @@ configurations {
     all*.exclude module: 'transition'
     all*.exclude module: 'mediarouter-v7'
     all*.exclude module: 'support-media-compat'
-    all*.exclude module: 'support-v4'
-    // all*.exclude module: 'iconics-core'
-    // all*.exclude module: 'fastadapter-extensions-expandable'
     all*.exclude group: 'com.google.code'
 }
 

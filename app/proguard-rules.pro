@@ -38,6 +38,8 @@
   public *;
 }
 
+-keep class android.support.design.widget.NavigationView { *; }
+
 -keep public class android.app.ActivityTransitionCoordinator
 -keep class jahirfiquitiva.libs.frames.** { *; }
 -keep class jahirfiquitiva.libs.kuper.** { *; }

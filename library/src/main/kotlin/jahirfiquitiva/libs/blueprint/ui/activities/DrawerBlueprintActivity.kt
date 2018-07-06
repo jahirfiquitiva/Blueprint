@@ -17,182 +17,208 @@ package jahirfiquitiva.libs.blueprint.ui.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.content.res.Configuration
-import android.graphics.drawable.Drawable
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.StateListDrawable
 import android.os.Bundle
+import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v4.widget.TextViewCompat
-import android.view.Gravity
+import android.support.v7.app.ActionBarDrawerToggle
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import ca.allanwang.kau.utils.gone
-import com.mikepenz.materialdrawer.AccountHeaderBuilder
-import com.mikepenz.materialdrawer.Drawer
-import com.mikepenz.materialdrawer.DrawerBuilder
-import com.mikepenz.materialdrawer.model.DividerDrawerItem
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import jahirfiquitiva.libs.blueprint.R
-import jahirfiquitiva.libs.blueprint.helpers.utils.BL
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_CREDITS_SECTION_ID
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HELP_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.extensions.getOptimalDrawerWidth
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_APPLY_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_HOME_SECTION_ID
-import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_SETTINGS_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_ICONS_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_REQUEST_SECTION_ID
 import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_TEMPLATES_SECTION_ID
+import jahirfiquitiva.libs.blueprint.helpers.utils.DEFAULT_WALLPAPERS_SECTION_ID
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
-import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
 import jahirfiquitiva.libs.kext.extensions.accentColor
+import jahirfiquitiva.libs.kext.extensions.activeIconsColor
 import jahirfiquitiva.libs.kext.extensions.bind
-import jahirfiquitiva.libs.kext.extensions.boolean
 import jahirfiquitiva.libs.kext.extensions.drawable
 import jahirfiquitiva.libs.kext.extensions.getAppName
 import jahirfiquitiva.libs.kext.extensions.getAppVersion
+import jahirfiquitiva.libs.kext.extensions.primaryTextColor
+import jahirfiquitiva.libs.kext.extensions.string
 
-abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
+abstract class DrawerBlueprintActivity : BaseBlueprintActivity(),
+                                         NavigationView.OnNavigationItemSelectedListener {
     
-    private var drawer: Drawer? = null
+    private val drawerLayout: DrawerLayout? by bind(R.id.drawer_layout)
+    private val navView: NavigationView? by bind(R.id.nav_view)
+    private var toggle: ActionBarDrawerToggle? = null
     
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initDrawer(savedInstanceState)
-    }
-    
-    override fun onSaveInstanceState(outState: Bundle?) {
-        val nOutState = drawer?.saveInstanceState(outState)
-        super.onSaveInstanceState(nOutState)
-    }
-    
-    private fun initDrawer(savedInstance: Bundle?) {
+        
         val v: View? by bind(R.id.bottom_navigation)
         v?.gone()
-        val accountHeaderBuilder = AccountHeaderBuilder().withActivity(this)
-        val header: Drawable? = drawable("drawer_header")
-        if (header != null) {
-            accountHeaderBuilder.withHeaderBackground(header)
-        } else {
-            accountHeaderBuilder.withHeaderBackground(accentColor)
-        }
-        if (boolean(R.bool.with_drawer_texts)) {
-            accountHeaderBuilder.withSelectionFirstLine(getAppName())
-            accountHeaderBuilder.withSelectionSecondLine("v " + getAppVersion())
-        }
-        accountHeaderBuilder.withProfileImagesClickable(false)
-            .withResetDrawerOnProfileListClick(false)
-            .withSelectionListEnabled(false)
-            .withSelectionListEnabledForSingleProfile(false)
         
-        if (savedInstance != null)
-            accountHeaderBuilder.withSavedInstance(savedInstance)
+        /*
+        // TODO: Enable translucent status bar
+        toolbar?.setMarginTop(getStatusBarHeight(true))
+        appbarLayout?.fitsSystemWindows = true
+        coordinatorLayout?.fitsSystemWindows = true
+        enableTranslucentStatusBar()
+        */
         
-        val accountHeader = accountHeaderBuilder.build()
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        toggle?.let { drawerLayout?.addDrawerListener(it) }
         
-        val drawerTitle: TextView? by accountHeader.view.bind(
-            R.id.material_drawer_account_header_name)
-        val drawerSubtitle: TextView? by accountHeader.view.bind(
-            R.id.material_drawer_account_header_email)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
         
+        val header = navView?.getHeaderView(0)
+        
+        val drawerTitle: TextView? by header?.bind(R.id.drawer_title)
+        drawerTitle?.text = getAppName()
         drawerTitle?.let { TextViewCompat.setTextAppearance(it, R.style.DrawerTextsWithShadow) }
+        
+        val drawerSubtitle: TextView? by header?.bind(R.id.drawer_subtitle)
+        drawerSubtitle?.text = "v ${getAppVersion()}"
         drawerSubtitle?.let { TextViewCompat.setTextAppearance(it, R.style.DrawerTextsWithShadow) }
         
-        val drawerBuilder = DrawerBuilder().withActivity(this)
-        toolbar?.let { drawerBuilder.withToolbar(it) }
-        
-        drawerBuilder.withAccountHeader(accountHeader)
-            .withDelayOnDrawerClose(-1)
-            .withActionBarDrawerToggle(!isIconsPicker)
-        
-        drawerBuilder.withOnDrawerItemClickListener { _, _, drawerItem ->
-            try {
-                when (drawerItem.identifier) {
-                    DEFAULT_TEMPLATES_SECTION_ID.toLong() -> {
-                        drawer?.closeDrawer()
-                        launchKuperActivity()
-                    }
-                    DEFAULT_HELP_SECTION_ID.toLong() -> {
-                        drawer?.closeDrawer()
-                        launchHelpActivity()
-                    }
-                    DEFAULT_CREDITS_SECTION_ID.toLong() -> {
-                        drawer?.closeDrawer()
-                        startActivity(Intent(this, CreditsActivity::class.java))
-                    }
-                    DEFAULT_SETTINGS_SECTION_ID.toLong() -> {
-                        drawer?.closeDrawer()
-                        startActivity(Intent(this, SettingsActivity::class.java))
-                    }
-                    else -> {
-                        drawer?.closeDrawer()
-                        return@withOnDrawerItemClickListener navigateToItem(
-                            getNavigationItemWithId(drawerItem.identifier.toInt()), true)
-                    }
-                }
-            } catch (e: Exception) {
-                BL.e("Error", e)
-            }
-            return@withOnDrawerItemClickListener true
+        navView?.post {
+            val params = navView?.layoutParams as? DrawerLayout.LayoutParams
+            params?.width = getOptimalDrawerWidth()
+            navView?.layoutParams = params
         }
         
-        getNavigationItems().forEach {
-            drawerBuilder.addDrawerItems(
-                PrimaryDrawerItem().withIdentifier(it.id.toLong())
-                    .withName(it.title)
-                    .withIcon(drawable(it.icon))
-                    .withIconTintingEnabled(true)
-                    .withSelectedColor(tilesColor)
-                    .withSelectedBackgroundAnimated(false))
-        }
+        val states = arrayOf(
+            intArrayOf(-android.R.attr.state_checked),
+            intArrayOf(android.R.attr.state_checked),
+            intArrayOf())
         
-        if (hasTemplates) {
-            drawerBuilder.addDrawerItems(
-                PrimaryDrawerItem()
-                    .withIdentifier(DEFAULT_TEMPLATES_SECTION_ID.toLong())
-                    .withName(R.string.templates)
-                    .withIcon(drawable(R.drawable.ic_widgets))
-                    .withIconTintingEnabled(true)
-                    .withSelectable(false))
-        }
+        val iconColors = intArrayOf(activeIconsColor, accentColor, activeIconsColor)
+        val iconColorsList = ColorStateList(states, iconColors)
         
-        drawerBuilder.addDrawerItems(DividerDrawerItem())
+        val textColors = intArrayOf(primaryTextColor, accentColor, primaryTextColor)
+        val textColorsList = ColorStateList(states, textColors)
         
-        drawerBuilder.addDrawerItems(
-            PrimaryDrawerItem()
-                .withIdentifier(DEFAULT_CREDITS_SECTION_ID.toLong())
-                .withName(R.string.section_about)
-                .withIcon(drawable(R.drawable.ic_info))
-                .withIconTintingEnabled(true)
-                .withSelectable(false))
+        navView?.itemTextColor = textColorsList
+        navView?.itemIconTintList = iconColorsList
         
-        drawerBuilder.addDrawerItems(
-            PrimaryDrawerItem()
-                .withIdentifier(DEFAULT_SETTINGS_SECTION_ID.toLong())
-                .withName(R.string.settings)
-                .withIcon(drawable(R.drawable.ic_settings))
-                .withIconTintingEnabled(true)
-                .withSelectable(false))
+        val selectedItemBgColor = Color.parseColor(if (usesDarkTheme()) "#202020" else "#e8e8e8")
+        val transparent = Color.parseColor("#00000000")
         
-        drawerBuilder.addDrawerItems(
-            PrimaryDrawerItem()
-                .withIdentifier(DEFAULT_HELP_SECTION_ID.toLong())
-                .withName(R.string.section_help)
-                .withIcon(drawable(R.drawable.ic_help))
-                .withIconTintingEnabled(true)
-                .withSelectable(false))
+        val selectedBgDrawable = ColorDrawable(selectedItemBgColor)
+        val normalBgDrawable = ColorDrawable(transparent)
         
-        drawerBuilder.withHasStableIds(true)
-            .withFireOnInitialOnClick(false)
-            .withDrawerGravity(Gravity.START)
-            .withSavedInstance(savedInstance)
+        val bgDrawable = StateListDrawable()
+        bgDrawable.addState(intArrayOf(android.R.attr.state_pressed), selectedBgDrawable)
+        bgDrawable.addState(intArrayOf(android.R.attr.state_checked), selectedBgDrawable)
+        bgDrawable.addState(intArrayOf(android.R.attr.state_focused), selectedBgDrawable)
+        bgDrawable.addState(intArrayOf(android.R.attr.state_activated), selectedBgDrawable)
+        bgDrawable.addState(intArrayOf(), normalBgDrawable)
         
-        drawer = drawerBuilder.build()
+        navView?.itemBackground = bgDrawable
+        navView?.invalidate()
+        
+        initDrawerItems()
+        navView?.setNavigationItemSelectedListener(this)
+        navView?.menu?.findItem(getMenuIdForItemId(getNavigationItems()[0].id))?.isChecked = true
+        
         if (isIconsPicker) lockDrawer()
     }
     
+    private fun initDrawerItems() {
+        val menu = navView?.menu
+        
+        getNavigationItems().forEachIndexed { index, it ->
+            menu?.add(R.id.first_group, getMenuIdForItemId(it.id), index, it.title)
+            menu?.findItem(getMenuIdForItemId(it.id))?.icon = drawable(it.icon)
+        }
+        
+        if (hasTemplates) {
+            menu?.add(
+                R.id.first_group, getMenuIdForItemId(DEFAULT_TEMPLATES_SECTION_ID),
+                getNavigationItems().size + 1, string(R.string.templates))
+            menu?.findItem(getMenuIdForItemId(DEFAULT_TEMPLATES_SECTION_ID))?.icon =
+                drawable(R.drawable.ic_widgets)
+        }
+        
+        menu?.setGroupCheckable(R.id.first_group, true, true)
+        
+        navView?.invalidate()
+    }
+    
+    private fun getMenuIdForItemId(id: Int): Int = when (id) {
+        DEFAULT_HOME_SECTION_ID -> R.id.nav_home
+        DEFAULT_ICONS_SECTION_ID -> R.id.nav_icons
+        DEFAULT_WALLPAPERS_SECTION_ID -> R.id.nav_wallpapers
+        DEFAULT_APPLY_SECTION_ID -> R.id.nav_apply
+        DEFAULT_REQUEST_SECTION_ID -> R.id.nav_request
+        DEFAULT_TEMPLATES_SECTION_ID -> R.id.nav_templates
+        else -> -1
+    }
+    
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        toggle?.syncState()
+    }
+    
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        toggle?.onConfigurationChanged(newConfig)
+    }
+    
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (toggle?.onOptionsItemSelected(item) == true) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        drawerLayout?.closeDrawer(GravityCompat.START, true)
+        
+        val itemId = item.itemId
+        val correctItem = itemId != R.id.nav_templates && itemId != R.id.nav_about &&
+            itemId != R.id.nav_settings && itemId != R.id.nav_help
+        
+        navView?.menu?.findItem(itemId)?.isChecked = correctItem
+        
+        when (itemId) {
+            R.id.nav_home -> navigateToItem(getNavigationItemWithId(DEFAULT_HOME_SECTION_ID), true)
+            R.id.nav_icons ->
+                navigateToItem(getNavigationItemWithId(DEFAULT_ICONS_SECTION_ID), true)
+            R.id.nav_wallpapers ->
+                navigateToItem(getNavigationItemWithId(DEFAULT_WALLPAPERS_SECTION_ID), true)
+            R.id.nav_apply ->
+                navigateToItem(getNavigationItemWithId(DEFAULT_APPLY_SECTION_ID), true)
+            R.id.nav_request ->
+                navigateToItem(getNavigationItemWithId(DEFAULT_REQUEST_SECTION_ID), true)
+            R.id.nav_templates -> launchKuperActivity()
+            R.id.nav_about -> startActivity(Intent(this, CreditsActivity::class.java))
+            R.id.nav_settings -> startActivity(Intent(this, SettingsActivity::class.java))
+            R.id.nav_help -> launchHelpActivity()
+        }
+        
+        return correctItem
+    }
+    
     override fun onBackPressed() {
-        val isDrawerOpen = drawer?.isDrawerOpen ?: false
+        val isDrawerOpen = drawerLayout?.isDrawerOpen(GravityCompat.START) ?: false
         if (!isIconsPicker) {
             when {
-                isDrawerOpen -> drawer?.closeDrawer()
+                isDrawerOpen -> drawerLayout?.closeDrawer(GravityCompat.START, true)
                 currentSectionId != DEFAULT_HOME_SECTION_ID -> {
-                    drawer?.setSelection(DEFAULT_HOME_SECTION_ID.toLong(), true)
+                    try {
+                        navView?.menu?.findItem(getMenuIdForItemId(getNavigationItems()[0].id))
+                            ?.isChecked = true
+                        navigateToItem(getNavigationItems()[0], true)
+                    } catch (e: Exception) {
+                    }
                 }
                 else -> super.onBackPressed()
             }
@@ -202,27 +228,16 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity() {
     }
     
     override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean): Boolean {
-        if (!fromClick) drawer?.setSelection(item.id.toLong(), false)
         if (isIconsPicker) lockDrawer()
         return super.navigateToItem(item, fromClick, force)
     }
     
     private fun lockDrawer() {
-        drawer?.closeDrawer()
-        drawer?.drawerLayout?.setDrawerLockMode(
-            DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.START)
-        drawer?.actionBarDrawerToggle = null
-    }
-    
-    @SuppressLint("MissingSuperCall")
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-        drawer?.actionBarDrawerToggle?.syncState()
-    }
-    
-    override fun onConfigurationChanged(newConfig: Configuration?) {
-        super.onConfigurationChanged(newConfig)
-        drawer?.actionBarDrawerToggle?.onConfigurationChanged(newConfig)
+        drawerLayout?.closeDrawer(GravityCompat.START, true)
+        drawerLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.START)
+        toggle?.onDrawerStateChanged(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        toggle?.isDrawerIndicatorEnabled = false
+        toggle?.syncState()
     }
     
     override fun hasBottomNavigation(): Boolean = false

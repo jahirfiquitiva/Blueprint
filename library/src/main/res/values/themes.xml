@@ -24,7 +24,11 @@
         <item name="colorControlHighlight">#42000000</item>
 
         <item name="cardBackgroundColor">@color/light_theme_card_background</item>
-        <!-- MaterialDrawer specific values -->
+
+        <item name="android:textColorPrimary">@color/primary_text_light</item>
+        <item name="android:textColorSecondary">@color/secondary_text_light</item>
+
+        <!-- MaterialDrawer specific values
         <item name="material_drawer_background">@color/material_drawer_background</item>
         <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
         <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
@@ -36,6 +40,7 @@
         <item name="material_drawer_header_selection_text">
             @color/material_drawer_header_selection_text
         </item>
+        -->
     </style>
 
     <style name="BlueprintDarkTheme" parent="DarkTheme">
@@ -45,7 +50,11 @@
         <item name="colorControlHighlight">#42ffffff</item>
 
         <item name="cardBackgroundColor">@color/dark_theme_card_background</item>
-        <!-- MaterialDrawer specific values -->
+
+        <item name="android:textColorPrimary">@color/primary_text_dark</item>
+        <item name="android:textColorSecondary">@color/secondary_text_dark</item>
+
+        <!-- MaterialDrawer specific values
         <item name="material_drawer_background">@color/material_drawer_dark_background</item>
         <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
         <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
@@ -58,11 +67,15 @@
         <item name="material_drawer_header_selection_text">
             @color/material_drawer_dark_header_selection_text
         </item>
+        -->
     </style>
 
     <style name="BlueprintAmoledTheme" parent="AmoledTheme">
         <item name="cardBackgroundColor">#101010</item>
-        <!-- MaterialDrawer specific values -->
+
+        <item name="android:textColorPrimary">@color/primary_text_dark</item>
+        <item name="android:textColorSecondary">@color/secondary_text_dark</item>
+        <!-- MaterialDrawer specific values
         <item name="material_drawer_background">@android:color/black</item>
         <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
         <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
@@ -75,6 +88,7 @@
         <item name="material_drawer_header_selection_text">
             @color/material_drawer_dark_header_selection_text
         </item>
+        -->
     </style>
 
     <style name="BlueprintTransparentTheme" parent="BlueprintAmoledTheme">

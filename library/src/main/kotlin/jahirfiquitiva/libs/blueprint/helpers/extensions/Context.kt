@@ -15,7 +15,10 @@
  */
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.TypedArray
+import android.support.annotation.AttrRes
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import jahirfiquitiva.libs.blueprint.R
@@ -49,6 +52,29 @@ fun Context.millisToText(millis: Long): String {
             + getString(R.string.weeks).toLowerCase())
         else -> return (millis.toMonths().toString() + " "
             + getString(R.string.months).toLowerCase())
+    }
+}
+
+@SuppressLint("PrivateResource")
+fun Context.getOptimalDrawerWidth(): Int {
+    var actionBarHeight: Int = getThemeAttributeDimensionSize(R.attr.actionBarSize)
+    if (actionBarHeight == 0) {
+        actionBarHeight =
+            resources.getDimensionPixelSize(R.dimen.abc_action_bar_default_height_material)
+    }
+    
+    val possibleMinDrawerWidth = resources.displayMetrics.widthPixels - actionBarHeight
+    val maxDrawerWidth = resources.getDimensionPixelSize(R.dimen.nav_drawer_width)
+    return Math.min(possibleMinDrawerWidth, maxDrawerWidth)
+}
+
+fun Context.getThemeAttributeDimensionSize(@AttrRes attr: Int): Int {
+    var a: TypedArray? = null
+    try {
+        a = theme.obtainStyledAttributes(intArrayOf(attr))
+        return a?.getDimensionPixelSize(0, 0) ?: 0
+    } finally {
+        a?.recycle()
     }
 }
 

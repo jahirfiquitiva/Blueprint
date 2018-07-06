@@ -43,6 +43,12 @@
     <color name="material_drawer_selected">@color/light_theme_primary_dark</color>
     <color name="material_drawer_dark_selected">@color/dark_theme_primary_dark</color>
 
+    <color name="primary_text_light">#de000000</color>
+    <color name="secondary_text_light">#8a000000</color>
+
+    <color name="primary_text_dark">#fff</color>
+    <color name="secondary_text_dark">#b3ffffff</color>
+
     <!-- FILTERS COLORS -->
     <string-array name="filters_colors">
         <item>#f368e0</item>
