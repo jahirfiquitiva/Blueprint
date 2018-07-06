@@ -1,8 +1,5 @@
 <component name="CopyrightManager">
-  <settings default="">
-    <module2copyright>
-      <element module="All" copyright="CC-BY-SA" />
-    </module2copyright>
+  <settings>
     <LanguageOptions name="Groovy">
       <option name="fileTypeOverride" value="3" />
       <option name="addBlankAfter" value="false" />
@@ -20,6 +17,10 @@
       <option name="addBlankAfter" value="false" />
     </LanguageOptions>
     <LanguageOptions name="Properties">
+      <option name="fileTypeOverride" value="3" />
+      <option name="addBlankAfter" value="false" />
+    </LanguageOptions>
+    <LanguageOptions name="SPI">
       <option name="fileTypeOverride" value="3" />
       <option name="addBlankAfter" value="false" />
     </LanguageOptions>
