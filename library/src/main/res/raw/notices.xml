@@ -45,12 +45,6 @@
         <license>CreativeCommons Attribution-ShareAlike 4.0 International License</license>
     </notice>
     <notice>
-        <name>Material Drawer</name>
-        <url>https://github.com/mikepenz/MaterialDrawer/</url>
-        <copyright>Copyright (c) 2018 Mike Penz</copyright>
-        <license>Apache Software License 2.0</license>
-    </notice>
-    <notice>
         <name>Material Dialogs</name>
         <url>https://github.com/afollestad/material-dialogs</url>
         <copyright>Copyright (c) 2014-2018 Aidan Michael Follestad</copyright>
