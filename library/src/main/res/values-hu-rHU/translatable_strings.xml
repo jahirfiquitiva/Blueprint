@@ -27,7 +27,8 @@
   <string name="section_donate">Támogatás</string>
   <string name="section_about">Az alkalmazásról</string>
   <string name="section_help">Súgó</string>
-  <string name="section_widgets">Modulok</string>
+  <string name="section_zooper">Zooper beállítás</string>
+  <string name="section_widgets">Widgets</string>
   <string name="share_this_app">Használom a %1$s és imádom. Próbáld ki itt: %2$s</string>
   <string name="rate">Értékelés</string>
   <!-- Icons filters -->
@@ -68,6 +69,7 @@
   <string name="apps_limit_dialog_day">Sajnáljuk, de nem vagy jogosult ikon kérésére minden %1$s. nap.</string>
   <string name="apps_limit_dialog_day_extra">Legközelebb ennyi idő múlva tehetsz újabb kérést: %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Egy percen belül újabb kérést tehetsz.</string>
+  <string name="requests_error">% 1 $ s</string>
   <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
   <string name="building_request_dialog">Kérés felépítése…</string>
   <string name="request_upload_success">Siker!</string>
@@ -107,7 +109,7 @@
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
     <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Az alkalmazás navigációs típusától függően vagy a bal oldali navigációs fiókot kell elcsúsztatnia, és a \"Kérések\" szakaszba kell lépnie, vagy az alsó navigációs sáv ikonját választania.</item>
     <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
     <item>Kérelem küldése.</item>
