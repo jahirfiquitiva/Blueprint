@@ -381,7 +381,7 @@ class IconRequest private constructor() {
         }
     }
     
-    fun loadApps(onProgress: (progress: Int) -> Unit = {}) {
+    fun loadApps() {
         if (builder?.isLoading == true) return
         builder?.isLoading = true
         if (apps.isNotEmpty()) {
@@ -393,7 +393,7 @@ class IconRequest private constructor() {
             BL.d("Loading unthemed installed apps...")
             val filter = loadFilterApps() ?: return@Thread
             apps.clear()
-            apps.addAll(builder?.context?.getInstalledApps(filter, onProgress).orEmpty())
+            apps.addAll(builder?.context?.getInstalledApps(filter, builder?.callback).orEmpty())
             builder?.isLoading = false
             builder?.callback?.onAppsLoaded(apps)
         }.start()

@@ -16,13 +16,13 @@
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
-import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.afollestad.materialdialogs.MaterialDialog
 import com.andremion.counterfab.CounterFab
@@ -35,6 +35,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
+import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
 import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
@@ -53,7 +54,7 @@ import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
 
 @Suppress("DEPRECATION")
 @SuppressLint("MissingSuperCall")
-class RequestsFragment : ViewModelFragment<App>() {
+class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     companion object {
         fun create(debug: Boolean): RequestsFragment =
@@ -76,8 +77,7 @@ class RequestsFragment : ViewModelFragment<App>() {
     private var spacingDecoration: GridSpacingItemDecoration? = null
     private var dialog: RequestLimitDialog? = null
     private var otherDialog: MaterialDialog? = null
-    
-    private var actuallyVisible = false
+    private var canShowProgress = true
     
     private val progressDialog: MaterialDialog? by lazy {
         activity?.mdDialog {
@@ -87,8 +87,6 @@ class RequestsFragment : ViewModelFragment<App>() {
             onPositive { _, _ -> canShowProgress = false }
         }
     }
-    
-    private var canShowProgress = true
     
     override fun initUI(content: View) {
         recyclerView = content.findViewById(R.id.list_rv)
@@ -202,68 +200,88 @@ class RequestsFragment : ViewModelFragment<App>() {
     }
     
     override fun registerObservers() {
+        viewModel.callback = this
         viewModel.observe(this) {
-            postDelayed(10) {
-                swipeToRefresh?.isRefreshing = false
-                recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
-                adapter?.setItems(ArrayList(it))
-                if (actuallyVisible) {
-                    if (it.isEmpty()) {
-                        unselectAll()
-                        doToFab { it.hide() }
-                    } else {
-                        doToFab { it.show() }
-                    }
-                    progressDialog?.dismiss()
-                }
+            recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
+            swipeToRefresh?.isRefreshing = false
+            adapter?.setItems(ArrayList(it))
+            if (it.isEmpty()) {
+                unselectAll()
+                doToFab { it.hide() }
+            } else {
+                doToFab { it.show() }
             }
+            progressDialog?.dismiss()
+            updateFabCount()
+            recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
         }
     }
     
     override fun loadDataFromViewModel() {
-        if (actuallyVisible) doToFab { it.hide() }
-        canShowProgress = true
+        doToFab { it.hide() }
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         internalLoadData(false)
     }
     
     private fun internalLoadData(force: Boolean) {
-        activity { actv ->
+        activity {
             viewModel.loadData(
-                actv, debug, {
-                otherDialog = actv.mdDialog {
-                    title(R.string.no_selected_apps_title)
-                    content(R.string.no_selected_apps_content)
-                    positiveText(android.R.string.ok)
-                }
-                if (actuallyVisible) otherDialog?.show()
-            }, { reason, appsLeft, millis ->
-                    try {
-                        dialog = RequestLimitDialog()
-                        if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
-                            if (actuallyVisible) dialog?.show(actv, millis)
-                        } else {
-                            if (actuallyVisible) dialog?.show(actv, appsLeft)
-                        }
-                    } catch (e: Exception) {
-                        BL.e("Error", e)
-                    }
-                }, context?.getString(R.string.arctic_backend_host),
+                it,
+                debug,
+                context?.getString(R.string.arctic_backend_host),
                 context?.getString(R.string.arctic_backend_api_key),
-                force) { progress ->
-                if (canShowProgress) {
-                    actv.runOnUiThread {
-                        progressDialog?.setProgress(progress)
-                        progressDialog?.setOnDismissListener { canShowProgress = false }
-                        if (progress >= 100) {
-                            progressDialog?.dismiss()
-                            swipeToRefresh?.isRefreshing = false
-                        } else {
-                            if (actuallyVisible) progressDialog?.show()
-                        }
+                force)
+        }
+    }
+    
+    override fun onAppsLoaded(apps: ArrayList<App>) {
+        super.onAppsLoaded(apps)
+        viewModel.postResult(apps)
+    }
+    
+    override fun onRequestLimited(context: Context, reason: Int, requestsLeft: Int, millis: Long) {
+        super.onRequestLimited(context, reason, requestsLeft, millis)
+        activity {
+            try {
+                dialog = RequestLimitDialog()
+                if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
+                    dialog?.show(it, millis)
+                } else {
+                    dialog?.show(it, requestsLeft)
+                }
+            } catch (e: Exception) {
+                BL.e("Error", e)
+            }
+        }
+    }
+    
+    override fun onRequestProgress(progress: Int) {
+        super.onRequestProgress(progress)
+        if ((isVisible || userVisibleHint) && canShowProgress) {
+            activity {
+                it.runOnUiThread {
+                    progressDialog?.setProgress(progress)
+                    progressDialog?.setOnDismissListener { canShowProgress = false }
+                    if (progress >= 100) {
+                        progressDialog?.dismiss()
+                        swipeToRefresh?.isRefreshing = false
+                    } else {
+                        progressDialog?.show()
                     }
                 }
             }
+        }
+    }
+    
+    override fun onRequestEmpty(context: Context) {
+        super.onRequestEmpty(context)
+        activity {
+            otherDialog = it.mdDialog {
+                title(R.string.no_selected_apps_title)
+                content(R.string.no_selected_apps_content)
+                positiveText(android.R.string.ok)
+            }
+            otherDialog?.show()
         }
     }
     
@@ -290,14 +308,8 @@ class RequestsFragment : ViewModelFragment<App>() {
     override fun allowReloadAfterVisibleToUser(): Boolean = true
     
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        if (isVisibleToUser) canShowProgress = true
         super.setUserVisibleHint(isVisibleToUser)
-        actuallyVisible = isVisibleToUser
-        if (isVisibleToUser) {
-            updateFabCount()
-            postDelayed(25) { loadDataFromViewModel() }
-        } else {
-            doToFab { it.hide() }
-        }
+        canShowProgress = isVisibleToUser
+        if (isVisibleToUser) loadDataFromViewModel()
     }
 }

@@ -201,18 +201,20 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     private fun updateFAB() {
         fab?.hide()
         val launcherName = defaultLauncher?.name.orEmpty()
-        if (currentSectionId == DEFAULT_HOME_SECTION_ID) fab?.count = 0
-        val icon: Drawable? = when (currentSectionId) {
-            DEFAULT_HOME_SECTION_ID -> drawable(R.drawable.ic_apply)
-            DEFAULT_REQUEST_SECTION_ID -> drawable(R.drawable.ic_send)
-            DEFAULT_ICONS_SECTION_ID -> drawable(R.drawable.ic_filter)
-            else -> null
+        if (currentSectionId != DEFAULT_REQUEST_SECTION_ID) fab?.count = 0
+        val shouldShow = (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
+            || currentSectionId == DEFAULT_REQUEST_SECTION_ID
+            || (currentSectionId == DEFAULT_ICONS_SECTION_ID && iconsFilters.size > 1)
+        if (shouldShow) {
+            val icon: Drawable? = when (currentSectionId) {
+                DEFAULT_HOME_SECTION_ID -> drawable(R.drawable.ic_apply)
+                DEFAULT_REQUEST_SECTION_ID -> drawable(R.drawable.ic_send)
+                DEFAULT_ICONS_SECTION_ID -> drawable(R.drawable.ic_filter)
+                else -> null
+            }
+            fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
         }
-        fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
-        fab?.showIf(
-            (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
-                || currentSectionId == DEFAULT_REQUEST_SECTION_ID
-                || (currentSectionId == DEFAULT_ICONS_SECTION_ID && iconsFilters.size > 1))
+        fab?.showIf(shouldShow)
     }
     
     fun initFiltersFromCategories(categories: ArrayList<String>) {

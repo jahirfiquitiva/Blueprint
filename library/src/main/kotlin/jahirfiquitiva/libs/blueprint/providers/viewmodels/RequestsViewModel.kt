@@ -39,15 +39,14 @@ class RequestsViewModel : ViewModel() {
     private val data = MutableLiveData<MutableList<App>>()
     private var task: QAsync<Context, Unit>? = null
     
+    internal var callback: RequestsCallback? = null
+    
     fun loadData(
         parameter: Context,
         debug: Boolean,
-        onEmpty: () -> Unit,
-        onLimited: (reason: Int, appsLeft: Int, millis: Long) -> Unit,
         host: String? = null,
         apiKey: String? = null,
-        forceLoad: Boolean = false,
-        onProgress: (progress: Int) -> Unit = {}
+        forceLoad: Boolean = false
                 ) {
         if (!taskStarted || forceLoad) {
             cancelTask(true)
@@ -55,24 +54,7 @@ class RequestsViewModel : ViewModel() {
                 WeakReference(parameter),
                 object : QAsync.Callback<Context, Unit>() {
                     override fun doLoad(param: Context): Unit? =
-                        safeInternalLoad(
-                            param, debug,
-                            object : RequestsCallback() {
-                                override fun onAppsLoaded(apps: ArrayList<App>) {
-                                    postResult(apps)
-                                }
-                                
-                                override fun onRequestEmpty(context: Context) =
-                                    onEmpty()
-                                
-                                override fun onRequestLimited(
-                                    context: Context,
-                                    reason: Int,
-                                    requestsLeft: Int,
-                                    millis: Long
-                                                             ) =
-                                    onLimited(reason, requestsLeft, millis)
-                            }, host, apiKey, forceLoad, onProgress)
+                        safeInternalLoad(param, debug, host, apiKey, forceLoad)
                     
                     override fun onSuccess(result: Unit) {}
                 })
@@ -95,28 +77,26 @@ class RequestsViewModel : ViewModel() {
     private fun safeInternalLoad(
         param: Context,
         debug: Boolean,
-        callback: RequestsCallback,
         host: String? = null,
         apiKey: String? = null,
-        forceLoad: Boolean = false,
-        onProgress: (progress: Int) -> Unit = {}
+        forceLoad: Boolean = false
                                 ) {
         if (forceLoad) {
-            internalLoad(param, debug, callback, host, apiKey, forceLoad, onProgress)
+            internalLoad(param, debug, host, apiKey, forceLoad)
         } else {
             if ((getData()?.size ?: 0) > 0) {
                 val list = ArrayList<App>()
                 getData()?.let { list.addAll(it.distinct()) }
                 postResult(list)
             } else {
-                internalLoad(param, debug, callback, host, apiKey, forceLoad, onProgress)
+                internalLoad(param, debug, host, apiKey, forceLoad)
             }
         }
     }
     
     fun postResult(result: MutableList<App>) {
-        data.postValue(result)
         taskStarted = false
+        data.postValue(result)
     }
     
     fun observe(owner: LifecycleOwner, onUpdated: (MutableList<App>) -> Unit) {
@@ -127,17 +107,15 @@ class RequestsViewModel : ViewModel() {
     private fun internalLoad(
         param: Context,
         debug: Boolean,
-        callback: RequestsCallback,
         host: String? = null,
         apiKey: String? = null,
-        forceLoad: Boolean = false,
-        onProgress: (progress: Int) -> Unit = {}
+        forceLoad: Boolean = false
                             ) {
         if (IconRequest.get() != null && !forceLoad) {
             postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
             return
         }
-        initAndLoadRequestApps(param, debug, host, apiKey, callback, onProgress)
+        initAndLoadRequestApps(param, debug, host, apiKey, callback)
     }
     
     companion object {
@@ -146,8 +124,7 @@ class RequestsViewModel : ViewModel() {
             debug: Boolean,
             host: String? = null,
             apiKey: String? = null,
-            callback: RequestsCallback? = null,
-            onProgress: (progress: Int) -> Unit = {}
+            callback: RequestsCallback? = null
                                            ) {
             IconRequest.start(context)
                 .enableDebug(debug)
@@ -163,12 +140,11 @@ class RequestsViewModel : ViewModel() {
                             Environment.getExternalStorageDirectory())))
                 .filterXml(R.xml.appfilter)
                 .withTimeLimit(
-                    context.int(R.integer.time_limit_in_minutes),
-                    BPKonfigs(context).prefs)
+                    context.int(R.integer.time_limit_in_minutes), BPKonfigs(context).prefs)
                 .maxSelectionCount(context.int(R.integer.max_apps_to_request))
                 .setCallback(callback)
                 .build()
-                .loadApps(onProgress)
+                .loadApps()
         }
     }
 }

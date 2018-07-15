@@ -6,12 +6,13 @@ import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.quest.App
+import jahirfiquitiva.libs.blueprint.quest.events.RequestsCallback
 import java.util.ArrayList
 import java.util.HashSet
 
 internal fun Context.getInstalledApps(
     filter: HashSet<String>,
-    onProgress: (progress: Int) -> Unit = {}
+    callback: RequestsCallback? = null
                                      ): ArrayList<App> {
     
     val packagesList = try {
@@ -51,7 +52,7 @@ internal fun Context.getInstalledApps(
             
             try {
                 val percent = loaded * 100 / list.size
-                onProgress(percent)
+                callback?.onRequestProgress(percent)
             } catch (e: Exception) {
             }
         }
@@ -59,7 +60,7 @@ internal fun Context.getInstalledApps(
     
     BL.d("Loaded ${apps.size} total app(s), filtered out $filtered app(s).")
     try {
-        onProgress(100)
+        callback?.onRequestProgress(100)
     } catch (e: Exception) {
     }
     return ArrayList(apps.distinctBy { it.pkg }.sortedBy { it.name })
