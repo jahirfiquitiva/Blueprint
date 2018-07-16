@@ -22,7 +22,6 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/icons_preview"
     android:foreground="?selectableItemBackground"
-    android:descendantFocusability="blocksDescendants"
     app:cardCornerRadius="0dp"
     app:cardPreventCornerOverlap="false">
 
@@ -31,20 +30,23 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:clickable="false"
-        android:focusable="false"
-        android:descendantFocusability="blocksDescendants">
+        android:focusable="false">
 
         <ImageView
-            android:id="@+id/wallpaper"
+            android:id="@+id/toolbar_wallpaper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
             tools:ignore="ContentDescription" />
 
         <include
             layout="@layout/extra_toolbar_icons_grid"
             android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
             tools:ignore="IncludeLayoutParam" />
 
     </FrameLayout>

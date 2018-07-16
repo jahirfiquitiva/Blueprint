@@ -69,7 +69,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
     private var dialog: IconDialog? = null
     
     private val adapter: IconsAdapter? by lazy {
-        IconsAdapter(context?.let { Glide.with(it) }, false) { onItemClicked(it, false) }
+        IconsAdapter(context?.let { Glide.with(it) }) { onItemClicked(it, false) }
     }
     
     fun applyFilters(filters: ArrayList<Filter>) {

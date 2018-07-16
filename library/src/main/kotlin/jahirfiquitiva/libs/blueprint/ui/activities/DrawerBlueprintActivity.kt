@@ -32,6 +32,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import ca.allanwang.kau.utils.gone
+import ca.allanwang.kau.utils.visibleIf
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.getOptimalDrawerWidth
 import jahirfiquitiva.libs.blueprint.helpers.extensions.setOptimalDrawerHeaderHeight
@@ -45,6 +46,7 @@ import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.kext.extensions.accentColor
 import jahirfiquitiva.libs.kext.extensions.activeIconsColor
 import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.boolean
 import jahirfiquitiva.libs.kext.extensions.drawable
 import jahirfiquitiva.libs.kext.extensions.enableTranslucentStatusBar
 import jahirfiquitiva.libs.kext.extensions.getAppName
@@ -74,16 +76,25 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity(),
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
         
-        val header = navView?.getHeaderView(0)
+        val header = navView?.findViewById(R.id.nav_header) ?: navView?.getHeaderView(0)
         header?.let { setOptimalDrawerHeaderHeight(it) }
+        
+        val headerDrawable = try {
+            drawable("drawer_header")
+        } catch (e: Exception) {
+            null
+        }
+        headerDrawable?.let { header?.background = it } ?: header?.setBackgroundColor(accentColor)
         
         val drawerTitle: TextView? by header?.bind(R.id.drawer_title)
         drawerTitle?.text = getAppName()
         drawerTitle?.let { TextViewCompat.setTextAppearance(it, R.style.DrawerTextsWithShadow) }
+        drawerTitle?.visibleIf(boolean(R.bool.with_drawer_texts))
         
         val drawerSubtitle: TextView? by header?.bind(R.id.drawer_subtitle)
         drawerSubtitle?.text = "v ${getAppVersion()}"
         drawerSubtitle?.let { TextViewCompat.setTextAppearance(it, R.style.DrawerTextsWithShadow) }
+        drawerSubtitle?.visibleIf(boolean(R.bool.with_drawer_texts))
         
         navView?.post {
             val params = navView?.layoutParams as? DrawerLayout.LayoutParams

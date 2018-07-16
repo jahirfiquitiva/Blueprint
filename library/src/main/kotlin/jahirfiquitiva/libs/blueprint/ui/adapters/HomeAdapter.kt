@@ -17,6 +17,8 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.app.Activity
 import android.graphics.Color
+import android.graphics.drawable.Drawable
+import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.inflate
@@ -24,12 +26,14 @@ import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
 import com.afollestad.sectionedrecyclerview.SectionedRecyclerViewAdapter
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
+import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.AppLinkItemHolder
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.CounterItemHolder
+import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.PreviewCardHolder
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.helpers.extensions.tilesColor
 import jahirfiquitiva.libs.frames.ui.adapters.viewholders.SectionedHeaderViewHolder
@@ -42,6 +46,7 @@ import java.lang.ref.WeakReference
 
 class HomeAdapter(
     private val actv: WeakReference<Activity?>,
+    private val manager: RequestManager? = null,
     private var iconsCount: Int = 0,
     private var wallsCount: Int = 0,
     private val listener: (HomeItem) -> Unit = {}
@@ -53,6 +58,14 @@ class HomeAdapter(
         get() = actv.get()
     
     private val showInfo: Boolean = activity?.boolean(R.bool.show_info) ?: true
+    
+    private val pool: RecyclerView.RecycledViewPool by lazy {
+        RecyclerView.RecycledViewPool()
+    }
+    
+    private var wallpaper: Drawable? = null
+    private var onlyPicture: Boolean = false
+    private var iconsListener: PreviewCardHolder.IconsPreviewListener? = null
     
     init {
         shouldShowHeadersForEmptySections(false)
@@ -66,24 +79,52 @@ class HomeAdapter(
     fun updateItems(newItems: ArrayList<HomeItem>) {
         list.clear()
         list.addAll(newItems)
-        notifyDataSetChanged()
+        try {
+            notifySectionChanged(2)
+        } catch (e: Exception) {
+        }
+        try {
+            notifySectionChanged(3)
+        } catch (e: Exception) {
+        }
+    }
+    
+    fun updateWallpaper(
+        wallpaper: Drawable?,
+        onlyPicture: Boolean,
+        listener: PreviewCardHolder.IconsPreviewListener?
+                       ) {
+        this.wallpaper = wallpaper
+        this.onlyPicture = onlyPicture
+        this.iconsListener = listener
+        try {
+            notifySectionChanged(0)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
     
     fun updateIconsCount(newCount: Int) {
         if (showInfo) {
             iconsCount = newCount
-            notifySectionChanged(0)
+            try {
+                notifySectionChanged(1)
+            } catch (e: Exception) {
+            }
         }
     }
     
     fun updateWallsCount(newCount: Int) {
         if (showInfo) {
             wallsCount = newCount
-            notifySectionChanged(0)
+            try {
+                notifySectionChanged(1)
+            } catch (e: Exception) {
+            }
         }
     }
     
-    override fun getSectionCount(): Int = if (showInfo) 3 else 2
+    override fun getSectionCount(): Int = if (showInfo) 4 else 3
     
     override fun getItemViewType(section: Int, relativePosition: Int, absolutePosition: Int): Int =
         section
@@ -95,15 +136,15 @@ class HomeAdapter(
                                        ) {
         (holder as? SectionedHeaderViewHolder)?.let {
             when (section) {
-                0 -> {
+                1 -> {
                     if (showInfo) it.setTitle(R.string.general_info)
                     else it.setTitle(R.string.more_apps)
                 }
-                1 -> {
+                2 -> {
                     if (showInfo) it.setTitle(R.string.more_apps)
                     else it.setTitle(R.string.useful_links)
                 }
-                2 -> it.setTitle(R.string.useful_links)
+                3 -> it.setTitle(R.string.useful_links)
                 else -> it.setTitle("")
             }
         }
@@ -112,19 +153,25 @@ class HomeAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionedViewHolder =
         when (viewType) {
             0 -> {
+                val holder = PreviewCardHolder(parent.inflate(R.layout.item_home_icons_preview))
+                holder.setPool(pool)
+                holder
+            }
+            1 -> {
                 if (showInfo) CounterItemHolder(parent.inflate(R.layout.item_home_counters))
                 else AppLinkItemHolder(parent.inflate(R.layout.item_home_app_link))
             }
-            1, 2 ->
+            2, 3 ->
                 AppLinkItemHolder(parent.inflate(R.layout.item_home_app_link))
             else -> SectionedHeaderViewHolder(parent.inflate(R.layout.item_section_header))
         }
     
     override fun getItemCount(section: Int): Int {
         return when (section) {
-            0 -> if (showInfo) 1 else list.jfilter { it.isAnApp }.size
-            1 -> list.jfilter { if (showInfo) it.isAnApp else !it.isAnApp }.size
-            2 -> list.jfilter { !it.isAnApp }.size
+            0 -> 1
+            1 -> if (showInfo) 1 else list.jfilter { it.isAnApp }.size
+            2 -> list.jfilter { if (showInfo) it.isAnApp else !it.isAnApp }.size
+            3 -> list.jfilter { !it.isAnApp }.size
             else -> 0
         }
     }
@@ -135,11 +182,16 @@ class HomeAdapter(
         relativePosition: Int,
         absolutePosition: Int
                                  ) {
+        (holder as? PreviewCardHolder)?.let { bindPreviewCard(it) }
         (holder as? CounterItemHolder)?.let { bindCounters(it) }
         (holder as? AppLinkItemHolder)?.let { bindAppsAndLinks(it, section, relativePosition) }
     }
     
     override fun onBindFooterViewHolder(holder: SectionedViewHolder?, section: Int) {}
+    
+    private fun bindPreviewCard(holder: PreviewCardHolder) {
+        holder.bind(wallpaper, onlyPicture, manager, iconsListener)
+    }
     
     private fun bindCounters(holder: CounterItemHolder) {
         val bgColor = activity?.tilesColor ?: Color.parseColor("#e0e0e0")

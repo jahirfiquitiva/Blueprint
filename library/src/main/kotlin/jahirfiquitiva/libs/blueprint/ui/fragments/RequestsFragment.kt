@@ -23,6 +23,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
+import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.afollestad.materialdialogs.MaterialDialog
 import com.andremion.counterfab.CounterFab
@@ -133,12 +134,13 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         recyclerView?.adapter = adapter
         fastScroller?.attachSwipeRefreshLayout(swipeToRefresh)
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
-        updateFabCount()
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
     }
     
     private fun updateFabCount() {
-        IconRequest.get()?.let { doToFab { fab -> fab.count = it.selectedApps.size } }
+        postDelayed(10) {
+            IconRequest.get()?.let { doToFab { fab -> fab.count = it.selectedApps.size } }
+        }
     }
     
     private fun doToFab(what: (CounterFab) -> Unit) {

@@ -15,6 +15,7 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
+import android.content.Context
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.support.v7.widget.GridLayoutManager
@@ -24,8 +25,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import ca.allanwang.kau.utils.gone
+import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.tint
+import ca.allanwang.kau.utils.visible
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
+import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.models.Icon
@@ -40,10 +44,7 @@ import jahirfiquitiva.libs.kext.extensions.stringArray
 import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kext.ui.widgets.CustomCardView
 
-class PreviewCardHolder(
-    private val iconsAdapter: IconsAdapter,
-    itemView: View
-                       ) : SectionedViewHolder(itemView) {
+class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
     
     private val decoration: GridSpacingItemDecoration by lazy {
         GridSpacingItemDecoration(
@@ -52,63 +53,99 @@ class PreviewCardHolder(
     }
     
     private val card: CustomCardView? by bind(R.id.icons_preview_card)
-    private val image: ImageView? by bind(R.id.wallpaper)
+    private val image: ImageView? by bind(R.id.toolbar_wallpaper)
     private val iconsPreviewRV: RecyclerView? by bind(R.id.icons_preview_grid)
     private val correctList = ArrayList<Icon>()
     
-    fun bind(wallpaper: Drawable?, onlyPicture: Boolean = false) {
-        image?.setImageDrawable(wallpaper)
-        if (!onlyPicture)
-            initIconsPreview()
+    private var manager: RequestManager? = null
+    private var listener: IconsPreviewListener? = null
+    
+    init {
+        initIconsPreview(false)
     }
     
-    private fun initIconsPreview() {
-        iconsPreviewRV?.removeItemDecoration(decoration)
-        iconsPreviewRV?.isNestedScrollingEnabled = false
-        iconsPreviewRV?.layoutManager =
-            object : GridLayoutManager(context, int(R.integer.icons_columns)) {
-                override fun canScrollVertically(): Boolean = false
-                override fun canScrollHorizontally(): Boolean = false
-                override fun requestChildRectangleOnScreen(
-                    parent: RecyclerView?, child: View?,
-                    rect: Rect?,
-                    immediate: Boolean
-                                                          ): Boolean = false
-                
-                override fun requestChildRectangleOnScreen(
-                    parent: RecyclerView?, child: View?,
-                    rect: Rect?, immediate: Boolean,
-                    focusedChildVisible: Boolean
-                                                          ): Boolean = false
-            }
-        iconsPreviewRV?.addItemDecoration(decoration)
-        card?.setOnClickListener { loadIconsIntoAdapter() }
-        loadIconsIntoAdapter()
+    fun bind(
+        drawable: Drawable?,
+        onlyPicture: Boolean,
+        manager: RequestManager? = null,
+        listener: IconsPreviewListener? = null
+            ) {
+        this.manager = manager
+        this.listener = listener
+        image?.setImageDrawable(drawable)
+        initIconsPreview(!onlyPicture)
     }
     
-    private fun loadIconsIntoAdapter() {
+    fun setPool(pool: RecyclerView.RecycledViewPool?) {
+        iconsPreviewRV?.recycledViewPool = pool
+    }
+    
+    private fun initIconsPreview(resetList: Boolean) {
         try {
-            val icons = ArrayList<Icon>()
-            val list = stringArray(R.array.icons_preview)
-            list?.forEach {
-                icons.add(Icon(it, context.resource(it)))
-            }
-            if (icons.isNotEmpty()) {
-                val shuffled = icons.distinctBy { it.name }.shuffled()
-                correctList.clear()
-                for (i in 0 until int(R.integer.icons_columns)) {
-                    try {
-                        correctList.add(shuffled[i])
-                    } catch (ignored: Exception) {
-                    }
-                }
-                iconsAdapter.setItems(correctList)
-                if (iconsPreviewRV?.adapter == null)
-                    iconsPreviewRV?.adapter = iconsAdapter
-            }
-        } catch (ignored: Exception) {
+            iconsPreviewRV?.removeItemDecoration(decoration)
+            iconsPreviewRV?.isNestedScrollingEnabled = false
+            iconsPreviewRV?.layoutManager =
+                PreviewGridLayoutManager(context, int(R.integer.icons_columns))
+            iconsPreviewRV?.addItemDecoration(decoration)
+            card?.setOnClickListener { loadIconsIntoAdapter(true) }
+            loadIconsIntoAdapter(correctList.isEmpty() || resetList)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
+    
+    private fun loadIconsIntoAdapter(resetList: Boolean) {
+        try {
+            if (resetList) {
+                val icons = ArrayList<Icon>()
+                stringArray(R.array.icons_preview)?.forEach {
+                    icons.add(Icon(it, context.resource(it)))
+                }
+                if (icons.isNotEmpty()) {
+                    val shuffled = icons.distinctBy { it.name }.shuffled()
+                    correctList.clear()
+                    for (i in 0 until int(R.integer.icons_columns)) {
+                        try {
+                            correctList.add(shuffled[i])
+                        } catch (ignored: Exception) {
+                        }
+                    }
+                }
+            }
+            val adapter = IconsAdapter(manager, true)
+            adapter.setItems(correctList)
+            iconsPreviewRV?.adapter = adapter
+            iconsPreviewRV?.visible()
+            postDelayed(50) { listener?.onIconsPreviewLoaded() }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+    
+    interface IconsPreviewListener {
+        fun onIconsPreviewLoaded()
+    }
+    
+    private inner class PreviewGridLayoutManager(context: Context, span: Int) :
+        GridLayoutManager(context, span, GridLayoutManager.VERTICAL, false) {
+        override fun canScrollHorizontally(): Boolean = false
+        override fun canScrollVertically(): Boolean = false
+        override fun requestChildRectangleOnScreen(
+            parent: RecyclerView?,
+            child: View?,
+            rect: Rect?,
+            immediate: Boolean
+                                                  ): Boolean = false
+        
+        override fun requestChildRectangleOnScreen(
+            parent: RecyclerView?,
+            child: View?,
+            rect: Rect?,
+            immediate: Boolean,
+            focusedChildVisible: Boolean
+                                                  ): Boolean = false
+    }
+    
 }
 
 class CounterItemHolder(itemView: View) : SectionedViewHolder(itemView) {
