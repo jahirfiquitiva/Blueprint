@@ -134,7 +134,6 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         recyclerView?.adapter = adapter
         fastScroller?.attachSwipeRefreshLayout(swipeToRefresh)
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
-        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
     }
     
     private fun updateFabCount() {
@@ -228,17 +227,15 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     private fun internalLoadData(force: Boolean) {
         activity {
             viewModel.loadData(
-                it,
-                debug,
-                context?.getString(R.string.arctic_backend_host),
-                context?.getString(R.string.arctic_backend_api_key),
-                force)
+                it, debug, context?.getString(R.string.arctic_backend_host),
+                context?.getString(R.string.arctic_backend_api_key), force)
         }
     }
     
     override fun onAppsLoaded(apps: ArrayList<App>) {
         super.onAppsLoaded(apps)
         viewModel.postResult(apps)
+        recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
     }
     
     override fun onRequestLimited(context: Context, reason: Int, requestsLeft: Int, millis: Long) {
@@ -307,11 +304,10 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     override fun getContentLayout(): Int = R.layout.section_with_swipe_refresh
     override fun autoStartLoad(): Boolean = true
-    override fun allowReloadAfterVisibleToUser(): Boolean = true
+    override fun allowReloadAfterVisibleToUser(): Boolean = viewModel.getData().orEmpty().isEmpty()
     
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
         canShowProgress = isVisibleToUser
-        if (isVisibleToUser) loadDataFromViewModel()
+        super.setUserVisibleHint(isVisibleToUser)
     }
 }

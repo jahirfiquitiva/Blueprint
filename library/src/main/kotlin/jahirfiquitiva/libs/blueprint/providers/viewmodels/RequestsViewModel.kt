@@ -95,8 +95,8 @@ class RequestsViewModel : ViewModel() {
     }
     
     fun postResult(result: MutableList<App>) {
-        taskStarted = false
         data.postValue(result)
+        taskStarted = false
     }
     
     fun observe(owner: LifecycleOwner, onUpdated: (MutableList<App>) -> Unit) {
@@ -105,27 +105,14 @@ class RequestsViewModel : ViewModel() {
     }
     
     private fun internalLoad(
-        param: Context,
+        context: Context,
         debug: Boolean,
         host: String? = null,
         apiKey: String? = null,
         forceLoad: Boolean = false
                             ) {
-        if (IconRequest.get() != null && !forceLoad) {
-            postResult(ArrayList(IconRequest.get()?.apps.orEmpty()))
-            return
-        }
-        initAndLoadRequestApps(param, debug, host, apiKey, callback)
-    }
-    
-    companion object {
-        internal fun initAndLoadRequestApps(
-            context: Context,
-            debug: Boolean,
-            host: String? = null,
-            apiKey: String? = null,
-            callback: RequestsCallback? = null
-                                           ) {
+        val list = IconRequest.get()?.apps.orEmpty()
+        if (list.isEmpty() || forceLoad) {
             IconRequest.start(context)
                 .enableDebug(debug)
                 .withAppName(context.getString(R.string.app_name))
@@ -145,6 +132,8 @@ class RequestsViewModel : ViewModel() {
                 .setCallback(callback)
                 .build()
                 .loadApps()
+        } else {
+            postResult(ArrayList(list))
         }
     }
 }

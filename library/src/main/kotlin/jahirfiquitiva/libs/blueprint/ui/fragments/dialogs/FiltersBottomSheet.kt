@@ -15,13 +15,7 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 
-import android.annotation.SuppressLint
-import android.app.Dialog
-import android.support.design.widget.BottomSheetBehavior
-import android.support.design.widget.BottomSheetDialogFragment
-import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -37,6 +31,7 @@ import ca.allanwang.kau.utils.visible
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.Filter
 import jahirfiquitiva.libs.blueprint.ui.adapters.FiltersAdapter
+import jahirfiquitiva.libs.frames.ui.fragments.dialogs.BaseBottomSheet
 import jahirfiquitiva.libs.kext.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kext.extensions.context
 import jahirfiquitiva.libs.kext.extensions.drawable
@@ -44,15 +39,13 @@ import jahirfiquitiva.libs.kext.extensions.getActiveIconsColorFor
 import jahirfiquitiva.libs.kext.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kext.extensions.string
 
-class FiltersBottomSheet : BottomSheetDialogFragment() {
+class FiltersBottomSheet : BaseBottomSheet() {
     
     private var recyclerView: RecyclerView? = null
     private var progress: ProgressBar? = null
     private var titleView: TextView? = null
     private var clearIcon: ImageView? = null
     private var collapseIcon: ImageView? = null
-    
-    private var behavior: BottomSheetBehavior<*>? = null
     
     private val filters = ArrayList<Filter>()
     private val activeFilters = ArrayList<Filter>()
@@ -64,23 +57,7 @@ class FiltersBottomSheet : BottomSheetDialogFragment() {
         }
     }
     
-    private val sheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
-        override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            var correctAlpha = slideOffset + 1
-            if (correctAlpha < 0) correctAlpha = 0.0F
-            if (correctAlpha > 1) correctAlpha = 1.0F
-            bottomSheet.alpha = correctAlpha
-        }
-        
-        override fun onStateChanged(bottomSheet: View, newState: Int) {
-            if (newState == BottomSheetBehavior.STATE_HIDDEN) dismiss()
-        }
-    }
-    
-    @SuppressLint("RestrictedApi")
-    override fun setupDialog(dialog: Dialog?, style: Int) {
-        super.setupDialog(dialog, style)
-        
+    override fun getContentView(): View? {
         val detailView = View.inflate(context, R.layout.filters_dialog, null)
         
         titleView = detailView?.findViewById(R.id.dialog_title)
@@ -100,9 +77,7 @@ class FiltersBottomSheet : BottomSheetDialogFragment() {
             doOnFiltersChange(ArrayList())
         }
         
-        collapseIcon?.setOnClickListener {
-            animateHide()
-        }
+        collapseIcon?.setOnClickListener { hide() }
         
         progress = detailView?.findViewById(R.id.loading_view)
         progress?.visible()
@@ -122,36 +97,11 @@ class FiltersBottomSheet : BottomSheetDialogFragment() {
         recyclerView?.layoutManager = layoutManager
         
         recyclerView?.itemAnimator = DefaultItemAnimator()
-        
-        dialog?.setContentView(detailView)
-        
-        val params = (detailView.parent as? View)?.layoutParams as? CoordinatorLayout.LayoutParams
-        val parentBehavior = params?.behavior
-        
-        if (parentBehavior != null && parentBehavior is BottomSheetBehavior<*>) {
-            behavior = parentBehavior
-            behavior?.setBottomSheetCallback(sheetCallback)
-        }
-        
-        progress?.gone()
-        recyclerView?.visible()
-    }
-    
-    fun show(context: FragmentActivity) {
-        show(context.supportFragmentManager, TAG)
-    }
-    
-    override fun show(manager: FragmentManager?, tag: String?) {
-        super.show(manager, tag)
-        behavior?.state = BottomSheetBehavior.STATE_EXPANDED
-    }
-    
-    fun animateHide() {
-        behavior?.state = BottomSheetBehavior.STATE_COLLAPSED
-        behavior?.state = BottomSheetBehavior.STATE_HIDDEN
+        return detailView
     }
     
     private var doOnFiltersChange: (ArrayList<Filter>) -> Unit = {}
+    override fun shouldExpandOnShow(): Boolean = true
     
     companion object {
         private const val TAG = "FiltersBottomSheet"
