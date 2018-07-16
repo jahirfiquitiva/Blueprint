@@ -97,6 +97,10 @@ class FiltersBottomSheet : BaseBottomSheet() {
         recyclerView?.layoutManager = layoutManager
         
         recyclerView?.itemAnimator = DefaultItemAnimator()
+        
+        progress?.gone()
+        recyclerView?.visible()
+        
         return detailView
     }
     
