@@ -18,6 +18,7 @@ package jahirfiquitiva.libs.blueprint.helpers.utils
 // Shared Preferences
 const val LAUNCHER_ICON_SHOWN = "launcher_icon_shown"
 const val WALLPAPER_IN_ICONS_PREVIEW = "wallpaper_in_icons_preview"
+const val RESET_WALLPAPER = "reset_wallpaper"
 const val APPLY_CARD_DISMISSED = "apply_card_dismissed"
 
 // Icon name formatting

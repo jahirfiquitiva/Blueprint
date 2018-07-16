@@ -22,6 +22,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.openLink
+import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
@@ -34,7 +35,6 @@ import jahirfiquitiva.libs.blueprint.providers.viewmodels.HomeItemViewModel
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.IconsViewModel
 import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.HomeAdapter
-import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.PreviewCardHolder
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.frames.viewmodels.WallpapersViewModel
 import jahirfiquitiva.libs.kext.extensions.activity
@@ -44,7 +44,11 @@ import jahirfiquitiva.libs.kext.extensions.hasContent
 import java.lang.ref.WeakReference
 
 @Suppress("DEPRECATION")
-class HomeFragment : ViewModelFragment<HomeItem>(), PreviewCardHolder.IconsPreviewListener {
+class HomeFragment : ViewModelFragment<HomeItem>() {
+    
+    companion object {
+        private const val PREVIEW_DELAY = 25L
+    }
     
     private val model: HomeItemViewModel by lazyViewModel()
     private val iconsModel: IconsViewModel by lazyViewModel()
@@ -63,38 +67,45 @@ class HomeFragment : ViewModelFragment<HomeItem>(), PreviewCardHolder.IconsPrevi
         }
     }
     
-    private val defaultPicture: Drawable?
-        get() {
-            val picName = activity?.getString(R.string.icons_preview_picture).orEmpty()
-            return if (picName.hasContent()) {
-                try {
-                    activity?.drawable(picName)
-                } catch (e: Exception) {
-                    null
-                }
-            } else null
-        }
+    private val defaultPicture: Drawable? by lazy {
+        val picName = activity?.getString(R.string.icons_preview_picture).orEmpty()
+        if (picName.hasContent()) {
+            try {
+                activity?.drawable(picName)
+            } catch (e: Exception) {
+                null
+            }
+        } else null
+    }
     
     override fun registerObservers() {
         model.observe(this) {
-            homeAdapter?.updateItems(ArrayList(it))
-            recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
-            modelsLoaded = true
+            bindPreviewCard()
+            postDelayed(PREVIEW_DELAY) {
+                homeAdapter?.updateItems(ArrayList(it))
+                normalState()
+            }
         }
         iconsModel.observe(this) { categories ->
-            val allIcons = ArrayList<Icon>()
-            val filters = ArrayList<String>()
-            categories.forEach {
-                allIcons.addAll(it.getIcons())
-                filters += it.title
+            bindPreviewCard()
+            postDelayed(PREVIEW_DELAY) {
+                val allIcons = ArrayList<Icon>()
+                val filters = ArrayList<String>()
+                categories.forEach {
+                    allIcons.addAll(it.getIcons())
+                    filters += it.title
+                }
+                homeAdapter?.updateIconsCount(ArrayList(allIcons.distinctBy { it.name }).size)
+                (activity as? BaseBlueprintActivity)?.initFiltersFromCategories(filters)
+                normalState()
             }
-            homeAdapter?.updateIconsCount(ArrayList(allIcons.distinctBy { it.name }).size)
-            (activity as? BaseBlueprintActivity)?.initFiltersFromCategories(filters)
-            modelsLoaded = true
         }
         wallsModel.observe(this) {
-            homeAdapter?.updateWallsCount(it.size)
-            modelsLoaded = true
+            bindPreviewCard()
+            postDelayed(PREVIEW_DELAY) {
+                homeAdapter?.updateWallsCount(it.size)
+                normalState()
+            }
         }
     }
     
@@ -104,14 +115,19 @@ class HomeFragment : ViewModelFragment<HomeItem>(), PreviewCardHolder.IconsPrevi
         wallsModel.destroy(this)
     }
     
-    override fun loadDataFromViewModel() {}
+    override fun loadDataFromViewModel() {
+        activity {
+            model.loadData(it)
+            iconsModel.loadData(it)
+            wallsModel.loadData(it)
+        }
+    }
     
-    override fun onIconsPreviewLoaded() {
-        if (!modelsLoaded) {
-            activity {
-                model.loadData(it)
-                iconsModel.loadData(it)
-                wallsModel.loadData(it)
+    private fun normalState() {
+        postDelayed(10) {
+            try {
+                recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
+            } catch (e: Exception) {
             }
         }
     }
@@ -150,14 +166,7 @@ class HomeFragment : ViewModelFragment<HomeItem>(), PreviewCardHolder.IconsPrevi
         
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         
-        activity {
-            (it as? BaseBlueprintActivity)?.let {
-                it.requestWallpaperPermission(
-                    it.getString(R.string.permission_request_wallpaper, it.getAppName())) {
-                    bindPreviewCard()
-                }
-            }
-        }
+        requestWallPermission(true)
     }
     
     override fun onItemClicked(item: HomeItem, longClick: Boolean) {
@@ -179,15 +188,28 @@ class HomeFragment : ViewModelFragment<HomeItem>(), PreviewCardHolder.IconsPrevi
     
     override fun onResume() {
         super.onResume()
-        bindPreviewCard(true)
+        if (configs.shouldResetWallpaper) {
+            configs.shouldResetWallpaper = false
+            requestWallPermission(true)
+        }
+    }
+    
+    private fun requestWallPermission(onlyPicture: Boolean = false) {
+        (activity as? BaseBlueprintActivity)?.let {
+            it.requestWallpaperPermission(
+                it.getString(R.string.permission_request_wallpaper, it.getAppName())) {
+                bindPreviewCard(onlyPicture)
+            }
+        } ?: bindPreviewCard(onlyPicture)
     }
     
     @SuppressLint("MissingPermission")
     private fun bindPreviewCard(onlyPicture: Boolean = false) {
-        val drawable: Drawable? = try {
-            val wallManager: WallpaperManager? = WallpaperManager.getInstance(activity)
-            if (configs.wallpaperInIconsPreview) {
+        if (!modelsLoaded || onlyPicture) {
+            modelsLoaded = true
+            val drawable: Drawable? = if (configs.wallpaperInIconsPreview) {
                 try {
+                    val wallManager: WallpaperManager? = WallpaperManager.getInstance(activity)
                     wallManager?.fastDrawable
                 } catch (e: Exception) {
                     defaultPicture
@@ -195,12 +217,11 @@ class HomeFragment : ViewModelFragment<HomeItem>(), PreviewCardHolder.IconsPrevi
             } else {
                 defaultPicture
             }
-        } catch (e: Exception) {
-            null
+            homeAdapter?.updateWallpaper(drawable, onlyPicture)
+            postDelayed(PREVIEW_DELAY) { loadDataFromViewModel() }
         }
-        homeAdapter?.updateWallpaper(drawable, onlyPicture, this)
     }
     
     override fun autoStartLoad(): Boolean = false
-    override fun allowReloadAfterVisibleToUser(): Boolean = true
+    override fun allowReloadAfterVisibleToUser(): Boolean = false
 }

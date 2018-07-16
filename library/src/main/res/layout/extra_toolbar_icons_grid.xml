@@ -33,6 +33,7 @@
         android:id="@+id/icons_preview_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:padding="@dimen/icons_preview_grid_margin"
         android:layout_gravity="center"
         android:clipChildren="false"

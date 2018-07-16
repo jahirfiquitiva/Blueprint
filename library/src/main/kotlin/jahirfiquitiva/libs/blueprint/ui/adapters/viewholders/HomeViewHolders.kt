@@ -25,6 +25,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import ca.allanwang.kau.utils.gone
+import ca.allanwang.kau.utils.isVisible
 import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
@@ -58,29 +59,23 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
     private val correctList = ArrayList<Icon>()
     
     private var manager: RequestManager? = null
-    private var listener: IconsPreviewListener? = null
     
     init {
-        initIconsPreview(false)
+        initIconsPreview()
     }
     
-    fun bind(
-        drawable: Drawable?,
-        onlyPicture: Boolean,
-        manager: RequestManager? = null,
-        listener: IconsPreviewListener? = null
-            ) {
+    fun bind(drawable: Drawable?, onlyPicture: Boolean, manager: RequestManager? = null) {
         this.manager = manager
-        this.listener = listener
         image?.setImageDrawable(drawable)
-        initIconsPreview(!onlyPicture)
+        if (!onlyPicture)
+            initIconsPreview()
     }
     
     fun setPool(pool: RecyclerView.RecycledViewPool?) {
         iconsPreviewRV?.recycledViewPool = pool
     }
     
-    private fun initIconsPreview(resetList: Boolean) {
+    private fun initIconsPreview() {
         try {
             iconsPreviewRV?.removeItemDecoration(decoration)
             iconsPreviewRV?.isNestedScrollingEnabled = false
@@ -88,15 +83,15 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
                 PreviewGridLayoutManager(context, int(R.integer.icons_columns))
             iconsPreviewRV?.addItemDecoration(decoration)
             card?.setOnClickListener { loadIconsIntoAdapter(true) }
-            loadIconsIntoAdapter(correctList.isEmpty() || resetList)
+            loadIconsIntoAdapter()
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
     
-    private fun loadIconsIntoAdapter(resetList: Boolean) {
+    private fun loadIconsIntoAdapter(force: Boolean = false) {
         try {
-            if (resetList) {
+            if (correctList.isEmpty() || force) {
                 val icons = ArrayList<Icon>()
                 stringArray(R.array.icons_preview)?.forEach {
                     icons.add(Icon(it, context.resource(it)))
@@ -115,15 +110,11 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
             val adapter = IconsAdapter(manager, true)
             adapter.setItems(correctList)
             iconsPreviewRV?.adapter = adapter
-            iconsPreviewRV?.visible()
-            postDelayed(50) { listener?.onIconsPreviewLoaded() }
+            if (iconsPreviewRV?.isVisible == false)
+                postDelayed(50) { iconsPreviewRV?.visible() }
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
-    
-    interface IconsPreviewListener {
-        fun onIconsPreviewLoaded()
     }
     
     private inner class PreviewGridLayoutManager(context: Context, span: Int) :

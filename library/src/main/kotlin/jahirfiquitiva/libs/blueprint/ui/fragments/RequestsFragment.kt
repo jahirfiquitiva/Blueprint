@@ -203,7 +203,6 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     override fun registerObservers() {
         viewModel.callback = this
         viewModel.observe(this) {
-            recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
             swipeToRefresh?.isRefreshing = false
             adapter?.setItems(ArrayList(it))
             if (it.isEmpty()) {
@@ -214,7 +213,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
             }
             progressDialog?.dismiss()
             updateFabCount()
-            recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
+            normalState()
         }
     }
     
@@ -235,7 +234,14 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     override fun onAppsLoaded(apps: ArrayList<App>) {
         super.onAppsLoaded(apps)
         viewModel.postResult(apps)
-        recyclerView?.state = EmptyViewRecyclerView.State.NORMAL
+        normalState()
+    }
+    
+    private fun normalState() {
+        try {
+            postDelayed(10) { recyclerView?.state = EmptyViewRecyclerView.State.NORMAL }
+        } catch (e: Exception) {
+        }
     }
     
     override fun onRequestLimited(context: Context, reason: Int, requestsLeft: Int, millis: Long) {

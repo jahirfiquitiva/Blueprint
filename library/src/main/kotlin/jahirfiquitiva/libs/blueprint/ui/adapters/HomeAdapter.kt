@@ -65,7 +65,6 @@ class HomeAdapter(
     
     private var wallpaper: Drawable? = null
     private var onlyPicture: Boolean = false
-    private var iconsListener: PreviewCardHolder.IconsPreviewListener? = null
     
     init {
         shouldShowHeadersForEmptySections(false)
@@ -79,24 +78,20 @@ class HomeAdapter(
     fun updateItems(newItems: ArrayList<HomeItem>) {
         list.clear()
         list.addAll(newItems)
+        val rightSection = if (showInfo) 2 else 1
         try {
-            notifySectionChanged(2)
+            notifySectionChanged(rightSection)
         } catch (e: Exception) {
         }
         try {
-            notifySectionChanged(3)
+            notifySectionChanged(rightSection + 1)
         } catch (e: Exception) {
         }
     }
     
-    fun updateWallpaper(
-        wallpaper: Drawable?,
-        onlyPicture: Boolean,
-        listener: PreviewCardHolder.IconsPreviewListener?
-                       ) {
+    fun updateWallpaper(wallpaper: Drawable?, onlyPicture: Boolean) {
         this.wallpaper = wallpaper
         this.onlyPicture = onlyPicture
-        this.iconsListener = listener
         try {
             notifySectionChanged(0)
         } catch (e: Exception) {
@@ -190,7 +185,7 @@ class HomeAdapter(
     override fun onBindFooterViewHolder(holder: SectionedViewHolder?, section: Int) {}
     
     private fun bindPreviewCard(holder: PreviewCardHolder) {
-        holder.bind(wallpaper, onlyPicture, manager, iconsListener)
+        holder.bind(wallpaper, onlyPicture, manager)
     }
     
     private fun bindCounters(holder: CounterItemHolder) {

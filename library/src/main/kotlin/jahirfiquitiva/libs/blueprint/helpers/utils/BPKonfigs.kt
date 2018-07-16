@@ -28,5 +28,12 @@ class BPKonfigs(private val cntxt: Context) : KuperKonfigs(cntxt) {
     var wallpaperInIconsPreview: Boolean
         get() = prefs.getBoolean(
             WALLPAPER_IN_ICONS_PREVIEW, !cntxt.boolean(R.bool.static_preview_picture_by_default))
-        set(enabled) = prefsEditor.putBoolean(WALLPAPER_IN_ICONS_PREVIEW, enabled).apply()
+        set(enabled) {
+            shouldResetWallpaper = true
+            prefsEditor.putBoolean(WALLPAPER_IN_ICONS_PREVIEW, enabled).apply()
+        }
+    
+    internal var shouldResetWallpaper: Boolean
+        get() = prefs.getBoolean(RESET_WALLPAPER, false)
+        set(should) = prefsEditor.putBoolean(RESET_WALLPAPER, should).apply()
 }
