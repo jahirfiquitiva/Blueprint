@@ -29,6 +29,7 @@
   <string name="section_help">도움말</string>
   <string name="section_zooper">Zooper 설치</string>
   <string name="section_widgets">위젯</string>
+  <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
   <string name="rate">평가하기</string>
   <!-- Icons filters -->
   <string name="filter">필터</string>
@@ -64,6 +65,7 @@
   <string name="no_selected_apps_title">선택된 앱이 없습니다</string>
   <string name="no_selected_apps_content">요청할 앱을 선택하지 않았습니다. 몇 개의 앱을 선택하고 버튼을 눌러주세요</string>
   <string name="apps_limit_dialog">죄송합니다. 오직 %1$s 앱의 선택만 가능합니다.</string>
+  <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
   <string name="apps_limit_dialog_day_extra_sec">1분 안에 요청 아이콘을 다시 사용할 수 있을 것입니다.</string>
   <string name="loading_apps_to_request">앱 로딩을 요청중...</string>
   <string name="request_upload_success">성공!</string>
