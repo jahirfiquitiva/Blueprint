@@ -19,8 +19,11 @@
   <string name="frames_dashboard">Blueprint Dashboard</string>
   <string name="coming_soon">Binnenkort beschikbaar</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">Huis</string>
   <string name="section_icons">Iconen</string>
+  <string name="section_apply">Toepassen</string>
   <string name="section_wallpapers">Achtergronden</string>
+  <string name="section_icon_request">Icoon verzoek</string>
   <string name="section_donate">Doneer</string>
   <string name="section_about">Over de app</string>
   <string name="section_help">Help</string>
@@ -30,6 +33,7 @@
   <string name="rate">Beoordeel</string>
   <!-- Icons filters -->
   <string name="filter">Filter</string>
+  <string name="clear">Duidelijk</string>
   <string name="more_apps">Meer apps</string>
   <string name="general_info">Algemene informatie</string>
   <string name="useful_links">Nuttige links</string>
