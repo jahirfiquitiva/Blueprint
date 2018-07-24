@@ -109,8 +109,8 @@
   <string-array name="answers">
     <item>Требуется лаунчер с поддержкой паков значков. Список поддерживаемых лаунчеров приведен в приложении в разделе \"Применить\" или на странице приложения в Google Play.</item>
     <item>В зависимости от типа навигации в приложении, вам нужно либо вызвать панель навигации свайпом с левой стороны экрана и перейти к разделу «Применить» или выбрать 4-ый значок из нижней панели навигации. Там вы сможете выбрать лаунчер для которого необходимо применить пак значков. Некоторые лаунчеры не поддерживает автоматического применения, и вам придется делать это вручную, через их настройки.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+    <item>Вернитесь в главный раздел и нажмите на кнопку по названием \"Значки\".</item>
+    <item>В зависимости от используемого лаунчера, вам нужно либо долго удержать палец на значке и выбрать \"Изменить\" из выпадающего меню, или долго удержать палец на значке и переместить его в поле \"Изменить\".</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>Это произошло из-за того, что набор значков был перенесен на SD-карту. Вы должны установить его во внутреннюю память.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
