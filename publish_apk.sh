@@ -31,6 +31,8 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 				[Download sample](${url})"
 				printf "Sending message: $teleMess"
 				curl "https://api.telegram.org/bot${TEL_BOT_KEY}/sendMessage?chat_id=@JFsDashSupport&text=${teleMess}&parse_mode=Markdown"
+			else
+				printf "\n\nSkipping Telegram report because no file was uploaded"
 			fi
 		done
 
