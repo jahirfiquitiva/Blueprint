@@ -136,16 +136,6 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
     
     override fun initUI(content: View) {
         recyclerView = content.findViewById(R.id.list_rv)
-        recyclerView?.isNestedScrollingEnabled = false
-        
-        recyclerView?.emptyView = content.findViewById(R.id.empty_view)
-        recyclerView?.setEmptyImage(R.drawable.empty_section)
-        
-        recyclerView?.textView = content.findViewById(R.id.empty_text)
-        recyclerView?.setEmptyText(R.string.empty_section)
-        
-        recyclerView?.loadingView = content.findViewById(R.id.loading_view)
-        recyclerView?.setLoadingText(R.string.loading_section)
         
         val hasBottomNav = (activity as? BaseBlueprintActivity)?.hasBottomNavigation() ?: false
         recyclerView?.setPaddingBottom(64.dpToPx * (if (hasBottomNav) 2 else 1))
@@ -159,7 +149,6 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         recyclerView?.loadingView = content.findViewById(R.id.loading_view)
         recyclerView?.setLoadingText(R.string.loading_section)
         
-        recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         recyclerView?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView?.adapter = homeAdapter

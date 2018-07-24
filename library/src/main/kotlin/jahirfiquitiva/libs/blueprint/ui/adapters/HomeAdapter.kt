@@ -139,7 +139,10 @@ class HomeAdapter(
                     if (showInfo) it.setTitle(R.string.more_apps)
                     else it.setTitle(R.string.useful_links)
                 }
-                3 -> it.setTitle(R.string.useful_links)
+                3 -> {
+                    if (showInfo) it.setTitle(R.string.useful_links)
+                    else it.setTitle("")
+                }
                 else -> it.setTitle("")
             }
         }
@@ -166,7 +169,7 @@ class HomeAdapter(
             0 -> 1
             1 -> if (showInfo) 1 else list.jfilter { it.isAnApp }.size
             2 -> list.jfilter { if (showInfo) it.isAnApp else !it.isAnApp }.size
-            3 -> list.jfilter { !it.isAnApp }.size
+            3 -> if (showInfo) list.jfilter { !it.isAnApp }.size else 0
             else -> 0
         }
     }
@@ -273,9 +276,9 @@ class HomeAdapter(
     }
     
     private fun bindAppsAndLinks(holder: AppLinkItemHolder, section: Int, position: Int) {
-        val correctSection = if (showInfo) 1 else 0
+        val appsSection = if (showInfo) 2 else 1
         holder.setItem(
-            list.jfilter { if (section == correctSection) it.isAnApp else !it.isAnApp }[position],
+            list.jfilter { if (section == appsSection) it.isAnApp else !it.isAnApp }[position],
             listener)
     }
 }

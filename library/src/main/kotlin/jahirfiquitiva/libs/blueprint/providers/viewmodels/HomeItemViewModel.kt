@@ -37,7 +37,9 @@ class HomeItemViewModel : ListViewModel<Context, HomeItem>() {
             for (i in 0 until titles.size) {
                 if (list.size >= 6) break
                 val url = urls[i]
-                val isAnApp = url.toLowerCase().startsWith(PLAY_STORE_LINK_PREFIX)
+                val isAnApp =
+                    url.toLowerCase().startsWith(PLAY_STORE_LINK_PREFIX) ||
+                        url.toLowerCase().startsWith("market://details?id=")
                 var isInstalled = false
                 var intent: Intent? = null
                 if (isAnApp) {
