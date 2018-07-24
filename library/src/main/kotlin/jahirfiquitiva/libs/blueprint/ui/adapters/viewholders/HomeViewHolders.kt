@@ -172,8 +172,10 @@ class AppLinkItemHolder(itemView: View) : SectionedViewHolder(itemView) {
         description?.text = item.description
         item.icon?.let {
             icon?.setImageDrawable(it)
-        } ?: { icon?.gone() }()
-        openIcon?.setImageDrawable(item.openIcon?.tint(context.activeIconsColor))
+        } ?: icon?.gone()
+        item.openIcon?.let {
+            openIcon?.setImageDrawable(it.tint(context.activeIconsColor))
+        } ?: openIcon?.gone()
         itemView?.setOnClickListener { listener(item) }
     }
 }

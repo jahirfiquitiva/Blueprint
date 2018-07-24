@@ -26,7 +26,7 @@
     <integer name="toolbar_elevation">4</integer>
     <dimen name="tabs_contentInset">72dp</dimen>
 
-    <dimen name="icon_medium">48dp</dimen>
+    <dimen name="icon_medium">36dp</dimen>
     <dimen name="icon_small">24dp</dimen>
 
     <dimen name="fab_with_bottom_bar_margin">72dp</dimen>

@@ -52,11 +52,6 @@
         <item name="android:paddingBottom">@dimen/items_spacing</item>
     </style>
 
-    <style name="HomeCardContent" parent="android:Widget">
-        <item name="android:padding">@dimen/fabs_margin</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
     <bool name="isFrames">false</bool>
     <bool name="isKuper">false</bool>
 

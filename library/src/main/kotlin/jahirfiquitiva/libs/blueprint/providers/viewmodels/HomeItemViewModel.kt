@@ -45,15 +45,21 @@ class HomeItemViewModel : ListViewModel<Context, HomeItem>() {
                     isInstalled = param.isAppInstalled(packageName)
                     intent = param.packageManager.getLaunchIntentForPackage(packageName)
                 }
+                
                 list.add(
                     HomeItem(
-                        titles[i], descriptions[i], urls[i], param.drawable(icons[i]),
+                        titles[i],
+                        descriptions[i],
+                        urls[i],
+                        param.drawable(icons[i]),
                         param.drawable(
                             if (isAnApp)
                                 if (isInstalled) "ic_open_app" else "ic_download"
                             else "ic_open_app"),
-                        isAnApp, isInstalled, intent)
-                        )
+                        isAnApp,
+                        isInstalled,
+                        intent
+                            ))
             }
         }
         return list
