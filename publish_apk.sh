@@ -11,7 +11,7 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 		changesOrg="$(echo "$tagInfo" | jq --raw-output ".body")"
 		changes=$(echo $changesOrg | cut -d "\"" -f 2)
 		repoName=$(echo $TRAVIS_REPO_SLUG | cut -d / -f 2)
-		
+
 		printf "\n\n"
 		for apk in $(find *.apk -type f); do
 			apkName="${apk::-4}"
