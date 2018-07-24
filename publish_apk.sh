@@ -19,5 +19,5 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 		printf "\nSkipping APK(s) upload because this commit does not have a tag\n"
 	fi
 else
-	printf "\nSkipping APK(s) upload  because this is just a pull request\n"
+	printf "\nSkipping APK(s) upload because this is just a pull request\n"
 fi
