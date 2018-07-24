@@ -17,6 +17,7 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 			apkName="${apk::-4}"
 			printf "Uploading: $apkName.apk ...\n"
 			upload="$(curl 'https://uploads.github.com/repos/${TRAVIS_REPO_SLUG}/releases/${releaseId}/assets?access_token=${GITHUB_API_KEY}&name=${apkName}.apk' --header 'Content-Type: application/zip' --upload-file $apkName.apk -X POST)"
+			echo $upload
 			urlText="$(echo "$upload" | jq --raw-output ".browser_download_url")"
 			if [ "$urlText" ]; then
 				url=$(echo $urlText | cut -d "\"" -f 2)
