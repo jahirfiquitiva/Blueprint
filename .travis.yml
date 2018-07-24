@@ -55,6 +55,7 @@ before_cache:
 before_script:
   - rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
   - chmod +x gradlew
+  - chmod +x ./tele.sh; ./tele.sh
 
 before_install:
   - yes | sdkmanager "platforms;android-27"
