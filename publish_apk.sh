@@ -16,16 +16,23 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 
 		for apk in $(find *.apk -type f); do
 			apkName="${apk::-4}"
+			
 			printf "\n\nUploading: $apkName.apk ...\n"
 			upload=`curl "https://uploads.github.com/repos/${TRAVIS_REPO_SLUG}/releases/${releaseId}/assets?access_token=${GITHUB_API_KEY}&name=${apkName}.apk" --header 'Content-Type: application/zip' --upload-file ${apkName}.apk  -X POST`
+			
 			printf "\n\nUpload Result: $upload\n"
+
 			urlText="$(echo "$upload" | jq --raw-output ".browser_download_url")"
 			url=$(echo $urlText | cut -d "\"" -f 2)
-			newLine="%0D%0A"
+			
+			ln="%0D%0A"
+			tab="%09"
+
 			if [ ! -z "$url" -a "$url" != " " -a "$url" != "null" ]; then
 				printf "\nAPK url: $url"
-				message=$"*New ${repoName} update available now!*${newLine}*Version:*${newLine}${tab}${releaseName}${newLine}*Changes:*${newLine}${changes}${newLine}"
+				message=$"*New ${repoName} update available now!*${ln}*Version:*${ln}${tab}${releaseName}${ln}*Changes:*${ln}${changes}${ln}"
 				btns=$"{\"inline_keyboard\":[[{\"text\":\"How To Update\",\"url\":\"https://github.com/${TRAVIS_REPO_SLUG}/wiki/How-to-update\"}],[{\"text\":\"Download sample\",\"url\":\"${url}\"}]]}"
+				
 				printf "\n\nSending message: $teleMess"
 				curl -g "https://api.telegram.org/bot${TEL_BOT_KEY}/sendMessage?chat_id=@JFsDashSupport&text=${message}&parse_mode=Markdown&reply_markup=${btns}"
 			else
