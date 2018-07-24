@@ -19,8 +19,8 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 			upload=`curl "https://uploads.github.com/repos/${TRAVIS_REPO_SLUG}/releases/${releaseId}/assets?access_token==${GITHUB_API_KEY}&name=${apkName}.apk" --header 'Content-Type: application/zip' --upload-file ${apkName}.apk  -X POST`
 			printf "\nResult: $upload\n"
 			urlText="$(echo "$upload" | jq --raw-output ".browser_download_url")"
-			if [ "$urlText" ]; then
-				url=$(echo $urlText | cut -d "\"" -f 2)
+			url=$(echo $urlText | cut -d "\"" -f 2)
+			if [ ! -z "$url" -a "$url" != " " -a "$url" != "null" ]; then
 				printf "\nAPK url: $url"
 				teleMess="*New $repoName version available now!*\nVersion: $releaseName\nChanges:\n$changes\n\n"
 				printf "Sending message: $teleMess"
