@@ -11,7 +11,9 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 		for apk in $(find *.apk -type f); do
 		  apkName="${apk::-4}"
 		  printf "Uploading: $apkName.apk ...\n"
-		  curl "https://uploads.github.com/repos/${TRAVIS_REPO_SLUG}/releases/${releaseId}/assets?access_token=${GITHUB_API_KEY}&name=${apkName}.apk" --header 'Content-Type: application/zip' --upload-file $apkName.apk -X POST
+		  upload="$(curl 'https://uploads.github.com/repos/${TRAVIS_REPO_SLUG}/releases/${releaseId}/assets?access_token=${GITHUB_API_KEY}&name=${apkName}.apk' --header 'Content-Type: application/zip' --upload-file $apkName.apk -X POST)"
+		  url="$(echo "$upload" | jq ".browser_download_url")"
+		  printf "Found url: $url"
 		done
 
 		printf "\n\nFinished uploading APK(s)\n"
