@@ -22,7 +22,7 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 			url=$(echo $urlText | cut -d "\"" -f 2)
 			if [ ! -z "$url" -a "$url" != " " -a "$url" != "null" ]; then
 				printf "\nAPK url: $url"
-				teleMess="*New ${repoName} version available now!*
+				teleMess=$"*New ${repoName} version available now!*
 				Version: ${releaseName}
 				Changes:
 				${changes}
