@@ -22,7 +22,13 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 			url=$(echo $urlText | cut -d "\"" -f 2)
 			if [ ! -z "$url" -a "$url" != " " -a "$url" != "null" ]; then
 				printf "\nAPK url: $url"
-				teleMess="*New $repoName version available now!*\nVersion: $releaseName\nChanges:\n$changes\n\n"
+				teleMess="*New ${repoName} version available now!*
+				Version: ${releaseName}
+				Changes:
+				${changes}
+				
+				[How To Update](https://github.com/${TRAVIS_REPO_SLUG}/wiki/How-to-update)
+				[Download sample](${url})"
 				printf "Sending message: $teleMess"
 				curl "https://api.telegram.org/bot${TEL_BOT_KEY}/sendMessage?chat_id=@JFsDashSupport&text=${teleMess}&parse_mode=Markdown"
 			fi
