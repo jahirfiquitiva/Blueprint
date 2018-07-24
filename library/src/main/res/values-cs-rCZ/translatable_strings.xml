@@ -17,10 +17,39 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
   <string name="frames_dashboard">Blueprint řídicí panel</string>
+  <string name="coming_soon">Již brzy</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">Domů</string>
+  <string name="section_icons">Ikony</string>
+  <string name="section_apply">Použít</string>
+  <string name="section_wallpapers">Tapety</string>
+  <string name="section_icon_request">Požádat o ikonu</string>
+  <string name="section_donate">Podpořit</string>
+  <string name="section_about">O aplikaci</string>
+  <string name="section_help">Nápověda</string>
+  <string name="section_widgets">Widgety</string>
+  <string name="rate">Hodnotit</string>
   <!-- Icons filters -->
+  <string name="filter">Filtrovat</string>
+  <string name="more_apps">Více aplikací</string>
+  <string name="general_info">Obecné informace</string>
+  <string name="useful_links">Užitečné odkazy</string>
+  <string name="columns">Počet sloupců</string>
+  <string name="no_compatible_launcher_title">Tento launcher NENÍ Kompatibilní</string>
   <!-- Widgets Names -->
+  <string name="search_icons">Hledat ikony</string>
+  <string name="search_wallpapers">Hledat tapety</string>
+  <string name="search_launchers">Hledat launchery</string>
+  <string name="search_apps">Hledat aplikace</string>
+  <string name="seconds">Sekundy</string>
+  <string name="minutes">Minuty</string>
+  <string name="hours">Hodiny</string>
+  <string name="days">Dny</string>
+  <string name="weeks">Týdny</string>
+  <string name="months">Měsíce</string>
   <!-- Requests -->
+  <string name="select_all">Vybrat vše</string>
+  <string name="no_selected_apps_title">Nejsou vybrány žádné aplikace</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
