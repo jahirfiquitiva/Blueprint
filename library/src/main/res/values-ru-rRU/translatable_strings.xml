@@ -107,8 +107,8 @@
     <item>Почему приложению нужно разрешение, на запрет спящего режима?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
+    <item>Требуется лаунчер с поддержкой паков значков. Список поддерживаемых лаунчеров приведен в приложении в разделе \"Применить\" или на странице приложения в Google Play.</item>
+    <item>В зависимости от типа навигации в приложении, вам нужно либо вызвать панель навигации свайпом с левой стороны экрана и перейти к разделу «Применить» или выбрать 4-ый значок из нижней панели навигации. Там вы сможете выбрать лаунчер для которого необходимо применить пак значков. Некоторые лаунчеры не поддерживает автоматического применения, и вам придется делать это вручную, через их настройки.</item>
     <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
