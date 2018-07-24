@@ -68,6 +68,9 @@
   <string name="apps_limit_dialog_more">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
   <string name="apps_limit_dialog_day">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
   <string name="apps_limit_dialog_day_extra">Вы сможете снова отправить запрос через %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Вы сможете снова отправить запрос меньше чем через минуту.</string>
+  <string name="requests_error">Произошел сбой при загрузке списка приложений.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
+  <string name="requests_upload_error">Произошел сбой при загрузке списка приложений на наши сервера.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
   <string name="loading_apps_to_request">Загрузка приложений для запроса...</string>
   <string name="building_request_dialog">Подготовка файлов запроса…</string>
   <string name="request_upload_success">Успешно!</string>
@@ -75,28 +78,32 @@
   <!-- Preferences -->
   <string name="pref_title_wall_header">Включить использование обоев в превью</string>
   <string name="pref_summary_wall_header">Будут отображаться обои текущего устройства.</string>
+  <string name="pref_header_launcher_icon">Иконка лаунчера</string>
   <string name="pref_title_launcher_icon">Скрыть значок приложения</string>
+  <string name="pref_summary_launcher_icon">Если выбрано, иконка приложения будет скрыта.</string>
   <string name="clearcache_dialog_content">Вы уверены, что Вы хотите удалить данные приложения, кэш и параметры? Установленные значки не будут затронуты.</string>
   <string name="hideicon_dialog_title">Внимание!</string>
+  <string name="hideicon_dialog_content">Вы точно хотите скрыть иконку приложения в вашем лаунчере?\nПриложение может вылетать без причины и уведомления будут полностью отключены.\nВы можете прочитать раздел FAQ, чтобы узнать как снова включить отображение иконки в лаунчере, перед тем как сделать это.</string>
   <string name="send_using">Отправить с помощью…</string>
+  <string name="no_mail">Установите любое приложение для отправки электронной почты</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Как использовать набор значков?</item>
     <item>Как применить набор значков?</item>
     <item>Как просмотреть все имеющиеся иконки?</item>
     <item>Как заменить значок альтернативным?</item>
-    <item>How to request unthemed icons?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Why do icons look pixelated on my device?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Как запросить отсутствующие иконки?</item>
+    <item>После перезагрузки моего устройства, значки больше не применяется. Иконки были восстановлены до значения по умолчанию.</item>
+    <item>Почему иконки выглядят пикселизированными на моем устройстве?</item>
+    <item>Я вижу иконку для приложения N в паке, но иконка не применяется.</item>
+    <item>Как скрыть иконку приложения из лаунчера?</item>
+    <item>Как открыть приложение после того, как значок приложения скрыт из лаунчера?</item>
+    <item>Как отобразить иконку приложения в лаунчере снова?</item>
+    <item>Почему приложению нужно разрешение чтобы изменять или удалять данные на моему устройстве?</item>
+    <item>Почему приложению требуется разрешение на полный доступ к сети?</item>
+    <item>Почему приложению требуется разрешение на просмотр подключений?</item>
+    <item>Почему приложению требуется разрешение на установку обоев?</item>
+    <item>Почему приложению требуется разрешение чтобы изменять размер обоев?</item>
     <item>Why does the app need permission to prevent phone from sleeping?</item>
   </string-array>
   <string-array name="answers">
