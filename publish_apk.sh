@@ -17,11 +17,12 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 			apkName="${apk::-4}"
 			printf "Uploading: $apkName.apk ...\n"
 			upload="$(curl -s -X POST \"https://uploads.github.com/repos/${TRAVIS_REPO_SLUG}/releases/${releaseId}/assets?access_token=${GITHUB_API_KEY}&name=${apkName}.apk\" --header \"Content-Type: application/zip\" --upload-file $apkName.apk)"
-			echo $upload
+			printf "\nResult: $upload\n"
 			urlText="$(echo "$upload" | jq --raw-output ".browser_download_url")"
 			if [ "$urlText" ]; then
 				url=$(echo $urlText | cut -d "\"" -f 2)
-				teleMess="*New $repoName version available now!*\nVersion: $releaseName\nChanges:\n$changes\n\n[Download sample APK]($url)"
+				printf "\nAPK url: $url"
+				teleMess="*New $repoName version available now!*\nVersion: $releaseName\nChanges:\n$changes\n\n"
 				printf "Sending message: $teleMess"
 				curl "https://api.telegram.org/bot${TEL_BOT_KEY}/sendMessage?chat_id=@JFsDashSupport&text=${teleMess}&parse_mode=Markdown"
 			fi
