@@ -111,7 +111,7 @@
     <item>W zależności od typu nawigacji w aplikacji, konieczne będzie wybranie opcji \"Zastosuj\" w szufladzie nawigacji, bądź dotknięcie czwartej ikony od lewej w dolnym pasku. W tej sekcji możliwe jest wybranie launchera, do którego ma być zastosowana paczka. Niektóre aplikacje ekranu głównego wspierające paczki ikon mogą się nie pojawić w tej sekcji - wtedy paczkę można zastosować manualnie przez panel ustawień ekranu głównego.</item>
     <item>Na ekranie głównym aplikacji, dotknij płytkę \"Ikony\".</item>
     <item>W zależności od launchera, konieczne będzie przeciągnięcie ikony aplikacji do przycisku \"Edytuj\" bądź wybranie tej opcji w menu pop-up.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>W zależności od typu nawigacji, musisz otworzyć szufladę nawigacji z lewej, oraz przejść do \"Prósba o ikony\", lub wybrać ją z dolnego paska nawigacji.</item>
     <item>Stało się to, ponieważ paczka ikon została przeniesiona na kartę SD(pamięci). Powinienieś zainstalować ją w pamięci wewnętrznej (normalnej).</item>
     <item>Problem może wynikać z launchera, którego używasz, podczas obsługi dużej rozdzielczości. Możesz to naprawić, zwiększając rozmiar ikony do 115 - 120%. Albo spróbuj użyć innego launchera.</item>
     <item>Wyślij prośbę o dodanie ikon.</item>
