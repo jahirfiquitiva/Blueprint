@@ -15,8 +15,13 @@
  */
 // TODO: Remove comment marks to enable
 /*
-plugins {
-    id 'com.onesignal.androidsdk.onesignal-gradle-plugin' version '0.8.1'
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.11.0'
+    }
 }
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 */
@@ -50,8 +55,8 @@ android {
         applicationId "jahirfiquitiva.apps.blueprint.demo"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 125
-        versionName "1.2.5"
+        versionCode 126
+        versionName "1.2.6"
         vectorDrawables.useSupportLibrary = true
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
@@ -86,7 +91,7 @@ android {
 
 dependencies {
     // Blueprint
-    implementation('com.jahirfiquitiva:Blueprint:1.2.5@aar') {
+    implementation('com.jahirfiquitiva:Blueprint:1.2.6@aar') {
         transitive = true
     }
     // TODO: Remove comment marks to enable
