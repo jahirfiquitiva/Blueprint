@@ -38,9 +38,9 @@
   <string name="general_info">Información general</string>
   <string name="useful_links">Enlaces útiles</string>
   <string name="columns">Número de columnas</string>
-  <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to install it from the Google Play Store?</string>
+  <string name="lni_content">%1$s actualmente no está instalado en tu dispositivo. \nDeseas instalarlo desde Google Play Store?</string>
   <string name="no_compatible_launcher_title">Este launcher NO es compatible</string>
-  <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs and therefore you cannot use this icon pack with this launcher. Please do not rate the icon pack negatively for this reason. There is a solution that you can try for yourself, but it requires the use of an external app. Would you like to download it?</string>
+  <string name="no_compatible_launcher_content">Este lanzador no es compatible con ningún paquete de íconos y por lo tanto no puedes utilizar este paquete de iconos con este launcher. No califiques la app negativamente por ello. Hay una solución que puedes probar por ti mismo, pero requiere el uso de una app externa ¿quieres descargarla?     </string>
   <string name="impossible_open_themes">Imposible abrir aplicación de temas</string>
   <string name="themes_app_not_installed">Aplicación de temas no está instalada en este dispositivo</string>
   <string name="included_templates">%1$s plantillas</string>
@@ -63,16 +63,16 @@
   <!-- Requests -->
   <string name="select_all">Seleccionar todo</string>
   <string name="no_selected_apps_title">No hay aplicaciones seleccionadas</string>
-  <string name="no_selected_apps_content">No seleccionó ninguna aplicación para solicitar. Seleccione algunas aplicaciones, luego toque este botón nuevamente.</string>
+  <string name="no_selected_apps_content">No has seleccionado ninguna app para solicitar. Por favor, selecciona algunas y presiona el botón de nuevo.</string>
   <string name="apps_limit_dialog">Lo sentimos, pero sólo se pueden seleccionar %1$s aplicaciones para solicitar.</string>
   <string name="apps_limit_dialog_more">Lo sentimos, pero sólo se puede solicitar %1$s más aplicaciones por ahora.</string>
   <string name="apps_limit_dialog_day">Lo sentimos, pero sólo se puede solicitar los iconos cada %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Podrás realizar una petición de iconos de nuevo, en %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
-  <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
-  <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
-  <string name="loading_apps_to_request">Cargando aplicaciones para solicitar …</string>
-  <string name="building_request_dialog">Creación de archivos de solicitud ...</string>
+  <string name="apps_limit_dialog_day_extra_sec">Podrás realizar una petición de iconos de nuevo, en menos de un minuto.</string>
+  <string name="requests_error">Hubo un error al cargar las aplicaciones para solicitar.\nRazón: %1$s\nPor favor, intentalo más tarde.</string>
+  <string name="requests_upload_error">Hubo un error al cargar las aplicaciones a nuestros servidores.\nRazón: %1$s\nPor favor, intentalo más tarde.</string>
+  <string name="loading_apps_to_request">Cargando aplicaciones para solicitar…</string>
+  <string name="building_request_dialog">Creando archivos de petición…</string>
   <string name="request_upload_success">Correcto!</string>
   <string name="request_upload_success_content">La solicitud se ha subido a nuestro servidor con éxito.</string>
   <!-- Preferences -->
@@ -81,9 +81,9 @@
   <string name="pref_header_launcher_icon">Icono en launcher</string>
   <string name="pref_title_launcher_icon">Ocultar el icono en el Launcher</string>
   <string name="pref_summary_launcher_icon">Cuando está marcada, se oculta el icono en el launcher.</string>
-  <string name="clearcache_dialog_content">¿Estás seguro que deseas eliminar la configuración, caché y datos de la aplicación? Los iconos aplicados no se verán afectados.    </string>
+  <string name="clearcache_dialog_content">¿Estás seguro que deseas eliminar la configuración, caché y datos de la aplicación? Los iconos aplicados no se verán afectados.</string>
   <string name="hideicon_dialog_title">¡Atención!</string>
-  <string name="hideicon_dialog_content">¿Está seguro que desea ocultar el icono de la aplicación en el launcher?         \nLa app puede cerrarse inesperadamente y las notificaciones serán completamente desactivadas. \nPuedes leer las FAQs para aprender a hacerlo aparecer de nuevo, antes de ocultarlo.    </string>
+  <string name="hideicon_dialog_content">¿Estás seguro que deseas ocultar el icono de la aplicación en el launcher?\nLa app puede cerrarse inesperadamente y las notificaciones serán completamente desactivadas.\nPuedes leer las FAQs para aprender a hacerlo aparecer de nuevo, antes de ocultarlo.</string>
   <string name="send_using">Enviar con…</string>
   <string name="no_mail">No se encontraron aplicaciones de correo electrónico instaladas</string>
   <!-- HELP SECTION -->
@@ -93,18 +93,18 @@
     <item>¿Cómo ver todos los iconos incluidos?</item>
     <item>¿Cómo reemplazar ciertos iconos con alternativas?</item>
     <item>¿Cómo solicitar iconos?</item>
-    <item>Después de reiniciar mi dispositivo, el paquete de iconos ya no se aplica. Se restauraron los iconos por defecto.        </item>
+    <item>Después de reiniciar mi dispositivo, el paquete de iconos ya no se aplica. Se restauraron los iconos por defecto.</item>
     <item>¿Por qué parecen los iconos pixelados en mi dispositivo?</item>
-    <item>Puedo ver un icono de X aplicación en los iconos incluidos, pero el icono no se aplica.        </item>
+    <item>Puedo ver un icono de X aplicación en los iconos incluidos, pero el icono no se aplica.</item>
     <item>¿Cómo ocultar el icono de la aplicación del launcher?</item>
     <item>¿Cómo abrir la aplicación después de que oculté su icono?</item>
-    <item>¿Cómo mostar el ícono de la aplicación en el launcher de nuevo?</item>
-    <item>¿Por qué la aplicacióno necesita permiso para modificar o eliminar el contenido de mi almacenamiento?</item>
+    <item>¿Cómo mostrar el ícono de la aplicación en el launcher de nuevo?</item>
+    <item>¿Por qué la aplicación necesita permiso para modificar o eliminar el contenido de mi almacenamiento?</item>
     <item>¿Por qué la aplicación necesita permiso para acceder a la red?</item>
     <item>¿Por qué la aplicación necesita permiso para ver las conexiones?</item>
     <item>¿Por qué la aplicación necesita permiso para establecer fondos de pantalla?</item>
     <item>¿Por qué la aplicación necesita permiso para ajustar el tamaño del fondo de pantalla?</item>
-    <item>¿Por qué la aplicación necesita permiso para evitar que el teléfono de dormir?</item>
+    <item>¿Por qué la aplicación necesita permiso para evitar que el teléfono se suspenda?</item>
   </string-array>
   <string-array name="answers">
     <item>Necesitas un launcher con soporte para paquetes de iconos. La lista de launchers compatibles puede encontrarse en la aplicación en la sección \"Aplicar\", o la descripción de Play Store.</item>
@@ -114,13 +114,13 @@
     <item>Dependiendo del tipo de navegación de la aplicación, necesitarás deslizar el panel de la izquierda e ir a la sección \"Solicitudes\" o elegir el icono de la barra de navegación inferior.</item>
     <item>Sucedió porque el paquete de iconos se trasladó a la tarjeta SD, se debe instalar en almacenamiento interno.</item>
     <item>El problema podría venir con el launcher que usas, cuando maneja gran resolución. Puedes solucionarlo mediante el aumento de tamaño de los iconos a 115 – 120%. O trata de usar otro launcher.</item>
-    <item>Envíe una solicitud de icono.</item>
+    <item>Envía una solicitud de iconos.</item>
     <item>Desliza el panel de navegación desde la izquierda y ve a la sección \"Configuración\". Luego, marca la opción \"Ocultar ícono del iniciador\".</item>
     <item>Ve a la pantalla de inicio y luego crea un widget para la aplicación cuyo nombre es \"IconRestorer\".</item>
     <item>Desliza el panel de navegación desde la izquierda y ve a la sección \"Configuración\". Luego, desmarca la opción \"Ocultar ícono del launcher\".</item>
     <item>Se necesita para poder escribir datos de solicitudes de iconos y archivos, así como para guardar fondos de pantalla y poder cambiar la ubicación de descarga de fondos de pantalla.</item>
     <item>Se necesita para poder cargar los fondos de pantalla de la nube y descargarlos.</item>
-    <item>Es necesario para poder verificar si su dispositivo tiene conexión a Internet.</item>
+    <item>Es necesario para poder verificar si tu dispositivo tiene conexión a Internet.</item>
     <item>Es necesario para poder aplicar el fondo de pantalla directamente desde la aplicación.</item>
     <item>Es necesario para poder ajustar las dimensiones de los fondos de pantalla en función de la resolución de tu pantalla.</item>
     <item>Muzei Live Wallpaper lo necesita.</item>
