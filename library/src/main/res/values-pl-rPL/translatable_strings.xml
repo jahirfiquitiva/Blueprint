@@ -105,10 +105,10 @@
   </string-array>
   <string-array name="answers">
     <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
+    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
     <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>Stało się to, ponieważ paczka ikon została przeniesiona na kartę SD(pamięci). Powinienieś zainstalować ją w pamięci wewnętrznej (normalnej).</item>
     <item>Problem może wynikać z launchera, którego używasz, podczas obsługi dużej rozdzielczości. Możesz to naprawić, zwiększając rozmiar ikony do 115 - 120%. Albo spróbuj użyć innego launchera.</item>
     <item>Wyślij prośbę o dodanie ikon.</item>

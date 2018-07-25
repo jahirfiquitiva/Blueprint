@@ -71,7 +71,7 @@
   <string name="apps_limit_dialog_day_extra_sec">Вы сможете снова отправить запрос меньше чем через минуту.</string>
   <string name="requests_error">Произошел сбой при загрузке списка приложений.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
   <string name="requests_upload_error">Произошел сбой при загрузке списка приложений на наши сервера.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
-  <string name="loading_apps_to_request">Загрузка приложений для запроса...</string>
+  <string name="loading_apps_to_request">Загрузка приложений для запроса…</string>
   <string name="building_request_dialog">Подготовка файлов запроса…</string>
   <string name="request_upload_success">Успешно!</string>
   <string name="request_upload_success_content">Запрос успешно был загружен на наш сервер.</string>
@@ -111,14 +111,14 @@
     <item>В зависимости от типа навигации в приложении, вам нужно либо вызвать панель навигации свайпом с левой стороны экрана и перейти к разделу «Применить» или выбрать 4-ый значок из нижней панели навигации. Там вы сможете выбрать лаунчер для которого необходимо применить пак значков. Некоторые лаунчеры не поддерживает автоматического применения, и вам придется делать это вручную, через их настройки.</item>
     <item>Вернитесь в главный раздел и нажмите на кнопку по названием \"Значки\".</item>
     <item>В зависимости от используемого лаунчера, вам нужно либо долго удержать палец на значке и выбрать \"Изменить\" из выпадающего меню, или долго удержать палец на значке и переместить его в поле \"Изменить\".</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>Это произошло из-за того, что набор значков был перенесен на SD-карту. Вы должны установить его во внутреннюю память.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
     <item>Отправить запрос.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
     <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
+    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
     <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
     <item>It\'s needed to be able to check if your device has internet connection.</item>
     <item>It\'s needed to be able to apply wallpaper directly from the app.</item>

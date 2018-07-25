@@ -106,7 +106,7 @@
   </string-array>
   <string-array name="answers">
     <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
+    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
     <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
     <item>Az alkalmazás navigációs típusától függően vagy a bal oldali navigációs fiókot kell elcsúsztatnia, és a \"Kérések\" szakaszba kell lépnie, vagy az alsó navigációs sáv ikonját választania.</item>
@@ -116,7 +116,7 @@
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
     <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
     <item>Öffne das Navigationsmenü von linken Seite oder tippe aus das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Symbol ausblenden\" ab.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers' download location.</item>
+    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
     <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
     <item>It\'s needed to be able to check if your device has internet connection.</item>
     <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
