@@ -1,5 +1,6 @@
 package jahirfiquitiva.libs.blueprint.helpers.extensions
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -47,6 +48,7 @@ private class EmailBuilder(val email: String, val subject: String) {
     
     data class Package(val packageName: String, val appName: String)
     
+    @SuppressLint("NewApi")
     fun getIntent(context: Context): Intent {
         val intent = Intent(Intent.ACTION_SEND)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -77,9 +79,15 @@ private class EmailBuilder(val email: String, val subject: String) {
         if (appInfo) {
             try {
                 val appInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+                
+                @Suppress("DEPRECATION")
+                val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    appInfo.longVersionCode.toString()
+                } else appInfo.versionCode.toString()
+                
                 emailBuilder.append("\nApp: ").append(context.packageName)
                     .append("\nApp Version Name: ").append(appInfo.versionName)
-                    .append("\nApp Version Code: ").append(appInfo.versionCode).append("\n")
+                    .append("\nApp Version Code: ").append(versionCode).append("\n")
             } catch (e: PackageManager.NameNotFoundException) {
                 BL.e("EmailBuilder packageInfo not found")
             }
