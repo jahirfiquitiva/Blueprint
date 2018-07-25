@@ -19,8 +19,11 @@
   <string name="frames_dashboard">Blueprint Dashboard</string>
   <string name="coming_soon">Binnenkort beschikbaar</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">Huis</string>
   <string name="section_icons">Iconen</string>
+  <string name="section_apply">Toepassen</string>
   <string name="section_wallpapers">Achtergronden</string>
+  <string name="section_icon_request">Icoon verzoek</string>
   <string name="section_donate">Doneer</string>
   <string name="section_about">Over de app</string>
   <string name="section_help">Help</string>
@@ -30,6 +33,7 @@
   <string name="rate">Beoordeel</string>
   <!-- Icons filters -->
   <string name="filter">Filter</string>
+  <string name="clear">Duidelijk</string>
   <string name="more_apps">Meer apps</string>
   <string name="general_info">Algemene informatie</string>
   <string name="useful_links">Nuttige links</string>
@@ -65,6 +69,8 @@
   <string name="apps_limit_dialog_day">Sorry, maar het is alleen mogelijk om icon aan te vragen elke %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Het is weer mogelijk om iconen aan te vragen in %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Het is weer mogelijk om iconen aan te vragen in minder dan één minuut.</string>
+  <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+  <string name="requests_upload_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
   <string name="loading_apps_to_request">Aan te vragen apps aan het laden…</string>
   <string name="building_request_dialog">Verzoek bestanden aan het maken…</string>
   <string name="request_upload_success">Gelukt!</string>
@@ -79,5 +85,25 @@
   <string name="hideicon_dialog_title">Waarschuwing!</string>
   <string name="hideicon_dialog_content">Weet je zeker dat je de app icoon wilt verbergen in je launcher?\nDe app kan plotseling sluiten en notificaties zullen compleet worden genegeerd.\nHet is wellicht verstandig om eerst de FAQs te lezen en leren hoe het icoon weer herstelt kan worden, voordat je het verbergt.</string>
   <string name="send_using">Verzenden met…</string>
+  <string name="no_mail">Er is geen email applicatie geïnstalleerd</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>Hoe gebruik je de icon pack?</item>
+    <item>Hoe pa ls je icon pack toe?</item>
+    <item>Hoe zie ik alle bijbehorende iconen?</item>
+    <item>Hoe vervang ik een pictogram met een alternatieve?</item>
+    <item>Hoe vraag je om niet gethematiseerde iconen?</item>
+    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Why do icons look pixelated on my device?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
 </resources>

@@ -16,6 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">Оболочка Blueprint</string>
   <string name="coming_soon">Скоро</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Главная</string>
@@ -41,6 +42,7 @@
   <string name="no_compatible_launcher_title">Данный лаунчер НЕ совместим</string>
   <string name="no_compatible_launcher_content">Этот лаунчер не совместим с любым набором значков и, следовательно, вы не сможите использовать этот набор значков с этим лаунчером. Пожалуйста, не ставьте набору плохую оценку по этой причине. Вы можете попробовать воспользоваться внешним приложением. Хотите скачать его?</string>
   <string name="impossible_open_themes">Невозможно открыть темы приложения</string>
+  <string name="themes_app_not_installed">Приложение тем не установлено на этом устройстве</string>
   <string name="included_templates">%1$s шаблоны</string>
   <string name="launcher_icon_restored">значок запуска %1$s был восстановлен</string>
   <string name="launcher_icon_not_restored">значок запуска %1$s уже отображается</string>
@@ -65,6 +67,10 @@
   <string name="apps_limit_dialog">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
   <string name="apps_limit_dialog_more">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
   <string name="apps_limit_dialog_day">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+  <string name="apps_limit_dialog_day_extra">Вы сможете снова отправить запрос через %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Вы сможете снова отправить запрос меньше чем через минуту.</string>
+  <string name="requests_error">Произошел сбой при загрузке списка приложений.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
+  <string name="requests_upload_error">Произошел сбой при загрузке списка приложений на наши сервера.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
   <string name="loading_apps_to_request">Загрузка приложений для запроса...</string>
   <string name="building_request_dialog">Подготовка файлов запроса…</string>
   <string name="request_upload_success">Успешно!</string>
@@ -72,39 +78,43 @@
   <!-- Preferences -->
   <string name="pref_title_wall_header">Включить использование обоев в превью</string>
   <string name="pref_summary_wall_header">Будут отображаться обои текущего устройства.</string>
+  <string name="pref_header_launcher_icon">Иконка лаунчера</string>
   <string name="pref_title_launcher_icon">Скрыть значок приложения</string>
+  <string name="pref_summary_launcher_icon">Если выбрано, иконка приложения будет скрыта.</string>
   <string name="clearcache_dialog_content">Вы уверены, что Вы хотите удалить данные приложения, кэш и параметры? Установленные значки не будут затронуты.</string>
   <string name="hideicon_dialog_title">Внимание!</string>
+  <string name="hideicon_dialog_content">Вы точно хотите скрыть иконку приложения в вашем лаунчере?\nПриложение может вылетать без причины и уведомления будут полностью отключены.\nВы можете прочитать раздел FAQ, чтобы узнать как снова включить отображение иконки в лаунчере, перед тем как сделать это.</string>
   <string name="send_using">Отправить с помощью…</string>
+  <string name="no_mail">Установите любое приложение для отправки электронной почты</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Как использовать набор значков?</item>
     <item>Как применить набор значков?</item>
     <item>Как просмотреть все имеющиеся иконки?</item>
     <item>Как заменить значок альтернативным?</item>
-    <item>How to request unthemed icons?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Why do icons look pixelated on my device?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
+    <item>Как запросить отсутствующие иконки?</item>
+    <item>После перезагрузки моего устройства, значки больше не применяется. Иконки были восстановлены до значения по умолчанию.</item>
+    <item>Почему иконки выглядят пикселизированными на моем устройстве?</item>
+    <item>Я вижу иконку для приложения N в паке, но иконка не применяется.</item>
+    <item>Как скрыть иконку приложения из лаунчера?</item>
+    <item>Как открыть приложение после того, как значок приложения скрыт из лаунчера?</item>
+    <item>Как отобразить иконку приложения в лаунчере снова?</item>
+    <item>Почему приложению нужно разрешение чтобы изменять или удалять данные на моему устройстве?</item>
+    <item>Почему приложению требуется разрешение на полный доступ к сети?</item>
+    <item>Почему приложению требуется разрешение на просмотр подключений?</item>
+    <item>Почему приложению требуется разрешение на установку обоев?</item>
+    <item>Почему приложению требуется разрешение чтобы изменять размер обоев?</item>
+    <item>Почему приложению нужно разрешение, на запрет спящего режима?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn't support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+    <item>Требуется лаунчер с поддержкой паков значков. Список поддерживаемых лаунчеров приведен в приложении в разделе \"Применить\" или на странице приложения в Google Play.</item>
+    <item>В зависимости от типа навигации в приложении, вам нужно либо вызвать панель навигации свайпом с левой стороны экрана и перейти к разделу «Применить» или выбрать 4-ый значок из нижней панели навигации. Там вы сможете выбрать лаунчер для которого необходимо применить пак значков. Некоторые лаунчеры не поддерживает автоматического применения, и вам придется делать это вручную, через их настройки.</item>
+    <item>Вернитесь в главный раздел и нажмите на кнопку по названием \"Значки\".</item>
+    <item>В зависимости от используемого лаунчера, вам нужно либо долго удержать палец на значке и выбрать \"Изменить\" из выпадающего меню, или долго удержать палец на значке и переместить его в поле \"Изменить\".</item>
     <item>Depending on the app's navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
     <item>Это произошло из-за того, что набор значков был перенесен на SD-карту. Вы должны установить его во внутреннюю память.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-    <item>Send an icon request.</item>
+    <item>Отправить запрос.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
     <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
@@ -113,6 +123,6 @@
     <item>It\'s needed to be able to check if your device has internet connection.</item>
     <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
     <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
+    <item>Это необходимо для Muzei Live Wallpaper.</item>
   </string-array>
 </resources>
