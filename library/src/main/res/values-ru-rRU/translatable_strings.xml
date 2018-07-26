@@ -120,9 +120,9 @@
     <item>Вызовите навигационное меню свайпом вправо или нажмите на значок в виде трех точек и выберите опцию \"Настройки\". Затем отключите опцию - \"Убрать значок приложения из лаунчера\".</item>
     <item>Разрешение требуется для того чтобы записывать данные запросов иконок и файлы, а также сохранять обои и изменять путь их сохранения по умолчанию.</item>
     <item>Разрешение требуется для того чтобы загружать обои с сервера и скачивать их на устройство.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+    <item>Разрешение требуется для того, чтобы проверить подключен ли телефон к интернет сети.</item>
+    <item>Разрешение требуется для того чтобы устанавливать и применять обои прямо из приложения.</item>
+    <item>Разрешение требуется для того чтобы изменять размер обоев на основе разрешения вашего экрана.</item>
     <item>Это необходимо для Muzei Live Wallpaper.</item>
   </string-array>
 </resources>
