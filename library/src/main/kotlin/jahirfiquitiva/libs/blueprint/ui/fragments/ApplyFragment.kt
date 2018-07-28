@@ -65,7 +65,7 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
     
     override fun onResume() {
         super.onResume()
-        adapter.notifyDataSetChanged()
+        launchersViewModel.getData()?.let { setAdapterItems(it) }
     }
     
     override fun initUI(content: View) {
