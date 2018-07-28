@@ -16,7 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint Početna</string>
+  <string name="frames_dashboard">Blueprint početna</string>
   <string name="coming_soon">Stiže uskoro</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Početna</string>
@@ -118,11 +118,11 @@
     <item>Klizni navigacijsku traku nadesno ili odaber izbornik s 3 točkice i odi u dio \"Postavke\". Zatim omogući opciju \"Sakrij ikonu sa pokretača\".</item>
     <item>Odi na svoj početni zaslon, zatim stvori widget za aplikaciju čije je ime \"IconRestorer\" i to odaberi.</item>
     <item>Klizni navigacijsku traku nadesno ili odaber izbornik s 3 točkice i odi u dio \"Postavke\". Zatim onemogući opciju \"Sakrij ikonu sa pokretača\".</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+    <item>Potrebna je mogućnost zapisivanja podataka i datoteka za zahtjeve ikona, kao i za spremanje pozadina, te promjenu mape spremanja pozadina.</item>
+    <item>Potrebno za učitavanje pozadina iz oblaka te za njihovo preuzimanje.</item>
+    <item>Potrebno je za provjeru internetske veze vašeg uređaja.</item>
+    <item>Potrebno je za primjenu pozadine direktno iz aplikacije.</item>
+    <item>Potrebno je za prilagođavanje dimenzija pozadine prema razlučivosti vašeg zaslona.</item>
     <item>Potrebno je za Muzei živu pozadinu.</item>
   </string-array>
 </resources>
