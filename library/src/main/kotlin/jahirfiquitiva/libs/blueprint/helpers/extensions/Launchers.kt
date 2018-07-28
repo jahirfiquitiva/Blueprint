@@ -54,7 +54,7 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             color(R.color.atom_launcher_color)),
         Launcher(
             "aviate",
-            "Aviate Launcher", arrayOf("com.tuaviate"),
+            "Aviate Launcher", arrayOf("com.tul.aviate"),
             color(R.color.aviate_launcher_color)),
         Launcher(
             "go",
@@ -82,7 +82,7 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             color(R.color.lg_home_color)),
         Launcher(
             "l",
-            "L Launcher", arrayOf("com.launcher"),
+            "L Launcher", arrayOf("com.l.launcher"),
             color(R.color.l_launcher_color)),
         Launcher(
             "lawnchair",
