@@ -69,6 +69,8 @@
   <string name="apps_limit_dialog_day">Przepraszamy, ale możesz żądać ikony każdego %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za mniej niż minutę.</string>
+  <string name="requests_error">Wystąpił błąd podczas ładowania aplikacji do wysłania prośby.\nPowód: %1$s\nSpróbuj ponownie później.</string>
+  <string name="requests_upload_error">Wystąpił błąd podczas wysyłania prośby na nasze serwery.\nPowód: %1$s\nSpróbuj ponownie później.</string>
   <string name="loading_apps_to_request">Ładowanie listy aplikacji…</string>
   <string name="building_request_dialog">Tworzenie plików prośby o dodanie ikon…</string>
   <string name="request_upload_success">Sukces!</string>
@@ -83,6 +85,7 @@
   <string name="hideicon_dialog_title">Ostrzeżenie!</string>
   <string name="hideicon_dialog_content">Czy napewno chcesz ukryć ikonę aplikacji w swoim launcherze?\nAplikacja może się niespodziewanie zamknąć, a powiadomienia się wyłączyć\nMoże chcesz przeczytać FAQ (często zadawane pytania) i dowiedzieć się, jak sprawić by pojawiły się znowu, zanim to ukryjesz.</string>
   <string name="send_using">Wyślij za pomocą…</string>
+  <string name="no_mail">Żadna aplikacja e-mail nie jest zainstalowana</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Jak używać paczki ikon?</item>
@@ -104,17 +107,17 @@
     <item>Dlaczego aplikacja wymaga uprawnienia do zapobiegania przechodzenia telefonu w stan uśpienia?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Wymagana jest aplikacja ekranu głównego wspierającą paczki ikon. Lista wspieranych launcherów znajduje się w zakładce Zastosuj oraz w opisie aplikacji na Google Play.</item>
+    <item>W zależności od typu nawigacji w aplikacji, konieczne będzie wybranie opcji \"Zastosuj\" w szufladzie nawigacji, bądź dotknięcie czwartej ikony od lewej w dolnym pasku. W tej sekcji możliwe jest wybranie launchera, do którego ma być zastosowana paczka. Niektóre aplikacje ekranu głównego wspierające paczki ikon mogą się nie pojawić w tej sekcji - wtedy paczkę można zastosować manualnie przez panel ustawień ekranu głównego.</item>
+    <item>Na ekranie głównym aplikacji, dotknij płytkę \"Ikony\".</item>
+    <item>W zależności od launchera, konieczne będzie przeciągnięcie ikony aplikacji do przycisku \"Edytuj\" bądź wybranie tej opcji w menu pop-up.</item>
+    <item>W zależności od typu nawigacji, musisz otworzyć szufladę nawigacji z lewej, oraz przejść do \"Prósba o ikony\", lub wybrać ją z dolnego paska nawigacji.</item>
     <item>Stało się to, ponieważ paczka ikon została przeniesiona na kartę SD(pamięci). Powinienieś zainstalować ją w pamięci wewnętrznej (normalnej).</item>
     <item>Problem może wynikać z launchera, którego używasz, podczas obsługi dużej rozdzielczości. Możesz to naprawić, zwiększając rozmiar ikony do 115 - 120%. Albo spróbuj użyć innego launchera.</item>
     <item>Wyślij prośbę o dodanie ikon.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+    <item>W szufladzie nawigacji bądź menu trzech kropek należy dotknąć opcji \"Ustawienia\". Tam znajduje się opcja ukrycia ikony na ekranie głównym.</item>
+    <item>Na ekranie głównym, dodaj widżet tej aplikacji o nazwie \"IconRestorer\" i dotknij go.</item>
+    <item>W szufladzie nawigacji bądź menu trzech kropek należy dotknąć opcji \"Ustawienia\". Tam znajduje się opcja ukrycia ikony na ekranie głównym.</item>
     <item>Jest wymagana do zapisania tymczasowych plików generowanych na potrzebę wysłania prośby o dodanie ikon, jak i zmiany lokalizacji pobierania tapet.</item>
     <item>Jest wymagana do pobrania tapet z chmury.</item>
     <item>Jest wymagane, aby móc sprawdzić czy twoje urządzenie ma połączenie z internetem.</item>
