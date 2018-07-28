@@ -57,13 +57,6 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "Aviate Launcher", arrayOf("com.tul.aviate"),
             color(R.color.aviate_launcher_color)),
         Launcher(
-            "lineageos",
-            "LineageOS Theme Engine",
-            arrayOf(
-                "org.cyanogenmod.theme.chooser", "org.cyanogenmod.theme.chooser2",
-                "com.cyngn.theme.chooser"),
-            color(R.color.cm_theme_engine_color)),
-        Launcher(
             "go",
             "Go Launcher", arrayOf("com.gau.go.launcherex"),
             color(R.color.go_launcher_color)),
@@ -96,6 +89,11 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "Lawnchair", arrayOf("ch.deletescape.lawnchair", "ch.deletescape.lawnchair.plah",
                 "ch.deletescape.lawnchair.ci", "ch.deletescape.lawnchair.dev"),
             color(R.color.lawnchair_launcher_color)),
+        Launcher(
+                "lineageos", "LineageOS Theme Engine",
+            arrayOf("org.cyanogenmod.theme.chooser", "org.cyanogenmod.theme.chooser2",
+                    "com.cyngn.theme.chooser"),
+            color(R.color.cm_theme_engine_color)),
         Launcher(
             "lucid",
             "Lucid Launcher", arrayOf("com.powerpoint45.launcher"),
@@ -158,15 +156,15 @@ fun Context.executeLauncherIntent(launcherKey: String) {
                 3 -> executeApexLauncherIntent()
                 4 -> executeAtomLauncherIntent()
                 5 -> executeAviateLauncherIntent()
-                6 -> executeLineageOSThemeEngineIntent()
-                7 -> executeGoLauncherIntent()
-                8, 18 -> executeIconPacksNotSupportedIntent()
-                9 -> executeHoloLauncherIntent()
-                10 -> executeHoloLauncherICSIntent()
-                11 -> executeKkLauncherIntent()
-                12 -> executeLgHomeLauncherIntent()
-                13 -> executeLLauncherIntent()
-                14 -> executeLawnchairIntent()
+                6 -> executeGoLauncherIntent()
+                7, 18 -> executeIconPacksNotSupportedIntent()
+                8 -> executeHoloLauncherIntent()
+                9 -> executeHoloLauncherICSIntent()
+                10 -> executeKkLauncherIntent()
+                11 -> executeLgHomeLauncherIntent()
+                12 -> executeLLauncherIntent()
+                13 -> executeLawnchairIntent()
+                14 -> executeLineageOSThemeEngineIntent()
                 15 -> executeLucidLauncherIntent()
                 16 -> executeMiniLauncherIntent()
                 17 -> executeNextLauncherIntent()
