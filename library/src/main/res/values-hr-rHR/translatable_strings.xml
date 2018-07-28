@@ -69,6 +69,8 @@
   <string name="apps_limit_dialog_day">Žao nam je, ali dopušteno vam je zahtjevati ikone svakih %1$s.</string>
   <string name="apps_limit_dialog_day_extra">Bit ćete u mogućnosti zahtjevati ikone opet za %1$s.</string>
   <string name="apps_limit_dialog_day_extra_sec">Bit ćete u mogućnosti zahtjevati ikone opet, za manje od minute.</string>
+  <string name="requests_error">Dogodila se greška prilikom učitavanja aplikacija za zahtjev.\nRazlog: %1$s\nMolim pokušaj ponovno kasnije.</string>
+  <string name="requests_upload_error">Dogodila se greška prilikom učitavanja uploadanja aplikacija za zahtjev na naše servere.\nRazlog: %1$s\nMolim pokušaj ponovno kasnije.</string>
   <string name="loading_apps_to_request">Učitavanje aplikacija za zahtjev…</string>
   <string name="building_request_dialog">Stvaranje datoteke zahtjeva…</string>
   <string name="request_upload_success">Uspjeh!</string>
@@ -81,6 +83,7 @@
   <string name="pref_summary_launcher_icon">Kada je označeno, ikona pokretača će biti skrivena.</string>
   <string name="clearcache_dialog_content">Jeste li sigurni da želite izbrisati podatke aplikacije, predmemoriju i postavke? Primijenjene ikone se neće ukloniti.</string>
   <string name="hideicon_dialog_title">Upozorenje!</string>
+  <string name="hideicon_dialog_content">Jesi li siguran da želiš sakriti ikonu aplikacije od svog pokretača?\nAplikacija se može neočekivano zatvoriti i obavijesti će biti u potpunosti onemogućene.\nMožda bi bilo dobro da pročitaš Često Postavljena Pitanja da bi saznao kako napraviti da se opet pokazuje, prije sakrivanja.</string>
   <string name="send_using">Pošalji koristeći…</string>
   <string name="no_mail">Aplikacija za e-poštu nije instalirana</string>
   <!-- HELP SECTION -->
@@ -92,7 +95,7 @@
     <item>Kako zatražiti ikone koje nedostaju?</item>
     <item>Nakon ponovnog pokretanja uređaja, paket ikona se više ne primjenjuje. Ikone su vraćene na zadano.</item>
     <item>Zašto ikone izgledaju pikselirano na mom uređaju?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>Vidi ikonu za X aplikaciju u uključenim ikonama, ali ikona se ne primjenjuje.</item>
     <item>Kako sakriti ikonu aplikacije iz pokretača?</item>
     <item>Kako otvoriti aplikaciju nakon što je skrivena iz pokretača?</item>
     <item>Kako ponovno prikazati ikonu aplikacije u pokretaču?</item>
@@ -104,7 +107,7 @@
     <item>Zašto aplikacija treba dozvolu za sprječavanje spavanja uređaja?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+    <item>Trebaš pokretač sa podrškom paketa ikona. Lista podržanih pokretača se može pronaći u aplikaciji u \"Primjeni\" djel, ili opisu na Play Trgovini.</item>
     <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
     <item>Vratite se na glavni zaslon i dodirnite karticu \"Ikone\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
