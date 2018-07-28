@@ -7,7 +7,6 @@
         <LanguageOptions name="HTML">
             <option name="fileTypeOverride" value="3" />
             <option name="addBlankAfter" value="false" />
-            <option name="fileLocation" value="2" />
         </LanguageOptions>
         <LanguageOptions name="JAVA">
             <option name="fileTypeOverride" value="3" />
