@@ -20,8 +20,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import ca.allanwang.kau.utils.openLink
-import ca.allanwang.kau.utils.toast
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
@@ -54,7 +54,7 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             color(R.color.atom_launcher_color)),
         Launcher(
             "aviate",
-            "Aviate Launcher", arrayOf("com.tul.aviate"),
+            "Aviate Launcher", arrayOf("com.tuaviate"),
             color(R.color.aviate_launcher_color)),
         Launcher(
             "go",
@@ -82,17 +82,19 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             color(R.color.lg_home_color)),
         Launcher(
             "l",
-            "L Launcher", arrayOf("com.l.launcher"),
+            "L Launcher", arrayOf("com.launcher"),
             color(R.color.l_launcher_color)),
         Launcher(
             "lawnchair",
-            "Lawnchair", arrayOf("ch.deletescape.lawnchair", "ch.deletescape.lawnchair.plah",
-                "ch.deletescape.lawnchair.ci", "ch.deletescape.lawnchair.dev"),
+            "Lawnchair", arrayOf(
+            "ch.deletescape.lawnchair.plah", "ch.deletescape.lawnchair",
+            "ch.deletescape.lawnchair.ci", "ch.deletescape.lawnchair.dev"),
             color(R.color.lawnchair_launcher_color)),
         Launcher(
-                "lineageos", "LineageOS Theme Engine",
-            arrayOf("org.cyanogenmod.theme.chooser", "org.cyanogenmod.theme.chooser2",
-                    "com.cyngn.theme.chooser"),
+            "lineageos", "LineageOS Theme Engine",
+            arrayOf(
+                "org.cyanogenmod.theme.chooser", "org.cyanogenmod.theme.chooser2",
+                "com.cyngn.theme.chooser"),
             color(R.color.cm_theme_engine_color)),
         Launcher(
             "lucid",
@@ -157,7 +159,7 @@ fun Context.executeLauncherIntent(launcherKey: String) {
                 4 -> executeAtomLauncherIntent()
                 5 -> executeAviateLauncherIntent()
                 6 -> executeGoLauncherIntent()
-                7, 18 -> executeIconPacksNotSupportedIntent()
+                7, 19 -> executeIconPacksNotSupportedIntent()
                 8 -> executeHoloLauncherIntent()
                 9 -> executeHoloLauncherICSIntent()
                 10 -> executeKkLauncherIntent()
@@ -168,7 +170,7 @@ fun Context.executeLauncherIntent(launcherKey: String) {
                 15 -> executeLucidLauncherIntent()
                 16 -> executeMiniLauncherIntent()
                 17 -> executeNextLauncherIntent()
-                19 -> executeNovaLauncherIntent()
+                18 -> executeNovaLauncherIntent()
                 20 -> executeSLauncherIntent()
                 21 -> executeSmartLauncherIntent()
                 22 -> executeSmartLauncherProIntent()
@@ -181,229 +183,304 @@ fun Context.executeLauncherIntent(launcherKey: String) {
 }
 
 private fun Context.executeIconPacksNotSupportedIntent() {
-    mdDialog {
-        title(R.string.no_compatible_launcher_title)
-        content(R.string.no_compatible_launcher_content)
-        positiveText(android.R.string.ok)
-        negativeText(android.R.string.cancel)
-        onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts") }
+    try {
+        mdDialog {
+            title(R.string.no_compatible_launcher_title)
+            content(R.string.no_compatible_launcher_content)
+            positiveText(android.R.string.ok)
+            negativeText(android.R.string.cancel)
+            onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts") }
+        }.show()
+    } catch (e: Exception) {
+        BL.e(e.message, e)
     }
 }
 
 internal fun Context.showLauncherNotInstalledDialog(item: Launcher) {
-    mdDialog {
-        title(item.name)
-        content(getString(R.string.lni_content, item.name))
-        positiveText(android.R.string.ok)
-        negativeText(android.R.string.cancel)
-        onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0]) }
+    try {
+        mdDialog {
+            title(item.name)
+            content(getString(R.string.lni_content, item.name))
+            positiveText(android.R.string.ok)
+            negativeText(android.R.string.cancel)
+            onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0]) }
+        }.show()
+    } catch (e: Exception) {
+        BL.e(e.message, e)
+    }
+}
+
+internal fun Context.showLauncherApplyError(customContent: String? = null) {
+    try {
+        mdDialog {
+            title(R.string.error_title)
+            content(customContent ?: getString(R.string.coming_soon))
+            positiveText(android.R.string.ok)
+        }.show()
+    } catch (e: Exception) {
+        BL.e(e.message, e)
+    }
+}
+
+private fun Context.attemptApply(customContent: String? = null, intent: () -> Intent?) {
+    try {
+        intent()?.let { startActivity(it) } ?: {
+            BL.e("Intent was null!")
+            showLauncherApplyError(customContent)
+        }()
+    } catch (e: Exception) {
+        BL.e(e.message, e)
+        showLauncherApplyError(customContent)
     }
 }
 
 private fun Context.executeActionLauncherIntent() {
-    val action = packageManager.getLaunchIntentForPackage("com.actionlauncher.playstore")
-    action.putExtra("apply_icon_pack", packageName)
-    startActivity(action)
+    attemptApply {
+        packageManager
+            .getLaunchIntentForPackage("com.actionlauncher.playstore")?.apply {
+                putExtra("apply_icon_pack", packageName)
+            }
+    }
 }
 
 private fun Context.executeAdwLauncherIntent() {
-    val intent = Intent("org.adw.launcher.SET_THEME")
-    intent.putExtra("org.adw.launcher.theme.NAME", packageName)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    startActivity(intent)
+    attemptApply {
+        Intent("org.adw.launcher.SET_THEME").apply {
+            putExtra("org.adw.launcher.theme.NAME", packageName)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
 }
 
 private fun Context.executeAdwEXLauncherIntent() {
-    val intent = Intent("org.adwfreak.launcher.SET_THEME")
-    intent.putExtra("org.adwfreak.launcher.theme.NAME", packageName)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    startActivity(intent)
+    attemptApply {
+        Intent("org.adwfreak.launcher.SET_THEME").apply {
+            putExtra("org.adwfreak.launcher.theme.NAME", packageName)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
 }
 
 private fun Context.executeApexLauncherIntent() {
-    val intent = Intent("com.anddoes.launcher.SET_THEME")
-    intent.putExtra("com.anddoes.launcher.THEME_PACKAGE_NAME", packageName)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    startActivity(intent)
+    attemptApply {
+        Intent("com.anddoes.launcher.SET_THEME").apply {
+            putExtra("com.anddoes.launcher.THEME_PACKAGE_NAME", packageName)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
 }
 
 private fun Context.executeAtomLauncherIntent() {
-    val atom = Intent("com.dlto.atom.launcher.intent.action.ACTION_VIEW_THEME_SETTINGS")
-    atom.`package` = "com.dlto.atom.launcher"
-    atom.putExtra("packageName", packageName)
-    atom.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    startActivity(atom)
+    attemptApply {
+        Intent("com.dlto.atom.launcher.action.ACTION_VIEW_THEME_SETTINGS").apply {
+            `package` = "com.dlto.atom.launcher"
+            putExtra("packageName", packageName)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
 }
 
 private fun Context.executeAviateLauncherIntent() {
-    val aviate = Intent("com.tul.aviate.SET_THEME")
-    aviate.`package` = "com.tul.aviate"
-    aviate.putExtra("THEME_PACKAGE", packageName)
-    aviate.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    startActivity(aviate)
+    attemptApply {
+        Intent("com.tuaviate.SET_THEME").apply {
+            `package` = "com.tuaviate"
+            putExtra("THEME_PACKAGE", packageName)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
 }
 
 private fun Context.executeGoLauncherIntent() {
-    val intent = packageManager.getLaunchIntentForPackage("com.gau.go.launcherex")
-    val go = Intent("com.gau.go.launcherex.MyThemes.mythemeaction")
-    go.putExtra("type", 1)
-    go.putExtra("pkgname", packageName)
-    sendBroadcast(go)
-    startActivity(intent)
+    attemptApply {
+        packageManager.getLaunchIntentForPackage("com.gau.go.launcherex").also {
+            val go = Intent("com.gau.go.launcherex.MyThemes.mythemeaction")
+            go.putExtra("type", 1)
+            go.putExtra("pkgname", packageName)
+            sendBroadcast(go)
+        }
+    }
 }
 
 private fun Context.executeHoloLauncherIntent() {
-    val intent = Intent(Intent.ACTION_MAIN)
-    intent.component = ComponentName("com.mobint.hololauncher", "com.mobint.hololauncher.Settings")
-    startActivity(intent)
+    attemptApply {
+        Intent(Intent.ACTION_MAIN).apply {
+            component = ComponentName("com.mobint.hololauncher", "com.mobint.hololauncher.Settings")
+        }
+    }
 }
 
 private fun Context.executeHoloLauncherICSIntent() {
-    val holohdApply = Intent(Intent.ACTION_MAIN)
-    holohdApply.component = ComponentName(
-        "com.mobint.hololauncher.hd",
-        "com.mobint.hololauncher.SettingsActivity")
-    startActivity(holohdApply)
+    attemptApply {
+        Intent(Intent.ACTION_MAIN).apply {
+            component = ComponentName(
+                "com.mobint.hololauncher.hd", "com.mobint.hololauncher.SettingsActivity")
+        }
+    }
 }
 
 private fun Context.executeKkLauncherIntent() {
-    val kkApply = Intent("com.kk.launcher.APPLY_ICON_THEME")
-    kkApply.putExtra("com.kk.launcher.theme.EXTRA_PKG", packageName)
-    kkApply.putExtra("com.kk.launcher.theme.EXTRA_NAME", getString(R.string.app_name))
-    startActivity(kkApply)
+    attemptApply {
+        Intent("com.kk.launcher.APPLY_ICON_THEME").apply {
+            putExtra("com.kk.launcher.theme.EXTRA_PKG", packageName)
+            putExtra("com.kk.launcher.theme.EXTRA_NAME", getString(R.string.app_name))
+        }
+    }
 }
 
 private fun Context.executeLgHomeLauncherIntent() {
-    val intent = Intent(Intent.ACTION_MAIN)
-    intent.component = ComponentName(
-        "com.lge.launcher2",
-        "com.lge.launcher2.homesettings.HomeSettingsPrefActivity")
-    startActivity(intent)
+    attemptApply {
+        Intent(Intent.ACTION_MAIN).apply {
+            component = ComponentName(
+                "com.lge.launcher2",
+                "com.lge.launcher2.homesettings.HomeSettingsPrefActivity")
+        }
+    }
 }
 
 private fun Context.executeLLauncherIntent() {
-    val l = Intent("com.l.launcher.APPLY_ICON_THEME", null)
-    l.putExtra("com.l.launcher.theme.EXTRA_PKG", packageName)
-    startActivity(l)
+    attemptApply {
+        Intent("com.launcher.APPLY_ICON_THEME", null).apply {
+            putExtra("com.launcher.theme.EXTRA_PKG", packageName)
+        }
+    }
 }
 
 private fun Context.executeLawnchairIntent() {
-    val l = Intent("ch.deletescape.lawnchair.APPLY_ICONS", null)
-    l.putExtra("packageName", packageName)
-    startActivity(l)
+    attemptApply {
+        Intent("ch.deletescape.lawnchair.APPLY_ICONS", null).apply {
+            putExtra("packageName", packageName)
+        }
+    }
 }
 
 private fun Context.executeLineageOSThemeEngineIntent() {
-    var themesAppInstalled = true
-    val intent = Intent("android.intent.action.MAIN")
+    var themesAppInstalled = isAppInstalled("org.cyanogenmod.theme.chooser") ||
+        isAppInstalled("org.cyanogenmod.theme.chooser2") ||
+        isAppInstalled("com.cyngn.theme.chooser")
     
-    when {
-        isAppInstalled("org.cyanogenmod.theme.chooser") -> {
-            intent.component = ComponentName(
-                "org.cyanogenmod.theme.chooser",
-                "org.cyanogenmod.theme.chooser.ChooserActivity")
+    attemptApply(
+        if (themesAppInstalled) getString(R.string.impossible_open_themes)
+        else getString(R.string.themes_app_not_installed)) {
+        Intent("android.action.MAIN").apply {
+            when {
+                isAppInstalled("org.cyanogenmod.theme.chooser") -> {
+                    component = ComponentName(
+                        "org.cyanogenmod.theme.chooser",
+                        "org.cyanogenmod.theme.chooser.ChooserActivity")
+                }
+                isAppInstalled("org.cyanogenmod.theme.chooser2") -> {
+                    component = ComponentName(
+                        "org.cyanogenmod.theme.chooser2",
+                        "org.cyanogenmod.theme.chooser2.ChooserActivity")
+                }
+                isAppInstalled("com.cyngn.theme.chooser") -> {
+                    component = ComponentName(
+                        "com.cyngn.theme.chooser",
+                        "com.cyngn.theme.chooser.ChooserActivity")
+                }
+                else -> themesAppInstalled = false
+            }
+            if (themesAppInstalled) putExtra("pkgName", packageName)
         }
-        isAppInstalled("org.cyanogenmod.theme.chooser2") -> {
-            intent.component = ComponentName(
-                "org.cyanogenmod.theme.chooser2",
-                "org.cyanogenmod.theme.chooser2.ChooserActivity")
-        }
-        isAppInstalled("com.cyngn.theme.chooser") -> {
-            intent.component = ComponentName(
-                "com.cyngn.theme.chooser",
-                "com.cyngn.theme.chooser.ChooserActivity")
-        }
-        else -> themesAppInstalled = false
-    }
-    
-    if (themesAppInstalled) {
-        intent.putExtra("pkgName", packageName)
-        try {
-            startActivity(intent)
-        } catch (e: Exception) {
-            toast(R.string.impossible_open_themes)
-        }
-    } else {
-        toast(R.string.themes_app_not_installed)
     }
 }
 
 private fun Context.executeLucidLauncherIntent() {
-    val lucidApply = Intent("com.powerpoint45.action.APPLY_THEME", null)
-    lucidApply.putExtra("icontheme", packageName)
-    startActivity(lucidApply)
+    attemptApply {
+        Intent("com.powerpoint45.action.APPLY_THEME", null).apply {
+            putExtra("icontheme", packageName)
+        }
+    }
 }
 
 private fun Context.executeMiniLauncherIntent() {
-    val intent = Intent(Intent.ACTION_MAIN)
-    intent.component = ComponentName(
-        "com.jiubang.go.mini.launcher",
-        "com.jiubang.go.mini.launcher.setting.MiniLauncherSettingActivity")
-    startActivity(intent)
+    attemptApply {
+        Intent(Intent.ACTION_MAIN).apply {
+            component = ComponentName(
+                "com.jiubang.go.mini.launcher",
+                "com.jiubang.go.mini.launcher.setting.MiniLauncherSettingActivity")
+        }
+    }
 }
 
 private fun Context.executeNextLauncherIntent() {
-    var nextApply: Intent? = packageManager.getLaunchIntentForPackage("com.gtp.nextlauncher")
-    if (nextApply == null) {
-        nextApply = packageManager.getLaunchIntentForPackage("com.gtp.nextlauncher.trial")
+    attemptApply {
+        var nextApply: Intent? = packageManager.getLaunchIntentForPackage("com.gtp.nextlauncher")
+        if (nextApply == null) {
+            nextApply = packageManager.getLaunchIntentForPackage("com.gtp.nextlauncher.trial")
+        }
+        val next = Intent("com.gau.go.launcherex.MyThemes.mythemeaction")
+        next.putExtra("type", 1)
+        next.putExtra("pkgname", packageName)
+        sendBroadcast(next)
+        nextApply
     }
-    val next = Intent("com.gau.go.launcherex.MyThemes.mythemeaction")
-    next.putExtra("type", 1)
-    next.putExtra("pkgname", packageName)
-    sendBroadcast(next)
-    startActivity(nextApply)
 }
 
 private fun Context.executeNovaLauncherIntent() {
-    val intent = Intent("com.teslacoilsw.launcher.APPLY_ICON_THEME")
-    intent.`package` = "com.teslacoilsw.launcher"
-    intent.putExtra("com.teslacoilsw.launcher.extra.ICON_THEME_TYPE", "GO")
-    intent.putExtra("com.teslacoilsw.launcher.extra.ICON_THEME_PACKAGE", packageName)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    startActivity(intent)
+    attemptApply {
+        Intent("com.teslacoilsw.launcher.APPLY_ICON_THEME").apply {
+            `package` = "com.teslacoilsw.launcher"
+            putExtra("com.teslacoilsw.launcher.extra.ICON_THEME_TYPE", "GO")
+            putExtra("com.teslacoilsw.launcher.extra.ICON_THEME_PACKAGE", packageName)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
 }
 
 private fun Context.executeSLauncherIntent() {
-    val s = Intent("com.s.launcher.APPLY_ICON_THEME")
-    s.putExtra("com.s.launcher.theme.EXTRA_PKG", packageName)
-    s.putExtra("com.s.launcher.theme.EXTRA_NAME", getString(R.string.app_name))
-    startActivity(s)
+    attemptApply {
+        Intent("com.s.launcher.APPLY_ICON_THEME").apply {
+            putExtra("com.s.launcher.theme.EXTRA_PKG", packageName)
+            putExtra("com.s.launcher.theme.EXTRA_NAME", getString(R.string.app_name))
+        }
+    }
 }
 
 private fun Context.executeSmartLauncherIntent() {
-    val smartLauncherIntent = Intent("ginlemon.smartlauncher.setGSLTHEME")
-    smartLauncherIntent.putExtra("package", packageName)
-    startActivity(smartLauncherIntent)
+    attemptApply {
+        Intent("ginlemon.smartlauncher.setGSLTHEME").apply {
+            putExtra("package", packageName)
+        }
+    }
 }
 
 private fun Context.executeSmartLauncherProIntent() {
-    val smartLauncherProIntent = Intent("ginlemon.smartlauncher.setGSLTHEME")
-    smartLauncherProIntent.putExtra("package", packageName)
-    startActivity(smartLauncherProIntent)
+    attemptApply {
+        Intent("ginlemon.smartlauncher.setGSLTHEME").apply {
+            putExtra("package", packageName)
+        }
+    }
 }
 
 private fun Context.executeSoloLauncherIntent() {
-    val soloApply = packageManager.getLaunchIntentForPackage("home.solo.launcher.free")
-    val solo = Intent("home.solo.launcher.free.APPLY_THEME")
-    solo.putExtra("EXTRA_PACKAGENAME", packageName)
-    solo.putExtra("EXTRA_THEMENAME", getString(R.string.app_name))
-    sendBroadcast(solo)
-    startActivity(soloApply)
+    attemptApply {
+        packageManager.getLaunchIntentForPackage("home.solo.launcher.free").also {
+            val solo = Intent("home.solo.launcher.free.APPLY_THEME")
+            solo.putExtra("EXTRA_PACKAGENAME", packageName)
+            solo.putExtra("EXTRA_THEMENAME", getString(R.string.app_name))
+            sendBroadcast(solo)
+        }
+    }
 }
 
 private fun Context.executeTsfLauncherIntent() {
-    val tsfApply = packageManager.getLaunchIntentForPackage("com.tsf.shell")
-    val tsf = Intent("android.intent.action.MAIN")
-    tsf.component = ComponentName("com.tsf.shell", "com.tsf.shell.ShellActivity")
-    sendBroadcast(tsf)
-    startActivity(tsfApply)
+    attemptApply {
+        packageManager.getLaunchIntentForPackage("com.tsf.shell").also {
+            val tsf = Intent("android.action.MAIN")
+            tsf.component = ComponentName("com.tsf.shell", "com.tsf.shelShellActivity")
+            sendBroadcast(tsf)
+        }
+    }
 }
 
 private fun Context.executeUniconIntent() {
-    val unicon = Intent("android.intent.action.MAIN")
-    unicon.addCategory("android.intent.category.LAUNCHER")
-    unicon.`package` = "sg.ruqqq.IconThemer"
-    startActivity(unicon)
+    attemptApply {
+        Intent("android.action.MAIN").apply {
+            addCategory("android.category.LAUNCHER")
+            `package` = "sg.ruqqq.IconThemer"
+        }
+    }
 }
 
 internal val Context.defaultLauncher: Launcher?
@@ -411,8 +488,6 @@ internal val Context.defaultLauncher: Launcher?
         val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
         val resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
         val launcherPackage = resolveInfo.activityInfo.packageName
-        supportedLaunchers.forEach {
-            if (it.hasPackage(launcherPackage.toString())) return it
-        }
+        supportedLaunchers.forEach { if (it.hasPackage(launcherPackage.toString())) return it }
         return null
     }

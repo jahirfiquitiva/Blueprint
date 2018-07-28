@@ -64,9 +64,7 @@ internal data class Launcher(
     val isActuallySupported: Boolean = true
                             ) {
     fun hasPackage(packageName: String): Boolean {
-        packageNames.forEach {
-            if (it.equals(packageName, true)) return true
-        }
+        packageNames.forEach { if (it.equals(packageName, true)) return true }
         return false
     }
 }

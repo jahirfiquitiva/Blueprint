@@ -47,7 +47,7 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
     private var recyclerView: EmptyViewRecyclerView? = null
     private val launchersViewModel: LaunchersViewModel by lazyViewModel()
     
-    private val adapter: LaunchersAdapter? by lazy {
+    private val adapter: LaunchersAdapter by lazy {
         LaunchersAdapter(context?.let { Glide.with(it) }) { onItemClicked(it, false) }
     }
     
@@ -61,6 +61,11 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
     
     override fun unregisterObservers() {
         launchersViewModel.destroy(this)
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
     }
     
     override fun initUI(content: View) {
@@ -110,23 +115,21 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
     }
     
     private fun setAdapterItems(items: ArrayList<Launcher>) {
-        adapter?.setItems(
+        adapter.setItems(
             ArrayList(items.distinct().sortedBy { !isLauncherInstalled(it.packageNames) }))
     }
     
     private fun isLauncherInstalled(packages: Array<String>): Boolean {
-        packages.forEach {
-            if (context?.isAppInstalled(it) == true) return true
-        }
+        packages.forEach { if (context?.isAppInstalled(it) == true) return true }
         return false
     }
     
     override fun onItemClicked(item: Launcher, longClick: Boolean) {
         if (!longClick) {
             if (isLauncherInstalled(item.packageNames) || item.name.contains("lineage", true)
-                || item.name.contains("google", true) || item.name.contains("pixel", true))
+                || item.name.contains("google", true) || item.name.contains("pixel", true)) {
                 context?.executeLauncherIntent(item.name)
-            else context?.showLauncherNotInstalledDialog(item)
+            } else context?.showLauncherNotInstalledDialog(item)
         }
     }
     

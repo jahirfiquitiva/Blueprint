@@ -116,9 +116,7 @@ internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(item
         }
     
     private fun isLauncherInstalled(context: Context, packages: Array<String>): Boolean {
-        packages.forEach {
-            if (context.isAppInstalled(it)) return true
-        }
+        packages.forEach { if (context.isAppInstalled(it)) return true }
         return false
     }
     
