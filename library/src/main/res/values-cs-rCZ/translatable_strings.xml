@@ -65,8 +65,15 @@
   <string name="requests_error">Došlo k chybě při načítání požadovaných aplikací.\nDůvod: %1$s\nProsíme, zkuste to znovu později.</string>
   <string name="requests_upload_error">Došlo k chybě při odesílání požadovaných aplikací na naše servery. \nReason: %1$s\nProsíme, zkuste to znovu později.</string>
   <string name="loading_apps_to_request">Načítání aplikací…</string>
+  <string name="building_request_dialog">Vytváření potřebných souborů…</string>
   <string name="request_upload_success">Úspěch!</string>
+  <string name="request_upload_success_content">Požadavek byl úspěšně nahrán na náš server.</string>
   <!-- Preferences -->
+  <string name="pref_summary_wall_header">Zobrazí se aktuální tapeta vašeho zařízení.</string>
+  <string name="pref_header_launcher_icon">Ikona launcheru</string>
+  <string name="pref_title_launcher_icon">Skrýt ikonu launcheru</string>
+  <string name="pref_summary_launcher_icon">Při zaškrtnutí bude ikona launcheru skryta.</string>
+  <string name="clearcache_dialog_content">Opravdu chcete odstranit data aplikace, mezipaměť a nastavení? Použité ikon nebudou ovlivněny.</string>
   <string name="hideicon_dialog_title">Varování!</string>
   <string name="send_using">Odeslat pomocí…</string>
   <string name="no_mail">Není nainstalována žádná e-mailová aplikace</string>
