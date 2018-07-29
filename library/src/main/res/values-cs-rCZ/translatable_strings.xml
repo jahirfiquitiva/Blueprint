@@ -45,7 +45,7 @@
   <string name="themes_app_not_installed">Témata nejsou nainstalována na tomto zařízení</string>
   <string name="included_templates">%1$s šablony</string>
   <string name="launcher_icon_restored">Ikona %1$s launcheru byla obnovena</string>
-  <string name="launcher_icon_not_restored">Ikona %1$s launcheru je již viditélná</string>
+  <string name="launcher_icon_not_restored">Ikona %1$s launcheru je již viditelná</string>
   <string name="launcher_icon_restorer_error">Naskytl se problém s kódem %1$s. Obraťte se na jeho vývojáře.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Widget pro obnovení ikon</string>
