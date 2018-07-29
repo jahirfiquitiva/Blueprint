@@ -67,6 +67,7 @@
   <string name="apps_limit_dialog">죄송합니다. 오직 %1$s 앱의 선택만 가능합니다.</string>
   <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
   <string name="apps_limit_dialog_day_extra_sec">1분 안에 요청 아이콘을 다시 사용할 수 있을 것입니다.</string>
+  <string name="requests_error">요청. \nReason 애플 리 케이 션 로드 오류가 발생 했습니다: %1$s\nPlease 나중에 다시 시도 하십시오.</string>
   <string name="loading_apps_to_request">앱 로딩을 요청중...</string>
   <string name="request_upload_success">성공!</string>
   <!-- Preferences -->
