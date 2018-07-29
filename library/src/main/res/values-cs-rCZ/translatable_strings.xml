@@ -37,7 +37,12 @@
   <string name="useful_links">Užitečné odkazy</string>
   <string name="columns">Počet sloupců</string>
   <string name="no_compatible_launcher_title">Tento launcher NENÍ Kompatibilní</string>
+  <string name="no_compatible_launcher_content">Tento launcher NENÍ kompatibilní s ŽÁDNOU sadou ikon, tím pádem není možné používat vlastní ikony v tomto launcheru. Prosíme nepište z tohoto důvodu negativní recenzi. Je zde řešení, které si můžete sami vyzkoušet, ale vyžaduje použití externí aplikace. Chcete ji stáhnout?</string>
+  <string name="impossible_open_themes">Nelze otevřít témata</string>
+  <string name="themes_app_not_installed">Témata nejsou nainstalována na tomto zařízení</string>
+  <string name="included_templates">%1$s šablony</string>
   <!-- Widgets Names -->
+  <string name="clock_widget_title">Analogové Hodiny</string>
   <string name="search_icons">Hledat ikony</string>
   <string name="search_wallpapers">Hledat tapety</string>
   <string name="search_launchers">Hledat launchery</string>
@@ -51,6 +56,15 @@
   <!-- Requests -->
   <string name="select_all">Vybrat vše</string>
   <string name="no_selected_apps_title">Nejsou vybrány žádné aplikace</string>
+  <string name="no_selected_apps_content">Nevybral jste žádné aplikace pro odeslání. Prosíme vyberte několik aplikací a poté znovu klikněte na toto tlačítko.</string>
+  <string name="apps_limit_dialog">Omlouváme se, ale můžete vybrat maximálně %1$s aplikací.</string>
+  <string name="apps_limit_dialog_more">Omlouváme se, ale prozatím můžete požádat maximálně o %1$s aplikací.</string>
+  <string name="apps_limit_dialog_day">Omlouváme se, ale o aplikace můžete požádat každých %1$s.</string>
+  <string name="apps_limit_dialog_day_extra">Budete moci znovu požádat o aplikace za %1$s.</string>
+  <string name="apps_limit_dialog_day_extra_sec">Budete moci znovu požádat o aplikace za méně než minutu.</string>
+  <string name="requests_error">Došlo k chybě při načítání požadovaných aplikací.\nDůvod: %1$s\nProsíme, zkuste to znovu později.</string>
+  <string name="requests_upload_error">Došlo k chybě při odesílání požadovaných aplikací na naše servery. \nReason: %1$s\nProsíme, zkuste to znovu později.</string>
+  <string name="loading_apps_to_request">Načítání aplikací…</string>
   <string name="request_upload_success">Úspěch!</string>
   <!-- Preferences -->
   <string name="hideicon_dialog_title">Varování!</string>
