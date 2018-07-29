@@ -16,7 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint řídicí panel</string>
+  <string name="frames_dashboard">Řídící panel Blueprint</string>
   <string name="coming_soon">Již brzy</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Domů</string>
@@ -111,7 +111,7 @@
     <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Použít\" nebo zvolit 4. ikonu v dolním navigačním panelu. Odtud můžete vybrat launcher ve kterém chcete tuto sadu ikon použít. Některé launchery nepodporují automatické aplikování ikon a je nutné to udělat ručně prostřednictvím jejich nastavení.</item>
     <item>Přejděte zpátky do hlavní sekce aplikace a klikněte na tlačítko s názvem \"Ikony\".</item>
     <item>V závislosti na launcheru který používáte, buď musíte dlouze přidržet ikonu a zvolit \"Upravit\" z vyskakovacího menu, nebo dlouze přidržet ikonu a přesunout ji do políčka \"Upravit\".</item>
-    <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Požádat\" nebo zvolit ikonu v dolním navigačním panelu.</item>
+    <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Požádat o ikonu\" nebo zvolit ikonu v dolním navigačním panelu.</item>
     <item>K tomu došlo protože sada ikon byla přenesena na SD Kartu. Měli byste ji umístit do místního úložiště.</item>
     <item>Při manipulaci s velkým rozlišením může dojít k potížím se launcherem, který používáte. Můžete jej opravit zvýšením velikosti ikony na 115 - 120%. Nebo zkuste použít jiný launcher.</item>
     <item>Poslat požadavek na ikonu.</item>
@@ -123,6 +123,6 @@
     <item>Toto oprávnění umožňuje aplikaci zjistit zda je zařízení připojeno k internetu.</item>
     <item>Toto oprávnění umožňuje nastavit tapetu přímo z aplikace.</item>
     <item>Toto oprávnění umožňuje upravit rozměry tapety na základě rozlišení vaší obrazovky.</item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
+    <item>Toto oprávnění je vyžadováno Živou Tapetou Muzei.</item>
   </string-array>
 </resources>
