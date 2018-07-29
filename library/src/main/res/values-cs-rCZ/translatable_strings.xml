@@ -36,11 +36,14 @@
   <string name="general_info">Obecné informace</string>
   <string name="useful_links">Užitečné odkazy</string>
   <string name="columns">Počet sloupců</string>
+  <string name="lni_content">%1$s není v současné době nainstalován na vašem zařízení.\nChtěli byste jej nainstalovat z Obchodu Play?</string>
   <string name="no_compatible_launcher_title">Tento launcher NENÍ Kompatibilní</string>
   <string name="no_compatible_launcher_content">Tento launcher NENÍ kompatibilní s ŽÁDNOU sadou ikon, tím pádem není možné používat vlastní ikony v tomto launcheru. Prosíme nepište z tohoto důvodu negativní recenzi. Je zde řešení, které si můžete sami vyzkoušet, ale vyžaduje použití externí aplikace. Chcete ji stáhnout?</string>
   <string name="impossible_open_themes">Nelze otevřít témata</string>
   <string name="themes_app_not_installed">Témata nejsou nainstalována na tomto zařízení</string>
   <string name="included_templates">%1$s šablony</string>
+  <string name="launcher_icon_restored">Ikona %1$s launcheru byla obnovena</string>
+  <string name="launcher_icon_not_restored">Ikona %1$s launcheru je již viditélná</string>
   <!-- Widgets Names -->
   <string name="clock_widget_title">Analogové Hodiny</string>
   <string name="search_icons">Hledat ikony</string>
