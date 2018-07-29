@@ -75,6 +75,7 @@
   <string name="pref_summary_launcher_icon">Při zaškrtnutí bude ikona launcheru skryta.</string>
   <string name="clearcache_dialog_content">Opravdu chcete odstranit data aplikace, mezipaměť a nastavení? Použité ikon nebudou ovlivněny.</string>
   <string name="hideicon_dialog_title">Varování!</string>
+  <string name="hideicon_dialog_content">Opravdu chcete skrýt ikonu aplikace z vašeho launcheru?\nAplikace se může neočekávaně ukončit a oznámení budou zcela zakázána.\nMožná byste si měl přečíst FAQ (Nejčastěji kladené otázky) kde se dozvíte jak ji znovu najít, předtím než ji skryjete.</string>
   <string name="send_using">Odeslat pomocí…</string>
   <string name="no_mail">Není nainstalována žádná e-mailová aplikace</string>
   <!-- HELP SECTION -->
@@ -83,12 +84,12 @@
     <item>Jak nastavit ikony?</item>
     <item>Kde najít všechny ikony?</item>
     <item>Jak nahradit ikonu jinou ikonou?</item>
-    <item>How to request unthemed icons?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Why do icons look pixelated on my device?</item>
+    <item>Jak požádat o ikony bez motivu?</item>
+    <item>Po restartování zařízení, sada ikon se vrátila do původního stavu a všechny ikony byly obnoveny.</item>
+    <item>Proč na mém zařízení vypadají ikony rozmazaně?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>Jak skrýt aplikaci z launcheru?</item>
+    <item>Jak otevřít aplikaci poté co je ikona skryta z launcheru?</item>
     <item>How to show app icon in launcher again?</item>
     <item>Why does the app need permission to modify or delete content of my storage?</item>
     <item>Why does the app need permission to full network access?</item>
