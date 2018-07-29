@@ -46,7 +46,7 @@
   <string name="included_templates">%1$s thèmes</string>
   <string name="launcher_icon_restored">L\'icône de l\'application %1$s a été restaurée</string>
   <string name="launcher_icon_not_restored">L\'icône de l\'application %1$s est déjà visible</string>
-  <string name="launcher_icon_restorer_error">Il y a un problème avec le code de %1$s. Merci contacter son développeur.</string>
+  <string name="launcher_icon_restorer_error">Il y a un problème avec le code de %1$s. Merci de contacter son développeur.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Widget Restaurer icône</string>
   <string name="clock_widget_title">Horloge analogique</string>
