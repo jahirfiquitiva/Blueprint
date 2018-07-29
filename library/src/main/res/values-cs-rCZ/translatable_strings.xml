@@ -31,6 +31,7 @@
   <string name="rate">Hodnotit</string>
   <!-- Icons filters -->
   <string name="filter">Filtrovat</string>
+  <string name="clear">Vymazat</string>
   <string name="more_apps">Více aplikací</string>
   <string name="general_info">Obecné informace</string>
   <string name="useful_links">Užitečné odkazy</string>
