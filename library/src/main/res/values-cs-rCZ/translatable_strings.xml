@@ -106,10 +106,10 @@
   </string-array>
   <string-array name="answers">
     <item>Potřebujete launcher který podporuje sady ikon. Seznam podporovaných launcherů naleznete v sekci \"Použít\", nebo v popisu aplikace v Obchodě Play.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Použít\" nebo zvolit 4. ikonu v dolním navigačním panelu. Odtud můžete vybrat launcher ve kterém chcete tuto sadu ikon použít. Některé launchery nepodporují automatické aplikování ikon a je nutné to udělat ručně prostřednictvím jejich nastavení.</item>
+    <item>Přejděte zpátky do hlavní sekce aplikace a klikněte na tlačítko s názvem \"Ikony\".</item>
+    <item>V závislosti na launcheru který používáte, buď musíte dlouze přidržet ikonu a zvolit \"Upravit\" z vyskakovacího menu, nebo dlouze přidržet ikonu a přesunout ji do políčka \"Upravit\".</item>
+    <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Požádat\" nebo zvolit ikonu v dolním navigačním panelu.</item>
     <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
     <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
     <item>Poslat požadavek na ikonu.</item>
