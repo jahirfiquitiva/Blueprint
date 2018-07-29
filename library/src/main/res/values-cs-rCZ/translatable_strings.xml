@@ -81,14 +81,14 @@
   <string name="pref_header_launcher_icon">Ikona launcheru</string>
   <string name="pref_title_launcher_icon">Skrýt ikonu launcheru</string>
   <string name="pref_summary_launcher_icon">Při zaškrtnutí bude ikona launcheru skryta.</string>
-  <string name="clearcache_dialog_content">Opravdu chcete odstranit data aplikace, mezipaměť a nastavení? Použité ikon nebudou ovlivněny.</string>
+  <string name="clearcache_dialog_content">Opravdu chcete odstranit data aplikace, mezipaměť a nastavení? Použité ikony nebudou ovlivněny.</string>
   <string name="hideicon_dialog_title">Varování!</string>
   <string name="hideicon_dialog_content">Opravdu chcete skrýt ikonu aplikace z vašeho launcheru?\nAplikace se může neočekávaně ukončit a oznámení budou zcela zakázána.\nMožná byste si měl přečíst FAQ (Nejčastěji kladené otázky) kde se dozvíte jak ji znovu najít, předtím než ji skryjete.</string>
   <string name="send_using">Odeslat pomocí…</string>
   <string name="no_mail">Není nainstalována žádná e-mailová aplikace</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
-    <item>Jak používat tento Icon Pack?</item>
+    <item>Jak používat tuto sadu ikon?</item>
     <item>Jak nastavit ikony?</item>
     <item>Kde najít všechny ikony?</item>
     <item>Jak nahradit ikonu jinou ikonou?</item>
