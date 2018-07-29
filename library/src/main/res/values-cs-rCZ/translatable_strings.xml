@@ -110,10 +110,10 @@
     <item>Přejděte zpátky do hlavní sekce aplikace a klikněte na tlačítko s názvem \"Ikony\".</item>
     <item>V závislosti na launcheru který používáte, buď musíte dlouze přidržet ikonu a zvolit \"Upravit\" z vyskakovacího menu, nebo dlouze přidržet ikonu a přesunout ji do políčka \"Upravit\".</item>
     <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Požádat\" nebo zvolit ikonu v dolním navigačním panelu.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+    <item>K tomu došlo protože sada ikon byla přenesena na SD Kartu. Měli byste ji umístit do místního úložiště.</item>
+    <item>Při manipulaci s velkým rozlišením může dojít k potížím se launcherem, který používáte. Můžete jej opravit zvýšením velikosti ikony na 115 - 120%. Nebo zkuste použít jiný launcher.</item>
     <item>Poslat požadavek na ikonu.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+    <item>Klepněte na tříbodové tlačítko nabídky a přejděte do části \"Nastavení\". Pak zaškrtněte možnost \"Skrýt ikonu z launcheru\".</item>
     <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
     <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
     <item>Toto oprávnění je nutné k zápisu požadavků na ikony a soubory, jakož i ukládání tapet a možnosti změnit místo pro ukládání stažených tapet.</item>
