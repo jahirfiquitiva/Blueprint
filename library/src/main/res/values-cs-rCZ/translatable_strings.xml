@@ -44,7 +44,9 @@
   <string name="included_templates">%1$s šablony</string>
   <string name="launcher_icon_restored">Ikona %1$s launcheru byla obnovena</string>
   <string name="launcher_icon_not_restored">Ikona %1$s launcheru je již viditélná</string>
+  <string name="launcher_icon_restorer_error">Naskytl se problém s kódem %1$s. Obraťte se na jeho vývojáře.</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">Widget pro obnovení ikon</string>
   <string name="clock_widget_title">Analogové Hodiny</string>
   <string name="search_icons">Hledat ikony</string>
   <string name="search_wallpapers">Hledat tapety</string>
@@ -72,6 +74,7 @@
   <string name="request_upload_success">Úspěch!</string>
   <string name="request_upload_success_content">Požadavek byl úspěšně nahrán na náš server.</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">Povolit použití tapety v náhledu ikon</string>
   <string name="pref_summary_wall_header">Zobrazí se aktuální tapeta vašeho zařízení.</string>
   <string name="pref_header_launcher_icon">Ikona launcheru</string>
   <string name="pref_title_launcher_icon">Skrýt ikonu launcheru</string>
@@ -93,16 +96,16 @@
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
     <item>Jak skrýt aplikaci z launcheru?</item>
     <item>Jak otevřít aplikaci poté co je ikona skryta z launcheru?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
+    <item>Jak znovu zobrazit ikonu aplikace v launcheru?</item>
+    <item>Proč aplikace potřebuje oprávnění k úpravám nebo odstranění obsahu mého úložiště?</item>
+    <item>Proč aplikace potřebuje oprávnění pro úplný přístup k síti?</item>
+    <item>Proč aplikace potřebuje oprávnění k zobrazení připojení?</item>
+    <item>Proč aplikace potřebuje oprávnění nastavit tapetu?</item>
+    <item>Proč aplikace potřebuje oprávnění k upravení velikosti tapety?</item>
+    <item>Proč aplikace potřebuje oprávnění zabránit telefonu přejít do režimu spánku?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+    <item>Potřebujete launcher který podporuje sady ikon. Seznam podporovaných launcherů naleznete v sekci \"Použít\", nebo v popisu aplikace v Obchodě Play.</item>
     <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
     <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
