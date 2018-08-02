@@ -17,14 +17,14 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
   <string name="frames_dashboard">Blueprint Kontrol Paneli</string>
-  <string name="coming_soon">Yakında geliyor</string>
+  <string name="coming_soon">Çok yakında</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Ana sayfa</string>
   <string name="section_icons">Simgeler</string>
   <string name="section_apply">Uygula</string>
   <string name="section_wallpapers">Duvar kağıtları</string>
   <string name="section_icon_request">Simge isteği</string>
-  <string name="section_donate">Bağış Yap</string>
+  <string name="section_donate">Bağış Yapın</string>
   <string name="section_about">Uygulama hakkında</string>
   <string name="section_help">Yardım</string>
   <string name="section_zooper">Zooper Kurulumu</string>
@@ -51,20 +51,20 @@
   <string name="iconrestorer_widget_title">Simge Onarıcı Araç</string>
   <string name="clock_widget_title">Analog Saat</string>
   <string name="search_icons">Simgeleri Ara</string>
-  <string name="search_wallpapers">Duvar Kağıtlarını Ara</string>
-  <string name="search_launchers">Başlatıcıları Ara</string>
+  <string name="search_wallpapers">Duvar kağıtlarını ara</string>
+  <string name="search_launchers">Başlatıcıları ara</string>
   <string name="search_apps">Uygulamaları ara</string>
-  <string name="seconds">Saniyeler</string>
-  <string name="minutes">Dakikalar</string>
-  <string name="hours">Saatler</string>
+  <string name="seconds">Saniye</string>
+  <string name="minutes">Dakika</string>
+  <string name="hours">Saat</string>
   <string name="days">Günler</string>
   <string name="weeks">Haftalar</string>
   <string name="months">Aylar</string>
   <!-- Requests -->
   <string name="select_all">Hepsini seç</string>
   <string name="no_selected_apps_title">Seçili uygulama yok</string>
-  <string name="apps_limit_dialog">Üzgünüz, fakat sadece istek yapmak için %1$s uygulama seçmeye izniniz var.</string>
-  <string name="apps_limit_dialog_more">Üzgünüz, ancak şimdilik yalnızca %1$s uygulama daha isteyebilirsin.</string>
+  <string name="apps_limit_dialog">Üzgünüz, fakat istek yapmak için sadece %1$s uygulama seçmeye izniniz var.</string>
+  <string name="apps_limit_dialog_more">Üzgünüz, ancak şimdilik yalnızca %1$s uygulama daha isteyebilirsiniz.</string>
   <string name="apps_limit_dialog_day">Üzgünüz, fakat sadece her %1$s için simge isteği yapmaya izniniz var.</string>
   <string name="apps_limit_dialog_day_extra">%1$s içinde tekrar simge isteği yapabileceksiniz.</string>
   <string name="apps_limit_dialog_day_extra_sec">Bir dakikadan daha az bir süre içinde tekrar simge isteği yapabileceksiniz.</string>
@@ -72,7 +72,7 @@
   <string name="building_request_dialog">İstek dosyaları oluşturuluyor…</string>
   <string name="request_upload_success">Başarılı!</string>
   <!-- Preferences -->
-  <string name="pref_title_wall_header">Simgeleri ön izlemede duvar kağıdı kullanılmasını etkinleştir</string>
+  <string name="pref_title_wall_header">Simgelerin ön izlemesinde duvar kağıdı kullanılmasını etkinleştir</string>
   <string name="pref_summary_wall_header">Mevcut cihaz duvar kağıdınız gösterilecektir.</string>
   <string name="pref_header_launcher_icon">Başlatıcı simgesi</string>
   <string name="pref_title_launcher_icon">Başlatıcı simgesini gizle</string>
