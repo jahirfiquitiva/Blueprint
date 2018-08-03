@@ -24,7 +24,7 @@
   <string name="section_apply">Uygula</string>
   <string name="section_wallpapers">Duvar kağıtları</string>
   <string name="section_icon_request">Simge isteği</string>
-  <string name="section_donate">Bağış Yapın</string>
+  <string name="section_donate">Bağış yapın</string>
   <string name="section_about">Uygulama hakkında</string>
   <string name="section_help">Yardım</string>
   <string name="section_zooper">Zooper Kurulumu</string>
@@ -63,14 +63,18 @@
   <!-- Requests -->
   <string name="select_all">Hepsini seç</string>
   <string name="no_selected_apps_title">Seçili uygulama yok</string>
+  <string name="no_selected_apps_content">İstenecek uygulamaları seçmediniz. Lütfen birkaç uygulama seçin ve ardından bu tuşa tekrar dokunun.</string>
   <string name="apps_limit_dialog">Üzgünüz, fakat istek yapmak için sadece %1$s uygulama seçmeye izniniz var.</string>
   <string name="apps_limit_dialog_more">Üzgünüz, ancak şimdilik yalnızca %1$s uygulama daha isteyebilirsiniz.</string>
   <string name="apps_limit_dialog_day">Üzgünüz, fakat sadece her %1$s için simge isteği yapmaya izniniz var.</string>
   <string name="apps_limit_dialog_day_extra">%1$s içinde tekrar simge isteği yapabileceksiniz.</string>
   <string name="apps_limit_dialog_day_extra_sec">Bir dakikadan daha az bir süre içinde tekrar simge isteği yapabileceksiniz.</string>
+  <string name="requests_error">İstenilen uygulamalar yüklenirken bir hata oluştu.\nNeden:%1$s\nLütfen daha sonra tekrar deneyin.</string>
+  <string name="requests_upload_error">İstekleriniz için uygulamaları sunucularımıza yüklerken bir hata oluştu.\nNeden: %1$s\nLütfen daha sonra tekrar deneyin.</string>
   <string name="loading_apps_to_request">İstek yapmak için uygulamalar yükleniyor…</string>
   <string name="building_request_dialog">İstek dosyaları oluşturuluyor…</string>
   <string name="request_upload_success">Başarılı!</string>
+  <string name="request_upload_success_content">İstek başarıyla sunucumuza yüklendi.</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">Simgelerin ön izlemesinde duvar kağıdı kullanılmasını etkinleştir</string>
   <string name="pref_summary_wall_header">Mevcut cihaz duvar kağıdınız gösterilecektir.</string>
@@ -79,14 +83,15 @@
   <string name="pref_summary_launcher_icon">İşaretlendiğinde başlatıcı simgesi gizlenecektir.</string>
   <string name="clearcache_dialog_content">Uygulama verilerini, önbelleğini ve ayarlarını silmek istediğinizden emin misiniz? Uygulanmış simgeler etkilenmeyeceklerdir.</string>
   <string name="hideicon_dialog_title">Uyarı!</string>
-  <string name="hideicon_dialog_content">Uygulama simgesini başlatıcınız içinde gizlemek istediğinize emin misiniz? Uygulama beklemendik şekilde kapanabilir ve bildirimler tamamen devre dışı kalacaklar.\nTekrar nasıl görünür yapmayı öğrenmek için SSS\'ı okumak isteyebilirsiniz, gizlemeden önce.\n.</string>
+  <string name="hideicon_dialog_content">Uygulama simgesini başlatıcınız içinde gizlemek istediğinize emin misiniz?\nUygulama beklenmedik şekilde kapanabilir ve bildirimler tamamen devre dışı kalacaklar.\nGizlemeden önce nasıl görüneceğini öğrenmek için SSS\'leri okumak isteyebilirsiniz.</string>
   <string name="send_using">Kullanarak gönder…</string>
+  <string name="no_mail">Yüklü e-posta uygulaması yok</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Simge Paketi nasıl kullanılır?</item>
     <item>Simge Paketini nasıl uygulanır?</item>
     <item>Dahili tüm simgeler nasıl görülür?</item>
-    <item>How to replace an icon with an alternative one?</item>
+    <item>Alternatif bir simgeyle nasıl değiştirilir?</item>
     <item>Temasız simgeleri nasıl isteyebilirim?</item>
     <item>Cihazımı yeniden başlattıktan sonra simge paketi artık uygulanmıyor. Simgeler varsayılana döndürüldü.</item>
     <item>Neden bazı simgeler cihazımda piksel piksel gözüküyor?</item>
@@ -102,19 +107,19 @@
     <item>Telefonun uyku halini engellemek için uygulamanın neden izne ihtiyacı var?</item>
   </string-array>
   <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+    <item>Simge paketi desteğine sahip bir başlatıcıya ihtiyacınız var. Desteklenen başlatıcıların listesi, uygulamada \"Uygula\" bölümünde veya Play Store açıklamasında bulunabilir.</item>
+    <item>Uygulamanın gezinme türüne bağlı olarak, gezinti çekmecesini sola kaydırmanız ve \"Uygula\" bölümüne gitmeniz veya alt gezinme çubuğundaki 4. simgeyi seçmeniz gerekir. Buradan simgeleri uygulamak istediğiniz bir başlatıcı seçebilirsiniz. Bazı başlatıcılar otomatik uygulamayı desteklemez ve bunu kendi ayarlarıyla el ile yapmanız gerekir.</item>
+    <item>Uygulamanın ana bölümüne dönün ve \"Simgeler\" başlıklı kutucuğa dokunun.</item>
+    <item>Kullandığınız başlatıcıya bağlı olarak, simgeye uzunca dokunmanız ve açılır menüden \"Düzenle\" yi seçmeniz veya simgeye uzun basın ve bir \"Düzenle\" kutusuna taşıyın.</item>
+    <item>Uygulamanın gezinme türüne bağlı olarak, gezinti çekmecesini sola kaydırmanız ve \"İstekler\" bölümüne gitmeniz veya alt gezinme çubuğundaki simgeyi seçmeniz gerekir.</item>
     <item>Bu simge paketi SD Karta taşındığı için oldu, onu dahili hafıza içine yüklemelisiniz.</item>
     <item>Bu problem kullandığınız başlatıcı yüksek çözünürlüklerle uğraşırken olabilir. Simge boyutunu %115-120 arttırarak onarmayı deneyebilirsiniz. Yada başka bir başlatıcı kullanmayı deneyin.</item>
     <item>Bir simge isteği gönderin.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+    <item>Gezinme Çekmecesini sola kaydırın veya 3 noktalı menü düğmesine dokunun ve \"Ayarlar\" bölümüne gidin. Ardından, \"Başlatıcıdan simgeyi gizle\" seçeneğini işaretleyin.</item>
+    <item>Ana ekranınıza gidin, ardından uygulamanın adı \"IconRestorer\" olan bir widget oluşturun ve ona dokunun.</item>
+    <item>Gezinme Çekmecesini sola kaydırın veya 3 noktalı menü düğmesine dokunun ve \"Ayarlar\" bölümüne gidin. Ardından, \"Başlatıcıdan simgeyi gizle\" seçeneğinin işaretini kaldırın.</item>
+    <item>Simge istekleri verilerini ve dosyalarını yazmanın yanı sıra duvar kâğıtlarını kaydetme ve Duvar Kağıtlarının indirme konumunu değiştirebilme ihtiyacı duyuldu.</item>
+    <item>Buluttan duvar kağıtları yükleyebilmek ve bunları indirebilmek için gerekli.</item>
     <item>Cihazınızın internet bağlantısı olup olmadığını kontrol etmek için gereklidir.</item>
     <item>Duvar kağıtlarını direk olarak uygulamadan uygulayabilmek için gereklidir.</item>
     <item>Duvar kağıdı boyutlarını ekranınızın çözünürlüğüne göre ayarlayabilmek için gereklidir.</item>
