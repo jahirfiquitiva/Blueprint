@@ -69,7 +69,9 @@
   <string name="apps_limit_dialog_day">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
   <string name="apps_limit_dialog_day_extra">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
   <string name="apps_limit_dialog_day_extra_sec">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
+  <string name="request_upload_success">सफलता!</string>
   <!-- Preferences -->
+  <string name="hideicon_dialog_title">चेतावनी!</string>
   <!-- HELP SECTION -->
   <string-array name="answers">
     <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
