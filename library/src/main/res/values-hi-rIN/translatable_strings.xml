@@ -69,6 +69,8 @@
   <string name="apps_limit_dialog_day">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
   <string name="apps_limit_dialog_day_extra">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
   <string name="apps_limit_dialog_day_extra_sec">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
+  <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+  <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
   <string name="request_upload_success">सफलता!</string>
   <!-- Preferences -->
   <string name="hideicon_dialog_title">चेतावनी!</string>
