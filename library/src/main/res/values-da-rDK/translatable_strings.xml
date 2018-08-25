@@ -16,10 +16,25 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="coming_soon">Kommer Snart</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">Hjem</string>
+  <string name="section_icons">Ikoner</string>
+  <string name="section_help">Hjælp</string>
   <!-- Icons filters -->
+  <string name="more_apps">Flere apps</string>
+  <string name="impossible_open_themes">Umuligt at åbne temaer app</string>
   <!-- Widgets Names -->
+  <string name="search_apps">Søg efter apps</string>
+  <string name="seconds">Sekunder</string>
+  <string name="minutes">Minutter</string>
+  <string name="hours">Timer</string>
+  <string name="days">Dager</string>
+  <string name="weeks">Uger</string>
+  <string name="months">Måneder</string>
   <!-- Requests -->
+  <string name="select_all">Vælg alle</string>
+  <string name="no_selected_apps_title">Ingen valgte apps</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
