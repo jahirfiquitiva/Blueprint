@@ -103,7 +103,7 @@
     <item>為什麼應用程式需要獲得完全網路存取的權限？</item>
     <item>為什麼應用程式需要查看所有連線的權限？</item>
     <item>為什麼應用程式需要設置桌布的權限？</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
+    <item>為什麼應用程式需要調整桌布大小的權限？</item>
+    <item>為什麼應用程式需要阻止電話休眠的權限？</item>
   </string-array>
 </resources>
