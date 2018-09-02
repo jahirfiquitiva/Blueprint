@@ -16,8 +16,23 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">藍印儀表板</string>
+  <string name="coming_soon">即將推出</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">首頁</string>
+  <string name="section_icons">圖標</string>
+  <string name="section_apply">套用</string>
+  <string name="section_wallpapers">桌布</string>
+  <string name="section_icon_request">圖示請求</string>
+  <string name="section_donate">捐款</string>
+  <string name="section_about">關於此應用程式</string>
+  <string name="section_help">說明</string>
+  <string name="section_zooper">Zooper 設置</string>
+  <string name="section_widgets">桌面小工具</string>
+  <string name="share_this_app">我正使用 %1$s, 我喜歡它。前往: %2$s 去看看</string>
+  <string name="rate">評分</string>
   <!-- Icons filters -->
+  <string name="filter">篩選器</string>
   <!-- Widgets Names -->
   <!-- Requests -->
   <!-- Preferences -->
