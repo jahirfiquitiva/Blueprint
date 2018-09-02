@@ -69,7 +69,20 @@
   <string name="apps_limit_dialog_day">對不起, 您每 %1$s 只能請求幾個示。</string>
   <string name="apps_limit_dialog_day_extra">在幾 %1$s 中, 您將能夠再次請求圖示。</string>
   <string name="apps_limit_dialog_day_extra_sec">在不到一分鐘，您將能夠再次請求圖示。</string>
-  <string name="requests_error">載入應用程式時出現錯誤, 請執行以下操作: %1$s\n 請稍後再試。</string>
+  <string name="requests_error">載入應用程式時出現錯誤。\n原因：%1$s\n 請稍後再試。</string>
+  <string name="requests_upload_error">上傳應用程式到我們的伺服器時出現錯誤。\n原因：%1$s\n 請稍後再試。</string>
+  <string name="loading_apps_to_request">正在載入應用程式以請求..。</string>
+  <string name="building_request_dialog">正在生成請求檔..。</string>
+  <string name="request_upload_success">操作成功！</string>
+  <string name="request_upload_success_content">請求已成功上載到我們的伺服器。</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">在圖示預覽中啟使用桌布</string>
+  <string name="pref_summary_wall_header">將顯示您當前的預設桌布。</string>
+  <string name="pref_header_launcher_icon">啟動器圖示</string>
+  <string name="pref_title_launcher_icon">隱藏啟動器圖示</string>
+  <string name="pref_summary_launcher_icon">選取後, 啟動器圖示將被隱藏。</string>
+  <string name="clearcache_dialog_content">確定要刪除應用程式資料、緩存和設置嗎？以套用的圖示不會受到影響。</string>
+  <string name="hideicon_dialog_title">警告！</string>
+  <string name="hideicon_dialog_content">確定要在啟動器中隱藏應用程式圖示嗎？ \n 應用程式可能會意外關閉, 通知將被完全禁用. \n 建議您閱讀常見問題解答, 以瞭解如何使其再次出現, 然後再隱藏它。</string>
   <!-- HELP SECTION -->
 </resources>
