@@ -84,5 +84,26 @@
   <string name="clearcache_dialog_content">確定要刪除應用程式資料、緩存和設置嗎？以套用的圖示不會受到影響。</string>
   <string name="hideicon_dialog_title">警告！</string>
   <string name="hideicon_dialog_content">確定要在啟動器中隱藏應用程式圖示嗎？ \n 應用程式可能會意外關閉, 通知將被完全禁用. \n 建議您閱讀常見問題解答, 以瞭解如何使其再次出現, 然後再隱藏它。</string>
+  <string name="send_using">以•••寄送</string>
+  <string name="no_mail">沒有安裝郵件應用程式</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>如何使用圖示包？</item>
+    <item>如何應用圖示包？</item>
+    <item>如何查看所有包含的圖示？</item>
+    <item>如何用另一種圖示替換現有圖示？</item>
+    <item>如何請求缺少的圖示？</item>
+    <item>重新開機後, 圖示包失效。圖示被還原為預設值。</item>
+    <item>為什麼我的裝置的圖示看起來是失真的？</item>
+    <item>我可以在圖示包中看到 X 應用程式的圖示, 但該圖示並未正確套用。</item>
+    <item>如何從啟動器中隱藏應用程式圖示？</item>
+    <item>應用程式圖示隱藏後，如何從啟動器開啟應用程式？</item>
+    <item>如何再次在啟動器中顯示應用程式圖示？</item>
+    <item>為什麼應用程式需要修改或刪除我的存儲內容的權限？</item>
+    <item>為什麼應用程式需要獲得完全網路存取的權限？</item>
+    <item>為什麼應用程式需要查看所有連線的權限？</item>
+    <item>為什麼應用程式需要設置桌布的權限？</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
 </resources>
