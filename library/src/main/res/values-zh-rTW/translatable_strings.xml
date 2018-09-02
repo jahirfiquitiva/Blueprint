@@ -63,6 +63,13 @@
   <!-- Requests -->
   <string name="select_all">選擇全部</string>
   <string name="no_selected_apps_title">沒有選定的應用程式</string>
+  <string name="no_selected_apps_content">您尚未選取要任何需求的應用程式。請選擇幾個應用程式, 然後再次點擊此按鈕。</string>
+  <string name="apps_limit_dialog">對不起, 您只允許選擇 %1$s 應用程式來進行請求。</string>
+  <string name="apps_limit_dialog_more">對不起, 您只允許選擇 %1$s 應用程式來進行請求。</string>
+  <string name="apps_limit_dialog_day">對不起, 您每 %1$s 只能請求幾個示。</string>
+  <string name="apps_limit_dialog_day_extra">在幾 %1$s 中, 您將能夠再次請求圖示。</string>
+  <string name="apps_limit_dialog_day_extra_sec">在不到一分鐘，您將能夠再次請求圖示。</string>
+  <string name="requests_error">載入應用程式時出現錯誤, 請執行以下操作: %1$s\n 請稍後再試。</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
