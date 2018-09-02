@@ -112,12 +112,12 @@
     <item>回到主應用程式畫面並點選名為圖示的磚型圖示</item>
     <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
     <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-    <item>Send an icon request.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+    <item>這發生於圖示包被移到SD卡，請將圖示包安裝在內部記憶體。</item>
+    <item>問題可能與您使用的啟動器處理大解析度圖示時有關。您可以透過將圖示增加到 115-120% 的大小來修復它。或者嘗試使用其他發射器。</item>
+    <item>發送圖示請求。</item>
+    <item>從左側滑動 NavigationDrawer, 或者點擊3點功能表按鈕, 然後轉到 \"設置\" 部分。然後檢查 \"從啟動器隱藏圖示\" 選項。</item>
+    <item>轉到您的主畫面, 然後為應用程式創建一個名稱為 \"IconRestorer\" 的小部件並點擊它。</item>
+    <item>從左側滑動 NavigationDrawer, 或者點擊3點功能表按鈕, 然後轉到 \"設置\" 部分。然後不勾選 \"從啟動器隱藏圖示\" 選項。</item>
     <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
     <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
     <item>It\'s needed to be able to check if your device has internet connection.</item>
