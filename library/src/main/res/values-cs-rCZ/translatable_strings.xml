@@ -21,11 +21,11 @@
   <!-- List Of Drawer Sections -->
   <string name="section_home">Domů</string>
   <string name="section_icons">Ikony</string>
-  <string name="section_apply">Použít</string>
-  <string name="section_wallpapers">Tapety</string>
-  <string name="section_icon_request">Požádat o ikonu</string>
-  <string name="section_donate">Podpořit</string>
-  <string name="section_about">O aplikaci</string>
+  <string name="section_apply">Apply</string>
+  <string name="section_wallpapers">Wallpapers</string>
+  <string name="section_icon_request">Icon request</string>
+  <string name="section_donate">Donate</string>
+  <string name="section_about">About the app</string>
   <string name="section_help">Nápověda</string>
   <string name="section_zooper">Nastavení Zooperu</string>
   <string name="section_widgets">Widgety</string>
