@@ -72,7 +72,11 @@
   <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
   <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
   <string name="request_upload_success">सफलता!</string>
+  <string name="request_upload_success_content">अनुरोध हमारे सर्वर पर सफलतापूर्वक अपलोड किया गया है ।</string>
   <!-- Preferences -->
+  <string name="pref_summary_wall_header">अपने वर्तमान डिवाइस वॉलपेपर दिखाया जाएगा ।</string>
+  <string name="pref_header_launcher_icon">लॉन्चर चिह्न</string>
+  <string name="pref_title_launcher_icon">लॉन्चर चिह्न छुपाएं</string>
   <string name="hideicon_dialog_title">चेतावनी!</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
