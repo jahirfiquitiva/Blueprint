@@ -43,6 +43,37 @@
   <string name="months">মাস</string>
   <!-- Requests -->
   <string name="select_all">সব নির্বাচন করুন</string>
+  <string name="no_selected_apps_title">কোনো নির্বাচিত অ্যাপ্লিকেশন নেই</string>
+  <string name="no_selected_apps_content">আপনি অনুরোধ করতে কোন অ্যাপ নির্বাচন করেননি। দয়া করে কিছু অ্যাপস নির্বাচন করুন, এরপর আবার এই বোতামে ট্যাপ করুন।.</string>
+  <string name="apps_limit_dialog">দুঃখিত, কিন্তু আপনাকে শুধু অনুরোধ %1$s টি অ্যাপস নির্বাচন করতে অনুমতি দেওয়া হয়।.</string>
+  <string name="loading_apps_to_request">অনুরোধ করতে অ্যাপ লোড করা হচ্ছে…</string>
+  <string name="request_upload_success">সফল হয়েছে!</string>
+  <string name="request_upload_success_content">অনুরোধ সফলভাবে আমাদের সার্ভারে আপলোড করা হয়েছে।.</string>
   <!-- Preferences -->
+  <string name="pref_summary_wall_header">আপনার বর্তমান ডিভাইস ওয়ালপেপার দেখা যাবে।.</string>
+  <string name="pref_header_launcher_icon">লঞ্চার আইকন</string>
+  <string name="pref_title_launcher_icon">লঞ্চার আইকন লুকান</string>
+  <string name="hideicon_dialog_title">সতর্কতা!</string>
+  <string name="send_using">ব্যবহার করে প্রেরণ করুন…</string>
+  <string name="no_mail">মেইল অ্যাপ ইনস্টল করা নেই।</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>আইকন প্যাক ব্যবহার করে কিভাবে?</item>
+    <item>How to apply the Icon Pack?</item>
+    <item>অন্তর্ভুক্ত আইকন দেখতে হলে?</item>
+    <item>How to replace an icon with an alternative one?</item>
+    <item>How to request unthemed icons?</item>
+    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+    <item>Why do icons look pixelated on my device?</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>How to hide app icon from launcher?</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
 </resources>
