@@ -16,10 +16,33 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="coming_soon">শীঘ্রই আসছে</string>
   <!-- List Of Drawer Sections -->
+  <string name="section_home">হোম</string>
+  <string name="section_icons">আইকন</string>
+  <string name="section_apply">প্রয়োগ করুন</string>
+  <string name="section_wallpapers">ওয়ালপেপার</string>
+  <string name="section_icon_request">আইকন অনুরোধ</string>
+  <string name="section_donate">দান করুন</string>
+  <string name="section_about">অ্যাপ সম্পর্কে</string>
+  <string name="section_help">সহায়তা</string>
+  <string name="section_widgets">উইজেটগুলি</string>
   <!-- Icons filters -->
+  <string name="filter">পরিশ্রুতক</string>
+  <string name="clear">সাফ করুন</string>
+  <string name="more_apps">আরো অ্যাপস</string>
+  <string name="general_info">সাধারণ তথ্য</string>
+  <string name="useful_links">দরকারী লিংক</string>
   <!-- Widgets Names -->
+  <string name="clock_widget_title">অ্যানালগ ঘড়ি</string>
+  <string name="search_apps">অ্যাপ্লিকেশানগুলি অনুসন্ধান করুন</string>
+  <string name="seconds">সেকেন্ড</string>
+  <string name="minutes">মিনিট</string>
+  <string name="hours">ঘন্টা</string>
+  <string name="days">দিন</string>
+  <string name="months">মাস</string>
   <!-- Requests -->
+  <string name="select_all">সব নির্বাচন করুন</string>
   <!-- Preferences -->
   <!-- HELP SECTION -->
 </resources>
