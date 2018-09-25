@@ -99,13 +99,6 @@ class IconRequest private constructor() {
                 sb.append("Link: https://play.google.com/store/apps/details?id=${app.pkg}<br/>")
             }
             
-            sb.append(
-                "<br/><br/><br/>OS Version: ${System.getProperty("os.version")} " +
-                    "(${Build.VERSION.INCREMENTAL})")
-            sb.append("<br/>OS API Level: ${Build.VERSION.SDK_INT}")
-            sb.append("<br/>Device: ${Build.MODEL}")
-            sb.append("<br/>Manufacturer:  ${Build.MANUFACTURER}")
-            sb.append("<br/>Model (and Product):  ${Build.DEVICE} (${Build.PRODUCT})")
             sb.append("<br/>Blueprint Version: ${BuildConfig.LIB_VERSION}")
             sb.append(
                 "<br/>App Version: ${builder?.context?.getAppVersionCode()} " +

@@ -18,13 +18,18 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 import android.content.ComponentName
 import android.content.pm.PackageManager
 import android.preference.Preference
+import android.preference.PreferenceCategory
+import android.preference.PreferenceScreen
 import android.preference.SwitchPreference
+import ca.allanwang.kau.utils.openLink
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.kext.extensions.actv
 import jahirfiquitiva.libs.kext.extensions.ctxt
 import jahirfiquitiva.libs.kext.extensions.getAppName
+import jahirfiquitiva.libs.kext.extensions.hasContent
+import jahirfiquitiva.libs.kext.extensions.string
 import jahirfiquitiva.libs.kuper.ui.fragments.SettingsFragment
 
 @Suppress("DEPRECATION")
@@ -107,6 +112,51 @@ class SettingsFragment : SettingsFragment() {
                 }
         } else {
             hideIcon.isEnabled = false
+        }
+        
+        val privacyLink = try {
+            string(R.string.privacy_policy_link, "")
+        } catch (e: Exception) {
+            ""
+        }
+        
+        val termsLink = try {
+            string(R.string.terms_conditions_link, "")
+        } catch (e: Exception) {
+            ""
+        }
+        
+        val prefsScreen = findPreference("preferences") as? PreferenceScreen
+        val legalCategory = findPreference("legal") as? PreferenceCategory
+        
+        if (privacyLink.hasContent() || termsLink.hasContent()) {
+            val privacyPref = findPreference("privacy")
+            if (privacyLink.hasContent()) {
+                privacyPref?.setOnPreferenceClickListener {
+                    try {
+                        context?.openLink(privacyLink)
+                    } catch (e: Exception) {
+                    }
+                    true
+                }
+            } else {
+                legalCategory?.removePreference(privacyPref)
+            }
+            
+            val termsPref = findPreference("terms")
+            if (termsLink.hasContent()) {
+                termsPref?.setOnPreferenceClickListener {
+                    try {
+                        context?.openLink(termsLink)
+                    } catch (e: Exception) {
+                    }
+                    true
+                }
+            } else {
+                legalCategory?.removePreference(termsPref)
+            }
+        } else {
+            prefsScreen?.removePreference(legalCategory)
         }
     }
 }
