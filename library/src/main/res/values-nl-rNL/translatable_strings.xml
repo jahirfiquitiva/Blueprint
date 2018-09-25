@@ -19,7 +19,7 @@
   <string name="frames_dashboard">Blueprint Dashboard</string>
   <string name="coming_soon">Binnenkort beschikbaar</string>
   <!-- List Of Drawer Sections -->
-  <string name="section_home">Huis</string>
+  <string name="section_home">Home</string>
   <string name="section_icons">Iconen</string>
   <string name="section_apply">Toepassen</string>
   <string name="section_wallpapers">Achtergronden</string>
@@ -33,7 +33,7 @@
   <string name="rate">Beoordeel</string>
   <!-- Icons filters -->
   <string name="filter">Filter</string>
-  <string name="clear">Duidelijk</string>
+  <string name="clear">Verwijder alle</string>
   <string name="more_apps">Meer apps</string>
   <string name="general_info">Algemene informatie</string>
   <string name="useful_links">Nuttige links</string>
@@ -93,8 +93,8 @@
     <item>Hoe zie ik alle bijbehorende iconen?</item>
     <item>Hoe vervang ik een pictogram met een alternatieve?</item>
     <item>Hoe vraag je om niet gethematiseerde iconen?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Why do icons look pixelated on my device?</item>
+    <item>Na het opnieuw opstarten van mijn toestel is het icon pack niet meer toegepast. De iconen werden teruggezet naar de systeemstandaard.</item>
+    <item>Waarom zijn de pixels zo duidelijk zichtbaar bij de iconen?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
     <item>How to hide app icon from launcher?</item>
     <item>How to open the app after app icon is hidden from launcher?</item>
