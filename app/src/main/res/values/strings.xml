@@ -27,4 +27,10 @@
 
     <!--    Default wallpapers download folder. Always write it like '%1$s/xxxxxxx' -->
     <string name="default_download_folder">%1$s/Blueprint/Wallpapers</string>
+
+    <!-- Privacy Policy link or url -->
+    <string name="privacy_policy_link">""</string>
+
+    <!-- Terms and Conditions link or url -->
+    <string name="terms_conditions_link">""</string>
 </resources>
