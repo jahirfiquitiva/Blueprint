@@ -86,6 +86,9 @@
   <string name="hideicon_dialog_content">Tem certeza de que deseja esconder o ícone do aplicativo no seu iniciador? \ n A aplicação pode fechar inesperadamente e as notificações serão completamente desabilitadas. \ n Você pode querer ler as Perguntas frequentes para saber como fazê-lo aparecer novamente, antes de esconder.</string>
   <string name="send_using">Enviar usando…</string>
   <string name="no_mail">Não há nenhum aplicativo de e-mail instalado</string>
+  <string name="legal">Jurídico</string>
+  <string name="privacy_policy">Política de Privacidade</string>
+  <string name="terms_conditions">Termos e Condições</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Como utilizar o pacote de ícones?</item>
