@@ -34,7 +34,7 @@
   <!-- Icons filters -->
   <string name="filter">Фильтр</string>
   <string name="clear">Очистить</string>
-  <string name="more_apps">Другие приложения</string>
+  <string name="more_apps">Больше приложений</string>
   <string name="general_info">Общие сведения</string>
   <string name="useful_links">Полезные ссылки</string>
   <string name="columns">Число столбцов</string>
@@ -49,7 +49,7 @@
   <string name="launcher_icon_restorer_error">Существует проблема с кодом %1$s. Пожалуйста, свяжитесь с его разработчиком.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">Виджет восстановления иконок</string>
-  <string name="clock_widget_title">Аналоговые Часы</string>
+  <string name="clock_widget_title">Аналоговые часы</string>
   <string name="search_icons">Искать значки</string>
   <string name="search_wallpapers">Искать обои</string>
   <string name="search_launchers">Искать лаунчеры</string>
