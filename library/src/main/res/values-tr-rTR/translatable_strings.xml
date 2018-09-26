@@ -86,6 +86,9 @@
   <string name="hideicon_dialog_content">Uygulama simgesini başlatıcınız içinde gizlemek istediğinize emin misiniz?\nUygulama beklenmedik şekilde kapanabilir ve bildirimler tamamen devre dışı kalacaklar.\nGizlemeden önce nasıl görüneceğini öğrenmek için SSS\'leri okumak isteyebilirsiniz.</string>
   <string name="send_using">Kullanarak gönder…</string>
   <string name="no_mail">Yüklü e-posta uygulaması yok</string>
+  <string name="legal">Yasal</string>
+  <string name="privacy_policy">Gizlilik Politikası</string>
+  <string name="terms_conditions">Şartlar ve Koşullar</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Simge Paketi nasıl kullanılır?</item>
