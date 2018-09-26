@@ -86,6 +86,9 @@
   <string name="hideicon_dialog_content">Вы точно хотите скрыть иконку приложения в вашем лаунчере?\nПриложение может вылетать без причины и уведомления будут полностью отключены.\nВы можете прочитать раздел FAQ, чтобы узнать как снова включить отображение иконки в лаунчере, перед тем как сделать это.</string>
   <string name="send_using">Отправить с помощью…</string>
   <string name="no_mail">Установите любое приложение для отправки электронной почты</string>
+  <string name="legal">Правила</string>
+  <string name="privacy_policy">Политика конфиденциальности</string>
+  <string name="terms_conditions">Пользовательское соглашение</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Как использовать набор значков?</item>
