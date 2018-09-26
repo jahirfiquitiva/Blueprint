@@ -86,6 +86,9 @@
   <string name="hideicon_dialog_content">Czy napewno chcesz ukryć ikonę aplikacji w swoim launcherze?\nAplikacja może się niespodziewanie zamknąć, a powiadomienia się wyłączyć\nMoże chcesz przeczytać FAQ (często zadawane pytania) i dowiedzieć się, jak sprawić by pojawiły się znowu, zanim to ukryjesz.</string>
   <string name="send_using">Wyślij za pomocą…</string>
   <string name="no_mail">Żadna aplikacja e-mail nie jest zainstalowana</string>
+  <string name="legal">Informacje prawne</string>
+  <string name="privacy_policy">Polityka prywatności</string>
+  <string name="terms_conditions">Zasady i warunki umowy</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Jak używać paczki ikon?</item>
