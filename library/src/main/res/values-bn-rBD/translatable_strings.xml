@@ -68,9 +68,6 @@
   <string name="hideicon_dialog_title">সতর্কতা!</string>
   <string name="send_using">ব্যবহার করে প্রেরণ করুন…</string>
   <string name="no_mail">মেইল অ্যাপ ইনস্টল করা নেই।</string>
-  <string name="legal">আইনগত</string>
-  <string name="privacy_policy">গোপনীয়তা নীতি</string>
-  <string name="terms_conditions">নিয়মাবলী এবং শর্তাবলী</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>আইকন প্যাক ব্যবহার করে কিভাবে?</item>
