@@ -86,9 +86,6 @@
   <string name="hideicon_dialog_content">Jesi li siguran da želiš sakriti ikonu aplikacije od svog pokretača?\nAplikacija se može neočekivano zatvoriti i obavijesti će biti u potpunosti onemogućene.\nMožda bi bilo dobro da pročitaš Često Postavljena Pitanja da bi saznao kako napraviti da se opet pokazuje, prije sakrivanja.</string>
   <string name="send_using">Pošalji koristeći…</string>
   <string name="no_mail">Aplikacija za e-poštu nije instalirana</string>
-  <string name="legal">Pravne Informacije</string>
-  <string name="privacy_policy">Polica privatnosti</string>
-  <string name="terms_conditions">Odredbe i uvjeti</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Kako koristiti paket ikona?</item>
