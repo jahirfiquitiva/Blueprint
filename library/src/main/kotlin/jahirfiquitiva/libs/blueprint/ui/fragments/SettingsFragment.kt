@@ -113,50 +113,5 @@ class SettingsFragment : SettingsFragment() {
         } else {
             hideIcon.isEnabled = false
         }
-        
-        val privacyLink = try {
-            string(R.string.privacy_policy_link, "")
-        } catch (e: Exception) {
-            ""
-        }
-        
-        val termsLink = try {
-            string(R.string.terms_conditions_link, "")
-        } catch (e: Exception) {
-            ""
-        }
-        
-        val prefsScreen = findPreference("preferences") as? PreferenceScreen
-        val legalCategory = findPreference("legal") as? PreferenceCategory
-        
-        if (privacyLink.hasContent() || termsLink.hasContent()) {
-            val privacyPref = findPreference("privacy")
-            if (privacyLink.hasContent()) {
-                privacyPref?.setOnPreferenceClickListener {
-                    try {
-                        context?.openLink(privacyLink)
-                    } catch (e: Exception) {
-                    }
-                    true
-                }
-            } else {
-                legalCategory?.removePreference(privacyPref)
-            }
-            
-            val termsPref = findPreference("terms")
-            if (termsLink.hasContent()) {
-                termsPref?.setOnPreferenceClickListener {
-                    try {
-                        context?.openLink(termsLink)
-                    } catch (e: Exception) {
-                    }
-                    true
-                }
-            } else {
-                legalCategory?.removePreference(termsPref)
-            }
-        } else {
-            prefsScreen?.removePreference(legalCategory)
-        }
     }
 }

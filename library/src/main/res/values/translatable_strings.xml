@@ -109,10 +109,6 @@
     <string name="send_using">Send using…</string>
     <string name="no_mail">There is no mail app installed</string>
 
-    <string name="legal">Legal</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="terms_conditions">Terms and Conditions</string>
-
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>How to use the Icon Pack?</item>
