@@ -178,7 +178,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         
         recyclerView?.addOnScrollListener(
             object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     (activity as? BaseBlueprintActivity)?.postToFab {
                         if (dy > 0) it.hide() else it.show()

@@ -97,7 +97,7 @@ class HelpActivity : ThemedActivity<BPKonfigs>() {
     }
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater?.inflate(R.menu.menu_help, menu)
+        menuInflater.inflate(R.menu.menu_help, menu)
         menu?.let {
             searchItem = it.findItem(R.id.search)
             searchView = searchItem?.actionView as? CustomSearchView

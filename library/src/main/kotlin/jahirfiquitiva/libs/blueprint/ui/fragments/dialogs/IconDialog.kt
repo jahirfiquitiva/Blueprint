@@ -98,7 +98,7 @@ class IconDialog : BasicDialogFragment() {
                                     }
                                     
                                     val iconSwatch =
-                                        palette.bestSwatch ?: return@PaletteAsyncListener
+                                        palette?.bestSwatch ?: return@PaletteAsyncListener
                                     val color = iconSwatch.rgb
                                     val buttonText = dialog.getActionButton(
                                         DialogAction.POSITIVE)
@@ -135,7 +135,7 @@ class IconDialog : BasicDialogFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         savedInstanceState?.let {
-            this.name = it.getString(NAME)
+            this.name = it.getString(NAME) ?: ""
             this.resId = it.getInt(RES_ID)
             this.animate = it.getBoolean(ANIMATE)
         }

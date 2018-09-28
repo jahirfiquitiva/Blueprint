@@ -29,7 +29,7 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.frames.helpers.glide.FramesGlideListener
-import jahirfiquitiva.libs.frames.helpers.glide.releaseFromGlide
+import jahirfiquitiva.libs.frames.helpers.glide.clearFromGlide
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.clearChildrenAnimations
 
@@ -53,7 +53,11 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 man.load(item.icon)
                     .apply(options)
                     .listener(object : FramesGlideListener<Drawable>() {
-                        override fun onLoadSucceed(resource: Drawable, model: Any?): Boolean {
+                        override fun onLoadSucceed(
+                            resource: Drawable,
+                            model: Any?,
+                            isFirst: Boolean
+                                                  ): Boolean {
                             return if (BPKonfigs(context).animationsEnabled && animate) {
                                 scaleX = 0F
                                 scaleY = 0F
@@ -97,6 +101,6 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     
     fun unbind() {
-        icon?.releaseFromGlide()
+        icon?.clearFromGlide()
     }
 }

@@ -75,7 +75,8 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     }
     
     private var spanCount = 0
-    private var spacingDecoration: GridSpacingItemDecoration? = null
+    private var spacingDecoration: GridSpacingItemDecoration =
+        GridSpacingItemDecoration(spanCount, 0)
     private var dialog: RequestLimitDialog? = null
     private var otherDialog: MaterialDialog? = null
     private var canShowProgress = true
@@ -124,7 +125,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         
         recyclerView?.addOnScrollListener(
             object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     if (dy > 0) doToFab { it -> it.hide() }
                     else doToFab { it -> it.show() }

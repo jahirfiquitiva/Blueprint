@@ -74,7 +74,7 @@ class IconsViewModel : ListViewModel<Context, IconsCategory>() {
             } catch (e: Exception) {
                 BL.e("Error", e)
             } finally {
-                parser?.close()
+                parser.close()
             }
         } else {
             param.stringArray(R.array.icon_filters).orEmpty().forEach {

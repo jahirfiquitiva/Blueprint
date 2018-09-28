@@ -124,9 +124,9 @@ class App : Parcelable {
     override fun describeContents(): Int = 0
     
     private constructor(parcel: Parcel) {
-        name = parcel.readString()
-        comp = parcel.readString()
-        pkg = parcel.readString()
+        name = parcel.readString() ?: ""
+        comp = parcel.readString() ?: ""
+        pkg = parcel.readString() ?: ""
     }
     
     override fun writeToParcel(dest: Parcel, flags: Int) {

@@ -62,6 +62,7 @@ class ClockWidget : AppWidgetProvider() {
                     R.id.clockWidget,
                     PendingIntent.getActivity(context, 0, intent, 0))
             }
+            context ?: return
             val ids = AppWidgetManager.getInstance(context)
                 .getAppWidgetIds(ComponentName(context, ClockWidget::class.java))
             ids.forEach { AppWidgetManager.getInstance(context).updateAppWidget(it, rViews) }

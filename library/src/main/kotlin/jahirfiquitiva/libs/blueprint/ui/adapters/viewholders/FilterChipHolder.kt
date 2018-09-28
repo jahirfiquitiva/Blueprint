@@ -22,8 +22,8 @@ import jahirfiquitiva.libs.blueprint.models.Filter
 import jahirfiquitiva.libs.blueprint.ui.widgets.SelectableChip
 import jahirfiquitiva.libs.kext.extensions.bind
 
-class FilterChipHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-    private val chip: SelectableChip? by itemView?.bind(R.id.filter_chip)
+class FilterChipHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private val chip: SelectableChip? by itemView.bind(R.id.filter_chip)
     
     fun bind(filter: Filter, select: Boolean, onSelectionChange: (Filter, Boolean) -> Unit) {
         chip?.text = filter.title

@@ -72,7 +72,7 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
     }
     
     fun setPool(pool: RecyclerView.RecycledViewPool?) {
-        iconsPreviewRV?.recycledViewPool = pool
+        iconsPreviewRV?.setRecycledViewPool(pool)
     }
     
     private fun initIconsPreview() {
@@ -122,16 +122,16 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
         override fun canScrollHorizontally(): Boolean = false
         override fun canScrollVertically(): Boolean = false
         override fun requestChildRectangleOnScreen(
-            parent: RecyclerView?,
-            child: View?,
-            rect: Rect?,
+            parent: RecyclerView,
+            child: View,
+            rect: Rect,
             immediate: Boolean
                                                   ): Boolean = false
         
         override fun requestChildRectangleOnScreen(
-            parent: RecyclerView?,
-            child: View?,
-            rect: Rect?,
+            parent: RecyclerView,
+            child: View,
+            rect: Rect,
             immediate: Boolean,
             focusedChildVisible: Boolean
                                                   ): Boolean = false
@@ -176,6 +176,6 @@ class AppLinkItemHolder(itemView: View) : SectionedViewHolder(itemView) {
         item.openIcon?.let {
             openIcon?.setImageDrawable(it.tint(context.activeIconsColor))
         } ?: openIcon?.gone()
-        itemView?.setOnClickListener { listener(item) }
+        itemView.setOnClickListener { listener(item) }
     }
 }

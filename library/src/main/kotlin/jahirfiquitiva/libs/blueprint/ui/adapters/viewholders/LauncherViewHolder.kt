@@ -35,7 +35,7 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.glide.FramesGlideListener
-import jahirfiquitiva.libs.frames.helpers.glide.releaseFromGlide
+import jahirfiquitiva.libs.frames.helpers.glide.clearFromGlide
 import jahirfiquitiva.libs.kext.extensions.bestSwatch
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.boolean
@@ -86,7 +86,11 @@ internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(item
                                 context.drawable(R.drawable.ic_na_launcher))
                             .error(context.drawable(R.drawable.ic_na_launcher)))
                     .listener(object : FramesGlideListener<Drawable>() {
-                        override fun onLoadSucceed(resource: Drawable, model: Any?): Boolean {
+                        override fun onLoadSucceed(
+                            resource: Drawable,
+                            model: Any?,
+                            isFirst: Boolean
+                                                  ): Boolean {
                             val isInstalled =
                                 isLauncherInstalled(context, item.packageNames)
                             iconView?.colorFilter = if (isInstalled) null else bnwFilter
@@ -121,6 +125,6 @@ internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(item
     }
     
     fun unbind() {
-        iconView?.releaseFromGlide()
+        iconView?.clearFromGlide()
     }
 }

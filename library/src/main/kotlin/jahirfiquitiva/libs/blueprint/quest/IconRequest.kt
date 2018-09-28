@@ -268,10 +268,10 @@ class IconRequest private constructor() {
         
         protected constructor(parcel: Parcel) {
             saveDir = parcel.readSerializable() as File
-            appName = parcel.readString()
-            subject = parcel.readString()
-            email = parcel.readString()
-            apiHost = parcel.readString()
+            appName = parcel.readString() ?: ""
+            subject = parcel.readString() ?: ""
+            email = parcel.readString() ?: ""
+            apiHost = parcel.readString() ?: ""
             apiKey = parcel.readString()
             filterId = parcel.readInt()
             maxCount = parcel.readInt()
@@ -908,11 +908,12 @@ class IconRequest private constructor() {
             
             if (inState.containsKey("apps")) {
                 request?.apps?.clear()
-                request?.apps?.addAll(inState.getParcelableArrayList("apps"))
+                request?.apps?.addAll(inState.getParcelableArrayList("apps") ?: ArrayList())
             }
             if (inState.containsKey("selected_apps")) {
                 request?.selectedApps?.clear()
-                request?.selectedApps?.addAll(inState.getParcelableArrayList("selected_apps"))
+                request?.selectedApps?.addAll(
+                    inState.getParcelableArrayList("selected_apps") ?: ArrayList())
             }
             return request
         }

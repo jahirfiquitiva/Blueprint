@@ -30,7 +30,7 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.frames.helpers.glide.FramesGlideListener
-import jahirfiquitiva.libs.frames.helpers.glide.releaseFromGlide
+import jahirfiquitiva.libs.frames.helpers.glide.clearFromGlide
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.context
 import jahirfiquitiva.libs.kext.extensions.drawable
@@ -56,7 +56,11 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         .priority(Priority.IMMEDIATE)
                         .error(context.drawable(R.drawable.ic_na_launcher)))
                 .listener(object : FramesGlideListener<Drawable>() {
-                    override fun onLoadSucceed(resource: Drawable, model: Any?): Boolean {
+                    override fun onLoadSucceed(
+                        resource: Drawable,
+                        model: Any?,
+                        isFirst: Boolean
+                                              ): Boolean {
                         progressBar?.gone()
                         return false
                     }
@@ -83,6 +87,6 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     
     fun unbind() {
-        icon?.releaseFromGlide()
+        icon?.clearFromGlide()
     }
 }
