@@ -86,9 +86,6 @@
   <string name="hideicon_dialog_content">Êtes-vous certain de vouloir cacher l’icône de l’application dans votre lanceur ? \nApp peut sz fermer de façon inattendue et les notifications seront complètement désactivées. \nVous pouvez lire la FAQ pour savoir comment le faire apparaître à nouveau, avant de le cacher.</string>
   <string name="send_using">Envoyer avec…</string>
   <string name="no_mail">Aucune application permettant d\'envoyer des e-mails n\'est installée</string>
-  <string name="legal">Mentions légales</string>
-  <string name="privacy_policy">Politique de confidentialité</string>
-  <string name="terms_conditions">Termes et conditions d\'utilisation</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>Comment utiliser le pack d’icônes ?</item>
