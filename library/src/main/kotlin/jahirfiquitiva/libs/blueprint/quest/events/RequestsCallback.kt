@@ -14,7 +14,8 @@ interface RequestsCallback {
         context: Context,
         @IconRequest.State reason: Int,
         requestsLeft: Int,
-        millis: Long
+        timeLeft: Long,
+        toSend: Boolean
                         ) {
     }
     

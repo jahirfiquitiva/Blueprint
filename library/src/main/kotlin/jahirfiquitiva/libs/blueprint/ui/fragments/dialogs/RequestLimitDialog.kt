@@ -30,32 +30,26 @@ import java.util.concurrent.TimeUnit
 class RequestLimitDialog : BasicDialogFragment() {
     
     private var isTimeLimit: Boolean = false
-    private var millis: Long = 0
-    private var appsLeft: Int = 0
+    private var timeLeft: Long = 0
+    private var requestsLeft: Int = 0
     
     companion object {
         private const val IS_TIME_LIMIT = "is_time_limit"
-        private const val MILLIS = "millis"
-        private const val APPS_LEFT = "apps_left"
+        private const val TIME_LEFT = "time_left"
+        private const val REQUESTS_LEFT = "apps_left"
         const val TAG = "request_limit_dialog"
         
-        fun invoke(isTimeLimit: Boolean, millis: Long, appsLeft: Int): RequestLimitDialog {
+        fun invoke(isTimeLimit: Boolean, timeLeft: Long, requestsLeft: Int): RequestLimitDialog {
             return RequestLimitDialog().apply {
                 this.isTimeLimit = isTimeLimit
-                this.millis = millis
-                this.appsLeft = appsLeft
+                this.timeLeft = timeLeft
+                this.requestsLeft = requestsLeft
             }
         }
     }
     
-    fun show(activity: FragmentActivity, millis: Long) {
-        dismiss(activity, TAG)
-        RequestLimitDialog.invoke(true, millis, 0).show(activity.supportFragmentManager, TAG)
-    }
-    
-    fun show(activity: FragmentActivity, appsLeft: Int) {
-        dismiss(activity, TAG)
-        RequestLimitDialog.invoke(false, 0, appsLeft).show(activity.supportFragmentManager, TAG)
+    fun show(activity: FragmentActivity) {
+        show(activity.supportFragmentManager, TAG)
     }
     
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -67,17 +61,17 @@ class RequestLimitDialog : BasicDialogFragment() {
                         ctxt.int(R.integer.time_limit_in_minutes).toLong())))
             
             val contentExtra = when {
-                TimeUnit.MILLISECONDS.toSeconds(millis) >= 60 ->
+                TimeUnit.MILLISECONDS.toSeconds(timeLeft) >= 60 ->
                     ctxt.getString(
-                        R.string.apps_limit_dialog_day_extra, ctxt.millisToText(millis))
+                        R.string.apps_limit_dialog_day_extra, ctxt.millisToText(timeLeft))
                 else -> ctxt.getString(R.string.apps_limit_dialog_day_extra_sec)
             }
             "$preContent $contentExtra"
         } else {
-            when (appsLeft) {
+            when (requestsLeft) {
                 ctxt.int(R.integer.max_apps_to_request) ->
-                    ctxt.getString(R.string.apps_limit_dialog, appsLeft.toString())
-                else -> ctxt.getString(R.string.apps_limit_dialog_more, appsLeft.toString())
+                    ctxt.getString(R.string.apps_limit_dialog, requestsLeft.toString())
+                else -> ctxt.getString(R.string.apps_limit_dialog_more, requestsLeft.toString())
             }
         }
         
@@ -90,25 +84,27 @@ class RequestLimitDialog : BasicDialogFragment() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.isTimeLimit = arguments?.getBoolean(IS_TIME_LIMIT) ?: false
-        this.millis = arguments?.getLong(MILLIS) ?: 0
-        this.appsLeft = arguments?.getInt(APPS_LEFT) ?: 0
+        arguments?.let {
+            this.isTimeLimit = it.getBoolean(IS_TIME_LIMIT, false)
+            this.timeLeft = it.getLong(TIME_LEFT, 0)
+            this.requestsLeft = it.getInt(REQUESTS_LEFT, 0)
+        }
     }
     
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         savedInstanceState?.let {
-            isTimeLimit = it.getBoolean(IS_TIME_LIMIT)
-            millis = it.getLong(MILLIS)
-            appsLeft = it.getInt(APPS_LEFT)
+            isTimeLimit = it.getBoolean(IS_TIME_LIMIT, false)
+            timeLeft = it.getLong(TIME_LEFT, 0)
+            requestsLeft = it.getInt(REQUESTS_LEFT, 0)
         }
     }
     
     override fun onSaveInstanceState(outState: Bundle) {
         with(outState) {
             putBoolean(IS_TIME_LIMIT, isTimeLimit)
-            putLong(MILLIS, millis)
-            putInt(APPS_LEFT, appsLeft)
+            putLong(TIME_LEFT, timeLeft)
+            putInt(REQUESTS_LEFT, requestsLeft)
         }
         super.onSaveInstanceState(outState)
     }

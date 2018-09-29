@@ -154,7 +154,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     fun refresh() {
         val isRefreshing = swipeToRefresh?.isRefreshing ?: false
         if (isRefreshing) swipeToRefresh?.isRefreshing = false
-        unselectAll()
+        deselectAll()
         doToFab { it.hide() }
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING
         canShowProgress = true
@@ -166,21 +166,23 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     fun toggleSelectAll() {
         val ir = IconRequest.get()
         ir?.let {
-            if (hasSelectedAll) ir.unselectAllApps()
-            else ir.selectAllApps()
-            updateFabCount()
-            adapter?.notifyDataSetChanged()
-            hasSelectedAll = !hasSelectedAll
+            val listModified = if (hasSelectedAll) ir.deselectAllApps() else ir.selectAllApps()
+            if (listModified) {
+                updateFabCount()
+                adapter?.notifyDataSetChanged()
+                hasSelectedAll = !hasSelectedAll
+            }
         }
     }
     
-    fun unselectAll() {
+    fun deselectAll() {
         val ir = IconRequest.get()
         ir?.let {
-            ir.unselectAllApps()
-            updateFabCount()
-            adapter?.notifyDataSetChanged()
-            hasSelectedAll = false
+            if (ir.deselectAllApps()) {
+                updateFabCount()
+                adapter?.notifyDataSetChanged()
+                hasSelectedAll = false
+            }
         }
     }
     
@@ -207,7 +209,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
             swipeToRefresh?.isRefreshing = false
             adapter?.setItems(ArrayList(it))
             if (it.isEmpty()) {
-                unselectAll()
+                deselectAll()
                 doToFab { it.hide() }
             } else {
                 doToFab { it.show() }
@@ -245,16 +247,23 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         }
     }
     
-    override fun onRequestLimited(context: Context, reason: Int, requestsLeft: Int, millis: Long) {
-        super.onRequestLimited(context, reason, requestsLeft, millis)
+    override fun onRequestLimited(
+        context: Context,
+        reason: Int,
+        requestsLeft: Int,
+        timeLeft: Long,
+        toSend: Boolean
+                                 ) {
+        super.onRequestLimited(context, reason, requestsLeft, timeLeft, toSend)
         activity {
             try {
-                dialog = RequestLimitDialog()
-                if (reason == IconRequest.STATE_TIME_LIMITED && millis > 0) {
-                    dialog?.show(it, millis)
-                } else {
-                    dialog?.show(it, requestsLeft)
-                }
+                destroyDialog()
+                dialog = if (reason == IconRequest.STATE_TIME_LIMITED && timeLeft > 0) {
+                    RequestLimitDialog.invoke(true, timeLeft, 0)
+                } else if (reason == IconRequest.STATE_COUNT_LIMITED) {
+                    RequestLimitDialog.invoke(false, 0, requestsLeft)
+                } else null
+                dialog?.show(it)
             } catch (e: Exception) {
                 BL.e("Error", e)
             }

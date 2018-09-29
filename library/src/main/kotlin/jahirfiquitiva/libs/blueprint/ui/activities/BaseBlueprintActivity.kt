@@ -495,7 +495,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
                     override fun doWhenReady(forArctic: Boolean) {
                         runOnUiThread {
                             destroyDialog()
-                            unselectAll()
+                            deselectAll()
                             if (forArctic) {
                                 dialog = mdDialog {
                                     title(R.string.request_upload_success)
@@ -559,10 +559,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
             ?.toggleSelectAll()
     }
     
-    internal fun unselectAll() {
+    internal fun deselectAll() {
         ((pager?.adapter as? FragmentsPagerAdapter)?.get(
             currentSectionPosition) as? RequestsFragment)
-            ?.unselectAll()
+            ?.deselectAll()
     }
     
     internal fun launchHelpActivity() {

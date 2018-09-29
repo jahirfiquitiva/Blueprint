@@ -36,9 +36,10 @@ class RequestsAdapter(
     override fun doBind(holder: RequestViewHolder, position: Int, shouldAnimate: Boolean) {
         holder.setItem(manager, list[position]) { checkbox, item ->
             IconRequest.get()?.let {
-                it.toggleAppSelected(item)
-                checkbox.isChecked = !checkbox.isChecked
-                onItemsChanged()
+                if (it.toggleAppSelected(item)) {
+                    checkbox.isChecked = !checkbox.isChecked
+                    onItemsChanged()
+                }
             }
         }
     }

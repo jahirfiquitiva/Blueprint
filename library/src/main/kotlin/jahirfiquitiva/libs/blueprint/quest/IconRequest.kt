@@ -77,7 +77,7 @@ import java.util.concurrent.TimeUnit
 class IconRequest private constructor() {
     
     @State
-    private val state = STATE_NORMAL
+    private val _state = STATE_NORMAL
     
     private var builder: Builder? = null
     
@@ -114,20 +114,19 @@ class IconRequest private constructor() {
     val isLoading: Boolean
         get() = builder?.isLoading ?: false
     
-    private val millisToFinish: Long
+    private val timeLeft: Long
         @SuppressLint("SimpleDateFormat")
         get() {
-            val savedTime: Int = (builder?.prefs?.getLong(KEY_SAVED_TIME_MILLIS, -1) ?: -1).toInt()
-            if (savedTime == -1) return -1
+            val savedTime: Long = builder?.prefs?.getLong(KEY_SAVED_TIME_MILLIS, -1) ?: -1
+            if (savedTime < 0) return -1
             val elapsedTime = System.currentTimeMillis() - savedTime
             val sdf = SimpleDateFormat("MMM dd,yyyy HH:mm:ss")
+            val timeLeft = (builder?.timeLimit ?: 0) - elapsedTime - 500
             BL.d(
-                "Timer: [Last request was on: ${sdf.format(
-                    savedTime)}] - [Right now is: ${sdf.format(
-                    Date(System.currentTimeMillis()))}] - [Time Left: ~${((builder?.timeLimit
-                    ?: 0) - elapsedTime) / 1000} secs.]"
-                )
-            return (builder?.timeLimit ?: 0) - elapsedTime - 500
+                "\nQuest: [ Last: ${sdf.format(Date(savedTime))},\n" +
+                    "Now: ${sdf.format(Date(System.currentTimeMillis()))}," +
+                    "\nTime Left: ~ ${timeLeft / 1000} secs. aprox. ]")
+            return timeLeft
         }
     
     private val requestsLeft: Int
@@ -146,7 +145,7 @@ class IconRequest private constructor() {
         request = this
     }
     
-    @IntDef(STATE_NORMAL, STATE_LIMITED, STATE_TIME_LIMITED)
+    @IntDef(STATE_NORMAL, STATE_COUNT_LIMITED, STATE_TIME_LIMITED)
     @Retention(AnnotationRetention.SOURCE)
     annotation class State
     
@@ -228,8 +227,7 @@ class IconRequest private constructor() {
         }
         
         fun withTimeLimit(minutes: Int, prefs: SharedPreferences?): Builder {
-            this.prefs = prefs ?:
-                context?.getSharedPreferences("RequestPrefs", Context.MODE_PRIVATE)
+            this.prefs = prefs ?: context?.getSharedPreferences("quest_prefs", Context.MODE_PRIVATE)
             this.timeLimit = TimeUnit.MINUTES.toMillis(minutes.toLong())
             return this
         }
@@ -383,7 +381,7 @@ class IconRequest private constructor() {
             return
         }
         Thread {
-            BL.d("Loading unthemed installed apps...")
+            BL.d("Loading apps to request...")
             val filter = loadFilterApps() ?: return@Thread
             apps.clear()
             apps.addAll(builder?.context?.getInstalledApps(filter, builder?.callback).orEmpty())
@@ -393,22 +391,15 @@ class IconRequest private constructor() {
     }
     
     fun loadHighResIcons() {
-        if (apps.isEmpty()) {
-            BL.d("High res load failed; app list is empty")
-            return
-        }
+        if (apps.isEmpty()) return
         Thread {
-            BL.d("Getting high res icons for all apps...")
             apps.let {
-                for (app in it) {
-                    builder?.context?.let { app.getHighResIcon(it) }
-                }
+                for (app in it) builder?.context?.let { app.getHighResIcon(it) }
             }
-            BL.d("High res icon retrieval finished...")
         }.start()
     }
     
-    fun selectApp(app: App): Boolean {
+    private fun selectApp(app: App): Boolean {
         if (!selectedApps.contains(app)) {
             selectedApps.add(app)
             return true
@@ -416,16 +407,17 @@ class IconRequest private constructor() {
         return false
     }
     
-    fun unselectApp(app: App): Boolean = selectedApps.remove(app)
+    private fun deselectApp(app: App): Boolean = selectedApps.remove(app)
     
     fun toggleAppSelected(app: App): Boolean {
         return if (isAppSelected(app)) {
-            unselectApp(app)
+            deselectApp(app)
         } else {
-            val state = getRequestState(false)
-            if (state != STATE_NORMAL) {
+            val actualState = getRequestState(false)
+            if (actualState != STATE_NORMAL) {
                 builder?.context?.let {
-                    builder?.callback?.onRequestLimited(it, state, requestsLeft, millisToFinish)
+                    builder?.callback?.onRequestLimited(
+                        it, actualState, requestsLeft, timeLeft, false)
                 }
                 false
             } else {
@@ -438,24 +430,32 @@ class IconRequest private constructor() {
     
     fun selectAllApps(): Boolean {
         if (apps.isEmpty()) return false
-        
         var changed = false
-        
-        apps.filterNot { selectedApps.contains(it) }.forEach {
-            if (getRequestState(false) == STATE_NORMAL) {
-                changed = true
-                selectedApps.add(it)
+        val actualState = getRequestState(false)
+        if (actualState != STATE_NORMAL) {
+            builder?.context?.let {
+                builder?.callback?.onRequestLimited(it, actualState, requestsLeft, timeLeft, false)
+            }
+        } else {
+            val notSelectedApps = apps.filterNot { selectedApps.contains(it) }
+            for (app in notSelectedApps) {
+                val newActualState = getRequestState(false)
+                if (newActualState == STATE_NORMAL) {
+                    changed = true
+                    selectedApps.add(app)
+                } else {
+                    builder?.context?.let {
+                        builder?.callback?.onRequestLimited(
+                            it, newActualState, requestsLeft, timeLeft, false)
+                    }
+                    return changed
+                }
             }
         }
-        
-        if (getRequestState(false) != STATE_NORMAL)
-            builder?.context?.let {
-                builder?.callback?.onRequestLimited(it, state, requestsLeft, millisToFinish)
-            }
         return changed
     }
     
-    fun unselectAllApps(): Boolean {
+    fun deselectAllApps(): Boolean {
         if (selectedApps.isEmpty()) return false
         selectedApps.clear()
         return true
@@ -497,277 +497,277 @@ class IconRequest private constructor() {
             return
         }
         
-        @State
-        val currentState = getRequestState(true)
+        val actualState = getRequestState(true)
         
-        if (currentState == STATE_NORMAL) {
-            Thread {
-                sendRequestCallback?.doWhenStarted()
+        if (actualState != STATE_NORMAL) {
+            builder?.context?.let {
+                builder?.callback?.onRequestLimited(it, actualState, requestsLeft, timeLeft, true)
+            }
+            return
+        }
+        
+        Thread {
+            sendRequestCallback?.doWhenStarted()
+            
+            val host = builder?.apiHost.orEmpty()
+            val apiKey = builder?.apiKey.orEmpty()
+            val uploadToArctic = host.hasContent() && apiKey.hasContent()
+            
+            val emailZipFiles = ArrayList<File>()
+            
+            builder?.saveDir?.wipe()
+            builder?.saveDir?.mkdirs()
+            
+            // Save app icons
+            val correctList = ArrayList<Pair<String, App>>()
+            val iconsNames = ArrayList<Pair<String, Int>>()
+            
+            for (app in selectedApps) {
+                val icon = builder?.context?.let {
+                    app.getHighResIcon(it)?.toBitmap()
+                }
+                icon ?: continue
                 
-                val host = builder?.apiHost.orEmpty()
-                val apiKey = builder?.apiKey.orEmpty()
-                val uploadToArctic = host.hasContent() && apiKey.hasContent()
+                val iconName = app.name.safeDrawableName()
+                var correctIconName = iconName
                 
-                val emailZipFiles = ArrayList<File>()
+                val inList = iconsNames.find { it.first.equals(iconName, true) }
+                if (inList != null) {
+                    correctIconName += "_${inList.second}"
+                }
                 
-                builder?.saveDir?.wipe()
-                builder?.saveDir?.mkdirs()
+                val iconFile: File? = File(
+                    builder?.saveDir,
+                    if (uploadToArctic) "${app.pkg}.png" else "$correctIconName.png")
                 
-                // Save app icons
-                val correctList = ArrayList<Pair<String, App>>()
-                val iconsNames = ArrayList<Pair<String, Int>>()
-                
-                for (app in selectedApps) {
-                    val icon = builder?.context?.let {
-                        app.getHighResIcon(it)?.toBitmap()
-                    }
-                    icon ?: continue
+                try {
+                    iconFile?.saveIcon(icon)
+                    iconFile?.let { emailZipFiles.add(it) }
                     
-                    val iconName = app.name.safeDrawableName()
-                    var correctIconName = iconName
-                    
-                    val inList = iconsNames.find { it.first.equals(iconName, true) }
-                    if (inList != null) {
-                        correctIconName += "_${inList.second}"
-                    }
-                    
-                    val iconFile: File? = File(
-                        builder?.saveDir,
-                        if (uploadToArctic) "${app.pkg}.png" else "$correctIconName.png")
-                    
+                    val count =
+                        (iconsNames.find { it.first.equals(iconName, true) }?.second ?: 0) + 1
                     try {
-                        iconFile?.saveIcon(icon)
-                        iconFile?.let { emailZipFiles.add(it) }
-                        
-                        val count =
-                            (iconsNames.find { it.first.equals(iconName, true) }?.second ?: 0) + 1
-                        try {
-                            iconsNames.removeAt(
-                                iconsNames.indexOfFirst { it.first.equals(iconName, true) }
-                                               )
-                        } catch (ignored: Exception) {
-                        }
-                        iconsNames += iconName to count
-                        
-                        correctList += correctIconName to app
-                    } catch (e: Exception) {
-                        postError(
-                            "Failed to save icon \'$correctIconName\' due to error: ${e.message}",
-                            e, sendRequestCallback)
-                        cleanFiles(true)
-                        return@Thread
+                        iconsNames.removeAt(
+                            iconsNames.indexOfFirst { it.first.equals(iconName, true) }
+                                           )
+                    } catch (ignored: Exception) {
                     }
-                }
-                
-                // Create request files
-                var xmlSb: StringBuilder? = null
-                var amSb: StringBuilder? = null
-                var trSb: StringBuilder? = null
-                var jsonSb: StringBuilder? = null
-                
-                if (!uploadToArctic) {
-                    xmlSb = StringBuilder(
-                        "<resources>\n\t<iconback img1=\"iconback\"/>\n\t<iconmask " +
-                            "img1=\"iconmask\"/>\n\t<iconupon img1=\"iconupon\"/>\n\t" +
-                            "<scale factor=\"1.0\"/>")
-                }
-                
-                if (!uploadToArctic) {
-                    amSb = StringBuilder("<appmap>")
-                }
-                
-                if (!uploadToArctic) {
-                    trSb = StringBuilder(
-                        "<Theme version=\"1\">\n\t<Label value=\"${builder?.appName}\"/>\n\t" +
-                            "<Wallpaper image=\"wallpaper_01\"/>\n\t<LockScreenWallpaper " +
-                            "image=\"wallpaper_02\"/>\n\t<ThemePreview image=\"preview1\"/>\n\t" +
-                            "<ThemePreviewWork image=\"preview1\"/>\n\t<ThemePreviewMenu " +
-                            "image=\"preview1\"/>\n\t<DockMenuAppIcon selector=\"drawer\"/>")
-                }
-                
-                if (uploadToArctic) {
-                    jsonSb = StringBuilder("{\n\t\"components\": [")
-                }
-                
-                var isFirst = true
-                for ((iconName, app) in correctList) {
-                    if (xmlSb != null) {
-                        xmlSb.append("\n\n")
-                        xmlSb.append("\t<!-- ${app.name} -->\n")
-                        xmlSb.append(
-                            "\t<item\n\t\tcomponent=\"ComponentInfo{${app.comp}}\"\n\t\tdrawable=\"$iconName\"/>")
-                    }
+                    iconsNames += iconName to count
                     
-                    if (amSb != null) {
-                        amSb.append("\n\n")
-                        amSb.append("\t<!-- ${app.name} -->\n")
-                        val rightCode = app.comp.split(
-                            "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
-                        amSb.append(
-                            "\t<item\n\t\tclass=\"$rightCode\"\n\t\tname=\"$iconName\"/>")
-                    }
-                    
-                    if (trSb != null) {
-                        trSb.append("\n\n")
-                        trSb.append("\t<!-- ${app.name} -->\n")
-                        trSb.append(
-                            "\t<AppIcon\n\t\tname=\"${app.comp}\"\n\t\timage=\"$iconName\"/>")
-                    }
-                    
-                    if (jsonSb != null) {
-                        if (!isFirst) jsonSb.append(",")
-                        jsonSb.append("\n\t\t{\n")
-                            .append("\t\t\t\"name\": \"${app.name}\",\n")
-                            .append("\t\t\t\"pkg\": \"${app.pkg}\",\n")
-                            .append("\t\t\t\"componentInfo\": \"${app.comp}\",\n")
-                            .append("\t\t\t\"drawable\": \"$iconName\"")
-                            .append("\n\t\t}")
-                    }
-                    
-                    if (isFirst) isFirst = false
+                    correctList += correctIconName to app
+                } catch (e: Exception) {
+                    postError(
+                        "Failed to save icon \'$correctIconName\' due to error: ${e.message}",
+                        e, sendRequestCallback)
+                    cleanFiles(true)
+                    return@Thread
                 }
-                
-                val date = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-                
+            }
+            
+            // Create request files
+            var xmlSb: StringBuilder? = null
+            var amSb: StringBuilder? = null
+            var trSb: StringBuilder? = null
+            var jsonSb: StringBuilder? = null
+            
+            if (!uploadToArctic) {
+                xmlSb = StringBuilder(
+                    "<resources>\n\t<iconback img1=\"iconback\"/>\n\t<iconmask " +
+                        "img1=\"iconmask\"/>\n\t<iconupon img1=\"iconupon\"/>\n\t" +
+                        "<scale factor=\"1.0\"/>")
+            }
+            
+            if (!uploadToArctic) {
+                amSb = StringBuilder("<appmap>")
+            }
+            
+            if (!uploadToArctic) {
+                trSb = StringBuilder(
+                    "<Theme version=\"1\">\n\t<Label value=\"${builder?.appName}\"/>\n\t" +
+                        "<Wallpaper image=\"wallpaper_01\"/>\n\t<LockScreenWallpaper " +
+                        "image=\"wallpaper_02\"/>\n\t<ThemePreview image=\"preview1\"/>\n\t" +
+                        "<ThemePreviewWork image=\"preview1\"/>\n\t<ThemePreviewMenu " +
+                        "image=\"preview1\"/>\n\t<DockMenuAppIcon selector=\"drawer\"/>")
+            }
+            
+            if (uploadToArctic) {
+                jsonSb = StringBuilder("{\n\t\"components\": [")
+            }
+            
+            var isFirst = true
+            for ((iconName, app) in correctList) {
                 if (xmlSb != null) {
-                    xmlSb.append("\n\n</resources>")
-                    val appfilter = File(builder?.saveDir, "appfilter_$date.xml")
-                    try {
-                        appfilter.saveAll(xmlSb.toString())
-                        emailZipFiles.add(appfilter)
-                    } catch (e: Exception) {
-                        BL.e("Error", e)
-                        postError(
-                            "Failed to save appfilter.xml file: ${e.message}", e,
-                            sendRequestCallback)
-                        cleanFiles(true)
-                        return@Thread
-                    }
+                    xmlSb.append("\n\n")
+                    xmlSb.append("\t<!-- ${app.name} -->\n")
+                    xmlSb.append(
+                        "\t<item\n\t\tcomponent=\"ComponentInfo{${app.comp}}\"\n\t\tdrawable=\"$iconName\"/>")
                 }
                 
                 if (amSb != null) {
-                    amSb.append("\n\n</appmap>")
-                    val appmap = File(builder?.saveDir, "appmap_$date.xml")
-                    try {
-                        appmap.saveAll(amSb.toString())
-                        emailZipFiles.add(appmap)
-                    } catch (e: Exception) {
-                        BL.e("Error", e)
-                        postError(
-                            "Failed to save appmap.xml file: ${e.message}", e, sendRequestCallback)
-                        cleanFiles(true)
-                        return@Thread
-                    }
+                    amSb.append("\n\n")
+                    amSb.append("\t<!-- ${app.name} -->\n")
+                    val rightCode = app.comp.split(
+                        "/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
+                    amSb.append(
+                        "\t<item\n\t\tclass=\"$rightCode\"\n\t\tname=\"$iconName\"/>")
                 }
                 
                 if (trSb != null) {
-                    trSb.append("\n\n</Theme>")
-                    val themeRes = File(builder?.saveDir, "theme_resources_$date.xml")
-                    try {
-                        themeRes.saveAll(trSb.toString())
-                        emailZipFiles.add(themeRes)
-                    } catch (e: Exception) {
-                        BL.e("Error", e)
-                        postError(
-                            "Failed to save theme_resources.xml file: ${e.message}", e,
-                            sendRequestCallback)
-                        cleanFiles(true)
-                        return@Thread
-                    }
+                    trSb.append("\n\n")
+                    trSb.append("\t<!-- ${app.name} -->\n")
+                    trSb.append(
+                        "\t<AppIcon\n\t\tname=\"${app.comp}\"\n\t\timage=\"$iconName\"/>")
                 }
                 
                 if (jsonSb != null) {
-                    jsonSb.append("\n\t]\n}")
+                    if (!isFirst) jsonSb.append(",")
+                    jsonSb.append("\n\t\t{\n")
+                        .append("\t\t\t\"name\": \"${app.name}\",\n")
+                        .append("\t\t\t\"pkg\": \"${app.pkg}\",\n")
+                        .append("\t\t\t\"componentInfo\": \"${app.comp}\",\n")
+                        .append("\t\t\t\"drawable\": \"$iconName\"")
+                        .append("\n\t\t}")
                 }
                 
-                if (emailZipFiles.isEmpty()) {
+                if (isFirst) isFirst = false
+            }
+            
+            val date = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+            
+            if (xmlSb != null) {
+                xmlSb.append("\n\n</resources>")
+                val appfilter = File(builder?.saveDir, "appfilter_$date.xml")
+                try {
+                    appfilter.saveAll(xmlSb.toString())
+                    emailZipFiles.add(appfilter)
+                } catch (e: Exception) {
+                    BL.e("Error", e)
                     postError(
-                        "There are no files to put into the ZIP archive.", null,
+                        "Failed to save appfilter.xml file: ${e.message}", e,
                         sendRequestCallback)
                     cleanFiles(true)
                     return@Thread
                 }
-                
-                if (uploadToArctic) {
-                    try {
-                        val zipFile = buildZip(
-                            date, emailZipFiles.jfilter { it.name.endsWith("png", true) })
-                        cleanFiles()
-                        if (zipFile != null) {
-                            val rHost = if (host.endsWith("/")) host else "$host/"
-                            
-                            var fileType = URLConnection.guessContentTypeFromName(zipFile.name)
-                            if (fileType == null || fileType.trim().isEmpty())
-                                fileType = "application/octet-stream"
-                            
-                            Fuel.upload(
-                                rHost + "v1/request",
-                                parameters = listOf("apps" to jsonSb?.toString().orEmpty()))
-                                .header(
-                                    "TokenID" to apiKey,
-                                    "Accept" to "application/json",
-                                    "User-Agent" to "afollestad/icon-request"
-                                       )
-                                .dataParts { _, _ ->
-                                    listOf(DataPart(zipFile, "archive", fileType))
-                                }
-                                .response { _, response, result ->
-                                    val success = response.statusCode in 200..299
-                                    
-                                    if (success) {
-                                        BL.d("Request sent!")
-                                        val amount = requestsLeft - selectedApps.size
-                                        saveRequestsLeft(if (amount < 0) 0 else amount)
-                                        
-                                        if (requestsLeft == 0) saveRequestMoment()
-                                        
-                                        cleanFiles(true)
-                                        sendRequestCallback?.doWhenReady(true)
-                                    } else {
-                                        val responseMsg = try {
-                                            val body = String(response.data)
-                                            val error = JSONObject(body).string("error")
-                                            if (error.hasContent()) error else result.toString()
-                                        } catch (e: Exception) {
-                                            result.toString()
-                                        }
-                                        BL.e("Server error: $responseMsg")
-                                        BL.e("Server response: $response")
-                                        
-                                        cleanFiles(true)
-                                        postError(responseMsg, null, sendRequestCallback, true)
-                                    }
-                                }
-                        } else {
-                            cleanFiles(true)
-                            postError("Zip file could not be found", null, sendRequestCallback)
-                        }
-                    } catch (e: Exception) {
-                        try {
-                            val errors = StringWriter()
-                            e.printStackTrace(PrintWriter(errors))
-                            BL.e(errors.toString())
-                        } catch (ignored: Exception) {
-                        }
-                        postError(
-                            "Failed to send icons to the backend: ${e.message}", null,
-                            sendRequestCallback, true)
-                    }
-                } else {
-                    val zipFile = buildZip(date, emailZipFiles)
+            }
+            
+            if (amSb != null) {
+                amSb.append("\n\n</appmap>")
+                val appmap = File(builder?.saveDir, "appmap_$date.xml")
+                try {
+                    appmap.saveAll(amSb.toString())
+                    emailZipFiles.add(appmap)
+                } catch (e: Exception) {
+                    BL.e("Error", e)
+                    postError(
+                        "Failed to save appmap.xml file: ${e.message}", e, sendRequestCallback)
+                    cleanFiles(true)
+                    return@Thread
+                }
+            }
+            
+            if (trSb != null) {
+                trSb.append("\n\n</Theme>")
+                val themeRes = File(builder?.saveDir, "theme_resources_$date.xml")
+                try {
+                    themeRes.saveAll(trSb.toString())
+                    emailZipFiles.add(themeRes)
+                } catch (e: Exception) {
+                    BL.e("Error", e)
+                    postError(
+                        "Failed to save theme_resources.xml file: ${e.message}", e,
+                        sendRequestCallback)
+                    cleanFiles(true)
+                    return@Thread
+                }
+            }
+            
+            if (jsonSb != null) {
+                jsonSb.append("\n\t]\n}")
+            }
+            
+            if (emailZipFiles.isEmpty()) {
+                postError(
+                    "There are no files to put into the ZIP archive.", null,
+                    sendRequestCallback)
+                cleanFiles(true)
+                return@Thread
+            }
+            
+            if (uploadToArctic) {
+                try {
+                    val zipFile = buildZip(
+                        date, emailZipFiles.jfilter { it.name.endsWith("png", true) })
+                    cleanFiles()
                     if (zipFile != null) {
-                        sendRequestViaEmail(zipFile, sendRequestCallback)
+                        val rHost = if (host.endsWith("/")) host else "$host/"
+                        
+                        var fileType = URLConnection.guessContentTypeFromName(zipFile.name)
+                        if (fileType == null || fileType.trim().isEmpty())
+                            fileType = "application/octet-stream"
+                        
+                        Fuel.upload(
+                            rHost + "v1/request",
+                            parameters = listOf("apps" to jsonSb?.toString().orEmpty()))
+                            .header(
+                                "TokenID" to apiKey,
+                                "Accept" to "application/json",
+                                "User-Agent" to "afollestad/icon-request"
+                                   )
+                            .dataParts { _, _ ->
+                                listOf(DataPart(zipFile, "archive", fileType))
+                            }
+                            .response { _, response, result ->
+                                val success = response.statusCode in 200..299
+                                
+                                if (success) {
+                                    BL.d("Request sent!")
+                                    val amount = requestsLeft - selectedApps.size
+                                    saveRequestsLeft(if (amount < 0) 0 else amount)
+                                    
+                                    if (requestsLeft == 0) saveRequestMoment()
+                                    
+                                    cleanFiles(true)
+                                    sendRequestCallback?.doWhenReady(true)
+                                } else {
+                                    val responseMsg = try {
+                                        val body = String(response.data)
+                                        val error = JSONObject(body).string("error")
+                                        if (error.hasContent()) error else result.toString()
+                                    } catch (e: Exception) {
+                                        result.toString()
+                                    }
+                                    BL.e("Server error: $responseMsg")
+                                    BL.e("Server response: $response")
+                                    
+                                    cleanFiles(true)
+                                    postError(responseMsg, null, sendRequestCallback, true)
+                                }
+                            }
                     } else {
                         cleanFiles(true)
                         postError("Zip file could not be found", null, sendRequestCallback)
                     }
+                } catch (e: Exception) {
+                    try {
+                        val errors = StringWriter()
+                        e.printStackTrace(PrintWriter(errors))
+                        BL.e(errors.toString())
+                    } catch (ignored: Exception) {
+                    }
+                    postError(
+                        "Failed to send icons to the backend: ${e.message}", null,
+                        sendRequestCallback, true)
                 }
-            }.start()
-        } else {
-            builder?.context?.let {
-                builder?.callback?.onRequestLimited(it, currentState, requestsLeft, millisToFinish)
+            } else {
+                val zipFile = buildZip(date, emailZipFiles)
+                if (zipFile != null) {
+                    sendRequestViaEmail(zipFile, sendRequestCallback)
+                } else {
+                    cleanFiles(true)
+                    postError("Zip file could not be found", null, sendRequestCallback)
+                }
             }
-        }
+        }.start()
     }
     
     private fun buildZip(date: String, filesToZip: ArrayList<File>): File? {
@@ -800,7 +800,6 @@ class IconRequest private constructor() {
                 .setType("application/zip")
             
             val amount = requestsLeft - selectedApps.size
-            
             saveRequestsLeft(if (amount < 0) 0 else amount)
             
             if (requestsLeft == 0)
@@ -838,31 +837,30 @@ class IconRequest private constructor() {
     
     @State
     private fun getRequestState(toSend: Boolean): Int {
-        val max = builder?.maxCount ?: -1
-        val limit = builder?.timeLimit ?: -1
-        if (max <= 0 || limit <= 0) return STATE_NORMAL
-        
-        val sum = if (toSend) 0 else 1
-        
-        if (selectedApps.size + sum > requestsLeft) {
-            if (millisToFinish > 0) {
-                return STATE_TIME_LIMITED
-            } else if (requestsLeft == 0) {
-                saveRequestsLeft(-1)
-                return STATE_NORMAL
+        val requestLimit = builder?.maxCount ?: -1
+        val timeLimit = builder?.timeLimit ?: -1
+        if (requestLimit <= 0 || timeLimit <= 0) return STATE_NORMAL
+        val extra = if (toSend) 0 else 1
+        if ((selectedApps.size + extra) > requestsLeft) {
+            return when {
+                timeLeft > 0 -> STATE_TIME_LIMITED
+                requestsLeft == 0 -> {
+                    saveRequestsLeft(-1)
+                    STATE_NORMAL
+                }
+                else -> STATE_COUNT_LIMITED
             }
-            return STATE_LIMITED
         } else {
-            if (millisToFinish > 0) {
+            if (timeLeft > 0) {
                 return STATE_TIME_LIMITED
             }
         }
         return STATE_NORMAL
     }
     
+    @SuppressLint("SimpleDateFormat")
     private fun saveRequestMoment() {
-        builder?.prefs?.edit()?.putLong(KEY_SAVED_TIME_MILLIS, System.currentTimeMillis())
-            ?.apply()
+        builder?.prefs?.edit()?.putLong(KEY_SAVED_TIME_MILLIS, System.currentTimeMillis())?.apply()
     }
     
     private fun saveRequestsLeft(requestsLeft: Int) {
@@ -871,7 +869,7 @@ class IconRequest private constructor() {
     
     companion object {
         const val STATE_NORMAL = 0
-        const val STATE_LIMITED = 1
+        const val STATE_COUNT_LIMITED = 1
         const val STATE_TIME_LIMITED = 2
         
         const val INTENT_CODE = 99

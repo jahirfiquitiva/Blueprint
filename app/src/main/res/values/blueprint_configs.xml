@@ -82,8 +82,8 @@
     If the time limit is set to 0 or less, users will be able to request as many times they want,
     with the max apps limit.
     -->
-    <integer name="max_apps_to_request">-1</integer>
-    <integer name="time_limit_in_minutes">0</integer>
+    <integer name="max_apps_to_request">10</integer>
+    <integer name="time_limit_in_minutes">10</integer>
 
     <!-- Leave empty to disable. A URL to an Arctic Request Manager server, e.g. https://arcticmanager.com -->
     <string name="arctic_backend_host"></string>
