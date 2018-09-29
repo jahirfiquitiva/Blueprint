@@ -35,9 +35,11 @@ import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.context
 import jahirfiquitiva.libs.kext.extensions.drawable
 import jahirfiquitiva.libs.kext.extensions.formatCorrectly
+import jahirfiquitiva.libs.kext.extensions.primaryTextColor
 import jahirfiquitiva.libs.kext.ui.widgets.SquaredImageView
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private val overlay: View? by bind(R.id.request_item_overlay)
     private val icon: SquaredImageView? by bind(R.id.icon)
     private val text: TextView? by bind(R.id.name)
     private val checkbox: AppCompatCheckBox? by bind(R.id.checkbox)
@@ -74,7 +76,7 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 .into(it)
                 .clearOnDetach()
         }
-        
+        text?.setTextColor(context.primaryTextColor)
         text?.text = app.name.formatCorrectly().replace("_", " ")
         val request = IconRequest.get()
         checkbox?.isChecked = (request != null && request.isAppSelected(app))
