@@ -17,7 +17,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
   <string name="frames_dashboard">Blueprint početna</string>
-  <string name="coming_soon">Stiže uskoro</string>
+  <string name="coming_soon">Ubrzo dolazi</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">Početna</string>
   <string name="section_icons">Ikone</string>

@@ -16,6 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+  <string name="frames_dashboard">ব্লু প্রিন্ট ড্যাশবোর্ড</string>
   <string name="coming_soon">শীঘ্রই আসছে</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">হোম</string>
@@ -26,20 +27,30 @@
   <string name="section_donate">দান করুন</string>
   <string name="section_about">অ্যাপ সম্পর্কে</string>
   <string name="section_help">সহায়তা</string>
+  <string name="section_zooper">জুপার সেটআপ</string>
   <string name="section_widgets">উইজেটগুলি</string>
+  <string name="rate">মুল্যায়ন করুন</string>
   <!-- Icons filters -->
   <string name="filter">পরিশ্রুতক</string>
   <string name="clear">সাফ করুন</string>
   <string name="more_apps">আরো অ্যাপস</string>
   <string name="general_info">সাধারণ তথ্য</string>
   <string name="useful_links">দরকারী লিংক</string>
+  <string name="columns">কলামের সংখ্যা</string>
+  <string name="no_compatible_launcher_title">এই লঞ্চারটি উপযুক্ত নয়</string>
+  <string name="impossible_open_themes">থিম অ্যাপ চালু করা সম্ভব নয়</string>
+  <string name="themes_app_not_installed">থিম অ্যাপ এই ডিভাইসটিতে ইনস্টল করা নেই</string>
+  <string name="included_templates">%1$s টি টেমপ্লেট</string>
+  <string name="launcher_icon_restored">%1$s লঞ্চার আইকন পুনরুদ্ধার করা হয়েছে</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">আইকন পুনরুদ্ধার উইজেট</string>
   <string name="clock_widget_title">অ্যানালগ ঘড়ি</string>
   <string name="search_apps">অ্যাপ্লিকেশানগুলি অনুসন্ধান করুন</string>
   <string name="seconds">সেকেন্ড</string>
   <string name="minutes">মিনিট</string>
   <string name="hours">ঘন্টা</string>
   <string name="days">দিন</string>
+  <string name="weeks">সপ্তাহ</string>
   <string name="months">মাস</string>
   <!-- Requests -->
   <string name="select_all">সব নির্বাচন করুন</string>
@@ -50,23 +61,26 @@
   <string name="request_upload_success">সফল হয়েছে!</string>
   <string name="request_upload_success_content">অনুরোধ সফলভাবে আমাদের সার্ভারে আপলোড করা হয়েছে।.</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">আইকন প্রিভিউতে ওয়ালপেপার ব্যবহার করুন</string>
   <string name="pref_summary_wall_header">আপনার বর্তমান ডিভাইস ওয়ালপেপার দেখা যাবে।.</string>
   <string name="pref_header_launcher_icon">লঞ্চার আইকন</string>
   <string name="pref_title_launcher_icon">লঞ্চার আইকন লুকান</string>
+  <string name="pref_summary_launcher_icon">এটিতে টিক দেওয়া হলে, লঞ্চার আইকন আড়াল করা হবে।.</string>
+  <string name="clearcache_dialog_content">আপনি কি নিশ্চিত যে আপনি সেটিংস, অ্যাপ ডাটা ও ক্যাশ মুছে ফেলতে চান? প্রয়োগকৃত আইকন প্রভাবিত হবে না।.</string>
   <string name="hideicon_dialog_title">সতর্কতা!</string>
   <string name="send_using">ব্যবহার করে প্রেরণ করুন…</string>
   <string name="no_mail">মেইল অ্যাপ ইনস্টল করা নেই।</string>
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>আইকন প্যাক ব্যবহার করে কিভাবে?</item>
-    <item>How to apply the Icon Pack?</item>
+    <item>আইকন প্যাক কিভাবে প্রয়োগ করে?</item>
     <item>অন্তর্ভুক্ত আইকন দেখতে হলে?</item>
     <item>How to replace an icon with an alternative one?</item>
     <item>How to request unthemed icons?</item>
     <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
     <item>Why do icons look pixelated on my device?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
+    <item>লঞ্চার থেকে অ্যাপ আইকন গোপন করার উপায় কি?</item>
     <item>How to open the app after app icon is hidden from launcher?</item>
     <item>How to show app icon in launcher again?</item>
     <item>Why does the app need permission to modify or delete content of my storage?</item>

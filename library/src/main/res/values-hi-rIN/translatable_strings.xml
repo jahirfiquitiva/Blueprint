@@ -71,6 +71,7 @@
   <string name="apps_limit_dialog_day_extra_sec">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
   <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
   <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
+  <string name="loading_apps_to_request">अनुरोध करने के लिए ऐप्स लोड हो रहा है...</string>
   <string name="request_upload_success">सफलता!</string>
   <string name="request_upload_success_content">अनुरोध हमारे सर्वर पर सफलतापूर्वक अपलोड किया गया है ।</string>
   <!-- Preferences -->
