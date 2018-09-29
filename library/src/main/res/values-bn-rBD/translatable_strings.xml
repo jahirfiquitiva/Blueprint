@@ -41,7 +41,9 @@
   <string name="impossible_open_themes">থিম অ্যাপ চালু করা সম্ভব নয়</string>
   <string name="themes_app_not_installed">থিম অ্যাপ এই ডিভাইসটিতে ইনস্টল করা নেই</string>
   <string name="included_templates">%1$s টি টেমপ্লেট</string>
+  <string name="launcher_icon_restored">%1$s লঞ্চার আইকন পুনরুদ্ধার করা হয়েছে</string>
   <!-- Widgets Names -->
+  <string name="iconrestorer_widget_title">আইকন পুনরুদ্ধার উইজেট</string>
   <string name="clock_widget_title">অ্যানালগ ঘড়ি</string>
   <string name="search_apps">অ্যাপ্লিকেশানগুলি অনুসন্ধান করুন</string>
   <string name="seconds">সেকেন্ড</string>
@@ -71,14 +73,14 @@
   <!-- HELP SECTION -->
   <string-array name="questions">
     <item>আইকন প্যাক ব্যবহার করে কিভাবে?</item>
-    <item>How to apply the Icon Pack?</item>
+    <item>আইকন প্যাক কিভাবে প্রয়োগ করে?</item>
     <item>অন্তর্ভুক্ত আইকন দেখতে হলে?</item>
     <item>How to replace an icon with an alternative one?</item>
     <item>How to request unthemed icons?</item>
     <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
     <item>Why do icons look pixelated on my device?</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
+    <item>লঞ্চার থেকে অ্যাপ আইকন গোপন করার উপায় কি?</item>
     <item>How to open the app after app icon is hidden from launcher?</item>
     <item>How to show app icon in launcher again?</item>
     <item>Why does the app need permission to modify or delete content of my storage?</item>
