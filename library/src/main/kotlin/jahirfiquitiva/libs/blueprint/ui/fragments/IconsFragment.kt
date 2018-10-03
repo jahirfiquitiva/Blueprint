@@ -65,7 +65,6 @@ class IconsFragment : ViewModelFragment<Icon>() {
     private var model: IconsViewModel? = null
     private var recyclerView: EmptyViewRecyclerView? = null
     private var fastScroller: RecyclerFastScroller? = null
-    
     private var dialog: IconDialog? = null
     
     private val adapter: IconsAdapter? by lazy {
