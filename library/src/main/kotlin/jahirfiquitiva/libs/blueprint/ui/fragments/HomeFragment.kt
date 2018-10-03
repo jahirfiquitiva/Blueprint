@@ -25,7 +25,7 @@ import ca.allanwang.kau.utils.openLink
 import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
-import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
+import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
@@ -50,9 +50,9 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         private const val PREVIEW_DELAY = 25L
     }
     
-    private val model: HomeItemViewModel by lazyViewModel()
-    private val iconsModel: IconsViewModel by lazyViewModel()
-    private val wallsModel: WallpapersViewModel by lazyViewModel()
+    private var model: HomeItemViewModel? = null
+    private var iconsModel: IconsViewModel? = null
+    private var wallsModel: WallpapersViewModel? = null
     
     private var recyclerView: EmptyViewRecyclerView? = null
     private var modelsLoaded = false
@@ -61,8 +61,8 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         HomeAdapter(
             WeakReference(activity),
             context?.let { Glide.with(it) },
-            iconsModel.getData().orEmpty().size,
-            wallsModel.getData().orEmpty().size) {
+            iconsModel?.getData().orEmpty().size,
+            wallsModel?.getData().orEmpty().size) {
             onItemClicked(it, false)
         }
     }
@@ -78,15 +78,21 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         } else null
     }
     
+    override fun initViewModels() {
+        model = getViewModel()
+        iconsModel = getViewModel()
+        wallsModel = getViewModel()
+    }
+    
     override fun registerObservers() {
-        model.observe(this) {
+        model?.observe(this) {
             bindPreviewCard()
             postDelayed(PREVIEW_DELAY) {
                 homeAdapter?.updateItems(ArrayList(it))
                 normalState()
             }
         }
-        iconsModel.observe(this) { categories ->
+        iconsModel?.observe(this) { categories ->
             bindPreviewCard()
             postDelayed(PREVIEW_DELAY) {
                 val allIcons = ArrayList<Icon>()
@@ -100,7 +106,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
                 normalState()
             }
         }
-        wallsModel.observe(this) {
+        wallsModel?.observe(this) {
             bindPreviewCard()
             postDelayed(PREVIEW_DELAY) {
                 homeAdapter?.updateWallsCount(it.size)
@@ -109,17 +115,11 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         }
     }
     
-    override fun unregisterObservers() {
-        model.destroy(this)
-        iconsModel.destroy(this)
-        wallsModel.destroy(this)
-    }
-    
     override fun loadDataFromViewModel() {
         activity {
-            model.loadData(it)
-            iconsModel.loadData(it)
-            wallsModel.loadData(it)
+            model?.loadData(it)
+            iconsModel?.loadData(it)
+            wallsModel?.loadData(it)
         }
     }
     

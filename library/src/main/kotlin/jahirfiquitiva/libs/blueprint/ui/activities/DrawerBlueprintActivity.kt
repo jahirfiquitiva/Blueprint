@@ -237,6 +237,10 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity(),
     
     override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean): Boolean {
         if (isIconsPicker) lockDrawer()
+        val itemId = getMenuIdForItemId(item.id)
+        val correctItem = itemId != R.id.nav_templates && itemId != R.id.nav_about &&
+            itemId != R.id.nav_settings && itemId != R.id.nav_help
+        navView?.menu?.findItem(itemId)?.isChecked = correctItem
         return super.navigateToItem(item, fromClick, force)
     }
     

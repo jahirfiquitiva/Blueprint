@@ -50,11 +50,9 @@ import jahirfiquitiva.libs.blueprint.models.NavigationItem
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.quest.events.SendRequestCallback
 import jahirfiquitiva.libs.blueprint.ui.fragments.ApplyFragment
-import jahirfiquitiva.libs.blueprint.ui.fragments.EmptyFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
-import jahirfiquitiva.libs.blueprint.ui.fragments.WallpapersFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.FiltersBottomSheet
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.showChanges
@@ -77,7 +75,6 @@ import jahirfiquitiva.libs.kext.extensions.primaryColor
 import jahirfiquitiva.libs.kext.extensions.setItemVisibility
 import jahirfiquitiva.libs.kext.extensions.stringArray
 import jahirfiquitiva.libs.kext.extensions.tint
-import jahirfiquitiva.libs.kext.ui.fragments.adapters.FragmentsPagerAdapter
 import jahirfiquitiva.libs.kext.ui.layouts.FixedElevationAppBarLayout
 import jahirfiquitiva.libs.kext.ui.widgets.CustomSearchView
 import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
@@ -106,6 +103,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     private var searchView: CustomSearchView? = null
     
     private val pager: PseudoViewPager? by bind(R.id.pager)
+    private var pagerAdapter: BlueprintSectionsAdapter? = null
     
     internal val isIconsPicker: Boolean
         get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
@@ -160,29 +158,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     private fun initFragments() {
-        val fragmentsAdapter = FragmentsPagerAdapter(supportFragmentManager)
-        val defFragment = EmptyFragment()
-        loop@ for (item in getNavigationItems()) {
-            when (item.id) {
-                DEFAULT_HOME_SECTION_ID ->
-                    fragmentsAdapter.addFragment(if (isIconsPicker) defFragment else HomeFragment())
-                DEFAULT_ICONS_SECTION_ID ->
-                    fragmentsAdapter.addFragment(IconsFragment.create(pickerKey))
-                DEFAULT_WALLPAPERS_SECTION_ID ->
-                    fragmentsAdapter.addFragment(
-                        if (isIconsPicker) defFragment else
-                            WallpapersFragment.create(getLicenseChecker() != null))
-                DEFAULT_APPLY_SECTION_ID ->
-                    fragmentsAdapter.addFragment(
-                        if (isIconsPicker) defFragment else ApplyFragment())
-                DEFAULT_REQUEST_SECTION_ID ->
-                    fragmentsAdapter.addFragment(
-                        if (isIconsPicker) defFragment else RequestsFragment.create(debug()))
-                else -> continue@loop
-            }
-        }
-        pager?.offscreenPageLimit = fragmentsAdapter.count
-        pager?.adapter = fragmentsAdapter
+        pagerAdapter = BlueprintSectionsAdapter(
+            supportFragmentManager,
+            pickerKey,
+            getLicenseChecker() != null,
+            debug(),
+            getNavigationItems())
+        pager?.adapter = pagerAdapter
     }
     
     private fun initFAB() {
@@ -313,8 +295,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     override fun onResume() {
         super.onResume()
         invalidateOptionsMenu()
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition) as? HomeFragment)
-            ?.scrollToTop()
+        (pagerAdapter?.get(currentSectionPosition) as? HomeFragment)?.scrollToTop()
     }
     
     override fun onPause() {
@@ -519,13 +500,11 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     private fun applyIconFilters() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-            currentSectionPosition) as? IconsFragment)?.applyFilters(activeFilters)
+        (pagerAdapter?.get(currentSectionPosition) as? IconsFragment)?.applyFilters(activeFilters)
     }
     
     private fun scrollToTop() {
-        val activeFragment =
-            (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
+        val activeFragment = pagerAdapter?.get(currentSectionPosition)
         (activeFragment as? HomeFragment)?.scrollToTop()
         (activeFragment as? IconsFragment)?.scrollToTop()
         (activeFragment as? BaseFramesFragment<*, *>)?.scrollToTop()
@@ -534,8 +513,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     private fun doSearch(search: String = "", closed: Boolean = false) {
-        val activeFragment =
-            (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
+        val activeFragment = pagerAdapter?.get(currentSectionPosition)
         (activeFragment as? IconsFragment)?.doSearch(search, closed)
         (activeFragment as? BaseFramesFragment<*, *>)?.applyFilter(search, closed)
         (activeFragment as? ApplyFragment)?.applyFilter(search, closed)
@@ -543,26 +521,19 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     private fun refreshWallpapers() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
-            as? BaseFramesFragment<*, *>)?.reloadData(1)
+        (pagerAdapter?.get(currentSectionPosition) as? BaseFramesFragment<*, *>)?.reloadData(1)
     }
     
     private fun refreshRequests() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-            currentSectionPosition) as? RequestsFragment)
-            ?.refresh()
+        (pagerAdapter?.get(currentSectionPosition) as? RequestsFragment)?.refresh()
     }
     
     private fun toggleSelectAll() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-            currentSectionPosition) as? RequestsFragment)
-            ?.toggleSelectAll()
+        (pagerAdapter?.get(currentSectionPosition) as? RequestsFragment)?.toggleSelectAll()
     }
     
     internal fun deselectAll() {
-        ((pager?.adapter as? FragmentsPagerAdapter)?.get(
-            currentSectionPosition) as? RequestsFragment)
-            ?.deselectAll()
+        (pagerAdapter?.get(currentSectionPosition) as? RequestsFragment)?.deselectAll()
     }
     
     internal fun launchHelpActivity() {
@@ -574,8 +545,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     internal fun postToFab(post: (CounterFab) -> Unit) {
-        val currentFragment =
-            (pager?.adapter as? FragmentsPagerAdapter)?.get(currentSectionPosition)
+        val currentFragment = pagerAdapter?.get(currentSectionPosition)
         when (currentFragment) {
             is RequestsFragment, is IconsFragment -> fab?.let { post(it) }
         }

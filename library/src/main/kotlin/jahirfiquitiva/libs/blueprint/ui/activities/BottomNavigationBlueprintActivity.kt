@@ -59,7 +59,7 @@ abstract class BottomNavigationBlueprintActivity : BaseBlueprintActivity() {
     }
     
     override fun navigateToItem(item: NavigationItem, fromClick: Boolean, force: Boolean): Boolean {
-        if (!fromClick) bottomBar?.setCurrentItem(item.id, false)
+        if (!fromClick) bottomBar?.setCurrentItem(getNavigationItems().indexOf(item), false)
         if (!hasBottomNavigation()) {
             bottomBar?.hideBottomNavigation()
             bottomBar?.gone()
