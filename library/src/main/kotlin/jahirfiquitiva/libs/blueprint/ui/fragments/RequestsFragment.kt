@@ -29,7 +29,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.andremion.counterfab.CounterFab
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
-import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
+import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
@@ -64,8 +64,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     private var debug = false
     
-    private val viewModel: RequestsViewModel by lazyViewModel()
-    
+    private var viewModel: RequestsViewModel? = null
     private var recyclerView: EmptyViewRecyclerView? = null
     private var fastScroller: RecyclerFastScroller? = null
     private var swipeToRefresh: SwipeRefreshLayout? = null
@@ -191,21 +190,25 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
             recyclerView?.setEmptyImage(R.drawable.no_results)
             recyclerView?.setEmptyText(R.string.search_no_results)
             adapter?.setItems(
-                ArrayList(viewModel.getData().orEmpty()).jfilter {
+                ArrayList(viewModel?.getData().orEmpty()).jfilter {
                     it.name.contains(filter, true)
                 })
         } else {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)
-            viewModel.getData()?.let { adapter?.setItems(ArrayList(it)) }
+            viewModel?.getData()?.let { adapter?.setItems(ArrayList(it)) }
         }
         if (!closed)
             scrollToTop()
     }
     
+    override fun initViewModels() {
+        viewModel = getViewModel()
+    }
+    
     override fun registerObservers() {
-        viewModel.callback = this
-        viewModel.observe(this) {
+        viewModel?.callback = this
+        viewModel?.observe(this) {
             swipeToRefresh?.isRefreshing = false
             adapter?.setItems(ArrayList(it))
             if (it.isEmpty()) {
@@ -228,7 +231,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     private fun internalLoadData(force: Boolean) {
         activity {
-            viewModel.loadData(
+            viewModel?.loadData(
                 it, debug, context?.getString(R.string.arctic_backend_host),
                 context?.getString(R.string.arctic_backend_api_key), force)
         }
@@ -236,7 +239,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     override fun onAppsLoaded(apps: ArrayList<App>) {
         super.onAppsLoaded(apps)
-        viewModel.postResult(apps)
+        viewModel?.postResult(apps)
         normalState()
     }
     
@@ -300,10 +303,6 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         }
     }
     
-    override fun unregisterObservers() {
-        viewModel.destroy(this)
-    }
-    
     override fun onDestroy() {
         super.onDestroy()
         destroyDialog()
@@ -320,7 +319,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     override fun getContentLayout(): Int = R.layout.section_with_swipe_refresh
     override fun autoStartLoad(): Boolean = true
-    override fun allowReloadAfterVisibleToUser(): Boolean = viewModel.getData().orEmpty().isEmpty()
+    override fun allowReloadAfterVisibleToUser(): Boolean = viewModel?.getData().orEmpty().isEmpty()
     
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         canShowProgress = isVisibleToUser

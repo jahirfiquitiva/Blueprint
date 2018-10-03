@@ -30,7 +30,7 @@ import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
-import jahirfiquitiva.libs.archhelpers.extensions.lazyViewModel
+import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
 import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
@@ -62,7 +62,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         fun create(key: Int) = IconsFragment().apply { pickerKey = key }
     }
     
-    private val model: IconsViewModel by lazyViewModel()
+    private var model: IconsViewModel? = null
     private var recyclerView: EmptyViewRecyclerView? = null
     private var fastScroller: RecyclerFastScroller? = null
     
@@ -73,7 +73,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
     }
     
     fun applyFilters(filters: ArrayList<Filter>) {
-        val list = ArrayList(model.getData().orEmpty())
+        val list = ArrayList(model?.getData().orEmpty())
         if (filters.isNotEmpty()) {
             setAdapterItems(list.jfilter { validFilter(it.title, filters) })
         } else {
@@ -89,7 +89,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             recyclerView?.setEmptyImage(R.drawable.empty_section)
             recyclerView?.setEmptyText(R.string.empty_section)
         }
-        setAdapterItems(ArrayList(model.getData().orEmpty()), search)
+        setAdapterItems(ArrayList(model?.getData().orEmpty()), search)
         if (!closed)
             scrollToTop()
     }
@@ -98,8 +98,12 @@ class IconsFragment : ViewModelFragment<Icon>() {
         recyclerView?.post { recyclerView?.scrollToPosition(0) }
     }
     
+    override fun initViewModels() {
+        model = getViewModel()
+    }
+    
     override fun registerObservers() {
-        model.observe(this) { categories ->
+        model?.observe(this) { categories ->
             setAdapterItems(ArrayList(categories))
             (activity as? BaseBlueprintActivity)?.let {
                 val filters = ArrayList<String>()
@@ -135,10 +139,6 @@ class IconsFragment : ViewModelFragment<Icon>() {
         } else true
     }
     
-    override fun unregisterObservers() {
-        model.destroy(this)
-    }
-    
     override fun onDestroyView() {
         super.onDestroyView()
         activity { dialog?.dismiss(it, IconDialog.TAG) }
@@ -150,7 +150,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         activity { dialog?.dismiss(it, IconDialog.TAG) }
     }
     
-    override fun loadDataFromViewModel() = activity { model.loadData(it) }
+    override fun loadDataFromViewModel() = activity { model?.loadData(it) }
     
     override fun getContentLayout(): Int = R.layout.section_layout
     
