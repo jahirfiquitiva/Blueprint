@@ -92,11 +92,11 @@
     <item>How to open the app after app icon is hidden from launcher?</item>
     <item>How to show app icon in launcher again?</item>
     <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
+    <item>অ্যাপটি পুরো নেটওয়ার্কে প্রবেশের অনুমতি কেন প্রয়োজন?</item>
+    <item>অ্যাপটি সংযোগসমূহ প্রদর্শন করার অনুমতি কেন প্রয়োজন?</item>
+    <item>অ্যাপটি ওয়ালপেপার সেট করার অনুমতি কেন প্রয়োজন?</item>
+    <item>অ্যাপটি ওয়ালপেপার আকার সমন্বয় করতে অনুমতি কেন প্রয়োজন?</item>
+    <item>অ্যাপটি ফোনে নিষ্ক্রিয় হওয়া হতে প্রতিরোধ করতে অনুমতি কেন প্রয়োজন?</item>
   </string-array>
   <string-array name="answers">
     <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
