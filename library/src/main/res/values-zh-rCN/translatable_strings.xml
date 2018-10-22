@@ -70,6 +70,7 @@
   <string name="apps_limit_dialog_day_extra">您将能够在%1$s后再次申请图标。</string>
   <string name="apps_limit_dialog_day_extra_sec">您将能够在不到一分钟后再次申请适配。</string>
   <string name="requests_error">您有一错误要求上传至我们的服务器。 \n原因: %1$s\n请稍待片刻再试一次。</string>
+  <string name="requests_upload_error">有一项错误要求上传至我们的服务器。 \n原因: %1$s\n请稍待片刻再试一次。</string>
   <string name="loading_apps_to_request">正在加载可申请的应用程序…</string>
   <string name="building_request_dialog">正在生成申请文件…</string>
   <string name="request_upload_success">申请成功！</string>
