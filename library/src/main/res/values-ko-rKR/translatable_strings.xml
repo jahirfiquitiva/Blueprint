@@ -97,13 +97,13 @@
     <item>아이콘팩을 적용했는데 아이콘이 깨져보여요.</item>
     <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
     <item>이 팩을 런처에서 숨기고싶어요.</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>숨긴것까지는 좋았는데 앱을 실행하려면 어떻게 해야하나요?</item>
+    <item>이 팩을 런처에서 다시 표시하고싶어요.</item>
+    <item>저장공간의 콘텐츠를 수정하거나 삭제할 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+    <item>인터넷 접근 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+    <item>인터넷 연결 상태 확인 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+    <item>배경화면 설정 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+    <item>배경화면 사이즈 조절 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
     <item>Why does the app need permission to prevent phone from sleeping?</item>
   </string-array>
 </resources>
