@@ -93,7 +93,7 @@
     <item>이 앱에 포함된 아이콘들을 보고싶어요.</item>
     <item>아이콘팩을 적용했는데 따로 변경하고 싶은 아이콘이 있어요. 어떻게하죠?</item>
     <item>제가 쓰는 앱 아이콘이 이 팩에 없어요. 어떻게하죠?</item>
-    <item>장치를 다시 시작하면 아이콘팩이 더 이상 적용되지 않습니다. 아이콘이 기본값으로 복원되었습니다.</item>
+    <item>아이콘팩을 적용하고 기기를 다시 시작했는데 아이콘팩이 기본값으로 돌아와있어요.</item>
     <item>아이콘팩을 적용했는데 아이콘이 깨져보여요.</item>
     <item>아이콘팩에 제 앱이 있는걸 확인했는데 적용이 안돼요.</item>
     <item>이 팩을 런처에서 숨기고싶어요.</item>
@@ -111,13 +111,13 @@
     <item>왼쪽에서 탐색 창을 밀고 \'적용\' 항목으로 이동하거나 하단 막대에서 4번째 아이콘을 선택합니다. 여기에서 아이콘을 적용 할 런처를 선택할 수 있습니다. 일부 런처는 자동 적용을 지원하지 않으므로 각 런처의 설정을 통해 수동으로 설정해야합니다.</item>
     <item>왼쪽에서 탐색 창을 밀고 \'아이콘\' 항목으로 이동하거나 하단 막대에서 2번째 아이콘을 선택합니다.</item>
     <item>해당 아이콘을 길게 터치한 후, 팝업 메뉴에서 \"편집\"을 선택하거나 아이콘을 길게 탭하여 \"편집\" 항목으로 이동합니다.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+    <item>왼쪽에서 탐색 창을 밀고 \'요청\' 항목으로 이동하거나 하단 막대에서 5번째 아이콘을 선택합니다.</item>
+    <item>아이콘팩이 SD 카드로 옮겨졌을때, 내부 저장공간에 옮길 권한이 필요해서 그렇습니다.</item>
+    <item>큰 해상도를 처리 할 때 사용중인 런처에 문제가 있을 수 있습니다. 이 문제는 아이콘 크기를 115 - 120 %로 늘려서 문제를 해결할 수 있습니다. 그래도 해결되지 않으면 다른 런처를 사용해보십시오.</item>
     <item>Send an icon request.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+    <item>상단의 3점으로 된 버튼을 클릭해서 \'설정\'으로 들어갑니다. 그런 다음 \'런처에서 이 앱 숨기기\' 옵션을 선택하세요.</item>
+    <item>런처의 홈화면으로 이동한 다음 이 아이콘팩의 위젯을 만듭니다. 이름이 \'IconRestorer\' 인것을 탭하시면 됩니다.</item>
+    <item>상단의 3점으로 된 버튼을 클릭해서 \'설정\'으로 들어갑니다. 그런 다음 \'런처에서 이 앱 숨기기\' 옵션을 해제하세요.</item>
     <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
     <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
     <item>It\'s needed to be able to check if your device has internet connection.</item>
