@@ -112,16 +112,16 @@
     <item>왼쪽에서 탐색 창을 밀고 \'아이콘\' 항목으로 이동하거나 하단 막대에서 2번째 아이콘을 선택합니다.</item>
     <item>해당 아이콘을 길게 터치한 후, 팝업 메뉴에서 \"편집\"을 선택하거나 아이콘을 길게 탭하여 \"편집\" 항목으로 이동합니다.</item>
     <item>왼쪽에서 탐색 창을 밀고 \'요청\' 항목으로 이동하거나 하단 막대에서 5번째 아이콘을 선택합니다.</item>
-    <item>아이콘팩이 SD 카드로 옮겨졌을때, 내부 저장공간에 옮길 권한이 필요해서 그렇습니다.</item>
+    <item>아이콘팩이 SD 카드에 있어서 그렇습니다. 내부 저장공간으로 옮겨주세요.</item>
     <item>큰 해상도를 처리 할 때 사용중인 런처에 문제가 있을 수 있습니다. 이 문제는 아이콘 크기를 115 - 120 %로 늘려서 문제를 해결할 수 있습니다. 그래도 해결되지 않으면 다른 런처를 사용해보십시오.</item>
     <item>Send an icon request.</item>
     <item>상단의 3점으로 된 버튼을 클릭해서 \'설정\'으로 들어갑니다. 그런 다음 \'런처에서 이 앱 숨기기\' 옵션을 선택하세요.</item>
     <item>런처의 홈화면으로 이동한 다음 이 아이콘팩의 위젯을 만듭니다. 이름이 \'IconRestorer\' 인것을 탭하시면 됩니다.</item>
     <item>상단의 3점으로 된 버튼을 클릭해서 \'설정\'으로 들어갑니다. 그런 다음 \'런처에서 이 앱 숨기기\' 옵션을 해제하세요.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+    <item>\'아이콘 요청하기\'의 데이터, 배경화면을 저장하고, 배경화면의 저장 위치를 변경할 수 있는 권한이 필요해서 그렇습니다.</item>
+    <item>배경화면 항목에서 배경화면을 받아오고 다운로드하기 때문입니다.</item>
+    <item>배경화면이나 기타 업데이트를 확인하는 과정에서 기기가 인터넷에 연결되어 있는지 확인하기 때문입니다.</item>
+    <item>배경화면 항목에 있는 배경화면을 바로 적용하는 기능으로 인해 생긴 권한입니다.</item>
     <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
     <item>It\'s needed by Muzei Live Wallpaper.</item>
   </string-array>
