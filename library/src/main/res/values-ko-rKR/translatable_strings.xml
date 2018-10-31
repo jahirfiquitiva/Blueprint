@@ -16,7 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">청사진 대시보드</string>
+  <string name="frames_dashboard">Blueprint 대시보드</string>
   <string name="coming_soon">출시 예정</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">홈</string>
@@ -76,6 +76,34 @@
   <string name="request_upload_success">성공!</string>
   <string name="request_upload_success_content">당신의 요청은 우리 서버에 성공적으로 업로드 되었습니다.</string>
   <!-- Preferences -->
+  <string name="pref_title_wall_header">이 배경화면을 사용한 아이콘 미리보기</string>
+  <string name="pref_summary_wall_header">현재 기기의 배경화면이 표시됩니다.</string>
+  <string name="pref_header_launcher_icon">런처 아이콘</string>
+  <string name="pref_title_launcher_icon">런처 아이콘 숨기기</string>
+  <string name="pref_summary_launcher_icon">이 항목을 체크하면, 런처에서 아이콘이 숨겨집니다.</string>
+  <string name="clearcache_dialog_content">앱 데이터, 캐시 및 설정을 삭제 하시겠습니까? 적용된 아이콘은 영향을 받지 않습니다.</string>
   <string name="hideicon_dialog_title">경고!</string>
+  <string name="hideicon_dialog_content">런처에서 앱 아이콘을 숨기시겠습니까?\n이 애플리케이션이 예기치 않게 닫힐 수 있으며 알림이 완전히 사용 중지됩니다.\n이 앱을 숨기기 전, 자주 묻는 질문을 읽어보시면 다시 표시하는 방법을 볼 수 있습니다.</string>
+  <string name="send_using">전송 시 사용할 앱</string>
+  <string name="no_mail">이메일 앱이 설치되지 않았습니다.</string>
   <!-- HELP SECTION -->
+  <string-array name="questions">
+    <item>이 아이콘팩의 사용 방법을 알려주세요!</item>
+    <item>이 아이콘팩을 적용하고싶어요!</item>
+    <item>이 앱에 포함된 아이콘들을 보고싶어요</item>
+    <item>How to replace an icon with an alternative one?</item>
+    <item>제가 쓰는 앱 아이콘이 이 팩에 없어요. 어떻게하죠?</item>
+    <item>장치를 다시 시작하면 아이콘팩이 더 이상 적용되지 않습니다. 아이콘이 기본값으로 복원되었습니다.</item>
+    <item>아이콘팩을 적용했는데 아이콘이 깨져보여요.</item>
+    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+    <item>이 팩을 런처에서 숨기고싶어요.</item>
+    <item>How to open the app after app icon is hidden from launcher?</item>
+    <item>How to show app icon in launcher again?</item>
+    <item>Why does the app need permission to modify or delete content of my storage?</item>
+    <item>Why does the app need permission to full network access?</item>
+    <item>Why does the app need permission to view connections?</item>
+    <item>Why does the app need permission to set wallpaper?</item>
+    <item>Why does the app need permission to adjust the wallpaper size?</item>
+    <item>Why does the app need permission to prevent phone from sleeping?</item>
+  </string-array>
 </resources>
