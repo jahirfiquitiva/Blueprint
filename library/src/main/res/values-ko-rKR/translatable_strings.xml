@@ -16,7 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint 대시보드</string>
+  <string name="frames_dashboard">Blueprint</string>
   <string name="coming_soon">출시 예정</string>
   <!-- List Of Drawer Sections -->
   <string name="section_home">홈</string>
@@ -46,7 +46,7 @@
   <string name="included_templates">%1$s 템플릿</string>
   <string name="launcher_icon_restored">%1$s 런처의 아이콘이 복원되었습니다</string>
   <string name="launcher_icon_not_restored">%1$s 런처의 아이콘이 이미 표시되어 있습니다.</string>
-  <string name="launcher_icon_restorer_error">코드 %1$s의 문제가 있습니다. 개발자에게 연락해 주세요.</string>
+  <string name="launcher_icon_restorer_error">코드 %1$s의 에러가 발생했습니다. 개발자에게 문의해주세요.</string>
   <!-- Widgets Names -->
   <string name="iconrestorer_widget_title">아이콘 복원 위젯</string>
   <string name="clock_widget_title">아날로그 시계</string>
@@ -64,17 +64,17 @@
   <string name="select_all">전부 선택</string>
   <string name="no_selected_apps_title">선택된 앱이 없습니다</string>
   <string name="no_selected_apps_content">요청할 앱을 선택하지 않았습니다. 몇 개의 앱을 선택하고 버튼을 눌러주세요</string>
-  <string name="apps_limit_dialog">죄송합니다. 오직 %1$s 앱의 선택만 가능합니다.</string>
-  <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
-  <string name="apps_limit_dialog_day">죄송하지만 당신은 오직 %1$s마다 아이콘을 사용할 수 있습니다.</string>
-  <string name="apps_limit_dialog_day_extra">당신은 %1$s 내로 요청한 아이콘을 다시 사용할 수 있을 겁니다.</string>
-  <string name="apps_limit_dialog_day_extra_sec">1분 안에 요청 아이콘을 다시 사용할 수 있을 것입니다.</string>
-  <string name="requests_error">요청. \nReason 애플 리 케이 션 로드 오류가 발생 했습니다: %1$s\nPlease 나중에 다시 시도 하십시오.</string>
-  <string name="requests_upload_error">저희 서버에 어플을 업로드하는 과정에서 오류가 발생했습니다.\n이유:%1$s\n나중에 다시 시도해주세요.</string>
-  <string name="loading_apps_to_request">앱 로딩을 요청중...</string>
-  <string name="building_request_dialog">요청하신 파일을 생성 중입니다...</string>
+  <string name="apps_limit_dialog">최대 %1$s개의 앱만 선택하실 수 있습니다.</string>
+  <string name="apps_limit_dialog_more">현재 %1$s개의 앱만 요청하실 수 있습니다.</string>
+  <string name="apps_limit_dialog_day">죄송합니다만 %1$s에 한 번씩만 아이콘을 요청할 수 있습니다.</string>
+  <string name="apps_limit_dialog_day_extra">하지만 %1$s 내로 요청하신 아이콘을 사용하실 수 있습니다.</string>
+  <string name="apps_limit_dialog_day_extra_sec">몇 분 뒤 아이콘을 다시 요청하실 수 있습니다.</string>
+  <string name="requests_error">요청하신 앱을 불러오는 중 오류가 발생했습니다.\n원인: %1$s\n다음에 다시 시도해주세요.</string>
+  <string name="requests_upload_error">서버에 요청하신 앱을 올리는 중 오류가 발생했습니다.\n원인: %1$s\n다음에 다시 시도해주세요.</string>
+  <string name="loading_apps_to_request">요청할 수 있는 앱을 로딩 중입니다...</string>
+  <string name="building_request_dialog">요청하신 앱의 파일을 생성 중입니다...</string>
   <string name="request_upload_success">성공!</string>
-  <string name="request_upload_success_content">당신의 요청은 우리 서버에 성공적으로 업로드 되었습니다.</string>
+  <string name="request_upload_success_content">요청하신 앱 정보가 서버에 정상적으로 업로드 되었습니다.</string>
   <!-- Preferences -->
   <string name="pref_title_wall_header">이 배경화면을 사용한 아이콘 미리보기</string>
   <string name="pref_summary_wall_header">현재 기기의 배경화면이 표시됩니다.</string>
@@ -123,6 +123,6 @@
     <item>배경화면이나 기타 업데이트를 확인하는 과정에서 기기가 인터넷에 연결되어 있는지 확인하기 때문입니다.</item>
     <item>배경화면 항목에 있는 배경화면을 바로 적용하는 기능으로 인해 생긴 권한입니다.</item>
     <item>기기의 화면 해상도에 따라 배경화면 크기를 조절하는 과정에서 생긴 권한입니다.</item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
+    <item>Muzei Live Wallpaper와 앱을 연계해서 사용할 때 필요합니다.</item>
   </string-array>
 </resources>
