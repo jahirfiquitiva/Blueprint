@@ -110,9 +110,9 @@
         <item>আপনার এমন লঞ্চারের প্রয়োজন যা আইকন প্যাক ব্যবহার করতে সক্ষম । উপযুক্ত লঞ্চারের তালিকা পাওয়া যাবে অ্যাপ-এর \"প্রয়োগ করুন\" বিভাগে, বা প্লে স্টোরের বিবরনে ।</item>
         <item>অ্যাপটির নেভিগেশনের উপর নির্ভর করে আপনার নেভিগেশন ড্রয়ারের বাম দিক থেকে ডান দিকে স্লাইড করতে হবে, এবং \"প্রয়োগ করুন\" বিভাগে যান, নয়তো নিচের নেভিগেশন বার থেকে চতুর্থ আইকন নির্বাচন করুন; সেখান থেকে আপনি লঞ্চার নির্বাচন করতে পারবেন আইকন প্রয়োগ করার জন্যে । কিছু লঞ্চারে স্বয়ংক্রিয়ভাবে প্রয়োগ হয় না এবং এটা আপনাকে নিজে থেকে সেই লঞ্চারের সেটিংস-এ গিয়ে করতে হবে।</item>
         <item>অ্যাপ-এর প্রধান অংশে ফিরে যান এবং \"আইকনস\" অপশন নির্বাচন করুন ।</item>
-        <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+        <item>যে লঞ্চার আপনি ব্যবহার করছেন তার উপর নির্ভর করে আপনি হয় আইকনটি দীর্ঘ ট্যাপ করুন এবং পপ-আপ মেনু থেকে \"ইডিট করুন\" নির্বাচন করুন, অথবা আইকনটি দীর্ঘ ট্যাপ করুন এবং এটিকে \'এডিট\' বক্সে ফেলুন ।</item>
+        <item>অ্যাপটির নেভিগেশনের ভিত্তিতে হয়তো আপনাকে নেভিগেশন ড্রয়ারের বাম দিকে থেকে স্লাইড করতে হবে এবং \"অনুরোধ\" বিভাগে যেতে হবে, অথবা নীচের নেভিগেশন বার থেকে আইকন বেছে নিন ।</item>
+        <item>এটা হতে পারে যে আপনি ‌‌‌অ্যাপটি SD Card -এ সরিয়েছেন, আপনাকে অ্যাপটি Internal Storage -এ ইন্সটল করা উচিত ।</item>
         <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
         <item>একটি আইকনের অনুরোধ পাঠান ।</item>
         <item>নেভিগেশন ড্রয়ার-এর বাম দিক থেকে স্লাইড করুন অথবা ৩ ডট মেনু বোতামে ট্যাপ করুন ও \"সেটিংস\" বিভাগে যান। তারপর \"লঞ্চার থেকে আইকন গোপন করুন\" অপশনটি চেক করুন ।</item>
