@@ -40,6 +40,7 @@
     <string name="columns">কলামের সংখ্যা</string>
     <string name="lni_content">%1$s এ মুহূর্তে আপনার ডিভাইসে ইন্সটল করা নেই।\n আপনি কি এটি প্লে স্টোর থেকে ইন্সটল করতে চান?</string>
     <string name="no_compatible_launcher_title">এই লঞ্চারটি উপযুক্ত নয়</string>
+    <string name="no_compatible_launcher_content">এই লঞ্চারটি কোনো আইকন প্যাকের উপযুক্ত নয় তাই আপনি এই লঞ্চারে এই আইকন প্যাক ব্যবহার করতে পারবেন না । এই কারণের জন্যে দয়া করে আইকন প্যাক-কে নেতিবাচক রেট দিবেন না । আপনি নিজের জন্যে সমাধান ব্যবহার করতে পারেন, কিন্তু এতে আলাদা অ্যাপ এর প্রয়োজন । আপনি কি এই অ্যাপ ডাউনলোড করতে চান ?</string>
     <string name="impossible_open_themes">থিম অ্যাপ চালু করা সম্ভব নয়</string>
     <string name="themes_app_not_installed">থিম অ্যাপ এই ডিভাইসটিতে ইনস্টল করা নেই</string>
     <string name="included_templates">%1$s টি টেমপ্লেট</string>
