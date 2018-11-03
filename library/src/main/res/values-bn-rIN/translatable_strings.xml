@@ -16,10 +16,26 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <!-- List Of Drawer Sections -->
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="frames_dashboard">ব্লু প্রিন্ট ড্যাশবোর্ড</string>
+    <string name="coming_soon">শীঘ্রই আসছে</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">হোম</string>
+    <string name="section_icons">আইকন</string>
+    <string name="section_apply">প্রয়োগ করুন</string>
+    <string name="section_wallpapers">ওয়ালপেপার</string>
+    <string name="section_icon_request">আইকন অনুরোধ</string>
+    <string name="section_donate">দান করুন</string>
+    <string name="section_about">অ্যাপ সম্পর্কে</string>
+    <string name="section_help">সহায়তা</string>
+    <string name="section_zooper">জুপার সেটআপ</string>
+    <string name="section_widgets">উইজেট সমূহ</string>
+    <string name="share_this_app">%1$s আমি ব্যবহার করছি এবং আমি পছন্দ করি। অবশ্যই চেক করুন: %2$s</string>
+    <string name="rate">মুল্যায়ন করুন</string>
+    <!-- Icons filters -->
+    <string name="filter">পরিশ্রুতক</string>
+    <string name="clear">সাফ করুন</string>
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>
