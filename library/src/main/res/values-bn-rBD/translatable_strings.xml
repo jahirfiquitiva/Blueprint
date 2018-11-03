@@ -69,6 +69,8 @@
     <string name="apps_limit_dialog_day">দুঃখিত, কিন্তু আপনি আইকন অনুরোধ করতে পারেন প্রতি %1$s দিন অন্তর ।</string>
     <string name="apps_limit_dialog_day_extra">আপনি আবার আইকন অনুরোধ করতে পারবেন %1$s দিনের মধ্যে ।</string>
     <string name="apps_limit_dialog_day_extra_sec">আপনি এক মিনিটের কম সময়ের মধ্যে আবার আইকন অনুরোধ দিতে সক্ষম হবেন।.</string>
+    <string name="requests_error">একটি ত্রুটি ঘটে গেল যখন অ্যাপ সমূহ লোড করা হচ্ছিল অনুরোধ করার জন্যে ।\nকারণ: %1$s\nদয়া করে পরে চেষ্টা করবেন ।</string>
+    <string name="requests_upload_error">একটি ত্রুটি ঘটে গেল যখন অনুরোধ করা অ্যাপ সমূহ আপলোড করা হচ্ছিল আমাদের সার্ভারে ।\nকারণ: %1$s\nদয়া করে পরে চেষ্টা করবেন ।</string>
     <string name="loading_apps_to_request">অনুরোধ করতে অ্যাপ লোড করা হচ্ছে…</string>
     <string name="building_request_dialog">অনুরোধ ফাইল তৈরি করা হচ্ছে…</string>
     <string name="request_upload_success">সফল হয়েছে!</string>
