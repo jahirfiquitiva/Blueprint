@@ -118,11 +118,11 @@
         <item>নেভিগেশন ড্রয়ার-এর বাম দিক থেকে স্লাইড করুন অথবা ৩ ডট মেনু বোতামে ট্যাপ করুন ও \"সেটিংস\" বিভাগে যান। তারপর \"লঞ্চার থেকে আইকন গোপন করুন\" অপশনটি চেক করুন ।</item>
         <item>আপনার হোম স্ক্রীণ থেকে যান তারপর \'IconRestorer\' নামক অ্যাপ উইজেট তৈরি করুন এবং তা ট্যাপ করুন ।</item>
         <item>নেভিগেশন ড্রয়ার-এর বাম দিক থেকে স্লাইড করুন অথবা ৩ ডট মেনু বোতামে ট্যাপ করুন ও \"সেটিংস\" বিভাগে যান। তারপর \"লঞ্চার থেকে আইকন গোপন করুন\" অপশনটি আনচেক করুন ।</item>
-        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-        <item>It\'s needed to be able to check if your device has internet connection.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>এটার দরকার হবে আইকন অনুরোধ করার তথ্য লেখার জন্যে, ওয়ালপেপার সঞ্চয় করার জন্যে, এবং ওয়ালপেপার ডাউনলোড করার জায়গা পরিবর্তন করতে ।</item>
+        <item>এটার দরকার হবে ওয়ালপেপার লোড ও ডাউনলোড করতে ।</item>
+        <item>এটার দরকার হবে আপনার ডিভাইসে ইন্টারনেট সংযোগ আছে কি না জানার জন্যে ।</item>
+        <item>এটার প্রয়োজন হবে অ্যাপ থেকে সরাসরি ওয়ালপেপার প্রয়োগ করার জন্যে ।</item>
+        <item>এটার প্রয়োজন হবে আপনার স্ক্রিন সাইজের ভিত্তিতে ওয়ালপেপার পরিবর্তন করতে ।</item>
         <item>মুজ্যেই লাইভ ওয়ালপেপারের জন্য এটি প্রয়োজন ।.</item>
     </string-array>
 </resources>
