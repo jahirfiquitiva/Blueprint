@@ -67,6 +67,7 @@
     <string name="apps_limit_dialog">দুঃখিত, কিন্তু আপনাকে শুধু অনুরোধ %1$s টি অ্যাপস নির্বাচন করতে অনুমতি দেওয়া হয়।.</string>
     <string name="apps_limit_dialog_more">দুঃখিত, কিন্তু আপনি এখন শুধু %1$s টি অ্যাপ অনুরোধ করতে পারেন ।</string>
     <string name="apps_limit_dialog_day">দুঃখিত, কিন্তু আপনি আইকন অনুরোধ করতে পারেন প্রতি %1$s দিন অন্তর ।</string>
+    <string name="apps_limit_dialog_day_extra">আপনি আবার আইকন অনুরোধ করতে পারবেন %1$s দিনের মধ্যে ।</string>
     <string name="apps_limit_dialog_day_extra_sec">আপনি এক মিনিটের কম সময়ের মধ্যে আবার আইকন অনুরোধ দিতে সক্ষম হবেন।.</string>
     <string name="loading_apps_to_request">অনুরোধ করতে অ্যাপ লোড করা হচ্ছে…</string>
     <string name="building_request_dialog">অনুরোধ ফাইল তৈরি করা হচ্ছে…</string>
