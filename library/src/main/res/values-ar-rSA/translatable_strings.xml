@@ -16,113 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">مخطط لوحة المعلومات</string>
-  <string name="coming_soon">قريباً</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Home</string>
-  <string name="section_icons">أيقونات</string>
-  <string name="section_apply">تطبيق</string>
-  <string name="section_wallpapers">الخلفيات</string>
-  <string name="section_icon_request">طلب رمز</string>
-  <string name="section_donate">التبرع</string>
-  <string name="section_about">حول هذا التطبيق</string>
-  <string name="section_help">المساعدة</string>
-  <string name="section_zooper">إعداد زوبير</string>
-  <string name="section_widgets">تطبيقات مصغّرة</string>
-  <string name="share_this_app">أنا باستخدام %1$s ، وأنا أحب ذلك. الذهاب التحقق من ذلك في: %2$s</string>
-  <string name="rate">تقييم</string>
-  <!-- Icons filters -->
-  <string name="filter">الفلتر</string>
-  <string name="clear">إزالة</string>
-  <string name="more_apps">المزيد من التطبيقات</string>
-  <string name="general_info">بيانات عامة</string>
-  <string name="useful_links">روابط مفيدة</string>
-  <string name="columns">عدد الأعمدة</string>
-  <string name="lni_content">%1$s غير مثبت حاليا على الجهاز. \nWould ترغب في تثبيته من مخزن لعب جوجل؟</string>
-  <string name="no_compatible_launcher_title">هذا المشغل غير متوافق</string>
-  <string name="no_compatible_launcher_content">هذا المشغل غير متوافق مع أية \"حزم رمز\" ومن ثم لا يمكن استخدام هذا رمز حزمة مع هذا المشغل. يرجى عدم معدل حزمة رمز سلبيا لهذا السبب. هناك حل يمكنك أن تجرب بنفسك، ولكنه يتطلب استخدام التطبيق الخارجي الذي ترغب في تحميله؟</string>
-  <string name="impossible_open_themes">من المستحيل فتح التطبيق المواضيع</string>
-  <string name="themes_app_not_installed">لم يتم تثبيت التطبيق مواضيع في هذا الجهاز</string>
-  <string name="included_templates">%1$s قوالب</string>
-  <string name="launcher_icon_restored">تم استعادة أيقونة مشغل %1$s</string>
-  <string name="launcher_icon_not_restored">%1$s قاذفة الرمز مرئياً مسبقاً</string>
-  <string name="launcher_icon_restorer_error">هناك مشكلة في التعليمات البرمجية من %1$s. الرجاء الاتصال المطور.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
-  <string name="clock_widget_title">التناظرية على مدار الساعة</string>
-  <string name="search_icons">البحث عن الرموز</string>
-  <string name="search_wallpapers">تعيين خلفية</string>
-  <string name="search_launchers">البحث عن قاذفات</string>
-  <string name="search_apps">بحث في التطبيقات</string>
-  <string name="seconds">ثواني</string>
-  <string name="minutes">دقائق</string>
-  <string name="hours">ساعات</string>
-  <string name="days">يوم</string>
-  <string name="weeks">أسبوع</string>
-  <string name="months">الأشهر</string>
-  <!-- Requests -->
-  <string name="select_all">تحديد الكل</string>
-  <string name="no_selected_apps_title">لا توجد تطبيقات محددة</string>
-  <string name="no_selected_apps_content">لم تقم بتحديد أية تطبيقات الطلب. الرجاء تحديد تطبيقات قليلة، ثم انقر فوق هذا الزر مرة أخرى.</string>
-  <string name="apps_limit_dialog">عذراً، لكن فقط يسمح لك بتحديد تطبيقات %1$s لطلب.</string>
-  <string name="apps_limit_dialog_more">عذراً، ولكن يسمح فقط لطلب المزيد من تطبيقات %1$s الآن.</string>
-  <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
-  <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
-  <string name="requests_error">حدث خطأ أثناء تحميل تطبيقات للطلب-\nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
-  <string name="requests_upload_error">حدث خطأ أثناء تحميل تطبيقات بطلب إلى الملقمات لدينا. \nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
-  <string name="loading_apps_to_request">Loading apps to request…</string>
-  <string name="building_request_dialog">Building request files…</string>
-  <string name="request_upload_success">Success!</string>
-  <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
-  <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
-  <string name="pref_header_launcher_icon">Launcher icon</string>
-  <string name="pref_title_launcher_icon">Hide launcher icon</string>
-  <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
-  <string name="clearcache_dialog_content">Are you sure you want to delete app data, cache and settings? Applied icons won\'t be affected.</string>
-  <string name="hideicon_dialog_title">Warning!</string>
-  <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher?\nApp may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.</string>
-  <string name="send_using">Send using…</string>
-  <string name="no_mail">There is no mail app installed</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>How to use the Icon Pack?</item>
-    <item>How to apply the Icon Pack?</item>
-    <item>How to see all the included icons?</item>
-    <item>How to replace an icon with an alternative one?</item>
-    <item>How to request unthemed icons؟</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Why do icons look pixelated on my device؟</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher؟</item>
-    <item>How to open the app after app icon is hidden from launcher؟</item>
-    <item>How to show app icon in launcher again؟</item>
-    <item>Why does the app need permission to modify or delete content of my storage؟</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>لماذا يحتاج التطبيق الإذن لضبط حجم ورق الحائط؟</item>
-    <item>لماذا يحتاج التطبيق الإذن لمنع الهاتف من النوم؟</item>
-  </string-array>
-  <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>العودة إلى القسم الرئيسي من التطبيق ثم انقر على البلاط تحت عنوان \"الرموز\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-    <item>Send an icon request.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
-  </string-array>
+    <string name="frames_dashboard">مخطط لوحة المعلومات</string>
+    <string name="coming_soon">قريباً</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Home</string>
+    <string name="section_icons">أيقونات</string>
+    <string name="section_apply">تطبيق</string>
+    <string name="section_wallpapers">الخلفيات</string>
+    <string name="section_icon_request">طلب رمز</string>
+    <string name="section_donate">التبرع</string>
+    <string name="section_about">حول هذا التطبيق</string>
+    <string name="section_help">المساعدة</string>
+    <string name="section_zooper">إعداد زوبير</string>
+    <string name="section_widgets">تطبيقات مصغّرة</string>
+    <string name="share_this_app">أنا باستخدام %1$s ، وأنا أحب ذلك. الذهاب التحقق من ذلك في: %2$s</string>
+    <string name="rate">تقييم</string>
+    <!-- Icons filters -->
+    <string name="filter">الفلتر</string>
+    <string name="clear">إزالة</string>
+    <string name="more_apps">المزيد من التطبيقات</string>
+    <string name="general_info">بيانات عامة</string>
+    <string name="useful_links">روابط مفيدة</string>
+    <string name="columns">عدد الأعمدة</string>
+    <string name="lni_content">%1$s غير مثبت حاليا على الجهاز. \nWould ترغب في تثبيته من مخزن لعب جوجل؟</string>
+    <string name="no_compatible_launcher_title">هذا المشغل غير متوافق</string>
+    <string name="no_compatible_launcher_content">هذا المشغل غير متوافق مع أية \"حزم رمز\" ومن ثم لا يمكن استخدام هذا رمز حزمة مع هذا المشغل. يرجى عدم معدل حزمة رمز سلبيا لهذا السبب. هناك حل يمكنك أن تجرب بنفسك، ولكنه يتطلب استخدام التطبيق الخارجي الذي ترغب في تحميله؟</string>
+    <string name="impossible_open_themes">من المستحيل فتح التطبيق المواضيع</string>
+    <string name="themes_app_not_installed">لم يتم تثبيت التطبيق مواضيع في هذا الجهاز</string>
+    <string name="included_templates">%1$s قوالب</string>
+    <string name="launcher_icon_restored">تم استعادة أيقونة مشغل %1$s</string>
+    <string name="launcher_icon_not_restored">%1$s قاذفة الرمز مرئياً مسبقاً</string>
+    <string name="launcher_icon_restorer_error">هناك مشكلة في التعليمات البرمجية من %1$s. الرجاء الاتصال المطور.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
+    <string name="clock_widget_title">التناظرية على مدار الساعة</string>
+    <string name="search_icons">البحث عن الرموز</string>
+    <string name="search_wallpapers">تعيين خلفية</string>
+    <string name="search_launchers">البحث عن قاذفات</string>
+    <string name="search_apps">بحث في التطبيقات</string>
+    <string name="seconds">ثواني</string>
+    <string name="minutes">دقائق</string>
+    <string name="hours">ساعات</string>
+    <string name="days">يوم</string>
+    <string name="weeks">أسبوع</string>
+    <string name="months">الأشهر</string>
+    <!-- Requests -->
+    <string name="select_all">تحديد الكل</string>
+    <string name="no_selected_apps_title">لا توجد تطبيقات محددة</string>
+    <string name="no_selected_apps_content">لم تقم بتحديد أية تطبيقات الطلب. الرجاء تحديد تطبيقات قليلة، ثم انقر فوق هذا الزر مرة أخرى.</string>
+    <string name="apps_limit_dialog">عذراً، لكن فقط يسمح لك بتحديد تطبيقات %1$s لطلب.</string>
+    <string name="apps_limit_dialog_more">عذراً، ولكن يسمح فقط لطلب المزيد من تطبيقات %1$s الآن.</string>
+    <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
+    <string name="requests_error">حدث خطأ أثناء تحميل تطبيقات للطلب-\nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
+    <string name="requests_upload_error">حدث خطأ أثناء تحميل تطبيقات بطلب إلى الملقمات لدينا. \nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
+    <string name="loading_apps_to_request">Loading apps to request…</string>
+    <string name="building_request_dialog">Building request files…</string>
+    <string name="request_upload_success">Success!</string>
+    <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
+    <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
+    <string name="pref_header_launcher_icon">Launcher icon</string>
+    <string name="pref_title_launcher_icon">Hide launcher icon</string>
+    <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
+    <string name="clearcache_dialog_content">Are you sure you want to delete app data, cache and settings? Applied icons won\'t be affected.</string>
+    <string name="hideicon_dialog_title">Warning!</string>
+    <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher?\nApp may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.</string>
+    <string name="send_using">Send using…</string>
+    <string name="no_mail">There is no mail app installed</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>How to use the Icon Pack?</item>
+        <item>How to apply the Icon Pack?</item>
+        <item>How to see all the included icons?</item>
+        <item>How to replace an icon with an alternative one?</item>
+        <item>How to request unthemed icons؟</item>
+        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+        <item>Why do icons look pixelated on my device؟</item>
+        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+        <item>How to hide app icon from launcher؟</item>
+        <item>How to open the app after app icon is hidden from launcher؟</item>
+        <item>How to show app icon in launcher again؟</item>
+        <item>Why does the app need permission to modify or delete content of my storage؟</item>
+        <item>Why does the app need permission to full network access?</item>
+        <item>Why does the app need permission to view connections?</item>
+        <item>Why does the app need permission to set wallpaper?</item>
+        <item>لماذا يحتاج التطبيق الإذن لضبط حجم ورق الحائط؟</item>
+        <item>لماذا يحتاج التطبيق الإذن لمنع الهاتف من النوم؟</item>
+    </string-array>
+    <string-array name="answers">
+        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
+        <item>العودة إلى القسم الرئيسي من التطبيق ثم انقر على البلاط تحت عنوان \"الرموز\".</item>
+        <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>Send an icon request.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
+        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>It\'s needed to be able to check if your device has internet connection.</item>
+        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>It\'s needed by Muzei Live Wallpaper.</item>
+    </string-array>
 </resources>
