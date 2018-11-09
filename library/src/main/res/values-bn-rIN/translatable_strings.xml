@@ -90,11 +90,11 @@
     <string-array name="questions">
         <item>আইকন প্যাক ব্যবহার করে কিভাবে?</item>
         <item>আইকন প্যাক কিভাবে প্রয়োগ করা হয়?</item>
-        <item>How to see all the included icons?</item>
-        <item>How to replace an icon with an alternative one?</item>
-        <item>How to request unthemed icons?</item>
-        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-        <item>Why do icons look pixelated on my device?</item>
+        <item>কীভাবে সব অন্তর্ভুক্ত করা আইকন দেখতে হয়?</item>
+        <item>কিভাবে আরেকটি আইকন দিয়ে একটি আইকন প্রতিস্থাপন করতে হয়?</item>
+        <item>আনথিম করা আইকন অনুরোধ করার উপায় কি?</item>
+        <item>আমার ডিভাইস রিস্টার্ট করার পর, আই আইকন প্যাক প্রযুক্ত নয়। আইকন প্যাক ডিফল্টে রিস্টোর করা হয়েছে।</item>
+        <item>আবার ডিভাইসে আইকন ভাঙ্গা ভাঙ্গা দেখাচ্ছে কেন?</item>
         <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
         <item>How to hide app icon from launcher?</item>
         <item>How to open the app after app icon is hidden from launcher?</item>
