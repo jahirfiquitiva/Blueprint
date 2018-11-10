@@ -102,8 +102,8 @@
         <item>কেন অ্যাপের অনুমতির দরকার আমার স্টোরেজ এর তথ্য পরিবর্তন বা মুছে ফেলার জন্যে ?</item>
         <item>অ্যাপটি পুরো নেটওয়ার্কে প্রবেশের অনুমতি কেন প্রয়োজন?</item>
         <item>অ্যাপটি সংযোগসমূহ প্রদর্শন করার অনুমতি কেন প্রয়োজন?</item>
-        <item>Why does the app need permission to set wallpaper?</item>
-        <item>Why does the app need permission to adjust the wallpaper size?</item>
+        <item>অ্যাপটি ওয়ালপেপার সেট করার অনুমতি কেন প্রয়োজন?</item>
+        <item>অ্যাপটি ওয়ালপেপার আকার সমন্বয় করতে অনুমতি কেন প্রয়োজন?</item>
         <item>Why does the app need permission to prevent phone from sleeping?</item>
     </string-array>
     <string-array name="answers">
