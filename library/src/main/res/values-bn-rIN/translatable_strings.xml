@@ -96,14 +96,33 @@
         <item>আমার ডিভাইস রিস্টার্ট করার পর, আই আইকন প্যাক প্রযুক্ত নয়। আইকন প্যাক ডিফল্টে রিস্টোর করা হয়েছে।</item>
         <item>আবার ডিভাইসে আইকন ভাঙ্গা ভাঙ্গা দেখাচ্ছে কেন?</item>
         <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-        <item>How to hide app icon from launcher?</item>
-        <item>How to open the app after app icon is hidden from launcher?</item>
-        <item>How to show app icon in launcher again?</item>
-        <item>Why does the app need permission to modify or delete content of my storage?</item>
-        <item>Why does the app need permission to full network access?</item>
-        <item>Why does the app need permission to view connections?</item>
+        <item>লঞ্চার থেকে অ্যাপ আইকন গোপন করার উপায় কি?</item>
+        <item>অ্যাপ আইকন লঞ্চার থেকে গোপন করার পর অ্যাপ ওপেন করার উপায় কি ?</item>
+        <item>অ্যাপ আইকন লঞ্চারে আবার দেখাবেন কিভাবে?</item>
+        <item>কেন অ্যাপের অনুমতির দরকার আমার স্টোরেজ এর তথ্য পরিবর্তন বা মুছে ফেলার জন্যে ?</item>
+        <item>অ্যাপটি পুরো নেটওয়ার্কে প্রবেশের অনুমতি কেন প্রয়োজন?</item>
+        <item>অ্যাপটি সংযোগসমূহ প্রদর্শন করার অনুমতি কেন প্রয়োজন?</item>
         <item>Why does the app need permission to set wallpaper?</item>
         <item>Why does the app need permission to adjust the wallpaper size?</item>
         <item>Why does the app need permission to prevent phone from sleeping?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
+        <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+        <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>Send an icon request.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
+        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>It\'s needed to be able to check if your device has internet connection.</item>
+        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>মুজ্যেই লাইভ ওয়ালপেপারের জন্য এটি প্রয়োজন ।</item>
     </string-array>
 </resources>
