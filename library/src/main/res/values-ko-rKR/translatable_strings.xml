@@ -16,113 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint</string>
-  <string name="coming_soon">출시 예정</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">홈</string>
-  <string name="section_icons">아이콘</string>
-  <string name="section_apply">적용하기</string>
-  <string name="section_wallpapers">배경화면</string>
-  <string name="section_icon_request">아이콘 요청</string>
-  <string name="section_donate">후원하기</string>
-  <string name="section_about">앱 소개</string>
-  <string name="section_help">도움말</string>
-  <string name="section_zooper">Zooper 설치</string>
-  <string name="section_widgets">위젯</string>
-  <string name="share_this_app">%1$s 앱을 사용하시면서 마음에 드신다면 다음을 참고해주세요! %2$s</string>
-  <string name="rate">평가하기</string>
-  <!-- Icons filters -->
-  <string name="filter">필터</string>
-  <string name="clear">비우기</string>
-  <string name="more_apps">더 많은 앱들</string>
-  <string name="general_info">정보</string>
-  <string name="useful_links">유용한 링크</string>
-  <string name="columns">열 번호</string>
-  <string name="lni_content">%1$s는 현재 당신의 기기에 설치되어 있지 않습니다.\n구글 플레이 스토어에서 설치하시겠습니까?</string>
-  <string name="no_compatible_launcher_title">이 런처는 호환되지 않습니다</string>
-  <string name="no_compatible_launcher_content">이 런처는 어떠한 아이콘팩도 적용할 수 없습니다. 이러한 이유로 부정적인 평가를 남기지 말아주세요. 하지만 외부 앱을 이용하여 해결 하는 방법이 있습니다. 다운로드 하시겠습니까?</string>
-  <string name="impossible_open_themes">테마 앱을 열 수 없습니다.</string>
-  <string name="themes_app_not_installed">테마 앱이 기기에 설치되어 있지 않습니다.</string>
-  <string name="included_templates">%1$s 템플릿</string>
-  <string name="launcher_icon_restored">%1$s 런처의 아이콘이 복원되었습니다</string>
-  <string name="launcher_icon_not_restored">%1$s 런처의 아이콘이 이미 표시되어 있습니다.</string>
-  <string name="launcher_icon_restorer_error">코드 %1$s의 에러가 발생했습니다. 개발자에게 문의해주세요.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">아이콘 복원 위젯</string>
-  <string name="clock_widget_title">아날로그 시계</string>
-  <string name="search_icons">아이콘 찾기</string>
-  <string name="search_wallpapers">배경화면 찾기</string>
-  <string name="search_launchers">런처 검색</string>
-  <string name="search_apps">앱 찾기</string>
-  <string name="seconds">초</string>
-  <string name="minutes">분</string>
-  <string name="hours">시간</string>
-  <string name="days">일</string>
-  <string name="weeks">주</string>
-  <string name="months">월</string>
-  <!-- Requests -->
-  <string name="select_all">전부 선택</string>
-  <string name="no_selected_apps_title">선택된 앱이 없습니다</string>
-  <string name="no_selected_apps_content">요청할 앱을 선택하지 않았습니다. 몇 개의 앱을 선택하고 버튼을 눌러주세요</string>
-  <string name="apps_limit_dialog">최대 %1$s개의 앱만 선택하실 수 있습니다.</string>
-  <string name="apps_limit_dialog_more">현재 %1$s개의 앱만 요청하실 수 있습니다.</string>
-  <string name="apps_limit_dialog_day">죄송합니다만 %1$s에 한 번씩만 아이콘을 요청할 수 있습니다.</string>
-  <string name="apps_limit_dialog_day_extra">하지만 %1$s 내로 요청하신 아이콘을 사용하실 수 있습니다.</string>
-  <string name="apps_limit_dialog_day_extra_sec">몇 분 뒤 아이콘을 다시 요청하실 수 있습니다.</string>
-  <string name="requests_error">요청하신 앱을 불러오는 중 오류가 발생했습니다.\n원인: %1$s\n다음에 다시 시도해주세요.</string>
-  <string name="requests_upload_error">서버에 요청하신 앱을 올리는 중 오류가 발생했습니다.\n원인: %1$s\n다음에 다시 시도해주세요.</string>
-  <string name="loading_apps_to_request">요청할 수 있는 앱을 로딩 중입니다...</string>
-  <string name="building_request_dialog">요청하신 앱의 파일을 생성 중입니다...</string>
-  <string name="request_upload_success">성공!</string>
-  <string name="request_upload_success_content">요청하신 앱 정보가 서버에 정상적으로 업로드 되었습니다.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">이 배경화면을 사용한 아이콘 미리보기</string>
-  <string name="pref_summary_wall_header">현재 기기의 배경화면이 표시됩니다.</string>
-  <string name="pref_header_launcher_icon">런처 아이콘</string>
-  <string name="pref_title_launcher_icon">런처 아이콘 숨기기</string>
-  <string name="pref_summary_launcher_icon">이 항목을 체크하면, 런처에서 아이콘이 숨겨집니다.</string>
-  <string name="clearcache_dialog_content">앱 데이터, 캐시 및 설정을 삭제 하시겠습니까? 적용된 아이콘은 영향을 받지 않습니다.</string>
-  <string name="hideicon_dialog_title">경고!</string>
-  <string name="hideicon_dialog_content">런처에서 앱 아이콘을 숨기시겠습니까?\n이 애플리케이션이 예기치 않게 닫힐 수 있으며 알림이 완전히 사용 중지됩니다.\n이 앱을 숨기기 전, 자주 묻는 질문을 읽어보시면 다시 표시하는 방법을 볼 수 있습니다.</string>
-  <string name="send_using">전송 시 사용할 앱</string>
-  <string name="no_mail">이메일 앱이 설치되지 않았습니다.</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>이 아이콘팩의 사용 방법을 알려주세요!</item>
-    <item>이 아이콘팩을 적용하고싶어요!</item>
-    <item>이 앱에 포함된 아이콘들을 보고싶어요.</item>
-    <item>아이콘팩을 적용했는데 따로 변경하고 싶은 아이콘이 있어요. 어떻게하죠?</item>
-    <item>제가 쓰는 앱 아이콘이 이 팩에 없어요. 어떻게하죠?</item>
-    <item>아이콘팩을 적용하고 기기를 다시 시작했는데 아이콘팩이 기본값으로 돌아와있어요.</item>
-    <item>아이콘팩을 적용했는데 아이콘이 깨져보여요.</item>
-    <item>아이콘팩에 제 앱이 있는걸 확인했는데 적용이 안돼요.</item>
-    <item>이 팩을 런처에서 숨기고싶어요.</item>
-    <item>숨긴것까지는 좋았는데 앱을 실행하려면 어떻게 해야하나요?</item>
-    <item>이 팩을 런처에서 다시 표시하고싶어요.</item>
-    <item>저장공간의 콘텐츠를 수정하거나 삭제할 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
-    <item>인터넷 접근 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
-    <item>인터넷 연결 상태 확인 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
-    <item>배경화면 설정 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
-    <item>배경화면 사이즈 조절 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
-    <item>화면 꺼짐 방지 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>아이콘팩을 지원하는 런처가 필요합니다. 지원되는 런처 목록은 이 앱의 \'적용\' 탭이나 해당 런처의 Play 스토어 설명에서 확인할 수 있습니다.</item>
-    <item>왼쪽에서 탐색 창을 밀고 \'적용\' 항목으로 이동하거나 하단 막대에서 4번째 아이콘을 선택합니다. 여기에서 아이콘을 적용 할 런처를 선택할 수 있습니다. 일부 런처는 자동 적용을 지원하지 않으므로 각 런처의 설정을 통해 수동으로 설정해야합니다.</item>
-    <item>왼쪽에서 탐색 창을 밀고 \'아이콘\' 항목으로 이동하거나 하단 막대에서 2번째 아이콘을 선택합니다.</item>
-    <item>해당 아이콘을 길게 터치한 후, 팝업 메뉴에서 \"편집\"을 선택하거나 아이콘을 길게 탭하여 \"편집\" 항목으로 이동합니다.</item>
-    <item>왼쪽에서 탐색 창을 밀고 \'요청\' 항목으로 이동하거나 하단 막대에서 5번째 아이콘을 선택합니다.</item>
-    <item>아이콘팩이 SD 카드에 있어서 그렇습니다. 내부 저장공간으로 옮겨주세요.</item>
-    <item>큰 해상도를 처리 할 때 사용중인 런처에 문제가 있을 수 있습니다. 이 문제는 아이콘 크기를 115 - 120 %로 늘려서 문제를 해결할 수 있습니다. 그래도 해결되지 않으면 다른 런처를 사용해보십시오.</item>
-    <item>아이콘 요청 보내기.</item>
-    <item>상단의 3점으로 된 버튼을 클릭해서 \'설정\'으로 들어갑니다. 그런 다음 \'런처에서 이 앱 숨기기\' 옵션을 선택하세요.</item>
-    <item>런처의 홈화면으로 이동한 다음 이 아이콘팩의 위젯을 만듭니다. 이름이 \'IconRestorer\' 인것을 탭하시면 됩니다.</item>
-    <item>상단의 3점으로 된 버튼을 클릭해서 \'설정\'으로 들어갑니다. 그런 다음 \'런처에서 이 앱 숨기기\' 옵션을 해제하세요.</item>
-    <item>\'아이콘 요청하기\'의 데이터, 배경화면을 저장하고, 배경화면의 저장 위치를 변경할 수 있는 권한이 필요해서 그렇습니다.</item>
-    <item>배경화면 항목에서 배경화면을 받아오고 다운로드하기 때문입니다.</item>
-    <item>배경화면이나 기타 업데이트를 확인하는 과정에서 기기가 인터넷에 연결되어 있는지 확인하기 때문입니다.</item>
-    <item>배경화면 항목에 있는 배경화면을 바로 적용하는 기능으로 인해 생긴 권한입니다.</item>
-    <item>기기의 화면 해상도에 따라 배경화면 크기를 조절하는 과정에서 생긴 권한입니다.</item>
-    <item>Muzei Live Wallpaper와 앱을 연계해서 사용할 때 필요합니다.</item>
-  </string-array>
+    <string name="frames_dashboard">Blueprint</string>
+    <string name="coming_soon">출시 예정</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">홈</string>
+    <string name="section_icons">아이콘</string>
+    <string name="section_apply">적용하기</string>
+    <string name="section_wallpapers">배경화면</string>
+    <string name="section_icon_request">아이콘 요청</string>
+    <string name="section_donate">후원하기</string>
+    <string name="section_about">앱 소개</string>
+    <string name="section_help">도움말</string>
+    <string name="section_zooper">Zooper 설치</string>
+    <string name="section_widgets">위젯</string>
+    <string name="share_this_app">%1$s 앱을 사용하시면서 마음에 드신다면 다음을 참고해주세요! %2$s</string>
+    <string name="rate">평가하기</string>
+    <!-- Icons filters -->
+    <string name="filter">필터</string>
+    <string name="clear">비우기</string>
+    <string name="more_apps">더 많은 앱들</string>
+    <string name="general_info">정보</string>
+    <string name="useful_links">유용한 링크</string>
+    <string name="columns">열 번호</string>
+    <string name="lni_content">%1$s는 현재 당신의 기기에 설치되어 있지 않습니다.\n구글 플레이 스토어에서 설치하시겠습니까?</string>
+    <string name="no_compatible_launcher_title">이 런처는 호환되지 않습니다</string>
+    <string name="no_compatible_launcher_content">이 런처는 어떠한 아이콘팩도 적용할 수 없습니다. 이러한 이유로 부정적인 평가를 남기지 말아주세요. 하지만 외부 앱을 이용하여 해결 하는 방법이 있습니다. 다운로드 하시겠습니까?</string>
+    <string name="impossible_open_themes">테마 앱을 열 수 없습니다.</string>
+    <string name="themes_app_not_installed">테마 앱이 기기에 설치되어 있지 않습니다.</string>
+    <string name="included_templates">%1$s 템플릿</string>
+    <string name="launcher_icon_restored">%1$s 런처의 아이콘이 복원되었습니다</string>
+    <string name="launcher_icon_not_restored">%1$s 런처의 아이콘이 이미 표시되어 있습니다.</string>
+    <string name="launcher_icon_restorer_error">코드 %1$s의 에러가 발생했습니다. 개발자에게 문의해주세요.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">아이콘 복원 위젯</string>
+    <string name="clock_widget_title">아날로그 시계</string>
+    <string name="search_icons">아이콘 찾기</string>
+    <string name="search_wallpapers">배경화면 찾기</string>
+    <string name="search_launchers">런처 검색</string>
+    <string name="search_apps">앱 찾기</string>
+    <string name="seconds">초</string>
+    <string name="minutes">분</string>
+    <string name="hours">시간</string>
+    <string name="days">일</string>
+    <string name="weeks">주</string>
+    <string name="months">월</string>
+    <!-- Requests -->
+    <string name="select_all">전부 선택</string>
+    <string name="no_selected_apps_title">선택된 앱이 없습니다</string>
+    <string name="no_selected_apps_content">요청할 앱을 선택하지 않았습니다. 몇 개의 앱을 선택하고 버튼을 눌러주세요</string>
+    <string name="apps_limit_dialog">최대 %1$s개의 앱만 선택하실 수 있습니다.</string>
+    <string name="apps_limit_dialog_more">현재 %1$s개의 앱만 요청하실 수 있습니다.</string>
+    <string name="apps_limit_dialog_day">죄송합니다만 %1$s에 한 번씩만 아이콘을 요청할 수 있습니다.</string>
+    <string name="apps_limit_dialog_day_extra">하지만 %1$s 뒤, 원하시는 앱을 다시 요청하실 수 있습니다.</string>
+    <string name="apps_limit_dialog_day_extra_sec">몇 분 뒤 아이콘을 다시 요청하실 수 있습니다.</string>
+    <string name="requests_error">요청하신 앱을 불러오는 중 오류가 발생했습니다.\n원인: %1$s\n다음에 다시 시도해주세요.</string>
+    <string name="requests_upload_error">서버에 요청하신 앱을 올리는 중 오류가 발생했습니다.\n원인: %1$s\n다음에 다시 시도해주세요.</string>
+    <string name="loading_apps_to_request">요청할 수 있는 앱을 로딩 중입니다...</string>
+    <string name="building_request_dialog">요청하신 앱의 파일을 생성 중입니다...</string>
+    <string name="request_upload_success">성공!</string>
+    <string name="request_upload_success_content">요청하신 앱 정보가 서버에 정상적으로 업로드 되었습니다.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">이 배경화면을 사용한 아이콘 미리보기</string>
+    <string name="pref_summary_wall_header">현재 기기의 배경화면이 표시됩니다.</string>
+    <string name="pref_header_launcher_icon">런처 아이콘</string>
+    <string name="pref_title_launcher_icon">런처 아이콘 숨기기</string>
+    <string name="pref_summary_launcher_icon">이 항목을 체크하면, 런처에서 아이콘이 숨겨집니다.</string>
+    <string name="clearcache_dialog_content">앱 데이터, 캐시 및 설정을 삭제 하시겠습니까? 적용된 아이콘은 영향을 받지 않습니다.</string>
+    <string name="hideicon_dialog_title">경고!</string>
+    <string name="hideicon_dialog_content">런처에서 앱 아이콘을 숨기시겠습니까?\n이 애플리케이션이 예기치 않게 닫힐 수 있으며 알림이 완전히 사용 중지됩니다.\n이 앱을 숨기기 전, 자주 묻는 질문을 읽어보시면 다시 표시하는 방법을 볼 수 있습니다.</string>
+    <string name="send_using">전송 시 사용할 앱</string>
+    <string name="no_mail">이메일 앱이 설치되지 않았습니다.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>이 아이콘팩의 사용 방법을 알려주세요!</item>
+        <item>이 아이콘팩을 적용하고싶어요!</item>
+        <item>이 앱에 포함된 아이콘들을 보고싶어요.</item>
+        <item>아이콘팩을 적용했는데 따로 변경하고 싶은 아이콘이 있어요. 어떻게하죠?</item>
+        <item>제가 쓰는 앱 아이콘이 이 팩에 없어요. 어떻게하죠?</item>
+        <item>아이콘팩을 적용하고 기기를 다시 시작했는데 아이콘팩이 기본값으로 돌아와있어요.</item>
+        <item>아이콘팩을 적용했는데 아이콘이 깨져보여요.</item>
+        <item>아이콘팩에 제 앱이 있는걸 확인했는데 적용이 안돼요.</item>
+        <item>이 팩을 런처에서 숨기고싶어요.</item>
+        <item>숨긴것까지는 좋았는데 앱을 실행하려면 어떻게 해야하나요?</item>
+        <item>이 팩을 런처에서 다시 표시하고싶어요.</item>
+        <item>저장공간의 콘텐츠를 수정하거나 삭제할 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+        <item>인터넷 접근 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+        <item>인터넷 연결 상태 확인 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+        <item>배경화면 설정 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+        <item>배경화면 사이즈 조절 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+        <item>화면 꺼짐 방지 권한이 이 앱에 필요한 이유가 무엇인가요?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>아이콘팩을 지원하는 런처가 필요합니다. 지원되는 런처 목록은 이 앱의 \'적용\' 탭이나 해당 런처의 Play 스토어 설명에서 확인할 수 있습니다.</item>
+        <item>왼쪽에서 탐색 창을 밀고 \'적용\' 항목으로 이동하거나 하단 막대에서 4번째 아이콘을 선택합니다. 여기에서 아이콘을 적용 할 런처를 선택할 수 있습니다. 일부 런처는 자동 적용을 지원하지 않으므로 각 런처의 설정을 통해 수동으로 설정해야합니다.</item>
+        <item>왼쪽에서 탐색 창을 밀고 \'아이콘\' 항목으로 이동하거나 하단 막대에서 2번째 아이콘을 선택합니다.</item>
+        <item>해당 아이콘을 길게 터치한 후, 팝업 메뉴에서 \"편집\"을 선택하거나 아이콘을 길게 탭하여 \"편집\" 항목으로 이동합니다.</item>
+        <item>왼쪽에서 탐색 창을 밀고 \'요청\' 항목으로 이동하거나 하단 막대에서 5번째 아이콘을 선택합니다.</item>
+        <item>아이콘팩이 SD 카드에 있어서 그렇습니다. 내부 저장공간으로 옮겨주세요.</item>
+        <item>큰 해상도를 처리 할 때 사용중인 런처에 문제가 있을 수 있습니다. 이 문제는 아이콘 크기를 115 - 120 %로 늘려서 문제를 해결할 수 있습니다. 그래도 해결되지 않으면 다른 런처를 사용해보십시오.</item>
+        <item>아이콘 요청 보내기.</item>
+        <item>상단의 3점으로 된 버튼을 클릭해서 \'설정\'으로 들어갑니다. 그런 다음 \'런처에서 이 앱 숨기기\' 옵션을 선택하세요.</item>
+        <item>런처의 홈화면으로 이동한 다음 이 아이콘팩의 위젯을 만듭니다. 이름이 \'IconRestorer\' 인것을 탭하시면 됩니다.</item>
+        <item>상단의 3점으로 된 버튼을 클릭해서 \'설정\'으로 들어갑니다. 그런 다음 \'런처에서 이 앱 숨기기\' 옵션을 해제하세요.</item>
+        <item>\'아이콘 요청하기\'의 데이터, 배경화면을 저장하고, 배경화면의 저장 위치를 변경할 수 있는 권한이 필요해서 그렇습니다.</item>
+        <item>배경화면 항목에서 배경화면을 받아오고 다운로드하기 때문입니다.</item>
+        <item>배경화면이나 기타 업데이트를 확인하는 과정에서 기기가 인터넷에 연결되어 있는지 확인하기 때문입니다.</item>
+        <item>배경화면 항목에 있는 배경화면을 바로 적용하는 기능으로 인해 생긴 권한입니다.</item>
+        <item>기기의 화면 해상도에 따라 배경화면 크기를 조절하는 과정에서 생긴 권한입니다.</item>
+        <item>Muzei Live Wallpaper와 앱을 연계해서 사용할 때 필요합니다.</item>
+    </string-array>
 </resources>
