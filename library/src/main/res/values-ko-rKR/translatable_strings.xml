@@ -38,7 +38,7 @@
     <string name="general_info">정보</string>
     <string name="useful_links">유용한 링크</string>
     <string name="columns">열 번호</string>
-    <string name="lni_content">%1$s는 현재 당신의 기기에 설치되어 있지 않습니다.\n구글 플레이 스토어에서 설치하시겠습니까?</string>
+    <string name="lni_content">%1$s는 현재 당신의 기기에 설치되어 있지 않습니다.\n앱스토어에서 설치하시겠습니까?</string>
     <string name="no_compatible_launcher_title">이 런처는 호환되지 않습니다</string>
     <string name="no_compatible_launcher_content">이 런처는 어떠한 아이콘팩도 적용할 수 없습니다. 이러한 이유로 부정적인 평가를 남기지 말아주세요. 하지만 외부 앱을 이용하여 해결 하는 방법이 있습니다. 다운로드 하시겠습니까?</string>
     <string name="impossible_open_themes">테마 앱을 열 수 없습니다.</string>
