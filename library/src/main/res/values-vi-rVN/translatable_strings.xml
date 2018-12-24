@@ -16,17 +16,18 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Table details</string>
-  <string name="coming_soon">Will soon output</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Alfred</string>
-  <string name="section_icons">Biểu tượng</string>
-  <string name="section_apply">Áp dụng</string>
-  <string name="section_wallpapers">Hình nền</string>
-  <string name="section_icon_request">Biểu tượng yêu cầu</string>
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="frames_dashboard">Table details</string>
+    <string name="coming_soon">Will soon output</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Alfred</string>
+    <string name="section_icons">Biểu tượng</string>
+    <string name="section_apply">Áp dụng</string>
+    <string name="section_wallpapers">Hình nền</string>
+    <string name="section_icon_request">Biểu tượng yêu cầu</string>
+    <string name="section_donate">Quyên góp</string>
+    <!-- Icons filters -->
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>

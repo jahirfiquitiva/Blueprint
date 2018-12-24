@@ -16,10 +16,21 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <!-- List Of Drawer Sections -->
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="frames_dashboard">Blueprint Dashboard</string>
+    <string name="coming_soon">Coming soon</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_icons">Icons</string>
+    <string name="section_apply">Tillämpa</string>
+    <string name="section_wallpapers">Bakgrund</string>
+    <!-- Icons filters -->
+    <string name="general_info">Allmän information</string>
+    <string name="useful_links">Användbara länkar</string>
+    <string name="columns">Columns number</string>
+    <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to install it from the Google Play Store?</string>
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <string name="loading_apps_to_request">Laddar appar begära…</string>
+    <string name="request_upload_success">Framgång!</string>
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>
