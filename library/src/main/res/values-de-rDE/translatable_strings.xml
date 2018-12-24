@@ -108,17 +108,17 @@
     </string-array>
     <string-array name="answers">
         <item>Du benötigst einen Launcher mit Support für Icon-Packs. Die Liste der unterstützten Launcher könnte in der App im \"Anwenden\"-Abschnitt oder der Play Store Beschreibung gefunden werden.</item>
-        <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anwenden\" antippen, oder du musst das vierte Icon in der unteren Navigationsleiste antippen. Dort kannst du einen Launcher auswählen, mit dem du die Icons anwenden möchtest. Einige Launcher unterstützen keine automatische Anwendung und du musst dies manuell in den Einstellungen des Launcher tun.</item>
+        <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anwenden\" antippen, oder du musst das vierte Icon in der unteren Navigationsleiste antippen. Dort kannst du einen Launcher auswählen, für welchen du die Icons anwenden möchtest. Einige Launcher unterstützen keine automatische Anwendung und du musst dies manuell in den Einstellungen des Launcher tun.</item>
         <item>Gehe zurück zur Hauptseite der App und klicke auf die Karte mit dem Titel \"Icons\".</item>
         <item>Abhängig vom Launcher, den du verwendest, musst du entweder lange auf das Icon tippen und auf \"Bearbeiten\" im Pop-up-Menü tippen oder das Icon auf ein \"Bearbeiten\"-Feld ziehen.</item>
         <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anfragen\" antippen, oder du musst das entsprechende Icon in der unteren Navigationsleiste antippen.</item>
-        <item>Das ist passiert, weil die Symbolbibliothek auf die SD-Karte verschoben wurde. Sie sollten es auf dem internen Speicher installieren.</item>
-        <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Sie können das Problem beheben, indem Sie die Symbolgröße auf 115 - 120 % erhöhen. Sie können auch versuchen, einen anderen Launcher zu verwenden.</item>
-        <item>Eine Symbol-Anfrage senden.</item>
-        <item>Öffne das Navigationsmenü von der linken Seite oder tippe auf das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Symbol ausblenden\".</item>
-        <item>Gehe auf deinen Startbildschirm, erstelle ein Widget für die App, welches \"IconRestorer\" heißt, und tippe darauf.</item>
-        <item>Öffne das Navigationsmenü von der linken Seite oder tippe auf das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Symbol ausblenden\" ab.</item>
-        <item>Diese wird verwendet, um Daten für Symbol-Anfragen speichern zu können, genauso wie für das Speichern der Hintergrundbildern und zur Änderung des Download-Verzeichnisses.</item>
+        <item>Das ist passiert, weil das Icon Pack auf die SD-Karte verschoben wurde. Du solltest es auf dem internen Speicher installieren.</item>
+        <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Du kannst das Problem lösen, indem du die Icon-Größe auf 115 - 120 % erhöhst. Du kannst auch versuchen, einen anderen Launcher zu verwenden.</item>
+        <item>Eine Icon-Anfrage senden.</item>
+        <item>Öffne das Navigationsmenü von der linken Seite oder tippe auf das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Icon ausblenden\".</item>
+        <item>Gehe auf deinen Startbildschirm, erstelle das Widget für die App, welches \"IconRestorer\" heißt, und tippe darauf.</item>
+        <item>Öffne das Navigationsmenü von der linken Seite oder tippe auf das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Icon ausblenden\" ab.</item>
+        <item>Diese wird verwendet, um Daten für Icon-Anfragen speichern zu können, genauso wie für das Speichern der Hintergrundbildern und zur Änderung des Download-Verzeichnisses.</item>
         <item>Diese wird verwendet, um Hintergrundbilder aus der Cloud herunterladen zu können.</item>
         <item>Diese wird verwendet, um zu prüfen, ob dein Gerät eine Internet-Verbindung besitzt.</item>
         <item>Diese wird verwendet, um das Hintergrundbild direkt aus der App heraus anwenden zu können.</item>
