@@ -39,6 +39,7 @@ import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
 import jahirfiquitiva.libs.kext.extensions.activeIconsColor
 import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.cardBackgroundColor
 import jahirfiquitiva.libs.kext.extensions.context
 import jahirfiquitiva.libs.kext.extensions.dimenPixelSize
 import jahirfiquitiva.libs.kext.extensions.int
@@ -69,9 +70,10 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
     
     fun bind(drawable: Drawable?, onlyPicture: Boolean, manager: RequestManager? = null) {
         this.manager = manager
-        image?.setImageDrawable(drawable)
         val isTransparent = BPKonfigs(context).currentTheme == TRANSPARENT
-        if (isTransparent) card?.forceSetCardBackgroundColor(Color.TRANSPARENT)
+        image?.setImageDrawable(if (isTransparent) null else drawable)
+        card?.forceSetCardBackgroundColor(
+            if (isTransparent) Color.TRANSPARENT else context.cardBackgroundColor)
         if (!onlyPicture) initIconsPreview()
     }
     
