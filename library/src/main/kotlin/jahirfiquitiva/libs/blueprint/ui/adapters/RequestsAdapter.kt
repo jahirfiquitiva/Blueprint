@@ -18,11 +18,11 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
 import com.bumptech.glide.RequestManager
-import jahirfiquitiva.libs.archhelpers.ui.adapters.RecyclerViewListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.RequestViewHolder
+import jahirfiquitiva.libs.kext.ui.adapters.RecyclerViewListAdapter
 
 class RequestsAdapter(
     private val manager: RequestManager?,

@@ -16,14 +16,15 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.isVisible
 import ca.allanwang.kau.utils.postDelayed
@@ -32,6 +33,7 @@ import ca.allanwang.kau.utils.visible
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import com.bumptech.glide.RequestManager
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.models.HomeItem
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.ui.adapters.IconsAdapter
@@ -42,6 +44,7 @@ import jahirfiquitiva.libs.kext.extensions.dimenPixelSize
 import jahirfiquitiva.libs.kext.extensions.int
 import jahirfiquitiva.libs.kext.extensions.resource
 import jahirfiquitiva.libs.kext.extensions.stringArray
+import jahirfiquitiva.libs.kext.helpers.TRANSPARENT
 import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kext.ui.widgets.CustomCardView
 
@@ -67,8 +70,9 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
     fun bind(drawable: Drawable?, onlyPicture: Boolean, manager: RequestManager? = null) {
         this.manager = manager
         image?.setImageDrawable(drawable)
-        if (!onlyPicture)
-            initIconsPreview()
+        val isTransparent = BPKonfigs(context).currentTheme == TRANSPARENT
+        if (isTransparent) card?.forceSetCardBackgroundColor(Color.TRANSPARENT)
+        if (!onlyPicture) initIconsPreview()
     }
     
     fun setPool(pool: RecyclerView.RecycledViewPool?) {
@@ -118,7 +122,7 @@ class PreviewCardHolder(itemView: View) : SectionedViewHolder(itemView) {
     }
     
     private inner class PreviewGridLayoutManager(context: Context, span: Int) :
-        GridLayoutManager(context, span, GridLayoutManager.VERTICAL, false) {
+        GridLayoutManager(context, span, RecyclerView.VERTICAL, false) {
         override fun canScrollHorizontally(): Boolean = false
         override fun canScrollVertically(): Boolean = false
         override fun requestChildRectangleOnScreen(

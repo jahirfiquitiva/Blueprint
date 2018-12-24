@@ -15,9 +15,9 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.HelpItem
 import jahirfiquitiva.libs.kext.extensions.bind

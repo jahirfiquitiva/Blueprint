@@ -15,8 +15,8 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.Filter
 import jahirfiquitiva.libs.blueprint.ui.widgets.SelectableChip

@@ -18,8 +18,8 @@ package jahirfiquitiva.libs.blueprint.ui.activities
 import android.content.ComponentName
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 

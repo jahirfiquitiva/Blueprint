@@ -22,9 +22,9 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
-import android.support.design.widget.CoordinatorLayout
 import android.view.Menu
 import android.view.MenuItem
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.postDelayed
@@ -81,7 +81,7 @@ import jahirfiquitiva.libs.kuper.ui.widgets.PseudoViewPager
 
 abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     
-    override val configs: BPKonfigs by lazy { BPKonfigs(this) }
+    override val prefs: BPKonfigs by lazy { BPKonfigs(this) }
     override fun lightTheme(): Int = R.style.BlueprintLightTheme
     override fun darkTheme(): Int = R.style.BlueprintDarkTheme
     override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme
@@ -319,10 +319,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
         initCurrentSectionId(savedInstanceState?.getInt("currentSectionId", default) ?: default)
         
         dialog = mdDialog {
-            content(R.string.loading)
-            progress(true, 0)
+            message(R.string.loading)
             cancelable(false)
-            canceledOnTouchOutside(false)
+            cancelOnTouchOutside(false)
         }
         pager?.gone()
         dialog?.show()
@@ -434,8 +433,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
                     destroyDialog()
                     dialog = mdDialog {
                         title(R.string.no_selected_apps_title)
-                        content(R.string.no_selected_apps_content)
-                        positiveText(android.R.string.ok)
+                        message(R.string.no_selected_apps_content)
+                        positiveButton(android.R.string.ok)
                     }
                     dialog?.show()
                 }
@@ -446,9 +445,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     private fun doSendRequest() {
         destroyDialog()
         dialog = mdDialog {
-            content(R.string.building_request_dialog)
-            progress(true, 0)
+            message(R.string.building_request_dialog)
             cancelable(false)
+            cancelOnTouchOutside(false)
         }
         IconRequest.get()?.let {
             it.send(
@@ -462,12 +461,13 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
                             destroyDialog()
                             dialog = mdDialog {
                                 title(R.string.error_title)
-                                content(
+                                message(
+                                    text =
                                     getString(
                                         if (uploading) R.string.requests_upload_error
                                         else R.string.requests_error,
                                         msg))
-                                positiveText(android.R.string.ok)
+                                positiveButton(android.R.string.ok)
                             }
                             dialog?.show()
                         }
@@ -480,8 +480,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
                             if (forArctic) {
                                 dialog = mdDialog {
                                     title(R.string.request_upload_success)
-                                    content(R.string.request_upload_success_content)
-                                    positiveText(android.R.string.ok)
+                                    message(R.string.request_upload_success_content)
+                                    positiveButton(android.R.string.ok)
                                 }
                                 dialog?.show()
                             }
@@ -492,8 +492,8 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
             destroyDialog()
             dialog = mdDialog {
                 title(R.string.error_title)
-                content(R.string.requests_error)
-                positiveText(android.R.string.ok)
+                message(R.string.requests_error)
+                positiveButton(android.R.string.ok)
             }
             dialog?.show()
         }()

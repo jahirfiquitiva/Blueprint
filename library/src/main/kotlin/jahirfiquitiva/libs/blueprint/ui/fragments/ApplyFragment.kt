@@ -15,14 +15,14 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments
 
-import android.support.v7.widget.GridLayoutManager
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
-import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.executeLauncherIntent
 import jahirfiquitiva.libs.blueprint.helpers.extensions.showLauncherNotInstalledDialog
@@ -39,6 +39,7 @@ import jahirfiquitiva.libs.kext.extensions.dimenPixelSize
 import jahirfiquitiva.libs.kext.extensions.hasContent
 import jahirfiquitiva.libs.kext.extensions.int
 import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.kext.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.kuper.helpers.extensions.isAppInstalled
 
 @Suppress("DEPRECATION")
@@ -90,7 +91,7 @@ internal class ApplyFragment : ViewModelFragment<Launcher>() {
         recyclerView?.adapter = adapter
         val columns = ctxt.int(R.integer.icons_columns) - 1
         recyclerView?.layoutManager =
-            GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
+            GridLayoutManager(context, columns, RecyclerView.VERTICAL, false)
         recyclerView?.addItemDecoration(
             GridSpacingItemDecoration(columns, dimenPixelSize(R.dimen.cards_margin)))
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING

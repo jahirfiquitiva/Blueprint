@@ -23,16 +23,16 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
-import android.support.v4.widget.TextViewCompat
-import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.core.widget.TextViewCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.visibleIf
+import com.google.android.material.navigation.NavigationView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.getOptimalDrawerWidth
 import jahirfiquitiva.libs.blueprint.helpers.extensions.setOptimalDrawerHeaderHeight
@@ -247,7 +247,7 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity(),
     private fun lockDrawer() {
         drawerLayout?.closeDrawer(GravityCompat.START, true)
         drawerLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.START)
-        toggle?.onDrawerStateChanged(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        toggle?.onDrawerStateChanged(DrawerLayout.STATE_IDLE)
         toggle?.isDrawerIndicatorEnabled = false
         toggle?.syncState()
     }

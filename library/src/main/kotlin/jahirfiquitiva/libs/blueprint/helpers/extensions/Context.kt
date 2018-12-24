@@ -19,12 +19,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.os.Build
-import android.support.annotation.AttrRes
-import android.support.design.widget.FloatingActionButton
-import android.support.v4.app.Fragment
 import android.view.View
+import androidx.annotation.AttrRes
+import androidx.fragment.app.Fragment
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingTop
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.kext.extensions.bind
@@ -36,7 +36,7 @@ import kotlin.math.roundToInt
 
 @Suppress("DEPRECATION", "UNCHECKED_CAST")
 internal val Fragment.configs: BPKonfigs
-    get() = (activity as? ThemedActivity<BPKonfigs>)?.configs
+    get() = (activity as? ThemedActivity<BPKonfigs>)?.prefs
         ?: activity?.let { BPKonfigs(it) }
         ?: context?.let { BPKonfigs(it) }
         ?: BPKonfigs(ctxt)

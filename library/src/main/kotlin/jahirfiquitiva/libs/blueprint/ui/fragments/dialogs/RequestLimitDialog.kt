@@ -17,7 +17,7 @@ package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.millisToText
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
@@ -77,8 +77,8 @@ class RequestLimitDialog : BasicDialogFragment() {
         
         return actv.mdDialog {
             title(R.string.section_icon_request)
-            content(content)
-            positiveText(android.R.string.ok)
+            message(text = content)
+            positiveButton(android.R.string.ok)
         }
     }
     

@@ -22,16 +22,15 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import android.support.v4.content.res.ResourcesCompat
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
-import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.blueprint.models.Filter
@@ -50,6 +49,7 @@ import jahirfiquitiva.libs.kext.extensions.ctxt
 import jahirfiquitiva.libs.kext.extensions.getUri
 import jahirfiquitiva.libs.kext.extensions.hasContent
 import jahirfiquitiva.libs.kext.extensions.int
+import jahirfiquitiva.libs.kext.ui.fragments.ViewModelFragment
 
 @Suppress("DEPRECATION")
 class IconsFragment : ViewModelFragment<Icon>() {
@@ -173,7 +173,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
         recyclerView?.adapter = adapter
         val columns = ctxt.int(R.integer.icons_columns)
         recyclerView?.layoutManager =
-            GridLayoutManager(context, columns, GridLayoutManager.VERTICAL, false)
+            GridLayoutManager(context, columns, RecyclerView.VERTICAL, false)
         
         recyclerView?.addOnScrollListener(
             object : RecyclerView.OnScrollListener() {

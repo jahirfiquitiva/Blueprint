@@ -17,13 +17,14 @@ package jahirfiquitiva.libs.blueprint.ui.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.sendEmail
@@ -46,7 +47,7 @@ import jahirfiquitiva.libs.kext.ui.widgets.CustomSearchView
 @SuppressLint("MissingSuperCall")
 class HelpActivity : ThemedActivity<BPKonfigs>() {
     
-    override val configs: BPKonfigs by lazy { BPKonfigs(this) }
+    override val prefs: BPKonfigs by lazy { BPKonfigs(this) }
     override fun lightTheme(): Int = R.style.BlueprintLightTheme
     override fun darkTheme(): Int = R.style.BlueprintDarkTheme
     override fun amoledTheme(): Int = R.style.BlueprintAmoledTheme
@@ -83,7 +84,7 @@ class HelpActivity : ThemedActivity<BPKonfigs>() {
         val refreshLayout: SwipeRefreshLayout? by bind(R.id.swipe_to_refresh)
         refreshLayout?.isEnabled = false
         
-        recyclerView?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerView?.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView?.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView?.itemAnimator = DefaultItemAnimator()
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING

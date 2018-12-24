@@ -7,8 +7,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
-import android.support.annotation.StringRes
 import android.util.DisplayMetrics
+import androidx.annotation.StringRes
 import ca.allanwang.kau.utils.toast
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R

@@ -18,8 +18,8 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.inflate
 import ca.allanwang.kau.utils.tint

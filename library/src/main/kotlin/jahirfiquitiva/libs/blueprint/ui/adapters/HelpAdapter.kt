@@ -17,9 +17,9 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
-import jahirfiquitiva.libs.archhelpers.ui.adapters.RecyclerViewListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.HelpViewHolder
+import jahirfiquitiva.libs.kext.ui.adapters.RecyclerViewListAdapter
 
 data class HelpItem(val question: String, val answer: String)
 

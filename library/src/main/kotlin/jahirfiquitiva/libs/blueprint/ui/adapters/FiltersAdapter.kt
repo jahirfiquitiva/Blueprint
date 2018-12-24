@@ -17,10 +17,10 @@ package jahirfiquitiva.libs.blueprint.ui.adapters
 
 import android.view.ViewGroup
 import ca.allanwang.kau.utils.inflate
-import jahirfiquitiva.libs.archhelpers.ui.adapters.RecyclerViewListAdapter
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.models.Filter
 import jahirfiquitiva.libs.blueprint.ui.adapters.viewholders.FilterChipHolder
+import jahirfiquitiva.libs.kext.ui.adapters.RecyclerViewListAdapter
 
 class FiltersAdapter(private val onSelectionChange: (Filter, Boolean) -> Unit) :
     RecyclerViewListAdapter<Filter, FilterChipHolder>() {

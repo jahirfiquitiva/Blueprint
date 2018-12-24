@@ -18,15 +18,15 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 import android.annotation.SuppressLint
 import android.app.WallpaperManager
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.openLink
 import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setPaddingBottom
 import com.bumptech.glide.Glide
 import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
-import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.blueprint.models.HomeItem
@@ -41,6 +41,7 @@ import jahirfiquitiva.libs.kext.extensions.activity
 import jahirfiquitiva.libs.kext.extensions.drawable
 import jahirfiquitiva.libs.kext.extensions.getAppName
 import jahirfiquitiva.libs.kext.extensions.hasContent
+import jahirfiquitiva.libs.kext.ui.fragments.ViewModelFragment
 import java.lang.ref.WeakReference
 
 @Suppress("DEPRECATION")
@@ -149,8 +150,7 @@ class HomeFragment : ViewModelFragment<HomeItem>() {
         recyclerView?.loadingView = content.findViewById(R.id.loading_view)
         recyclerView?.setLoadingText(R.string.loading_section)
         
-        recyclerView?.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerView?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView?.adapter = homeAdapter
         
         recyclerView?.state = EmptyViewRecyclerView.State.LOADING

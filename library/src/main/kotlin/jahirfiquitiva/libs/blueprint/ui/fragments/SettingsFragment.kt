@@ -18,18 +18,14 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 import android.content.ComponentName
 import android.content.pm.PackageManager
 import android.preference.Preference
-import android.preference.PreferenceCategory
-import android.preference.PreferenceScreen
 import android.preference.SwitchPreference
-import ca.allanwang.kau.utils.openLink
+import com.afollestad.materialdialogs.callbacks.onDismiss
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
 import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.kext.extensions.actv
 import jahirfiquitiva.libs.kext.extensions.ctxt
 import jahirfiquitiva.libs.kext.extensions.getAppName
-import jahirfiquitiva.libs.kext.extensions.hasContent
-import jahirfiquitiva.libs.kext.extensions.string
 import jahirfiquitiva.libs.kuper.ui.fragments.SettingsFragment
 
 @Suppress("DEPRECATION")
@@ -78,10 +74,8 @@ class SettingsFragment : SettingsFragment() {
                         clearDialog()
                         dialog = actv.mdDialog {
                             title(R.string.hideicon_dialog_title)
-                            content(R.string.hideicon_dialog_content)
-                            positiveText(android.R.string.yes)
-                            negativeText(android.R.string.no)
-                            onPositive { _, _ ->
+                            message(R.string.hideicon_dialog_content)
+                            positiveButton(android.R.string.yes) {
                                 if (configs.launcherIconShown) {
                                     configs.launcherIconShown = false
                                     ctxt.packageManager.setComponentEnabledSetting(
@@ -91,12 +85,8 @@ class SettingsFragment : SettingsFragment() {
                                     hideIcon.isChecked = true
                                 }
                             }
-                            onNegative { _, _ ->
-                                hideIcon.isChecked = false
-                            }
-                            dismissListener {
-                                hideIcon.isChecked = false
-                            }
+                            negativeButton(android.R.string.no) { hideIcon.isChecked = false }
+                            onDismiss { hideIcon.isChecked = false }
                         }
                         dialog?.show()
                     } else {

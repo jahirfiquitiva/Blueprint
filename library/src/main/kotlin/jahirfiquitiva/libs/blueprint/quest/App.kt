@@ -15,18 +15,12 @@
  */
 package jahirfiquitiva.libs.blueprint.quest
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.ApplicationInfo
-import android.content.pm.PackageManager
-import android.content.res.Resources
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
-import android.support.v4.content.res.ResourcesCompat
-import android.util.DisplayMetrics
 import jahirfiquitiva.libs.blueprint.quest.utils.formatCorrectly
+import jahirfiquitiva.libs.kext.extensions.getAppIcon
 
 /**
  * Created by Allan Wang on 2016-08-20.
@@ -41,12 +35,7 @@ class App : Parcelable {
     var comp: String = ""
         private set
     
-    private var hiResIcon: Drawable? = null
-    var icon: Drawable? = null
-        private set
-    
-    private val appDefaultIcon: Drawable?
-        get() = getAppIconFromRes(Resources.getSystem(), android.R.mipmap.sym_def_app_icon)
+    private var icon: Drawable? = null
     
     constructor(name: String, pkg: String, comp: String) {
         this.name = name.formatCorrectly()
@@ -54,60 +43,13 @@ class App : Parcelable {
         this.comp = comp
     }
     
-    @SuppressLint("NewApi")
-    internal fun getHighResIcon(context: Context): Drawable? {
-        if (hiResIcon == null) {
-            try {
-                hiResIcon = loadIcon(context) ?: context.packageManager.getApplicationIcon(pkg) ?:
-                    icon ?: appDefaultIcon
-            } catch (e: Exception) {
-            }
-        }
-        return hiResIcon
-    }
-    
-    internal fun loadIcon(context: Context): Drawable? {
-        if (icon == null) {
-            val ai = getAppInfo(context)
-            if (ai != null) {
-                icon = ai.loadIcon(context.packageManager)
-                if (icon == null) {
-                    icon = getAppIconFromRes(getResources(context, ai), ai.icon)
-                }
-            }
-        }
-        if (icon == null) icon = appDefaultIcon
-        return icon
-    }
-    
-    private fun getAppIconFromRes(resources: Resources?, iconId: Int): Drawable? {
-        val d: Drawable?
-        d = try {
-            val iconDpi: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                DisplayMetrics.DENSITY_XXXHIGH
-            } else {
-                DisplayMetrics.DENSITY_XXHIGH
-            }
-            resources?.let { ResourcesCompat.getDrawableForDensity(it, iconId, iconDpi, null) }
+    fun getIcon(context: Context): Drawable? {
+        try {
+            if (icon != null) return icon
+            icon = context.getAppIcon(pkg)
+            return icon
         } catch (e: Exception) {
-            null
-        }
-        return d
-    }
-    
-    private fun getAppInfo(context: Context): ApplicationInfo? {
-        return try {
-            context.packageManager.getApplicationInfo(pkg, 0)
-        } catch (e: PackageManager.NameNotFoundException) {
-            null
-        }
-    }
-    
-    private fun getResources(context: Context, ai: ApplicationInfo): Resources? {
-        return try {
-            context.packageManager.getResourcesForApplication(ai)
-        } catch (e: PackageManager.NameNotFoundException) {
-            null
+            return null
         }
     }
     

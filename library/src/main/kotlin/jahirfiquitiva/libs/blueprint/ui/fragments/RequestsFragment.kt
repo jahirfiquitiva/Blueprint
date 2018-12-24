@@ -17,11 +17,11 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.postDelayed
 import ca.allanwang.kau.utils.setPaddingBottom
@@ -30,7 +30,6 @@ import com.andremion.counterfab.CounterFab
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
-import jahirfiquitiva.libs.archhelpers.ui.fragments.ViewModelFragment
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
@@ -52,6 +51,7 @@ import jahirfiquitiva.libs.kext.extensions.hasContent
 import jahirfiquitiva.libs.kext.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kext.extensions.isLowRamDevice
 import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
+import jahirfiquitiva.libs.kext.ui.fragments.ViewModelFragment
 
 @Suppress("DEPRECATION")
 @SuppressLint("MissingSuperCall")
@@ -82,10 +82,8 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     private val progressDialog: MaterialDialog? by lazy {
         activity?.mdDialog {
-            content(R.string.loading_apps_to_request)
-            progress(false, 100, true)
-            positiveText(android.R.string.ok)
-            onPositive { _, _ -> canShowProgress = false }
+            message(R.string.loading_apps_to_request)
+            positiveButton(android.R.string.ok) { canShowProgress = false }
         }
     }
     
@@ -132,7 +130,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
             })
         
         recyclerView?.adapter = adapter
-        fastScroller?.attachSwipeRefreshLayout(swipeToRefresh)
+        swipeToRefresh?.let { fastScroller?.attachSwipeRefreshLayout(it) }
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
     }
     
@@ -278,7 +276,6 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         if ((isVisible || userVisibleHint) && canShowProgress) {
             activity {
                 it.runOnUiThread {
-                    progressDialog?.setProgress(progress)
                     progressDialog?.setOnDismissListener { canShowProgress = false }
                     if (progress >= 100) {
                         progressDialog?.dismiss()
@@ -296,8 +293,8 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         activity {
             otherDialog = it.mdDialog {
                 title(R.string.no_selected_apps_title)
-                content(R.string.no_selected_apps_content)
-                positiveText(android.R.string.ok)
+                message(R.string.no_selected_apps_content)
+                positiveButton(android.R.string.ok)
             }
             otherDialog?.show()
         }

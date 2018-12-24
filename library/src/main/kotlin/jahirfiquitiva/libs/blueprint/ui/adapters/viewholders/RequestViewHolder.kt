@@ -16,11 +16,11 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.AppCompatCheckBox
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.recyclerview.widget.RecyclerView
 import ca.allanwang.kau.utils.gone
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
@@ -30,7 +30,6 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
 import jahirfiquitiva.libs.frames.helpers.glide.FramesGlideListener
-import jahirfiquitiva.libs.frames.helpers.glide.clearFromGlide
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.context
 import jahirfiquitiva.libs.kext.extensions.drawable
@@ -39,7 +38,6 @@ import jahirfiquitiva.libs.kext.extensions.primaryTextColor
 import jahirfiquitiva.libs.kext.ui.widgets.SquaredImageView
 
 class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val overlay: View? by bind(R.id.request_item_overlay)
     private val icon: SquaredImageView? by bind(R.id.icon)
     private val text: TextView? by bind(R.id.name)
     private val checkbox: AppCompatCheckBox? by bind(R.id.checkbox)
@@ -52,10 +50,11 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                ) {
         icon?.let {
             (manager ?: Glide.with(context))
-                .load(app.icon)
+                .load(app.getIcon(context))
                 .apply(
                     RequestOptions()
-                        .priority(Priority.IMMEDIATE)
+                        .priority(Priority.HIGH)
+                        .placeholder(context.drawable(R.drawable.ic_na_launcher))
                         .error(context.drawable(R.drawable.ic_na_launcher)))
                 .listener(object : FramesGlideListener<Drawable>() {
                     override fun onLoadSucceed(
@@ -74,7 +73,6 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     }
                 })
                 .into(it)
-                .clearOnDetach()
         }
         text?.setTextColor(context.primaryTextColor)
         text?.text = app.name.formatCorrectly().replace("_", " ")
@@ -89,6 +87,6 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     
     fun unbind() {
-        icon?.clearFromGlide()
+        icon?.setImageDrawable(null)
     }
 }

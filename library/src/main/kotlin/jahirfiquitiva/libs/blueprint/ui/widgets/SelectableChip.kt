@@ -16,8 +16,8 @@
 package jahirfiquitiva.libs.blueprint.ui.widgets
 
 import android.content.Context
-import android.support.annotation.ColorInt
 import android.util.AttributeSet
+import androidx.annotation.ColorInt
 import ca.allanwang.kau.utils.tint
 import com.jahirfiquitiva.chip.ChipView
 import jahirfiquitiva.libs.kext.extensions.cardBackgroundColor

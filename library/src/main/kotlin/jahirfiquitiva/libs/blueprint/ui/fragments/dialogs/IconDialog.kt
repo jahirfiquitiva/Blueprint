@@ -17,12 +17,14 @@ package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
-import android.support.v4.content.ContextCompat
-import android.support.v7.graphics.Palette
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
+import androidx.palette.graphics.Palette
 import ca.allanwang.kau.utils.isColorDark
-import com.afollestad.materialdialogs.DialogAction
+import com.afollestad.materialdialogs.WhichButton
+import com.afollestad.materialdialogs.actions.getActionButton
+import com.afollestad.materialdialogs.customview.customView
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
@@ -31,6 +33,7 @@ import jahirfiquitiva.libs.kext.extensions.accentColor
 import jahirfiquitiva.libs.kext.extensions.actv
 import jahirfiquitiva.libs.kext.extensions.bestSwatch
 import jahirfiquitiva.libs.kext.extensions.bind
+import jahirfiquitiva.libs.kext.extensions.customView
 import jahirfiquitiva.libs.kext.extensions.isColorLight
 import jahirfiquitiva.libs.kext.extensions.toBitmap
 import jahirfiquitiva.libs.kext.extensions.usesDarkTheme
@@ -64,10 +67,9 @@ class IconDialog : BasicDialogFragment() {
     
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = actv.mdDialog {
-            title(name)
-            customView(R.layout.dialog_icon, false)
-            positiveText(R.string.close)
-            positiveColor(actv.accentColor)
+            title(text = name)
+            customView(R.layout.dialog_icon)
+            positiveButton(R.string.close)
         }
         
         dialog.customView?.let {
@@ -100,9 +102,7 @@ class IconDialog : BasicDialogFragment() {
                                     val iconSwatch =
                                         palette?.bestSwatch ?: return@PaletteAsyncListener
                                     val color = iconSwatch.rgb
-                                    val buttonText = dialog.getActionButton(
-                                        DialogAction.POSITIVE)
-                                        ?: return@PaletteAsyncListener
+                                    val buttonText = dialog.getActionButton(WhichButton.POSITIVE)
                                     
                                     val correctTextColor: Int
                                     correctTextColor = if (actv.usesDarkTheme) {

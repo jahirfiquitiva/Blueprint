@@ -15,14 +15,14 @@
  */
 package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 
-import android.support.v4.app.FragmentActivity
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.allanwang.kau.utils.dpToPx
 import ca.allanwang.kau.utils.gone
 import ca.allanwang.kau.utils.setPaddingTop
@@ -91,11 +91,11 @@ class FiltersBottomSheet : BaseBottomSheet() {
         adapter.setItems(filters)
         recyclerView?.adapter = adapter
         
-        val layoutManager = GridLayoutManager(
-            context, if (context?.isInHorizontalMode == true) 3 else 2,
-            GridLayoutManager.VERTICAL, false)
+        val layoutManager =
+            GridLayoutManager(
+                context, if (context?.isInHorizontalMode == true) 3 else 2, RecyclerView.VERTICAL,
+                false)
         recyclerView?.layoutManager = layoutManager
-        
         recyclerView?.itemAnimator = DefaultItemAnimator()
         
         progress?.gone()

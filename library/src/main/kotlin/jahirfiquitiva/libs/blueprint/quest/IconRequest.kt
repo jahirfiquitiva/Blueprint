@@ -28,13 +28,13 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.Parcel
 import android.os.Parcelable
-import android.support.annotation.CallSuper
-import android.support.annotation.CheckResult
-import android.support.annotation.IntDef
-import android.support.annotation.IntRange
-import android.support.annotation.WorkerThread
-import android.support.annotation.XmlRes
 import android.text.Html
+import androidx.annotation.CallSuper
+import androidx.annotation.CheckResult
+import androidx.annotation.IntDef
+import androidx.annotation.IntRange
+import androidx.annotation.WorkerThread
+import androidx.annotation.XmlRes
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.DataPart
 import jahirfiquitiva.libs.blueprint.BuildConfig
@@ -394,7 +394,7 @@ class IconRequest private constructor() {
         if (apps.isEmpty()) return
         Thread {
             apps.let {
-                for (app in it) builder?.context?.let { app.getHighResIcon(it) }
+                for (app in it) builder?.context?.let { app.getIcon(it) }
             }
         }.start()
     }
@@ -523,25 +523,21 @@ class IconRequest private constructor() {
             val iconsNames = ArrayList<Pair<String, Int>>()
             
             for (app in selectedApps) {
-                val icon = builder?.context?.let {
-                    app.getHighResIcon(it)?.toBitmap()
-                }
+                val icon = builder?.context?.let { app.getIcon(it) }
                 icon ?: continue
                 
                 val iconName = app.name.safeDrawableName()
                 var correctIconName = iconName
                 
                 val inList = iconsNames.find { it.first.equals(iconName, true) }
-                if (inList != null) {
-                    correctIconName += "_${inList.second}"
-                }
+                if (inList != null) correctIconName += "_${inList.second}"
                 
                 val iconFile: File? = File(
                     builder?.saveDir,
                     if (uploadToArctic) "${app.pkg}.png" else "$correctIconName.png")
                 
                 try {
-                    iconFile?.saveIcon(icon)
+                    iconFile?.saveIcon(icon.toBitmap())
                     iconFile?.let { emailZipFiles.add(it) }
                     
                     val count =

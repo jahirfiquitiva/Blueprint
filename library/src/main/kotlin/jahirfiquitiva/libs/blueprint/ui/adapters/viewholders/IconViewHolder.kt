@@ -16,9 +16,9 @@
 package jahirfiquitiva.libs.blueprint.ui.adapters.viewholders
 
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.RequestManager
@@ -29,11 +29,11 @@ import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.frames.helpers.glide.FramesGlideListener
-import jahirfiquitiva.libs.frames.helpers.glide.clearFromGlide
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.clearChildrenAnimations
 
-class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(
+    itemView) {
     
     private var lastPosition = -1
     private val icon: ImageView? by bind(R.id.icon)
@@ -47,7 +47,7 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         with(itemView) {
             icon?.let {
                 val man = manager ?: Glide.with(context)
-                val options = RequestOptions().dontTransform().priority(Priority.IMMEDIATE)
+                val options = RequestOptions().dontTransform().priority(Priority.HIGH)
                 if (!animate) options.dontAnimate()
                 
                 man.load(item.icon)
@@ -101,6 +101,6 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     
     fun unbind() {
-        icon?.clearFromGlide()
+        icon?.setImageDrawable(null)
     }
 }

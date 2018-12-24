@@ -37,6 +37,9 @@
   **[] $VALUES;
   public *;
 }
+-keep public class com.bumptech.glide.integration.webp.WebpImage { *; }
+-keep public class com.bumptech.glide.integration.webp.WebpFrame { *; }
+-keep public class com.bumptech.glide.integration.webp.WebpBitmapFactory { *; }
 
 -keep class android.support.design.widget.NavigationView { *; }
 

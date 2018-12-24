@@ -22,14 +22,14 @@ ext.versions = [
         versionCode: 131,
         versionName: '1.3.1',
         // Gradle Plugins
-        gradle     : '3.2.0',
-        kotlin     : '1.2.71',
+        gradle     : '3.2.1',
+        kotlin     : '1.3.11',
         libs       : '2.1',
         // Dependencies
-        kuper      : '1.5.0',
-        counterFab : '1.1.0',
-        fuel       : '1.15.0',
-        oneSignal  : '3.10.1'
+        kuper      : '1.6.1',
+        counterFab : '1.2.0',
+        fuel       : '1.16.0',
+        oneSignal  : '3.10.5'
 ]
 
 ext.gradlePlugins = [

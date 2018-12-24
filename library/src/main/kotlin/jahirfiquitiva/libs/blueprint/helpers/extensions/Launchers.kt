@@ -186,10 +186,11 @@ private fun Context.executeIconPacksNotSupportedIntent() {
     try {
         mdDialog {
             title(R.string.no_compatible_launcher_title)
-            content(R.string.no_compatible_launcher_content)
-            positiveText(android.R.string.ok)
-            negativeText(android.R.string.cancel)
-            onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts") }
+            message(R.string.no_compatible_launcher_content)
+            positiveButton(android.R.string.ok) {
+                openLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts")
+            }
+            negativeButton(android.R.string.cancel)
         }.show()
     } catch (e: Exception) {
         BL.e(e.message, e)
@@ -199,11 +200,12 @@ private fun Context.executeIconPacksNotSupportedIntent() {
 internal fun Context.showLauncherNotInstalledDialog(item: Launcher) {
     try {
         mdDialog {
-            title(item.name)
-            content(getString(R.string.lni_content, item.name))
-            positiveText(android.R.string.ok)
-            negativeText(android.R.string.cancel)
-            onPositive { _, _ -> openLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0]) }
+            title(text = item.name)
+            message(text = getString(R.string.lni_content, item.name))
+            positiveButton(android.R.string.ok) {
+                openLink(PLAY_STORE_LINK_PREFIX + item.packageNames[0])
+            }
+            negativeButton(android.R.string.cancel)
         }.show()
     } catch (e: Exception) {
         BL.e(e.message, e)
@@ -214,8 +216,8 @@ internal fun Context.showLauncherApplyError(customContent: String? = null) {
     try {
         mdDialog {
             title(R.string.error_title)
-            content(customContent ?: getString(R.string.coming_soon))
-            positiveText(android.R.string.ok)
+            message(text = customContent ?: getString(R.string.coming_soon))
+            positiveButton(android.R.string.ok)
         }.show()
     } catch (e: Exception) {
         BL.e(e.message, e)

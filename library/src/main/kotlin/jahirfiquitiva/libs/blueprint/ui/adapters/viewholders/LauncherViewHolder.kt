@@ -21,11 +21,11 @@ import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.graphics.drawable.Drawable
 import android.os.Build
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import ca.allanwang.kau.utils.withAlpha
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
@@ -35,7 +35,6 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.glide.FramesGlideListener
-import jahirfiquitiva.libs.frames.helpers.glide.clearFromGlide
 import jahirfiquitiva.libs.kext.extensions.bestSwatch
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.boolean
@@ -48,7 +47,8 @@ import jahirfiquitiva.libs.kext.extensions.toBitmap
 import jahirfiquitiva.libs.kext.ui.widgets.CustomCardView
 import jahirfiquitiva.libs.kuper.helpers.extensions.isAppInstalled
 
-internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(
+    itemView) {
     val itemLayout: CustomCardView? by bind(R.id.launcher_item)
     val bg: LinearLayout? by bind(R.id.launcher_bg)
     val iconView: ImageView? by bind(R.id.launcher_icon)
@@ -81,7 +81,7 @@ internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(item
                     .load(iconRes)
                     .apply(
                         RequestOptions()
-                            .priority(Priority.IMMEDIATE)
+                            .priority(Priority.HIGH)
                             .placeholder(
                                 context.drawable(R.drawable.ic_na_launcher))
                             .error(context.drawable(R.drawable.ic_na_launcher)))
@@ -113,7 +113,6 @@ internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(item
                         }
                     })
                     .into(it)
-                    .clearOnDetach()
             }
             
             setOnClickListener { listener(item) }
@@ -125,6 +124,6 @@ internal class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(item
     }
     
     fun unbind() {
-        iconView?.clearFromGlide()
+        iconView?.setImageDrawable(null)
     }
 }

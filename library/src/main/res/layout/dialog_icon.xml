@@ -28,7 +28,7 @@
         android:layout_width="@dimen/dialog_icon_size"
         android:layout_height="@dimen/dialog_icon_size"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/md_dialog_frame_margin"
+        android:layout_margin="@dimen/fabs_margin"
         android:clickable="false"
         tools:ignore="ContentDescription,PrivateResource" />
 

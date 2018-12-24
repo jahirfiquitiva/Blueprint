@@ -46,7 +46,7 @@ internal fun Context.getInstalledApps(
             if (name == null) name = riPkg
             
             val appToAdd = App(getLocalizedName(riPkg, name.toString()), riPkg, component)
-            appToAdd.loadIcon(this)
+            appToAdd.getIcon(this)
             apps.add(appToAdd)
             loaded++
             
