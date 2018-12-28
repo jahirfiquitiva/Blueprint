@@ -16,113 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Оболочка Blueprint</string>
-  <string name="coming_soon">Скоро</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Главная</string>
-  <string name="section_icons">Значки</string>
-  <string name="section_apply">Применить</string>
-  <string name="section_wallpapers">Обои</string>
-  <string name="section_icon_request">Запрос значков</string>
-  <string name="section_donate">Пожертвовать</string>
-  <string name="section_about">О приложении</string>
-  <string name="section_help">Помощь</string>
-  <string name="section_zooper">Настройка Zooper</string>
-  <string name="section_widgets">Виджеты</string>
-  <string name="share_this_app">Я использую %1$s, и мне нравится. Проверь на: %2$s</string>
-  <string name="rate">Оценить</string>
-  <!-- Icons filters -->
-  <string name="filter">Фильтр</string>
-  <string name="clear">Очистить</string>
-  <string name="more_apps">Другие приложения</string>
-  <string name="general_info">Общие сведения</string>
-  <string name="useful_links">Полезные ссылки</string>
-  <string name="columns">Число столбцов</string>
-  <string name="lni_content">%1$s в настоящее время не установлен на вашем устройства. \nХотите установить его из магазина Google Play?</string>
-  <string name="no_compatible_launcher_title">Данный лаунчер НЕ совместим</string>
-  <string name="no_compatible_launcher_content">Этот лаунчер не совместим с любым набором значков и, следовательно, вы не сможите использовать этот набор значков с этим лаунчером. Пожалуйста, не ставьте набору плохую оценку по этой причине. Вы можете попробовать воспользоваться внешним приложением. Хотите скачать его?</string>
-  <string name="impossible_open_themes">Невозможно открыть темы приложения</string>
-  <string name="themes_app_not_installed">Приложение тем не установлено на этом устройстве</string>
-  <string name="included_templates">%1$s шаблоны</string>
-  <string name="launcher_icon_restored">значок запуска %1$s был восстановлен</string>
-  <string name="launcher_icon_not_restored">значок запуска %1$s уже отображается</string>
-  <string name="launcher_icon_restorer_error">Существует проблема с кодом %1$s. Пожалуйста, свяжитесь с его разработчиком.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Виджет восстановления иконок</string>
-  <string name="clock_widget_title">Аналоговые Часы</string>
-  <string name="search_icons">Искать значки</string>
-  <string name="search_wallpapers">Искать обои</string>
-  <string name="search_launchers">Искать лаунчеры</string>
-  <string name="search_apps">Искать приложения</string>
-  <string name="seconds">Секунд</string>
-  <string name="minutes">Минут</string>
-  <string name="hours">Часов</string>
-  <string name="days">Дней</string>
-  <string name="weeks">Недель</string>
-  <string name="months">Месяцев</string>
-  <!-- Requests -->
-  <string name="select_all">Выделить все</string>
-  <string name="no_selected_apps_title">Нет выбранных приложений</string>
-  <string name="no_selected_apps_content">Вы не выбрали ни одного приложения для запроса. Пожалуйста, выберите несколько приложений, а затем нажмите эту кнопку снова.</string>
-  <string name="apps_limit_dialog">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
-  <string name="apps_limit_dialog_more">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
-  <string name="apps_limit_dialog_day">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
-  <string name="apps_limit_dialog_day_extra">Вы сможете снова отправить запрос через %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Вы сможете снова отправить запрос меньше чем через минуту.</string>
-  <string name="requests_error">Произошел сбой при загрузке списка приложений.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
-  <string name="requests_upload_error">Произошел сбой при загрузке списка приложений на наши сервера.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
-  <string name="loading_apps_to_request">Загрузка приложений для запроса...</string>
-  <string name="building_request_dialog">Подготовка файлов запроса…</string>
-  <string name="request_upload_success">Успешно!</string>
-  <string name="request_upload_success_content">Запрос успешно был загружен на наш сервер.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">Включить использование обоев в превью</string>
-  <string name="pref_summary_wall_header">Будут отображаться обои текущего устройства.</string>
-  <string name="pref_header_launcher_icon">Иконка лаунчера</string>
-  <string name="pref_title_launcher_icon">Скрыть значок приложения</string>
-  <string name="pref_summary_launcher_icon">Если выбрано, иконка приложения будет скрыта.</string>
-  <string name="clearcache_dialog_content">Вы уверены, что Вы хотите удалить данные приложения, кэш и параметры? Установленные значки не будут затронуты.</string>
-  <string name="hideicon_dialog_title">Внимание!</string>
-  <string name="hideicon_dialog_content">Вы точно хотите скрыть иконку приложения в вашем лаунчере?\nПриложение может вылетать без причины и уведомления будут полностью отключены.\nВы можете прочитать раздел FAQ, чтобы узнать как снова включить отображение иконки в лаунчере, перед тем как сделать это.</string>
-  <string name="send_using">Отправить с помощью…</string>
-  <string name="no_mail">Установите любое приложение для отправки электронной почты</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>Как использовать набор значков?</item>
-    <item>Как применить набор значков?</item>
-    <item>Как просмотреть все имеющиеся иконки?</item>
-    <item>Как заменить значок альтернативным?</item>
-    <item>Как запросить отсутствующие иконки?</item>
-    <item>После перезагрузки моего устройства, значки больше не применяется. Иконки были восстановлены до значения по умолчанию.</item>
-    <item>Почему иконки выглядят пикселизированными на моем устройстве?</item>
-    <item>Я вижу иконку для приложения N в паке, но иконка не применяется.</item>
-    <item>Как скрыть иконку приложения из лаунчера?</item>
-    <item>Как открыть приложение после того, как значок приложения скрыт из лаунчера?</item>
-    <item>Как отобразить иконку приложения в лаунчере снова?</item>
-    <item>Почему приложению нужно разрешение чтобы изменять или удалять данные на моему устройстве?</item>
-    <item>Почему приложению требуется разрешение на полный доступ к сети?</item>
-    <item>Почему приложению требуется разрешение на просмотр подключений?</item>
-    <item>Почему приложению требуется разрешение на установку обоев?</item>
-    <item>Почему приложению требуется разрешение чтобы изменять размер обоев?</item>
-    <item>Почему приложению нужно разрешение, на запрет спящего режима?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>Требуется лаунчер с поддержкой паков значков. Список поддерживаемых лаунчеров приведен в приложении в разделе \"Применить\" или на странице приложения в Google Play.</item>
-    <item>В зависимости от типа навигации в приложении, вам нужно либо вызвать панель навигации свайпом с левой стороны экрана и перейти к разделу «Применить» или выбрать 4-ый значок из нижней панели навигации. Там вы сможете выбрать лаунчер для которого необходимо применить пак значков. Некоторые лаунчеры не поддерживает автоматического применения, и вам придется делать это вручную, через их настройки.</item>
-    <item>Вернитесь в главный раздел и нажмите на кнопку по названием \"Значки\".</item>
-    <item>В зависимости от используемого лаунчера, вам нужно либо долго удержать палец на значке и выбрать \"Изменить\" из выпадающего меню, или долго удержать палец на значке и переместить его в поле \"Изменить\".</item>
-    <item>В зависимости от типа навигационного меню, вам нужно, либо вызвать панель навигации свайпом слева направо и перейти к разделу «Запросы», или выбрать значок из нижней панели навигации.</item>
-    <item>Это произошло из-за того, что набор значков был перенесен на SD-карту. Вы должны установить его во внутреннюю память.</item>
-    <item>Эта проблема может возникнуть из-за лаунчера, который вы используете, а также высокого разрешения экрана устройства. Вы можете исправить это увеличив размер значков в настройках лаунчера до 115 - 120%. Или попробовать использовать другой лаунчер.</item>
-    <item>Отправить запрос.</item>
-    <item>Вызовите навигационное меню свайпом вправо или нажмите на значок в виде трех точек и выберите опцию \"Настройки\". Затем выберите опцию - \"Убрать значок приложения из лаунчера\".</item>
-    <item>Перейдите на домашний экран, затем создайте виджет для приложения, который называется \"IconRestorer\" и выберите его.</item>
-    <item>Вызовите навигационное меню свайпом вправо или нажмите на значок в виде трех точек и выберите опцию \"Настройки\". Затем отключите опцию - \"Убрать значок приложения из лаунчера\".</item>
-    <item>Разрешение требуется для того чтобы записывать данные запросов иконок и файлы, а также сохранять обои и изменять путь их сохранения по умолчанию.</item>
-    <item>Разрешение требуется для того чтобы загружать обои с сервера и скачивать их на устройство.</item>
-    <item>Разрешение требуется для того, чтобы проверить подключен ли телефон к интернет сети.</item>
-    <item>Разрешение требуется для того чтобы устанавливать и применять обои прямо из приложения.</item>
-    <item>Разрешение требуется для того чтобы изменять размер обоев на основе разрешения вашего экрана.</item>
-    <item>Это необходимо для Muzei Live Wallpaper.</item>
-  </string-array>
+    <string name="frames_dashboard">Оболочка Blueprint</string>
+    <string name="coming_soon">Скоро</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Главная</string>
+    <string name="section_icons">Значки</string>
+    <string name="section_apply">Применить</string>
+    <string name="section_wallpapers">Обои</string>
+    <string name="section_icon_request">Запрос значков</string>
+    <string name="section_donate">Пожертвовать</string>
+    <string name="section_about">О приложении</string>
+    <string name="section_help">Помощь</string>
+    <string name="section_zooper">Настройка Zooper</string>
+    <string name="section_widgets">Виджеты</string>
+    <string name="share_this_app">Я использую %1$s, и мне нравится. Проверь на: %2$s</string>
+    <string name="rate">Оценить</string>
+    <!-- Icons filters -->
+    <string name="filter">Фильтр</string>
+    <string name="clear">Очистить</string>
+    <string name="more_apps">Больше приложений</string>
+    <string name="general_info">Общие сведения</string>
+    <string name="useful_links">Полезные ссылки</string>
+    <string name="columns">Число столбцов</string>
+    <string name="lni_content">%1$s в настоящее время не установлен на вашем устройства. \nХотите установить его из магазина Google Play?</string>
+    <string name="no_compatible_launcher_title">Данный лаунчер НЕ совместим</string>
+    <string name="no_compatible_launcher_content">Этот лаунчер не совместим с любым набором значков и, следовательно, вы не сможите использовать этот набор значков с этим лаунчером. Пожалуйста, не ставьте набору плохую оценку по этой причине. Вы можете попробовать воспользоваться внешним приложением. Хотите скачать его?</string>
+    <string name="impossible_open_themes">Невозможно открыть темы приложения</string>
+    <string name="themes_app_not_installed">Приложение тем не установлено на этом устройстве</string>
+    <string name="included_templates">%1$s шаблоны</string>
+    <string name="launcher_icon_restored">значок запуска %1$s был восстановлен</string>
+    <string name="launcher_icon_not_restored">значок запуска %1$s уже отображается</string>
+    <string name="launcher_icon_restorer_error">Существует проблема с кодом %1$s. Пожалуйста, свяжитесь с его разработчиком.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Виджет восстановления иконок</string>
+    <string name="clock_widget_title">Аналоговые часы</string>
+    <string name="search_icons">Искать значки</string>
+    <string name="search_wallpapers">Искать обои</string>
+    <string name="search_launchers">Искать лаунчеры</string>
+    <string name="search_apps">Искать приложения</string>
+    <string name="seconds">Секунд</string>
+    <string name="minutes">Минут</string>
+    <string name="hours">Часов</string>
+    <string name="days">Дней</string>
+    <string name="weeks">Недель</string>
+    <string name="months">Месяцев</string>
+    <!-- Requests -->
+    <string name="select_all">Выделить все</string>
+    <string name="no_selected_apps_title">Нет выбранных приложений</string>
+    <string name="no_selected_apps_content">Вы не выбрали ни одного приложения для запроса. Пожалуйста, выберите несколько приложений, а затем нажмите эту кнопку снова.</string>
+    <string name="apps_limit_dialog">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+    <string name="apps_limit_dialog_more">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+    <string name="apps_limit_dialog_day">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+    <string name="apps_limit_dialog_day_extra">Вы сможете снова отправить запрос через %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Вы сможете снова отправить запрос меньше чем через минуту.</string>
+    <string name="requests_error">Произошел сбой при загрузке списка приложений.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
+    <string name="requests_upload_error">Произошел сбой при загрузке списка приложений на наши сервера.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
+    <string name="loading_apps_to_request">Загрузка приложений для запроса...</string>
+    <string name="building_request_dialog">Подготовка файлов запроса…</string>
+    <string name="request_upload_success">Успешно!</string>
+    <string name="request_upload_success_content">Запрос успешно был загружен на наш сервер.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">Включить использование обоев в превью</string>
+    <string name="pref_summary_wall_header">Будут отображаться обои текущего устройства.</string>
+    <string name="pref_header_launcher_icon">Иконка лаунчера</string>
+    <string name="pref_title_launcher_icon">Скрыть значок приложения</string>
+    <string name="pref_summary_launcher_icon">Если выбрано, иконка приложения будет скрыта.</string>
+    <string name="clearcache_dialog_content">Вы уверены, что Вы хотите удалить данные приложения, кэш и параметры? Установленные значки не будут затронуты.</string>
+    <string name="hideicon_dialog_title">Внимание!</string>
+    <string name="hideicon_dialog_content">Вы точно хотите скрыть иконку приложения в вашем лаунчере?\nПриложение может вылетать без причины и уведомления будут полностью отключены.\nВы можете прочитать раздел FAQ, чтобы узнать как снова включить отображение иконки в лаунчере, перед тем как сделать это.</string>
+    <string name="send_using">Отправить с помощью…</string>
+    <string name="no_mail">Установите любое приложение для отправки электронной почты</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Как использовать набор значков?</item>
+        <item>Как применить набор значков?</item>
+        <item>Как просмотреть все имеющиеся иконки?</item>
+        <item>Как заменить значок альтернативным?</item>
+        <item>Как запросить отсутствующие иконки?</item>
+        <item>После перезагрузки моего устройства, значки больше не применяется. Иконки были восстановлены до значения по умолчанию.</item>
+        <item>Почему иконки выглядят пикселизированными на моем устройстве?</item>
+        <item>Я вижу иконку для приложения N в паке, но иконка не применяется.</item>
+        <item>Как скрыть иконку приложения из лаунчера?</item>
+        <item>Как открыть приложение после того, как значок приложения скрыт из лаунчера?</item>
+        <item>Как отобразить иконку приложения в лаунчере снова?</item>
+        <item>Почему приложению нужно разрешение чтобы изменять или удалять данные на моему устройстве?</item>
+        <item>Почему приложению требуется разрешение на полный доступ к сети?</item>
+        <item>Почему приложению требуется разрешение на просмотр подключений?</item>
+        <item>Почему приложению требуется разрешение на установку обоев?</item>
+        <item>Почему приложению требуется разрешение чтобы изменять размер обоев?</item>
+        <item>Почему приложению нужно разрешение, на запрет спящего режима?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Требуется лаунчер с поддержкой паков значков. Список поддерживаемых лаунчеров приведен в приложении в разделе \"Применить\" или на странице приложения в Google Play.</item>
+        <item>В зависимости от типа навигации в приложении, вам нужно либо вызвать панель навигации свайпом с левой стороны экрана и перейти к разделу «Применить» или выбрать 4-ый значок из нижней панели навигации. Там вы сможете выбрать лаунчер для которого необходимо применить пак значков. Некоторые лаунчеры не поддерживает автоматического применения, и вам придется делать это вручную, через их настройки.</item>
+        <item>Вернитесь в главный раздел и нажмите на кнопку по названием \"Значки\".</item>
+        <item>В зависимости от используемого лаунчера, вам нужно либо долго удержать палец на значке и выбрать \"Изменить\" из выпадающего меню, или долго удержать палец на значке и переместить его в поле \"Изменить\".</item>
+        <item>В зависимости от типа навигационного меню, вам нужно, либо вызвать панель навигации свайпом слева направо и перейти к разделу «Запросы», или выбрать значок из нижней панели навигации.</item>
+        <item>Это произошло из-за того, что набор значков был перенесен на SD-карту. Вы должны установить его во внутреннюю память.</item>
+        <item>Эта проблема может возникнуть из-за лаунчера, который вы используете, а также высокого разрешения экрана устройства. Вы можете исправить это увеличив размер значков в настройках лаунчера до 115 - 120%. Или попробовать использовать другой лаунчер.</item>
+        <item>Отправить запрос.</item>
+        <item>Вызовите навигационное меню свайпом вправо или нажмите на значок в виде трех точек и выберите опцию \"Настройки\". Затем выберите опцию - \"Убрать значок приложения из лаунчера\".</item>
+        <item>Перейдите на домашний экран, затем создайте виджет для приложения, который называется \"IconRestorer\" и выберите его.</item>
+        <item>Вызовите навигационное меню свайпом вправо или нажмите на значок в виде трех точек и выберите опцию \"Настройки\". Затем отключите опцию - \"Убрать значок приложения из лаунчера\".</item>
+        <item>Разрешение требуется для того чтобы записывать данные запросов иконок и файлы, а также сохранять обои и изменять путь их сохранения по умолчанию.</item>
+        <item>Разрешение требуется для того чтобы загружать обои с сервера и скачивать их на устройство.</item>
+        <item>Разрешение требуется для того, чтобы проверить подключен ли телефон к интернет сети.</item>
+        <item>Разрешение требуется для того чтобы устанавливать и применять обои прямо из приложения.</item>
+        <item>Разрешение требуется для того чтобы изменять размер обоев на основе разрешения вашего экрана.</item>
+        <item>Это необходимо для Muzei Live Wallpaper.</item>
+    </string-array>
 </resources>
