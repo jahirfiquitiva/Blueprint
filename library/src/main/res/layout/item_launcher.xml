@@ -23,6 +23,7 @@
     android:layout_height="wrap_content"
     android:foreground="?attr/selectableItemBackground"
     android:stateListAnimator="@anim/card_lift"
+    app:cardCornerRadius="@dimen/cards_corner_radius"
     app:cardPreventCornerOverlap="false"
     tools:ignore="UnusedAttribute">
 

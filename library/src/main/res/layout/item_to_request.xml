@@ -27,7 +27,8 @@
     android:clipToPadding="false"
     android:descendantFocusability="blocksDescendants"
     app:cardCornerRadius="0dp"
-    app:cardElevation="0dp">
+    app:cardElevation="0dp"
+    app:cardMaxElevation="0dp">
 
     <FrameLayout
         android:id="@+id/request_item_overlay"
