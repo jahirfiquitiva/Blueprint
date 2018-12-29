@@ -29,14 +29,14 @@
     <string name="section_help">সহায়তা</string>
     <string name="section_zooper">জুপার সেটআপ</string>
     <string name="section_widgets">উইজেট সমূহ</string>
-    <string name="share_this_app">%1$s আমি ব্যবহার করছি এবং আমি পছন্দ করি। অবশ্যই চেক করুন: %2$s</string>
+    <string name="share_this_app">%1$s আমি ব্যবহার করছি এবং আমি খুবই পছন্দ করি। অবশ্যই চেক করুন: %2$s</string>
     <string name="rate">মুল্যায়ন করুন</string>
     <!-- Icons filters -->
     <string name="filter">পরিশ্রুতক</string>
     <string name="clear">সাফ করুন</string>
     <string name="more_apps">আরো অ্যাপ সমূহ</string>
     <string name="general_info">সাধারণ তথ্য</string>
-    <string name="useful_links">দরকারী লিংক</string>
+    <string name="useful_links">দরকারী লিংকসমূহ</string>
     <string name="columns">স্তম্ভের সংখ্যা</string>
     <string name="lni_content">%1$s এ মুহূর্তে আপনার ডিভাইসে ইন্সটল করা নেই।\n আপনি কি এটি প্লে স্টোর থেকে ইন্সটল করতে চান?</string>
     <string name="no_compatible_launcher_title">এই লঞ্চারটি উপযুক্ত নয়</string>
@@ -44,7 +44,7 @@
     <string name="impossible_open_themes">থিম অ্যাপ চালু করা সম্ভব নয়</string>
     <string name="themes_app_not_installed">থিম অ্যাপ এই ডিভাইসটিতে ইনস্টল করা নেই</string>
     <string name="included_templates">%1$s টি টেমপ্লেট</string>
-    <string name="launcher_icon_restored">%1$s লঞ্চার আইকন পুনরুদ্ধার করা হয়েছে</string>
+    <string name="launcher_icon_restored">%1$s -এর লঞ্চার আইকন পুনরুদ্ধার করা হয়েছে</string>
     <string name="launcher_icon_not_restored">%1$s লঞ্চার আইকন ইতিমধ্যে দৃশ্যমান</string>
     <string name="launcher_icon_restorer_error">%1$s এর কোড এ সমস্যা রয়েছে। অনুগ্রহ করে এর ডেভলপারের সঙ্গে যোগাযোগ করুন।</string>
     <!-- Widgets Names -->
@@ -74,10 +74,10 @@
     <string name="loading_apps_to_request">অনুরোধ করতে অ্যাপ লোড করা হচ্ছে…</string>
     <string name="building_request_dialog">অনুরোধ ফাইল তৈরি করা হচ্ছে…</string>
     <string name="request_upload_success">সফল হয়েছে!</string>
-    <string name="request_upload_success_content">অনুরোধ সফলভাবে আমাদের সার্ভারে আপলোড করা হয়েছে।.</string>
+    <string name="request_upload_success_content">অনুরোধ সফলভাবে আমাদের সার্ভারে আপলোড করা হয়েছে।</string>
     <!-- Preferences -->
-    <string name="pref_title_wall_header">আইকন প্রিভিউতে ওয়ালপেপার ব্যবহার করুন</string>
-    <string name="pref_summary_wall_header">আপনার বর্তমান ডিভাইস ওয়ালপেপার দেখা যাবে।.</string>
+    <string name="pref_title_wall_header">আইকন প্রিভিউতে প্রযুক্ত ওয়ালপেপার ব্যবহার করুন</string>
+    <string name="pref_summary_wall_header">আপনার বর্তমান ডিভাইস-এর প্রযুক্ত ওয়ালপেপার দেখা যাবে।</string>
     <string name="pref_header_launcher_icon">লঞ্চার আইকন</string>
     <string name="pref_title_launcher_icon">লঞ্চার আইকন লুকান</string>
     <string name="pref_summary_launcher_icon">এটিতে টিক দেওয়া হলে, লঞ্চার আইকন আড়াল করা হবে ।</string>
