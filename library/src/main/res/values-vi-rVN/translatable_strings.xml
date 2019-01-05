@@ -42,12 +42,17 @@
     <string name="no_compatible_launcher_title">Bệ phóng này là không tương thích</string>
     <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs and therefore you cannot use this icon pack with this launcher. Please do not rate the icon pack negatively for this reason. There is a solution that you can try for yourself, but it requires the use of an external app. Would you like to download it?</string>
     <string name="impossible_open_themes">Không thể mở chủ đề app</string>
+    <string name="themes_app_not_installed">Themes app is not installed in this device</string>
     <string name="included_templates">%1$s templates</string>
+    <string name="launcher_icon_restored">%1$s launcher icon was restored</string>
     <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
     <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">Biểu tượng bảo tồn Widget</string>
     <string name="clock_widget_title">Analog Clock</string>
+    <string name="search_icons">Search icons</string>
+    <string name="search_wallpapers">Search wallpapers</string>
+    <string name="search_launchers">Search launchers</string>
     <string name="search_apps">Search apps</string>
     <string name="seconds">Seconds</string>
     <string name="minutes">Minutes</string>
@@ -73,6 +78,7 @@
     <!-- Preferences -->
     <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
     <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
+    <string name="pref_header_launcher_icon">Launcher icon</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>How to use the Icon Pack?</item>
