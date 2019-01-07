@@ -16,7 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="frames_dashboard">Blueprint Kontrol Paneli</string>
+    <string name="frames_dashboard">Planı kontrol paneli</string>
     <string name="coming_soon">Coming soon</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">Ana sayfa</string>
