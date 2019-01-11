@@ -79,6 +79,8 @@
     <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
     <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
     <string name="pref_header_launcher_icon">Launcher icon</string>
+    <string name="pref_title_launcher_icon">Hide launcher icon</string>
+    <string name="pref_summary_launcher_icon">Khi kiểm tra, biểu tượng phóng sẽ được ẩn.</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>How to use the Icon Pack?</item>
