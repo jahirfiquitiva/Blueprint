@@ -81,6 +81,7 @@
     <string name="pref_header_launcher_icon">Launcher icon</string>
     <string name="pref_title_launcher_icon">Hide launcher icon</string>
     <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
+    <string name="clearcache_dialog_content">Are you sure you want to delete app data, cache and settings? Applied icons won\'t be affected.</string>
     <string name="hideicon_dialog_title">Warning!</string>
     <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher?\nApp may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.</string>
     <string name="send_using">Send using…</string>
