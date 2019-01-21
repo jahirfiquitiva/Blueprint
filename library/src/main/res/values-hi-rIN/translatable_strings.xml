@@ -113,16 +113,16 @@
         <item>लांचर आप उपयोग कर रहे हैं पर निर्भर करता है, आप या तो लंबे समय आइकन नल और पॉप-अप मेनू से \"संपादित करें\" का चयन करें, या लंबे समय आइकन नल और एक \"संपादित करें\" बॉक्स के लिए यह कदम है.</item>
         <item>एप्लिकेशन के नेविगेशन प्रकार के आधार पर, आप या तो बाईं ओर से नेविगेशन दराज स्लाइड करने के लिए की जरूरत है, और \"अनुरोध\" अनुभाग के लिए जाना है, या नीचे नेविगेशन पट्टी से आइकन का चयन करें ।</item>
         <item>येह इस्लिये हुआ क्योकि आइकन पैक ऐसडी कारद मे चला गया है, आपको इसे इनटरनल स्थान मे सथापित करना चाहिये।</item>
-        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>बड़े रिज़ॉल्यूशन को हैंडल करते समय समस्या आपके द्वारा उपयोग किए जा रहे लॉन्चर के साथ आ सकती है। आप आइकन का आकार 115 - 120% तक बढ़ाकर इसे ठीक कर सकते हैं। या किसी अन्य लॉन्चर का उपयोग करके देखें।</item>
         <item>चिह्न का निवेदन करे |</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-        <item>It\'s needed to be able to check if your device has internet connection.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>नेविगेशन ड्रॉअर को बाईं ओर स्लाइड करें, या 3-डॉट मेनू बटन पर टैप करें और \"सेटिंग\" अनुभाग पर जाएं। फिर \"लॉन्चर से आइकन छुपाएं\" विकल्प की जांच करें।</item>
+        <item>अपनी होम स्क्रीन पर जाएं, फिर ऐप के लिए एक विजेट बनाएं जिसका नाम \"IconRestorer\" है और इसे टैप करें।</item>
+        <item>नेविगेशन ड्रॉअर को बाईं ओर स्लाइड करें, या 3-डॉट मेनू बटन पर टैप करें और \"सेटिंग\" अनुभाग पर जाएं। फिर \"लॉन्चर से आइकन छुपाएं\" विकल्प की जांच करें।</item>
+        <item>यह आइकन अनुरोध डेटा और फ़ाइलों के साथ-साथ वॉलपेपर को बचाने और वॉलपेपर के डाउनलोड स्थान को बदलने में सक्षम होने के लिए सक्षम होने की आवश्यकता है।</item>
+        <item>यह क्लाउड से वॉलपेपर लोड करने और उन्हें डाउनलोड करने में सक्षम होने की आवश्यकता है।</item>
+        <item>यह जांचने में सक्षम होने की आवश्यकता है कि आपके डिवाइस में इंटरनेट कनेक्शन है या नहीं।</item>
+        <item>यह एप्लिकेशन से सीधे वॉलपेपर लागू करने में सक्षम होने की जरूरत है।</item>
+        <item>यह आपके स्क्रीन रिज़ॉल्यूशन के आधार पर वॉलपेपर आयामों को समायोजित करने में सक्षम होने की आवश्यकता है।</item>
         <item>यह Muzei लाइव वॉलपेपर को जरूरत है ।</item>
     </string-array>
 </resources>
