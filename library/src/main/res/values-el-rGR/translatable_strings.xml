@@ -16,10 +16,12 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <!-- List Of Drawer Sections -->
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="frames_dashboard">Σχεδιάγραμμα ταμπλό</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_icon_request">Εικονίδιο αιτήματος</string>
+    <!-- Icons filters -->
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>
