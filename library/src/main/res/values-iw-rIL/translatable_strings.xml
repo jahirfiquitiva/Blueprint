@@ -16,10 +16,22 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <!-- List Of Drawer Sections -->
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="coming_soon">בקרוב</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">בית</string>
+    <string name="section_icons">אייקונים</string>
+    <string name="section_apply">החל</string>
+    <string name="section_wallpapers">רקעים</string>
+    <string name="section_icon_request">בקשת אייקונים</string>
+    <string name="section_donate">תרומה</string>
+    <string name="section_about">מידע על האפליקציה</string>
+    <string name="section_help">עזרה</string>
+    <string name="section_zooper">הגדרת Zooper</string>
+    <string name="section_widgets">וידג\'טים</string>
+    <string name="share_this_app">אני משתמש ב %1$s ואני אוהב את זה. תראה את זה ב: %2$s</string>
+    <!-- Icons filters -->
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>
