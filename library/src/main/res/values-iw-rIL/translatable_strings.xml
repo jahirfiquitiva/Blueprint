@@ -29,9 +29,42 @@
     <string name="section_zooper">הגדרת Zooper</string>
     <string name="section_widgets">וידג\'טים</string>
     <string name="share_this_app">אני משתמש ב %1$s ואני אוהב את זה. תראה את זה ב: %2$s</string>
+    <string name="rate">דרג</string>
     <!-- Icons filters -->
+    <string name="filter">סנן</string>
+    <string name="clear">נקה</string>
+    <string name="more_apps">עוד אפליקציות</string>
+    <string name="general_info">מידע כללי</string>
+    <string name="useful_links">קישורים שימושיים</string>
+    <string name="columns">מספר עמודות</string>
+    <string name="lni_content">%1$s לא מותקן על מכשירך. \nהאם תרצה להתקין את זה מהחנות Play?</string>
+    <string name="no_compatible_launcher_title">הלאנצ\'ר הזה לא נתמך</string>
+    <string name="impossible_open_themes">לא ניתן לפתוח את אפליקציית ערכות הנושא</string>
+    <string name="themes_app_not_installed">אפליקציית ערכות הנושא אינה מותקנת על המכשיר הזה</string>
+    <string name="included_templates">תבניות %1$s</string>
+    <string name="launcher_icon_restored">אייקון הלאנצ\'ר של %1$s שוחזר</string>
+    <string name="launcher_icon_restorer_error">ישנה בעיה עם הקוד של %1$s. אנא צור קשר עם המפתח.</string>
     <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">וידג\'ט משחזר האייקונים</string>
+    <string name="clock_widget_title">שעון אנלוגי</string>
+    <string name="search_icons">חפש אייקונים</string>
+    <string name="search_wallpapers">חפש רקעים</string>
+    <string name="search_launchers">חפש לאנצ\'רים</string>
+    <string name="search_apps">חפש אפליקציות</string>
+    <string name="seconds">שניות</string>
+    <string name="minutes">דקות</string>
+    <string name="hours">שעות</string>
+    <string name="days">ימים</string>
+    <string name="weeks">שבועות</string>
+    <string name="months">חודשים</string>
     <!-- Requests -->
+    <string name="select_all">בחר הכל</string>
+    <string name="no_selected_apps_title">אין אפליקציות נבחרות</string>
+    <string name="apps_limit_dialog">מצטערים, אבל אתה רשאי לבחור רק %1$s אפליקציות לבקשה.</string>
+    <string name="apps_limit_dialog_more">מצטערים, אבל אתה ראשי לבקש רק עוד %1$s אפליקציות כרגע.</string>
+    <string name="apps_limit_dialog_day">מצטערים, אבל אתה יכול לבקש אייקונים כל %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">אתה תוכל לבקש אייקונים שוב, בעוד %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">אתה תוכל לבקש אייקונים שוב, תוך פחות מדקה.</string>
     <!-- Preferences -->
     <!-- HELP SECTION -->
 </resources>
