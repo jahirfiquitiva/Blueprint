@@ -45,6 +45,7 @@
     <string name="themes_app_not_installed">אפליקציית ערכות הנושא אינה מותקנת על המכשיר הזה</string>
     <string name="included_templates">תבניות %1$s</string>
     <string name="launcher_icon_restored">אייקון הלאנצ\'ר של %1$s שוחזר</string>
+    <string name="launcher_icon_not_restored">אייקון הלאנצ\'ר של %1$s כבר גלוי</string>
     <string name="launcher_icon_restorer_error">ישנה בעיה עם הקוד של %1$s. אנא צור קשר עם המפתח.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">וידג\'ט משחזר האייקונים</string>
@@ -62,12 +63,17 @@
     <!-- Requests -->
     <string name="select_all">בחר הכל</string>
     <string name="no_selected_apps_title">אין אפליקציות נבחרות</string>
+    <string name="no_selected_apps_content">אתה לא בחרת שום אפליקציות לבקשה. אנא בחר כמה אפליקציות ולאחר מכן הקש שוב על כפתור זה.</string>
     <string name="apps_limit_dialog">מצטערים, אבל אתה רשאי לבחור רק %1$s אפליקציות לבקשה.</string>
     <string name="apps_limit_dialog_more">מצטערים, אבל אתה ראשי לבקש רק עוד %1$s אפליקציות כרגע.</string>
     <string name="apps_limit_dialog_day">מצטערים, אבל אתה יכול לבקש אייקונים כל %1$s.</string>
     <string name="apps_limit_dialog_day_extra">אתה תוכל לבקש אייקונים שוב, בעוד %1$s.</string>
     <string name="apps_limit_dialog_day_extra_sec">אתה תוכל לבקש אייקונים שוב, תוך פחות מדקה.</string>
     <string name="requests_error">הייתה שגיאה בטעינת אפליקציות לבקשה.\nסיבה: %1$s\nאנא נסה שנית במועד מאוחר יותר.</string>
+    <string name="requests_upload_error">הייתה שגיאה בהעלת אפליקציות לבקשה בשרתים שלנו.\nסיבה:%1$s\nאנא נסה שנית מאוחר יותר.</string>
+    <string name="loading_apps_to_request">טוען אפליקציות לבקשה…</string>
+    <string name="building_request_dialog">בונה קבצי בקשה…</string>
+    <string name="request_upload_success">הצלחה!</string>
     <!-- Preferences -->
     <!-- HELP SECTION -->
     <string-array name="answers">
