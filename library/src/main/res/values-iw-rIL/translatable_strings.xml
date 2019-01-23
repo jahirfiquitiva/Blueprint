@@ -16,6 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="frames_dashboard">Blueprint Dashboard</string>
     <string name="coming_soon">בקרוב</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">בית</string>
@@ -39,6 +40,7 @@
     <string name="columns">מספר עמודות</string>
     <string name="lni_content">%1$s לא מותקן על מכשירך. \nהאם תרצה להתקין את זה מהחנות Play?</string>
     <string name="no_compatible_launcher_title">הלאנצ\'ר הזה לא נתמך</string>
+    <string name="no_compatible_launcher_content">הלאנצ\'ר הזה אינו נתמך עם שום חבילות אייקונים ולכן אתה לא יכול להשתמש בחבילת האייקונים עם הלאנצ\'ר הזה. אנא אל תדרג את חבילת האייקונים הזה שלילית בגלל הסיבה הזו. ישנו פתרון שבאפשרותך לנסות בעצמך, אבל זה דורש אפליקציה חיצונית. האם אתה רוצה להוריד אותה?</string>
     <string name="impossible_open_themes">לא ניתן לפתוח את אפליקציית ערכות הנושא</string>
     <string name="themes_app_not_installed">אפליקציית ערכות הנושא אינה מותקנת על המכשיר הזה</string>
     <string name="included_templates">תבניות %1$s</string>
