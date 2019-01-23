@@ -74,8 +74,38 @@
     <string name="loading_apps_to_request">טוען אפליקציות לבקשה…</string>
     <string name="building_request_dialog">בונה קבצי בקשה…</string>
     <string name="request_upload_success">הצלחה!</string>
+    <string name="request_upload_success_content">הבקשה הועלתה לשרת שלנו בהצלחה.</string>
     <!-- Preferences -->
+    <string name="pref_title_wall_header">לאפשר את השימוש ברקע בתצוגת האייקונים</string>
+    <string name="pref_summary_wall_header">הרקע במכשיר הנוכחי שלך יוצג.</string>
+    <string name="pref_header_launcher_icon">סמל לאנצ\'ר</string>
+    <string name="pref_title_launcher_icon">הסתר את סמל המשגר</string>
+    <string name="pref_summary_launcher_icon">כאשר מסומן, סמל הלאנצ\'ר יוסתר.</string>
+    <string name="clearcache_dialog_content">האם אתה בטוח שברצונך למחוק את הנתונים, מטמון והגדרות של האפליקציה? אייקונים מוגדרים לא יושפעו.</string>
+    <string name="hideicon_dialog_title">אזהרה!</string>
+    <string name="hideicon_dialog_content">אתה בטוח שברצונך להסתיר את אייקון האפליקציה מהלאנצ\'ר?\nהאפליקציה עלולה להיסגר בצורה בלתי צפויה וההתראות יבוטלו לחלוטין.\nמומלץ לקרוא את השאלות הנפוצות בכדי ללמוד כיצב לגרום לזה להופיע שוב, לפני הסתרתו.</string>
+    <string name="send_using">שלח באמצעות…</string>
+    <string name="no_mail">אין יישומי מייל מותקנים</string>
     <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>כיצד להשתמש בחבילת האייקונים?</item>
+        <item>כיצד להחיל את חבילת האייקונים?</item>
+        <item>כיצד ניתן לראות את כל האייקונים הכלולים?</item>
+        <item>כיצד ניתן להחליף אייקון עם גרסה חלופית?</item>
+        <item>כיצד לבקש אייקונים לא מעוצבים?</item>
+        <item>לאחר הפעלה מחדש של המכשיר שלי, חבילת האייקונים אינה מוחלת יותר. אייקונים שוחזרו לברידת המחדל.</item>
+        <item>למה אייקונים נראים מפוקסלים על המכשיר שלי?</item>
+        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+        <item>How to hide app icon from launcher?</item>
+        <item>How to open the app after app icon is hidden from launcher?</item>
+        <item>How to show app icon in launcher again?</item>
+        <item>Why does the app need permission to modify or delete content of my storage?</item>
+        <item>Why does the app need permission to full network access?</item>
+        <item>Why does the app need permission to view connections?</item>
+        <item>Why does the app need permission to set wallpaper?</item>
+        <item>Why does the app need permission to adjust the wallpaper size?</item>
+        <item>Why does the app need permission to prevent phone from sleeping?</item>
+    </string-array>
     <string-array name="answers">
         <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
         <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
