@@ -16,39 +16,39 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="frames_dashboard">Blueprint Dashboard</string>
-    <string name="coming_soon">Coming soon</string>
+    <string name="frames_dashboard">藍圖儀表板</string>
+    <string name="coming_soon">即將推出</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">Home</string>
-    <string name="section_icons">Icons</string>
-    <string name="section_apply">Apply</string>
-    <string name="section_wallpapers">Wallpapers</string>
-    <string name="section_icon_request">Icon request</string>
-    <string name="section_donate">Donate</string>
-    <string name="section_about">About the app</string>
-    <string name="section_help">Help</string>
-    <string name="section_zooper">Zooper Setup</string>
-    <string name="section_widgets">Widgets</string>
-    <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
-    <string name="rate">評分</string>
+    <string name="section_home">首頁</string>
+    <string name="section_icons">圖標</string>
+    <string name="section_apply">套用</string>
+    <string name="section_wallpapers">桌布</string>
+    <string name="section_icon_request">圖示請求</string>
+    <string name="section_donate">捐贈</string>
+    <string name="section_about">關於應用</string>
+    <string name="section_help">説明</string>
+    <string name="section_zooper">zooper 設置</string>
+    <string name="section_widgets">桌面小工具</string>
+    <string name="share_this_app">我使用 %1$s , 我喜歡它。去看看它在: %2$s</string>
+    <string name="rate">評價</string>
     <!-- Icons filters -->
     <string name="filter">篩選器</string>
     <string name="clear">清除</string>
     <string name="more_apps">更多應用程式</string>
-    <string name="general_info">一般資訊</string>
+    <string name="general_info">一般資訊：</string>
     <string name="useful_links">相關連結</string>
     <string name="columns">列號</string>
-    <string name="lni_content">您的設備上目前未安裝 %1$s. 您想要從 Google Play Store 安裝嗎？</string>
+    <string name="lni_content">%1$s 當前未安裝在您的設備上。\n您想從 google play 商店安裝它嗎？</string>
     <string name="no_compatible_launcher_title">此啟動器不相容</string>
-    <string name="no_compatible_launcher_content">此啟動器與任何圖示包均不相容, 因此不能將此圖示包與此啟動器一起使用。請不要因為這個原因而對圖示包給予負面評價。若您願意嘗試, 有一個解決方案，但需要使用一個外部應用程式. 你想下載它嗎？</string>
+    <string name="no_compatible_launcher_content">此啟動器與任何圖示包都不相容, 因此您不能將此圖示包與此啟動器一起使用。因此, 請不要對圖示包進行負面評價。有一個解決方案, 你可以自己嘗試, 但它需要使用外部應用. 你想下載它嗎？</string>
     <string name="impossible_open_themes">無法打開主題應用程式</string>
-    <string name="themes_app_not_installed">此設備中未安裝主題應用程式</string>
+    <string name="themes_app_not_installed">主題應用未安裝在此設備中</string>
     <string name="included_templates">%1$s 範本</string>
-    <string name="launcher_icon_restored">已還原 %1$s 啟動器圖示</string>
-    <string name="launcher_icon_not_restored">%1$s 啟動器圖示已經可見</string>
-    <string name="launcher_icon_restorer_error">%1$s的代碼存在問題。請與開發人員聯繫。</string>
+    <string name="launcher_icon_restored">恢復 %1$s 啟動器圖示</string>
+    <string name="launcher_icon_not_restored">%1$s 啟動器圖示已可見</string>
+    <string name="launcher_icon_restorer_error">%1$s的代碼有問題。請聯繫其開發人員。</string>
     <!-- Widgets Names -->
-    <string name="iconrestorer_widget_title">圖示恢復工具</string>
+    <string name="iconrestorer_widget_title">圖示恢復器小部件</string>
     <string name="clock_widget_title">指針時鐘</string>
     <string name="search_icons">搜尋圖示</string>
     <string name="search_wallpapers">搜索桌布</string>
