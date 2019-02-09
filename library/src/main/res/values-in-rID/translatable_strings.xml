@@ -113,11 +113,11 @@
         <item>Sesuai dengan launcher yang Anda gunakan, Anda perlu menekan lama ikon dan pilih \"Edit\" dari menu pop-up, atau tekan lama ikon dan pindahkan ke kotak \"Edit\".</item>
         <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Meminta\", atau pilih ikon dari bilah navigasi bawah.</item>
         <item>Itu terjadi karena pak ikon telah dipindahkan ke Kartu SD, Anda perlu memasangnya di penyimpanan internal.</item>
-        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>Masalah mungkin datang dengan launcher yang sedang Anda gunakan, ketika menangani resolusi besar. Anda dapat memperbaikinya dengan meningkatkan ukuran ikon menjadi 115% - 120%. Atau mencoba menggunakan launcher lain.</item>
         <item>Kirim sebuah permintaan ikon.</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>Geser Kotak Navigasi dari kiri, atau tekan tombol menu 3-titik lalu pergi ke bagian \"Pengaturan\". Lalu beri centang pada opsi \"Sembunyikan ikon dari launcher\".</item>
+        <item>Pergi ke layar beranda Anda, lalu buat sebuah widget untuk aplikasi bernama \"IconRestorer\" dan tekan.</item>
+        <item>Geser Kotak Navigasi dari kiri, atau tekan tombol menu 3-titik lalu pergi ke bagian \"Pengaturan\". Lalu hapus centang pada opsi \"Sembunyikan ikon dari launcher\".</item>
         <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
         <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
         <item>Itu diperlukan untuk bisa memeriksa jika perangkat anda memiliki koneksi internet.</item>
