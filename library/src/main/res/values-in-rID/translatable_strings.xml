@@ -118,11 +118,11 @@
         <item>Geser Kotak Navigasi dari kiri, atau tekan tombol menu 3-titik lalu pergi ke bagian \"Pengaturan\". Lalu beri centang pada opsi \"Sembunyikan ikon dari launcher\".</item>
         <item>Pergi ke layar beranda Anda, lalu buat sebuah widget untuk aplikasi bernama \"IconRestorer\" dan tekan.</item>
         <item>Geser Kotak Navigasi dari kiri, atau tekan tombol menu 3-titik lalu pergi ke bagian \"Pengaturan\". Lalu hapus centang pada opsi \"Sembunyikan ikon dari launcher\".</item>
-        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>Diperlukan agar dapat menulis permintaan ikon data dan berkas, serta menyimpan wallpaper, dan dapat mengubah lokasi unduhan Wallpaper.</item>
+        <item>Dibutuhkan agar dapat memuat wallpaper dari cloud dan mengunduhnya.</item>
         <item>Itu diperlukan untuk bisa memeriksa jika perangkat anda memiliki koneksi internet.</item>
         <item>Itu diperlukan untuk bisa menerapkan wallpaper langsung dari aplikasi.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>Dibutuhkan agar dapat menyesuaikan dimensi wallpaper sesuai dengan resolusi layar Anda.</item>
         <item>Itu diperlukan oleh Muzei Live Wallpaper.</item>
     </string-array>
 </resources>
