@@ -93,9 +93,9 @@
         <item>Bagaimana cara melihat semua ikon yang disertakan?</item>
         <item>Bagaimana cara mengganti ikon dengan alternatif ikon lain?</item>
         <item>Bagaimana cara meminta ikon yang tidak ada tema?</item>
-        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+        <item>Setelah memulai ulang perangkat saya, pak ikon tidak diterapkan lagi. Ikon dikembalikan seperti semula.</item>
         <item>Mengapa ikon terlihat pixelated pada perangkat saya?</item>
-        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+        <item>Saya bisa melihat ikon untuk aplikasi X dalam ikon yang disertakan, namun ikon tidak diterapkan.</item>
         <item>Bagaimana cara sembunyikan ikon aplikasi dari peluncur?</item>
         <item>Bagaimana cara membuka aplikasi setelah ikon aplikasi tersembunyi dari peluncur?</item>
         <item>Bagaimana cara menunjukkan lagi ikon aplikasi di peluncur?</item>
@@ -107,7 +107,7 @@
         <item>Kenapa aplikasi tersebut perlu izin untuk mencegah telepon dari tidur?</item>
     </string-array>
     <string-array name="answers">
-        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+        <item>Anda butuh launcher dengan dukungan pak ikon. Daftar launcher yang mendukung dapat ditemukan dalam aplikasi di bagian \"Terapkan\", atau deskripsi Play Store.</item>
         <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
         <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
         <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
