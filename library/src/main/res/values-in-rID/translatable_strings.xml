@@ -16,29 +16,29 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="frames_dashboard">Dasbor Blueprint</string>
-    <string name="coming_soon">Segera Hadir</string>
+    <string name="frames_dashboard">Cetakan Biru Dasbor</string>
+    <string name="coming_soon">Segera hadir</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">Beranda</string>
     <string name="section_icons">Ikon</string>
-    <string name="section_apply">Menerapkan</string>
+    <string name="section_apply">Terapkan</string>
     <string name="section_wallpapers">Wallpaper</string>
-    <string name="section_icon_request">Permintaan Ikon</string>
-    <string name="section_donate">Menyumbangkan</string>
-    <string name="section_about">Tentang Aplikasi</string>
+    <string name="section_icon_request">Permintaan ikon</string>
+    <string name="section_donate">Donasi</string>
+    <string name="section_about">Tentang aplikasi</string>
     <string name="section_help">Bantuan</string>
     <string name="section_zooper">Pengaturan Zooper</string>
     <string name="section_widgets">Widget</string>
-    <string name="share_this_app">Saya sedang menggunakan %1$s dan saya menyukainya. Pergi memeriksanya di:%2$s</string>
-    <string name="rate">Menilai</string>
+    <string name="share_this_app">Saya sedang menggunakan %1$s dan saya menyukainya. Mari periksa di:%2$s</string>
+    <string name="rate">Nilai</string>
     <!-- Icons filters -->
     <string name="filter">Filter</string>
     <string name="clear">Bersih</string>
-    <string name="more_apps">Lebih banyak aplikasi</string>
-    <string name="general_info">Informasi Umum</string>
+    <string name="more_apps">Aplikasi lainnya</string>
+    <string name="general_info">Informasi umum</string>
     <string name="useful_links">Tautan yang bermanfaat</string>
-    <string name="columns">Nomor Kolom</string>
-    <string name="lni_content">%1$s saat ini tidak terpasang pada perangkat anda.\nApakah anda ingin memasang dari Google Play Store?</string>
+    <string name="columns">Nomor kolom</string>
+    <string name="lni_content">%1$s saat ini tidak terpasang pada perangkat Anda.\nApakah anda ingin memasangnya dari Google Play Store?</string>
     <string name="no_compatible_launcher_title">Peluncur ini TIDAK Cocok</string>
     <string name="no_compatible_launcher_content">Launcher ini TIDAK kompatibel dengan Pak Ikon APAPUN dan karena itu Anda tidak dapat menggunakan Pak Ikon dengan launcher ini. Mohon tidak menilai pak ikon secara negatif karena alasan ini. Ada solusi yang dapat Anda coba sendiri, namun, itu membutuhkan aplikasi eksternal. Apakah Anda ingin mengunduhnya?</string>
     <string name="impossible_open_themes">Tidak mungkin untuk membuka tema aplikasi</string>
@@ -46,7 +46,7 @@
     <string name="included_templates">%1$s template</string>
     <string name="launcher_icon_restored">%1$s ikon peluncur dipulihkan</string>
     <string name="launcher_icon_not_restored">%1$s ikon peluncur sudah terlihat</string>
-    <string name="launcher_icon_restorer_error">Ada sebuah masalah dengan kode dari %1$s. Silahkan hubungi pengembangnya.</string>
+    <string name="launcher_icon_restorer_error">Ada sebuah masalah dengan kode dari %1$s. Silahkan hubungi pengembang.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">Widget Pemulih Ikon</string>
     <string name="clock_widget_title">Jam Analog</string>
@@ -74,7 +74,7 @@
     <string name="loading_apps_to_request">Memuat aplikasi untuk meminta…</string>
     <string name="building_request_dialog">Membangun permintaan berkas…</string>
     <string name="request_upload_success">Berhasil!</string>
-    <string name="request_upload_success_content">Permintaan telah berhasil di-upload ke server kami.</string>
+    <string name="request_upload_success_content">Permintaan telah berhasil diunggah ke server kami.</string>
     <!-- Preferences -->
     <string name="pref_title_wall_header">Mengaktifkan penggunaan wallpaper dalam peninjauan ikon</string>
     <string name="pref_summary_wall_header">Perangkat wallpaper anda saat ini akan ditampilkan.</string>
