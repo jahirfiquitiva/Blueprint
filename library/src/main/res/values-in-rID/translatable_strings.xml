@@ -63,11 +63,14 @@
     <!-- Requests -->
     <string name="select_all">Pilih semua</string>
     <string name="no_selected_apps_title">Tidak ada aplikasi yang dipilih</string>
+    <string name="no_selected_apps_content">Anda tidak memilih aplikasi apapun untuk meminta. Mohon pilih beberapa aplikasi, lalu tekan tombol ini lagi.</string>
     <string name="apps_limit_dialog">Maaf, tapi anda hanya diizinkan untuk memilih %1$s aplikasi untuk meminta.</string>
     <string name="apps_limit_dialog_more">Maaf, tapi anda hanya diizinkan untuk meminta %1$s lebih banyak aplikasi untuk sekarang.</string>
     <string name="apps_limit_dialog_day">Maaf, tapi anda hanya diizinkan untuk meminta ikon setiap %1$s.</string>
     <string name="apps_limit_dialog_day_extra">Anda akan bisa meminta ikon lagi, di %1$s.</string>
     <string name="apps_limit_dialog_day_extra_sec">Anda akan bisa meminta ikon lagi, dalam waktu kurang dari satu menit.</string>
+    <string name="requests_error">Ada kesalahan ketika memuat aplikasi untuk meminta.\nAlasan: %1$s\nMohon coba lagi nanti.</string>
+    <string name="requests_upload_error">Ada kesalahan ketika mengunggah aplikasi untuk meminta ke server kami.\nAlasan: %1$s\nMohon coba lagi nanti.</string>
     <string name="loading_apps_to_request">Memuat aplikasi untuk meminta…</string>
     <string name="building_request_dialog">Membangun permintaan berkas…</string>
     <string name="request_upload_success">Berhasil!</string>
