@@ -83,7 +83,7 @@
     <string name="pref_summary_launcher_icon">Ketika diperiksa, peluncur ikon akan disembunyikan.</string>
     <string name="clearcache_dialog_content">Apakah Anda yakin ingin menghapus data aplikasi, cache and pengaturan? Ikon yang sudah diterapkan tidak akan terpengaruh.</string>
     <string name="hideicon_dialog_title">Peringatan!</string>
-    <string name="hideicon_dialog_content">Apakah anda yakin ingin menyembunyikan ikon aplikasi dari launcher Anda?\nAplikasi mungkin tertutup secara tiba-tiba dan notifikasi akan mati sepenuhnya.\nAnda mungkin ingin membaca FAQ untuk mempelajari bagaimana memunculkannya kembali, sebelum menyembunyikannya.</string>
+    <string name="hideicon_dialog_content">Apakah anda yakin ingin menyembunyikan ikon aplikasi dari peluncur Anda?\nAplikasi mungkin tertutup secara tiba-tiba dan notifikasi akan mati sepenuhnya.\nAnda mungkin ingin membaca FAQ untuk mempelajari bagaimana memunculkannya kembali, sebelum menyembunyikannya.</string>
     <string name="send_using">Kirim menggunakan…</string>
     <string name="no_mail">Tidak ada aplikasi surat terpasang</string>
     <!-- HELP SECTION -->
@@ -93,8 +93,8 @@
         <item>Bagaimana cara melihat semua ikon yang disertakan?</item>
         <item>Bagaimana cara mengganti ikon dengan alternatif ikon lain?</item>
         <item>Bagaimana cara meminta ikon yang tidak ada tema?</item>
-        <item>Setelah memulai ulang perangkat saya, pak ikon tidak diterapkan lagi. Ikon dikembalikan seperti semula.</item>
-        <item>Mengapa ikon terlihat pixelated pada perangkat saya?</item>
+        <item>Setelah memulai ulang perangkat saya, paket ikon tidak diterapkan lagi. Ikon dikembalikan seperti semula.</item>
+        <item>Mengapa ikon terlihat pecah pada perangkat saya?</item>
         <item>Saya bisa melihat ikon untuk aplikasi X dalam ikon yang disertakan, namun ikon tidak diterapkan.</item>
         <item>Bagaimana cara sembunyikan ikon aplikasi dari peluncur?</item>
         <item>Bagaimana cara membuka aplikasi setelah ikon aplikasi tersembunyi dari peluncur?</item>
@@ -107,13 +107,13 @@
         <item>Kenapa aplikasi tersebut perlu izin untuk mencegah telepon dari tidur?</item>
     </string-array>
     <string-array name="answers">
-        <item>Anda butuh launcher dengan dukungan pak ikon. Daftar launcher yang mendukung dapat ditemukan dalam aplikasi di bagian \"Terapkan\", atau deskripsi Play Store.</item>
-        <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Terapkan\", atau pilih ikon ke-4 dari bilah navigasi bawah. Dari sana Anda dapat memilih launcher yang ingin Anda terapkan. Beberapa launcher tidak mendukung terapkan otomatis dan Anda harus melakukannya secara manual melalui pengaturan.</item>
+        <item>Anda butuh peluncur dengan dukungan paket ikon. Daftar peluncur yang mendukung dapat ditemukan dalam aplikasi di bagian \"Terapkan\", atau deskripsi Play Store.</item>
+        <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Terapkan\", atau pilih ikon ke-4 dari bilah navigasi bawah. Dari sana Anda dapat memilih peluncur yang ingin Anda terapkan. Beberapa peluncur tidak mendukung terapkan otomatis dan Anda harus melakukannya secara manual melalui pengaturan.</item>
         <item>Kembali ke bagian utama aplikasi dan tekan ubin berjudul \"Ikon\".</item>
-        <item>Sesuai dengan launcher yang Anda gunakan, Anda perlu menekan lama ikon dan pilih \"Edit\" dari menu pop-up, atau tekan lama ikon dan pindahkan ke kotak \"Edit\".</item>
+        <item>Sesuai dengan peluncur yang Anda gunakan, Anda perlu menekan lama ikon dan pilih \"Edit\" dari menu pop-up, atau tekan lama ikon dan pindahkan ke kotak \"Edit\".</item>
         <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Meminta\", atau pilih ikon dari bilah navigasi bawah.</item>
-        <item>Itu terjadi karena pak ikon telah dipindahkan ke Kartu SD, Anda perlu memasangnya di penyimpanan internal.</item>
-        <item>Masalah mungkin datang dengan launcher yang sedang Anda gunakan, ketika menangani resolusi besar. Anda dapat memperbaikinya dengan meningkatkan ukuran ikon menjadi 115% - 120%. Atau mencoba menggunakan launcher lain.</item>
+        <item>Itu terjadi karena paket ikon telah dipindahkan ke Kartu SD, Anda perlu memasangnya di penyimpanan internal.</item>
+        <item>Masalah mungkin datang dengan peluncur yang sedang Anda gunakan, ketika menangani resolusi besar. Anda dapat memperbaikinya dengan meningkatkan ukuran ikon menjadi 115% - 120%. Atau mencoba menggunakan peluncur lain.</item>
         <item>Kirim sebuah permintaan ikon.</item>
         <item>Geser Kotak Navigasi dari kiri, atau tekan tombol menu 3-titik lalu pergi ke bagian \"Pengaturan\". Lalu beri centang pada opsi \"Sembunyikan ikon dari launcher\".</item>
         <item>Pergi ke layar beranda Anda, lalu buat sebuah widget untuk aplikasi bernama \"IconRestorer\" dan tekan.</item>
