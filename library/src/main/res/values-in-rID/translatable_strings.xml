@@ -81,8 +81,11 @@
     <string name="pref_header_launcher_icon">Peluncur ikon</string>
     <string name="pref_title_launcher_icon">Sembunyikan peluncur ikon</string>
     <string name="pref_summary_launcher_icon">Ketika diperiksa, peluncur ikon akan disembunyikan.</string>
+    <string name="clearcache_dialog_content">Apakah Anda yakin ingin menghapus data aplikasi, cache and pengaturan? Ikon yang sudah diterapkan tidak akan terpengaruh.</string>
     <string name="hideicon_dialog_title">Peringatan!</string>
+    <string name="hideicon_dialog_content">Apakah anda yakin ingin menyembunyikan ikon aplikasi dari launcher Anda?\nAplikasi mungkin tertutup secara tiba-tiba dan notifikasi akan mati sepenuhnya.\nAnda mungkin ingin membaca FAQ untuk mempelajari bagaimana memunculkannya kembali, sebelum menyembunyikannya.</string>
     <string name="send_using">Kirim menggunakan…</string>
+    <string name="no_mail">Tidak ada aplikasi surat terpasang</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>Bagaimana cara menggunakan Paket Ikon?</item>
