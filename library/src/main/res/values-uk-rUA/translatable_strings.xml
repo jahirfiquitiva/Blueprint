@@ -16,10 +16,29 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <!-- List Of Drawer Sections -->
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="coming_soon">Незабаром</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Головна</string>
+    <string name="section_icons">Значки</string>
+    <string name="section_apply">Застосувати</string>
+    <string name="section_wallpapers">Шпалери</string>
+    <string name="section_icon_request">Запит значків</string>
+    <string name="section_donate">Підтримати</string>
+    <string name="section_about">Про програму</string>
+    <string name="section_help">Довідка</string>
+    <string name="section_zooper">Налаштування Zooper\'а</string>
+    <string name="section_widgets">Віджети</string>
+    <string name="share_this_app">Я уживаю %1$s і мені подобається. Переконайся: %2$s</string>
+    <string name="rate">Оцінити</string>
+    <!-- Icons filters -->
+    <string name="filter">Фільтр</string>
+    <string name="clear">Очистити</string>
+    <string name="more_apps">Інші програми</string>
+    <string name="general_info">Загальна інформація</string>
+    <string name="useful_links">Корисні посилання</string>
+    <string name="columns">Число стовпців</string>
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>
