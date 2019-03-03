@@ -37,8 +37,30 @@
     <string name="general_info">Загальна інформація</string>
     <string name="useful_links">Корисні посилання</string>
     <string name="columns">Число стовпців</string>
+    <string name="lni_content">%1$s ще не інстальовано на вашому пристрої.\nВи б хотіли встановити його з магазину Google Play?</string>
+    <string name="no_compatible_launcher_title">Цей лаунчер є не сумісним</string>
+    <string name="impossible_open_themes">Неможливо відкрити програму з темами</string>
+    <string name="themes_app_not_installed">Програма з темами не інстальована на цим пристрої</string>
+    <string name="included_templates">%1$s шаблони</string>
+    <string name="launcher_icon_restored">%1$s значок лаунчера був відновлений</string>
+    <string name="launcher_icon_not_restored">%1$s занчок лаунчера вже відображений</string>
+    <string name="launcher_icon_restorer_error">Існує проблема з кодом %1$s. Будь ласка, зверніться до розробника.</string>
     <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Віджет відновлення значків</string>
+    <string name="clock_widget_title">Аналоговий годинник</string>
+    <string name="search_icons">Пошук значків</string>
+    <string name="search_wallpapers">Пошук шпалер</string>
+    <string name="search_launchers">Пошук лаунчерів</string>
+    <string name="search_apps">Пошук програм</string>
+    <string name="seconds">Секунди</string>
+    <string name="minutes">Хвилини</string>
+    <string name="hours">Години</string>
+    <string name="days">Дні</string>
+    <string name="weeks">Тижні</string>
+    <string name="months">Місяці</string>
     <!-- Requests -->
+    <string name="select_all">Виділити все</string>
+    <string name="no_selected_apps_title">Немає вибраних програм</string>
     <!-- Preferences -->
     <!-- HELP SECTION -->
 </resources>
