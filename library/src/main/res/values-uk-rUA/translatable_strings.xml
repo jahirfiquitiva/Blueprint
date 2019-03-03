@@ -68,6 +68,15 @@
     <string name="apps_limit_dialog_day_extra">Ви зможете зробити запит іконок знову за %1$s.</string>
     <string name="apps_limit_dialog_day_extra_sec">Ви зможете зробити запит іконок знову менш ніж за хвилину.</string>
     <string name="requests_error">Помилка під час завантаження програм для запиту.\nПричина: %1$s\nБудь ласка, спробуйте ще раз пізніше.</string>
+    <string name="requests_upload_error">Помилка під час завантаження програм для запиту на наші сервери.\nПричина: %1$s\nБудь ласка, спробуйте ще раз пізніше.</string>
+    <string name="building_request_dialog">Створення файлів запиту…</string>
+    <string name="request_upload_success">Успішно!</string>
+    <string name="request_upload_success_content">Запит був успішно завантажений на наш сервер.</string>
     <!-- Preferences -->
+    <string name="pref_title_wall_header">Увімкнути використання шпалер в перегляді іконок</string>
+    <string name="pref_summary_wall_header">Будуть показані ваші поточні шпалери з пристрою.</string>
+    <string name="pref_header_launcher_icon">Іконка лаунчера</string>
+    <string name="pref_title_launcher_icon">Приховати значок в лаунчері</string>
+    <string name="pref_summary_launcher_icon">Якщо вибрано, іконку лаунчера буде приховано.</string>
     <!-- HELP SECTION -->
 </resources>
