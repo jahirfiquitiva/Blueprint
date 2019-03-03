@@ -63,6 +63,11 @@
     <string name="no_selected_apps_title">Немає вибраних програм</string>
     <string name="no_selected_apps_content">Не було позначено жадней програми для запиту. Виберіть кілька застосунків, а потім натисніть цю кнопку ще раз.</string>
     <string name="apps_limit_dialog">Вибачте, але ви можете вибрати тільки %1$s програм для запиту.</string>
+    <string name="apps_limit_dialog_more">Вибачте, але ви можете вибрати тільки %1$s програм для запиту.</string>
+    <string name="apps_limit_dialog_day">Вибачте, але ви можете робити запит на іконки тільки кожні %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Ви зможете зробити запит іконок знову за %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Ви зможете зробити запит іконок знову менш ніж за хвилину.</string>
+    <string name="requests_error">Помилка під час завантаження програм для запиту.\nПричина: %1$s\nБудь ласка, спробуйте ще раз пізніше.</string>
     <!-- Preferences -->
     <!-- HELP SECTION -->
 </resources>
