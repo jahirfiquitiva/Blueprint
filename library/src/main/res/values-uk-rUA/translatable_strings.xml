@@ -61,6 +61,8 @@
     <!-- Requests -->
     <string name="select_all">Виділити все</string>
     <string name="no_selected_apps_title">Немає вибраних програм</string>
+    <string name="no_selected_apps_content">Не було позначено жадней програми для запиту. Виберіть кілька застосунків, а потім натисніть цю кнопку ще раз.</string>
+    <string name="apps_limit_dialog">Вибачте, але ви можете вибрати тільки %1$s програм для запиту.</string>
     <!-- Preferences -->
     <!-- HELP SECTION -->
 </resources>
