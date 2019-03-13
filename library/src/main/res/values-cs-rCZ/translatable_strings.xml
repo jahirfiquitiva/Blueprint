@@ -16,10 +16,10 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="frames_dashboard">Řídící panel Blueprint</string>
+    <string name="frames_dashboard">Blueprint Dashboard</string>
     <string name="coming_soon">Již brzy</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">Domů</string>
+    <string name="section_home">Home</string>
     <string name="section_icons">Ikony</string>
     <string name="section_apply">Apply</string>
     <string name="section_wallpapers">Wallpapers</string>
