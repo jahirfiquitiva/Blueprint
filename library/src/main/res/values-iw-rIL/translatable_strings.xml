@@ -17,7 +17,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="frames_dashboard">Blueprint Dashboard</string>
-    <string name="coming_soon">متوفر</string>
+    <string name="coming_soon">Coming soon</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">בית</string>
     <string name="section_icons">אייקונים</string>
