@@ -42,7 +42,7 @@
     <string name="no_compatible_launcher_title">هذا المشغل غير متوافق</string>
     <string name="no_compatible_launcher_content">هذا المشغل غير متوافق مع أية \"حزم رمز\" ومن ثم لا يمكن استخدام هذا رمز حزمة مع هذا المشغل. يرجى عدم معدل حزمة رمز سلبيا لهذا السبب. هناك حل يمكنك أن تجرب بنفسك، ولكنه يتطلب استخدام التطبيق الخارجي الذي ترغب في تحميله؟</string>
     <string name="impossible_open_themes">من المستحيل فتح تطبيق الثيمات</string>
-    <string name="themes_app_not_installed">تطبيق الثيمات غير مثبت على هذا الجهاز</string>
+    <string name="themes_app_not_installed">Themes app is not installed in this device</string>
     <string name="included_templates">%1$s قوالب</string>
     <string name="launcher_icon_restored">تم استعادة أيقونة مشغل %1$s</string>
     <string name="launcher_icon_not_restored">%1$s قاذفة الرمز مرئياً مسبقاً</string>
