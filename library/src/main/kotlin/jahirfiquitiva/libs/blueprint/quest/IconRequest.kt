@@ -36,7 +36,7 @@ import androidx.annotation.IntRange
 import androidx.annotation.WorkerThread
 import androidx.annotation.XmlRes
 import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.core.DataPart
+import com.github.kittinunf.fuel.core.FileDataPart
 import jahirfiquitiva.libs.blueprint.BuildConfig
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
@@ -704,14 +704,12 @@ class IconRequest private constructor() {
                         Fuel.upload(
                             rHost + "v1/request",
                             parameters = listOf("apps" to jsonSb?.toString().orEmpty()))
+                            .add(FileDataPart(zipFile, "archive", contentType = fileType))
                             .header(
                                 "TokenID" to apiKey,
                                 "Accept" to "application/json",
                                 "User-Agent" to "afollestad/icon-request"
                                    )
-                            .dataParts { _, _ ->
-                                listOf(DataPart(zipFile, "archive", fileType))
-                            }
                             .response { _, response, result ->
                                 val success = response.statusCode in 200..299
                                 

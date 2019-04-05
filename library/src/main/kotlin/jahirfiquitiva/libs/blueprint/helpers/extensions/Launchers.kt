@@ -48,6 +48,7 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "apex",
             "Apex Launcher", arrayOf("com.anddoes.launcher"),
             color(R.color.apex_launcher_color)),
+        /*
         Launcher(
             "atom",
             "Atom Launcher", arrayOf("com.dlto.atom.launcher"),
@@ -56,6 +57,7 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "aviate",
             "Aviate Launcher", arrayOf("com.tul.aviate"),
             color(R.color.aviate_launcher_color)),
+            */
         Launcher(
             "go",
             "Go Launcher", arrayOf("com.gau.go.launcherex"),
@@ -72,18 +74,22 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "holoics",
             "Holo Launcher ICS", arrayOf("com.mobint.hololauncher.hd"),
             color(R.color.holo_ics_launcher_color)),
+        /*
         Launcher(
             "kk",
             "KK Launcher", arrayOf("com.kk.launcher"),
             color(R.color.kk_launcher_color)),
+            */
         Launcher(
             "lg",
             "LG Home", arrayOf("com.lge.launcher2"),
             color(R.color.lg_home_color)),
+        /*
         Launcher(
             "l",
             "L Launcher", arrayOf("com.l.launcher"),
             color(R.color.l_launcher_color)),
+            */
         Launcher(
             "lawnchair",
             "Lawnchair", arrayOf(
@@ -100,6 +106,7 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "lucid",
             "Lucid Launcher", arrayOf("com.powerpoint45.launcher"),
             color(R.color.lucid_launcher_color)),
+        /*
         Launcher(
             "mini",
             "Mini Launcher", arrayOf("com.jiubang.go.mini.launcher"),
@@ -108,6 +115,7 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "next",
             "Next Launcher", arrayOf("com.gtp.nextlauncher"),
             color(R.color.next_launcher_color)),
+            */
         Launcher(
             "nova",
             "Nova Launcher", arrayOf("com.teslacoilsw.launcher"),
@@ -116,10 +124,12 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "pixel",
             "Pixel Launcher", arrayOf("com.google.android.apps.nexuslauncher"),
             color(R.color.pixel_launcher_color), false),
+        /*
         Launcher(
             "s",
             "S Launcher", arrayOf("com.galaxy.s.launcher"),
             color(R.color.s_launcher_color)),
+            */
         Launcher(
             "smart",
             "Smart Launcher", arrayOf("ginlemon.flowerfree"),
@@ -135,11 +145,13 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
         Launcher(
             "tsf",
             "TSF Launcher", arrayOf("com.tsf.shell"),
-            color(R.color.tsf_launcher_color)),
+            color(R.color.tsf_launcher_color))
+        /*
         Launcher(
             "unicon",
             "Unicon", arrayOf("sg.ruqqq.IconThemer"),
-            color(R.color.unicon_pro_color)))
+            color(R.color.unicon_pro_color))*/
+                       )
 
 internal val Context.enabledLaunchers: ArrayList<Launcher>
     get() {
