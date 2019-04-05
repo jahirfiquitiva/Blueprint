@@ -186,7 +186,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
         if (currentSectionId != DEFAULT_REQUEST_SECTION_ID) fab?.count = 0
         val shouldShow = (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
             || currentSectionId == DEFAULT_REQUEST_SECTION_ID
-            || (currentSectionId == DEFAULT_ICONS_SECTION_ID && iconsFilters.size > 1)
+            || (currentSectionId == DEFAULT_ICONS_SECTION_ID && iconsFilters.isNotEmpty())
         if (shouldShow) {
             val icon: Drawable? = when (currentSectionId) {
                 DEFAULT_HOME_SECTION_ID -> drawable(R.drawable.ic_apply)
@@ -209,7 +209,7 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
             categories.forEach {
                 if (colorIndex >= colors.size) colorIndex = 0
                 val name = it.formatCorrectly().blueprintFormat()
-                if (!(name.contains("all", true))) {
+                if (!(name.equals("all", true))) {
                     newFilters.add(Filter(name, Color.parseColor(colors[colorIndex]), false))
                     index += 1
                     colorIndex += 1
