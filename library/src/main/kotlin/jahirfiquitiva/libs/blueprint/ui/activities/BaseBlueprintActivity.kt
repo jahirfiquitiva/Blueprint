@@ -378,13 +378,9 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     private fun updateToolbarMenuItems(item: NavigationItem, menu: Menu) {
-        val isInIconsSection = item.id == DEFAULT_ICONS_SECTION_ID || isIconsPicker
         menu.setItemVisibility(R.id.changelog, !isIconsPicker)
         menu.setItemVisibility(R.id.donate, donationsEnabled && !isIconsPicker)
-        menu.setItemVisibility(
-            R.id.search,
-            if (isInIconsSection) iconsFilters.isNotEmpty()
-            else item.id != DEFAULT_HOME_SECTION_ID)
+        menu.setItemVisibility(R.id.search, item.id != DEFAULT_HOME_SECTION_ID)
         menu.setItemVisibility(
             R.id.refresh,
             item.id == DEFAULT_WALLPAPERS_SECTION_ID || item.id == DEFAULT_REQUEST_SECTION_ID)

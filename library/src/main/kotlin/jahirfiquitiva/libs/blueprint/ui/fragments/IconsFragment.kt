@@ -89,8 +89,7 @@ class IconsFragment : ViewModelFragment<Icon>() {
             recyclerView?.setEmptyText(R.string.empty_section)
         }
         setAdapterItems(ArrayList(model?.getData().orEmpty()), search)
-        if (!closed)
-            scrollToTop()
+        if (!closed) scrollToTop()
     }
     
     fun scrollToTop() {
