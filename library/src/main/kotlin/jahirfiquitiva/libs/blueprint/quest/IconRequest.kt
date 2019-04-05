@@ -303,15 +303,11 @@ class IconRequest private constructor() {
                     if (tagName == "item") {
                         getComponentInAppFilter(parser) { component ->
                             defined.add(component)
-                            
                             val count =
-                                (componentsCount.find { it.first.equals(component, true) }?.second
-                                    ?: 0) + 1
+                                (componentsCount.find { it.first == component }?.second ?: 0) + 1
                             try {
                                 componentsCount.removeAt(
-                                    componentsCount.indexOfFirst {
-                                        it.first.equals(component, true)
-                                    })
+                                    componentsCount.indexOfFirst { it.first == component })
                             } catch (ignored: Exception) {
                             }
                             componentsCount += component to count
