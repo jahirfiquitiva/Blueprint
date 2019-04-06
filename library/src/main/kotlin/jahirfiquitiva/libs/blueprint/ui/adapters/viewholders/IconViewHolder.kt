@@ -31,6 +31,8 @@ import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.frames.helpers.glide.FramesGlideListener
 import jahirfiquitiva.libs.kext.extensions.bind
 import jahirfiquitiva.libs.kext.extensions.clearChildrenAnimations
+import jahirfiquitiva.libs.kext.extensions.drawable
+import jahirfiquitiva.libs.kext.extensions.string
 
 class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(
     itemView) {
@@ -51,7 +53,11 @@ class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(
                 if (!animate) options.dontAnimate()
                 
                 man.load(item.icon)
-                    .apply(options)
+                    .apply(
+                        options
+                            .placeholder(
+                                context.drawable(context.string(R.string.icons_placeholder)))
+                            .error(context.drawable(context.string(R.string.icons_placeholder))))
                     .listener(object : FramesGlideListener<Drawable>() {
                         override fun onLoadSucceed(
                             resource: Drawable,

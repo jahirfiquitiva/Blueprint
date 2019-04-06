@@ -66,6 +66,12 @@
     <bool name="enable_colored_cards">false</bool>
 
     <!--
+       Show a custom image as placeholder while loading icons
+       Use drawable name without extensions
+    -->
+    <string name="icons_placeholder" translatable="false"></string>
+
+    <!--
     1. Set the max amount of apps to request.
     2. Limit requests to 1 every X minutes.
     Replace X with the number of minutes you want.

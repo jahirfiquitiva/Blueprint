@@ -57,6 +57,20 @@
     -->
     <bool name="show_bottom_sheet">true</bool>
 
+    <!--
+       Show a custom image as placeholder while loading wallpapers or collections
+       Use drawable name without extensions
+    -->
+    <string name="walls_placeholder" translatable="false"></string>
+    <string name="collections_placeholder" translatable="false"></string>
+
+    <!--
+     Enable immediate download
+     When set to false, users must wait 3 hours after installing the app to be able to download
+     any wallpapers
+    -->
+    <bool name="immediate_download">false</bool>
+
     <!--    These are your donation items. Only put their ids here -->
     <string-array name="donation_items">
         <item>coffee</item>
