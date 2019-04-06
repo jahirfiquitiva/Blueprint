@@ -15,12 +15,12 @@
  */
 package jahirfiquitiva.apps.blueprint.demo
 
-import android.app.Application
+import jahirfiquitiva.libs.blueprint.ui.BlueprintApp
 
 // TODO: Remove comment marks to enable
 // import com.onesignal.OneSignal
 
-class MyApplication : Application() {
+class MyApplication : BlueprintApp() {
     override fun onCreate() {
         super.onCreate()
         // TODO: Remove comment marks to enable
