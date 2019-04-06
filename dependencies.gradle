@@ -28,7 +28,7 @@ ext.versions = [
         // Dependencies
         kuper      : '1.6.3',
         counterFab : '1.2.1',
-        fuel       : '2.0.1',
+        fuel       : '1.16.0',
         oneSignal  : '3.10.7'
 ]
 

@@ -34,10 +34,6 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <uses-sdk
-        android:minSdkVersion="16"
-        tools:overrideLibrary="com.github.kittinunf.fuel.android" />
-
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
