@@ -42,6 +42,7 @@ android {
         buildConfigField("String", "LIB_VERSION", "\"${versions.versionName.toString()}\"")
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -89,6 +90,8 @@ dependencies {
     api(libraries.counterFab) {
         exclude group: 'com.android.support'
     }
+    // MultiDex :'(
+    api 'androidx.multidex:multidex:2.0.1'
 }
 
 configurations {

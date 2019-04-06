@@ -30,6 +30,7 @@ import com.andremion.counterfab.CounterFab
 import com.bumptech.glide.Glide
 import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
+import jahirfiquitiva.libs.archhelpers.extensions.mdDialog
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
@@ -40,7 +41,6 @@ import jahirfiquitiva.libs.blueprint.ui.activities.BaseBlueprintActivity
 import jahirfiquitiva.libs.blueprint.ui.adapters.RequestsAdapter
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.RequestLimitDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
-import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.ui.widgets.EmptyViewRecyclerView
 import jahirfiquitiva.libs.kext.extensions.accentColor
 import jahirfiquitiva.libs.kext.extensions.activity

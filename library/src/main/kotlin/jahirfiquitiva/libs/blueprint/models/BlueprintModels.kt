@@ -75,15 +75,15 @@ enum class NavigationItem(
                          ) {
     HOME("Home", DEFAULT_HOME_SECTION_ID, R.string.section_home, R.drawable.ic_home),
     ICONS(
-             "Previews", DEFAULT_ICONS_SECTION_ID, R.string.section_icons,
-             R.drawable.ic_icons_preview),
+        "Previews", DEFAULT_ICONS_SECTION_ID, R.string.section_icons,
+        R.drawable.ic_icons_preview),
     WALLPAPERS(
-                  "Wallpapers", DEFAULT_WALLPAPERS_SECTION_ID, R.string.section_wallpapers,
-                  R.drawable.ic_wallpapers),
+        "Wallpapers", DEFAULT_WALLPAPERS_SECTION_ID, R.string.section_wallpapers,
+        R.drawable.ic_wallpapers),
     APPLY("Apply", DEFAULT_APPLY_SECTION_ID, R.string.section_apply, R.drawable.ic_apply),
     REQUESTS(
-                "Requests", DEFAULT_REQUEST_SECTION_ID, R.string.section_icon_request,
-                R.drawable.ic_request);
+        "Requests", DEFAULT_REQUEST_SECTION_ID, R.string.section_icon_request,
+        R.drawable.ic_request);
     
     override fun toString(): String = "NavigationItem[$tag - $id]"
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Jahir Fiquitiva
+ * Copyright (c) 2019. Jahir Fiquitiva
  *
  * Licensed under the CreativeCommons Attribution-ShareAlike
  * 4.0 International License. You may not use this file except in compliance
@@ -13,22 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.apps.blueprint.demo
+package jahirfiquitiva.libs.blueprint.ui
 
-import jahirfiquitiva.libs.blueprint.ui.BlueprintApp
+import android.content.Context
+import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 
-// TODO: Remove comment marks to enable
-// import com.onesignal.OneSignal
-
-class MyApplication : BlueprintApp() {
-    override fun onCreate() {
-        super.onCreate()
-        // TODO: Remove comment marks to enable
-        /*
-        OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init()
-                */
+open class BlueprintApp : MultiDexApplication() {
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 }

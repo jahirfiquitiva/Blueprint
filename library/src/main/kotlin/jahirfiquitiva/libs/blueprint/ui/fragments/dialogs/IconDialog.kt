@@ -25,10 +25,10 @@ import ca.allanwang.kau.utils.isColorDark
 import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.customview.customView
+import jahirfiquitiva.libs.archhelpers.extensions.mdDialog
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION
 import jahirfiquitiva.libs.blueprint.helpers.utils.ICONS_ANIMATION_DURATION_DELAY
-import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.kext.extensions.accentColor
 import jahirfiquitiva.libs.kext.extensions.actv
 import jahirfiquitiva.libs.kext.extensions.bestSwatch

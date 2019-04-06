@@ -34,6 +34,7 @@ import ca.allanwang.kau.utils.snackbar
 import ca.allanwang.kau.utils.tint
 import ca.allanwang.kau.utils.visible
 import com.andremion.counterfab.CounterFab
+import jahirfiquitiva.libs.archhelpers.extensions.mdDialog
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.blueprintFormat
 import jahirfiquitiva.libs.blueprint.helpers.extensions.defaultLauncher
@@ -54,7 +55,6 @@ import jahirfiquitiva.libs.blueprint.ui.fragments.HomeFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.IconsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.RequestsFragment
 import jahirfiquitiva.libs.blueprint.ui.fragments.dialogs.FiltersBottomSheet
-import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.helpers.extensions.showChanges
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_APPLIER
 import jahirfiquitiva.libs.frames.helpers.utils.ICONS_PICKER

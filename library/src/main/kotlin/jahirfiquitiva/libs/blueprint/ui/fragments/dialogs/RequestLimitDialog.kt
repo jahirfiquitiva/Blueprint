@@ -18,9 +18,9 @@ package jahirfiquitiva.libs.blueprint.ui.fragments.dialogs
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import jahirfiquitiva.libs.archhelpers.extensions.mdDialog
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.millisToText
-import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.kext.extensions.actv
 import jahirfiquitiva.libs.kext.extensions.ctxt
 import jahirfiquitiva.libs.kext.extensions.int

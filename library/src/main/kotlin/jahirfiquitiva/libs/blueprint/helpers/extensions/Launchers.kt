@@ -24,9 +24,9 @@ import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.models.Launcher
 import jahirfiquitiva.libs.frames.helpers.extensions.jfilter
-import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.frames.helpers.utils.PLAY_STORE_LINK_PREFIX
 import jahirfiquitiva.libs.kext.extensions.color
+import jahirfiquitiva.libs.kext.extensions.mdDialog
 import jahirfiquitiva.libs.kext.extensions.stringArray
 import jahirfiquitiva.libs.kuper.helpers.extensions.isAppInstalled
 
@@ -168,27 +168,28 @@ fun Context.executeLauncherIntent(launcherKey: String) {
                 1 -> executeAdwLauncherIntent()
                 2 -> executeAdwEXLauncherIntent()
                 3 -> executeApexLauncherIntent()
-                4 -> executeAtomLauncherIntent()
-                5 -> executeAviateLauncherIntent()
-                6 -> executeGoLauncherIntent()
-                7, 19 -> executeIconPacksNotSupportedIntent()
-                8 -> executeHoloLauncherIntent()
-                9 -> executeHoloLauncherICSIntent()
-                10 -> executeKkLauncherIntent()
-                11 -> executeLgHomeLauncherIntent()
-                12 -> executeLLauncherIntent()
-                13 -> executeLawnchairIntent()
-                14 -> executeLineageOSThemeEngineIntent()
-                15 -> executeLucidLauncherIntent()
-                16 -> executeMiniLauncherIntent()
-                17 -> executeNextLauncherIntent()
-                18 -> executeNovaLauncherIntent()
-                20 -> executeSLauncherIntent()
-                21 -> executeSmartLauncherIntent()
-                22 -> executeSmartLauncherProIntent()
-                23 -> executeSoloLauncherIntent()
-                24 -> executeTsfLauncherIntent()
-                25 -> executeUniconIntent()
+                // 4 -> executeAtomLauncherIntent()
+                // 5 -> executeAviateLauncherIntent()
+                4 -> executeGoLauncherIntent()
+                5, 13 -> executeIconPacksNotSupportedIntent()
+                6 -> executeHoloLauncherIntent()
+                7 -> executeHoloLauncherICSIntent()
+                // 8 -> executeKkLauncherIntent()
+                8 -> executeLgHomeLauncherIntent()
+                // 10 -> executeLLauncherIntent()
+                9 -> executeLawnchairIntent()
+                10 -> executeLineageOSThemeEngineIntent()
+                11 -> executeLucidLauncherIntent()
+                // 14 -> executeMiniLauncherIntent()
+                // 15 -> executeNextLauncherIntent()
+                12 -> executeNovaLauncherIntent()
+                // 14 -> executeSLauncherIntent()
+                14 -> executeSmartLauncherIntent()
+                15 -> executeSmartLauncherProIntent()
+                16 -> executeSoloLauncherIntent()
+                17 -> executeTsfLauncherIntent()
+                // 18 -> executeUniconIntent()
+                else -> showLauncherApplyError()
             }
         }
     }

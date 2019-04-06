@@ -20,9 +20,9 @@ import android.content.pm.PackageManager
 import android.preference.Preference
 import android.preference.SwitchPreference
 import com.afollestad.materialdialogs.callbacks.onDismiss
+import jahirfiquitiva.libs.archhelpers.extensions.mdDialog
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
-import jahirfiquitiva.libs.frames.helpers.extensions.mdDialog
 import jahirfiquitiva.libs.kext.extensions.actv
 import jahirfiquitiva.libs.kext.extensions.ctxt
 import jahirfiquitiva.libs.kext.extensions.getAppName
