@@ -29,7 +29,7 @@
     <string name="section_help">帮助</string>
     <string name="section_zooper">Zooper 部件设定</string>
     <string name="section_widgets">小部件</string>
-    <string name="share_this_app">我正在使用%1$s，超喜欢它。快去看看！链接在此：%2$s</string>
+    <string name="share_this_app">我正在使用 %1$s，超喜欢它。快去看看！链接在此：%2$s</string>
     <string name="rate">评分</string>
     <!-- Icons filters -->
     <string name="filter">筛选</string>
