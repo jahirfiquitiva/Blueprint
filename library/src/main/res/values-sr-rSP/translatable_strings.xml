@@ -16,10 +16,32 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <!-- List Of Drawer Sections -->
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="frames_dashboard">Командна табла шематског приказа</string>
+    <string name="coming_soon">Ускоро доступно</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Почетна</string>
+    <string name="section_icons">Иконице</string>
+    <string name="section_apply">Примени</string>
+    <string name="section_wallpapers">Позадине</string>
+    <string name="section_icon_request">Захтев иконица</string>
+    <string name="section_donate">Донирај</string>
+    <string name="section_about">О апликацији</string>
+    <string name="section_help">Помоћ</string>
+    <string name="section_zooper">Подешавање Зоопера</string>
+    <string name="section_widgets">Виџети</string>
+    <string name="share_this_app">Користим и много ми се свиђа. Погледај овде:</string>
+    <string name="rate">Оцени</string>
+    <!-- Icons filters -->
+    <string name="filter">Филтер</string>
+    <string name="clear">Очисти</string>
+    <string name="more_apps">Још апликација</string>
+    <string name="general_info">Опште информације</string>
+    <string name="useful_links">Корисни линкови</string>
+    <string name="columns">Број колона</string>
+    <string name="lni_content">%1$s тренутно није инсталиран на вашем уређају.\nДа ли бисте желели да га инсталирате са Google Play Store-а?</string>
+    <string name="no_compatible_launcher_title">Лаунчер није компатибилан</string>
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>
