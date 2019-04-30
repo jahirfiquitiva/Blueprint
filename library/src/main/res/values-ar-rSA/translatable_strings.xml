@@ -19,7 +19,7 @@
     <string name="frames_dashboard">مخطط لوحة المعلومات</string>
     <string name="coming_soon">قريباً</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">الصفحة الرئيسية</string>
+    <string name="section_home">Home</string>
     <string name="section_icons">الأيقونات</string>
     <string name="section_apply">تطبيق</string>
     <string name="section_wallpapers">الخلفيات</string>
