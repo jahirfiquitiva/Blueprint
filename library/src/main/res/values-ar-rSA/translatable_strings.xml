@@ -49,7 +49,7 @@
     <string name="launcher_icon_restorer_error">هناك مشكلة في التعليمات البرمجية من %1$s. الرجاء الاتصال المطور.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
-    <string name="clock_widget_title">التناظرية على مدار الساعة</string>
+    <string name="clock_widget_title">Analog Clock</string>
     <string name="search_icons">البحث عن الرموز</string>
     <string name="search_wallpapers">تعيين خلفية</string>
     <string name="search_launchers">البحث عن قاذفات</string>
@@ -62,30 +62,30 @@
     <string name="months">الأشهر</string>
     <!-- Requests -->
     <string name="select_all">تحديد الكل</string>
-    <string name="no_selected_apps_title">لا توجد تطبيقات محددة</string>
+    <string name="no_selected_apps_title">التطبيقات المحددة</string>
     <string name="no_selected_apps_content">لم تقم بتحديد أية تطبيقات الطلب. الرجاء تحديد تطبيقات قليلة، ثم انقر فوق هذا الزر مرة أخرى.</string>
     <string name="apps_limit_dialog">عذراً، لكن فقط يسمح لك بتحديد تطبيقات %1$s لطلب.</string>
-    <string name="apps_limit_dialog_more">عذراً، ولكن يسمح فقط لطلب المزيد من تطبيقات %1$s الآن.</string>
+    <string name="apps_limit_dialog_more">عذراً، لكن فقط يسمح لك بتحديد تطبيقات %1$s لطلب.</string>
     <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
-    <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in less than a minute.</string>
     <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
-    <string name="requests_error">حدث خطأ أثناء تحميل تطبيقات للطلب-\nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
+    <string name="requests_error">حدث خطأ أثناء تحميل تطبيقات بطلب إلى الملقمات لدينا. \nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
     <string name="requests_upload_error">حدث خطأ أثناء تحميل تطبيقات بطلب إلى الملقمات لدينا. \nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
-    <string name="loading_apps_to_request">Loading apps to request…</string>
+    <string name="loading_apps_to_request">تحميل تطبيقات لطلب…</string>
     <string name="building_request_dialog">Building request files…</string>
-    <string name="request_upload_success">Success!</string>
+    <string name="request_upload_success">نجاح!</string>
     <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
     <!-- Preferences -->
-    <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
+    <string name="pref_title_wall_header">تمكين استخدام خلفية في معاينة الرموز</string>
     <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
-    <string name="pref_header_launcher_icon">Launcher icon</string>
+    <string name="pref_header_launcher_icon">أيقونات المشغل</string>
     <string name="pref_title_launcher_icon">Hide launcher icon</string>
     <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
     <string name="clearcache_dialog_content">Are you sure you want to delete app data, cache and settings? Applied icons won\'t be affected.</string>
-    <string name="hideicon_dialog_title">Warning!</string>
+    <string name="hideicon_dialog_title">تحذيرات</string>
     <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher?\nApp may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.</string>
-    <string name="send_using">Send using…</string>
-    <string name="no_mail">There is no mail app installed</string>
+    <string name="send_using">إرسال باستخدام…</string>
+    <string name="no_mail">لا يوجد أيتطبيقات بريد الإلكتروني مثبتة .</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>How to use the Icon Pack?</item>
