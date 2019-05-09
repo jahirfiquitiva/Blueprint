@@ -17,7 +17,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="frames_dashboard">Bảng kế hoạch chi tiết</string>
-    <string name="coming_soon">Sẽ sớm có nay mai</string>
+    <string name="coming_soon">Coming soon</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">Home</string>
     <string name="section_icons">Icons</string>
