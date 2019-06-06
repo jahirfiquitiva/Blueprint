@@ -16,7 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="frames_dashboard">藍圖儀表板</string>
+    <string name="frames_dashboard">Blueprint Dashboard</string>
     <string name="coming_soon">即將推出</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">首頁</string>
