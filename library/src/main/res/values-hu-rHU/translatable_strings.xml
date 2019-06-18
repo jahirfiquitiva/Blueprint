@@ -119,10 +119,10 @@
         <item>Menj a főoldaladra, majd helyezd el az app widget-jét, aminek a neve \"IconRestorer\", majd érintsd meg!</item>
         <item>Öffne das Navigationsmenü von linken Seite oder tippe aus das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Symbol ausblenden\" ab.</item>
         <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>Erre szükség van ahhoz, hogy háttérképeket nézhess meg és tölthess le a felhőből.</item>
         <item>Erre szükség van ahhoz, hogy elenőrizhessük, hogy a készüléknek van-e internetelérése.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+        <item>Erre szükség van ahhoz, hogy közvetlen az alkalmazásból tudd beállítani a háttérképet.</item>
         <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-        <item>It\'s needed by Muzei Live Wallpaper.</item>
+        <item>Erre szüksége van a Muzei élő háttérképnek.</item>
     </string-array>
 </resources>
