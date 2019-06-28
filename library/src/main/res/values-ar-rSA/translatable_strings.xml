@@ -48,7 +48,7 @@
     <string name="launcher_icon_not_restored">%1$s قاذفة الرمز مرئياً مسبقاً</string>
     <string name="launcher_icon_restorer_error">هناك مشكلة في التعليمات البرمجية من %1$s. الرجاء الاتصال المطور.</string>
     <!-- Widgets Names -->
-    <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
+    <string name="iconrestorer_widget_title">Icon Restorer Widget</string>
     <string name="clock_widget_title">Analog Clock</string>
     <string name="search_icons">البحث عن الرموز</string>
     <string name="search_wallpapers">تعيين خلفية</string>
