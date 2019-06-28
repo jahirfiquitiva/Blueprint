@@ -20,7 +20,7 @@
     <string name="coming_soon">قريباً</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">Home</string>
-    <string name="section_icons">الأيقونات</string>
+    <string name="section_icons">أيقونة</string>
     <string name="section_apply">تطبيق</string>
     <string name="section_wallpapers">الخلفيات</string>
     <string name="section_icon_request">طلب رمز</string>
