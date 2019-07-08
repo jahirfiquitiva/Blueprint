@@ -46,7 +46,6 @@
     <string name="included_templates">%1$s テンプレート</string>
     <string name="launcher_icon_restored">%1$s ランチャーアイコンが復元されました</string>
     <string name="launcher_icon_not_restored">%1$s ランチャーアイコンは既に表示されています。</string>
-    <string name="launcher_icon_restorer_error">コード %1$s に問題があります。 開発者に連絡してください。</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">アイコン復元ウィジェット</string>
     <string name="clock_widget_title">アナログ時計</string>
@@ -67,12 +66,15 @@
     <string name="apps_limit_dialog">申し訳ありませんが、%1$sつのアプリをリクエストすることしかできません。</string>
     <string name="apps_limit_dialog_more">申し訳ありませんが、現在もう%1$sつのアプリをリクエストすることしかできません。</string>
     <string name="apps_limit_dialog_day">申し訳ありませんが、%1$sごとにリクエストすることしかできません。</string>
+    <string name="apps_limit_dialog_day_extra">%1$s後で再度リクエストすることができます。</string>
+    <string name="apps_limit_dialog_day_extra_sec">1分も経たないうちに再度リクエストすることができます。</string>
     <string name="loading_apps_to_request">リクエストするアプリを読み込んでいます...</string>
     <string name="building_request_dialog">リクエストファイルを構築中…</string>
     <string name="request_upload_success">成功しました。</string>
     <string name="request_upload_success_content">リクエストは成功にアップロードされました。</string>
     <!-- Preferences -->
     <string name="pref_title_wall_header">アイコンプレビューで壁紙を使用する</string>
+    <string name="pref_summary_wall_header">デバイスの現在の壁紙が表示されます。</string>
     <string name="pref_header_launcher_icon">ランチャーアイコン</string>
     <string name="pref_title_launcher_icon">ランチャーアイコンを隠す</string>
     <string name="pref_summary_launcher_icon">チェックすると、ランチャーアイコンは非表示になります。</string>
