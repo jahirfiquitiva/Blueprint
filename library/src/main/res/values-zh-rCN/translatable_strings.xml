@@ -43,7 +43,7 @@
     <string name="no_compatible_launcher_content">该启动器不兼容任何图标包，因此您无法在该启动器上应用此图标包。恳请您不要因为这种原因而给我们差评。您可以尝试可行的解决方法，但需要安装额外的应用。您希望下载该应用吗？</string>
     <string name="impossible_open_themes">无法打开主题应用程序</string>
     <string name="themes_app_not_installed">此设备尚未安装主题应用程序</string>
-    <string name="included_templates">%1$s个范例</string>
+    <string name="included_templates">%1$s 个范例</string>
     <string name="launcher_icon_restored">%1$s 启动器的图标已重置</string>
     <string name="launcher_icon_not_restored">%1$s 启动器图标已可见</string>
     <string name="launcher_icon_restorer_error">%1$s 的代码发生了一个问题。请联系它的开发者。</string>
@@ -116,7 +116,7 @@
         <item>这个问题可能与您当前使用的启动器处理高分辨率的方式有关。您可以通过调整图标大小至 115 - 120% 的方式来解决这个问题。或者换一个启动器。</item>
         <item>发送图标适配请求。</item>
         <item>从左侧滑调出导航抽屉，或点击三点式菜单按钮并前往“设定”页面。然后勾选 “隐藏启动器图标” 选项。</item>
-        <item>前往你的主屏幕，创建一个名为 “IconRestorer” 的本应用程序的小部件，然后点击它。</item>
+        <item>前往你的主屏幕，创建一个名为“重置图标小部件”的本应用程序的小部件，然后点击它。</item>
         <item>从左侧滑调出导航抽屉，或点击三点式菜单按钮并前往“设定”页面。然后取消勾选 “隐藏启动器图标” 选项。</item>
         <item>需要能够写入图标适配申请的数据和文件，以及保存壁纸，以及能够改变壁纸下载路径。</item>
         <item>需要能够从云加载墙纸并下载它们。</item>
