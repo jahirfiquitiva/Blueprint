@@ -16,19 +16,37 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">ホーム</string>
-  <string name="section_apply">適用</string>
-  <string name="section_wallpapers">背景画面</string>
-  <string name="section_donate">寄付</string>
-  <string name="section_about">このアプリについて</string>
-  <string name="section_help">助け</string>
-  <string name="section_zooper">Zooper セットアップ</string>
-  <string name="section_widgets">ウィジェット</string>
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <string name="days">日々</string>
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="coming_soon">近日公開</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">ホーム</string>
+    <string name="section_icons">アイコン</string>
+    <string name="section_apply">適用</string>
+    <string name="section_wallpapers">背景画面</string>
+    <string name="section_donate">寄付</string>
+    <string name="section_about">このアプリについて</string>
+    <string name="section_help">助け</string>
+    <string name="section_zooper">Zooper セットアップ</string>
+    <string name="section_widgets">ウィジェット</string>
+    <string name="rate">評価する</string>
+    <!-- Icons filters -->
+    <string name="filter">絞り込み</string>
+    <string name="clear">クリア</string>
+    <string name="general_info">一般情報</string>
+    <!-- Widgets Names -->
+    <string name="clock_widget_title">アナログ時計</string>
+    <string name="search_icons">アイコンを検索</string>
+    <string name="search_wallpapers">壁紙の選択</string>
+    <string name="search_launchers">ランチャーを検索</string>
+    <string name="search_apps">アプリを検索</string>
+    <string name="seconds">秒</string>
+    <string name="minutes">分</string>
+    <string name="hours">時間</string>
+    <string name="days">日々</string>
+    <string name="weeks">週間</string>
+    <string name="months">ヶ月間</string>
+    <!-- Requests -->
+    <string name="select_all">すべて選択</string>
+    <string name="no_selected_apps_title">選択されたアプリなし</string>
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>
