@@ -39,10 +39,14 @@
     <string name="useful_links">関連リンク</string>
     <string name="columns">列数</string>
     <string name="lni_content">%1$sは現在インストールされていません。\nGoogle Play ストアからインストールしますか？</string>
+    <string name="no_compatible_launcher_title">このランチャーはアイコンパックに対応していません</string>
+    <string name="no_compatible_launcher_content">このランチャーはどのアイコンパックとも対応していないため、使用することはできません。 このため、アイコンパックをマイナスに評価しないでください。 試すことができる解決策がありますが、それは外部のアプリの使用を必要とします。 ダウンロードしますか？</string>
     <string name="impossible_open_themes">テーマアプリを開けません</string>
+    <string name="themes_app_not_installed">テーマアプリはこのデバイスにインストールされていません</string>
     <string name="included_templates">%1$s テンプレート</string>
     <string name="launcher_icon_restored">%1$s ランチャーアイコンが復元されました</string>
     <string name="launcher_icon_not_restored">%1$s ランチャーアイコンは既に表示されています。</string>
+    <string name="launcher_icon_restorer_error">コード %1$s に問題があります。 開発者に連絡してください。</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">アイコン復元ウィジェット</string>
     <string name="clock_widget_title">アナログ時計</string>
@@ -59,21 +63,24 @@
     <!-- Requests -->
     <string name="select_all">すべて選択</string>
     <string name="no_selected_apps_title">選択されたアプリなし</string>
+    <string name="no_selected_apps_content">リクエストするアプリが選択されていません。 いくつかのアプリを選択してから、もう一度タップしてください。</string>
     <string name="apps_limit_dialog">申し訳ありませんが、%1$sつのアプリをリクエストすることしかできません。</string>
     <string name="apps_limit_dialog_more">申し訳ありませんが、現在もう%1$sつのアプリをリクエストすることしかできません。</string>
     <string name="apps_limit_dialog_day">申し訳ありませんが、%1$sごとにリクエストすることしかできません。</string>
     <string name="loading_apps_to_request">リクエストするアプリを読み込んでいます...</string>
     <string name="building_request_dialog">リクエストファイルを構築中…</string>
     <string name="request_upload_success">成功しました。</string>
-    <string name="request_upload_success_content">リクエストはアップロードされました。</string>
+    <string name="request_upload_success_content">リクエストは成功にアップロードされました。</string>
     <!-- Preferences -->
     <string name="pref_title_wall_header">アイコンプレビューで壁紙を使用する</string>
     <string name="pref_header_launcher_icon">ランチャーアイコン</string>
     <string name="pref_title_launcher_icon">ランチャーアイコンを隠す</string>
+    <string name="pref_summary_launcher_icon">チェックすると、ランチャーアイコンは非表示になります。</string>
     <string name="clearcache_dialog_content">アプリのデータ、キャッシュ、設定を削除してもよろしいですか？ 適用されたアイコンは影響を受けません。</string>
     <string name="hideicon_dialog_title">警告！</string>
     <string name="hideicon_dialog_content">ランチャーでアプリのアイコンを非表示にしてもよろしいですか？\nAppが突然終了し、通知が完全に無効になる場合があります。\n非表示にする前に、よくある質問を読んで再表示する方法を確認してください。</string>
     <string name="send_using">送信に使用するアプリ</string>
+    <string name="no_mail">メールアプリがインストールされていません</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>アイコンパックの使い方は？</item>
@@ -95,7 +102,7 @@
         <item>Why does the app need permission to prevent phone from sleeping?</item>
     </string-array>
     <string-array name="answers">
-        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+        <item>アイコンパックをサポートするランチャーが必要です。 サポートされているランチャーのリストは、「適用」セクションまたは Play ストアの説明のアプリにあります。</item>
         <item>アプリのナビゲーションタイプに応じて、ナビゲーションパネルを左からスライドさせて「適用」セクションに移動するか、下部のナビゲーションバーから4番目のアイコンを選択します。 そこからアイコンを適用したいランチャーを選ぶことができます。 一部のランチャーは自動適用をサポートしていないため、ランチャー設定に手動で適用する必要があります。</item>
         <item>アプリのメインセクションに戻り、「アイコン」をタップします。</item>
         <item>使用しているランチャーに応じて、アイコンを長押ししてポップアップメニューから「編集」を選択するか、アイコンを長押しして [編集] ボックスに移動する必要があります。</item>
