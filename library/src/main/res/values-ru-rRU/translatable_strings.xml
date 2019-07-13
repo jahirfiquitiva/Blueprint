@@ -19,15 +19,15 @@
     <string name="frames_dashboard">Оболочка Blueprint</string>
     <string name="coming_soon">Скоро</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">Главная</string>
-    <string name="section_icons">Значки</string>
+    <string name="section_home">Home</string>
+    <string name="section_icons">Icons</string>
     <string name="section_apply">Применить</string>
     <string name="section_wallpapers">Обои</string>
     <string name="section_icon_request">Запрос значков</string>
     <string name="section_donate">Пожертвовать</string>
     <string name="section_about">О приложении</string>
     <string name="section_help">Помощь</string>
-    <string name="section_zooper">Настройка Zooper</string>
+    <string name="section_zooper">Zooper Setup</string>
     <string name="section_widgets">Виджеты</string>
     <string name="share_this_app">Я использую %1$s, и мне нравится. Проверь на: %2$s</string>
     <string name="rate">Оценить</string>
