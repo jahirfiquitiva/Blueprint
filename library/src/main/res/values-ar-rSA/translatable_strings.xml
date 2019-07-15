@@ -20,12 +20,12 @@
     <string name="coming_soon">قريباً</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">Home</string>
-    <string name="section_icons">أيقونة</string>
+    <string name="section_icons">Icons</string>
     <string name="section_apply">تطبيق</string>
     <string name="section_wallpapers">الخلفيات</string>
     <string name="section_icon_request">طلب رمز</string>
     <string name="section_donate">التبرع</string>
-    <string name="section_about">حول التطبيق</string>
+    <string name="section_about">About the app</string>
     <string name="section_help">المساعدة</string>
     <string name="section_zooper">إعداد Zooper</string>
     <string name="section_widgets">التطبيقات المصغرة</string>
@@ -35,24 +35,24 @@
     <string name="filter">تصفية</string>
     <string name="clear">مسح</string>
     <string name="more_apps">المزيد من التطبيقات</string>
-    <string name="general_info">معلومات عامة</string>
+    <string name="general_info">General information</string>
     <string name="useful_links">روابط مفيدة</string>
     <string name="columns">عدد الأعمدة</string>
     <string name="lni_content">%1$s غير مثبت حالياً على جهازك.\nهل تود تثبيته من متجر جوجل بلاي؟</string>
     <string name="no_compatible_launcher_title">هذا المشغل غير متوافق</string>
     <string name="no_compatible_launcher_content">هذا المشغل غير متوافق مع أية \"حزم رمز\" ومن ثم لا يمكن استخدام هذا رمز حزمة مع هذا المشغل. يرجى عدم معدل حزمة رمز سلبيا لهذا السبب. هناك حل يمكنك أن تجرب بنفسك، ولكنه يتطلب استخدام التطبيق الخارجي الذي ترغب في تحميله؟</string>
-    <string name="impossible_open_themes">من المستحيل فتح تطبيق الثيمات</string>
+    <string name="impossible_open_themes">Impossible to open themes app</string>
     <string name="themes_app_not_installed">Themes app is not installed in this device</string>
     <string name="included_templates">%1$s قوالب</string>
     <string name="launcher_icon_restored">تم استعادة أيقونة مشغل %1$s</string>
-    <string name="launcher_icon_not_restored">%1$s قاذفة الرمز مرئياً مسبقاً</string>
-    <string name="launcher_icon_restorer_error">هناك مشكلة في التعليمات البرمجية من %1$s. الرجاء الاتصال المطور.</string>
+    <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
+    <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">Icon Restorer Widget</string>
     <string name="clock_widget_title">Analog Clock</string>
     <string name="search_icons">البحث عن الرموز</string>
     <string name="search_wallpapers">تعيين خلفية</string>
-    <string name="search_launchers">البحث عن قاذفات</string>
+    <string name="search_launchers">Search launchers</string>
     <string name="search_apps">بحث في التطبيقات</string>
     <string name="seconds">ثواني</string>
     <string name="minutes">دقائق</string>
