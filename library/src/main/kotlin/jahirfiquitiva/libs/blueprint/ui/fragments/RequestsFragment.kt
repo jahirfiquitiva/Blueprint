@@ -124,8 +124,8 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
             object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
-                    if (dy > 0) doToFab { it -> it.hide() }
-                    else doToFab { it -> it.show() }
+                    if (dy > 0) doToFab { it.hide() }
+                    else doToFab { it.show() }
                 }
             })
         
@@ -206,10 +206,10 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     override fun registerObservers() {
         viewModel?.callback = this
-        viewModel?.observe(this) {
+        viewModel?.observe(this) { items ->
             swipeToRefresh?.isRefreshing = false
-            adapter?.setItems(ArrayList(it))
-            if (it.isEmpty()) {
+            adapter?.setItems(ArrayList(items))
+            if (items.isEmpty()) {
                 deselectAll()
                 doToFab { it.hide() }
             } else {
@@ -217,7 +217,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
             }
             progressDialog?.dismiss()
             updateFabCount()
-            normalState()
+            if (items.isEmpty()) emptyState() else normalState()
         }
     }
     
@@ -238,7 +238,13 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     override fun onAppsLoaded(apps: ArrayList<App>) {
         super.onAppsLoaded(apps)
         viewModel?.postResult(apps)
-        normalState()
+    }
+    
+    private fun emptyState() {
+        try {
+            postDelayed(10) { recyclerView?.state = EmptyViewRecyclerView.State.EMPTY }
+        } catch (e: Exception) {
+        }
     }
     
     private fun normalState() {
