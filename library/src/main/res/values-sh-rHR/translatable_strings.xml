@@ -16,28 +16,28 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="coming_soon">Stiže uskoro</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Kuća</string>
-  <string name="section_icons">Ikonice</string>
-  <string name="section_apply">Primeni</string>
-  <string name="section_wallpapers">Pozadine</string>
-  <string name="section_icon_request">Zahtevaj ikonice</string>
-  <string name="section_donate">Doniraj</string>
-  <string name="section_about">O aplikaciji</string>
-  <string name="section_help">Pomoć</string>
-  <string name="section_zooper">Podešavanja zooper-a</string>
-  <string name="rate">Oceni</string>
-  <!-- Icons filters -->
-  <string name="filter">Filter</string>
-  <string name="clear">Očisti</string>
-  <string name="more_apps">Više aplikacija</string>
-  <string name="general_info">Opšte informacije</string>
-  <string name="useful_links">Korisni linkovi</string>
-  <string name="columns">Broj kolona</string>
-  <string name="no_compatible_launcher_title">Ovaj launčer nije kompatibilan</string>
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <string name="coming_soon">Stiže uskoro</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Kuća</string>
+    <string name="section_icons">Ikonice</string>
+    <string name="section_apply">Primeni</string>
+    <string name="section_wallpapers">Pozadine</string>
+    <string name="section_icon_request">Zahtevaj ikonice</string>
+    <string name="section_donate">Doniraj</string>
+    <string name="section_about">O aplikaciji</string>
+    <string name="section_help">Pomoć</string>
+    <string name="section_zooper">Podešavanja zooper-a</string>
+    <string name="rate">Oceni</string>
+    <!-- Icons filters -->
+    <string name="filter">Filter</string>
+    <string name="clear">Očisti</string>
+    <string name="more_apps">Više aplikacija</string>
+    <string name="general_info">Opšte informacije</string>
+    <string name="useful_links">Korisni linkovi</string>
+    <string name="columns">Broj kolona</string>
+    <string name="no_compatible_launcher_title">Ovaj launčer nije kompatibilan</string>
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>
