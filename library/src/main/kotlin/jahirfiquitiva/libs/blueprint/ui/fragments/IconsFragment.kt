@@ -33,6 +33,7 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
 import jahirfiquitiva.libs.blueprint.R
 import jahirfiquitiva.libs.blueprint.helpers.extensions.configs
+import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.models.Filter
 import jahirfiquitiva.libs.blueprint.models.Icon
 import jahirfiquitiva.libs.blueprint.models.IconsCategory
@@ -232,8 +233,10 @@ class IconsFragment : ViewModelFragment<Icon>() {
             } else {
                 activity.setResult(Activity.RESULT_CANCELED, intent)
             }
-            bitmap?.let {
-                if (!it.isRecycled) it.recycle()
+            try {
+                bitmap?.let { if (!it.isRecycled) it.recycle() }
+            } catch (e: Exception) {
+                BL.e("Error recycling bitmap", e)
             }
             activity.finish()
         }

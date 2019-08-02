@@ -32,6 +32,7 @@ import com.pluscubed.recyclerfastscroll.RecyclerFastScroller
 import jahirfiquitiva.libs.archhelpers.extensions.getViewModel
 import jahirfiquitiva.libs.archhelpers.extensions.mdDialog
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.extensions.showIf
 import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.providers.viewmodels.RequestsViewModel
 import jahirfiquitiva.libs.blueprint.quest.App
@@ -52,12 +53,14 @@ import jahirfiquitiva.libs.kext.extensions.isInHorizontalMode
 import jahirfiquitiva.libs.kext.extensions.isLowRamDevice
 import jahirfiquitiva.libs.kext.ui.decorations.GridSpacingItemDecoration
 import jahirfiquitiva.libs.kext.ui.fragments.ViewModelFragment
+import kotlin.math.max
 
 @Suppress("DEPRECATION")
 @SuppressLint("MissingSuperCall")
 class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     companion object {
+        private const val FAB_DELAY = 200L
         fun create(debug: Boolean): RequestsFragment =
             RequestsFragment().apply { this.debug = debug }
     }
@@ -132,6 +135,21 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         recyclerView?.adapter = adapter
         swipeToRefresh?.let { fastScroller?.attachSwipeRefreshLayout(it) }
         recyclerView?.let { fastScroller?.attachRecyclerView(it) }
+        
+        postDelayed(FAB_DELAY) { doToFab { it.showIf(viewModel?.getData()?.size ?: 0 > 0) } }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        postDelayed(FAB_DELAY) { doToFab { it.showIf(viewModel?.getData()?.size ?: 0 > 0) } }
+    }
+    
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        canShowProgress = isVisibleToUser
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            postDelayed(FAB_DELAY) { doToFab { it.showIf(viewModel?.getData()?.size ?: 0 > 0) } }
+        }
     }
     
     private fun updateFabCount() {
@@ -139,6 +157,8 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
             IconRequest.get()?.let { doToFab { fab -> fab.count = it.selectedApps.size } }
         }
     }
+    
+    internal fun getDataCount(): Int = max(viewModel?.getData()?.size ?: 0, adapter?.itemCount ?: 0)
     
     private fun doToFab(what: (CounterFab) -> Unit) {
         (activity as? BaseBlueprintActivity)?.postToFab(what)
@@ -196,8 +216,8 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
             recyclerView?.setEmptyText(R.string.empty_section)
             viewModel?.getData()?.let { adapter?.setItems(ArrayList(it)) }
         }
-        if (!closed)
-            scrollToTop()
+        doToFab { it.showIf(viewModel?.getData()?.size ?: 0 > 0) }
+        if (!closed) scrollToTop()
     }
     
     override fun initViewModels() {
@@ -209,15 +229,16 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
         viewModel?.observe(this) { items ->
             swipeToRefresh?.isRefreshing = false
             adapter?.setItems(ArrayList(items))
+            progressDialog?.dismiss()
+            updateFabCount()
             if (items.isEmpty()) {
                 deselectAll()
                 doToFab { it.hide() }
+                emptyState()
             } else {
                 doToFab { it.show() }
+                normalState()
             }
-            progressDialog?.dismiss()
-            updateFabCount()
-            if (items.isEmpty()) emptyState() else normalState()
         }
     }
     
@@ -309,7 +330,7 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     override fun onDestroy() {
         super.onDestroy()
         destroyDialog()
-        doToFab { it -> it.count = 0 }
+        doToFab { it.count = 0 }
     }
     
     private fun destroyDialog() {
@@ -322,10 +343,5 @@ class RequestsFragment : ViewModelFragment<App>(), RequestsCallback {
     
     override fun getContentLayout(): Int = R.layout.section_with_swipe_refresh
     override fun autoStartLoad(): Boolean = true
-    override fun allowReloadAfterVisibleToUser(): Boolean = viewModel?.getData().orEmpty().isEmpty()
-    
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        canShowProgress = isVisibleToUser
-        super.setUserVisibleHint(isVisibleToUser)
-    }
+    override fun allowReloadAfterVisibleToUser(): Boolean = false
 }
