@@ -16,104 +16,104 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint პანელი</string>
-  <string name="coming_soon">მალე</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">მთავარი</string>
-  <string name="section_icons">იკონები</string>
-  <string name="section_apply">გამოყენება</string>
-  <string name="section_wallpapers">ფონები</string>
-  <string name="section_icon_request">იკონების მოთხოვნა</string>
-  <string name="section_donate">შემოწირულობა</string>
-  <string name="section_about">აპლიკაციის შესახებ</string>
-  <string name="section_help">დახმარება</string>
-  <string name="section_zooper">Zooper მართვა</string>
-  <string name="section_widgets">ვიჯეტები</string>
-  <string name="share_this_app">მე ვიყენებ %1$s და მე მიყვარს ის. შეამოწმეთ იგი:%2$s</string>
-  <string name="rate">შეფასება</string>
-  <!-- Icons filters -->
-  <string name="filter">ფილტრი</string>
-  <string name="clear">გასუფთავება</string>
-  <string name="more_apps">მეტი აპლიკაციები</string>
-  <string name="general_info">მთავარი ინფორმაცია</string>
-  <string name="useful_links">საჭირო ბმულები</string>
-  <string name="columns">სვეტების ნომერი</string>
-  <string name="no_compatible_launcher_title">ეს ლაუნჩერი არ არის თავსებადი</string>
-  <string name="impossible_open_themes">შეუძლებელია თემების აპლიკაციის გახსნა</string>
-  <string name="themes_app_not_installed">თემების აპლიკაცია არ არის ინსტალირებული მოწყობილობაში</string>
-  <string name="included_templates">%1$s თარგები</string>
-  <string name="launcher_icon_restored">%1$s ლაუნჩერის იკონი აღდგენილია</string>
-  <string name="launcher_icon_not_restored">%1$s ლაუნჩერის იკონი უკვე ჩანს</string>
-  <string name="launcher_icon_restorer_error">%1$s კოდის პრობლემაა. გთხოვთ დაუკავშირდეთ დეველოპერს.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">იკონების აღმდგენი ვიჯეტი</string>
-  <string name="clock_widget_title">ისრებიანი საათი</string>
-  <string name="search_icons">იკონების ძებნა</string>
-  <string name="search_wallpapers">ფონის ძებნა</string>
-  <string name="search_launchers">ლაუნჩერების ძებნა</string>
-  <string name="search_apps">აპლიკაციების ძებნა</string>
-  <string name="seconds">წამები</string>
-  <string name="minutes">წუთები</string>
-  <string name="hours">საათები</string>
-  <string name="days">დღეები</string>
-  <string name="weeks">კვირა</string>
-  <string name="months">თვეები</string>
-  <!-- Requests -->
-  <string name="select_all">ყველას მონიშვნა</string>
-  <string name="no_selected_apps_title">აპლიკაცია არ არის მონიშნული</string>
-  <string name="no_selected_apps_content">თქვენ არ აგირჩევიათ არცერთი აპლიკაცია. გთხოვთ აირჩიოთ რამოდენიმე აპლიკაცია და ჩემდეგ დააჭირეთ ისევ ღილაკს.</string>
-  <string name="apps_limit_dialog">უკაცრავად, მაგრამ თქვენ ნება დართეთ %1$s მხოლოდ აპლიკაციების მოთხოვნას.</string>
-  <string name="apps_limit_dialog_day">ბოდიშს გიხდით, მაგრამ თქვენ უფლება გაქვთ იკონების მოითხოვნის ყოველ %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">რამოდენიმე ხნის შემდეგ ისევ შეძლებთ იკონების მოთხოვნის გაგზავნას.</string>
-  <string name="loading_apps_to_request">იტვირთება აპლიკაციები მოთხოვნის გასაგზავნად…</string>
-  <string name="building_request_dialog">მოთხოვნის ფაილების მომზადება…</string>
-  <string name="request_upload_success">წარმატება!</string>
-  <string name="request_upload_success_content">მოთხოვნა წარმატებით აიტვირთა სერვერზე.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">ჩართე იკონების გადასახედზე ფონის სურათი</string>
-  <string name="pref_summary_wall_header">თქვენი ამჟამინდელი მოწყობილობის ფონი გამოჩნდება.</string>
-  <string name="pref_header_launcher_icon">ლაუნჩერის იკონი</string>
-  <string name="pref_title_launcher_icon">ლაუნჩერის იკონის დამალვა</string>
-  <string name="pref_summary_launcher_icon">შემოწმებისას, აპლიკაციის იკონი დამალული იქნება.</string>
-  <string name="hideicon_dialog_title">გაფრთხილება!</string>
-  <string name="send_using">გაგზავნე…</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>როგორ გამოვიყენო იკონების კრებული?</item>
-    <item>როგორ გამოვიყენო იკონების კრებული?</item>
-    <item>როგორ ვნახო ყველა თანდართული იკონები?</item>
-    <item>როგორ შევცვალო იკონი ალტერნატიული იკონით?</item>
-    <item>როგორ გავაგზავნო მოთხოვნა სხვა იკონებზე?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Why do icons look pixelated on my device?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>როგორ დავმალო აპლიკაციის იკონი ლაუნჩერში?</item>
-    <item>როგორ გავხსნა აპლიკაცია მისი იკონის დამალვის შემთხვევაში?</item>
-    <item>როგორ გამოვაჩინო აპლიკაციის იკონი?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>რატომ სჭირდება აპლიკაციას ნებართვა ფონის დასაყენებლად?</item>
-    <item>რატომ სჭირდება აპლიკაციას ნებართვა ფონის ზომის შესაცვლელად?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-    <item>იკონების მოთხოვნის გაგზავნა.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-    <item>საჭიროა მუზეის ცოცხალი ფონი.</item>
-  </string-array>
+    <string name="frames_dashboard">Blueprint პანელი</string>
+    <string name="coming_soon">მალე</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">მთავარი</string>
+    <string name="section_icons">იკონები</string>
+    <string name="section_apply">გამოყენება</string>
+    <string name="section_wallpapers">ფონები</string>
+    <string name="section_icon_request">იკონების მოთხოვნა</string>
+    <string name="section_donate">შემოწირულობა</string>
+    <string name="section_about">აპლიკაციის შესახებ</string>
+    <string name="section_help">დახმარება</string>
+    <string name="section_zooper">Zooper მართვა</string>
+    <string name="section_widgets">ვიჯეტები</string>
+    <string name="share_this_app">მე ვიყენებ %1$s და მე მიყვარს ის. შეამოწმეთ იგი:%2$s</string>
+    <string name="rate">შეფასება</string>
+    <!-- Icons filters -->
+    <string name="filter">ფილტრი</string>
+    <string name="clear">გასუფთავება</string>
+    <string name="more_apps">მეტი აპლიკაციები</string>
+    <string name="general_info">მთავარი ინფორმაცია</string>
+    <string name="useful_links">საჭირო ბმულები</string>
+    <string name="columns">სვეტების ნომერი</string>
+    <string name="no_compatible_launcher_title">ეს ლაუნჩერი არ არის თავსებადი</string>
+    <string name="impossible_open_themes">შეუძლებელია თემების აპლიკაციის გახსნა</string>
+    <string name="themes_app_not_installed">თემების აპლიკაცია არ არის ინსტალირებული მოწყობილობაში</string>
+    <string name="included_templates">%1$s თარგები</string>
+    <string name="launcher_icon_restored">%1$s ლაუნჩერის იკონი აღდგენილია</string>
+    <string name="launcher_icon_not_restored">%1$s ლაუნჩერის იკონი უკვე ჩანს</string>
+    <string name="launcher_icon_restorer_error">%1$s კოდის პრობლემაა. გთხოვთ დაუკავშირდეთ დეველოპერს.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">იკონების აღმდგენი ვიჯეტი</string>
+    <string name="clock_widget_title">ისრებიანი საათი</string>
+    <string name="search_icons">იკონების ძებნა</string>
+    <string name="search_wallpapers">ფონის ძებნა</string>
+    <string name="search_launchers">ლაუნჩერების ძებნა</string>
+    <string name="search_apps">აპლიკაციების ძებნა</string>
+    <string name="seconds">წამები</string>
+    <string name="minutes">წუთები</string>
+    <string name="hours">საათები</string>
+    <string name="days">დღეები</string>
+    <string name="weeks">კვირა</string>
+    <string name="months">თვეები</string>
+    <!-- Requests -->
+    <string name="select_all">ყველას მონიშვნა</string>
+    <string name="no_selected_apps_title">აპლიკაცია არ არის მონიშნული</string>
+    <string name="no_selected_apps_content">თქვენ არ აგირჩევიათ არცერთი აპლიკაცია. გთხოვთ აირჩიოთ რამოდენიმე აპლიკაცია და ჩემდეგ დააჭირეთ ისევ ღილაკს.</string>
+    <string name="apps_limit_dialog">უკაცრავად, მაგრამ თქვენ ნება დართეთ %1$s მხოლოდ აპლიკაციების მოთხოვნას.</string>
+    <string name="apps_limit_dialog_day">ბოდიშს გიხდით, მაგრამ თქვენ უფლება გაქვთ იკონების მოითხოვნის ყოველ %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">რამოდენიმე ხნის შემდეგ ისევ შეძლებთ იკონების მოთხოვნის გაგზავნას.</string>
+    <string name="loading_apps_to_request">იტვირთება აპლიკაციები მოთხოვნის გასაგზავნად…</string>
+    <string name="building_request_dialog">მოთხოვნის ფაილების მომზადება…</string>
+    <string name="request_upload_success">წარმატება!</string>
+    <string name="request_upload_success_content">მოთხოვნა წარმატებით აიტვირთა სერვერზე.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">ჩართე იკონების გადასახედზე ფონის სურათი</string>
+    <string name="pref_summary_wall_header">თქვენი ამჟამინდელი მოწყობილობის ფონი გამოჩნდება.</string>
+    <string name="pref_header_launcher_icon">ლაუნჩერის იკონი</string>
+    <string name="pref_title_launcher_icon">ლაუნჩერის იკონის დამალვა</string>
+    <string name="pref_summary_launcher_icon">შემოწმებისას, აპლიკაციის იკონი დამალული იქნება.</string>
+    <string name="hideicon_dialog_title">გაფრთხილება!</string>
+    <string name="send_using">გაგზავნე…</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>როგორ გამოვიყენო იკონების კრებული?</item>
+        <item>როგორ გამოვიყენო იკონების კრებული?</item>
+        <item>როგორ ვნახო ყველა თანდართული იკონები?</item>
+        <item>როგორ შევცვალო იკონი ალტერნატიული იკონით?</item>
+        <item>როგორ გავაგზავნო მოთხოვნა სხვა იკონებზე?</item>
+        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+        <item>Why do icons look pixelated on my device?</item>
+        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+        <item>როგორ დავმალო აპლიკაციის იკონი ლაუნჩერში?</item>
+        <item>როგორ გავხსნა აპლიკაცია მისი იკონის დამალვის შემთხვევაში?</item>
+        <item>როგორ გამოვაჩინო აპლიკაციის იკონი?</item>
+        <item>Why does the app need permission to modify or delete content of my storage?</item>
+        <item>Why does the app need permission to full network access?</item>
+        <item>Why does the app need permission to view connections?</item>
+        <item>რატომ სჭირდება აპლიკაციას ნებართვა ფონის დასაყენებლად?</item>
+        <item>რატომ სჭირდება აპლიკაციას ნებართვა ფონის ზომის შესაცვლელად?</item>
+        <item>Why does the app need permission to prevent phone from sleeping?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
+        <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+        <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>იკონების მოთხოვნის გაგზავნა.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
+        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>It\'s needed to be able to check if your device has internet connection.</item>
+        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>საჭიროა მუზეის ცოცხალი ფონი.</item>
+    </string-array>
 </resources>
