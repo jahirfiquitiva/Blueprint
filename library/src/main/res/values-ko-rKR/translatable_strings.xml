@@ -19,12 +19,12 @@
     <string name="frames_dashboard">Blueprint</string>
     <string name="coming_soon">공개 임박</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">홈</string>
+    <string name="section_home">집</string>
     <string name="section_icons">아이콘</string>
-    <string name="section_apply">적용하기</string>
-    <string name="section_wallpapers">배경화면</string>
+    <string name="section_apply">적용</string>
+    <string name="section_wallpapers">Обои</string>
     <string name="section_icon_request">아이콘 요청</string>
-    <string name="section_donate">후원하기</string>
+    <string name="section_donate">프로버전</string>
     <string name="section_about">앱 소개</string>
     <string name="section_help">도움말</string>
     <string name="section_zooper">Zooper 설치</string>

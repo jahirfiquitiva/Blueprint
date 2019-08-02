@@ -16,105 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">खाका डैशबोर्ड</string>
-  <string name="coming_soon">जल्द आ रहा है</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">मुखपृष्ठ</string>
-  <string name="section_icons">आइकॉन</string>
-  <string name="section_apply">लागू करें</string>
-  <string name="section_wallpapers">वॉलपेपर्स</string>
-  <string name="section_icon_request">चिह्न अनुरोध</string>
-  <string name="section_donate">दान करें</string>
-  <string name="section_about">इस ऐप्प के बारे में</string>
-  <string name="section_help">सहायता</string>
-  <string name="section_zooper">Zooper सेटअप</string>
-  <string name="section_widgets">विजेट्स</string>
-  <string name="share_this_app">मैं %1$s का उपयोग कर रहा हूं और मैं इसे प्यार करता हूं । जाओ यह देखो पर: %2$s</string>
-  <string name="rate">मूल्यांकन करें</string>
-  <!-- Icons filters -->
-  <string name="filter">फ़िल्टर:</string>
-  <string name="clear">साफ करें</string>
-  <string name="more_apps">अधिक अप्प्स</string>
-  <string name="general_info">सामान्य जानकारी</string>
-  <string name="useful_links">उपयोगी कड़ियां</string>
-  <string name="columns">स्तंभ संख्या</string>
-  <string name="lni_content">%1$s वर्तमान में आपके डिवाइस पर स्थापित नहीं है. \n क्या आप इसे गूगल प्ले स्टोर से इंस्टॉल करना पसंद करते हैं?</string>
-  <string name="no_compatible_launcher_title">इस लांचर संगत नहीं है</string>
-  <string name="no_compatible_launcher_content">इस लांचर किसी भी आइकन पैक के साथ संगत नहीं है और इसलिए आप इस लांचर के साथ इस आइकन पैक का उपयोग नहीं कर सकते. कृपया इस कारण के लिए आइकन पैक दर नहीं है । वहां एक समाधान है कि आप अपने आप के लिए कोशिश कर सकते हैं, लेकिन यह एक बाहरी अनुप्रयोग के उपयोग की आवश्यकता है । क्या आप इसे डाउनलोड करना चाहेंगे?</string>
-  <string name="impossible_open_themes">थीम्स एप्लिकेशन को खोलने के लिए असंभव</string>
-  <string name="themes_app_not_installed">विषयवस्तु अनुप्रयोग इस डिवाइस में स्थापित नहीं है</string>
-  <string name="included_templates">%1$s टेम्प्लेट</string>
-  <string name="launcher_icon_restored">%1$s लांचर आइकन बहाल किया गया था</string>
-  <string name="launcher_icon_not_restored">%1$s लांचर आइकन पहले से ही दिखाई दे रहा है</string>
-  <string name="launcher_icon_restorer_error">वहां %1$sके कोड के साथ एक समस्या है । कृपया इसके डेवलपर से संपर्क करें ।</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">आइकन आरोग्य विजेट</string>
-  <string name="clock_widget_title">ऐनालॉग घड़ी</string>
-  <string name="search_icons">चिह्न खोजें</string>
-  <string name="search_wallpapers">वॉलपेपर सेट करें</string>
-  <string name="search_launchers">खोज लांचर</string>
-  <string name="search_apps">ऐप्लिकेशन खोजें</string>
-  <string name="seconds">सेकंड्स</string>
-  <string name="minutes">मिनट</string>
-  <string name="hours">घंटे</string>
-  <string name="days">दिन</string>
-  <string name="weeks">सप्ताह</string>
-  <string name="months">महीने</string>
-  <!-- Requests -->
-  <string name="select_all">सभी चुनें</string>
-  <string name="no_selected_apps_title">किसी ऐप का चयन नहीं किया गया</string>
-  <string name="no_selected_apps_content">आप अनुरोध करने के लिए किसी भी अनुप्रयोग का चयन नहीं किया । कृपया कुछ ऐप्लिकेशन चुनें, फिर इस बटन को फिर से टैप करें.</string>
-  <string name="apps_limit_dialog">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
-  <string name="apps_limit_dialog_more">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
-  <string name="apps_limit_dialog_day">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
-  <string name="apps_limit_dialog_day_extra">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
-  <string name="apps_limit_dialog_day_extra_sec">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
-  <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
-  <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
-  <string name="request_upload_success">सफलता!</string>
-  <string name="request_upload_success_content">अनुरोध हमारे सर्वर पर सफलतापूर्वक अपलोड किया गया है ।</string>
-  <!-- Preferences -->
-  <string name="pref_summary_wall_header">अपने वर्तमान डिवाइस वॉलपेपर दिखाया जाएगा ।</string>
-  <string name="pref_header_launcher_icon">लॉन्चर चिह्न</string>
-  <string name="pref_title_launcher_icon">लॉन्चर चिह्न छुपाएं</string>
-  <string name="hideicon_dialog_title">चेतावनी!</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>आइकन पैक का उपयोग कैसे करे?</item>
-    <item>How to apply the Icon Pack?</item>
-    <item>How to see all the included icons?</item>
-    <item>How to replace an icon with an alternative one?</item>
-    <item>How to request unthemed icons?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Why do icons look pixelated on my device?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-    <item>येह इस्लिये हुआ क्योकि आइकन पैक ऐसडी कारद मे चला गया है, आपको इसे इनटरनल स्थान मे सथापित करना चाहिये।</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-    <item>चिह्न का निवेदन करे |</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-    <item>यह Muzei लाइव वॉलपेपर को जरूरत है ।</item>
-  </string-array>
+    <string name="frames_dashboard">खाका डैशबोर्ड</string>
+    <string name="coming_soon">जल्द आ रहा है</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">मुखपृष्ठ</string>
+    <string name="section_icons">आइकॉन</string>
+    <string name="section_apply">लागू करें</string>
+    <string name="section_wallpapers">वॉलपेपर्स</string>
+    <string name="section_icon_request">चिह्न अनुरोध</string>
+    <string name="section_donate">दान करें</string>
+    <string name="section_about">इस ऐप्प के बारे में</string>
+    <string name="section_help">सहायता</string>
+    <string name="section_zooper">Zooper सेटअप</string>
+    <string name="section_widgets">विजेट्स</string>
+    <string name="share_this_app">मैं %1$s का उपयोग कर रहा हूं और मैं इसे प्यार करता हूं । जाओ यह देखो पर: %2$s</string>
+    <string name="rate">मूल्यांकन करें</string>
+    <!-- Icons filters -->
+    <string name="filter">फ़िल्टर:</string>
+    <string name="clear">साफ करें</string>
+    <string name="more_apps">अधिक अप्प्स</string>
+    <string name="general_info">सामान्य जानकारी</string>
+    <string name="useful_links">उपयोगी कड़ियां</string>
+    <string name="columns">स्तंभ संख्या</string>
+    <string name="lni_content">%1$s वर्तमान में आपके डिवाइस पर स्थापित नहीं है. \n क्या आप इसे गूगल प्ले स्टोर से इंस्टॉल करना पसंद करते हैं?</string>
+    <string name="no_compatible_launcher_title">इस लांचर संगत नहीं है</string>
+    <string name="no_compatible_launcher_content">इस लांचर किसी भी आइकन पैक के साथ संगत नहीं है और इसलिए आप इस लांचर के साथ इस आइकन पैक का उपयोग नहीं कर सकते. कृपया इस कारण के लिए आइकन पैक दर नहीं है । वहां एक समाधान है कि आप अपने आप के लिए कोशिश कर सकते हैं, लेकिन यह एक बाहरी अनुप्रयोग के उपयोग की आवश्यकता है । क्या आप इसे डाउनलोड करना चाहेंगे?</string>
+    <string name="impossible_open_themes">थीम्स एप्लिकेशन को खोलने के लिए असंभव</string>
+    <string name="themes_app_not_installed">विषयवस्तु अनुप्रयोग इस डिवाइस में स्थापित नहीं है</string>
+    <string name="included_templates">%1$s टेम्प्लेट</string>
+    <string name="launcher_icon_restored">%1$s लांचर आइकन बहाल किया गया था</string>
+    <string name="launcher_icon_not_restored">%1$s लांचर आइकन पहले से ही दिखाई दे रहा है</string>
+    <string name="launcher_icon_restorer_error">वहां %1$sके कोड के साथ एक समस्या है । कृपया इसके डेवलपर से संपर्क करें ।</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">आइकन आरोग्य विजेट</string>
+    <string name="clock_widget_title">ऐनालॉग घड़ी</string>
+    <string name="search_icons">चिह्न खोजें</string>
+    <string name="search_wallpapers">वॉलपेपर सेट करें</string>
+    <string name="search_launchers">खोज लांचर</string>
+    <string name="search_apps">ऐप्लिकेशन खोजें</string>
+    <string name="seconds">सेकंड्स</string>
+    <string name="minutes">मिनट</string>
+    <string name="hours">घंटे</string>
+    <string name="days">दिन</string>
+    <string name="weeks">सप्ताह</string>
+    <string name="months">महीने</string>
+    <!-- Requests -->
+    <string name="select_all">सभी चुनें</string>
+    <string name="no_selected_apps_title">किसी ऐप का चयन नहीं किया गया</string>
+    <string name="no_selected_apps_content">आप अनुरोध करने के लिए किसी भी अनुप्रयोग का चयन नहीं किया । कृपया कुछ ऐप्लिकेशन चुनें, फिर इस बटन को फिर से टैप करें.</string>
+    <string name="apps_limit_dialog">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
+    <string name="apps_limit_dialog_more">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
+    <string name="apps_limit_dialog_day">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
+    <string name="apps_limit_dialog_day_extra">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
+    <string name="apps_limit_dialog_day_extra_sec">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
+    <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
+    <string name="loading_apps_to_request">अनुरोध करने के लिए ऐप्स लोड हो रहा है...</string>
+    <string name="building_request_dialog">भवन अनुरोध फ़ाइलें…</string>
+    <string name="request_upload_success">सफलता!</string>
+    <string name="request_upload_success_content">अनुरोध हमारे सर्वर पर सफलतापूर्वक अपलोड किया गया है ।</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">आइकन पूर्वावलोकन में वॉलपेपर का उपयोग सक्षम करें</string>
+    <string name="pref_summary_wall_header">अपने वर्तमान डिवाइस वॉलपेपर दिखाया जाएगा ।</string>
+    <string name="pref_header_launcher_icon">लॉन्चर चिह्न</string>
+    <string name="pref_title_launcher_icon">लॉन्चर चिह्न छुपाएं</string>
+    <string name="pref_summary_launcher_icon">जब जाँच की जाती है, लॉन्चर आइकन छिपाया जाएगा।</string>
+    <string name="clearcache_dialog_content">क्या आप वाकई ऐप डेटा, कैश और सेटिंग्स को हटाना चाहते हैं? एप्लाइड आइकन प्रभावित नहीं होंगे।</string>
+    <string name="hideicon_dialog_title">चेतावनी!</string>
+    <string name="hideicon_dialog_content">क्या आप वाकई अपने लॉन्चर में ऐप आइकन छिपाना चाहते हैं?\n ऐप अनपेक्षित रूप से बंद हो सकता है और नोटिफिकेशन पूरी तरह से निष्क्रिय हो जाएगा। \n आप इसे छुपाने से पहले यह जानना चाहते हैं कि इसे फिर से कैसे बनाया जाए, यह जानने के लिए आप एफएक्यू पढ़ना चाहते हैं।</string>
+    <string name="send_using">उपयोग कर भेजें…</string>
+    <string name="no_mail">कोई मेल ऐप इंस्टॉल नहीं है</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>आइकन पैक का उपयोग कैसे करे?</item>
+        <item>आइकन पैक कैसे लागू करें?</item>
+        <item>सभी शामिल किए गए आइकन कैसे देखें?</item>
+        <item>एक विकल्प के साथ एक आइकन को कैसे बदलें?</item>
+        <item>अनचेम आइकन का अनुरोध कैसे करें?</item>
+        <item>मेरे डिवाइस को पुनरारंभ करने के बाद, आइकन पैक अब लागू नहीं किया गया है। डिफ़ॉल्ट रूप से आइकन पुनर्स्थापित किए गए थे।</item>
+        <item>आइकन मेरे डिवाइस पर पिक्सेलयुक्त क्यों दिखते हैं?</item>
+        <item>मैं शामिल आइकन में एक्स ऐप के लिए एक आइकन देख सकता हूं, लेकिन आइकन लागू नहीं होता है।</item>
+        <item>लॉन्चर से ऐप आइकन कैसे छिपाएं?</item>
+        <item>app आइकन लांचर से छिपा हुआ है के बाद एप्लिकेशन को खोलने के लिए कैसे?</item>
+        <item>लांचर में app आइकन फिर से दिखाने के लिए कैसे?</item>
+        <item>एप्लिकेशन को मेरे संग्रहण की सामग्री को संशोधित करने या हटाने की अनुमति क्यों चाहिए?</item>
+        <item>क्यों app पूर्ण नेटवर्क का उपयोग करने की अनुमति की आवश्यकता है?</item>
+        <item>क्यों app पूर्ण नेटवर्क का उपयोग करने की अनुमति की आवश्यकता है?</item>
+        <item>क्यों app पूर्ण नेटवर्क का उपयोग करने की अनुमति की आवश्यकता है?</item>
+        <item>क्यों app पूर्ण नेटवर्क का उपयोग करने की अनुमति की आवश्यकता है?</item>
+        <item>क्यों एप्लिकेशन को नींद से फोन को रोकने के लिए अनुमति की जरूरत है?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>आप आइकन पैक समर्थन के साथ एक लांचर की जरूरत है । समर्थित लांचरों की सूची में अनुप्रयोग में पाया जा सकता है \"लागू करें\" अनुभाग, या Play स्टोर विवरण.</item>
+        <item>एप्लिकेशन के नेविगेशन प्रकार के आधार पर, आप या तो बाईं ओर से नेविगेशन दराज स्लाइड करने के लिए की जरूरत है, और \"लागू करें\" अनुभाग पर जाएँ, या नीचे नेविगेशन पट्टी से 4 आइकन का चयन. वहाँ से आप एक लांचर आप माउस को लागू करने के लिए चाहते हैं चुन सकते हैं । कुछ लांचरों ऑटो लगाने का समर्थन नहीं करता है और आप अपनी सेटिंग्स के माध्यम से इसे मैन्युअल रूप से करना है.</item>
+        <item>अनुप्रयोग के मुख्य भाग के लिए वापस जाओ और \"प्रतीक\" शीर्षक टाइल नल ।</item>
+        <item>लांचर आप उपयोग कर रहे हैं पर निर्भर करता है, आप या तो लंबे समय आइकन नल और पॉप-अप मेनू से \"संपादित करें\" का चयन करें, या लंबे समय आइकन नल और एक \"संपादित करें\" बॉक्स के लिए यह कदम है.</item>
+        <item>एप्लिकेशन के नेविगेशन प्रकार के आधार पर, आप या तो बाईं ओर से नेविगेशन दराज स्लाइड करने के लिए की जरूरत है, और \"अनुरोध\" अनुभाग के लिए जाना है, या नीचे नेविगेशन पट्टी से आइकन का चयन करें ।</item>
+        <item>येह इस्लिये हुआ क्योकि आइकन पैक ऐसडी कारद मे चला गया है, आपको इसे इनटरनल स्थान मे सथापित करना चाहिये।</item>
+        <item>बड़े रिज़ॉल्यूशन को हैंडल करते समय समस्या आपके द्वारा उपयोग किए जा रहे लॉन्चर के साथ आ सकती है। आप आइकन का आकार 115 - 120% तक बढ़ाकर इसे ठीक कर सकते हैं। या किसी अन्य लॉन्चर का उपयोग करके देखें।</item>
+        <item>चिह्न का निवेदन करे |</item>
+        <item>नेविगेशन ड्रॉअर को बाईं ओर स्लाइड करें, या 3-डॉट मेनू बटन पर टैप करें और \"सेटिंग\" अनुभाग पर जाएं। फिर \"लॉन्चर से आइकन छुपाएं\" विकल्प की जांच करें।</item>
+        <item>अपनी होम स्क्रीन पर जाएं, फिर ऐप के लिए एक विजेट बनाएं जिसका नाम \"IconRestorer\" है और इसे टैप करें।</item>
+        <item>नेविगेशन ड्रॉअर को बाईं ओर स्लाइड करें, या 3-डॉट मेनू बटन पर टैप करें और \"सेटिंग\" अनुभाग पर जाएं। फिर \"लॉन्चर से आइकन छुपाएं\" विकल्प की जांच करें।</item>
+        <item>यह आइकन अनुरोध डेटा और फ़ाइलों के साथ-साथ वॉलपेपर को बचाने और वॉलपेपर के डाउनलोड स्थान को बदलने में सक्षम होने के लिए सक्षम होने की आवश्यकता है।</item>
+        <item>यह क्लाउड से वॉलपेपर लोड करने और उन्हें डाउनलोड करने में सक्षम होने की आवश्यकता है।</item>
+        <item>यह जांचने में सक्षम होने की आवश्यकता है कि आपके डिवाइस में इंटरनेट कनेक्शन है या नहीं।</item>
+        <item>यह एप्लिकेशन से सीधे वॉलपेपर लागू करने में सक्षम होने की जरूरत है।</item>
+        <item>यह आपके स्क्रीन रिज़ॉल्यूशन के आधार पर वॉलपेपर आयामों को समायोजित करने में सक्षम होने की आवश्यकता है।</item>
+        <item>यह Muzei लाइव वॉलपेपर को जरूरत है ।</item>
+    </string-array>
 </resources>

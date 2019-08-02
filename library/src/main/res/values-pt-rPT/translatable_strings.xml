@@ -16,37 +16,37 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="coming_soon">Brevemente</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Página inicial</string>
-  <string name="section_icons">Ícones</string>
-  <string name="section_apply">Aplicar</string>
-  <string name="section_wallpapers">Imagens de fundo</string>
-  <string name="section_donate">Doar</string>
-  <string name="section_about">Sobre a aplicação</string>
-  <string name="section_help">Ajuda</string>
-  <string name="section_widgets">Widgets</string>
-  <string name="rate">Classificar</string>
-  <!-- Icons filters -->
-  <string name="filter">Filtrar</string>
-  <string name="clear">Limpar</string>
-  <string name="more_apps">Mais aplicações</string>
-  <string name="general_info">Informação geral</string>
-  <string name="useful_links">Links úteis</string>
-  <string name="columns">Número de colunas</string>
-  <!-- Widgets Names -->
-  <string name="clock_widget_title">Relógio Analógico</string>
-  <string name="seconds">Segundos</string>
-  <string name="minutes">Minutos</string>
-  <string name="hours">Horas</string>
-  <string name="days">Dias</string>
-  <string name="weeks">Semanas</string>
-  <string name="months">Meses</string>
-  <!-- Requests -->
-  <string name="select_all">Selecionar tudo</string>
-  <string name="request_upload_success">Sucesso!</string>
-  <!-- Preferences -->
-  <string name="hideicon_dialog_title">Atenção!</string>
-  <string name="send_using">Enviar via…</string>
-  <!-- HELP SECTION -->
+    <string name="coming_soon">Brevemente</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Página inicial</string>
+    <string name="section_icons">Ícones</string>
+    <string name="section_apply">Aplicar</string>
+    <string name="section_wallpapers">Imagens de fundo</string>
+    <string name="section_donate">Doar</string>
+    <string name="section_about">Sobre a aplicação</string>
+    <string name="section_help">Ajuda</string>
+    <string name="section_widgets">Widgets</string>
+    <string name="rate">Classificar</string>
+    <!-- Icons filters -->
+    <string name="filter">Filtrar</string>
+    <string name="clear">Limpar</string>
+    <string name="more_apps">Mais aplicações</string>
+    <string name="general_info">Informação geral</string>
+    <string name="useful_links">Links úteis</string>
+    <string name="columns">Número de colunas</string>
+    <!-- Widgets Names -->
+    <string name="clock_widget_title">Relógio Analógico</string>
+    <string name="seconds">Segundos</string>
+    <string name="minutes">Minutos</string>
+    <string name="hours">Horas</string>
+    <string name="days">Dias</string>
+    <string name="weeks">Semanas</string>
+    <string name="months">Meses</string>
+    <!-- Requests -->
+    <string name="select_all">Selecionar tudo</string>
+    <string name="request_upload_success">Sucesso!</string>
+    <!-- Preferences -->
+    <string name="hideicon_dialog_title">Atenção!</string>
+    <string name="send_using">Enviar via…</string>
+    <!-- HELP SECTION -->
 </resources>

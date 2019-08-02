@@ -19,10 +19,10 @@
     <string name="frames_dashboard">Blueprint početna</string>
     <string name="coming_soon">Ubrzo dolazi</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">Kuća</string>
+    <string name="section_home">Početna</string>
     <string name="section_icons">Ikone</string>
-    <string name="section_apply">Primjeni</string>
-    <string name="section_wallpapers">Pozadine</string>
+    <string name="section_apply">Primjena</string>
+    <string name="section_wallpapers">Wallpapers</string>
     <string name="section_icon_request">Zahtjev za ikone</string>
     <string name="section_donate">Doniraj</string>
     <string name="section_about">O aplikaciji</string>

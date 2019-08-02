@@ -16,11 +16,11 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <!-- List Of Drawer Sections -->
-  <string name="section_icon_request">Icon request</string>
-  <!-- Icons filters -->
-  <!-- Widgets Names -->
-  <!-- Requests -->
-  <!-- Preferences -->
-  <!-- HELP SECTION -->
+    <!-- List Of Drawer Sections -->
+    <string name="section_icon_request">Icon request</string>
+    <!-- Icons filters -->
+    <!-- Widgets Names -->
+    <!-- Requests -->
+    <!-- Preferences -->
+    <!-- HELP SECTION -->
 </resources>

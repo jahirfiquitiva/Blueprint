@@ -16,26 +16,26 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="coming_soon">Tulossa pian</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Koti</string>
-  <string name="section_icons">Kuvakkeet</string>
-  <string name="section_apply">Käytä</string>
-  <string name="section_wallpapers">Taustakuvat</string>
-  <string name="section_donate">Lahjoita</string>
-  <string name="section_about">Tietoa sovelluksesta</string>
-  <string name="rate">Arvostele</string>
-  <!-- Icons filters -->
-  <string name="filter">Suodata</string>
-  <string name="clear">Tyhjennä</string>
-  <string name="more_apps">Lisää sovelluksia</string>
-  <string name="useful_links">Hyödyllisiä linkkejä</string>
-  <!-- Widgets Names -->
-  <string name="clock_widget_title">Analoginen kello</string>
-  <!-- Requests -->
-  <string name="select_all">Valitse kaikki</string>
-  <!-- Preferences -->
-  <string name="hideicon_dialog_title">Varoitus!</string>
-  <string name="send_using">Lähetä käyttäen…</string>
-  <!-- HELP SECTION -->
+    <string name="coming_soon">Tulossa pian</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Koti</string>
+    <string name="section_icons">Kuvakkeet</string>
+    <string name="section_apply">Käytä</string>
+    <string name="section_wallpapers">Taustakuvat</string>
+    <string name="section_donate">Lahjoita</string>
+    <string name="section_about">Tietoa sovelluksesta</string>
+    <string name="rate">Arvostele</string>
+    <!-- Icons filters -->
+    <string name="filter">Suodata</string>
+    <string name="clear">Tyhjennä</string>
+    <string name="more_apps">Lisää sovelluksia</string>
+    <string name="useful_links">Hyödyllisiä linkkejä</string>
+    <!-- Widgets Names -->
+    <string name="clock_widget_title">Analoginen kello</string>
+    <!-- Requests -->
+    <string name="select_all">Valitse kaikki</string>
+    <!-- Preferences -->
+    <string name="hideicon_dialog_title">Varoitus!</string>
+    <string name="send_using">Lähetä käyttäen…</string>
+    <!-- HELP SECTION -->
 </resources>
