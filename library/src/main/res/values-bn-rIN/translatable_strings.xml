@@ -29,14 +29,14 @@
     <string name="section_help">সহায়তা</string>
     <string name="section_zooper">জুপার সেটআপ</string>
     <string name="section_widgets">উইজেট সমূহ</string>
-    <string name="share_this_app">%1$s আমি ব্যবহার করছি এবং আমি পছন্দ করি। অবশ্যই চেক করুন: %2$s</string>
-    <string name="rate">মুল্যায়ন করুন</string>
+    <string name="share_this_app">%1$s আমি ব্যবহার করছি এবং আমি খুবই পছন্দ করি। অবশ্যই চেক করুন: %2$s</string>
+    <string name="rate">মূল্যায়ন করুন</string>
     <!-- Icons filters -->
     <string name="filter">পরিশ্রুতক</string>
     <string name="clear">সাফ করুন</string>
     <string name="more_apps">আরো অ্যাপ সমূহ</string>
     <string name="general_info">সাধারণ তথ্য</string>
-    <string name="useful_links">দরকারী লিংক</string>
+    <string name="useful_links">দরকারী লিংকসমূহ</string>
     <string name="columns">স্তম্ভের সংখ্যা</string>
     <string name="lni_content">%1$s এ মুহূর্তে আপনার ডিভাইসে ইন্সটল করা নেই।\n আপনি কি এটি প্লে স্টোর থেকে ইন্সটল করতে চান?</string>
     <string name="no_compatible_launcher_title">এই লঞ্চারটি উপযুক্ত নয়</string>
@@ -44,7 +44,7 @@
     <string name="impossible_open_themes">থিম অ্যাপ চালু করা সম্ভব নয়</string>
     <string name="themes_app_not_installed">থিম অ্যাপ এই ডিভাইসটিতে ইনস্টল করা নেই</string>
     <string name="included_templates">%1$s টি টেমপ্লেট</string>
-    <string name="launcher_icon_restored">%1$s লঞ্চার আইকন পুনরুদ্ধার করা হয়েছে</string>
+    <string name="launcher_icon_restored">%1$s -এর লঞ্চার আইকন পুনরুদ্ধার করা হয়েছে</string>
     <string name="launcher_icon_not_restored">%1$s লঞ্চার আইকন ইতিমধ্যে দৃশ্যমান</string>
     <string name="launcher_icon_restorer_error">%1$s এর কোড এ সমস্যা রয়েছে। অনুগ্রহ করে এর ডেভলপারের সঙ্গে যোগাযোগ করুন।</string>
     <!-- Widgets Names -->
@@ -74,10 +74,10 @@
     <string name="loading_apps_to_request">অনুরোধ করতে অ্যাপ লোড করা হচ্ছে…</string>
     <string name="building_request_dialog">অনুরোধ ফাইল তৈরি করা হচ্ছে…</string>
     <string name="request_upload_success">সফল হয়েছে!</string>
-    <string name="request_upload_success_content">অনুরোধ সফলভাবে আমাদের সার্ভারে আপলোড করা হয়েছে।.</string>
+    <string name="request_upload_success_content">অনুরোধ সফলভাবে আমাদের সার্ভারে আপলোড করা হয়েছে।</string>
     <!-- Preferences -->
-    <string name="pref_title_wall_header">আইকন প্রিভিউতে ওয়ালপেপার ব্যবহার করুন</string>
-    <string name="pref_summary_wall_header">আপনার বর্তমান ডিভাইস ওয়ালপেপার দেখা যাবে।.</string>
+    <string name="pref_title_wall_header">আইকন প্রিভিউতে প্রযুক্ত ওয়ালপেপার ব্যবহার করুন</string>
+    <string name="pref_summary_wall_header">আপনার বর্তমান ডিভাইস-এর প্রযুক্ত ওয়ালপেপার দেখা যাবে।</string>
     <string name="pref_header_launcher_icon">লঞ্চার আইকন</string>
     <string name="pref_title_launcher_icon">লঞ্চার আইকন লুকান</string>
     <string name="pref_summary_launcher_icon">এটিতে টিক দেওয়া হলে, লঞ্চার আইকন আড়াল করা হবে ।</string>
@@ -95,7 +95,7 @@
         <item>আনথিম করা আইকন অনুরোধ করার উপায় কি?</item>
         <item>আমার ডিভাইস রিস্টার্ট করার পর, আই আইকন প্যাক প্রযুক্ত নয়। আইকন প্যাক ডিফল্টে রিস্টোর করা হয়েছে।</item>
         <item>আবার ডিভাইসে আইকন ভাঙ্গা ভাঙ্গা দেখাচ্ছে কেন?</item>
-        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+        <item>আমি আইকন এক্স অ্যাপ অন্তর্ভুক্ত আইকনসমূহে এ দেখতে পাচ্ছি, কিন্তু আইকন প্রযুক্ত হচ্ছে না ।</item>
         <item>লঞ্চার থেকে অ্যাপ আইকন গোপন করার উপায় কি?</item>
         <item>অ্যাপ আইকন লঞ্চার থেকে গোপন করার পর অ্যাপ ওপেন করার উপায় কি ?</item>
         <item>অ্যাপ আইকন লঞ্চারে আবার দেখাবেন কিভাবে?</item>
@@ -104,25 +104,25 @@
         <item>অ্যাপটি সংযোগসমূহ প্রদর্শন করার অনুমতি কেন প্রয়োজন?</item>
         <item>অ্যাপটি ওয়ালপেপার সেট করার অনুমতি কেন প্রয়োজন?</item>
         <item>অ্যাপটি ওয়ালপেপার আকার সমন্বয় করতে অনুমতি কেন প্রয়োজন?</item>
-        <item>Why does the app need permission to prevent phone from sleeping?</item>
+        <item>অ্যাপটি ফোন নিষ্ক্রিয় হওয়া প্রতিরোধ করার অনুমতি কেন প্রয়োজন?</item>
     </string-array>
     <string-array name="answers">
-        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-        <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-        <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-        <item>Send an icon request.</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-        <item>It\'s needed to be able to check if your device has internet connection.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>আপনার এমন লঞ্চারের প্রয়োজন যা আইকন প্যাক ব্যবহার করতে সক্ষম । উপযুক্ত লঞ্চারের তালিকা পাওয়া যাবে অ্যাপ-এর \"প্রয়োগ করুন\" বিভাগে, বা প্লে স্টোরের বিবরনে ।</item>
+        <item>অ্যাপটির নেভিগেশনের উপর নির্ভর করে আপনার নেভিগেশন ড্রয়ারের বাম দিক থেকে ডান দিকে স্লাইড করতে হবে, এবং \"প্রয়োগ করুন\" বিভাগে যান, নয়তো নিচের নেভিগেশন বার থেকে চতুর্থ আইকন নির্বাচন করুন; সেখান থেকে আপনি লঞ্চার নির্বাচন করতে পারবেন আইকন প্রয়োগ করার জন্যে । কিছু লঞ্চারে আইকন প্যাক স্বয়ংক্রিয়ভাবে প্রয়োগ হয় না এবং এটা আপনাকে নিজে থেকে সেই লঞ্চারের সেটিংস-এ গিয়ে করতে হবে।</item>
+        <item>অ্যাপ-এর প্রধান অংশে ফিরে যান এবং \"আইকনস\" অপশন নির্বাচন করুন ।</item>
+        <item>যে লঞ্চার আপনি ব্যবহার করছেন তার উপর নির্ভর করে আপনি হয় আইকনটি দীর্ঘ ট্যাপ করুন এবং পপ-আপ মেনু থেকে \"ইডিট করুন\" নির্বাচন করুন, অথবা আইকনটি দীর্ঘ ট্যাপ করুন এবং এটিকে \'এডিট\' বক্সে ফেলুন ।</item>
+        <item>অ্যাপটির নেভিগেশনের ভিত্তিতে হয়তো আপনাকে নেভিগেশন ড্রয়ারের বাম দিকে থেকে স্লাইড করতে হবে এবং \"অনুরোধ\" বিভাগে যেতে হবে, অথবা নীচের নেভিগেশন বার থেকে \"অনুরোধ\" আইকন বেছে নিন ।</item>
+        <item>এটা হতে পারে যে আপনি ‌‌‌অ্যাপটি SD Card -এ সরিয়েছেন, আপনাকে অ্যাপটি  Internal Storage -এ ইন্সটল করা উচিত ।</item>
+        <item>এই সমস্যা বোধ হয় আপনি যে লঞ্চার ব্যবহার করছেন তা থেকে এসেছে, যখন বড়ো রেজোলিউশন হ্যান্ডেল করছিল । আপনি এটা ঠিক করতে পারেন আইকন সাইজ ১১৫ - ১২০% করে,  নাহলে আপনি আলাদা লঞ্চার ব্যবহার করতে পারেন ।</item>
+        <item>একটি আইকনের অনুরোধ পাঠান ।</item>
+        <item>নেভিগেশন ড্রয়ার-এর বাম দিক থেকে স্লাইড করুন অথবা ৩ ডট মেনু বোতামে ট্যাপ করুন ও \"সেটিংস\" বিভাগে যান। তারপর \"লঞ্চার থেকে আইকন গোপন করুন\" অপশনটি চেক করুন ।</item>
+        <item>আপনার হোম স্ক্রীণ - এ যান তারপর \'Icon Restorer\' নামক উইজেট তৈরি করুন এবং তা ট্যাপ করুন ।</item>
+        <item>নেভিগেশন ড্রয়ার-এর বাম দিক থেকে স্লাইড করুন অথবা ৩ ডট মেনু বোতামে ট্যাপ করুন ও \"সেটিংস\" বিভাগে যান। তারপর \"লঞ্চার থেকে আইকন গোপন করুন\" অপশনটি আনচেক করুন ।</item>
+        <item>এটার দরকার হবে আইকন অনুরোধ করার তথ্য লেখার জন্যে, ওয়ালপেপার সঞ্চয় করার জন্যে এবং ওয়ালপেপার ডাউনলোড করার জায়গা পরিবর্তন করতে ।</item>
+        <item>এটার দরকার হবে ওয়ালপেপার লোড ও ডাউনলোড করতে ।</item>
+        <item>এটার দরকার হবে আপনার ডিভাইসে ইন্টারনেট সংযোগ আছে কি না জানার জন্যে ।</item>
+        <item>এটার প্রয়োজন হবে অ্যাপ থেকে সরাসরি ওয়ালপেপার প্রয়োগ করার জন্যে ।</item>
+        <item>এটার প্রয়োজন হবে আপনার স্ক্রিন সাইজের ভিত্তিতে ওয়ালপেপার পরিবর্তন করতে ।</item>
         <item>মুজ্যেই লাইভ ওয়ালপেপারের জন্য এটি প্রয়োজন ।</item>
     </string-array>
 </resources>
