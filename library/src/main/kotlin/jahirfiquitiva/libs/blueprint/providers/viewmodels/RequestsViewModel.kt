@@ -50,7 +50,7 @@ class RequestsViewModel : ViewModel() {
                 ) {
         if (!taskStarted || forceLoad) {
             cancelTask(true)
-            task = QAsync<Context, Unit>(
+            task = QAsync(
                 WeakReference(parameter),
                 object : QAsync.Callback<Context, Unit>() {
                     override fun doLoad(param: Context): Unit? =

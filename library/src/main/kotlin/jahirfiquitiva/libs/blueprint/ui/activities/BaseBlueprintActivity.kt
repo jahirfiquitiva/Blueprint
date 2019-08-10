@@ -184,18 +184,19 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
         fab?.hide()
         val launcherName = defaultLauncher?.name.orEmpty()
         if (currentSectionId != DEFAULT_REQUEST_SECTION_ID) fab?.count = 0
-        val shouldShow = (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
-            || currentSectionId == DEFAULT_REQUEST_SECTION_ID
+        var shouldShow = (currentSectionId == DEFAULT_HOME_SECTION_ID && launcherName.hasContent())
             || (currentSectionId == DEFAULT_ICONS_SECTION_ID && iconsFilters.isNotEmpty())
-        if (shouldShow) {
-            val icon: Drawable? = when (currentSectionId) {
-                DEFAULT_HOME_SECTION_ID -> drawable(R.drawable.ic_apply)
-                DEFAULT_REQUEST_SECTION_ID -> drawable(R.drawable.ic_send)
-                DEFAULT_ICONS_SECTION_ID -> drawable(R.drawable.ic_filter)
-                else -> null
-            }
-            fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
+        if (currentSectionId == DEFAULT_REQUEST_SECTION_ID) {
+            shouldShow = (pagerAdapter?.get(currentSectionPosition) as? RequestsFragment)
+                ?.getDataCount() ?: 0 > 0
         }
+        val icon: Drawable? = when (currentSectionId) {
+            DEFAULT_HOME_SECTION_ID -> drawable(R.drawable.ic_apply)
+            DEFAULT_REQUEST_SECTION_ID -> drawable(R.drawable.ic_send)
+            DEFAULT_ICONS_SECTION_ID -> drawable(R.drawable.ic_filter)
+            else -> null
+        }
+        fab?.setImageDrawable(icon?.tint(getActiveIconsColorFor(accentColor, 0.6F)))
         fab?.showIf(shouldShow)
     }
     

@@ -53,11 +53,11 @@ import jahirfiquitiva.libs.kext.extensions.getAppVersion
 import jahirfiquitiva.libs.kext.extensions.getAppVersionCode
 import jahirfiquitiva.libs.kext.extensions.getUri
 import jahirfiquitiva.libs.kext.extensions.hasContent
-import jahirfiquitiva.libs.kext.extensions.readBoolean
+import jahirfiquitiva.libs.kext.extensions.readBooleanCompat
 import jahirfiquitiva.libs.kext.extensions.resource
 import jahirfiquitiva.libs.kext.extensions.string
 import jahirfiquitiva.libs.kext.extensions.toBitmap
-import jahirfiquitiva.libs.kext.extensions.writeBoolean
+import jahirfiquitiva.libs.kext.extensions.writeBooleanCompat
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import java.io.File
@@ -104,7 +104,7 @@ class IconRequest private constructor() {
                 "<br/>App Version: ${builder?.context?.getAppVersionCode()} " +
                     "(${builder?.context?.getAppVersion()}) from " +
                     "${builder?.context?.packageManager?.getInstallerPackageName(
-                        builder?.context?.packageName)}")
+                        builder?.context?.packageName ?: "")}")
             return sb.toString()
         }
     
@@ -261,7 +261,7 @@ class IconRequest private constructor() {
             dest.writeInt(filterId)
             dest.writeInt(maxCount)
             dest.writeLong(timeLimit)
-            dest.writeBoolean(debug)
+            dest.writeBooleanCompat(debug)
         }
         
         protected constructor(parcel: Parcel) {
@@ -274,7 +274,7 @@ class IconRequest private constructor() {
             filterId = parcel.readInt()
             maxCount = parcel.readInt()
             timeLimit = parcel.readLong()
-            debug = parcel.readBoolean()
+            debug = parcel.readBooleanCompat()
         }
         
         companion object CREATOR : Parcelable.Creator<Builder> {
