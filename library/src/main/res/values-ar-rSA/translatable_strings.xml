@@ -63,9 +63,9 @@
     <!-- Requests -->
     <string name="select_all">تحديد الكل</string>
     <string name="no_selected_apps_title">لا توجد تطبيقات محددة</string>
-    <string name="no_selected_apps_content">لم تقم بتحديد أية تطبيقات الطلب. الرجاء تحديد تطبيقات قليلة، ثم انقر فوق هذا الزر مرة أخرى.</string>
+    <string name="no_selected_apps_content">لم تقم بتحديد أية تطبيقات الطلب. الرجاء تحديد بعض التطبيقات، ثم انقر على هذا الزر مرة أخرى.</string>
     <string name="apps_limit_dialog">عذراً، لكن فقط يسمح لك بتحديد تطبيقات %1$s لطلب.</string>
-    <string name="apps_limit_dialog_more">عذراً، لكن فقط يسمح لك بتحديد تطبيقات %1$s لطلب.</string>
+    <string name="apps_limit_dialog_more">عذراً، لكن فقط يسمح لك بتحديد تطبيقات لطلب %1$s للآن.</string>
     <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
     <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in less than a minute.</string>
     <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
