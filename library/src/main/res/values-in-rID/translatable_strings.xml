@@ -22,11 +22,11 @@
     <string name="section_home">Beranda</string>
     <string name="section_icons">Ikon</string>
     <string name="section_apply">Terapkan</string>
-    <string name="section_wallpapers">Wallpaper</string>
+    <string name="section_wallpapers">僅用於中文</string>
     <string name="section_icon_request">Permintaan ikon</string>
     <string name="section_donate">Donasi</string>
     <string name="section_about">Tentang aplikasi</string>
-    <string name="section_help">Membantu</string>
+    <string name="section_help">Bantuan</string>
     <string name="section_zooper">Pengaturan Zooper</string>
     <string name="section_widgets">Widget</string>
     <string name="share_this_app">Saya sedang menggunakan %1$s dan saya menyukainya. Mari periksa di:%2$s</string>
