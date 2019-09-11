@@ -16,94 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint Dashboard</string>
-  <string name="coming_soon">Binnenkort beschikbaar</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Home</string>
-  <string name="section_icons">Iconen</string>
-  <string name="section_apply">Toepassen</string>
-  <string name="section_wallpapers">Achtergronden</string>
-  <string name="section_icon_request">Icoon verzoek</string>
-  <string name="section_donate">Doneer</string>
-  <string name="section_about">Over de app</string>
-  <string name="section_help">Help</string>
-  <string name="section_zooper">Zooper Setup</string>
-  <string name="section_widgets">Widgets</string>
-  <string name="share_this_app">Ik gebruik %1$s en vindt het geweldig. Bekijk het hier: %2$s</string>
-  <string name="rate">Beoordeel</string>
-  <!-- Icons filters -->
-  <string name="filter">Filter</string>
-  <string name="clear">Verwijder alle</string>
-  <string name="more_apps">Meer apps</string>
-  <string name="general_info">Algemene informatie</string>
-  <string name="useful_links">Nuttige links</string>
-  <string name="columns">Aantal kolommen</string>
-  <string name="lni_content">%1$s is momenteel niet geïnstalleerd op je apparaat.\nWil je het installeren vanuit de Google Play Store?</string>
-  <string name="no_compatible_launcher_title">Deze launcher is niet compatibel</string>
-  <string name="no_compatible_launcher_content">Deze launcher is niet compatibel met alle beschikbare Icon Packs en dus is dit icon pack niet te gebruiken met deze launcher. Beoordeel alsjeblieft deze icon pack hierom niet negatief. Er is een oplossing die je zelf kunt proberen, maar het vereist het gebruik van een externe app. Wil je deze downloaden?</string>
-  <string name="impossible_open_themes">Onmogelijk om themes app te openen</string>
-  <string name="themes_app_not_installed">Themes app is niet geïnstalleerd op dit apparaat</string>
-  <string name="included_templates">%1$s sjablonen</string>
-  <string name="launcher_icon_restored">%1$s launcher icoon is hersteld</string>
-  <string name="launcher_icon_not_restored">%1$s launcher icoon is reeds zichtbaar</string>
-  <string name="launcher_icon_restorer_error">Er is een probleem met de volgende code: %1$s. Neem alsjeblieft contact op met de ontwikkelaar.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Icoon Herstel Widget</string>
-  <string name="clock_widget_title">Analoge klok</string>
-  <string name="search_icons">Zoek naar iconen</string>
-  <string name="search_wallpapers">Zoek achtergronden</string>
-  <string name="search_launchers">Zoek launchers</string>
-  <string name="search_apps">Zoek apps</string>
-  <string name="seconds">Seconden</string>
-  <string name="minutes">Minuten</string>
-  <string name="hours">Uren</string>
-  <string name="days">Dagen</string>
-  <string name="weeks">Weken</string>
-  <string name="months">Maanden</string>
-  <!-- Requests -->
-  <string name="select_all">Selecteer alles</string>
-  <string name="no_selected_apps_title">Geen geselecteerde apps</string>
-  <string name="no_selected_apps_content">Je hebt geen apps geselecteerd. Selecteer er eerst een paar en druk dan weer op deze knop.</string>
-  <string name="apps_limit_dialog">Sorry, maar het is alleen mogelijk om %1$s iconen aan te vragen.</string>
-  <string name="apps_limit_dialog_more">Sorry, maar het is op dit moment alleen mogelijk om nog %1$s iconen aan te vragen.</string>
-  <string name="apps_limit_dialog_day">Sorry, maar het is alleen mogelijk om icon aan te vragen elke %1$s.</string>
-  <string name="apps_limit_dialog_day_extra">Het is weer mogelijk om iconen aan te vragen in %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Het is weer mogelijk om iconen aan te vragen in minder dan één minuut.</string>
-  <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
-  <string name="requests_upload_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
-  <string name="loading_apps_to_request">Aan te vragen apps aan het laden…</string>
-  <string name="building_request_dialog">Verzoek bestanden aan het maken…</string>
-  <string name="request_upload_success">Gelukt!</string>
-  <string name="request_upload_success_content">Het verzoek is succesvol geüpload naar onze servers.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">Sta het gebruik van je huidige achtergrond toe in de iconen voorvertoning</string>
-  <string name="pref_summary_wall_header">Je huidige achtergrond wordt weergegeven.</string>
-  <string name="pref_header_launcher_icon">Launcher icoon</string>
-  <string name="pref_title_launcher_icon">Verberg launcher icoon</string>
-  <string name="pref_summary_launcher_icon">Launcher icoon wordt verborgen, indien aangevinkt.</string>
-  <string name="clearcache_dialog_content">Weet je zeker dat je app data, cache en instellingen wilt verwijderen? Toegepaste iconen blijven onaangetast.</string>
-  <string name="hideicon_dialog_title">Waarschuwing!</string>
-  <string name="hideicon_dialog_content">Weet je zeker dat je de app icoon wilt verbergen in je launcher?\nDe app kan plotseling sluiten en notificaties zullen compleet worden genegeerd.\nHet is wellicht verstandig om eerst de FAQs te lezen en leren hoe het icoon weer herstelt kan worden, voordat je het verbergt.</string>
-  <string name="send_using">Verzenden met…</string>
-  <string name="no_mail">Er is geen email applicatie geïnstalleerd</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>Hoe gebruik je de icon pack?</item>
-    <item>Hoe pa ls je icon pack toe?</item>
-    <item>Hoe zie ik alle bijbehorende iconen?</item>
-    <item>Hoe vervang ik een pictogram met een alternatieve?</item>
-    <item>Hoe vraag je om niet gethematiseerde iconen?</item>
-    <item>Na het opnieuw opstarten van mijn toestel is het icon pack niet meer toegepast. De iconen werden teruggezet naar de systeemstandaard.</item>
-    <item>Waarom zijn de pixels zo duidelijk zichtbaar bij de iconen?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>How to hide app icon from launcher?</item>
-    <item>How to open the app after app icon is hidden from launcher?</item>
-    <item>How to show app icon in launcher again?</item>
-    <item>Why does the app need permission to modify or delete content of my storage?</item>
-    <item>Why does the app need permission to full network access?</item>
-    <item>Why does the app need permission to view connections?</item>
-    <item>Why does the app need permission to set wallpaper?</item>
-    <item>Why does the app need permission to adjust the wallpaper size?</item>
-    <item>Why does the app need permission to prevent phone from sleeping?</item>
-  </string-array>
+    <string name="frames_dashboard">Blueprint Dashboard</string>
+    <string name="coming_soon">Binnenkort beschikbaar</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Home</string>
+    <string name="section_icons">Iconen</string>
+    <string name="section_apply">Toepassen</string>
+    <string name="section_wallpapers">Achtergronden</string>
+    <string name="section_icon_request">Icoon verzoek</string>
+    <string name="section_donate">Doneer</string>
+    <string name="section_about">Over de app</string>
+    <string name="section_help">Help</string>
+    <string name="section_zooper">Zooper Setup</string>
+    <string name="section_widgets">Widgets</string>
+    <string name="share_this_app">Ik gebruik %1$s en vindt het geweldig. Bekijk het hier: %2$s</string>
+    <string name="rate">Beoordeel</string>
+    <!-- Icons filters -->
+    <string name="filter">Filter</string>
+    <string name="clear">Verwijder alle</string>
+    <string name="more_apps">Meer apps</string>
+    <string name="general_info">Algemene informatie</string>
+    <string name="useful_links">Nuttige links</string>
+    <string name="columns">Aantal kolommen</string>
+    <string name="lni_content">%1$s is momenteel niet geïnstalleerd op je apparaat.\nWil je het installeren vanuit de Google Play Store?</string>
+    <string name="no_compatible_launcher_title">Deze launcher is niet compatibel</string>
+    <string name="no_compatible_launcher_content">Deze launcher is niet compatibel met alle beschikbare Icon Packs en dus is dit icon pack niet te gebruiken met deze launcher. Beoordeel alsjeblieft deze icon pack hierom niet negatief. Er is een oplossing die je zelf kunt proberen, maar het vereist het gebruik van een externe app. Wil je deze downloaden?</string>
+    <string name="impossible_open_themes">Onmogelijk om themes app te openen</string>
+    <string name="themes_app_not_installed">Themes app is niet geïnstalleerd op dit apparaat</string>
+    <string name="included_templates">%1$s sjablonen</string>
+    <string name="launcher_icon_restored">%1$s launcher icoon is hersteld</string>
+    <string name="launcher_icon_not_restored">%1$s launcher icoon is reeds zichtbaar</string>
+    <string name="launcher_icon_restorer_error">Er is een probleem met de volgende code: %1$s. Neem alsjeblieft contact op met de ontwikkelaar.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Icoon Herstel Widget</string>
+    <string name="clock_widget_title">Analoge klok</string>
+    <string name="search_icons">Zoek naar iconen</string>
+    <string name="search_wallpapers">Zoek achtergronden</string>
+    <string name="search_launchers">Zoek launchers</string>
+    <string name="search_apps">Zoek apps</string>
+    <string name="seconds">Seconden</string>
+    <string name="minutes">Minuten</string>
+    <string name="hours">Uren</string>
+    <string name="days">Dagen</string>
+    <string name="weeks">Weken</string>
+    <string name="months">Maanden</string>
+    <!-- Requests -->
+    <string name="select_all">Selecteer alles</string>
+    <string name="no_selected_apps_title">Geen geselecteerde apps</string>
+    <string name="no_selected_apps_content">Je hebt geen apps geselecteerd. Selecteer er eerst een paar en druk dan weer op deze knop.</string>
+    <string name="apps_limit_dialog">Sorry, maar het is alleen mogelijk om %1$s iconen aan te vragen.</string>
+    <string name="apps_limit_dialog_more">Sorry, maar het is op dit moment alleen mogelijk om nog %1$s iconen aan te vragen.</string>
+    <string name="apps_limit_dialog_day">Sorry, maar het is alleen mogelijk om icon aan te vragen elke %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Het is weer mogelijk om iconen aan te vragen in %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Het is weer mogelijk om iconen aan te vragen in minder dan één minuut.</string>
+    <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+    <string name="requests_upload_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+    <string name="loading_apps_to_request">Aan te vragen apps aan het laden…</string>
+    <string name="building_request_dialog">Verzoek bestanden aan het maken…</string>
+    <string name="request_upload_success">Gelukt!</string>
+    <string name="request_upload_success_content">Het verzoek is succesvol geüpload naar onze servers.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">Sta het gebruik van je huidige achtergrond toe in de iconen voorvertoning</string>
+    <string name="pref_summary_wall_header">Je huidige achtergrond wordt weergegeven.</string>
+    <string name="pref_header_launcher_icon">Launcher icoon</string>
+    <string name="pref_title_launcher_icon">Verberg launcher icoon</string>
+    <string name="pref_summary_launcher_icon">Launcher icoon wordt verborgen, indien aangevinkt.</string>
+    <string name="clearcache_dialog_content">Weet je zeker dat je app data, cache en instellingen wilt verwijderen? Toegepaste iconen blijven onaangetast.</string>
+    <string name="hideicon_dialog_title">Waarschuwing!</string>
+    <string name="hideicon_dialog_content">Weet je zeker dat je de app icoon wilt verbergen in je launcher?\nDe app kan plotseling sluiten en notificaties zullen compleet worden genegeerd.\nHet is wellicht verstandig om eerst de FAQs te lezen en leren hoe het icoon weer herstelt kan worden, voordat je het verbergt.</string>
+    <string name="send_using">Verzenden met…</string>
+    <string name="no_mail">Er is geen email applicatie geïnstalleerd</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Hoe gebruik je de icon pack?</item>
+        <item>Hoe pa ls je icon pack toe?</item>
+        <item>Hoe zie ik alle bijbehorende iconen?</item>
+        <item>Hoe vervang ik een pictogram met een alternatieve?</item>
+        <item>Hoe vraag je om niet gethematiseerde iconen?</item>
+        <item>Na het opnieuw opstarten van mijn toestel is het icon pack niet meer toegepast. De iconen werden teruggezet naar de systeemstandaard.</item>
+        <item>Waarom zijn de pixels zo duidelijk zichtbaar bij de iconen?</item>
+        <item>Ik kan een icoon zien voor een app in de lijst, maar het wordt niet toegepast.</item>
+        <item>Hoe kan ik de de app verbergen in de launcher?</item>
+        <item>Hoe kan ik de app terug vinden als ik het heb verborgen uit de launcher?</item>
+        <item>Hoe app pictogram in de launcher opnieuw weergeven?</item>
+        <item>Waarom heeft de app toestemming nodig om content te wijzigen of verwijderen van mijn opslag?</item>
+        <item>Waarom heeft de app volledige netwerktoegang nodig?</item>
+        <item>Waarom moet de app mijn connecties kunnen zien?</item>
+        <item>Waarom moet de app mijn achtergrond/wallpaper kunnen veranderen?</item>
+        <item>Waarom moet de app toestemming nodig om de grootte van de achtergrond/wallpaper aan te passen?</item>
+        <item>Waarom heeft de app toestemming nodig om te voorkomen dat de telefoon in slaap valt?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Je hebt een launcher nodig die icon packs aanvaard. De lijst van compatibele launchers kan je vinden in de \"toevoegen\" sectie, of in de Play Store beschrijving.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
+        <item>Ga terug naar de hoofdsectie van de app en druk op de tegel met de title \"Iconen\".</item>
+        <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+        <item>Het gebeurde omdat het icoon pakket naar de SD-kaart is verplaatst, je moet het installeren in de interne opslag.</item>
+        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>Stuur een icoon aanvraag.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
+        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>It\'s needed to be able to check if your device has internet connection.</item>
+        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>It\'s needed by Muzei Live Wallpaper.</item>
+    </string-array>
 </resources>

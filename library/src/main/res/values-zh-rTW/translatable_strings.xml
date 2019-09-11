@@ -16,113 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">藍印儀表板</string>
-  <string name="coming_soon">即將推出</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">首頁</string>
-  <string name="section_icons">圖標</string>
-  <string name="section_apply">套用</string>
-  <string name="section_wallpapers">桌布</string>
-  <string name="section_icon_request">圖示請求</string>
-  <string name="section_donate">捐款</string>
-  <string name="section_about">關於此應用程式</string>
-  <string name="section_help">說明</string>
-  <string name="section_zooper">Zooper 設置</string>
-  <string name="section_widgets">桌面小工具</string>
-  <string name="share_this_app">我正使用 %1$s, 我喜歡它。前往: %2$s 去看看</string>
-  <string name="rate">評分</string>
-  <!-- Icons filters -->
-  <string name="filter">篩選器</string>
-  <string name="clear">清除</string>
-  <string name="more_apps">更多應用程式</string>
-  <string name="general_info">一般資訊</string>
-  <string name="useful_links">相關連結</string>
-  <string name="columns">列號</string>
-  <string name="lni_content">您的設備上目前未安裝 %1$s. 您想要從 Google Play Store 安裝嗎？</string>
-  <string name="no_compatible_launcher_title">此啟動器不相容</string>
-  <string name="no_compatible_launcher_content">此啟動器與任何圖示包均不相容, 因此不能將此圖示包與此啟動器一起使用。請不要因為這個原因而對圖示包給予負面評價。若您願意嘗試, 有一個解決方案，但需要使用一個外部應用程式. 你想下載它嗎？</string>
-  <string name="impossible_open_themes">無法打開主題應用程式</string>
-  <string name="themes_app_not_installed">此設備中未安裝主題應用程式</string>
-  <string name="included_templates">%1$s 範本</string>
-  <string name="launcher_icon_restored">已還原 %1$s 啟動器圖示</string>
-  <string name="launcher_icon_not_restored">%1$s 啟動器圖示已經可見</string>
-  <string name="launcher_icon_restorer_error">%1$s的代碼存在問題。請與開發人員聯繫。</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">圖示恢復工具</string>
-  <string name="clock_widget_title">指針時鐘</string>
-  <string name="search_icons">搜尋圖示</string>
-  <string name="search_wallpapers">搜索桌布</string>
-  <string name="search_launchers">搜索發射器</string>
-  <string name="search_apps">搜尋應用程式</string>
-  <string name="seconds">秒</string>
-  <string name="minutes">分</string>
-  <string name="hours">小時</string>
-  <string name="days">天</string>
-  <string name="weeks">週</string>
-  <string name="months">月</string>
-  <!-- Requests -->
-  <string name="select_all">選擇全部</string>
-  <string name="no_selected_apps_title">沒有選定的應用程式</string>
-  <string name="no_selected_apps_content">您尚未選取要任何需求的應用程式。請選擇幾個應用程式, 然後再次點擊此按鈕。</string>
-  <string name="apps_limit_dialog">對不起, 您只允許選擇 %1$s 應用程式來進行請求。</string>
-  <string name="apps_limit_dialog_more">對不起, 您只允許選擇 %1$s 應用程式來進行請求。</string>
-  <string name="apps_limit_dialog_day">對不起, 您每 %1$s 只能請求幾個示。</string>
-  <string name="apps_limit_dialog_day_extra">在幾 %1$s 中, 您將能夠再次請求圖示。</string>
-  <string name="apps_limit_dialog_day_extra_sec">在不到一分鐘，您將能夠再次請求圖示。</string>
-  <string name="requests_error">載入應用程式時出現錯誤。\n原因：%1$s\n 請稍後再試。</string>
-  <string name="requests_upload_error">上傳應用程式到我們的伺服器時出現錯誤。\n原因：%1$s\n 請稍後再試。</string>
-  <string name="loading_apps_to_request">正在載入應用程式以請求..。</string>
-  <string name="building_request_dialog">正在生成請求檔..。</string>
-  <string name="request_upload_success">操作成功！</string>
-  <string name="request_upload_success_content">請求已成功上載到我們的伺服器。</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">在圖示預覽中啟使用桌布</string>
-  <string name="pref_summary_wall_header">將顯示您當前的預設桌布。</string>
-  <string name="pref_header_launcher_icon">啟動器圖示</string>
-  <string name="pref_title_launcher_icon">隱藏啟動器圖示</string>
-  <string name="pref_summary_launcher_icon">選取後, 啟動器圖示將被隱藏。</string>
-  <string name="clearcache_dialog_content">確定要刪除應用程式資料、緩存和設置嗎？以套用的圖示不會受到影響。</string>
-  <string name="hideicon_dialog_title">警告！</string>
-  <string name="hideicon_dialog_content">確定要在啟動器中隱藏應用程式圖示嗎？ \n 應用程式可能會意外關閉, 通知將被完全禁用. \n 建議您閱讀常見問題解答, 以瞭解如何使其再次出現, 然後再隱藏它。</string>
-  <string name="send_using">以•••寄送</string>
-  <string name="no_mail">沒有安裝郵件應用程式</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>如何使用圖示包？</item>
-    <item>如何應用圖示包？</item>
-    <item>如何查看所有包含的圖示？</item>
-    <item>如何用另一種圖示替換現有圖示？</item>
-    <item>如何請求缺少的圖示？</item>
-    <item>重新開機後, 圖示包失效。圖示被還原為預設值。</item>
-    <item>為什麼我的裝置的圖示看起來是失真的？</item>
-    <item>我可以在圖示包中看到 X 應用程式的圖示, 但該圖示並未正確套用。</item>
-    <item>如何從啟動器中隱藏應用程式圖示？</item>
-    <item>應用程式圖示隱藏後，如何從啟動器開啟應用程式？</item>
-    <item>如何再次在啟動器中顯示應用程式圖示？</item>
-    <item>為什麼應用程式需要修改或刪除我的存儲內容的權限？</item>
-    <item>為什麼應用程式需要獲得完全網路存取的權限？</item>
-    <item>為什麼應用程式需要查看所有連線的權限？</item>
-    <item>為什麼應用程式需要設置桌布的權限？</item>
-    <item>為什麼應用程式需要調整桌布大小的權限？</item>
-    <item>為什麼應用程式需要阻止電話休眠的權限？</item>
-  </string-array>
-  <string-array name="answers">
-    <item>您需要一個支援使用圖示包支援的啟動器。支援的啟動器清單可在應用程式中的 \"應用\" 部分找到, 或參閱Play商店的描述。</item>
-    <item>根據應用程式的導航類型, 您需要從左側滑動導航抽屜, 然後轉到 \"應用\" 部分, 或者從底部巡覽列中選擇第四個圖示。從那裡可以選擇要應用圖示的啟動程式。有些發射器不支援自動應用, 您必須通過它們的設置手動執行。</item>
-    <item>回到主應用程式畫面並點選名為圖示的磚型圖示</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-    <item>這發生於圖示包被移到SD卡，請將圖示包安裝在內部記憶體。</item>
-    <item>問題可能與您使用的啟動器處理大解析度圖示時有關。您可以透過將圖示增加到 115-120% 的大小來修復它。或者嘗試使用其他發射器。</item>
-    <item>發送圖示請求。</item>
-    <item>從左側滑動 NavigationDrawer, 或者點擊3點功能表按鈕, 然後轉到 \"設置\" 部分。然後檢查 \"從啟動器隱藏圖示\" 選項。</item>
-    <item>轉到您的主畫面, 然後為應用程式創建一個名稱為 \"IconRestorer\" 的小部件並點擊它。</item>
-    <item>從左側滑動 NavigationDrawer, 或者點擊3點功能表按鈕, 然後轉到 \"設置\" 部分。然後不勾選 \"從啟動器隱藏圖示\" 選項。</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
-  </string-array>
+    <string name="frames_dashboard">Blueprint Dashboard</string>
+    <string name="coming_soon">即將推出</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">首頁</string>
+    <string name="section_icons">圖標</string>
+    <string name="section_apply">套用</string>
+    <string name="section_wallpapers">Wallpapers</string>
+    <string name="section_icon_request">圖示請求</string>
+    <string name="section_donate">捐贈</string>
+    <string name="section_about">關於應用</string>
+    <string name="section_help">説明</string>
+    <string name="section_zooper">zooper 設置</string>
+    <string name="section_widgets">桌面小工具</string>
+    <string name="share_this_app">我使用 %1$s , 我喜歡它。去看看它在: %2$s</string>
+    <string name="rate">評價</string>
+    <!-- Icons filters -->
+    <string name="filter">篩選器</string>
+    <string name="clear">清除</string>
+    <string name="more_apps">更多應用程式</string>
+    <string name="general_info">一般資訊：</string>
+    <string name="useful_links">相關連結</string>
+    <string name="columns">列號</string>
+    <string name="lni_content">%1$s 當前未安裝在您的設備上。\n您想從 google play 商店安裝它嗎？</string>
+    <string name="no_compatible_launcher_title">此啟動器不相容</string>
+    <string name="no_compatible_launcher_content">此啟動器與任何圖示包都不相容, 因此您不能將此圖示包與此啟動器一起使用。因此, 請不要對圖示包進行負面評價。有一個解決方案, 你可以自己嘗試, 但它需要使用外部應用. 你想下載它嗎？</string>
+    <string name="impossible_open_themes">無法打開主題應用程式</string>
+    <string name="themes_app_not_installed">主題應用未安裝在此設備中</string>
+    <string name="included_templates">%1$s 範本</string>
+    <string name="launcher_icon_restored">恢復 %1$s 啟動器圖示</string>
+    <string name="launcher_icon_not_restored">%1$s 啟動器圖示已可見</string>
+    <string name="launcher_icon_restorer_error">%1$s的代碼有問題。請聯繫其開發人員。</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">圖示恢復器小部件</string>
+    <string name="clock_widget_title">指針時鐘</string>
+    <string name="search_icons">搜尋圖示</string>
+    <string name="search_wallpapers">搜索桌布</string>
+    <string name="search_launchers">搜索發射器</string>
+    <string name="search_apps">搜尋應用程式</string>
+    <string name="seconds">秒</string>
+    <string name="minutes">分</string>
+    <string name="hours">小時</string>
+    <string name="days">天</string>
+    <string name="weeks">週</string>
+    <string name="months">月</string>
+    <!-- Requests -->
+    <string name="select_all">選擇全部</string>
+    <string name="no_selected_apps_title">沒有選定的應用程式</string>
+    <string name="no_selected_apps_content">您尚未選取要任何需求的應用程式。請選擇幾個應用程式, 然後再次點擊此按鈕。</string>
+    <string name="apps_limit_dialog">對不起, 您只允許選擇 %1$s 應用程式來進行請求。</string>
+    <string name="apps_limit_dialog_more">對不起, 您只允許選擇 %1$s 應用程式來進行請求。</string>
+    <string name="apps_limit_dialog_day">對不起, 您每 %1$s 只能請求幾個示。</string>
+    <string name="apps_limit_dialog_day_extra">在幾 %1$s 中, 您將能夠再次請求圖示。</string>
+    <string name="apps_limit_dialog_day_extra_sec">在不到一分鐘，您將能夠再次請求圖示。</string>
+    <string name="requests_error">載入應用程式時出現錯誤。\n原因：%1$s\n 請稍後再試。</string>
+    <string name="requests_upload_error">上傳應用程式到我們的伺服器時出現錯誤。\n原因：%1$s\n 請稍後再試。</string>
+    <string name="loading_apps_to_request">正在載入應用程式以請求..。</string>
+    <string name="building_request_dialog">正在生成請求檔..。</string>
+    <string name="request_upload_success">操作成功！</string>
+    <string name="request_upload_success_content">請求已成功上載到我們的伺服器。</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">在圖示預覽中啟使用桌布</string>
+    <string name="pref_summary_wall_header">將顯示您當前的預設桌布。</string>
+    <string name="pref_header_launcher_icon">啟動器圖示</string>
+    <string name="pref_title_launcher_icon">隱藏啟動器圖示</string>
+    <string name="pref_summary_launcher_icon">選取後, 啟動器圖示將被隱藏。</string>
+    <string name="clearcache_dialog_content">確定要刪除應用程式資料、緩存和設置嗎？以套用的圖示不會受到影響。</string>
+    <string name="hideicon_dialog_title">警告！</string>
+    <string name="hideicon_dialog_content">確定要在啟動器中隱藏應用程式圖示嗎？ \n 應用程式可能會意外關閉, 通知將被完全禁用. \n 建議您閱讀常見問題解答, 以瞭解如何使其再次出現, 然後再隱藏它。</string>
+    <string name="send_using">以•••寄送</string>
+    <string name="no_mail">沒有安裝郵件應用程式</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>如何使用圖示包？</item>
+        <item>如何應用圖示包？</item>
+        <item>如何查看所有包含的圖示？</item>
+        <item>如何用另一種圖示替換現有圖示？</item>
+        <item>如何請求缺少的圖示？</item>
+        <item>重新開機後, 圖示包失效。圖示被還原為預設值。</item>
+        <item>為什麼我的裝置的圖示看起來是失真的？</item>
+        <item>我可以在圖示包中看到 X 應用程式的圖示, 但該圖示並未正確套用。</item>
+        <item>如何從啟動器中隱藏應用程式圖示？</item>
+        <item>應用程式圖示隱藏後，如何從啟動器開啟應用程式？</item>
+        <item>如何再次在啟動器中顯示應用程式圖示？</item>
+        <item>為什麼應用程式需要修改或刪除我的存儲內容的權限？</item>
+        <item>為什麼應用程式需要獲得完全網路存取的權限？</item>
+        <item>為什麼應用程式需要查看所有連線的權限？</item>
+        <item>為什麼應用程式需要設置桌布的權限？</item>
+        <item>為什麼應用程式需要調整桌布大小的權限？</item>
+        <item>為什麼應用程式需要阻止電話休眠的權限？</item>
+    </string-array>
+    <string-array name="answers">
+        <item>您需要一個支援使用圖示包支援的啟動器。支援的啟動器清單可在應用程式中的 \"應用\" 部分找到, 或參閱Play商店的描述。</item>
+        <item>根據應用程式的導航類型, 您需要從左側滑動導航抽屜, 然後轉到 \"應用\" 部分, 或者從底部巡覽列中選擇第四個圖示。從那裡可以選擇要應用圖示的啟動程式。有些發射器不支援自動應用, 您必須通過它們的設置手動執行。</item>
+        <item>回到主應用程式畫面並點選名為圖示的磚型圖示</item>
+        <item>根據你所使用的啟動器, 你需要長按該圖示並從彈出功能表中選擇 \"編輯\", 或長按該圖示並將其移動到 \"編輯\" 框中。</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+        <item>這發生於圖示包被移到SD卡，請將圖示包安裝在內部記憶體。</item>
+        <item>問題可能與您使用的啟動器處理大解析度圖示時有關。您可以透過將圖示增加到 115-120% 的大小來修復它。或者嘗試使用其他發射器。</item>
+        <item>發送圖示請求。</item>
+        <item>從左側滑動 NavigationDrawer, 或者點擊3點功能表按鈕, 然後轉到 \"設置\" 部分。然後檢查 \"從啟動器隱藏圖示\" 選項。</item>
+        <item>轉到您的主畫面, 然後為應用程式創建一個名稱為 \"IconRestorer\" 的小部件並點擊它。</item>
+        <item>從左側滑動 NavigationDrawer, 或者點擊3點功能表按鈕, 然後轉到 \"設置\" 部分。然後不勾選 \"從啟動器隱藏圖示\" 選項。</item>
+        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
+        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>It\'s needed to be able to check if your device has internet connection.</item>
+        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>這是穆澤伊動態壁紙所需要的。</item>
+    </string-array>
 </resources>

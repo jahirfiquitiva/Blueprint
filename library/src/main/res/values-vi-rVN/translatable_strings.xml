@@ -16,17 +16,43 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="frames_dashboard">Table details</string>
-    <string name="coming_soon">Will soon output</string>
+    <string name="frames_dashboard">Bảng kế hoạch chi tiết</string>
+    <string name="coming_soon">Coming soon</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">Alfred</string>
-    <string name="section_icons">Biểu tượng</string>
-    <string name="section_apply">Áp dụng</string>
-    <string name="section_wallpapers">Hình nền</string>
-    <string name="section_icon_request">Biểu tượng yêu cầu</string>
-    <string name="section_donate">Quyên góp</string>
+    <string name="section_home">Home</string>
+    <string name="section_icons">Icons</string>
+    <string name="section_apply">Apply</string>
+    <string name="section_wallpapers">Wallpapers</string>
+    <string name="section_icon_request">Icon request</string>
+    <string name="section_donate">Donate</string>
+    <string name="section_about">About the app</string>
+    <string name="section_help">Help</string>
+    <string name="section_zooper">Zooper Setup</string>
+    <string name="section_widgets">Widgets</string>
+    <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
+    <string name="rate">Rate</string>
     <!-- Icons filters -->
+    <string name="filter">Bộ lọc</string>
+    <string name="clear">Clear</string>
+    <string name="more_apps">More apps</string>
+    <string name="general_info">General information</string>
+    <string name="useful_links">Useful links</string>
+    <string name="columns">Cột số</string>
+    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn. \nWould bạn muốn cài đặt nó từ cửa hàng Google chơi?</string>
+    <string name="no_compatible_launcher_title">Bệ phóng này là không tương thích</string>
+    <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs and therefore you cannot use this icon pack with this launcher. Please do not rate the icon pack negatively for this reason. There is a solution that you can try for yourself, but it requires the use of an external app. Would you like to download it?</string>
+    <string name="impossible_open_themes">Không thể mở chủ đề app</string>
+    <string name="themes_app_not_installed">Themes app is not installed in this device</string>
+    <string name="included_templates">%1$s templates</string>
+    <string name="launcher_icon_restored">%1$s launcher icon was restored</string>
+    <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
+    <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
     <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Biểu tượng bảo tồn Widget</string>
+    <string name="clock_widget_title">Analog Clock</string>
+    <string name="search_icons">Search icons</string>
+    <string name="search_wallpapers">Search wallpapers</string>
+    <string name="search_launchers">Search launchers</string>
     <string name="search_apps">Search apps</string>
     <string name="seconds">Seconds</string>
     <string name="minutes">Minutes</string>
@@ -48,6 +74,55 @@
     <string name="loading_apps_to_request">Loading apps to request…</string>
     <string name="building_request_dialog">Building request files…</string>
     <string name="request_upload_success">Success!</string>
+    <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
     <!-- Preferences -->
+    <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
+    <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
+    <string name="pref_header_launcher_icon">Launcher icon</string>
+    <string name="pref_title_launcher_icon">Hide launcher icon</string>
+    <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
+    <string name="clearcache_dialog_content">Are you sure you want to delete app data, cache and settings? Applied icons won\'t be affected.</string>
+    <string name="hideicon_dialog_title">Warning!</string>
+    <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher?\nApp may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.</string>
+    <string name="send_using">Send using…</string>
+    <string name="no_mail">There is no mail app installed</string>
     <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>How to use the Icon Pack?</item>
+        <item>How to apply the Icon Pack?</item>
+        <item>How to see all the included icons?</item>
+        <item>How to replace an icon with an alternative one?</item>
+        <item>How to request unthemed icons?</item>
+        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+        <item>Why do icons look pixelated on my device?</item>
+        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+        <item>How to hide app icon from launcher?</item>
+        <item>How to open the app after app icon is hidden from launcher?</item>
+        <item>How to show app icon in launcher again?</item>
+        <item>Why does the app need permission to modify or delete content of my storage?</item>
+        <item>Why does the app need permission to full network access?</item>
+        <item>Why does the app need permission to view connections?</item>
+        <item>Why does the app need permission to set wallpaper?</item>
+        <item>Why does the app need permission to adjust the wallpaper size?</item>
+        <item>Why does the app need permission to prevent phone from sleeping?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
+        <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
+        <item>Tùy thuộc vào các phóng bạn đang sử dụng, bạn có phải dài chạm vào biểu tượng và chọn \"Chỉnh sửa\" từ trình đơn bật lên, hoặc dài bấm vào biểu tượng và di chuyển nó đến một hộp \"Chỉnh sửa\".</item>
+        <item>Tùy thuộc vào loại điều hướng các ứng dụng, bạn cần phải trượt ngăn kéo chuyển hướng từ trái, và đi đến phần \"Yêu cầu\", hoặc chọn biểu tượng từ thanh điều hướng phía dưới.</item>
+        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+        <item>Vấn đề có thể đi kèm với thiết bị phóng bạn đang sử dụng, khi xử lý độ phân giải lớn. Bạn có thể sửa chữa nó bằng cách tăng kích cỡ biểu tượng đến 115 – 120%. Hoặc hãy thử sử dụng một launcher.</item>
+        <item>Send an icon request.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
+        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>It\'s needed to be able to check if your device has internet connection.</item>
+        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>It\'s needed by Muzei Live Wallpaper.</item>
+    </string-array>
 </resources>

@@ -16,111 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Blueprint Dashboard</string>
-  <string name="coming_soon">Hamarosan</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Kezdőlap</string>
-  <string name="section_icons">Ikonok</string>
-  <string name="section_apply">Alkalmaz</string>
-  <string name="section_wallpapers">Háttérképek</string>
-  <string name="section_icon_request">Ikon kérés</string>
-  <string name="section_donate">Támogatás</string>
-  <string name="section_about">Az alkalmazásról</string>
-  <string name="section_help">Súgó</string>
-  <string name="section_zooper">Zooper beállítás</string>
-  <string name="section_widgets">Widgets</string>
-  <string name="share_this_app">Használom a %1$s és imádom. Próbáld ki itt: %2$s</string>
-  <string name="rate">Értékelés</string>
-  <!-- Icons filters -->
-  <string name="filter">Szűrő</string>
-  <string name="clear"> Töröl</string>
-  <string name="more_apps">További alkalmazások</string>
-  <string name="general_info">Általános információk</string>
-  <string name="useful_links">Hasznos linkek</string>
-  <string name="columns">Oszlopok száma</string>
-  <string name="lni_content">%1$s jelenleg nincs telepítve az eszközön. \nWould szeretnéd telepíteni a Google Play áruházból?</string>
-  <string name="no_compatible_launcher_title">Ezt az indító NEM kompatibilis</string>
-  <string name="no_compatible_launcher_content">Ez az indító NEM kompatibilis SEMELYIK ikon csomaggal, ezért nem tudod használni a csomagot ebben az indítóban sem. Kérlek ne értékeld le az ikon csomagot emiatt. Van egy megoldás, amit ki tudsz próbálni, de ehhez szükséged lesz egy másik alkalmazásra. Szeretnéd letölteni?</string>
-  <string name="impossible_open_themes">Nem lehetséges a témák megnyitása. </string>
-  <string name="themes_app_not_installed">A témák nincsenek telepítve az eszközre. </string>
-  <string name="included_templates">%1$s sablonok</string>
-  <string name="launcher_icon_restored">%1$s ikon helyreállítva</string>
-  <string name="launcher_icon_not_restored">%1$s ikon már látható</string>
-  <string name="launcher_icon_restorer_error">Probléma van a(z) %1$s kódjával. Kérlek vedd fel a kapcsolatot a fejlesztővel.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Ikon visszaállító modul</string>
-  <string name="clock_widget_title">Analóg óra</string>
-  <string name="search_icons">Ikonok keresése</string>
-  <string name="search_wallpapers">Háttérképek keresése</string>
-  <string name="search_launchers">Indítók keresése</string>
-  <string name="search_apps">Alkalmazások keresése</string>
-  <string name="seconds">Másodperc</string>
-  <string name="minutes">Perc</string>
-  <string name="hours">Óra</string>
-  <string name="days">Nap</string>
-  <string name="weeks">Hét</string>
-  <string name="months">Hónap</string>
-  <!-- Requests -->
-  <string name="select_all">Összes kijelölése</string>
-  <string name="no_selected_apps_title">Nincs kiválasztott alkalmazás</string>
-  <string name="no_selected_apps_content">Nincs kijelölve aplikáció, kérjük jelöljön ki egy vagy több elemet majd próbálja újra. </string>
-  <string name="apps_limit_dialog">Sajnáljuk, nem vagy jogosult a következő alkalmazás letöltésére: %1$s</string>
-  <string name="apps_limit_dialog_more">Sajnáljuk, de nem vagy jogosult a ennél több alkalmazás kérésére: %1$s.</string>
-  <string name="apps_limit_dialog_day">Sajnáljuk, de nem vagy jogosult ikon kérésére minden %1$s. nap.</string>
-  <string name="apps_limit_dialog_day_extra">Legközelebb ennyi idő múlva tehetsz újabb kérést: %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Egy percen belül újabb kérést tehetsz.</string>
-  <string name="requests_error">% 1 $ s</string>
-  <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
-  <string name="building_request_dialog">Kérés felépítése…</string>
-  <string name="request_upload_success">Siker!</string>
-  <string name="request_upload_success_content">A kérelem sikeresen feltöltve a szerverünkre.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">Háttérkép engedélyezése az előnézetben</string>
-  <string name="pref_summary_wall_header">A jelenlegi háttérkép lesz látható.</string>
-  <string name="pref_header_launcher_icon">Alkalmazásindító ikon</string>
-  <string name="pref_title_launcher_icon">Alkalmazásindító elrejtése</string>
-  <string name="pref_summary_launcher_icon">Ha be van jelölve, az indító ikon rejtve lesz.</string>
-  <string name="clearcache_dialog_content">Biztos vagy benne, hogy törlöd az alkalmazásadatokat, a cache-t és a beállításokat? Ez az alkalmazott ikonokra nincs hatással.</string>
-  <string name="hideicon_dialog_title">Figyelem!</string>
-  <string name="hideicon_dialog_content">Biztosan el akarod rejteni az alkalmazás ikonját az indítóból?\nAz alkalmazás váratlanul leállhat és az értesítések ki lesznek kapcsolva.\nOlvasd el a GYIK-et, hogy megtudd, hogyan teheted újra láthatóvá, mielőtt elrejtenéd.</string>
-  <string name="send_using">Küldés a következővel…</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>Hogyan használd az ikon csomagot?</item>
-    <item>Hogyan alkalmazd az ikon csomagot?</item>
-    <item>Hogyan láthatod a tartalmazott ikonokat?</item>
-    <item>Hogyan helyettesítsd az ikont egy másikkal?</item>
-    <item>Hogyan kérheted a témázatlan ikonokat?</item>
-    <item>Újraindítás után az ikonok nem maradnak alkalmazva. Visszaállnak az alapbeállításra.</item>
-    <item>Miért szemcsések az ikonok a készülékemen?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>Hogyan rejtsem el az alkalmazás ikonját az indítóból?</item>
-    <item>Hogyan nyissam meg az alkalmazást, ha elrejtettem az ikonját az indítóból?</item>
-    <item>Hogyan jelenítsem meg újra az alkalmazásikont az indítóban?</item>
-    <item>Miért van szűksége az alkalmazásnak engedélyre a belső tároló módosítására vagy törlésére?</item>
-    <item>Miért van szűksége az alkalmazásnak engedélyre teljes hálózati hozzáférésre?</item>
-    <item>Miért van szűksége az alkalmazásnak engedélyre a kapcsolatok megtekintéséhez?</item>
-    <item>Miért van szűksége az alkalmazásnak engedélyre a háttérkép beállításához?</item>
-    <item>Miért van szűksége az alkalmazásnak engedélyre a háttérkép méretezéséhez?</item>
-    <item>Miért van szűksége az alkalmazásnak engedélyre az alvó állapot megakadályozásához?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Az alkalmazás navigációs típusától függően vagy a bal oldali navigációs fiókot kell elcsúsztatnia, és a \"Kérések\" szakaszba kell lépnie, vagy az alsó navigációs sáv ikonját választania.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-    <item>Kérelem küldése.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Öffne das Navigationsmenü von linken Seite oder tippe aus das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Symbol ausblenden\" ab.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-    <item>It\'s needed to be able to check if your device has internet connection.</item>
-    <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-    <item>It\'s needed by Muzei Live Wallpaper.</item>
-  </string-array>
+    <string name="frames_dashboard">Blueprint Dashboard</string>
+    <string name="coming_soon">Hamarosan</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Kezdőlap</string>
+    <string name="section_icons">Ikonok</string>
+    <string name="section_apply">Alkalmaz</string>
+    <string name="section_wallpapers">Háttérképek</string>
+    <string name="section_icon_request">Ikon kérés</string>
+    <string name="section_donate">Támogatás</string>
+    <string name="section_about">Az alkalmazásról</string>
+    <string name="section_help">Súgó</string>
+    <string name="section_zooper">Zooper beállítás</string>
+    <string name="section_widgets">Widgets</string>
+    <string name="share_this_app">Használom a %1$s és imádom. Próbáld ki itt: %2$s</string>
+    <string name="rate">Értékelés</string>
+    <!-- Icons filters -->
+    <string name="filter">Szűrő</string>
+    <string name="clear"> Töröl</string>
+    <string name="more_apps">További alkalmazások</string>
+    <string name="general_info">Általános információk</string>
+    <string name="useful_links">Hasznos linkek</string>
+    <string name="columns">Oszlopok száma</string>
+    <string name="lni_content">%1$s jelenleg nincs telepítve az eszközön. \nWould szeretnéd telepíteni a Google Play áruházból?</string>
+    <string name="no_compatible_launcher_title">Ezt az indító NEM kompatibilis</string>
+    <string name="no_compatible_launcher_content">Ez az indító NEM kompatibilis SEMELYIK ikon csomaggal, ezért nem tudod használni a csomagot ebben az indítóban sem. Kérlek ne értékeld le az ikon csomagot emiatt. Van egy megoldás, amit ki tudsz próbálni, de ehhez szükséged lesz egy másik alkalmazásra. Szeretnéd letölteni?</string>
+    <string name="impossible_open_themes">Nem lehetséges a témák megnyitása. </string>
+    <string name="themes_app_not_installed">A témák nincsenek telepítve az eszközre. </string>
+    <string name="included_templates">%1$s sablonok</string>
+    <string name="launcher_icon_restored">%1$s ikon helyreállítva</string>
+    <string name="launcher_icon_not_restored">%1$s ikon már látható</string>
+    <string name="launcher_icon_restorer_error">Probléma van a(z) %1$s kódjával. Kérlek vedd fel a kapcsolatot a fejlesztővel.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Ikon visszaállító modul</string>
+    <string name="clock_widget_title">Analóg óra</string>
+    <string name="search_icons">Ikonok keresése</string>
+    <string name="search_wallpapers">Háttérképek keresése</string>
+    <string name="search_launchers">Indítók keresése</string>
+    <string name="search_apps">Alkalmazások keresése</string>
+    <string name="seconds">Másodperc</string>
+    <string name="minutes">Perc</string>
+    <string name="hours">Óra</string>
+    <string name="days">Nap</string>
+    <string name="weeks">Hét</string>
+    <string name="months">Hónap</string>
+    <!-- Requests -->
+    <string name="select_all">Összes kijelölése</string>
+    <string name="no_selected_apps_title">Nincs kiválasztott alkalmazás</string>
+    <string name="no_selected_apps_content">Nincs kijelölve aplikáció, kérjük jelöljön ki egy vagy több elemet majd próbálja újra. </string>
+    <string name="apps_limit_dialog">Sajnáljuk, nem vagy jogosult a következő alkalmazás letöltésére: %1$s</string>
+    <string name="apps_limit_dialog_more">Sajnáljuk, de nem vagy jogosult a ennél több alkalmazás kérésére: %1$s.</string>
+    <string name="apps_limit_dialog_day">Sajnáljuk, de nem vagy jogosult ikon kérésére minden %1$s. nap.</string>
+    <string name="apps_limit_dialog_day_extra">Legközelebb ennyi idő múlva tehetsz újabb kérést: %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Egy percen belül újabb kérést tehetsz.</string>
+    <string name="requests_error">% 1 $ s</string>
+    <string name="requests_upload_error">Hiba lépett fel a kért ikonok feltöltése közben.\nHiba oka:%1$s\nKérjük próbáld újra később!</string>
+    <string name="loading_apps_to_request">Alkalmazások betöltése a kéréshez…</string>
+    <string name="building_request_dialog">Kérés felépítése…</string>
+    <string name="request_upload_success">Siker!</string>
+    <string name="request_upload_success_content">A kérelem sikeresen feltöltve a szerverünkre.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">Háttérkép engedélyezése az előnézetben</string>
+    <string name="pref_summary_wall_header">A jelenlegi háttérkép lesz látható.</string>
+    <string name="pref_header_launcher_icon">Alkalmazásindító ikon</string>
+    <string name="pref_title_launcher_icon">Alkalmazásindító elrejtése</string>
+    <string name="pref_summary_launcher_icon">Ha be van jelölve, az indító ikon rejtve lesz.</string>
+    <string name="clearcache_dialog_content">Biztos vagy benne, hogy törlöd az alkalmazásadatokat, a cache-t és a beállításokat? Ez az alkalmazott ikonokra nincs hatással.</string>
+    <string name="hideicon_dialog_title">Figyelem!</string>
+    <string name="hideicon_dialog_content">Biztosan el akarod rejteni az alkalmazás ikonját az indítóból?\nAz alkalmazás váratlanul leállhat és az értesítések ki lesznek kapcsolva.\nOlvasd el a GYIK-et, hogy megtudd, hogyan teheted újra láthatóvá, mielőtt elrejtenéd.</string>
+    <string name="send_using">Küldés a következővel…</string>
+    <string name="no_mail">Nincs telepítve levelező alkalmazás</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Hogyan használd az ikon csomagot?</item>
+        <item>Hogyan alkalmazd az ikon csomagot?</item>
+        <item>Hogyan láthatod a tartalmazott ikonokat?</item>
+        <item>Hogyan helyettesítsd az ikont egy másikkal?</item>
+        <item>Hogyan kérheted a témázatlan ikonokat?</item>
+        <item>Újraindítás után az ikonok nem maradnak alkalmazva. Visszaállnak az alapbeállításra.</item>
+        <item>Miért szemcsések az ikonok a készülékemen?</item>
+        <item>A ikonok között látszik az X alkalmazás ikonja, de az ikon mégsincs alkalmazva.</item>
+        <item>Hogyan rejtsem el az alkalmazás ikonját az indítóból?</item>
+        <item>Hogyan nyissam meg az alkalmazást, ha elrejtettem az ikonját az indítóból?</item>
+        <item>Hogyan jelenítsem meg újra az alkalmazásikont az indítóban?</item>
+        <item>Miért van szűksége az alkalmazásnak engedélyre a belső tároló módosítására vagy törlésére?</item>
+        <item>Miért van szűksége az alkalmazásnak engedélyre teljes hálózati hozzáférésre?</item>
+        <item>Miért van szűksége az alkalmazásnak engedélyre a kapcsolatok megtekintéséhez?</item>
+        <item>Miért van szűksége az alkalmazásnak engedélyre a háttérkép beállításához?</item>
+        <item>Miért van szűksége az alkalmazásnak engedélyre a háttérkép méretezéséhez?</item>
+        <item>Miért van szűksége az alkalmazásnak engedélyre az alvó állapot megakadályozásához?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Szükséged van egy ikon csomagokat támogató launcher-re. Az támogatott launcher-ek listáját az \"Alkamaz\" oldalon, vagy a Play Áruházban az alkalmazás leírásában találod.</item>
+        <item>Az alkalmazás navigációs típusától függően a képernyő szélétől kell a navigációs sávot előhúznod, és az \"Alkalmaz\" részre lépned, vagy az alsó navigációs sávban válaszd a negyedik ikont. Innen kiválaszthatod azt az indítót, amelyre az ikonokat kívánod alkalmazni. Néhány indító nem támogatja az automatikus alkalmazást, és manuálisan kell elvégezned a műveleted.</item>
+        <item>Menj vissza az alkalmazás fő oldalára, és érintsd meg az \"Ikonok\"-at.</item>
+        <item>A használt indítótól függően vagy hosszan érintsd meg az ikont, és válaszd ki a \"Szerkesztés\" menüpontot, vagy hosszan érintsd meg az ikont, és helyezd a \"Szerkesztés\" mezőre.</item>
+        <item>Az alkalmazás navigációs típusától függően vagy a bal oldali navigációs fiókot kell elcsúsztatnia, és a \"Kérések\" szakaszba kell lépnie, vagy az alsó navigációs sáv ikonját választania.</item>
+        <item>Ez azért történt, mert az ikon csomag az SD kártyára lett áthelyezve. A belső tárhelyre kell telepítened!</item>
+        <item>A probléma az általad használt indítóban lehet a nagy felbontások kezelésénél. Javíthatod a hibát azzal, hogy az ikonméretet 115-120%-ra állítod. Vagy próbálj ki egy másik indítót.</item>
+        <item>Kérelem küldése.</item>
+        <item>Csúsztasd ki balról a navigációs sávot, vagy érintsd meg a 3-pontos menüt, és lépj a \"Beállítások\" részre. Ezután kapcsold be az \"Alkalmazásindító elrejtése\" opciót.</item>
+        <item>Menj a főoldaladra, majd helyezd el az app widget-jét, aminek a neve \"IconRestorer\", majd érintsd meg!</item>
+        <item>Öffne das Navigationsmenü von linken Seite oder tippe aus das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Symbol ausblenden\" ab.</item>
+        <item>Erre szükség van ahhoz, hogy létrehozzuk a kérések adatait és fájljait, háttérképeket menthess és hogy megváltoztathasd a háttérképek mentési helyét.</item>
+        <item>Erre szükség van ahhoz, hogy háttérképeket nézhess meg és tölthess le a felhőből.</item>
+        <item>Erre szükség van ahhoz, hogy elenőrizhessük, hogy a készüléknek van-e internetelérése.</item>
+        <item>Erre szükség van ahhoz, hogy közvetlen az alkalmazásból tudd beállítani a háttérképet.</item>
+        <item>Erre szükség van ahhoz, hogy a háttérkép mérete a képernyő felbontásához legyen igazítva.</item>
+        <item>Erre szüksége van a Muzei élő háttérképnek.</item>
+    </string-array>
 </resources>

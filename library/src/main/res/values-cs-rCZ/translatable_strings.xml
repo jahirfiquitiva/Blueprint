@@ -16,113 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Řídící panel Blueprint</string>
-  <string name="coming_soon">Již brzy</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Domů</string>
-  <string name="section_icons">Ikony</string>
-  <string name="section_apply">Apply</string>
-  <string name="section_wallpapers">Wallpapers</string>
-  <string name="section_icon_request">Icon request</string>
-  <string name="section_donate">Donate</string>
-  <string name="section_about">About the app</string>
-  <string name="section_help">Help</string>
-  <string name="section_zooper">Zooper Setup</string>
-  <string name="section_widgets">Widgets</string>
-  <string name="share_this_app">Používám %1$s a líbí se mi to. Mrkněte na to zde: %2$s</string>
-  <string name="rate">Hodnotit</string>
-  <!-- Icons filters -->
-  <string name="filter">Filtrovat</string>
-  <string name="clear">Vymazat</string>
-  <string name="more_apps">Více aplikací</string>
-  <string name="general_info">Obecné informace</string>
-  <string name="useful_links">Užitečné odkazy</string>
-  <string name="columns">Počet sloupců</string>
-  <string name="lni_content">%1$s není v současné době nainstalován na vašem zařízení.\nChtěli byste jej nainstalovat z Obchodu Play?</string>
-  <string name="no_compatible_launcher_title">Tento launcher NENÍ Kompatibilní</string>
-  <string name="no_compatible_launcher_content">Tento launcher NENÍ kompatibilní s ŽÁDNOU sadou ikon, tím pádem není možné používat vlastní ikony v tomto launcheru. Prosíme nepište z tohoto důvodu negativní recenzi. Je zde řešení, které si můžete sami vyzkoušet, ale vyžaduje použití externí aplikace. Chcete ji stáhnout?</string>
-  <string name="impossible_open_themes">Nelze otevřít témata</string>
-  <string name="themes_app_not_installed">Témata nejsou nainstalována na tomto zařízení</string>
-  <string name="included_templates">%1$s šablony</string>
-  <string name="launcher_icon_restored">Ikona %1$s launcheru byla obnovena</string>
-  <string name="launcher_icon_not_restored">Ikona %1$s launcheru je již viditelná</string>
-  <string name="launcher_icon_restorer_error">Naskytl se problém s kódem %1$s. Obraťte se na jeho vývojáře.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Widget pro obnovení ikon</string>
-  <string name="clock_widget_title">Analogové Hodiny</string>
-  <string name="search_icons">Hledat ikony</string>
-  <string name="search_wallpapers">Hledat tapety</string>
-  <string name="search_launchers">Hledat launchery</string>
-  <string name="search_apps">Hledat aplikace</string>
-  <string name="seconds">Sekundy</string>
-  <string name="minutes">Minuty</string>
-  <string name="hours">Hodiny</string>
-  <string name="days">Dny</string>
-  <string name="weeks">Týdny</string>
-  <string name="months">Měsíce</string>
-  <!-- Requests -->
-  <string name="select_all">Vybrat vše</string>
-  <string name="no_selected_apps_title">Nejsou vybrány žádné aplikace</string>
-  <string name="no_selected_apps_content">Nevybral jste žádné aplikace pro odeslání. Prosíme vyberte několik aplikací a poté znovu klikněte na toto tlačítko.</string>
-  <string name="apps_limit_dialog">Omlouváme se, ale můžete vybrat maximálně %1$s aplikací.</string>
-  <string name="apps_limit_dialog_more">Omlouváme se, ale prozatím můžete požádat maximálně o %1$s aplikací.</string>
-  <string name="apps_limit_dialog_day">Omlouváme se, ale o aplikace můžete požádat každých %1$s.</string>
-  <string name="apps_limit_dialog_day_extra">Budete moci znovu požádat o aplikace za %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Budete moci znovu požádat o aplikace za méně než minutu.</string>
-  <string name="requests_error">Došlo k chybě při načítání požadovaných aplikací.\nDůvod: %1$s\nProsíme, zkuste to znovu později.</string>
-  <string name="requests_upload_error">Došlo k chybě při odesílání požadovaných aplikací na naše servery. \nReason: %1$s\nProsíme, zkuste to znovu později.</string>
-  <string name="loading_apps_to_request">Načítání aplikací…</string>
-  <string name="building_request_dialog">Vytváření potřebných souborů…</string>
-  <string name="request_upload_success">Úspěch!</string>
-  <string name="request_upload_success_content">Požadavek byl úspěšně nahrán na náš server.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">Povolit použití tapety v náhledu ikon</string>
-  <string name="pref_summary_wall_header">Zobrazí se aktuální tapeta vašeho zařízení.</string>
-  <string name="pref_header_launcher_icon">Ikona launcheru</string>
-  <string name="pref_title_launcher_icon">Skrýt ikonu launcheru</string>
-  <string name="pref_summary_launcher_icon">Při zaškrtnutí bude ikona launcheru skryta.</string>
-  <string name="clearcache_dialog_content">Opravdu chcete odstranit data aplikace, mezipaměť a nastavení? Použité ikony nebudou ovlivněny.</string>
-  <string name="hideicon_dialog_title">Varování!</string>
-  <string name="hideicon_dialog_content">Opravdu chcete skrýt ikonu aplikace z vašeho launcheru?\nAplikace se může neočekávaně ukončit a oznámení budou zcela zakázána.\nMožná byste si měl přečíst FAQ (Nejčastěji kladené otázky) kde se dozvíte jak ji znovu najít, předtím než ji skryjete.</string>
-  <string name="send_using">Odeslat pomocí…</string>
-  <string name="no_mail">Není nainstalována žádná e-mailová aplikace</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>Jak používat tuto sadu ikon?</item>
-    <item>Jak nastavit ikony?</item>
-    <item>Kde najít všechny ikony?</item>
-    <item>Jak nahradit ikonu jinou ikonou?</item>
-    <item>Jak požádat o ikony bez motivu?</item>
-    <item>Po restartování zařízení, sada ikon se vrátila do původního stavu a všechny ikony byly obnoveny.</item>
-    <item>Proč na mém zařízení vypadají ikony rozmazaně?</item>
-    <item>Vidím ikonu X aplikace v této sadě ikon, ale ne ve svém launcheru.</item>
-    <item>Jak skrýt aplikaci z launcheru?</item>
-    <item>Jak otevřít aplikaci poté co je ikona skryta z launcheru?</item>
-    <item>Jak znovu zobrazit ikonu aplikace v launcheru?</item>
-    <item>Proč aplikace potřebuje oprávnění k úpravám nebo odstranění obsahu mého úložiště?</item>
-    <item>Proč aplikace potřebuje oprávnění pro úplný přístup k síti?</item>
-    <item>Proč aplikace potřebuje oprávnění k zobrazení připojení?</item>
-    <item>Proč aplikace potřebuje oprávnění nastavit tapetu?</item>
-    <item>Proč aplikace potřebuje oprávnění k upravení velikosti tapety?</item>
-    <item>Proč aplikace potřebuje oprávnění zabránit telefonu přejít do režimu spánku?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>Potřebujete launcher který podporuje sady ikon. Seznam podporovaných launcherů naleznete v sekci \"Použít\", nebo v popisu aplikace v Obchodě Play.</item>
-    <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Použít\" nebo zvolit 4. ikonu v dolním navigačním panelu. Odtud můžete vybrat launcher ve kterém chcete tuto sadu ikon použít. Některé launchery nepodporují automatické aplikování ikon a je nutné to udělat ručně prostřednictvím jejich nastavení.</item>
-    <item>Přejděte zpátky do hlavní sekce aplikace a klikněte na tlačítko s názvem \"Ikony\".</item>
-    <item>V závislosti na launcheru který používáte, buď musíte dlouze přidržet ikonu a zvolit \"Upravit\" z vyskakovacího menu, nebo dlouze přidržet ikonu a přesunout ji do políčka \"Upravit\".</item>
-    <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Požádat o ikonu\" nebo zvolit ikonu v dolním navigačním panelu.</item>
-    <item>K tomu došlo protože sada ikon byla přenesena na SD Kartu. Měli byste ji umístit do místního úložiště.</item>
-    <item>Při manipulaci s velkým rozlišením může dojít k potížím se launcherem, který používáte. Můžete jej opravit zvýšením velikosti ikony na 115 - 120%. Nebo zkuste použít jiný launcher.</item>
-    <item>Poslat požadavek na ikonu.</item>
-    <item>Otevřete levé boční menu nebo klepněte na tříbodové tlačítko nabídky a přejděte do části \"Nastavení\". Pak zaškrtněte možnost \"Skrýt ikonu z launcheru\".</item>
-    <item>Přejděte na domovskou obrazovku, a pak vytvořte widget této aplikace s názvem \"Widget pro obnovení ikon\" a klepněte na něj.</item>
-    <item>Otevřete levé boční menu nebo klepněte na tříbodové tlačítko nabídky a přejděte do části \"Nastavení\". Pak zrušte zaškrtnutí možnosti \"Skrýt ikonu z launcheru\".</item>
-    <item>Toto oprávnění je nutné k zápisu požadavků na ikony a soubory, jakož i ukládání tapet a možnosti změnit místo pro ukládání stažených tapet.</item>
-    <item>Toto oprávnění je nutné pro načtení tapet ze serveru a jejich stažení.</item>
-    <item>Toto oprávnění umožňuje aplikaci zjistit zda je zařízení připojeno k internetu.</item>
-    <item>Toto oprávnění umožňuje nastavit tapetu přímo z aplikace.</item>
-    <item>Toto oprávnění umožňuje upravit rozměry tapety na základě rozlišení vaší obrazovky.</item>
-    <item>Toto oprávnění je vyžadováno Živou Tapetou Muzei.</item>
-  </string-array>
+    <string name="frames_dashboard">Blueprint Dashboard</string>
+    <string name="coming_soon">Již brzy</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Home</string>
+    <string name="section_icons">Ikony</string>
+    <string name="section_apply">Apply</string>
+    <string name="section_wallpapers">Wallpapers</string>
+    <string name="section_icon_request">Icon request</string>
+    <string name="section_donate">Donate</string>
+    <string name="section_about">About the app</string>
+    <string name="section_help">Help</string>
+    <string name="section_zooper">Zooper Setup</string>
+    <string name="section_widgets">Widgets</string>
+    <string name="share_this_app">Používám %1$s a líbí se mi to. Mrkněte na to zde: %2$s</string>
+    <string name="rate">Hodnotit</string>
+    <!-- Icons filters -->
+    <string name="filter">Filtrovat</string>
+    <string name="clear">Vymazat</string>
+    <string name="more_apps">Více aplikací</string>
+    <string name="general_info">Obecné informace</string>
+    <string name="useful_links">Užitečné odkazy</string>
+    <string name="columns">Počet sloupců</string>
+    <string name="lni_content">%1$s není v současné době nainstalován na vašem zařízení.\nChtěli byste jej nainstalovat z Obchodu Play?</string>
+    <string name="no_compatible_launcher_title">Tento launcher NENÍ Kompatibilní</string>
+    <string name="no_compatible_launcher_content">Tento launcher NENÍ kompatibilní s ŽÁDNOU sadou ikon, tím pádem není možné používat vlastní ikony v tomto launcheru. Prosíme nepište z tohoto důvodu negativní recenzi. Je zde řešení, které si můžete sami vyzkoušet, ale vyžaduje použití externí aplikace. Chcete ji stáhnout?</string>
+    <string name="impossible_open_themes">Nelze otevřít témata</string>
+    <string name="themes_app_not_installed">Témata nejsou nainstalována na tomto zařízení</string>
+    <string name="included_templates">%1$s šablony</string>
+    <string name="launcher_icon_restored">Ikona %1$s launcheru byla obnovena</string>
+    <string name="launcher_icon_not_restored">Ikona %1$s launcheru je již viditelná</string>
+    <string name="launcher_icon_restorer_error">Naskytl se problém s kódem %1$s. Obraťte se na jeho vývojáře.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Widget pro obnovení ikon</string>
+    <string name="clock_widget_title">Analogové Hodiny</string>
+    <string name="search_icons">Hledat ikony</string>
+    <string name="search_wallpapers">Hledat tapety</string>
+    <string name="search_launchers">Hledat launchery</string>
+    <string name="search_apps">Hledat aplikace</string>
+    <string name="seconds">Sekundy</string>
+    <string name="minutes">Minuty</string>
+    <string name="hours">Hodiny</string>
+    <string name="days">Dny</string>
+    <string name="weeks">Týdny</string>
+    <string name="months">Měsíce</string>
+    <!-- Requests -->
+    <string name="select_all">Vybrat vše</string>
+    <string name="no_selected_apps_title">Nejsou vybrány žádné aplikace</string>
+    <string name="no_selected_apps_content">Nevybral jste žádné aplikace pro odeslání. Prosíme vyberte několik aplikací a poté znovu klikněte na toto tlačítko.</string>
+    <string name="apps_limit_dialog">Omlouváme se, ale můžete vybrat maximálně %1$s aplikací.</string>
+    <string name="apps_limit_dialog_more">Omlouváme se, ale prozatím můžete požádat maximálně o %1$s aplikací.</string>
+    <string name="apps_limit_dialog_day">Omlouváme se, ale o aplikace můžete požádat každých %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Budete moci znovu požádat o aplikace za %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Budete moci znovu požádat o aplikace za méně než minutu.</string>
+    <string name="requests_error">Došlo k chybě při načítání požadovaných aplikací.\nDůvod: %1$s\nProsíme, zkuste to znovu později.</string>
+    <string name="requests_upload_error">Došlo k chybě při odesílání požadovaných aplikací na naše servery. \nReason: %1$s\nProsíme, zkuste to znovu později.</string>
+    <string name="loading_apps_to_request">Načítání aplikací…</string>
+    <string name="building_request_dialog">Vytváření potřebných souborů…</string>
+    <string name="request_upload_success">Úspěch!</string>
+    <string name="request_upload_success_content">Požadavek byl úspěšně nahrán na náš server.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">Povolit použití tapety v náhledu ikon</string>
+    <string name="pref_summary_wall_header">Zobrazí se aktuální tapeta vašeho zařízení.</string>
+    <string name="pref_header_launcher_icon">Ikona launcheru</string>
+    <string name="pref_title_launcher_icon">Skrýt ikonu launcheru</string>
+    <string name="pref_summary_launcher_icon">Při zaškrtnutí bude ikona launcheru skryta.</string>
+    <string name="clearcache_dialog_content">Opravdu chcete odstranit data aplikace, mezipaměť a nastavení? Použité ikony nebudou ovlivněny.</string>
+    <string name="hideicon_dialog_title">Varování!</string>
+    <string name="hideicon_dialog_content">Opravdu chcete skrýt ikonu aplikace z vašeho launcheru?\nAplikace se může neočekávaně ukončit a oznámení budou zcela zakázána.\nMožná byste si měl přečíst FAQ (Nejčastěji kladené otázky) kde se dozvíte jak ji znovu najít, předtím než ji skryjete.</string>
+    <string name="send_using">Odeslat pomocí…</string>
+    <string name="no_mail">Není nainstalována žádná e-mailová aplikace</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Jak používat tuto sadu ikon?</item>
+        <item>Jak nastavit ikony?</item>
+        <item>Kde najít všechny ikony?</item>
+        <item>Jak nahradit ikonu jinou ikonou?</item>
+        <item>Jak požádat o ikony bez motivu?</item>
+        <item>Po restartování zařízení, sada ikon se vrátila do původního stavu a všechny ikony byly obnoveny.</item>
+        <item>Proč na mém zařízení vypadají ikony rozmazaně?</item>
+        <item>Vidím ikonu X aplikace v této sadě ikon, ale ne ve svém launcheru.</item>
+        <item>Jak skrýt aplikaci z launcheru?</item>
+        <item>Jak otevřít aplikaci poté co je ikona skryta z launcheru?</item>
+        <item>Jak znovu zobrazit ikonu aplikace v launcheru?</item>
+        <item>Proč aplikace potřebuje oprávnění k úpravám nebo odstranění obsahu mého úložiště?</item>
+        <item>Proč aplikace potřebuje oprávnění pro úplný přístup k síti?</item>
+        <item>Proč aplikace potřebuje oprávnění k zobrazení připojení?</item>
+        <item>Proč aplikace potřebuje oprávnění nastavit tapetu?</item>
+        <item>Proč aplikace potřebuje oprávnění k upravení velikosti tapety?</item>
+        <item>Proč aplikace potřebuje oprávnění zabránit telefonu přejít do režimu spánku?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Potřebujete launcher který podporuje sady ikon. Seznam podporovaných launcherů naleznete v sekci \"Použít\", nebo v popisu aplikace v Obchodě Play.</item>
+        <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Použít\" nebo zvolit 4. ikonu v dolním navigačním panelu. Odtud můžete vybrat launcher ve kterém chcete tuto sadu ikon použít. Některé launchery nepodporují automatické aplikování ikon a je nutné to udělat ručně prostřednictvím jejich nastavení.</item>
+        <item>Přejděte zpátky do hlavní sekce aplikace a klikněte na tlačítko s názvem \"Ikony\".</item>
+        <item>V závislosti na launcheru který používáte, buď musíte dlouze přidržet ikonu a zvolit \"Upravit\" z vyskakovacího menu, nebo dlouze přidržet ikonu a přesunout ji do políčka \"Upravit\".</item>
+        <item>V závislosti na typu navigace aplikace je třeba buď posunout navigační šuplík zleva a přejít k části \"Požádat o ikonu\" nebo zvolit ikonu v dolním navigačním panelu.</item>
+        <item>K tomu došlo protože sada ikon byla přenesena na SD Kartu. Měli byste ji umístit do místního úložiště.</item>
+        <item>Při manipulaci s velkým rozlišením může dojít k potížím se launcherem, který používáte. Můžete jej opravit zvýšením velikosti ikony na 115 - 120%. Nebo zkuste použít jiný launcher.</item>
+        <item>Poslat požadavek na ikonu.</item>
+        <item>Otevřete levé boční menu nebo klepněte na tříbodové tlačítko nabídky a přejděte do části \"Nastavení\". Pak zaškrtněte možnost \"Skrýt ikonu z launcheru\".</item>
+        <item>Přejděte na domovskou obrazovku, a pak vytvořte widget této aplikace s názvem \"Widget pro obnovení ikon\" a klepněte na něj.</item>
+        <item>Otevřete levé boční menu nebo klepněte na tříbodové tlačítko nabídky a přejděte do části \"Nastavení\". Pak zrušte zaškrtnutí možnosti \"Skrýt ikonu z launcheru\".</item>
+        <item>Toto oprávnění je nutné k zápisu požadavků na ikony a soubory, jakož i ukládání tapet a možnosti změnit místo pro ukládání stažených tapet.</item>
+        <item>Toto oprávnění je nutné pro načtení tapet ze serveru a jejich stažení.</item>
+        <item>Toto oprávnění umožňuje aplikaci zjistit zda je zařízení připojeno k internetu.</item>
+        <item>Toto oprávnění umožňuje nastavit tapetu přímo z aplikace.</item>
+        <item>Toto oprávnění umožňuje upravit rozměry tapety na základě rozlišení vaší obrazovky.</item>
+        <item>Toto oprávnění je vyžadováno Živou Tapetou Muzei.</item>
+    </string-array>
 </resources>

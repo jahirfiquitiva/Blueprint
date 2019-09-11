@@ -16,106 +16,113 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-  <string name="frames_dashboard">Dasbor Blueprint</string>
-  <string name="coming_soon">Segera Hadir</string>
-  <!-- List Of Drawer Sections -->
-  <string name="section_home">Beranda</string>
-  <string name="section_icons">Ikon</string>
-  <string name="section_apply">Menerapkan</string>
-  <string name="section_wallpapers">Wallpaper</string>
-  <string name="section_icon_request">Permintaan Ikon</string>
-  <string name="section_donate">Menyumbangkan</string>
-  <string name="section_about">Tentang Aplikasi</string>
-  <string name="section_help">Bantuan</string>
-  <string name="section_zooper">Pengaturan Zooper</string>
-  <string name="section_widgets">Widget</string>
-  <string name="share_this_app">Saya sedang menggunakan %1$s dan saya menyukainya. Pergi memeriksanya di:%2$s</string>
-  <string name="rate">Menilai</string>
-  <!-- Icons filters -->
-  <string name="filter">Filter</string>
-  <string name="clear">Bersih</string>
-  <string name="more_apps">Lebih banyak aplikasi</string>
-  <string name="general_info">Informasi Umum</string>
-  <string name="useful_links">Tautan yang bermanfaat</string>
-  <string name="columns">Nomor Kolom</string>
-  <string name="lni_content">%1$s saat ini tidak terpasang pada perangkat anda.\nApakah anda ingin memasang dari Google Play Store?</string>
-  <string name="no_compatible_launcher_title">Peluncur ini TIDAK Cocok</string>
-  <string name="impossible_open_themes">Tidak mungkin untuk membuka tema aplikasi</string>
-  <string name="themes_app_not_installed">Tema aplikasi tidak terpasang di perangkat ini</string>
-  <string name="included_templates">%1$s template</string>
-  <string name="launcher_icon_restored">%1$s ikon peluncur dipulihkan</string>
-  <string name="launcher_icon_not_restored">%1$s ikon peluncur sudah terlihat</string>
-  <string name="launcher_icon_restorer_error">Ada sebuah masalah dengan kode dari %1$s. Silahkan hubungi pengembangnya.</string>
-  <!-- Widgets Names -->
-  <string name="iconrestorer_widget_title">Widget Pemulih Ikon</string>
-  <string name="clock_widget_title">Jam Analog</string>
-  <string name="search_icons">Cari ikon</string>
-  <string name="search_wallpapers">Cari wallpaper</string>
-  <string name="search_launchers">Cari peluncur</string>
-  <string name="search_apps">Cari aplikasi</string>
-  <string name="seconds">Detik</string>
-  <string name="minutes">Menit</string>
-  <string name="hours">Jam</string>
-  <string name="days">Hari</string>
-  <string name="weeks">Minggu</string>
-  <string name="months">Bulan</string>
-  <!-- Requests -->
-  <string name="select_all">Pilih semua</string>
-  <string name="no_selected_apps_title">Tidak ada aplikasi yang dipilih</string>
-  <string name="apps_limit_dialog">Maaf, tapi anda hanya diizinkan untuk memilih %1$s aplikasi untuk meminta.</string>
-  <string name="apps_limit_dialog_more">Maaf, tapi anda hanya diizinkan untuk meminta %1$s lebih banyak aplikasi untuk sekarang.</string>
-  <string name="apps_limit_dialog_day">Maaf, tapi anda hanya diizinkan untuk meminta ikon setiap %1$s.</string>
-  <string name="apps_limit_dialog_day_extra">Anda akan bisa meminta ikon lagi, di %1$s.</string>
-  <string name="apps_limit_dialog_day_extra_sec">Anda akan bisa meminta ikon lagi, dalam waktu kurang dari satu menit.</string>
-  <string name="loading_apps_to_request">Memuat aplikasi untuk meminta…</string>
-  <string name="building_request_dialog">Membangun permintaan berkas…</string>
-  <string name="request_upload_success">Berhasil!</string>
-  <string name="request_upload_success_content">Permintaan telah berhasil di-upload ke server kami.</string>
-  <!-- Preferences -->
-  <string name="pref_title_wall_header">Mengaktifkan penggunaan wallpaper dalam peninjauan ikon</string>
-  <string name="pref_summary_wall_header">Perangkat wallpaper anda saat ini akan ditampilkan.</string>
-  <string name="pref_header_launcher_icon">Peluncur ikon</string>
-  <string name="pref_title_launcher_icon">Sembunyikan peluncur ikon</string>
-  <string name="pref_summary_launcher_icon">Ketika diperiksa, peluncur ikon akan disembunyikan.</string>
-  <string name="hideicon_dialog_title">Peringatan!</string>
-  <string name="send_using">Kirim menggunakan…</string>
-  <!-- HELP SECTION -->
-  <string-array name="questions">
-    <item>Bagaimana cara menggunakan Paket Ikon?</item>
-    <item>Bagaimana cara menerapkan Paket Ikon?</item>
-    <item>Bagaimana cara melihat semua ikon yang disertakan?</item>
-    <item>Bagaimana cara mengganti ikon dengan alternatif ikon lain?</item>
-    <item>Bagaimana cara meminta ikon yang tidak ada tema?</item>
-    <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-    <item>Mengapa ikon terlihat pixelated pada perangkat saya?</item>
-    <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-    <item>Bagaimana cara sembunyikan ikon aplikasi dari peluncur?</item>
-    <item>Bagaimana cara membuka aplikasi setelah ikon aplikasi tersembunyi dari peluncur?</item>
-    <item>Bagaimana cara menunjukkan lagi ikon aplikasi di peluncur?</item>
-    <item>Kenapa aplikasi tersebut perlu izin untuk mengubah atau menghapus konten dari peyimpanan saya?</item>
-    <item>Kenapa aplikasi tersebut perlu izin untuk akses jaringan penuh?</item>
-    <item>Kenapa aplikasi tersebut perlu izin untuk melihat koneksi?</item>
-    <item>Kenapa aplikasi tersebut perlu izin untuk mengatur wallpaper?</item>
-    <item>Kenapa aplikasi tersebut perlu izin untuk menyesuaikan ukuran wallpaper?</item>
-    <item>Kenapa aplikasi tersebut perlu izin untuk mencegah telepon dari tidur?</item>
-  </string-array>
-  <string-array name="answers">
-    <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-    <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-    <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-    <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-    <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-    <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-    <item>Kirim sebuah permintaan ikon.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-    <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-    <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-    <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-    <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-    <item>Itu diperlukan untuk bisa memeriksa jika perangkat anda memiliki koneksi internet.</item>
-    <item>Itu diperlukan untuk bisa menerapkan wallpaper langsung dari aplikasi.</item>
-    <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-    <item>Itu diperlukan oleh Muzei Live Wallpaper.</item>
-  </string-array>
+    <string name="frames_dashboard">Cetakan Biru Dasbor</string>
+    <string name="coming_soon">Segera hadir</string>
+    <!-- List Of Drawer Sections -->
+    <string name="section_home">Beranda</string>
+    <string name="section_icons">Ikon</string>
+    <string name="section_apply">Terapkan</string>
+    <string name="section_wallpapers">Wallpaper</string>
+    <string name="section_icon_request">Permintaan ikon</string>
+    <string name="section_donate">Donasi</string>
+    <string name="section_about">Tentang aplikasi</string>
+    <string name="section_help">Bantuan</string>
+    <string name="section_zooper">Pengaturan Zooper</string>
+    <string name="section_widgets">Widget</string>
+    <string name="share_this_app">Saya sedang menggunakan %1$s dan saya menyukainya. Mari periksa di:%2$s</string>
+    <string name="rate">Nilai</string>
+    <!-- Icons filters -->
+    <string name="filter">Filter</string>
+    <string name="clear">Bersih</string>
+    <string name="more_apps">Aplikasi lainnya</string>
+    <string name="general_info">Informasi umum</string>
+    <string name="useful_links">Tautan yang bermanfaat</string>
+    <string name="columns">Nomor kolom</string>
+    <string name="lni_content">%1$s saat ini tidak terpasang pada perangkat Anda.\nApakah anda ingin memasangnya dari Google Play Store?</string>
+    <string name="no_compatible_launcher_title">Peluncur ini TIDAK Cocok</string>
+    <string name="no_compatible_launcher_content">Launcher ini TIDAK kompatibel dengan Pak Ikon APAPUN dan karena itu Anda tidak dapat menggunakan Pak Ikon dengan launcher ini. Mohon tidak menilai pak ikon secara negatif karena alasan ini. Ada solusi yang dapat Anda coba sendiri, namun, itu membutuhkan aplikasi eksternal. Apakah Anda ingin mengunduhnya?</string>
+    <string name="impossible_open_themes">Tidak mungkin untuk membuka tema aplikasi</string>
+    <string name="themes_app_not_installed">Tema aplikasi tidak terpasang di perangkat ini</string>
+    <string name="included_templates">%1$s template</string>
+    <string name="launcher_icon_restored">%1$s ikon peluncur dipulihkan</string>
+    <string name="launcher_icon_not_restored">%1$s ikon peluncur sudah terlihat</string>
+    <string name="launcher_icon_restorer_error">Ada sebuah masalah dengan kode dari %1$s. Silahkan hubungi pengembang.</string>
+    <!-- Widgets Names -->
+    <string name="iconrestorer_widget_title">Widget Pemulih Ikon</string>
+    <string name="clock_widget_title">Jam Analog</string>
+    <string name="search_icons">Cari ikon</string>
+    <string name="search_wallpapers">Cari wallpaper</string>
+    <string name="search_launchers">Cari peluncur</string>
+    <string name="search_apps">Cari aplikasi</string>
+    <string name="seconds">Detik</string>
+    <string name="minutes">Menit</string>
+    <string name="hours">Jam</string>
+    <string name="days">Hari</string>
+    <string name="weeks">Minggu</string>
+    <string name="months">Bulan</string>
+    <!-- Requests -->
+    <string name="select_all">Pilih semua</string>
+    <string name="no_selected_apps_title">Tidak ada aplikasi yang dipilih</string>
+    <string name="no_selected_apps_content">Anda tidak memilih aplikasi apapun untuk meminta. Mohon pilih beberapa aplikasi, lalu tekan tombol ini lagi.</string>
+    <string name="apps_limit_dialog">Maaf, tapi anda hanya diizinkan untuk memilih %1$s aplikasi untuk meminta.</string>
+    <string name="apps_limit_dialog_more">Maaf, tapi anda hanya diizinkan untuk meminta %1$s lebih banyak aplikasi untuk sekarang.</string>
+    <string name="apps_limit_dialog_day">Maaf, tapi anda hanya diizinkan untuk meminta ikon setiap %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Anda akan bisa meminta ikon lagi, di %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Anda akan bisa meminta ikon lagi, dalam waktu kurang dari satu menit.</string>
+    <string name="requests_error">Ada kesalahan ketika memuat aplikasi untuk meminta.\nAlasan: %1$s\nMohon coba lagi nanti.</string>
+    <string name="requests_upload_error">Ada kesalahan ketika mengunggah aplikasi untuk meminta ke server kami.\nAlasan: %1$s\nMohon coba lagi nanti.</string>
+    <string name="loading_apps_to_request">Memuat aplikasi untuk meminta…</string>
+    <string name="building_request_dialog">Membangun permintaan berkas…</string>
+    <string name="request_upload_success">Berhasil!</string>
+    <string name="request_upload_success_content">Permintaan telah berhasil diunggah ke server kami.</string>
+    <!-- Preferences -->
+    <string name="pref_title_wall_header">Mengaktifkan penggunaan wallpaper dalam peninjauan ikon</string>
+    <string name="pref_summary_wall_header">Perangkat wallpaper anda saat ini akan ditampilkan.</string>
+    <string name="pref_header_launcher_icon">Peluncur ikon</string>
+    <string name="pref_title_launcher_icon">Sembunyikan peluncur ikon</string>
+    <string name="pref_summary_launcher_icon">Ketika diperiksa, peluncur ikon akan disembunyikan.</string>
+    <string name="clearcache_dialog_content">Apakah Anda yakin ingin menghapus data aplikasi, cache and pengaturan? Ikon yang sudah diterapkan tidak akan terpengaruh.</string>
+    <string name="hideicon_dialog_title">Peringatan!</string>
+    <string name="hideicon_dialog_content">Apakah anda yakin ingin menyembunyikan ikon aplikasi dari peluncur Anda?\nAplikasi mungkin tertutup secara tiba-tiba dan notifikasi akan mati sepenuhnya.\nAnda mungkin ingin membaca FAQ untuk mempelajari bagaimana memunculkannya kembali, sebelum menyembunyikannya.</string>
+    <string name="send_using">Kirim menggunakan…</string>
+    <string name="no_mail">Tidak ada aplikasi surat terpasang</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Bagaimana cara menggunakan Paket Ikon?</item>
+        <item>Bagaimana cara menerapkan Paket Ikon?</item>
+        <item>Bagaimana cara melihat semua ikon yang disertakan?</item>
+        <item>Bagaimana cara mengganti ikon dengan alternatif ikon lain?</item>
+        <item>Bagaimana cara meminta ikon yang tidak ada tema?</item>
+        <item>Setelah memulai ulang perangkat saya, paket ikon tidak diterapkan lagi. Ikon dikembalikan seperti semula.</item>
+        <item>Mengapa ikon terlihat pecah pada perangkat saya?</item>
+        <item>Saya bisa melihat ikon untuk aplikasi X dalam ikon yang disertakan, namun ikon tidak diterapkan.</item>
+        <item>Bagaimana cara sembunyikan ikon aplikasi dari peluncur?</item>
+        <item>Bagaimana cara membuka aplikasi setelah ikon aplikasi tersembunyi dari peluncur?</item>
+        <item>Bagaimana cara menunjukkan lagi ikon aplikasi di peluncur?</item>
+        <item>Kenapa aplikasi tersebut perlu izin untuk mengubah atau menghapus konten dari peyimpanan saya?</item>
+        <item>Kenapa aplikasi tersebut perlu izin untuk akses jaringan penuh?</item>
+        <item>Kenapa aplikasi tersebut perlu izin untuk melihat koneksi?</item>
+        <item>Kenapa aplikasi tersebut perlu izin untuk mengatur wallpaper?</item>
+        <item>Kenapa aplikasi tersebut perlu izin untuk menyesuaikan ukuran wallpaper?</item>
+        <item>Kenapa aplikasi tersebut perlu izin untuk mencegah telepon dari tidur?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Anda butuh peluncur dengan dukungan paket ikon. Daftar peluncur yang mendukung dapat ditemukan dalam aplikasi di bagian \"Terapkan\", atau deskripsi Play Store.</item>
+        <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Terapkan\", atau pilih ikon ke-4 dari bilah navigasi bawah. Dari sana Anda dapat memilih peluncur yang ingin Anda terapkan. Beberapa peluncur tidak mendukung terapkan otomatis dan Anda harus melakukannya secara manual melalui pengaturan.</item>
+        <item>Kembali ke bagian utama aplikasi dan tekan ubin berjudul \"Ikon\".</item>
+        <item>Sesuai dengan peluncur yang Anda gunakan, Anda perlu menekan lama ikon dan pilih \"Edit\" dari menu pop-up, atau tekan lama ikon dan pindahkan ke kotak \"Edit\".</item>
+        <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Meminta\", atau pilih ikon dari bilah navigasi bawah.</item>
+        <item>Itu terjadi karena paket ikon telah dipindahkan ke Kartu SD, Anda perlu memasangnya di penyimpanan internal.</item>
+        <item>Masalah mungkin datang dengan peluncur yang sedang Anda gunakan, ketika menangani resolusi besar. Anda dapat memperbaikinya dengan meningkatkan ukuran ikon menjadi 115% - 120%. Atau mencoba menggunakan peluncur lain.</item>
+        <item>Kirim sebuah permintaan ikon.</item>
+        <item>Geser Kotak Navigasi dari kiri, atau tekan tombol menu 3-titik lalu pergi ke bagian \"Pengaturan\". Lalu beri centang pada opsi \"Sembunyikan ikon dari launcher\".</item>
+        <item>Pergi ke layar beranda Anda, lalu buat sebuah widget untuk aplikasi bernama \"IconRestorer\" dan tekan.</item>
+        <item>Geser Kotak Navigasi dari kiri, atau tekan tombol menu 3-titik lalu pergi ke bagian \"Pengaturan\". Lalu hapus centang pada opsi \"Sembunyikan ikon dari launcher\".</item>
+        <item>Diperlukan agar dapat menulis permintaan ikon data dan berkas, serta menyimpan wallpaper, dan dapat mengubah lokasi unduhan Wallpaper.</item>
+        <item>Dibutuhkan agar dapat memuat wallpaper dari cloud dan mengunduhnya.</item>
+        <item>Itu diperlukan untuk bisa memeriksa jika perangkat anda memiliki koneksi internet.</item>
+        <item>Itu diperlukan untuk bisa menerapkan wallpaper langsung dari aplikasi.</item>
+        <item>Dibutuhkan agar dapat menyesuaikan dimensi wallpaper sesuai dengan resolusi layar Anda.</item>
+        <item>Itu diperlukan oleh Muzei Live Wallpaper.</item>
+    </string-array>
 </resources>
