@@ -28,8 +28,8 @@
     <string name="section_about">О приложении</string>
     <string name="section_help">Помощь</string>
     <string name="section_zooper">Zooper Setup</string>
-    <string name="section_widgets">Виджеты</string>
-    <string name="share_this_app">Я использую %1$s, и мне нравится. Проверь на: %2$s</string>
+    <string name="section_widgets">Widgets</string>
+    <string name="share_this_app">Я использую %1$s и люблю его. Посмотрите на: %2$s</string>
     <string name="rate">Оценить</string>
     <!-- Icons filters -->
     <string name="filter">Фильтр</string>

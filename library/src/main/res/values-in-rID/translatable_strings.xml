@@ -16,13 +16,13 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="frames_dashboard">Cetakan Biru Dasbor</string>
+    <string name="frames_dashboard">Blueprint Dashboard</string>
     <string name="coming_soon">Segera hadir</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">Beranda</string>
     <string name="section_icons">Ikon</string>
     <string name="section_apply">Terapkan</string>
-    <string name="section_wallpapers">Wallpaper</string>
+    <string name="section_wallpapers">僅用於中文</string>
     <string name="section_icon_request">Permintaan ikon</string>
     <string name="section_donate">Donasi</string>
     <string name="section_about">Tentang aplikasi</string>
@@ -34,7 +34,7 @@
     <!-- Icons filters -->
     <string name="filter">Filter</string>
     <string name="clear">Bersih</string>
-    <string name="more_apps">Aplikasi lainnya</string>
+    <string name="more_apps">More apps</string>
     <string name="general_info">Informasi umum</string>
     <string name="useful_links">Tautan yang bermanfaat</string>
     <string name="columns">Nomor kolom</string>
