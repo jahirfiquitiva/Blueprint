@@ -16,8 +16,8 @@
 
 <!--suppress AndroidDomInspection -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="jahirfiquitiva.libs.blueprint">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="jahirfiquitiva.libs.blueprint">
 
     <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
     <uses-permission
@@ -44,6 +44,7 @@
 
     <application
         android:allowBackup="true"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         tools:ignore="AllowBackup,UnusedAttribute">
 
@@ -78,16 +79,16 @@
         <!-- Icons -->
         <activity
             android:name=".ui.activities.BaseBlueprintActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
 
         <activity
             android:name=".ui.activities.BlueprintKuperActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.HelpActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
         <activity
             android:name=".ui.activities.CreditsActivity"
             android:exported="false" />

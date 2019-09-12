@@ -26,7 +26,7 @@ ext.versions = [
         kotlin     : '1.3.50',
         libs       : '2.1',
         // Dependencies
-        kuper      : '1.7.0',
+        kuper      : '1.7.1',
         counterFab : '1.2.1',
         fuel       : '1.16.0',
         oneSignal  : '3.11.3'

@@ -24,6 +24,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import jahirfiquitiva.libs.archhelpers.tasks.QAsync
 import jahirfiquitiva.libs.blueprint.R
+import jahirfiquitiva.libs.blueprint.helpers.utils.BL
 import jahirfiquitiva.libs.blueprint.helpers.utils.BPKonfigs
 import jahirfiquitiva.libs.blueprint.quest.App
 import jahirfiquitiva.libs.blueprint.quest.IconRequest
@@ -114,14 +115,21 @@ class RequestsViewModel : ViewModel() {
         forceLoad: Boolean = false
                             ) {
         
-        val externalFolder = try {
+        val externalStorage = try {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                @Suppress("DEPRECATION")
                 Environment.getExternalStorageDirectory()
+            } else {
+                @Suppress("DEPRECATION")
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
             }
-            context.getExternalFilesDir(null) ?: Environment.getExternalStorageDirectory()
         } catch (e: Exception) {
-            Environment.getExternalStorageDirectory()
+            null
         }
+        val appStorage = context.getExternalFilesDir(null)
+        val defFolder =
+            if (appStorage?.absolutePath?.contains(context.packageName) == true) externalStorage
+            else appStorage
         
         val list = IconRequest.get()?.apps.orEmpty()
         if (list.isEmpty() || forceLoad) {
@@ -132,7 +140,7 @@ class RequestsViewModel : ViewModel() {
                 .toEmail(context.getString(R.string.email))
                 .withAPIHost(host.orEmpty())
                 .withAPIKey(apiKey)
-                .saveDir(File(context.getString(R.string.request_save_location, externalFolder)))
+                .saveDir(File(context.getString(R.string.request_save_location, defFolder)))
                 .filterXml(R.xml.appfilter)
                 .withTimeLimit(
                     context.int(R.integer.time_limit_in_minutes), BPKonfigs(context).prefs)
