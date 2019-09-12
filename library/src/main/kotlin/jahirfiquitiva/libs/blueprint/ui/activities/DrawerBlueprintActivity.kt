@@ -175,15 +175,13 @@ abstract class DrawerBlueprintActivity : BaseBlueprintActivity(),
         toggle?.syncState()
     }
     
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         toggle?.onConfigurationChanged(newConfig)
     }
     
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (toggle?.onOptionsItemSelected(item) == true) {
-            return true
-        }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle?.onOptionsItemSelected(item) == true) return true
         return super.onOptionsItemSelected(item)
     }
     

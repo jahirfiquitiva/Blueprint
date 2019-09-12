@@ -258,22 +258,20 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
         return super.onCreateOptionsMenu(menu)
     }
     
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        item?.let {
-            when (it.itemId) {
-                R.id.refresh -> {
-                    refreshWallpapers()
-                    refreshRequests()
-                }
-                R.id.changelog -> showChanges()
-                R.id.select_all -> toggleSelectAll()
-                R.id.templates -> launchKuperActivity()
-                R.id.help -> launchHelpActivity()
-                R.id.about -> startActivity(Intent(this, CreditsActivity::class.java))
-                R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
-                R.id.donate -> doDonation()
-                else -> {
-                }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.refresh -> {
+                refreshWallpapers()
+                refreshRequests()
+            }
+            R.id.changelog -> showChanges()
+            R.id.select_all -> toggleSelectAll()
+            R.id.templates -> launchKuperActivity()
+            R.id.help -> launchHelpActivity()
+            R.id.about -> startActivity(Intent(this, CreditsActivity::class.java))
+            R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
+            R.id.donate -> doDonation()
+            else -> {
             }
         }
         return super.onOptionsItemSelected(item)
@@ -305,19 +303,19 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
     }
     
     @SuppressLint("MissingSuperCall")
-    override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putString("toolbarTitle", toolbar?.title?.toString() ?: getAppName())
-        outState?.putInt("currentSectionId", currentSectionId)
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("toolbarTitle", toolbar?.title?.toString() ?: getAppName())
+        outState.putInt("currentSectionId", currentSectionId)
         super.onSaveInstanceState(outState)
     }
     
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        toolbar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
-        supportActionBar?.title = savedInstanceState?.getString("toolbarTitle", getAppName())
+        toolbar?.title = savedInstanceState.getString("toolbarTitle", getAppName())
+        supportActionBar?.title = savedInstanceState.getString("toolbarTitle", getAppName())
         
         val default = if (isIconsPicker) DEFAULT_ICONS_SECTION_ID else DEFAULT_HOME_SECTION_ID
-        initCurrentSectionId(savedInstanceState?.getInt("currentSectionId", default) ?: default)
+        initCurrentSectionId(savedInstanceState.getInt("currentSectionId", default))
         
         dialog = mdDialog {
             message(R.string.loading)
@@ -328,7 +326,10 @@ abstract class BaseBlueprintActivity : BaseFramesActivity<BPKonfigs>() {
         dialog?.show()
         initFragments()
         postDelayed(25) {
-            navigateToItem(getNavigationItemWithId(currentSectionId), true, true)
+            navigateToItem(
+                getNavigationItemWithId(currentSectionId),
+                fromClick = true,
+                force = true)
         }
     }
     

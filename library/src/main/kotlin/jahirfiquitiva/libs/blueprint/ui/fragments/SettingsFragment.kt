@@ -17,8 +17,8 @@ package jahirfiquitiva.libs.blueprint.ui.fragments
 
 import android.content.ComponentName
 import android.content.pm.PackageManager
-import android.preference.Preference
-import android.preference.SwitchPreference
+import androidx.preference.Preference
+import androidx.preference.SwitchPreference
 import com.afollestad.materialdialogs.callbacks.onDismiss
 import jahirfiquitiva.libs.archhelpers.extensions.mdDialog
 import jahirfiquitiva.libs.blueprint.R
@@ -33,9 +33,9 @@ class SettingsFragment : SettingsFragment() {
     override fun initPreferences() {
         super.initPreferences()
         
-        val toolbarHeaderPref = findPreference("wallpaper_in_icons_preview") as SwitchPreference
-        toolbarHeaderPref.isChecked = configs.wallpaperInIconsPreview
-        toolbarHeaderPref.setOnPreferenceChangeListener { _, any ->
+        val toolbarHeaderPref = findPreference("wallpaper_in_icons_preview") as? SwitchPreference
+        toolbarHeaderPref?.isChecked = configs.wallpaperInIconsPreview
+        toolbarHeaderPref?.setOnPreferenceChangeListener { _, any ->
             val enable = any.toString().equals("true", true)
             if (enable != configs.wallpaperInIconsPreview)
                 if (enable) {
@@ -62,12 +62,11 @@ class SettingsFragment : SettingsFragment() {
             }
         }
         
-        val hideIcon = findPreference("launcher_icon") as SwitchPreference
+        val hideIcon = findPreference("launcher_icon") as? SwitchPreference
         
         if (className != null) {
-            hideIcon.isChecked = !configs.launcherIconShown
-            
-            hideIcon.onPreferenceChangeListener =
+            hideIcon?.isChecked = !configs.launcherIconShown
+            hideIcon?.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, newValue ->
                     val component = ComponentName(ctxt.packageName, componentName)
                     if (newValue.toString().equals("true", true)) {
@@ -82,11 +81,11 @@ class SettingsFragment : SettingsFragment() {
                                         component,
                                         PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                                         PackageManager.DONT_KILL_APP)
-                                    hideIcon.isChecked = true
+                                    hideIcon?.isChecked = true
                                 }
                             }
-                            negativeButton(android.R.string.no) { hideIcon.isChecked = false }
-                            onDismiss { hideIcon.isChecked = false }
+                            negativeButton(android.R.string.no) { hideIcon?.isChecked = false }
+                            onDismiss { hideIcon?.isChecked = false }
                         }
                         dialog?.show()
                     } else {
@@ -101,7 +100,7 @@ class SettingsFragment : SettingsFragment() {
                     true
                 }
         } else {
-            hideIcon.isEnabled = false
+            hideIcon?.isEnabled = false
         }
     }
 }

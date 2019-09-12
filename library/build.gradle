@@ -51,6 +51,7 @@ android {
             shrinkResources false
             proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
             consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            multiDexKeepProguard file('proguard-rules.pro')
         }
     }
 
@@ -73,6 +74,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
@@ -90,8 +95,6 @@ dependencies {
     api(libraries.counterFab) {
         exclude group: 'com.android.support'
     }
-    // MultiDex :'(
-    api 'androidx.multidex:multidex:2.0.1'
 }
 
 configurations {

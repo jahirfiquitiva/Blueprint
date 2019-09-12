@@ -13,15 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jahirfiquitiva.libs.blueprint.ui
+package jahirfiquitiva.libs.blueprint
 
-import android.content.Context
-import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
+import jahirfiquitiva.libs.kuper.KuperApp
 
-open class BlueprintApp : MultiDexApplication() {
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
-    }
-}
+open class BlueprintApp : KuperApp()
