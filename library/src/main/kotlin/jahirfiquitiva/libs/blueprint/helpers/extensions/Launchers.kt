@@ -500,9 +500,14 @@ private fun Context.executeUniconIntent() {
 
 internal val Context.defaultLauncher: Launcher?
     get() {
-        val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
-        val resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
-        val launcherPackage = resolveInfo.activityInfo.packageName
-        supportedLaunchers.forEach { if (it.hasPackage(launcherPackage.toString())) return it }
-        return null
+        try {
+            val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
+            val resolveInfo =
+                packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
+            val launcherPackage = resolveInfo?.activityInfo?.packageName
+            supportedLaunchers.forEach { if (it.hasPackage(launcherPackage.toString())) return it }
+            return null
+        } catch (e: Exception) {
+            return null
+        }
     }

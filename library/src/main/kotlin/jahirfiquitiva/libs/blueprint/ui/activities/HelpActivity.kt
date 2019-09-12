@@ -120,13 +120,11 @@ class HelpActivity : ThemedActivity<BPKonfigs>() {
         return super.onCreateOptionsMenu(menu)
     }
     
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        item?.let {
-            when (it.itemId) {
-                android.R.id.home -> finish()
-                R.id.contact -> {
-                    sendEmail(getString(R.string.email), "${getAppName()} Support")
-                }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+            R.id.contact -> {
+                sendEmail(getString(R.string.email), "${getAppName()} Support")
             }
         }
         return super.onOptionsItemSelected(item)
