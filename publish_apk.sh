@@ -37,10 +37,10 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
             url=$(echo "${url//'\r\n'/$ln}")
             url=$(echo "${url//\\r\\n/$ln}")
 
-			if [ ! -z "$url" -a "$url" != " " -a "$url" != "null" ]; then
+			if [[ ! -z "$url" && "$url" != " " && "$url" != "null" ]]; then
 				printf "\nAPK url: $url"
 				message=$"*New ${repoName} update available now!*${ln}*Version:*${ln}${tab}${releaseName}${ln}*Changes:*${ln}${changes}"
-				btns=$"{\"inline_keyboard\":[[{\"text\":\"How To Update\",\"url\":\"https://github.com/${TRAVIS_REPO_SLUG}/wiki/How-to-update\"}],[{\"text\":\"Download sample\",\"url\":\"${url}\"}]]}"
+				btns=$"{\"inline_keyboard\":[[{\"text\":\"How To Update\",\"url\":\"https://github.com/${TRAVIS_REPO_SLUG}/wiki/How-to-update\"}],[{\"text\":\"Download sample\",\"url\":\"${url}\"}],[{\"text\":\"Donate\",\"url\":\"https://jahir.dev/donate\"}]]}"
 
 				printf "\n\nSending message to Telegram channel\n"
 				echo "Message: ${message}"
