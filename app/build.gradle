@@ -53,12 +53,11 @@ android {
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "1234567890"]
                                 */
-
         applicationId "jahirfiquitiva.apps.blueprint.demo"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 149
-        versionName "1.4.9"
+        versionCode 150
+        versionName "1.5.0"
         vectorDrawables.useSupportLibrary = true
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
@@ -104,7 +103,7 @@ android {
 
 dependencies {
     // Blueprint
-    implementation('com.jahirfiquitiva:Blueprint:1.4.9@aar') {
+    implementation('com.jahirfiquitiva:Blueprint:1.5.0@aar') {
         transitive = true
     }
     // TODO: Remove comment marks to enable

@@ -23,7 +23,7 @@
 
     <!--    TODO: Change this link -->
     <!--    This is the link for the JSON file where you have listed your wallpapers -->
-    <string name="json_url">https://jahirfiquitiva.com/frames/wallpapers.json</string>
+    <string name="json_url">https://jahir.dev/frames/wallpapers.json</string>
 
     <!--    Default wallpapers download folder. Always write it like '%1$s/xxxxxxx' -->
     <string name="default_download_folder">%1$s/Blueprint/Wallpapers</string>
