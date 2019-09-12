@@ -20,13 +20,15 @@ buildscript {
         maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.12.2'
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.12.5'
     }
 }
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 */
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.targetSdk
@@ -55,8 +57,8 @@ android {
         applicationId "jahirfiquitiva.apps.blueprint.demo"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 146
-        versionName "1.4.6"
+        versionCode 149
+        versionName "1.4.9"
         vectorDrawables.useSupportLibrary = true
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
@@ -71,6 +73,7 @@ android {
             shrinkResources false
             proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
             consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            multiDexKeepProguard file('proguard-rules.pro')
         }
     }
 
@@ -93,11 +96,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     // Blueprint
-    implementation('com.jahirfiquitiva:Blueprint:1.4.6@aar') {
+    implementation('com.jahirfiquitiva:Blueprint:1.4.9@aar') {
         transitive = true
     }
     // TODO: Remove comment marks to enable
