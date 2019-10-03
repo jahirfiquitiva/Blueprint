@@ -11,7 +11,7 @@ Blueprint
 
 A full-of-features, easy-to-customize, free and open source, light-weight, Android dashboard library for icon packs.
 
-<a target="_blank" href="http://j.mp/BlueprintAPK">
+<a target="_blank" href="http://bit.ly/BlueprintAPK">
 <img src="https://jahirfiquitiva.com/share/download_sample.svg?maxAge=432000" width="200"/>
 </a>
 
@@ -26,7 +26,6 @@ A full-of-features, easy-to-customize, free and open source, light-weight, Andro
 
 [![Follow on GitHub](https://img.shields.io/github/followers/jahirfiquitiva.svg?style=social&label=Follow)](https://github.com/jahirfiquitiva)
 [![Twitter Follow](https://img.shields.io/twitter/follow/jahirfiquitiva.svg?style=social)](https://twitter.com/jahirfiquitiva)
-[![Google+](https://img.shields.io/badge/Follow-Google%2B-ea4335.svg)](https://plus.google.com/+JahirFiquitivaR)
 
 ---
 
@@ -126,7 +125,7 @@ where `{latest version}` corresponds to published version in   [![JitPack](https
 :page_with_curl: Everything you need to know can be found in the **[Wiki Docs](https://github.com/jahirfiquitiva/Blueprint/wiki/)**
 
 ## Still need help :question:
-Just join our community and make a post. We'll help you as soon as possible. [![Google+ Community](https://img.shields.io/badge/Google%2B-Community-ea4335.svg)](https://plus.google.com/communities/117748118619432374563)
+Just join our community and make a post. We'll help you as soon as possible. [![Telegram Chat](https://img.shields.io/badge/Telegram-Chat-0088cc.svg)](https://t.me/JFsDashSupport)
 
 ---
 
@@ -136,7 +135,6 @@ Just join our community and make a post. We'll help you as soon as possible. [![
 
 [![Follow on GitHub](https://img.shields.io/github/followers/jahirfiquitiva.svg?style=social&label=Follow)](https://github.com/jahirfiquitiva)
 [![Twitter Follow](https://img.shields.io/twitter/follow/jahirfiquitiva.svg?style=social)](https://twitter.com/jahirfiquitiva)
-[![Google+](https://img.shields.io/badge/Follow-Google%2B-ea4335.svg)](https://plus.google.com/+JahirFiquitivaR)
 
 If you found this app/library helpful and want to thank me, you can:
 
