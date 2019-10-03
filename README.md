@@ -11,7 +11,7 @@ Blueprint
 
 A full-of-features, easy-to-customize, free and open source, light-weight, Android dashboard library for icon packs.
 
-<a target="_blank" href="http://bit.ly/BlueprintAPK">
+<a target="_blank" href="http://bit.ly/DLBlueprintAPK">
 <img src="https://jahirfiquitiva.com/share/download_sample.svg?maxAge=432000" width="200"/>
 </a>
 
