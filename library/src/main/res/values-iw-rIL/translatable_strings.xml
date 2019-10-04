@@ -20,16 +20,16 @@
     <string name="coming_soon">יגיע בקרוב</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">בית</string>
-    <string name="section_icons">אייקונים</string>
+    <string name="section_icons">סמלים</string>
     <string name="section_apply">החל</string>
-    <string name="section_wallpapers">רקעים</string>
-    <string name="section_icon_request">בקשת אייקונים</string>
-    <string name="section_donate">תרומה</string>
+    <string name="section_wallpapers">טפטים</string>
+    <string name="section_icon_request">בקשת סמלים</string>
+    <string name="section_donate">תרום</string>
     <string name="section_about">מידע על האפליקציה</string>
     <string name="section_help">עזרה</string>
     <string name="section_zooper">הגדרת Zooper</string>
-    <string name="section_widgets">וידג\'טים</string>
-    <string name="share_this_app">אני משתמש ב %1$s ואני אוהב את זה. תראה את זה ב: %2$s</string>
+    <string name="section_widgets">רכיבי ווידג\'ט</string>
+    <string name="share_this_app">אני משתמש ב %1$s ואני אוהב את זה. נסה את זה ב: %2$s</string>
     <string name="rate">דרג</string>
     <!-- Icons filters -->
     <string name="filter">סנן</string>
@@ -119,10 +119,10 @@
         <item>לך לדף הבית שלך, ולאחר מכן תיצור וויג\'דט בשביל האפליקציה בשם \"IconRestorer\" ואז תלחץ עליו.</item>
         <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
         <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-        <item>It\'s needed to be able to check if your device has internet connection.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-        <item>It\'s needed by Muzei Live Wallpaper.</item>
+        <item>זה נצרך בשביל לטעון ולהוריד טפטים מהענן.</item>
+        <item>נדרש בשביל לבדוק האם המכשיר מחובר לאינטרנט.</item>
+        <item>נדרש בשביל להחיל טפט ישירות מהאפליקציה.</item>
+        <item>נדרש בשביל להתאים את ממדי הטפטים בהתבסס על רזולוציית המסך שלך.</item>
+        <item>נדרש עבור Muzei Live Wallpaper.</item>
     </string-array>
 </resources>
