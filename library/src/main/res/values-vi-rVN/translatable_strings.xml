@@ -66,30 +66,30 @@
     <string name="no_selected_apps_content">Bạn chưa chọn ứng dụng nào để yêu cầu. Vui lòng chọn một vài ứng dụng, sau đó ấn lại nút.</string>
     <string name="apps_limit_dialog">Xin lỗi, nhưng bạn chỉ được phép yêu cầu tối đa %1$s ứng dụng.</string>
     <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
-    <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
-    <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
-    <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
-    <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
-    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
-    <string name="loading_apps_to_request">Loading apps to request…</string>
-    <string name="building_request_dialog">Building request files…</string>
-    <string name="request_upload_success">Success!</string>
-    <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
+    <string name="apps_limit_dialog_day">Xin lỗi, nhưng bạn chỉ có thể yêu cầu thêm biểu tượng mỗi %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong ít phút nữa.</string>
+    <string name="requests_error">Có lỗi xảy ra trong quá trình tải danh sách ứng dụng để yêu cầu.\nLý do: %1$s\nVui lòng thử lại sau.</string>
+    <string name="requests_upload_error">Có lỗi xảy ra trong quá trình đưa ứng dụng đã yêu cầu tới máy chủ.\nReason: %1$s\nVui lòng thử lại sau.</string>
+    <string name="loading_apps_to_request">Đang tải danh sách ứng dụng để yêu cầu…</string>
+    <string name="building_request_dialog">Đang tạo tệp yêu cầu…</string>
+    <string name="request_upload_success">Thành công!</string>
+    <string name="request_upload_success_content">Yêu cầu đã được đưa lên máy chủ.</string>
     <!-- Preferences -->
-    <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
-    <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
-    <string name="pref_header_launcher_icon">Launcher icon</string>
-    <string name="pref_title_launcher_icon">Hide launcher icon</string>
-    <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
-    <string name="clearcache_dialog_content">Are you sure you want to delete app data, cache and settings? Applied icons won\'t be affected.</string>
-    <string name="hideicon_dialog_title">Warning!</string>
-    <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher?\nApp may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.</string>
-    <string name="send_using">Send using…</string>
-    <string name="no_mail">There is no mail app installed</string>
+    <string name="pref_title_wall_header">Bật hình nền khi xem trước bộ biểu tượng</string>
+    <string name="pref_summary_wall_header">Hình nền hiện tại trên thiết bị của bạn sẽ xuất hiện.</string>
+    <string name="pref_header_launcher_icon">Biểu tượng trình khởi chạy</string>
+    <string name="pref_title_launcher_icon">Ẩn biểu tượng khỏi trình khởi chạy</string>
+    <string name="pref_summary_launcher_icon">Khi được chọn, biểu tượng tại trình khởi chạy sẽ được ẩn.</string>
+    <string name="clearcache_dialog_content">Bạn có chắc bạn muốn xóa dữ liệu, bộ nhớ cache và cài đặt? Những biểu tượng áp dụng trước đó sẽ không bị ảnh hưởng.</string>
+    <string name="hideicon_dialog_title">Cảnh báo!</string>
+    <string name="hideicon_dialog_content">Bạn có chắc bạn muốn ẩn biểu tượng ứng dụng khỏi trình khởi chạy?\nỨng dụng có thể bị đóng đột xuất và các thông báo sẽ bị tắt.\nBạn nên đọc qua FAQS để biết cách bật lại biểu tượng ứng dụng, trước khi ẩn chúng.</string>
+    <string name="send_using">Gửi bằng…</string>
+    <string name="no_mail">Không có ứng dụng thư nào</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
-        <item>How to use the Icon Pack?</item>
-        <item>How to apply the Icon Pack?</item>
+        <item>Làm sao để sử dụng bộ biểu tượng?</item>
+        <item>Làm sao để áp dụng bộ biểu tượng?</item>
         <item>How to see all the included icons?</item>
         <item>How to replace an icon with an alternative one?</item>
         <item>How to request unthemed icons?</item>
