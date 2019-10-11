@@ -90,21 +90,21 @@
     <string-array name="questions">
         <item>Làm sao để sử dụng bộ biểu tượng?</item>
         <item>Làm sao để áp dụng bộ biểu tượng?</item>
-        <item>How to see all the included icons?</item>
-        <item>How to replace an icon with an alternative one?</item>
-        <item>How to request unthemed icons?</item>
-        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-        <item>Why do icons look pixelated on my device?</item>
-        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-        <item>How to hide app icon from launcher?</item>
-        <item>How to open the app after app icon is hidden from launcher?</item>
-        <item>How to show app icon in launcher again?</item>
-        <item>Why does the app need permission to modify or delete content of my storage?</item>
-        <item>Why does the app need permission to full network access?</item>
-        <item>Why does the app need permission to view connections?</item>
-        <item>Why does the app need permission to set wallpaper?</item>
-        <item>Why does the app need permission to adjust the wallpaper size?</item>
-        <item>Why does the app need permission to prevent phone from sleeping?</item>
+        <item>Làm sao để xem tất cả các biểu tượng có sẵn?</item>
+        <item>Làm sao để thay thế biểu tượng bằng một cái khác?</item>
+        <item>Làm sao để yêu cầu thêm biểu tượng?</item>
+        <item>Sau khi khởi động lại thiết bị, bộ biểu tượng đã áp dụng biến mất. Các biểu tượng trở về mặc định.</item>
+        <item>Tại sao một vài biểu tượng mờ và không rõ trên thiết bị?</item>
+        <item>Có biểu tượng phù hợp dành cho ứng dụng X, nhưng biểu tượng không được áp dụng.</item>
+        <item>Làm sao để ẩn biểu tượng ứng dụng khỏi trình khởi chạy?</item>
+        <item>Làm sao để mở lại ứng dụng sau khi ẩn biểu tượng khỏi trình khởi chạy?</item>
+        <item>Làm sao để bật lại biểu tượng trong trình khởi chạy?</item>
+        <item>Tại sao ứng dụng cần quyền để sửa đổi và xóa bộ nhớ?</item>
+        <item>Tại sao ứng dụng cần quyền truy cập vào mạng?</item>
+        <item>Tại sao ứng dụng cần quyền để xem các kết nối?</item>
+        <item>Tại sao ứng dụng cần quyền để đặt hình nền?</item>
+        <item>Tại sao ứng dụng cần quyền để thay đổi kích thước hình nền?</item>
+        <item>Tại sao ứng dụng cần quyền để chặn thiết bị khỏi chế độ ngủ?</item>
     </string-array>
     <string-array name="answers">
         <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
