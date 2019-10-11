@@ -19,7 +19,7 @@
     <string name="frames_dashboard">Bảng kế hoạch chi tiết</string>
     <string name="coming_soon">Sắp có</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">Home</string>
+    <string name="section_home">Trang chủ</string>
     <string name="section_icons">Biểu tượng</string>
     <string name="section_apply">Apply</string>
     <string name="section_wallpapers">Hình nền</string>
@@ -29,7 +29,7 @@
     <string name="section_help">Trợ giúp</string>
     <string name="section_zooper">Zooper Setup</string>
     <string name="section_widgets">Tiện ích con</string>
-    <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
+    <string name="share_this_app">Tôi đang sử dụng %1$s và tôi thích chúng. Xem qua chúng tại: %2$s</string>
     <string name="rate">Đánh giá</string>
     <!-- Icons filters -->
     <string name="filter">Bộ lọc</string>
@@ -37,16 +37,16 @@
     <string name="more_apps">Ứng dụng khác</string>
     <string name="general_info">Thông tin chung</string>
     <string name="useful_links">Liên kết hữu ích</string>
-    <string name="columns">Cột số</string>
-    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn. \nWould bạn muốn cài đặt nó từ Cửa Hàng Google?</string>
+    <string name="columns">Số lượng cột</string>
+    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn. \nWould bạn muốn cài đặt nó từ CH Play?</string>
     <string name="no_compatible_launcher_title">Trình khởi chạy này không tương thích</string>
     <string name="no_compatible_launcher_content">Trình khởi chạy này không tương thích với bất kỳ bộ biểu tượng nào, vì thế bạn không thể áp dụng bộ biểu tượng này. Vui lòng đừng đánh tiêu cực bộ biểu tượng vì lý do này. Có một cách khác bạn có thể thử, nhưng nó yêu cầu một ứng dụng phụ. Bạn muốn tải nó?</string>
-    <string name="impossible_open_themes">Không thể mở chủ đề app</string>
-    <string name="themes_app_not_installed">Themes app is not installed in this device</string>
+    <string name="impossible_open_themes">Không thể mở ứng dụng chủ đề</string>
+    <string name="themes_app_not_installed">Ứng dụng chủ đề chưa được cài đặt trên thiết bị</string>
     <string name="included_templates">%1$s bản mẫu</string>
-    <string name="launcher_icon_restored">%1$s launcher icon was restored</string>
-    <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
-    <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
+    <string name="launcher_icon_restored">%1$s biểu tượng trình khởi chạy đã được khôi phục</string>
+    <string name="launcher_icon_not_restored">%1$s biểu tượng trình khởi chạy đã xuất hiện</string>
+    <string name="launcher_icon_restorer_error">Có vấn đề xảy ra với mã %1$s. Vui lòng liên hệ nhà phát triển.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">Tiện ích khôi phục biểu tượng</string>
     <string name="clock_widget_title">Đồng hồ kim</string>
@@ -64,8 +64,8 @@
     <string name="select_all">Chọn tất cả</string>
     <string name="no_selected_apps_title">Không có ứng dụng nào được chọn</string>
     <string name="no_selected_apps_content">Bạn chưa chọn ứng dụng nào để yêu cầu. Vui lòng chọn một vài ứng dụng, sau đó ấn lại nút.</string>
-    <string name="apps_limit_dialog">Xin lỗi, nhưng bạn chỉ được phép yêu cầu tối đa %1$s ứng dụng.</string>
-    <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
+    <string name="apps_limit_dialog">Xin lỗi, nhưng bạn chỉ được phép chọn tối đa %1$s ứng dụng để yêu cầu.</string>
+    <string name="apps_limit_dialog_more">Xin lỗi, nhưng bạn chỉ được phép yêu cầu %1$s ứng dụng vào lúc này.</string>
     <string name="apps_limit_dialog_day">Xin lỗi, nhưng bạn chỉ có thể yêu cầu thêm biểu tượng mỗi %1$s.</string>
     <string name="apps_limit_dialog_day_extra">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong %1$s.</string>
     <string name="apps_limit_dialog_day_extra_sec">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong ít phút nữa.</string>
@@ -116,13 +116,13 @@
         <item>Vấn đề có thể xảy ra đối với trình khởi chạy mà bạn đang sử dụng, khi xử lý độ phân giải lớn. Bạn có thể sửa nó bằng cách tăng kích cỡ biểu tượng từ 115 – 120%. Hoặc thử sử dụng một trình khởi chạy khác.</item>
         <item>Gửi yêu cầu thêm biểu tượng.</item>
         <item>Trượt ngăn kéo từ bên trái, hoặc ấn vào biểu tượng 3 nút và đi đến phần \"Cài đặt\". Sau đó chọn \"Ẩn biểu tượng khỏi trình khởi chạy\".</item>
-        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-        <item>It\'s needed to be able to check if your device has internet connection.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-        <item>It\'s needed by Muzei Live Wallpaper.</item>
+        <item>Đi đến màn hình chính, tạo một tiện ích con cho ứng dụng có tên là \"Khôi phục biểu tượng/IconRestorer\" và ấn vào nó.</item>
+        <item>Trượt ngăn kéo từ bên trái, hoặc ấn vào biểu tượng 3 nút và đi đến phần \"Cài đặt\". Sau đó bỏ chọn \"Ẩn biểu tượng khỏi trình khởi chạy\".</item>
+        <item>Nó cần để có thể ghi dữ liệu yêu cầu biểu tượng, cũng như lưu hình nền, và có thể thay đổi vị trí tải xuống hình nền.</item>
+        <item>Nó cần để có thể tải hình nền từ đám mây và lưu chúng.</item>
+        <item>Nó cần để có thể kiểm tra xem thiết bị có kết nối mạng hay không.</item>
+        <item>Nó cần để có thể áp dụng hình nền trực tiếp từ ứng dụng.</item>
+        <item>Nó cần để có thể chỉnh sửa kích thước hình nền dựa trên độ phân giải màn hình.</item>
+        <item>Nó cần cho Muzei Live Wallpaper.</item>
     </string-array>
 </resources>
