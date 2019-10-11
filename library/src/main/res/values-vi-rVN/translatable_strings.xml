@@ -17,7 +17,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="frames_dashboard">Bảng kế hoạch chi tiết</string>
-    <string name="coming_soon">Coming soon</string>
+    <string name="coming_soon">Sắp có</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">Home</string>
     <string name="section_icons">Biểu tượng</string>
@@ -40,29 +40,29 @@
     <string name="columns">Cột số</string>
     <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn. \nWould bạn muốn cài đặt nó từ Cửa Hàng Google?</string>
     <string name="no_compatible_launcher_title">Trình khởi chạy này không tương thích</string>
-    <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs and therefore you cannot use this icon pack with this launcher. Please do not rate the icon pack negatively for this reason. There is a solution that you can try for yourself, but it requires the use of an external app. Would you like to download it?</string>
+    <string name="no_compatible_launcher_content">Trình khởi chạy này không tương thích với bất kỳ bộ biểu tượng nào, vì thế bạn không thể áp dụng bộ biểu tượng này. Vui lòng đừng đánh tiêu cực bộ biểu tượng vì lý do này. Có một cách khác bạn có thể thử, nhưng nó yêu cầu một ứng dụng phụ. Bạn muốn tải nó?</string>
     <string name="impossible_open_themes">Không thể mở chủ đề app</string>
     <string name="themes_app_not_installed">Themes app is not installed in this device</string>
-    <string name="included_templates">%1$s templates</string>
+    <string name="included_templates">%1$s bản mẫu</string>
     <string name="launcher_icon_restored">%1$s launcher icon was restored</string>
     <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
     <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
     <!-- Widgets Names -->
-    <string name="iconrestorer_widget_title">Biểu tượng bảo tồn Widget</string>
-    <string name="clock_widget_title">Analog Clock</string>
-    <string name="search_icons">Search icons</string>
-    <string name="search_wallpapers">Search wallpapers</string>
-    <string name="search_launchers">Search launchers</string>
-    <string name="search_apps">Search apps</string>
-    <string name="seconds">Seconds</string>
-    <string name="minutes">Minutes</string>
-    <string name="hours">Hours</string>
-    <string name="days">Days</string>
-    <string name="weeks">Weeks</string>
-    <string name="months">Months</string>
+    <string name="iconrestorer_widget_title">Widget khôi phục icon</string>
+    <string name="clock_widget_title">Đồng hồ kim</string>
+    <string name="search_icons">Tìm kiếm biểu tượng</string>
+    <string name="search_wallpapers">Tìm kiếm hình nền</string>
+    <string name="search_launchers">Tìm kiếm trình khởi chạy</string>
+    <string name="search_apps">Tìm kiếm ứng dụng</string>
+    <string name="seconds">Giây</string>
+    <string name="minutes">Phút</string>
+    <string name="hours">Giờ</string>
+    <string name="days">Ngày</string>
+    <string name="weeks">Tuần</string>
+    <string name="months">Tháng</string>
     <!-- Requests -->
-    <string name="select_all">Select all</string>
-    <string name="no_selected_apps_title">No selected apps</string>
+    <string name="select_all">Chọn tất cả</string>
+    <string name="no_selected_apps_title">Không có ứng dụng nào được chọn</string>
     <string name="no_selected_apps_content">You did not select any apps to request. Please select a few apps, then tap this button again.</string>
     <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
     <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
