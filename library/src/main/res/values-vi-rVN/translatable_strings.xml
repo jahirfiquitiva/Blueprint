@@ -63,8 +63,8 @@
     <!-- Requests -->
     <string name="select_all">Chọn tất cả</string>
     <string name="no_selected_apps_title">Không có ứng dụng nào được chọn</string>
-    <string name="no_selected_apps_content">You did not select any apps to request. Please select a few apps, then tap this button again.</string>
-    <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
+    <string name="no_selected_apps_content">Bạn chưa chọn ứng dụng nào để yêu cầu. Vui lòng chọn một vài ứng dụng, sau đó ấn lại nút.</string>
+    <string name="apps_limit_dialog">Xin lỗi, nhưng bạn chỉ được phép yêu cầu tối đa %1$s ứng dụng.</string>
     <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
     <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
     <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
