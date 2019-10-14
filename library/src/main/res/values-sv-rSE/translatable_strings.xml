@@ -32,6 +32,7 @@
     <string name="rate">Rate</string>
     <!-- Icons filters -->
     <string name="filter">Swedish</string>
+    <string name="clear">Rensa</string>
     <string name="general_info">Allmän information</string>
     <string name="useful_links">Användbara länkar</string>
     <string name="columns">Columns number</string>
