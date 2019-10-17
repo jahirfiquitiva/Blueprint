@@ -27,9 +27,9 @@
     <string name="section_donate">Quyên góp</string>
     <string name="section_about">Thông tin về ứng dụng này</string>
     <string name="section_help">Trợ giúp</string>
-    <string name="section_zooper">Zooper Setup</string>
+    <string name="section_zooper">Cài đặt Zooper</string>
     <string name="section_widgets">Tiện ích con</string>
-    <string name="share_this_app">Tôi đang sử dụng %1$s và tôi thích chúng. Xem qua chúng tại: %2$s</string>
+    <string name="share_this_app">Tôi đang sử dụng %1$s và tôi thích nó. Xem qua chúng tại: %2$s</string>
     <string name="rate">Đánh giá</string>
     <!-- Icons filters -->
     <string name="filter">Bộ lọc</string>
