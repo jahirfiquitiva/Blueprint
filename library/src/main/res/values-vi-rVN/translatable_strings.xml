@@ -21,7 +21,7 @@
     <!-- List Of Drawer Sections -->
     <string name="section_home">Trang chủ</string>
     <string name="section_icons">Biểu tượng</string>
-    <string name="section_apply">Apply</string>
+    <string name="section_apply">Áp dụng</string>
     <string name="section_wallpapers">Hình nền</string>
     <string name="section_icon_request">Yêu cầu biểu tượng</string>
     <string name="section_donate">Quyên góp</string>
@@ -38,7 +38,7 @@
     <string name="general_info">Thông tin chung</string>
     <string name="useful_links">Liên kết hữu ích</string>
     <string name="columns">Số lượng cột</string>
-    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn. \nWould bạn muốn cài đặt nó từ CH Play?</string>
+    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn.\nBạn có muốn cài đặt nó từ Cửa hàng Play?</string>
     <string name="no_compatible_launcher_title">Trình khởi chạy này không tương thích</string>
     <string name="no_compatible_launcher_content">Trình khởi chạy này không tương thích với bất kỳ bộ biểu tượng nào, vì thế bạn không thể áp dụng bộ biểu tượng này. Vui lòng đừng đánh tiêu cực bộ biểu tượng vì lý do này. Có một cách khác bạn có thể thử, nhưng nó yêu cầu một ứng dụng phụ. Bạn muốn tải nó?</string>
     <string name="impossible_open_themes">Không thể mở ứng dụng chủ đề</string>
