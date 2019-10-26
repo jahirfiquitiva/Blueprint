@@ -43,6 +43,7 @@
     <string name="included_templates">%1$s skabeloner</string>
     <string name="launcher_icon_restored">%1$s launcher icon blev genskabt</string>
     <!-- Widgets Names -->
+    <string name="clock_widget_title">Analogt ur</string>
     <string name="search_apps">Søg efter apps</string>
     <string name="seconds">Sekunder</string>
     <string name="minutes">Minutter</string>
