@@ -46,6 +46,7 @@
     <string name="included_templates">%1$s テンプレート</string>
     <string name="launcher_icon_restored">%1$s ランチャーアイコンが復元されました</string>
     <string name="launcher_icon_not_restored">%1$s ランチャーアイコンは既に表示されています。</string>
+    <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">アイコン復元ウィジェット</string>
     <string name="clock_widget_title">アナログ時計</string>
@@ -68,6 +69,8 @@
     <string name="apps_limit_dialog_day">申し訳ありませんが、%1$sごとにリクエストすることしかできません。</string>
     <string name="apps_limit_dialog_day_extra">%1$s後で再度リクエストすることができます。</string>
     <string name="apps_limit_dialog_day_extra_sec">1分も経たないうちに再度リクエストすることができます。</string>
+    <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+    <string name="requests_upload_error">Es gab einen Fehler beim Upload der angefragten App auf unsere Server.\nUrsache: %1$s\nBitte versuche es später erneut.</string>
     <string name="loading_apps_to_request">リクエストするアプリを読み込んでいます...</string>
     <string name="building_request_dialog">リクエストファイルを構築中…</string>
     <string name="request_upload_success">成功しました。</string>
