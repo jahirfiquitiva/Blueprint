@@ -21,9 +21,9 @@
     <!-- List Of Drawer Sections -->
     <string name="section_home">Home</string>
     <string name="section_icons">Ikony</string>
-    <string name="section_apply">Apply</string>
+    <string name="section_apply">Aplikace</string>
     <string name="section_wallpapers">Wallpapers</string>
-    <string name="section_icon_request">Icon request</string>
+    <string name="section_icon_request">Icon žádost</string>
     <string name="section_donate">Donate</string>
     <string name="section_about">About the app</string>
     <string name="section_help">Pomoc</string>

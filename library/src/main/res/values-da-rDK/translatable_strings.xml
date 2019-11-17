@@ -20,11 +20,30 @@
     <!-- List Of Drawer Sections -->
     <string name="section_home">Hjem</string>
     <string name="section_icons">Ikoner</string>
+    <string name="section_apply">Anvend</string>
+    <string name="section_wallpapers">Baggrunde</string>
+    <string name="section_icon_request">Ikon efterspørgsel</string>
+    <string name="section_donate">Donér</string>
+    <string name="section_about">Om app\'en</string>
     <string name="section_help">Hjælp</string>
+    <string name="section_widgets">Widgets</string>
+    <string name="share_this_app">Jeg bruger %1$s og er vild med det. Tjek det ud her: %2$s</string>
+    <string name="rate">Bedøm</string>
     <!-- Icons filters -->
+    <string name="filter">Filter</string>
+    <string name="clear">Nulstil</string>
     <string name="more_apps">Flere apps</string>
+    <string name="general_info">Generel information</string>
+    <string name="useful_links">Brugbare links</string>
+    <string name="columns">Kolonnenummer</string>
+    <string name="lni_content">%1$s er ikke installeret på din enhed.\nVil du hente app\'en fra Google Play Store?</string>
+    <string name="no_compatible_launcher_title">Denne launcher er IKKE kompatibel</string>
+    <string name="no_compatible_launcher_content">Denne launcher er IKKE kompatibel med NOGEN icon packs og du kan derfor ikke bruge denne icon pack med denne launcher. Vær venlig ikke at bedømme denne app negativt på grund af launcherens begrænsning. Der er en løsning som du kan prøve, men det kræver en ekstern app. Vil du downloade denne?</string>
     <string name="impossible_open_themes">Umuligt at åbne temaer app</string>
+    <string name="included_templates">%1$s skabeloner</string>
+    <string name="launcher_icon_restored">%1$s launcher icon blev genskabt</string>
     <!-- Widgets Names -->
+    <string name="clock_widget_title">Analogt ur</string>
     <string name="search_apps">Søg efter apps</string>
     <string name="seconds">Sekunder</string>
     <string name="minutes">Minutter</string>

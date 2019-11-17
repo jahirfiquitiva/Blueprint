@@ -22,6 +22,7 @@
     <string name="section_icons">Ícones</string>
     <string name="section_apply">Aplicar</string>
     <string name="section_wallpapers">Imagens de fundo</string>
+    <string name="section_icon_request">Icon request</string>
     <string name="section_donate">Doar</string>
     <string name="section_about">Sobre a aplicação</string>
     <string name="section_help">Ajuda</string>

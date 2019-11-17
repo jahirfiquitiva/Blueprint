@@ -17,112 +17,112 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="frames_dashboard">Bảng kế hoạch chi tiết</string>
-    <string name="coming_soon">Coming soon</string>
+    <string name="coming_soon">Sắp có</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">Home</string>
-    <string name="section_icons">Icons</string>
-    <string name="section_apply">Apply</string>
-    <string name="section_wallpapers">Wallpapers</string>
-    <string name="section_icon_request">Icon request</string>
-    <string name="section_donate">Donate</string>
-    <string name="section_about">About the app</string>
-    <string name="section_help">Help</string>
-    <string name="section_zooper">Zooper Setup</string>
-    <string name="section_widgets">Widgets</string>
-    <string name="share_this_app">I\'m using %1$s and I love it. Go check it out at: %2$s</string>
-    <string name="rate">Rate</string>
+    <string name="section_home">Trang chủ</string>
+    <string name="section_icons">Biểu tượng</string>
+    <string name="section_apply">Áp dụng</string>
+    <string name="section_wallpapers">Hình nền</string>
+    <string name="section_icon_request">Yêu cầu biểu tượng</string>
+    <string name="section_donate">Quyên góp</string>
+    <string name="section_about">Thông tin về ứng dụng này</string>
+    <string name="section_help">Trợ giúp</string>
+    <string name="section_zooper">Cài đặt Zooper</string>
+    <string name="section_widgets">Tiện ích con</string>
+    <string name="share_this_app">Tôi đang sử dụng %1$s và tôi thích nó. Xem qua chúng tại: %2$s</string>
+    <string name="rate">Đánh giá</string>
     <!-- Icons filters -->
     <string name="filter">Bộ lọc</string>
-    <string name="clear">Clear</string>
-    <string name="more_apps">More apps</string>
-    <string name="general_info">General information</string>
-    <string name="useful_links">Useful links</string>
-    <string name="columns">Cột số</string>
-    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn. \nWould bạn muốn cài đặt nó từ cửa hàng Google chơi?</string>
-    <string name="no_compatible_launcher_title">Bệ phóng này là không tương thích</string>
-    <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs and therefore you cannot use this icon pack with this launcher. Please do not rate the icon pack negatively for this reason. There is a solution that you can try for yourself, but it requires the use of an external app. Would you like to download it?</string>
-    <string name="impossible_open_themes">Không thể mở chủ đề app</string>
-    <string name="themes_app_not_installed">Themes app is not installed in this device</string>
-    <string name="included_templates">%1$s templates</string>
-    <string name="launcher_icon_restored">%1$s launcher icon was restored</string>
-    <string name="launcher_icon_not_restored">%1$s launcher icon is already visible</string>
-    <string name="launcher_icon_restorer_error">There is a problem with the code of %1$s. Please contact its developer.</string>
+    <string name="clear">Xóa</string>
+    <string name="more_apps">Ứng dụng khác</string>
+    <string name="general_info">Thông tin chung</string>
+    <string name="useful_links">Liên kết hữu ích</string>
+    <string name="columns">Số lượng cột</string>
+    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn.\nBạn có muốn cài đặt nó từ Cửa hàng Play?</string>
+    <string name="no_compatible_launcher_title">Trình khởi chạy này không tương thích</string>
+    <string name="no_compatible_launcher_content">Trình khởi chạy này không tương thích với bất kỳ bộ biểu tượng nào, vì thế bạn không thể áp dụng bộ biểu tượng này. Vui lòng đừng đánh tiêu cực bộ biểu tượng vì lý do này. Có một cách khác bạn có thể thử, nhưng nó yêu cầu một ứng dụng phụ. Bạn muốn tải nó?</string>
+    <string name="impossible_open_themes">Không thể mở ứng dụng chủ đề</string>
+    <string name="themes_app_not_installed">Ứng dụng chủ đề chưa được cài đặt trên thiết bị</string>
+    <string name="included_templates">%1$s bản mẫu</string>
+    <string name="launcher_icon_restored">%1$s biểu tượng trình khởi chạy đã được khôi phục</string>
+    <string name="launcher_icon_not_restored">%1$s biểu tượng trình khởi chạy đã xuất hiện</string>
+    <string name="launcher_icon_restorer_error">Có vấn đề xảy ra với mã %1$s. Vui lòng liên hệ nhà phát triển.</string>
     <!-- Widgets Names -->
-    <string name="iconrestorer_widget_title">Biểu tượng bảo tồn Widget</string>
-    <string name="clock_widget_title">Analog Clock</string>
-    <string name="search_icons">Search icons</string>
-    <string name="search_wallpapers">Search wallpapers</string>
-    <string name="search_launchers">Search launchers</string>
-    <string name="search_apps">Search apps</string>
-    <string name="seconds">Seconds</string>
-    <string name="minutes">Minutes</string>
-    <string name="hours">Hours</string>
-    <string name="days">Days</string>
-    <string name="weeks">Weeks</string>
-    <string name="months">Months</string>
+    <string name="iconrestorer_widget_title">Tiện ích khôi phục biểu tượng</string>
+    <string name="clock_widget_title">Đồng hồ kim</string>
+    <string name="search_icons">Tìm kiếm biểu tượng</string>
+    <string name="search_wallpapers">Tìm kiếm hình nền</string>
+    <string name="search_launchers">Tìm kiếm trình khởi chạy</string>
+    <string name="search_apps">Tìm kiếm ứng dụng</string>
+    <string name="seconds">Giây</string>
+    <string name="minutes">Phút</string>
+    <string name="hours">Giờ</string>
+    <string name="days">Ngày</string>
+    <string name="weeks">Tuần</string>
+    <string name="months">Tháng</string>
     <!-- Requests -->
-    <string name="select_all">Select all</string>
-    <string name="no_selected_apps_title">No selected apps</string>
-    <string name="no_selected_apps_content">You did not select any apps to request. Please select a few apps, then tap this button again.</string>
-    <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
-    <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
-    <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
-    <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
-    <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
-    <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
-    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
-    <string name="loading_apps_to_request">Loading apps to request…</string>
-    <string name="building_request_dialog">Building request files…</string>
-    <string name="request_upload_success">Success!</string>
-    <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
+    <string name="select_all">Chọn tất cả</string>
+    <string name="no_selected_apps_title">Không có ứng dụng nào được chọn</string>
+    <string name="no_selected_apps_content">Bạn chưa chọn ứng dụng nào để yêu cầu. Vui lòng chọn một vài ứng dụng, sau đó ấn lại nút.</string>
+    <string name="apps_limit_dialog">Xin lỗi, nhưng bạn chỉ được phép chọn tối đa %1$s ứng dụng để yêu cầu.</string>
+    <string name="apps_limit_dialog_more">Xin lỗi, nhưng bạn chỉ được phép yêu cầu %1$s ứng dụng vào lúc này.</string>
+    <string name="apps_limit_dialog_day">Xin lỗi, nhưng bạn chỉ có thể yêu cầu thêm biểu tượng mỗi %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong ít phút nữa.</string>
+    <string name="requests_error">Có lỗi xảy ra trong quá trình tải danh sách ứng dụng để yêu cầu.\nLý do: %1$s\nVui lòng thử lại sau.</string>
+    <string name="requests_upload_error">Có lỗi xảy ra trong quá trình đưa ứng dụng đã yêu cầu tới máy chủ.\nReason: %1$s\nVui lòng thử lại sau.</string>
+    <string name="loading_apps_to_request">Đang tải danh sách ứng dụng để yêu cầu…</string>
+    <string name="building_request_dialog">Đang tạo tệp yêu cầu…</string>
+    <string name="request_upload_success">Thành công!</string>
+    <string name="request_upload_success_content">Yêu cầu đã được đưa lên máy chủ.</string>
     <!-- Preferences -->
-    <string name="pref_title_wall_header">Enable use of wallpaper in icons preview</string>
-    <string name="pref_summary_wall_header">Your current device wallpaper will be shown.</string>
-    <string name="pref_header_launcher_icon">Launcher icon</string>
-    <string name="pref_title_launcher_icon">Hide launcher icon</string>
-    <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
-    <string name="clearcache_dialog_content">Are you sure you want to delete app data, cache and settings? Applied icons won\'t be affected.</string>
-    <string name="hideicon_dialog_title">Warning!</string>
-    <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher?\nApp may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.</string>
-    <string name="send_using">Send using…</string>
-    <string name="no_mail">There is no mail app installed</string>
+    <string name="pref_title_wall_header">Bật hình nền khi xem trước bộ biểu tượng</string>
+    <string name="pref_summary_wall_header">Hình nền hiện tại trên thiết bị của bạn sẽ xuất hiện.</string>
+    <string name="pref_header_launcher_icon">Biểu tượng trình khởi chạy</string>
+    <string name="pref_title_launcher_icon">Ẩn biểu tượng khỏi trình khởi chạy</string>
+    <string name="pref_summary_launcher_icon">Khi được chọn, biểu tượng tại trình khởi chạy sẽ được ẩn.</string>
+    <string name="clearcache_dialog_content">Bạn có chắc bạn muốn xóa dữ liệu, bộ nhớ cache và cài đặt? Những biểu tượng áp dụng trước đó sẽ không bị ảnh hưởng.</string>
+    <string name="hideicon_dialog_title">Cảnh báo!</string>
+    <string name="hideicon_dialog_content">Bạn có chắc bạn muốn ẩn biểu tượng ứng dụng khỏi trình khởi chạy?\nỨng dụng có thể bị đóng đột xuất và các thông báo sẽ bị tắt.\nBạn nên đọc qua FAQS để biết cách bật lại biểu tượng ứng dụng, trước khi ẩn chúng.</string>
+    <string name="send_using">Gửi bằng…</string>
+    <string name="no_mail">Không có ứng dụng thư nào</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
-        <item>How to use the Icon Pack?</item>
-        <item>How to apply the Icon Pack?</item>
-        <item>How to see all the included icons?</item>
-        <item>How to replace an icon with an alternative one?</item>
-        <item>How to request unthemed icons?</item>
-        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-        <item>Why do icons look pixelated on my device?</item>
-        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-        <item>How to hide app icon from launcher?</item>
-        <item>How to open the app after app icon is hidden from launcher?</item>
-        <item>How to show app icon in launcher again?</item>
-        <item>Why does the app need permission to modify or delete content of my storage?</item>
-        <item>Why does the app need permission to full network access?</item>
-        <item>Why does the app need permission to view connections?</item>
-        <item>Why does the app need permission to set wallpaper?</item>
-        <item>Why does the app need permission to adjust the wallpaper size?</item>
-        <item>Why does the app need permission to prevent phone from sleeping?</item>
+        <item>Làm sao để sử dụng bộ biểu tượng?</item>
+        <item>Làm sao để áp dụng bộ biểu tượng?</item>
+        <item>Làm sao để xem tất cả các biểu tượng có sẵn?</item>
+        <item>Làm sao để thay thế biểu tượng bằng một cái khác?</item>
+        <item>Làm sao để yêu cầu thêm biểu tượng?</item>
+        <item>Sau khi khởi động lại thiết bị, bộ biểu tượng đã áp dụng biến mất. Các biểu tượng trở về mặc định.</item>
+        <item>Tại sao một vài biểu tượng mờ và không rõ trên thiết bị?</item>
+        <item>Có biểu tượng phù hợp dành cho ứng dụng X, nhưng biểu tượng không được áp dụng.</item>
+        <item>Làm sao để ẩn biểu tượng ứng dụng khỏi trình khởi chạy?</item>
+        <item>Làm sao để mở lại ứng dụng sau khi ẩn biểu tượng khỏi trình khởi chạy?</item>
+        <item>Làm sao để bật lại biểu tượng trong trình khởi chạy?</item>
+        <item>Tại sao ứng dụng cần quyền để sửa đổi và xóa bộ nhớ?</item>
+        <item>Tại sao ứng dụng cần quyền truy cập vào mạng?</item>
+        <item>Tại sao ứng dụng cần quyền để xem các kết nối?</item>
+        <item>Tại sao ứng dụng cần quyền để đặt hình nền?</item>
+        <item>Tại sao ứng dụng cần quyền để thay đổi kích thước hình nền?</item>
+        <item>Tại sao ứng dụng cần quyền để chặn thiết bị khỏi chế độ ngủ?</item>
     </string-array>
     <string-array name="answers">
-        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-        <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-        <item>Tùy thuộc vào các phóng bạn đang sử dụng, bạn có phải dài chạm vào biểu tượng và chọn \"Chỉnh sửa\" từ trình đơn bật lên, hoặc dài bấm vào biểu tượng và di chuyển nó đến một hộp \"Chỉnh sửa\".</item>
-        <item>Tùy thuộc vào loại điều hướng các ứng dụng, bạn cần phải trượt ngăn kéo chuyển hướng từ trái, và đi đến phần \"Yêu cầu\", hoặc chọn biểu tượng từ thanh điều hướng phía dưới.</item>
-        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-        <item>Vấn đề có thể đi kèm với thiết bị phóng bạn đang sử dụng, khi xử lý độ phân giải lớn. Bạn có thể sửa chữa nó bằng cách tăng kích cỡ biểu tượng đến 115 – 120%. Hoặc hãy thử sử dụng một launcher.</item>
-        <item>Send an icon request.</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
-        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
-        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
-        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-        <item>It\'s needed to be able to check if your device has internet connection.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-        <item>It\'s needed by Muzei Live Wallpaper.</item>
+        <item>Bạn cần một trình khởi chạy hỗ trợ các bộ biểu tượng. Danh sách các trình khởi chạy được hỗ trợ có thể được tìm thấy trong ứng dụng ở phần \"Áp dụng\", hoặc mô tả ứng dụng tại CH Play.</item>
+        <item>Tùy thuộc vào điều hướng của ứng dụng, bạn cần phải trượt ngăn kéo từ bên trái, ở phần \"Áp dụng\", hoặc chọn ô biểu tượng thứ 4 tại thanh điều hướng phía dưới. Ở đó bạn có thể chọn trình khởi chạy bạn muốn áp dụng biểu tượng. Một vài trình khởi chạy không hỗ trợ áp dụng tự động nên bạn phải áp dụng thông qua cài đặt của trình khởi chạy.</item>
+        <item>Trở về lại mục chính của ứng dụng và ấn vào phần \"Biểu tượng\".</item>
+        <item>Tùy thuộc vào trình khởi chạy mà bạn đang sử dụng, bạn cần phải ấn giữ vào biểu tượng và chọn \"Chỉnh sửa\" từ trình đơn bật lên, hoặc nhấn giữ vào biểu tượng và di chuyển nó đến hộp \"Chỉnh sửa\".</item>
+        <item>Tùy thuộc vào loại điều hướng của ứng dụng, bạn cần phải trượt ngăn kéo từ bên trái, đi đến phần \"Yêu cầu\", hoặc chọn biểu tượng từ thanh điều hướng phía dưới.</item>
+        <item>Nó xảy ra bởi vì bộ biểu tượng bị lưu tại bộ nhớ ngoài ví dụ như thẻ nhớ, bạn nên cài ở bộ nhớ trong.</item>
+        <item>Vấn đề có thể xảy ra đối với trình khởi chạy mà bạn đang sử dụng, khi xử lý độ phân giải lớn. Bạn có thể sửa nó bằng cách tăng kích cỡ biểu tượng từ 115 – 120%. Hoặc thử sử dụng một trình khởi chạy khác.</item>
+        <item>Gửi yêu cầu thêm biểu tượng.</item>
+        <item>Trượt ngăn kéo từ bên trái, hoặc ấn vào biểu tượng 3 nút và đi đến phần \"Cài đặt\". Sau đó chọn \"Ẩn biểu tượng khỏi trình khởi chạy\".</item>
+        <item>Đi đến màn hình chính, tạo một tiện ích con cho ứng dụng có tên là \"Khôi phục biểu tượng/IconRestorer\" và ấn vào nó.</item>
+        <item>Trượt ngăn kéo từ bên trái, hoặc ấn vào biểu tượng 3 nút và đi đến phần \"Cài đặt\". Sau đó bỏ chọn \"Ẩn biểu tượng khỏi trình khởi chạy\".</item>
+        <item>Nó cần để có thể ghi dữ liệu yêu cầu biểu tượng, cũng như lưu hình nền, và có thể thay đổi vị trí tải xuống hình nền.</item>
+        <item>Nó cần để có thể tải hình nền từ đám mây và lưu chúng.</item>
+        <item>Nó cần để có thể kiểm tra xem thiết bị có kết nối mạng hay không.</item>
+        <item>Nó cần để có thể áp dụng hình nền trực tiếp từ ứng dụng.</item>
+        <item>Nó cần để có thể chỉnh sửa kích thước hình nền dựa trên độ phân giải màn hình.</item>
+        <item>Nó cần cho Muzei Live Wallpaper.</item>
     </string-array>
 </resources>
