@@ -19,27 +19,27 @@
     <string name="frames_dashboard">Blueprint Dashboard</string>
     <string name="coming_soon">Již brzy</string>
     <!-- List Of Drawer Sections -->
-    <string name="section_home">Home</string>
+    <string name="section_home">Domů</string>
     <string name="section_icons">Ikony</string>
-    <string name="section_apply">Aplikace</string>
-    <string name="section_wallpapers">Wallpapers</string>
-    <string name="section_icon_request">Icon žádost</string>
-    <string name="section_donate">Donate</string>
-    <string name="section_about">About the app</string>
-    <string name="section_help">Pomoc</string>
+    <string name="section_apply">Použít</string>
+    <string name="section_wallpapers">Tapety</string>
+    <string name="section_icon_request">Požádat o ikonu</string>
+    <string name="section_donate">Podpořit</string>
+    <string name="section_about">O aplikaci</string>
+    <string name="section_help">Nápověda</string>
     <string name="section_zooper">Zooper Setup</string>
-    <string name="section_widgets">Widgets</string>
+    <string name="section_widgets">Widgety</string>
     <string name="share_this_app">Používám %1$s a líbí se mi to. Mrkněte na to zde: %2$s</string>
     <string name="rate">Hodnotit</string>
     <!-- Icons filters -->
     <string name="filter">Filtrovat</string>
     <string name="clear">Vymazat</string>
-    <string name="more_apps">Více aplikací</string>
+    <string name="more_apps">Další aplikace</string>
     <string name="general_info">Obecné informace</string>
     <string name="useful_links">Užitečné odkazy</string>
     <string name="columns">Počet sloupců</string>
     <string name="lni_content">%1$s není v současné době nainstalován na vašem zařízení.\nChtěli byste jej nainstalovat z Obchodu Play?</string>
-    <string name="no_compatible_launcher_title">Tento launcher NENÍ Kompatibilní</string>
+    <string name="no_compatible_launcher_title">Tento launcher není kompatibilní</string>
     <string name="no_compatible_launcher_content">Tento launcher NENÍ kompatibilní s ŽÁDNOU sadou ikon, tím pádem není možné používat vlastní ikony v tomto launcheru. Prosíme nepište z tohoto důvodu negativní recenzi. Je zde řešení, které si můžete sami vyzkoušet, ale vyžaduje použití externí aplikace. Chcete ji stáhnout?</string>
     <string name="impossible_open_themes">Nelze otevřít témata</string>
     <string name="themes_app_not_installed">Témata nejsou nainstalována na tomto zařízení</string>
@@ -49,7 +49,7 @@
     <string name="launcher_icon_restorer_error">Naskytl se problém s kódem %1$s. Obraťte se na jeho vývojáře.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">Widget pro obnovení ikon</string>
-    <string name="clock_widget_title">Analogové Hodiny</string>
+    <string name="clock_widget_title">Analogové hodiny</string>
     <string name="search_icons">Hledat ikony</string>
     <string name="search_wallpapers">Hledat tapety</string>
     <string name="search_launchers">Hledat launchery</string>
