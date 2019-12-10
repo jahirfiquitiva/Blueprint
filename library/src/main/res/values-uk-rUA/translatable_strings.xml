@@ -16,6 +16,7 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="frames_dashboard">Blueprint Dashboard</string>
     <string name="coming_soon">Незабаром</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">Головна</string>
