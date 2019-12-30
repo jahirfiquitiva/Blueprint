@@ -46,7 +46,7 @@
     <string name="included_templates">%1$s template</string>
     <string name="launcher_icon_restored">%1$s ikon peluncur dipulihkan</string>
     <string name="launcher_icon_not_restored">%1$s ikon peluncur sudah terlihat</string>
-    <string name="launcher_icon_restorer_error">Ada sebuah masalah dengan kode dari %1$s. Silahkan hubungi pengembang.</string>
+    <string name="launcher_icon_restorer_error">Ada sebuah masalah dengan kode dari %1$s. Silahkan hubungi pengembangnya.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">Widget Pemulih Ikon</string>
     <string name="clock_widget_title">Jam Analog</string>
