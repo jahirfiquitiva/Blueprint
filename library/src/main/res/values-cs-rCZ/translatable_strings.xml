@@ -40,7 +40,7 @@
     <string name="columns">Počet sloupců</string>
     <string name="lni_content">%1$s není v současné době nainstalován na vašem zařízení.\nChtěli byste jej nainstalovat z Obchodu Play?</string>
     <string name="no_compatible_launcher_title">Tento launcher není kompatibilní</string>
-    <string name="no_compatible_launcher_content">Tento launcher NENÍ kompatibilní s ŽÁDNOU sadou ikon, tím pádem není možné používat vlastní ikony v tomto launcheru. Prosíme nepište z tohoto důvodu negativní recenzi. Je zde řešení, které si můžete sami vyzkoušet, ale vyžaduje použití externí aplikace. Chcete ji stáhnout?</string>
+    <string name="no_compatible_launcher_content">Tento launcher NENÍ kompatibilní s ANY sadami ikon, a proto nelze použít tento balíček ikon s tímto launcherem. Z tohoto důvodu prosím neohodnoťte balíček ikon negativně. Existuje řešení, které můžete vyzkoušet pro sebe, ale vyžaduje to použití externí aplikace. Chcete ho stáhnout?</string>
     <string name="impossible_open_themes">Nelze otevřít témata</string>
     <string name="themes_app_not_installed">Témata nejsou nainstalována na tomto zařízení</string>
     <string name="included_templates">%1$s šablony</string>
