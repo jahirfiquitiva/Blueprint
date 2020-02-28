@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="frames_dashboard">ブループリントダッシュボード</string>
-    <string name="coming_soon">近日公開</string>
+    <string name="coming_soon">Coming soon</string>
     <!-- List Of Drawer Sections -->
     <string name="section_home">ホーム</string>
     <string name="section_icons">アイコン</string>
