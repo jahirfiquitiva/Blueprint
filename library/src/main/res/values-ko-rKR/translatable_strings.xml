@@ -82,7 +82,7 @@
     <string name="pref_summary_launcher_icon">이 항목을 체크하면, 런처에서 아이콘이 숨겨집니다.</string>
     <string name="clearcache_dialog_content">앱 데이터, 캐시 및 설정을 삭제 하시겠습니까? 적용된 아이콘은 영향을 받지 않습니다.</string>
     <string name="hideicon_dialog_title">경고!</string>
-    <string name="hideicon_dialog_content">런처에서 앱 아이콘을 숨기시겠습니까?\n이 애플리케이션이 예기치 않게 닫힐 수 있으며 알림이 완전히 사용 중지됩니다.\n이 앱을 숨기기 전, 자주 묻는 질문을 읽어보시면 다시 표시하는 방법을 볼 수 있습니다.</string>
+    <string name="hideicon_dialog_content">런처에서 앱 아이콘을 숨기시겠습니까?\n이 애플리케이션이 예기치 않게 닫힐 수 있으며 알림이 사용 중지됩니다.\n이 앱을 숨기기 전, 도움말을 읽어보시면 다시 표시하는 방법을 볼 수 있습니다.</string>
     <string name="send_using">전송 시 사용할 앱</string>
     <string name="no_mail">이메일 앱이 설치되지 않았습니다.</string>
     <!-- HELP SECTION -->
