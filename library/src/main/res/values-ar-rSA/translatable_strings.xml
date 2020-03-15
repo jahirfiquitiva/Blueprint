@@ -45,7 +45,7 @@
     <string name="included_templates">%1$s قوالب</string>
     <string name="launcher_icon_restored">تم استعادة أيقونة مشغل %1$s</string>
     <string name="launcher_icon_not_restored">أيقونة مشغل %1$s مرئية بالفعل</string>
-    <string name="launcher_icon_restorer_error">هناك مشكلة في التعليمات البرمجية من %1$s. الرجاء الاتصال المطور.</string>
+    <string name="launcher_icon_restorer_error">هناك مشكلة في الأوامر البرمجية لـ %1$s. يرجى التواصل مع المطور.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
     <string name="clock_widget_title">ساعة عقربية</string>
