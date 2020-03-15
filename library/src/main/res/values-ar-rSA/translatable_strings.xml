@@ -22,12 +22,12 @@
     <string name="section_icons">الأيقونات</string>
     <string name="section_apply">تطبيق</string>
     <string name="section_wallpapers">الخلفيات</string>
-    <string name="section_icon_request">Icon request</string>
+    <string name="section_icon_request">طلب أيقونات</string>
     <string name="section_donate">التبرع</string>
     <string name="section_about">حول التطبيق</string>
     <string name="section_help">المساعدة</string>
     <string name="section_zooper">إعداد Zooper</string>
-    <string name="section_widgets">التطبيقات المصغرة</string>
+    <string name="section_widgets">الأدوات الذكية</string>
     <string name="share_this_app">أنا أستعمل %1$s وأنا أحبه. قم بإلقاء نظرة على: %2$s</string>
     <string name="rate">تقييم</string>
     <!-- Icons filters -->
