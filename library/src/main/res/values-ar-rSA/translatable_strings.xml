@@ -43,16 +43,16 @@
     <string name="impossible_open_themes">من المستحيل فتح تطبيق التنسيقات</string>
     <string name="themes_app_not_installed">تطبيق التنسيقات غير مثبت على هذا الجهاز</string>
     <string name="included_templates">%1$s قوالب</string>
-    <string name="launcher_icon_restored">تم استعادة أيقونة مشغل %1$s</string>
+    <string name="launcher_icon_restored">تمت استعادة أيقونة مشغل %1$s</string>
     <string name="launcher_icon_not_restored">أيقونة مشغل %1$s مرئية بالفعل</string>
     <string name="launcher_icon_restorer_error">هناك مشكلة في الأوامر البرمجية لـ %1$s. يرجى التواصل مع المطور.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
-    <string name="clock_widget_title">ساعة عقربية</string>
-    <string name="search_icons">البحث عن الأيقونات</string>
-    <string name="search_wallpapers">تعيين خلفية</string>
-    <string name="search_launchers">البحث عن قاذفات</string>
-    <string name="search_apps">بحث في التطبيقات</string>
+    <string name="clock_widget_title">ساعة ذات عقارب</string>
+    <string name="search_icons">البحث في الأيقونات</string>
+    <string name="search_wallpapers">البحث في الخلفيات</string>
+    <string name="search_launchers">البحث في المشغلات</string>
+    <string name="search_apps">البحث في التطبيقات</string>
     <string name="seconds">ثواني</string>
     <string name="minutes">دقائق</string>
     <string name="hours">ساعات</string>
