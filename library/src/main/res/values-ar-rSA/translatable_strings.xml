@@ -48,7 +48,7 @@
     <string name="launcher_icon_restorer_error">هناك مشكلة في الأوامر البرمجية لـ %1$s. يرجى التواصل مع المطور.</string>
     <!-- Widgets Names -->
     <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
-    <string name="clock_widget_title">ساعة عادية</string>
+    <string name="clock_widget_title">ساعة ذات عقارب</string>
     <string name="search_icons">البحث في الأيقونات</string>
     <string name="search_wallpapers">البحث في الخلفيات</string>
     <string name="search_launchers">البحث في المشغلات</string>
