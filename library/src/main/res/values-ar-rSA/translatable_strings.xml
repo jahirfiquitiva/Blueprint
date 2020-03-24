@@ -73,16 +73,12 @@
     <string name="loading_apps_to_request">تحميل تطبيقات لطلب…</string>
     <string name="building_request_dialog">بناء طلب الملفات…</string>
     <string name="request_upload_success">تم بنجاح!</string>
-    <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
     <!-- Preferences -->
     <string name="pref_title_wall_header">تمكين استخدام خلفية في معاينة الرموز</string>
     <string name="pref_summary_wall_header">سيتم عرض خلفية حائط جهازك الحالي.</string>
     <string name="pref_header_launcher_icon">أيقونات المشغل</string>
     <string name="pref_title_launcher_icon">إخفاء ايقونة المشغل</string>
-    <string name="pref_summary_launcher_icon">When checked, launcher icon will be hidden.</string>
-    <string name="clearcache_dialog_content">Are you sure you want to delete app data, cache and settings? Applied icons won\'t be affected.</string>
     <string name="hideicon_dialog_title">تحذير!</string>
-    <string name="hideicon_dialog_content">Are you sure you want to hide app icon in your launcher?\nApp may close unexpectedly and notifications will be completely disabled.\nYou may want to read the FAQs to learn how to make it appear again, before hiding it.</string>
     <string name="send_using">إرسال باستخدام…</string>
     <string name="no_mail">لا يوجد أيتطبيقات بريد الإلكتروني مثبتة .</string>
     <!-- HELP SECTION -->
