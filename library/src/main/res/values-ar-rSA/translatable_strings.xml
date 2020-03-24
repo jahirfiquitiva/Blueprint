@@ -66,7 +66,6 @@
     <string name="apps_limit_dialog">عذراً، لكن فقط يسمح لك بتحديد تطبيقات %1$s لطلب.</string>
     <string name="apps_limit_dialog_more">عذراً، لكن فقط يسمح لك بتحديد تطبيقات لطلب %1$s للآن.</string>
     <string name="apps_limit_dialog_day">عذرا،لكن يسمح لك فقط بطلب الأيقونات كل %1$s.</string>
-    <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in less than a minute.</string>
     <string name="apps_limit_dialog_day_extra_sec">سوف تكون قادر على طلب أيقونات مجددا، فى أقل من دقيقة.</string>
     <string name="requests_error">حدث خطأ أثناء تحميل تطبيقات بطلب إلى الملقمات لدينا. \nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
     <string name="requests_upload_error">حدث خطأ أثناء تحميل تطبيقات بطلب إلى الملقمات لدينا. \nReason: %1$s\nPlease حاول مرة أخرى لاحقاً.</string>
@@ -87,18 +86,18 @@
         <item>How to apply the Icon Pack?</item>
         <item>How to see all the included icons?</item>
         <item>How to replace an icon with an alternative one?</item>
-        <item>How to request unthemed icons؟</item>
+        <item>How to request unthemed icons?</item>
         <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-        <item>Why do icons look pixelated on my device؟</item>
+        <item>Why do icons look pixelated on my device?</item>
         <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-        <item>How to hide app icon from launcher؟</item>
-        <item>How to open the app after app icon is hidden from launcher؟</item>
-        <item>How to show app icon in launcher again؟</item>
-        <item>Why does the app need permission to modify or delete content of my storage؟</item>
+        <item>How to hide app icon from launcher?</item>
+        <item>How to open the app after app icon is hidden from launcher?</item>
+        <item>How to show app icon in launcher again?</item>
+        <item>Why does the app need permission to modify or delete content of my storage?</item>
         <item>Why does the app need permission to full network access?</item>
         <item>Why does the app need permission to view connections?</item>
         <item>Why does the app need permission to set wallpaper?</item>
-        <item>لماذا يحتاج التطبيق الإذن لضبط حجم ورق الحائط؟</item>
+        <item>Why does the app need permission to adjust the wallpaper size?</item>
         <item>لماذا يحتاج التطبيق الإذن لمنع الهاتف من النوم؟</item>
     </string-array>
     <string-array name="answers">
