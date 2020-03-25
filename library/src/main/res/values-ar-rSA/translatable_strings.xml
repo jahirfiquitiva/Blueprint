@@ -75,7 +75,7 @@
     <string name="request_upload_success">تم بنجاح!</string>
     <string name="request_upload_success_content">تم رفع الطلب إلى خادمنا بنجاح.</string>
     <!-- Preferences -->
-    <string name="pref_title_wall_header">تمكين استخدام خلفية في معاينة الرموز</string>
+    <string name="pref_title_wall_header">تفعيل استخدام الخلفية في معاينة الأيقونات</string>
     <string name="pref_summary_wall_header">سيتم عرض خلفية جهازك الحالية.</string>
     <string name="pref_header_launcher_icon">أيقونة المشغل</string>
     <string name="pref_title_launcher_icon">إخفاء أيقونة المشغل</string>
