@@ -47,7 +47,7 @@
     <string name="launcher_icon_not_restored">أيقونة مشغل %1$s مرئية بالفعل</string>
     <string name="launcher_icon_restorer_error">هناك مشكلة في الأوامر البرمجية لـ %1$s. يرجى التواصل مع المطور.</string>
     <!-- Widgets Names -->
-    <string name="iconrestorer_widget_title">رمز مرمم القطعة</string>
+    <string name="iconrestorer_widget_title">الأداة الذكية لاستعادة الأيقونة</string>
     <string name="clock_widget_title">ساعة ذات عقارب</string>
     <string name="search_icons">البحث في الأيقونات</string>
     <string name="search_wallpapers">البحث في الخلفيات</string>
@@ -71,7 +71,7 @@
     <string name="requests_error">حدث خطأ في تحميل التطبيقات للطلب.\nالسبب: %1$s\nيرجى المحاولة مرة أخرى لاحقاً.</string>
     <string name="requests_upload_error">حدث خطأ في رفع طلب التطبيقات إلى خوادمنا.\nالسبب: %1$s\nيرجى المحاولة مرة أخرى لاحقاً.</string>
     <string name="loading_apps_to_request">جار تحميل التطبيقات للطلب...</string>
-    <string name="building_request_dialog">بناء طلب الملفات…</string>
+    <string name="building_request_dialog">جار بناء ملفات الطلب…</string>
     <string name="request_upload_success">تم بنجاح!</string>
     <string name="request_upload_success_content">تم رفع الطلب إلى خادمنا بنجاح.</string>
     <!-- Preferences -->
@@ -106,9 +106,9 @@
         <item>لماذا يحتاج التطبيق إلى صلاحية منع الهاتف من النوم؟</item>
     </string-array>
     <string-array name="answers">
-        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+        <item>أنت تحتاج إلى مشغل يدعم حزم الأيقونات. يمكنك العثور على قائمة المشغلات المدعومة في قسم \"تطبيق\" في التطبيق، أو في وصف متجر Play.</item>
         <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-        <item>العودة إلى القسم الرئيسي من التطبيق ثم انقر على البلاط تحت عنوان \"الرموز\".</item>
+        <item>اذهب إلى القسم الرئيسي للتطبيق ثم اضغط على الزر ذو العنوان \"الأيقونات\".</item>
         <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
         <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
         <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
