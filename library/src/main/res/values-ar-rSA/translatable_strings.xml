@@ -103,7 +103,7 @@
         <item>Why does the app need permission to view connections?</item>
         <item>Why does the app need permission to set wallpaper?</item>
         <item>Why does the app need permission to adjust the wallpaper size?</item>
-        <item>لماذا يحتاج التطبيق الإذن لمنع الهاتف من النوم؟</item>
+        <item>لماذا يحتاج التطبيق إلى صلاحية منع الهاتف من النوم؟</item>
     </string-array>
     <string-array name="answers">
         <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
