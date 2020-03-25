@@ -76,12 +76,15 @@
     <string name="request_upload_success_content">تم رفع الطلب إلى خادمنا بنجاح.</string>
     <!-- Preferences -->
     <string name="pref_title_wall_header">تمكين استخدام خلفية في معاينة الرموز</string>
-    <string name="pref_summary_wall_header">سيتم عرض خلفية حائط جهازك الحالي.</string>
-    <string name="pref_header_launcher_icon">أيقونات المشغل</string>
-    <string name="pref_title_launcher_icon">إخفاء ايقونة المشغل</string>
+    <string name="pref_summary_wall_header">سيتم عرض خلفية جهازك الحالية.</string>
+    <string name="pref_header_launcher_icon">أيقونة المشغل</string>
+    <string name="pref_title_launcher_icon">إخفاء أيقونة المشغل</string>
+    <string name="pref_summary_launcher_icon">عند الاختيار، سيتم إخفاء أيقونة المشغل.</string>
+    <string name="clearcache_dialog_content">هل أنت متأكد من أنك تريد حذف بيانات التطبيق وذاكرة التخزين المؤقت والإعدادات؟ لن تتأثر الأيقونات التي تم تطبيقها.</string>
     <string name="hideicon_dialog_title">تحذير!</string>
-    <string name="send_using">إرسال باستخدام…</string>
-    <string name="no_mail">لا يوجد أيتطبيقات بريد الإلكتروني مثبتة .</string>
+    <string name="hideicon_dialog_content">هل أنت متأكد من أنك تريد إخفاء أيقونة التطبيق في المشغل الخاص بك؟\nقد يتم إغلاق التطبيق بشكل غير متوقع وسيتم تعطيل الإشعارات تماماً.\nقد ترغب في قراءة الأسئلة الشائعة لتعلم كيفية جعلها تظهر مرة أخرى، قبل إخفائها.</string>
+    <string name="send_using">إرسال بواسطة…</string>
+    <string name="no_mail">لا يوجد تطبيق بريد مثبت</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>How to use the Icon Pack?</item>
