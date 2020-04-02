@@ -108,7 +108,7 @@
     </string-array>
     <string-array name="answers">
         <item>Je hebt een launcher nodig die icon packs aanvaard. De lijst van compatibele launchers kan je vinden in de \"toevoegen\" sectie, of in de Play Store beschrijving.</item>
-        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
+        <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Terapkan\", atau pilih ikon ke-4 dari bilah navigasi bawah. Dari sana Anda dapat memilih peluncur yang ingin Anda terapkan. Beberapa peluncur tidak mendukung terapkan otomatis dan Anda harus melakukannya secara manual melalui pengaturan.</item>
         <item>Ga terug naar de hoofdsectie van de app en druk op de tegel met de title \"Iconen\".</item>
         <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
         <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>

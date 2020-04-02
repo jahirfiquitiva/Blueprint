@@ -30,6 +30,7 @@
     <string name="clear">Tyhjennä</string>
     <string name="more_apps">Lisää sovelluksia</string>
     <string name="useful_links">Hyödyllisiä linkkejä</string>
+    <string name="impossible_open_themes">Teema sovellus ei aukea</string>
     <!-- Widgets Names -->
     <string name="clock_widget_title">Analoginen kello</string>
     <!-- Requests -->
