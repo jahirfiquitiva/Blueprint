@@ -117,6 +117,10 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             color(R.color.next_launcher_color)),
             */
         Launcher(
+            "niagara",
+            "Niagara Launcher", arrayOf("bitpit.launcher"),
+            color(R.color.niagara_launcher_color)),
+        Launcher(
             "nova",
             "Nova Launcher", arrayOf("com.teslacoilsw.launcher"),
             color(R.color.nova_launcher_color)),
@@ -171,7 +175,7 @@ fun Context.executeLauncherIntent(launcherKey: String) {
                 // 4 -> executeAtomLauncherIntent()
                 // 5 -> executeAviateLauncherIntent()
                 4 -> executeGoLauncherIntent()
-                5, 13 -> executeIconPacksNotSupportedIntent()
+                5, 14 -> executeIconPacksNotSupportedIntent()
                 6 -> executeHoloLauncherIntent()
                 7 -> executeHoloLauncherICSIntent()
                 // 8 -> executeKkLauncherIntent()
@@ -182,12 +186,13 @@ fun Context.executeLauncherIntent(launcherKey: String) {
                 11 -> executeLucidLauncherIntent()
                 // 14 -> executeMiniLauncherIntent()
                 // 15 -> executeNextLauncherIntent()
-                12 -> executeNovaLauncherIntent()
+                12 -> executeNiagaraLauncherIntent()
+                13 -> executeNovaLauncherIntent()
                 // 14 -> executeSLauncherIntent()
-                14 -> executeSmartLauncherIntent()
-                15 -> executeSmartLauncherProIntent()
-                16 -> executeSoloLauncherIntent()
-                17 -> executeTsfLauncherIntent()
+                15 -> executeSmartLauncherIntent()
+                16 -> executeSmartLauncherProIntent()
+                17 -> executeSoloLauncherIntent()
+                18 -> executeTsfLauncherIntent()
                 // 18 -> executeUniconIntent()
                 else -> showLauncherApplyError()
             }
@@ -372,7 +377,7 @@ private fun Context.executeLineageOSThemeEngineIntent() {
     var themesAppInstalled = isAppInstalled("org.cyanogenmod.theme.chooser") ||
         isAppInstalled("org.cyanogenmod.theme.chooser2") ||
         isAppInstalled("com.cyngn.theme.chooser")
-    
+
     attemptApply(
         if (themesAppInstalled) getString(R.string.impossible_open_themes)
         else getString(R.string.themes_app_not_installed)) {
@@ -429,6 +434,15 @@ private fun Context.executeNextLauncherIntent() {
         next.putExtra("pkgname", packageName)
         sendBroadcast(next)
         nextApply
+    }
+}
+
+private fun Context.executeNiagaraLauncherIntent() {
+    attemptApply {
+        Intent("bitpit.launcher.APPLY_ICONS").apply {
+            `package` = "bitpit.launcher"
+            putExtra("packageName", packageName)
+        }
     }
 }
 
