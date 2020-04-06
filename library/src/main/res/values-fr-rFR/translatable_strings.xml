@@ -33,7 +33,7 @@
     <!-- Icons filters -->
     <string name="filter">Filtre</string>
     <string name="clear">Effacer</string>
-    <string name="more_apps">Plus d\'applis</string>
+    <string name="more_apps">Plus d\'applications</string>
     <string name="general_info">Informations générales</string>
     <string name="useful_links">Liens utiles</string>
     <string name="columns">Nombre de colonnes</string>
