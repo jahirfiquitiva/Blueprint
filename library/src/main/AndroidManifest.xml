@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
 
+        <activity android:name=".ui.activities.BlueprintActivity" />
+
+        <activity
+            android:name=".ui.activities.BlueprintKuperActivity"
+            android:exported="false"
+            android:label="@string/templates" />
 
     </application>
 

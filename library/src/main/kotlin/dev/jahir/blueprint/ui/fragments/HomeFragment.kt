@@ -11,9 +11,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
+import dev.jahir.blueprint.data.models.Counter
 import dev.jahir.blueprint.data.models.HomeItem
 import dev.jahir.blueprint.data.models.Icon
+import dev.jahir.blueprint.data.models.IconsCounter
+import dev.jahir.blueprint.data.models.KustomCounter
+import dev.jahir.blueprint.data.models.WallpapersCounter
+import dev.jahir.blueprint.data.models.ZooperCounter
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
+import dev.jahir.blueprint.ui.activities.BlueprintKuperActivity
 import dev.jahir.blueprint.ui.adapters.HomeAdapter
 import dev.jahir.blueprint.ui.decorations.HomeGridSpacingItemDecoration
 import dev.jahir.frames.extensions.context.boolean
@@ -108,6 +114,19 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
     override fun onIconsPreviewClicked() {
         super.onIconsPreviewClicked()
         (activity as? BlueprintActivity)?.loadPreviewIcons(true)
+    }
+
+    override fun onCounterClicked(counter: Counter) {
+        super.onCounterClicked(counter)
+        when (counter) {
+            is IconsCounter -> (activity as? BlueprintActivity)?.changeFragment(R.id.icons)
+            is WallpapersCounter -> (activity as? BlueprintActivity)?.changeFragment(R.id.wallpapers)
+            is ZooperCounter, is KustomCounter -> {
+                (activity as? BlueprintActivity)?.let {
+                    it.startActivity(Intent(it, BlueprintKuperActivity::class.java))
+                }
+            }
+        }
     }
 
     override fun onAppLinkClicked(url: String, intent: Intent?) {
