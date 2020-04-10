@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/icons_preview_layout"
     android:layout_width="match_parent"
-    android:layout_height="216dp"
+    android:layout_height="wrap_content"
     android:background="?colorSurface"
     android:descendantFocusability="blocksDescendants"
-    android:foreground="?selectableItemBackground"
-    android:minHeight="216dp">
+    android:foreground="?selectableItemBackground">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/wallpaper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="240dp"
         android:layout_gravity="center"
         android:clickable="false"
         android:focusable="false"

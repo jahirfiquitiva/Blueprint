@@ -12,12 +12,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
-import dev.jahir.blueprint.extensions.drawableRes
 import dev.jahir.blueprint.ui.adapters.IconsPreviewAdapter
 import dev.jahir.frames.extensions.context.dimenPixelSize
 import dev.jahir.frames.extensions.context.integer
-import dev.jahir.frames.extensions.context.stringArray
-import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.views.visible
 import dev.jahir.frames.ui.decorations.GridSpacingItemDecoration
 
@@ -37,15 +34,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
 
     private val iconsAdapter: IconsPreviewAdapter by lazy { IconsPreviewAdapter() }
 
-    private var currentIcons: ArrayList<Icon> = ArrayList()
-        set(value) {
-            field.clear()
-            field.addAll(value)
-            removeItemDecoration(decoration)
-            iconsAdapter.icons = field
-            addItemDecoration(decoration)
-            if (field.isNotEmpty()) visible()
-        }
+    private val icons: ArrayList<Icon> = ArrayList()
 
     init {
         isSaveEnabled = true
@@ -54,39 +43,29 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         adapter = iconsAdapter
     }
 
-    fun resetIcons(force: Boolean = false) {
-        if (currentIcons.isNullOrEmpty() || force)
-            currentIcons = buildIconsList()
-    }
-
-    private fun buildIconsList(): ArrayList<Icon> {
-        val nextIcons = ArrayList<Icon>()
-        context.stringArray(R.array.icons_preview).filter { it.hasContent() }.forEach {
-            nextIcons.add(Icon(it, context.drawableRes(it)))
-        }
-        if (nextIcons.isNotEmpty()) {
-            val expectedIcons = context.integer(R.integer.icons_columns_count)
-            val shuffledIcons = nextIcons.distinctBy { it.name }.shuffled()
-            val maxSize =
-                if (shuffledIcons.size <= expectedIcons) shuffledIcons.size
-                else expectedIcons
-            nextIcons.clear()
-            nextIcons.addAll(shuffledIcons.subList(0, maxSize))
-        }
-        return nextIcons
+    internal fun setIcons(newIcons: List<Icon>) {
+        if (newIcons.isEmpty()) return
+        val expectedIcons = context.integer(R.integer.icons_columns_count)
+        val maxSize = if (newIcons.size <= expectedIcons) newIcons.size else expectedIcons
+        icons.clear()
+        icons.addAll(newIcons.subList(0, maxSize))
+        removeItemDecoration(decoration)
+        iconsAdapter.icons = icons
+        addItemDecoration(decoration)
+        if (icons.isNotEmpty()) visible()
     }
 
     override fun onSaveInstanceState(): Parcelable? {
         val superState = super.onSaveInstanceState()
         val myState = SavedState(superState)
-        myState.icons = currentIcons
+        myState.icons = icons
         return myState
     }
 
     override fun onRestoreInstanceState(state: Parcelable) {
         val savedState = state as? SavedState
         super.onRestoreInstanceState(savedState?.superState)
-        this.currentIcons = ArrayList(savedState?.icons.orEmpty())
+        setIcons(ArrayList(savedState?.icons.orEmpty()))
     }
 
     override fun onTouchEvent(e: MotionEvent?): Boolean = false

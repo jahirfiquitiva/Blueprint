@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import dev.jahir.blueprint.R
-import dev.jahir.blueprint.ui.fragments.BlueprintWallpapersFragment
+import dev.jahir.blueprint.data.viewmodels.HomeViewModel
 import dev.jahir.blueprint.ui.fragments.HomeFragment
+import dev.jahir.frames.extensions.utils.lazyViewModel
 import dev.jahir.frames.ui.activities.FramesActivity
 import dev.jahir.frames.ui.fragments.CollectionsFragment
 import dev.jahir.frames.ui.fragments.WallpapersFragment
+import dev.jahir.kuper.data.viewmodels.ComponentsViewModel
+import dev.jahir.kuper.ui.fragments.KuperWallpapersFragment
 
 abstract class BlueprintActivity : FramesActivity() {
 
@@ -17,16 +20,33 @@ abstract class BlueprintActivity : FramesActivity() {
     override val favoritesFragment: WallpapersFragment? = null
 
     override val wallpapersFragment: WallpapersFragment? by lazy {
-        BlueprintWallpapersFragment.create(ArrayList(wallpapersViewModel.wallpapers))
+        KuperWallpapersFragment.create(ArrayList(wallpapersViewModel.wallpapers))
     }
 
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
 
+    private val homeViewModel: HomeViewModel by lazyViewModel()
+    private val templatesViewModel: ComponentsViewModel by lazyViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         bottomNavigation?.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+
+        wallpapersViewModel.observeWallpapers(this) {
+            wallpapersFragment?.updateItems(ArrayList(it))
+            homeFragment.updateWallpapersCount(it.size)
+        }
+
+        homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
+        loadPreviewIcons()
+
+        templatesViewModel.observe(this) { homeFragment.updateComponentsCount(it) }
+        templatesViewModel.loadComponents(this)
         requestStoragePermission()
+    }
+
+    internal fun loadPreviewIcons(force: Boolean = false) {
+        homeViewModel.loadPreviewIcons(this, force)
     }
 
     override fun getNextFragment(itemId: Int): Pair<Pair<String?, Fragment?>?, Boolean>? =
