@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress CheckTagEmptyBody -->
+<resources>
+    <!-- These arrays are for the list of apps or links in main section. -->
+    <string-array name="home_list_titles">
+        <item>IconShowcase</item>
+        <item>An App</item>
+    </string-array>
+    <string-array name="home_list_descriptions">
+        <item>It is the old version of this awesome dashboard</item>
+        <item>This is an app</item>
+    </string-array>
+    <string-array name="home_list_icons">
+        <item>ic_na_launcher</item>
+        <item>ic_na_launcher</item>
+    </string-array>
+    <string-array name="home_list_links">
+        <item>https://github.com/jahirfiquitiva/Blueprint</item>
+        <item>https://play.google.com/store/apps/details?id=com.android.settings</item>
+    </string-array>
+</resources>

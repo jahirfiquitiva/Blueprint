@@ -1,6 +1,7 @@
 package dev.jahir.blueprint.ui.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
@@ -38,6 +39,13 @@ abstract class BlueprintActivity : FramesActivity() {
         }
 
         homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
+        homeViewModel.observeHomeItems(this) {
+            Log.d("Blueprint", "***************************************")
+            it.forEach { Log.d("Blueprint", it.toString()) }
+            Log.d("Blueprint", "***************************************")
+            homeFragment.updateHomeItems(it)
+        }
+        homeViewModel.loadHomeItems(this)
         loadPreviewIcons()
 
         templatesViewModel.observe(this) { homeFragment.updateComponentsCount(it) }
@@ -47,6 +55,11 @@ abstract class BlueprintActivity : FramesActivity() {
 
     internal fun loadPreviewIcons(force: Boolean = false) {
         homeViewModel.loadPreviewIcons(this, force)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        homeViewModel.destroy(this)
     }
 
     override fun getNextFragment(itemId: Int): Pair<Pair<String?, Fragment?>?, Boolean>? =

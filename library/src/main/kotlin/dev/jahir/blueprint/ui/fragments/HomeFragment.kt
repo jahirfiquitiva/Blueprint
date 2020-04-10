@@ -2,6 +2,7 @@ package dev.jahir.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.WallpaperManager
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
@@ -10,12 +11,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
+import dev.jahir.blueprint.data.models.HomeItem
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.adapters.HomeAdapter
 import dev.jahir.blueprint.ui.decorations.HomeGridSpacingItemDecoration
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.drawable
+import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.findView
@@ -83,6 +86,10 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
         adapter.iconsPreviewList = ArrayList(icons)
     }
 
+    internal fun updateHomeItems(items: List<HomeItem>) {
+        adapter.homeItems = ArrayList(items)
+    }
+
     internal fun updateWallpaper() {
         adapter.wallpaper = rightWallpaper
     }
@@ -101,6 +108,11 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
     override fun onIconsPreviewClicked() {
         super.onIconsPreviewClicked()
         (activity as? BlueprintActivity)?.loadPreviewIcons(true)
+    }
+
+    override fun onAppLinkClicked(url: String, intent: Intent?) {
+        super.onAppLinkClicked(url, intent)
+        intent?.let { activity?.startActivity(it) } ?: { context?.openLink(url) }()
     }
 
     companion object {

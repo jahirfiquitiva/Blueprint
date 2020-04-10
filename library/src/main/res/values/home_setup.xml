@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress CheckTagEmptyBody -->
+<resources>
+    <!-- These arrays are for the list of apps or links in main section. -->
+    <string-array name="home_list_titles"></string-array>
+    <string-array name="home_list_descriptions"></string-array>
+    <string-array name="home_list_icons"></string-array>
+    <string-array name="home_list_links"></string-array>
+</resources>

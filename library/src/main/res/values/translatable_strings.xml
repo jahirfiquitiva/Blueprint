@@ -4,4 +4,6 @@
     <string name="icons">Icons</string>
     <string name="request">Request</string>
     <string name="overview">Overview</string>
+    <string name="more_apps">More apps</string>
+    <string name="useful_links">Useful links</string>
 </resources>

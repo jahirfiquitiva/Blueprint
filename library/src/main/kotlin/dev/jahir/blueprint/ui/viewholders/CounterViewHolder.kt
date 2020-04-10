@@ -23,7 +23,8 @@ class CounterViewHolder(itemView: View) : SectionedViewHolder(itemView) {
     private val titleView: TextView? by itemView.findView(R.id.stat_title)
     private val descriptionView: TextView? by itemView.findView(R.id.stat_description)
 
-    fun bind(counter: Counter, listener: HomeItemsListener? = null) {
+    fun bind(counter: Counter?, listener: HomeItemsListener? = null) {
+        counter ?: return
         iconView?.setImageDrawable(
             context.drawable(counter.icon)
                 ?.tint(
