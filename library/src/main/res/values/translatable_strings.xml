@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="setup">Setup</string>
+    <string name="widgets">Widgets</string>
+
+    <string name="required_apps">Required apps</string>
+    <string name="assets">Assets</string>
+
+    <string name="required_for_templates">Required to use templates included</string>
+    <string name="required_for_widgets">Required to use widgets included</string>
+    <string name="required_for_wallpapers">Required to use wallpapers included</string>
+    <string name="required_for_lockscreens">Required to use lockscreens included</string>
+    <string name="required_assets">Assets required for templates to work properly</string>
+
+    <string name="install">Install</string>
+    <string name="app_not_installed">The required app is not installed</string>
+
+    <string name="template">Template</string>
+    <string name="templates">Templates</string>
+
+    <string name="x_templates">%1$s Templates</string>
+
+    <string name="assets_installed">Assets already installed</string>
+    <string name="apps_installed">Apps already installed</string>
+
+    <string name="copying_assets">Copying files to ZooperWidget/%1$s</string>
+    <string name="copied_assets_successfully">Copied assets successfully</string>
+    <string name="copied_assets_error">An unexpected error occurred while copying assets</string>
+
+    <string name="permission_request_assets">%1$s requires access to storage in order to be able to install assets</string>
+    <string name="permission_request_wallpaper">%1$s requires access to storage in order to be able to show your wallpaper in widgets previews</string>
+
+    <string name="open_komponents">In order to add a Komponent, open Kustom and press + on the editor Toolbar, then select Komponent and find this pack.</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress CheckTagEmptyBody -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--    This is the link for the JSON file where you have listed your wallpapers -->
+    <string name="json_url">https://jahir.dev/frames/frames.json</string>
+
+    <!--
+    Enable immediate download
+    When set to false, users must wait 3 hours after installing the app to be able to download
+    any wallpapers
+    -->
+    <bool name="allow_immediate_downloads">true</bool>
+
+    <!-- Choose whether you want colored tiles by default -->
+    <bool name="enable_colored_tiles">false</bool>
+
+    <!-- Choose whether you want filled collection preview by default -->
+    <bool name="enable_filled_collection_preview">false</bool>
+
+    <!-- Choose whether you want to show wallpaper palette colors or not -->
+    <bool name="show_wallpaper_palette_details">true</bool>
+
+    <!--
+    Show a custom image as placeholder while loading wallpapers or collections
+    Use drawable name without extensions
+    -->
+    <string name="wallpapers_placeholder" translatable="false"></string>
+    <string name="collections_placeholder" translatable="false"></string>
+</resources>

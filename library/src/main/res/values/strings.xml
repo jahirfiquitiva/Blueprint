@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="zooper_widget">Zooper Widget Pro</string>
+    <string name="kwgt">KWGT</string>
+    <string name="klwp">KLWP</string>
+    <string name="klck">KLCK</string>
+    <string name="kwgt_pro">KWGT Pro</string>
+    <string name="klwp_pro">KLWP Pro</string>
+    <string name="klck_pro">KLCK Pro</string>
+    <string name="komponent">Komponent</string>
+    <string name="komponents">Komponents</string>
+    <string name="media_utils">Media Utilities</string>
+    <string name="kolorette">Kolorette</string>
+</resources>
