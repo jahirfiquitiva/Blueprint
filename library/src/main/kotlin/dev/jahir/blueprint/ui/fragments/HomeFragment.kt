@@ -119,9 +119,15 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
     override fun onCounterClicked(counter: Counter) {
         super.onCounterClicked(counter)
         when (counter) {
-            is IconsCounter -> (activity as? BlueprintActivity)?.changeFragment(R.id.icons)
-            is WallpapersCounter -> (activity as? BlueprintActivity)?.changeFragment(R.id.wallpapers)
-            is ZooperCounter, is KustomCounter -> {
+            is IconsCounter -> {
+                (activity as? BlueprintActivity)?.bottomNavigation
+                    ?.setSelectedItemId(R.id.icons, true)
+            }
+            is WallpapersCounter -> {
+                (activity as? BlueprintActivity)?.bottomNavigation
+                    ?.setSelectedItemId(R.id.wallpapers, true)
+            }
+            is KustomCounter, is ZooperCounter -> {
                 (activity as? BlueprintActivity)?.let {
                     it.startActivity(Intent(it, BlueprintKuperActivity::class.java))
                 }

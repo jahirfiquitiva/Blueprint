@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/setup"
+        android:icon="@drawable/ic_setup"
+        android:orderInCategory="100"
+        android:title="@string/setup"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/widgets"
+        android:icon="@drawable/ic_widgets"
+        android:orderInCategory="200"
+        android:title="@string/widgets"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/wallpapers"
+        android:icon="@drawable/ic_wallpapers"
+        android:title="@string/wallpapers"
+        android:visible="false"
+        app:showAsAction="never" />
+</menu>
