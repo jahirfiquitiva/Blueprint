@@ -100,7 +100,7 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
 
     override fun onIconsPreviewClicked() {
         super.onIconsPreviewClicked()
-        (activity as? BlueprintActivity)?.loadPreviewIcons()
+        (activity as? BlueprintActivity)?.loadPreviewIcons(true)
     }
 
     companion object {
