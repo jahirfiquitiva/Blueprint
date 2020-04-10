@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--
+        Show a custom image as placeholder while loading icons
+        Use drawable name without extensions
+    -->
+    <string name="icons_placeholder"></string>
+
+    <!--
+        Set a drawable name in case you want to use a static picture for icons preview.
+        Leave empty if you don't want to use a static one.
+        Set the bool below to true if you want your static picture to be set by default, instead
+        of user's wallpaper. Otherwise, leave it as false.
+    -->
+    <string name="static_icons_preview_picture"></string>
+    <bool name="static_icons_preview_picture_by_default">false</bool>
+
+</resources>

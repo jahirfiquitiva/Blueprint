@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/icons_preview_layout"
+    android:layout_width="match_parent"
+    android:layout_height="216dp"
+    android:background="?colorSurface"
+    android:descendantFocusability="blocksDescendants"
+    android:foreground="?selectableItemBackground"
+    android:minHeight="216dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:clickable="false"
+        android:focusable="false"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
+
+    <dev.jahir.blueprint.ui.widgets.IconsPreviewRecyclerView
+        android:id="@+id/icons_preview_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:clickable="false"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:focusable="false"
+        android:padding="16dp"
+        android:visibility="gone" />
+
+</FrameLayout>

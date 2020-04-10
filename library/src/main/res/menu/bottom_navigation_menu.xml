@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/setup"
-        android:icon="@drawable/ic_setup"
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
         android:orderInCategory="100"
-        android:title="@string/setup"
+        android:title="@string/home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/widgets"
-        android:icon="@drawable/ic_widgets"
+        android:id="@+id/icons"
+        android:icon="@drawable/ic_icons"
         android:orderInCategory="200"
-        android:title="@string/widgets"
+        android:title="@string/icons"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/wallpapers"
@@ -20,13 +20,15 @@
         android:title="@string/wallpapers"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/collections"
-        android:title="@string/collections"
-        android:visible="false"
-        app:showAsAction="never" />
+        android:id="@+id/apply"
+        android:icon="@drawable/ic_apply"
+        android:orderInCategory="400"
+        android:title="@string/apply"
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/favorites"
-        android:title="@string/favorites"
-        android:visible="false"
-        app:showAsAction="never" />
+        android:id="@+id/request"
+        android:icon="@drawable/ic_request"
+        android:orderInCategory="500"
+        android:title="@string/request"
+        app:showAsAction="ifRoom" />
 </menu>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!--    Set to 'true' if your app requires Media Utils. 'false' otherwise. -->
-    <bool name="media_utils_required">false</bool>
-
-    <!--    Set to 'true' if your app requires Kolorette. 'false' otherwise. -->
-    <bool name="kolorette_required">false</bool>
-</resources>
