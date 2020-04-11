@@ -16,11 +16,4 @@
     <string name="static_icons_preview_picture"></string>
     <bool name="static_icons_preview_picture_by_default">false</bool>
 
-    <!--
-        Do you want to show overview in home section?
-        True, means yes.
-        False, means no.
-    -->
-    <bool name="show_overview">true</bool>
-
 </resources>

@@ -24,7 +24,7 @@ import dev.jahir.frames.ui.viewholders.SectionHeaderViewHolder
 
 @Suppress("MemberVisibilityCanBePrivate")
 class HomeAdapter(
-    private var showOverview: Boolean = true,
+    val showOverview: Boolean = true,
     private var listener: HomeItemsListener? = null
 ) : SectionedRecyclerViewAdapter<SectionedViewHolder>() {
 
@@ -121,7 +121,7 @@ class HomeAdapter(
                 when (section) {
                     1 -> {
                         if (showOverview) it.bind(R.string.overview, 0, false)
-                        else it.bind(R.string.more_apps, 0)
+                        else it.bind(R.string.more_apps, 0, false)
                     }
                     2 -> {
                         if (showOverview) it.bind(R.string.more_apps, 0)
@@ -170,5 +170,5 @@ class HomeAdapter(
         section: Int,
         relativePosition: Int,
         absolutePosition: Int
-    ): Int = if (section == 1) 1 else 2
+    ): Int = if (section == 1 && showOverview) 1 else 2
 }

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><!--suppress CheckTagEmptyBody -->
 <resources>
+    <!--
+        Do you want to show overview in home section?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="show_overview">true</bool>
+
     <!-- These arrays are for the list of apps or links in main section. -->
     <string-array name="home_list_titles"></string-array>
     <string-array name="home_list_descriptions"></string-array>

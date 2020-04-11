@@ -13,11 +13,12 @@ open class HomeGridSpacingItemDecoration(
 
     override fun internalOffsetsSetup(outRect: Rect, view: View, parent: RecyclerView) {
         val absolutePosition = parent.getChildAdapterPosition(view)
+        val showOverview = (parent.adapter as? HomeAdapter)?.showOverview == true
         val actualPosition =
             (parent.adapter as? HomeAdapter)?.getRelativePosition(absolutePosition)
         val relativePosition = actualPosition?.relativePos() ?: -1
         val section = actualPosition?.section() ?: 0
-        if (section == 1 && relativePosition >= 0) {
+        if (section == 1 && relativePosition >= 0 && showOverview) {
             val column = relativePosition % spanCount
             outRect.left = spacing - column * spacing / spanCount
             outRect.right = (column + 1) * spacing / spanCount
