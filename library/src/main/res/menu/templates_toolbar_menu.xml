@@ -10,11 +10,4 @@
         app:actionViewClass="dev.jahir.frames.ui.widgets.CleanSearchView"
         app:showAsAction="ifRoom|collapseActionView" />
 
-    <item
-        android:id="@+id/changelog"
-        android:icon="@drawable/ic_changelog"
-        android:orderInCategory="200"
-        android:title="@string/changelog"
-        app:showAsAction="never" />
-
 </menu>

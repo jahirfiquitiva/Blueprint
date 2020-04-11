@@ -1,7 +1,10 @@
 package dev.jahir.blueprint.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
@@ -53,8 +56,17 @@ abstract class BlueprintActivity : FramesActivity() {
         requestStoragePermission()
     }
 
-    internal fun loadPreviewIcons(force: Boolean = false) {
-        homeViewModel.loadPreviewIcons(this, force)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val created = super.onCreateOptionsMenu(menu)
+        menu?.findItem(R.id.select_all)?.isVisible = currentItemId == R.id.request
+        return created
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.templates -> startActivity(Intent(this, BlueprintKuperActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroy() {
@@ -73,6 +85,17 @@ abstract class BlueprintActivity : FramesActivity() {
         homeFragment.updateWallpaper()
     }
 
+    override fun canShowSearch(itemId: Int): Boolean =
+        when (itemId) {
+            R.id.home -> false
+            else -> super.canShowSearch(itemId)
+        }
+
     override val initialFragmentTag: String = HomeFragment.TAG
     override val initialItemId: Int = R.id.home
+    override fun getMenuRes(): Int = R.menu.blueprint_toolbar_menu
+
+    internal fun loadPreviewIcons(force: Boolean = false) {
+        homeViewModel.loadPreviewIcons(this, force)
+    }
 }
