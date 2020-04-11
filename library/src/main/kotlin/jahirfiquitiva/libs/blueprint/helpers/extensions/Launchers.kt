@@ -128,6 +128,10 @@ internal val Context.supportedLaunchers: ArrayList<Launcher>
             "pixel",
             "Pixel Launcher", arrayOf("com.google.android.apps.nexuslauncher"),
             color(R.color.pixel_launcher_color), false),
+        Launcher(
+            "posidon",
+            "posidon launcher", arrayOf("posidon.launcher"),
+            color(R.color.posidon_launcher_color)),
         /*
         Launcher(
             "s",
@@ -189,10 +193,11 @@ fun Context.executeLauncherIntent(launcherKey: String) {
                 12 -> executeNiagaraLauncherIntent()
                 13 -> executeNovaLauncherIntent()
                 // 14 -> executeSLauncherIntent()
-                15 -> executeSmartLauncherIntent()
-                16 -> executeSmartLauncherProIntent()
-                17 -> executeSoloLauncherIntent()
-                18 -> executeTsfLauncherIntent()
+                15 -> executePosidonLauncherIntent()
+                16 -> executeSmartLauncherIntent()
+                17 -> executeSmartLauncherProIntent()
+                18 -> executeSoloLauncherIntent()
+                19 -> executeTsfLauncherIntent()
                 // 18 -> executeUniconIntent()
                 else -> showLauncherApplyError()
             }
@@ -462,6 +467,15 @@ private fun Context.executeSLauncherIntent() {
         Intent("com.s.launcher.APPLY_ICON_THEME").apply {
             putExtra("com.s.launcher.theme.EXTRA_PKG", packageName)
             putExtra("com.s.launcher.theme.EXTRA_NAME", getString(R.string.app_name))
+        }
+    }
+}
+
+private fun Context.executePosidonLauncherIntent() {
+    attemptApply {
+        Intent(Intent.ACTION_MAIN).apply {
+            component = ComponentName("posidon.launcher", "posidon.launcher.external.ApplyIcons")
+            putExtra("iconpack", packageName)
         }
     }
 }
