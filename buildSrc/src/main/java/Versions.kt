@@ -16,5 +16,5 @@ object Versions {
     const val buildTools = "29.0.3"
 
     // Blueprint
-    const val kuper = "2.0.9"
+    const val kuper = "2.1.0"
 }
