@@ -10,4 +10,11 @@
     <string name="help">Help</string>
     <string name="x_icons">%1$s icons</string>
     <string name="search_icons">Search icons…</string>
+
+    <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to install it from the Google Play Store?</string>
+    <string name="no_compatible_launcher_title">This launcher is NOT Compatible</string>
+    <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs and therefore you cannot use this icon pack with this launcher. Please do not rate the icon pack negatively for this reason. There is a solution that you can try for yourself, but it requires the use of an external app. Would you like to download it?</string>
+    <string name="impossible_open_themes">Impossible to open themes app</string>
+    <string name="themes_app_not_installed">Themes app is not installed in this device</string>
+    <string name="coming_soon">Coming soon</string>
 </resources>

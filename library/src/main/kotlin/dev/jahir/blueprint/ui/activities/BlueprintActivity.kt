@@ -11,6 +11,7 @@ import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.viewmodels.HomeViewModel
 import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
+import dev.jahir.blueprint.ui.fragments.ApplyFragment
 import dev.jahir.blueprint.ui.fragments.HomeFragment
 import dev.jahir.blueprint.ui.fragments.IconsCategoriesFragment
 import dev.jahir.blueprint.ui.fragments.dialogs.IconDialog
@@ -34,6 +35,7 @@ abstract class BlueprintActivity : FramesActivity() {
 
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
     private val iconsCategoriesFragment: IconsCategoriesFragment by lazy { IconsCategoriesFragment() }
+    private val applyFragment: ApplyFragment by lazy { ApplyFragment() }
 
     private val homeViewModel: HomeViewModel by lazyViewModel()
     private val iconsViewModel: IconsCategoriesViewModel by lazyViewModel()
@@ -109,6 +111,7 @@ abstract class BlueprintActivity : FramesActivity() {
         when (itemId) {
             R.id.home -> Pair(Pair(HomeFragment.TAG, homeFragment), true)
             R.id.icons -> Pair(Pair(IconsCategoriesFragment.TAG, iconsCategoriesFragment), true)
+            R.id.apply -> Pair(Pair(ApplyFragment.TAG, applyFragment), true)
             else -> super.getNextFragment(itemId)
         }
 

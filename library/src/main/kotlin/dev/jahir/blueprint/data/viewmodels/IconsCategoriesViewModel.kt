@@ -97,7 +97,7 @@ class IconsCategoriesViewModel : ViewModel() {
                     ).forEach { iconName ->
                         val iconRes = context.drawableRes(iconName)
                         if (iconRes != 0) {
-                            icons += Icon(iconName.clean().blueprintFormat(), iconRes)
+                            icons.add(Icon(iconName.clean().blueprintFormat(), iconRes))
                         } else {
                             reportIconNotFound(iconName, "icon_pack.xml", context.getAppName())
                         }
