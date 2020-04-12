@@ -7,7 +7,10 @@ import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.ui.viewholders.IconViewHolder
 import dev.jahir.frames.extensions.views.inflate
 
-class IconsPreviewAdapter : RecyclerView.Adapter<IconViewHolder>() {
+class IconsPreviewAdapter(
+    var animate: Boolean = true,
+    var onClick: ((Icon) -> Unit)? = null
+) : RecyclerView.Adapter<IconViewHolder>() {
 
     var icons: ArrayList<Icon> = ArrayList()
         set(value) {
@@ -20,7 +23,7 @@ class IconsPreviewAdapter : RecyclerView.Adapter<IconViewHolder>() {
         IconViewHolder(parent.inflate(R.layout.item_icon))
 
     override fun onBindViewHolder(holder: IconViewHolder, position: Int) =
-        holder.bind(icons[position])
+        holder.bind(icons[position], animate, onClick)
 
     override fun getItemCount(): Int = icons.size
 }

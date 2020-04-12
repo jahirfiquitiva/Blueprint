@@ -18,6 +18,7 @@ import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.views.visible
 import dev.jahir.frames.ui.decorations.GridSpacingItemDecoration
 
+@Suppress("unused")
 @SuppressLint("ClickableViewAccessibility")
 class IconsPreviewRecyclerView @JvmOverloads constructor(
     context: Context,
@@ -32,15 +33,29 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         )
     }
 
-    private val iconsAdapter: IconsPreviewAdapter by lazy { IconsPreviewAdapter() }
+    private val iconsAdapter: IconsPreviewAdapter by lazy {
+        IconsPreviewAdapter()
+    }
 
     private val icons: ArrayList<Icon> = ArrayList()
+
+    internal var animateIcons: Boolean = true
+        set(value) {
+            field = value
+            iconsAdapter.animate = value
+            iconsAdapter.notifyDataSetChanged()
+        }
 
     init {
         isSaveEnabled = true
         isNestedScrollingEnabled = false
         layoutManager = LayoutManager(context, context.integer(R.integer.icons_columns_count))
         adapter = iconsAdapter
+    }
+
+    internal fun setOnIconClickListener(onClick: ((Icon) -> Unit)? = null) {
+        iconsAdapter.onClick = onClick
+        iconsAdapter.notifyDataSetChanged()
     }
 
     internal fun setIcons(newIcons: List<Icon>) {

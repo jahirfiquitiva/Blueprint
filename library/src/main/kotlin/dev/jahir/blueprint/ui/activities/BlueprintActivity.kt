@@ -2,7 +2,6 @@ package dev.jahir.blueprint.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
@@ -10,7 +9,10 @@ import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.viewmodels.HomeViewModel
+import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
 import dev.jahir.blueprint.ui.fragments.HomeFragment
+import dev.jahir.blueprint.ui.fragments.IconsCategoriesFragment
+import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.utils.lazyViewModel
 import dev.jahir.frames.ui.activities.FramesActivity
 import dev.jahir.frames.ui.fragments.CollectionsFragment
@@ -28,8 +30,10 @@ abstract class BlueprintActivity : FramesActivity() {
     }
 
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
+    private val iconsCategoriesFragment: IconsCategoriesFragment by lazy { IconsCategoriesFragment() }
 
     private val homeViewModel: HomeViewModel by lazyViewModel()
+    private val iconsViewModel: IconsCategoriesViewModel by lazyViewModel()
     private val templatesViewModel: ComponentsViewModel by lazyViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,17 +46,17 @@ abstract class BlueprintActivity : FramesActivity() {
         }
 
         homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
-        homeViewModel.observeHomeItems(this) {
-            Log.d("Blueprint", "***************************************")
-            it.forEach { Log.d("Blueprint", it.toString()) }
-            Log.d("Blueprint", "***************************************")
-            homeFragment.updateHomeItems(it)
+        homeViewModel.observeHomeItems(this) { homeFragment.updateHomeItems(it) }
+        iconsViewModel.observe(this) {
+            iconsCategoriesFragment.updateItems(it)
+            homeFragment.updateIconsCount(iconsViewModel.iconsCount)
         }
+        templatesViewModel.observe(this) { homeFragment.updateComponentsCount(it) }
+
         homeViewModel.loadHomeItems(this)
         loadPreviewIcons()
-
-        templatesViewModel.observe(this) { homeFragment.updateComponentsCount(it) }
-        templatesViewModel.loadComponents(this)
+        if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents(this)
+        loadIconsCategories()
         requestStoragePermission()
     }
 
@@ -72,11 +76,14 @@ abstract class BlueprintActivity : FramesActivity() {
     override fun onDestroy() {
         super.onDestroy()
         homeViewModel.destroy(this)
+        iconsViewModel.destroy(this)
+        templatesViewModel.destroy(this)
     }
 
     override fun getNextFragment(itemId: Int): Pair<Pair<String?, Fragment?>?, Boolean>? =
         when (itemId) {
             R.id.home -> Pair(Pair(HomeFragment.TAG, homeFragment), true)
+            R.id.icons -> Pair(Pair(IconsCategoriesFragment.TAG, iconsCategoriesFragment), true)
             else -> super.getNextFragment(itemId)
         }
 
@@ -94,8 +101,14 @@ abstract class BlueprintActivity : FramesActivity() {
     override val initialFragmentTag: String = HomeFragment.TAG
     override val initialItemId: Int = R.id.home
     override fun getMenuRes(): Int = R.menu.blueprint_toolbar_menu
+    override fun shouldLoadCollections(): Boolean = false
+    override fun shouldLoadFavorites(): Boolean = false
 
     internal fun loadPreviewIcons(force: Boolean = false) {
         homeViewModel.loadPreviewIcons(this, force)
+    }
+
+    internal fun loadIconsCategories() {
+        iconsViewModel.loadIconsCategories(this)
     }
 }

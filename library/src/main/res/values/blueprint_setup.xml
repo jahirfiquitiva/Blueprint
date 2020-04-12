@@ -16,4 +16,10 @@
     <string name="static_icons_preview_picture"></string>
     <bool name="static_icons_preview_picture_by_default">false</bool>
 
+    <!--
+        Do you want the app to read the icons from res/xml/drawable.xml ? (true)
+        Or do you prefer the icons to be loaded from res/values/icon_pack.xml ? (false)
+    -->
+    <bool name="xml_drawable_enabled">false</bool>
+
 </resources>

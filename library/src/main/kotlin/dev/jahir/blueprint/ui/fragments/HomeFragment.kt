@@ -100,6 +100,10 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
         adapter.wallpaper = rightWallpaper
     }
 
+    internal fun updateIconsCount(count: Int) {
+        adapter.iconsCount = count
+    }
+
     internal fun updateWallpapersCount(count: Int) {
         adapter.wallpapersCount = count
     }

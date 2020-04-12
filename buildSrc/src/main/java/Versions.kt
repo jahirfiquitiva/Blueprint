@@ -2,7 +2,7 @@
 
 object Versions {
     // Plugins
-    const val gradle = "3.6.1"
+    const val gradle = "3.6.2"
     const val kotlin = "1.3.71"
     const val jitpack = "2.1"
 
@@ -15,6 +15,6 @@ object Versions {
     const val targetSdk = 29
     const val buildTools = "29.0.3"
 
-    // Blueprint
-    const val kuper = "2.1.0"
+    // Kuper
+    const val kuper = "2.1.1"
 }

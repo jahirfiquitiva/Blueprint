@@ -6,4 +6,5 @@
     android:layout_height="match_parent"
     android:foreground="?attr/selectableItemBackground"
     android:padding="@dimen/grids_spacing"
-    tools:ignore="ContentDescription,UnusedAttribute" />
+    tools:ignore="ContentDescription,UnusedAttribute"
+    tools:srcCompat="@drawable/ic_na_launcher" />
