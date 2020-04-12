@@ -48,18 +48,20 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
         iconView?.apply {
             scaleX = 0F
             scaleY = 0F
+            alpha = 0F
             setImageDrawable(drawable)
             if (animate) {
                 animate().scaleX(1F)
                     .scaleY(1F)
+                    .alpha(1F)
                     .setStartDelay(75)
                     .setDuration(200)
                     .start()
             } else {
                 scaleX = 1F
                 scaleY = 1F
+                alpha = 1F
             }
         }
     }
-
 }

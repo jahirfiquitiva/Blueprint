@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:orientation="vertical">
+
+    <dev.jahir.kuper.ui.widgets.SquaredImageView
+        android:id="@+id/icon"
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:clickable="false"
+        tools:ignore="ContentDescription,PrivateResource" />
+
+</LinearLayout>

@@ -53,7 +53,7 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
     }
 
     private fun onIconClick(icon: Icon) {
-        
+        (activity as? BlueprintActivity)?.showIconDialog(icon)
     }
 
     companion object {

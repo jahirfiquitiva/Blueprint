@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import dev.jahir.blueprint.R
+import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.viewmodels.HomeViewModel
 import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
 import dev.jahir.blueprint.ui.fragments.HomeFragment
 import dev.jahir.blueprint.ui.fragments.IconsCategoriesFragment
+import dev.jahir.blueprint.ui.fragments.dialogs.IconDialog
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.utils.lazyViewModel
 import dev.jahir.frames.ui.activities.FramesActivity
@@ -35,6 +37,8 @@ abstract class BlueprintActivity : FramesActivity() {
     private val homeViewModel: HomeViewModel by lazyViewModel()
     private val iconsViewModel: IconsCategoriesViewModel by lazyViewModel()
     private val templatesViewModel: ComponentsViewModel by lazyViewModel()
+
+    private var iconDialog: IconDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,9 +79,18 @@ abstract class BlueprintActivity : FramesActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        dismissIconDialog()
         homeViewModel.destroy(this)
         iconsViewModel.destroy(this)
         templatesViewModel.destroy(this)
+    }
+
+    private fun dismissIconDialog() {
+        try {
+            iconDialog?.dismiss()
+            iconDialog = null
+        } catch (e: Exception) {
+        }
     }
 
     override fun getNextFragment(itemId: Int): Pair<Pair<String?, Fragment?>?, Boolean>? =
@@ -110,5 +123,12 @@ abstract class BlueprintActivity : FramesActivity() {
 
     internal fun loadIconsCategories() {
         iconsViewModel.loadIconsCategories(this)
+    }
+
+    internal fun showIconDialog(icon: Icon?) {
+        icon ?: return
+        dismissIconDialog()
+        iconDialog = IconDialog.create(icon)
+        iconDialog?.show(this)
     }
 }
