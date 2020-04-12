@@ -24,9 +24,16 @@ import dev.jahir.frames.ui.viewholders.SectionHeaderViewHolder
 
 @Suppress("MemberVisibilityCanBePrivate")
 class HomeAdapter(
-    val showOverview: Boolean = true,
+    showOverview: Boolean = true,
     private var listener: HomeItemsListener? = null
 ) : SectionedRecyclerViewAdapter<SectionedViewHolder>() {
+
+    var showOverview: Boolean = showOverview
+        set(value) {
+            if (value == field) return
+            field = value
+            notifyDataSetChanged()
+        }
 
     var wallpaper: Drawable? = null
         set(value) {

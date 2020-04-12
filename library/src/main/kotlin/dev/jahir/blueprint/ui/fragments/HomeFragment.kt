@@ -29,7 +29,6 @@ import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.findView
 import dev.jahir.frames.ui.widgets.StatefulRecyclerView
-import dev.jahir.kuper.data.models.Component
 import dev.jahir.kuper.extensions.hasStoragePermission
 
 @SuppressLint("MissingPermission")
@@ -62,7 +61,7 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
         }
 
     private val adapter: HomeAdapter by lazy {
-        HomeAdapter(context?.boolean(R.bool.show_overview) == true, this)
+        HomeAdapter(context?.boolean(R.bool.show_overview, true) == true, this)
     }
 
     private var recyclerView: StatefulRecyclerView? = null
@@ -86,6 +85,8 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
         recyclerView?.adapter = adapter
         recyclerView?.addItemDecoration(HomeGridSpacingItemDecoration(columnsCount, 8.dpToPx))
         recyclerView?.loading = false
+        adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
+        (activity as? BlueprintActivity)?.repostCounters()
     }
 
     internal fun updateIconsPreview(icons: List<Icon>) {
@@ -108,11 +109,12 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
         adapter.wallpapersCount = count
     }
 
-    internal fun updateComponentsCount(components: List<Component>) {
-        adapter.kustomCount =
-            components.filter { it.type != Component.Type.ZOOPER && it.type != Component.Type.UNKNOWN }.size
-        adapter.zooperCount =
-            components.filter { it.type == Component.Type.ZOOPER && it.type != Component.Type.UNKNOWN }.size
+    internal fun updateKustomCount(count: Int) {
+        adapter.kustomCount = count
+    }
+
+    internal fun updateZooperCount(count: Int) {
+        adapter.zooperCount = count
     }
 
     override fun onIconsPreviewClicked() {

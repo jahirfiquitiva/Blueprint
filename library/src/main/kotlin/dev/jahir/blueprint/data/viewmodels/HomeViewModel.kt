@@ -10,6 +10,7 @@ import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.HomeItem
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.extensions.drawableRes
+import dev.jahir.blueprint.ui.fragments.HomeFragment
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.stringArray
 import dev.jahir.frames.extensions.resources.hasContent
@@ -27,6 +28,11 @@ class HomeViewModel : ViewModel() {
     private val homeItemsData: MutableLiveData<List<HomeItem>> by lazyMutableLiveData()
     val homeItems: List<HomeItem>
         get() = homeItemsData.value.orEmpty()
+
+    private val iconsCountData: MutableLiveData<Int> by lazyMutableLiveData()
+    private val wallpapersCountData: MutableLiveData<Int> by lazyMutableLiveData()
+    private val kustomCountData: MutableLiveData<Int> by lazyMutableLiveData()
+    private val zooperCountData: MutableLiveData<Int> by lazyMutableLiveData()
 
     fun loadPreviewIcons(context: Context?, force: Boolean = false) {
         context ?: return
@@ -90,8 +96,62 @@ class HomeViewModel : ViewModel() {
         homeItemsData.observe(owner, Observer(onUpdated))
     }
 
+    fun postIconsCount(count: Int? = 0) {
+        iconsCountData.postValue(count)
+    }
+
+    fun postWallpapersCount(count: Int? = 0) {
+        wallpapersCountData.postValue(count)
+    }
+
+    fun postKustomCount(count: Int? = 0) {
+        kustomCountData.postValue(count)
+    }
+
+    fun postZooperCount(count: Int? = 0) {
+        zooperCountData.postValue(count)
+    }
+
+    private fun observeIconsCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
+        onUpdated(iconsCountData.value ?: 0)
+        iconsCountData.observe(owner, Observer(onUpdated))
+    }
+
+    private fun observeWallpapersCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
+        onUpdated(wallpapersCountData.value ?: 0)
+        wallpapersCountData.observe(owner, Observer(onUpdated))
+    }
+
+    private fun observeKustomCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
+        onUpdated(kustomCountData.value ?: 0)
+        kustomCountData.observe(owner, Observer(onUpdated))
+    }
+
+    private fun observeZooperCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
+        onUpdated(zooperCountData.value ?: 0)
+        zooperCountData.observe(owner, Observer(onUpdated))
+    }
+
+    fun observeCounters(owner: LifecycleOwner, fragment: HomeFragment? = null) {
+        observeIconsCount(owner) { fragment?.updateIconsCount(it) }
+        observeWallpapersCount(owner) { fragment?.updateWallpapersCount(it) }
+        observeKustomCount(owner) { fragment?.updateKustomCount(it) }
+        observeZooperCount(owner) { fragment?.updateZooperCount(it) }
+    }
+
+    fun repostCounters() {
+        iconsCountData.postValue(iconsCountData.value ?: 0)
+        wallpapersCountData.postValue(wallpapersCountData.value ?: 0)
+        kustomCountData.postValue(kustomCountData.value ?: 0)
+        zooperCountData.postValue(zooperCountData.value ?: 0)
+    }
+
     fun destroy(owner: LifecycleOwner) {
         iconsPreviewData.removeObservers(owner)
         homeItemsData.removeObservers(owner)
+        iconsCountData.removeObservers(owner)
+        wallpapersCountData.removeObservers(owner)
+        kustomCountData.removeObservers(owner)
+        zooperCountData.removeObservers(owner)
     }
 }

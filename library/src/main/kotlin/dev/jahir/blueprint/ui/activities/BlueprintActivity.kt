@@ -19,6 +19,7 @@ import dev.jahir.frames.extensions.utils.lazyViewModel
 import dev.jahir.frames.ui.activities.FramesActivity
 import dev.jahir.frames.ui.fragments.CollectionsFragment
 import dev.jahir.frames.ui.fragments.WallpapersFragment
+import dev.jahir.kuper.data.models.Component
 import dev.jahir.kuper.data.viewmodels.ComponentsViewModel
 import dev.jahir.kuper.ui.fragments.KuperWallpapersFragment
 
@@ -47,20 +48,31 @@ abstract class BlueprintActivity : FramesActivity() {
         wallpapersViewModel.observeWallpapers(this) {
             wallpapersFragment?.updateItems(ArrayList(it))
             homeFragment.updateWallpapersCount(it.size)
+            homeViewModel.postWallpapersCount(it.size)
         }
-
-        homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
-        homeViewModel.observeHomeItems(this) { homeFragment.updateHomeItems(it) }
+        templatesViewModel.observe(this) { components ->
+            val kustomCount =
+                components.filter { it.type != Component.Type.ZOOPER && it.type != Component.Type.UNKNOWN }.size
+            val zooperCount = components.filter { it.type == Component.Type.ZOOPER }.size
+            homeFragment.updateKustomCount(kustomCount)
+            homeViewModel.postKustomCount(kustomCount)
+            homeFragment.updateZooperCount(zooperCount)
+            homeViewModel.postZooperCount(zooperCount)
+        }
         iconsViewModel.observe(this) {
             iconsCategoriesFragment.updateItems(it)
             homeFragment.updateIconsCount(iconsViewModel.iconsCount)
+            homeViewModel.postIconsCount(iconsViewModel.iconsCount)
         }
-        templatesViewModel.observe(this) { homeFragment.updateComponentsCount(it) }
+
+        homeViewModel.observeCounters(this, homeFragment)
+        homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
+        homeViewModel.observeHomeItems(this) { homeFragment.updateHomeItems(it) }
 
         homeViewModel.loadHomeItems(this)
         loadPreviewIcons()
-        if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents(this)
         loadIconsCategories()
+        if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents(this)
         requestStoragePermission()
     }
 
@@ -116,6 +128,10 @@ abstract class BlueprintActivity : FramesActivity() {
     override fun getMenuRes(): Int = R.menu.blueprint_toolbar_menu
     override fun shouldLoadCollections(): Boolean = false
     override fun shouldLoadFavorites(): Boolean = false
+
+    internal fun repostCounters() {
+        homeViewModel.repostCounters()
+    }
 
     internal fun loadPreviewIcons(force: Boolean = false) {
         homeViewModel.loadPreviewIcons(this, force)
