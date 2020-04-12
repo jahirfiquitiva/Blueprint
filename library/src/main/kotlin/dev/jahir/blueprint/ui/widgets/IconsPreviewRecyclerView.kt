@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
-import dev.jahir.blueprint.ui.adapters.IconsPreviewAdapter
+import dev.jahir.blueprint.ui.adapters.IconsAdapter
 import dev.jahir.frames.extensions.context.dimenPixelSize
 import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.views.visible
@@ -33,8 +33,8 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         )
     }
 
-    private val iconsAdapter: IconsPreviewAdapter by lazy {
-        IconsPreviewAdapter()
+    private val iconsAdapter: IconsAdapter by lazy {
+        IconsAdapter()
     }
 
     private val icons: ArrayList<Icon> = ArrayList()

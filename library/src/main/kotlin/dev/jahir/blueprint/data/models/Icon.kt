@@ -6,7 +6,7 @@ import androidx.annotation.DrawableRes
 import dev.jahir.blueprint.extensions.createParcel
 
 data class Icon(val name: String, @DrawableRes val resId: Int) : Parcelable, Comparable<Icon> {
-    
+
     constructor(parcelIn: Parcel) : this(
         parcelIn.readString().orEmpty(),
         parcelIn.readInt()
@@ -21,6 +21,7 @@ data class Icon(val name: String, @DrawableRes val resId: Int) : Parcelable, Com
     override fun compareTo(other: Icon): Int = name.compareTo(other.name)
 
     companion object {
-        val CREATOR = createParcel { Icon(it) }
+        @JvmField
+        val CREATOR: Parcelable.Creator<Icon> = createParcel { Icon(it) }
     }
 }

@@ -1,6 +1,5 @@
 package dev.jahir.blueprint.ui.viewholders
 
-import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
@@ -32,7 +31,6 @@ class IconsCategoryPreviewViewHolder(itemView: View) : RecyclerView.ViewHolder(i
     private val categoryOpenBtnView: AppCompatImageView? by itemView.findView(R.id.category_open_btn)
     private val categoryIconsPreviewView: IconsPreviewRecyclerView? by itemView.findView(R.id.category_icons_preview)
 
-    @SuppressLint("SetTextI18n")
     fun bind(
         category: IconsCategory,
         showDivider: Boolean = true,

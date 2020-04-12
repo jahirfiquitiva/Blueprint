@@ -7,6 +7,7 @@ import dev.jahir.blueprint.R
 import dev.jahir.blueprint.extensions.createParcel
 import dev.jahir.frames.extensions.context.integer
 
+@Suppress("unused")
 data class IconsCategory(
     val title: String,
     private val icons: ArrayList<Icon> = ArrayList()
@@ -28,7 +29,8 @@ data class IconsCategory(
     override fun describeContents(): Int = 0
 
     companion object {
-        val CREATOR = createParcel { IconsCategory(it) }
+        @JvmField
+        val CREATOR: Parcelable.Creator<IconsCategory> = createParcel { IconsCategory(it) }
     }
 
     fun setIcons(newIcons: ArrayList<Icon>) {

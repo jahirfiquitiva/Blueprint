@@ -1,11 +1,13 @@
 package dev.jahir.blueprint.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.IconsCategory
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
+import dev.jahir.blueprint.ui.activities.IconsCategoryActivity
 import dev.jahir.blueprint.ui.adapters.IconsCategoriesAdapter
 import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.resources.lower
@@ -49,7 +51,10 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
     }
 
     private fun onOpenCategory(category: IconsCategory) {
-
+        context?.startActivity(
+            Intent(context, IconsCategoryActivity::class.java).apply {
+                putExtra(IconsCategoryActivity.CATEGORY_KEY, category)
+            })
     }
 
     private fun onIconClick(icon: Icon) {

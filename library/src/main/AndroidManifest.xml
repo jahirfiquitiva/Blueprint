@@ -18,6 +18,10 @@
             android:exported="false"
             android:label="@string/templates" />
 
+        <activity
+            android:name=".ui.activities.IconsCategoryActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
