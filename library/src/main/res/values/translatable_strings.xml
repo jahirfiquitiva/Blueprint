@@ -17,4 +17,7 @@
     <string name="impossible_open_themes">Impossible to open themes app</string>
     <string name="themes_app_not_installed">Themes app is not installed in this device</string>
     <string name="coming_soon">Coming soon</string>
+    <string name="quick_apply">Quick Apply</string>
+    <string name="send_request">Send request</string>
+    <string name="send_request_x">Send request (%1$s)</string>
 </resources>

@@ -16,7 +16,8 @@ import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.
 import dev.jahir.kuper.extensions.isAppInstalled
 
 @Suppress("REDUNDANT_ELSE_IN_WHEN")
-fun Context.executeLauncherIntent(launcher: Launcher) {
+fun Context.executeLauncherIntent(launcher: Launcher?) {
+    launcher ?: return
     if (!launcher.isActuallySupported) {
         executeIconPacksNotSupportedIntent()
         return

@@ -13,6 +13,7 @@ import dev.jahir.frames.extensions.context.color
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.resolveColor
 import dev.jahir.frames.extensions.context.string
+import dev.jahir.frames.extensions.resources.lower
 import dev.jahir.frames.extensions.resources.tint
 import dev.jahir.frames.extensions.views.context
 import dev.jahir.frames.extensions.views.findView
@@ -36,7 +37,7 @@ class CounterViewHolder(itemView: View) : SectionedViewHolder(itemView) {
         titleView?.text = context.string(counter.title)
         descriptionView?.text = when (counter) {
             is KustomCounter, is ZooperCounter -> {
-                context.string(R.string.x_templates, counter.count)
+                context.string(R.string.x_templates, counter.count).lower()
             }
             else -> counter.count.toString()
         }

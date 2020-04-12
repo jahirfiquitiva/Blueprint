@@ -6,8 +6,10 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
@@ -18,6 +20,8 @@ import dev.jahir.blueprint.data.models.IconsCounter
 import dev.jahir.blueprint.data.models.KustomCounter
 import dev.jahir.blueprint.data.models.WallpapersCounter
 import dev.jahir.blueprint.data.models.ZooperCounter
+import dev.jahir.blueprint.extensions.defaultLauncher
+import dev.jahir.blueprint.extensions.executeLauncherIntent
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.activities.BlueprintKuperActivity
 import dev.jahir.blueprint.ui.adapters.HomeAdapter
@@ -28,11 +32,12 @@ import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.findView
-import dev.jahir.frames.ui.widgets.StatefulRecyclerView
+import dev.jahir.frames.extensions.views.setPaddingBottom
+import dev.jahir.frames.extensions.views.visibleIf
 import dev.jahir.kuper.extensions.hasStoragePermission
 
 @SuppressLint("MissingPermission")
-class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener {
+class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
 
     private val wallpaper: Drawable?
         get() = activity?.let {
@@ -64,7 +69,7 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
         HomeAdapter(context?.boolean(R.bool.show_overview, true) == true, this)
     }
 
-    private var recyclerView: StatefulRecyclerView? = null
+    private var recyclerView: RecyclerView? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,8 +77,6 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
         swipeRefreshLayout?.isEnabled = false
 
         recyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView?.attachBottomNavigationView((activity as? BlueprintActivity)?.bottomNavigation)
-        recyclerView?.setFastScrollEnabled(false)
 
         val columnsCount = 2
         val layoutManager =
@@ -84,9 +87,24 @@ class HomeFragment : Fragment(R.layout.fragment_recyclerview), HomeItemsListener
         adapter.wallpaper = rightWallpaper
         recyclerView?.adapter = adapter
         recyclerView?.addItemDecoration(HomeGridSpacingItemDecoration(columnsCount, 8.dpToPx))
-        recyclerView?.loading = false
         adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
         (activity as? BlueprintActivity)?.repostCounters()
+
+        val quickApplyBtn: AppCompatButton? by view.findView(R.id.quick_apply_btn)
+        val showQuickApplyBtn = context?.defaultLauncher != null
+        quickApplyBtn?.visibleIf(showQuickApplyBtn)
+        quickApplyBtn?.setOnClickListener { context?.executeLauncherIntent(context?.defaultLauncher) }
+
+        (activity as? BlueprintActivity)?.bottomNavigation?.let {
+            it.post {
+                view.setPaddingBottom(it.measuredHeight)
+                recyclerView?.setPaddingBottom(
+                    it.measuredHeight
+                            + (if (showQuickApplyBtn) quickApplyBtn?.measuredHeight ?: 0 else 0)
+                            + 0
+                )
+            }
+        }
     }
 
     internal fun updateIconsPreview(icons: List<Icon>) {
