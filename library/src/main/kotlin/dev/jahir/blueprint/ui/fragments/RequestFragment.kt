@@ -1,151 +1,49 @@
 package dev.jahir.blueprint.ui.fragments
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.RequestApp
-import dev.jahir.blueprint.extensions.animateVisibility
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.adapters.RequestAppsAdapter
-import dev.jahir.frames.extensions.context.resolveColor
-import dev.jahir.frames.extensions.context.string
-import dev.jahir.frames.extensions.context.toast
 import dev.jahir.frames.extensions.resources.dpToPx
-import dev.jahir.frames.extensions.resources.hasContent
-import dev.jahir.frames.extensions.resources.lighten
 import dev.jahir.frames.extensions.resources.lower
-import dev.jahir.frames.extensions.resources.tint
-import dev.jahir.frames.extensions.utils.postDelayed
-import dev.jahir.frames.extensions.views.attachSwipeRefreshLayout
 import dev.jahir.frames.extensions.views.setPaddingBottom
-import dev.jahir.frames.ui.widgets.StatefulRecyclerView
+import dev.jahir.frames.ui.fragments.base.BaseFramesFragment
 
-class RequestFragment : Fragment(R.layout.fragment_request),
-    StatefulRecyclerView.StateDrawableModifier {
+class RequestFragment : BaseFramesFragment<RequestApp>() {
 
-    private val originalItems: ArrayList<RequestApp> = ArrayList()
-    private var swipeRefreshLayout: SwipeRefreshLayout? = null
-    private var recyclerView: StatefulRecyclerView? = null
-    private var sendRequestBtn: ExtendedFloatingActionButton? = null
-
-    private var requestBtnShown: Boolean = false
     private val requestAppsAdapter: RequestAppsAdapter by lazy { RequestAppsAdapter(::onCheckChange) }
+
+    private val fabHeight: Int
+        get() = (activity as? BlueprintActivity)?.fabBtn?.measuredHeight ?: 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView = view.findViewById(dev.jahir.frames.R.id.recycler_view)
-        recyclerView?.stateDrawableModifier = this
-
-        recyclerView?.emptyText = R.string.nothing_found
-        recyclerView?.emptyDrawable = R.drawable.ic_empty_section
-
-        recyclerView?.noSearchResultsText = R.string.no_results_found
-        recyclerView?.noSearchResultsDrawable = R.drawable.ic_empty_results
-
-        recyclerView?.loadingText = R.string.loading
-
-        recyclerView?.itemAnimator = DefaultItemAnimator()
-        swipeRefreshLayout = view.findViewById(dev.jahir.frames.R.id.swipe_to_refresh)
-        swipeRefreshLayout?.setOnRefreshListener { startRefreshing() }
-        swipeRefreshLayout?.setColorSchemeColors(
-            context?.resolveColor(dev.jahir.frames.R.attr.colorSecondary, 0) ?: 0
-        )
-        swipeRefreshLayout?.setProgressBackgroundColorSchemeColor(
-            (context?.resolveColor(dev.jahir.frames.R.attr.colorSurface, 0) ?: 0).lighten(.1F)
-        )
-        recyclerView?.attachSwipeRefreshLayout(swipeRefreshLayout)
-
-        sendRequestBtn = view.findViewById(R.id.send_request_btn)
-        sendRequestBtn?.setOnClickListener {
-            // TODO: Send request!
-            context?.toast("Send request!")
-        }
-
         recyclerView?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView?.adapter = requestAppsAdapter
-
+        recyclerView?.setHasFixedSize(true)
+        // TODO: Setup margin properly
         (activity as? BlueprintActivity)?.bottomNavigation?.let {
-            it.post {
-                view.setPaddingBottom(it.measuredHeight)
-                recyclerView?.setPaddingBottom(
-                    it.measuredHeight
-                            + (if (requestBtnShown) sendRequestBtn?.measuredHeight ?: 0 else 0)
-                            + 4.dpToPx
-                )
-            }
+            it.post { recyclerView?.setPaddingBottom(it.measuredHeight + fabHeight + 16.dpToPx) }
         }
         loadData()
     }
 
-    internal fun setRefreshEnabled(enabled: Boolean) {
-        swipeRefreshLayout?.isEnabled = enabled
-    }
-
-    internal fun applyFilter(filter: String, closed: Boolean) {
-        recyclerView?.searching = filter.hasContent() && !closed
-        requestAppsAdapter.appsToRequest =
-            if (filter.hasContent() && !closed)
-                getFilteredItems(ArrayList(originalItems), filter)
-            else originalItems
-        if (!closed) scrollToTop()
-    }
-
-    private fun startRefreshing() {
-        swipeRefreshLayout?.isRefreshing = true
-        recyclerView?.loading = true
-        try {
-            loadData()
-            postDelayed(500) { stopRefreshing() }
-        } catch (e: Exception) {
-            stopRefreshing()
-        }
-    }
-
-    private fun stopRefreshing() {
-        Handler().post {
-            swipeRefreshLayout?.isRefreshing = false
-            recyclerView?.loading = false
-        }
-    }
-
-    private fun scrollToTop() {
-        recyclerView?.post { recyclerView?.smoothScrollToPosition(0) }
-    }
-
-    internal fun updateItems(newItems: ArrayList<RequestApp>, stillLoading: Boolean = false) {
-        this.originalItems.clear()
-        this.originalItems.addAll(newItems)
-        requestAppsAdapter.appsToRequest = newItems
-        if (!stillLoading) stopRefreshing()
+    override fun updateItemsInAdapter(items: ArrayList<RequestApp>) {
+        requestAppsAdapter.appsToRequest = items
     }
 
     internal fun updateSelectedApps(selectedApps: ArrayList<RequestApp>) {
-        if (selectedApps.isNotEmpty())
-            sendRequestBtn?.text = context?.string(R.string.send_request_x, selectedApps.size)
-        sendRequestBtn?.animateVisibility(selectedApps.isNotEmpty())
         requestAppsAdapter.selectedApps = selectedApps
     }
 
-    override fun modifyDrawable(drawable: Drawable?): Drawable? =
-        try {
-            drawable?.tint(context?.resolveColor(dev.jahir.frames.R.attr.colorOnSurface, 0) ?: 0)
-        } catch (e: Exception) {
-            drawable
-        }
-
-    private fun loadData() {
+    override fun loadData() {
         (activity as? BlueprintActivity)?.loadAppsToRequest()
     }
 
-    private fun getFilteredItems(
+    override fun getFilteredItems(
         originalItems: ArrayList<RequestApp>,
         filter: String
     ): ArrayList<RequestApp> =

@@ -12,7 +12,7 @@
         True, means yes.
         False, means no.
     -->
-    <bool name="show_quick_apply_text">true</bool>
+    <bool name="show_quick_apply_text">false</bool>
 
     <!--
         Set a custom text to the quick apply button.

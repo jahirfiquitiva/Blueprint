@@ -9,8 +9,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
 import dev.jahir.blueprint.data.models.Counter
@@ -20,9 +18,7 @@ import dev.jahir.blueprint.data.models.IconsCounter
 import dev.jahir.blueprint.data.models.KustomCounter
 import dev.jahir.blueprint.data.models.WallpapersCounter
 import dev.jahir.blueprint.data.models.ZooperCounter
-import dev.jahir.blueprint.extensions.animateVisibility
 import dev.jahir.blueprint.extensions.defaultLauncher
-import dev.jahir.blueprint.extensions.executeLauncherIntent
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.activities.BlueprintKuperActivity
 import dev.jahir.blueprint.ui.adapters.HomeAdapter
@@ -32,8 +28,6 @@ import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
-import dev.jahir.frames.extensions.resources.hasContent
-import dev.jahir.frames.extensions.views.findView
 import dev.jahir.frames.extensions.views.setPaddingBottom
 import dev.jahir.kuper.extensions.hasStoragePermission
 
@@ -71,49 +65,33 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     }
 
     private var recyclerView: RecyclerView? = null
-    private var quickApplyBtn: ExtendedFloatingActionButton? = null
+
+    private val fabHeight: Int
+        get() {
+            (activity as? BlueprintActivity)?.let {
+                return if (it.defaultLauncher == null) 0 else it.fabBtn?.measuredHeight ?: 0
+            } ?: return 0
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val swipeRefreshLayout: SwipeRefreshLayout? by view.findView(R.id.swipe_to_refresh)
-        swipeRefreshLayout?.isEnabled = false
-
         recyclerView = view.findViewById(R.id.recycler_view)
-        quickApplyBtn = view.findViewById(R.id.quick_apply_btn)
-        val showQuickApplyBtn = context?.defaultLauncher != null
-        (activity as? BlueprintActivity)?.bottomNavigation?.let {
-            it.post {
-                view.setPaddingBottom(it.measuredHeight)
-                recyclerView?.setPaddingBottom(
-                    it.measuredHeight
-                            + (if (showQuickApplyBtn) quickApplyBtn?.measuredHeight ?: 0 else 0)
-                            + 4.dpToPx
-                )
-            }
-        }
-
+        recyclerView?.isSaveEnabled = true
         val columnsCount = 2
         val layoutManager =
             GridLayoutManager(context, columnsCount, GridLayoutManager.VERTICAL, false)
         recyclerView?.layoutManager = layoutManager
-        adapter.setLayoutManager(layoutManager)
 
+        adapter.setLayoutManager(layoutManager)
         adapter.wallpaper = rightWallpaper
+        adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
         recyclerView?.adapter = adapter
         recyclerView?.addItemDecoration(HomeGridSpacingItemDecoration(columnsCount, 8.dpToPx))
-        adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
-        (activity as? BlueprintActivity)?.repostCounters()
 
-        // TODO: Support hiding text
-        val canShowText = context?.boolean(R.bool.show_quick_apply_text, true) ?: true
-        val customText = context?.string(R.string.quick_apply_custom_text) ?: ""
-        val defText = context?.string(R.string.quick_apply) ?: ""
-        val actualText =
-            if (canShowText) if (customText.hasContent()) customText else defText
-            else ""
-        quickApplyBtn?.text = actualText
-        quickApplyBtn?.animateVisibility(showQuickApplyBtn)
-        quickApplyBtn?.setOnClickListener { context?.executeLauncherIntent(context?.defaultLauncher) }
+        (activity as? BlueprintActivity)?.bottomNavigation?.let {
+            it.post { view.setPaddingBottom(it.measuredHeight + fabHeight + 16.dpToPx) }
+        }
+        (activity as? BlueprintActivity)?.repostCounters()
     }
 
     internal fun updateIconsPreview(icons: List<Icon>) {

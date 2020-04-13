@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Launcher
+import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.fragments.mdDialog
 import dev.jahir.frames.extensions.fragments.message
@@ -270,7 +271,7 @@ private fun Context.executeSoloLauncherIntent() {
         packageManager.getLaunchIntentForPackage("home.solo.launcher.free").also {
             val solo = Intent("home.solo.launcher.free.APPLY_THEME")
             solo.putExtra("EXTRA_PACKAGENAME", packageName)
-            solo.putExtra("EXTRA_THEMENAME", getString(R.string.app_name))
+            solo.putExtra("EXTRA_THEMENAME", getAppName())
             sendBroadcast(solo)
         }
     }
@@ -293,6 +294,7 @@ internal val Context.defaultLauncher: Launcher?
             packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
         val launcherPackage = resolveInfo?.activityInfo?.packageName
         Launcher.getSupportedLaunchers(this)
+            .filter { it.first.isActuallySupported }
             .firstOrNull { it.first.hasPackage(launcherPackage.orEmpty()) }?.first
     } catch (e: Exception) {
         null

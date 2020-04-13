@@ -6,6 +6,5 @@ fun SectionedRecyclerViewAdapter<*>.safeNotifySectionChanged(section: Int) {
     try {
         notifySectionChanged(section)
     } catch (e: Exception) {
-        notifyDataSetChanged()
     }
 }

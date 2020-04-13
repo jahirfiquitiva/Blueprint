@@ -37,6 +37,7 @@ class HomeAdapter(
 
     var wallpaper: Drawable? = null
         set(value) {
+            if (field != null) return
             field = value
             safeNotifySectionChanged(ICONS_PREVIEW_SECTION)
         }

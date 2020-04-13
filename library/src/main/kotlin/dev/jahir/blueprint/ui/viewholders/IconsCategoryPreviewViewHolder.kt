@@ -39,7 +39,8 @@ class IconsCategoryPreviewViewHolder(itemView: View) : RecyclerView.ViewHolder(i
     ) {
         dividerView?.visibleIf(showDivider)
         categoryTitleView?.text = category.title
-        categoryCountView?.text = context.string(R.string.x_icons, category.count)
+        categoryCountView?.text =
+            if (category.showCount) context.string(R.string.x_icons, category.count) else ""
         if (category.count > context.integer(R.integer.icons_columns_count)) {
             categoryCountView?.setPaddingLeft(0)
             categoryCountView?.setPaddingRight(0)

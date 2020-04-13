@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="PrivateResource">
+    <objectAnimator
+        android:duration="@android:integer/config_shortAnimTime"
+        android:interpolator="@interpolator/mtrl_fast_out_slow_in"
+        android:propertyName="opacity"
+        android:startOffset="0"
+        android:valueFrom="1.0"
+        android:valueTo="0"
+        android:valueType="floatType" />
+    <objectAnimator
+        android:duration="@android:integer/config_shortAnimTime"
+        android:interpolator="@interpolator/mtrl_linear_out_slow_in"
+        android:propertyName="scale"
+        android:startOffset="0"
+        android:valueFrom="1.0"
+        android:valueTo="0"
+        android:valueType="floatType" />
+</set>

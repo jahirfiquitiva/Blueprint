@@ -10,7 +10,8 @@ import dev.jahir.frames.extensions.context.integer
 @Suppress("unused")
 data class IconsCategory(
     val title: String,
-    private val icons: ArrayList<Icon> = ArrayList()
+    private val icons: ArrayList<Icon> = ArrayList(),
+    val showCount: Boolean = true
 ) : Parcelable {
 
     val count: Int

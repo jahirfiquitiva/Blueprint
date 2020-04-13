@@ -73,6 +73,7 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
             )
         )
         recyclerView?.adapter = iconsAdapter
+        recyclerView?.setHasFixedSize(true)
     }
 
     private fun dismissIconDialog() {

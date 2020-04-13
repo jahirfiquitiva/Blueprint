@@ -31,6 +31,7 @@ class ApplyFragment : BaseFramesFragment<Pair<Launcher, Boolean>>() {
             GridDividerItemDecoration(context, GridLayoutManager.HORIZONTAL)
         )
         recyclerView?.adapter = launchersAdapter
+        recyclerView?.setHasFixedSize(true)
         updateItems(Launcher.getSupportedLaunchers(context))
     }
 

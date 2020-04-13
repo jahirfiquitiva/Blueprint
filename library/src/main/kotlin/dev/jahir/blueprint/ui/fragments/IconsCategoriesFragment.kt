@@ -24,6 +24,7 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
         recyclerView?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView?.adapter = iconsCategoriesAdapter
+        recyclerView?.setHasFixedSize(true)
         loadData()
     }
 
@@ -36,14 +37,19 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
         filter: String
     ): ArrayList<IconsCategory> {
         if (!filter.hasContent()) return originalItems
-        return ArrayList(
-            originalItems.map {
-                IconsCategory(
-                    it.title,
-                    ArrayList(
-                        it.getIcons().filter { icon -> icon.name.lower().contains(filter.lower()) })
-                )
-            })
+        val filteredItems: ArrayList<IconsCategory> = ArrayList()
+        originalItems.forEach {
+            val filteredIcons =
+                it.getIcons().filter { icon -> icon.name.lower().contains(filter.lower()) }
+            if (it.title.lower().contains(filter.lower()) || filteredIcons.isNotEmpty()) {
+                val pair: Pair<ArrayList<Icon>, Boolean> =
+                    if (filteredIcons.isNotEmpty())
+                        Pair(ArrayList(filteredIcons), true)
+                    else Pair(it.getIcons(), false)
+                filteredItems.add(IconsCategory(it.title, pair.first, pair.second))
+            }
+        }
+        return filteredItems
     }
 
     override fun updateItemsInAdapter(items: ArrayList<IconsCategory>) {
@@ -63,8 +69,5 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
 
     companion object {
         internal const val TAG = "icons_categories_fragment"
-
-        @JvmStatic
-        fun create(): IconsCategoriesFragment = IconsCategoriesFragment()
     }
 }

@@ -94,6 +94,7 @@ class RequestsViewModel : ViewModel() {
         context: Context?,
         debug: Boolean = false
     ): ArrayList<String> {
+        if (themedComponents.isNotEmpty()) return themedComponents
         context ?: return arrayListOf()
         return withContext(IO) {
             val themedComponents = ArrayList<String>()
@@ -134,6 +135,7 @@ class RequestsViewModel : ViewModel() {
     }
 
     private suspend fun loadAppsToRequest(context: Context?): ArrayList<RequestApp> {
+        if (appsToRequest.isNotEmpty()) return appsToRequest
         context ?: return arrayListOf()
         return withContext(IO) {
             val installedApps = ArrayList<RequestApp>()
