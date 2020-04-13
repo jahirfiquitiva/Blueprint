@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.Blueprint.RequestCard" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">@style/ShapeAppearance.Frames.CardView</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardBackgroundColor">@color/transparent</item>
+        <item name="cardForegroundColor">@color/checkable_card_foreground</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="checkedIcon">@null</item>
+        <item name="checkedIconEnabled">false</item>
+        <item name="rippleColor">@color/checkable_card_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:checkable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+</resources>

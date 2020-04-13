@@ -31,7 +31,7 @@
             app:stateRootLayout="@id/state_root_layout" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/quick_apply_btn"
+            android:id="@+id/send_request_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"

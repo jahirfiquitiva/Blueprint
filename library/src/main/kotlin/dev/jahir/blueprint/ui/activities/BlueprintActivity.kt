@@ -14,8 +14,10 @@ import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
 import dev.jahir.blueprint.ui.fragments.ApplyFragment
 import dev.jahir.blueprint.ui.fragments.HomeFragment
 import dev.jahir.blueprint.ui.fragments.IconsCategoriesFragment
+import dev.jahir.blueprint.ui.fragments.RequestFragment
 import dev.jahir.blueprint.ui.fragments.dialogs.IconDialog
 import dev.jahir.frames.extensions.context.boolean
+import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.utils.lazyViewModel
 import dev.jahir.frames.ui.activities.FramesActivity
 import dev.jahir.frames.ui.fragments.CollectionsFragment
@@ -36,6 +38,7 @@ abstract class BlueprintActivity : FramesActivity() {
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
     private val iconsCategoriesFragment: IconsCategoriesFragment by lazy { IconsCategoriesFragment() }
     private val applyFragment: ApplyFragment by lazy { ApplyFragment() }
+    private val requestFragment: RequestFragment by lazy { RequestFragment() }
 
     private val homeViewModel: HomeViewModel by lazyViewModel()
     private val iconsViewModel: IconsCategoriesViewModel by lazyViewModel()
@@ -87,6 +90,7 @@ abstract class BlueprintActivity : FramesActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.templates -> startActivity(Intent(this, BlueprintKuperActivity::class.java))
+            R.id.select_all -> (currentFragment as? RequestFragment)?.toggleSelectAll()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -112,6 +116,7 @@ abstract class BlueprintActivity : FramesActivity() {
             R.id.home -> Pair(Pair(HomeFragment.TAG, homeFragment), true)
             R.id.icons -> Pair(Pair(IconsCategoriesFragment.TAG, iconsCategoriesFragment), true)
             R.id.apply -> Pair(Pair(ApplyFragment.TAG, applyFragment), true)
+            R.id.request -> Pair(Pair(RequestFragment.TAG, requestFragment), true)
             else -> super.getNextFragment(itemId)
         }
 
@@ -131,6 +136,15 @@ abstract class BlueprintActivity : FramesActivity() {
     override fun getMenuRes(): Int = R.menu.blueprint_toolbar_menu
     override fun shouldLoadCollections(): Boolean = false
     override fun shouldLoadFavorites(): Boolean = false
+
+    override fun internalDoSearch(filter: String, closed: Boolean) {
+        (currentFragment as? RequestFragment)?.let {
+            it.setRefreshEnabled(!filter.hasContent())
+            it.applyFilter(filter, closed)
+        } ?: {
+            super.internalDoSearch(filter, closed)
+        }()
+    }
 
     internal fun repostCounters() {
         homeViewModel.repostCounters()

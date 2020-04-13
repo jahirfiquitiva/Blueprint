@@ -20,6 +20,7 @@ import dev.jahir.blueprint.data.models.IconsCounter
 import dev.jahir.blueprint.data.models.KustomCounter
 import dev.jahir.blueprint.data.models.WallpapersCounter
 import dev.jahir.blueprint.data.models.ZooperCounter
+import dev.jahir.blueprint.extensions.animateVisibility
 import dev.jahir.blueprint.extensions.defaultLauncher
 import dev.jahir.blueprint.extensions.executeLauncherIntent
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
@@ -33,7 +34,6 @@ import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.findView
 import dev.jahir.frames.extensions.views.setPaddingBottom
-import dev.jahir.frames.extensions.views.visibleIf
 import dev.jahir.kuper.extensions.hasStoragePermission
 
 @SuppressLint("MissingPermission")
@@ -77,6 +77,18 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         swipeRefreshLayout?.isEnabled = false
 
         recyclerView = view.findViewById(R.id.recycler_view)
+        val quickApplyBtn: AppCompatButton? by view.findView(R.id.quick_apply_btn)
+        val showQuickApplyBtn = context?.defaultLauncher != null
+        (activity as? BlueprintActivity)?.bottomNavigation?.let {
+            it.post {
+                view.setPaddingBottom(it.measuredHeight)
+                recyclerView?.setPaddingBottom(
+                    it.measuredHeight
+                            + (if (showQuickApplyBtn) quickApplyBtn?.measuredHeight ?: 0 else 0)
+                            + 4.dpToPx
+                )
+            }
+        }
 
         val columnsCount = 2
         val layoutManager =
@@ -90,21 +102,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
         (activity as? BlueprintActivity)?.repostCounters()
 
-        val quickApplyBtn: AppCompatButton? by view.findView(R.id.quick_apply_btn)
-        val showQuickApplyBtn = context?.defaultLauncher != null
-        quickApplyBtn?.visibleIf(showQuickApplyBtn)
+        quickApplyBtn?.animateVisibility(showQuickApplyBtn)
         quickApplyBtn?.setOnClickListener { context?.executeLauncherIntent(context?.defaultLauncher) }
-
-        (activity as? BlueprintActivity)?.bottomNavigation?.let {
-            it.post {
-                view.setPaddingBottom(it.measuredHeight)
-                recyclerView?.setPaddingBottom(
-                    it.measuredHeight
-                            + (if (showQuickApplyBtn) quickApplyBtn?.measuredHeight ?: 0 else 0)
-                            + 0
-                )
-            }
-        }
     }
 
     internal fun updateIconsPreview(icons: List<Icon>) {
