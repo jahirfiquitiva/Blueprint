@@ -233,14 +233,15 @@ abstract class BlueprintActivity : FramesActivity() {
     }
 
     private fun updateFab(itemId: Int, afterHidden: () -> Unit) {
-        if (fabBtn?.isVisible == true) {
-            fabBtn?.hide(object : ExtendedFloatingActionButton.OnChangedCallback() {
-                override fun onHidden(extendedFab: ExtendedFloatingActionButton?) {
-                    super.onHidden(extendedFab)
-                    updateFabText(itemId)
-                }
-            })
-        } else updateFabText(itemId)
+        if (itemId != currentItemId)
+            if (fabBtn?.isVisible == true) {
+                fabBtn?.hide(object : ExtendedFloatingActionButton.OnChangedCallback() {
+                    override fun onHidden(extendedFab: ExtendedFloatingActionButton?) {
+                        super.onHidden(extendedFab)
+                        updateFabText(itemId)
+                    }
+                })
+            } else updateFabText(itemId)
         afterHidden()
     }
 
