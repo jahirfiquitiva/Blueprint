@@ -27,17 +27,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : RecyclerView(context, attributeSet, defStyleAttr) {
 
-    private val decoration: GridSpacingItemDecoration by lazy {
-        GridSpacingItemDecoration(
-            context.integer(R.integer.icons_columns_count),
-            context.dimenPixelSize(R.dimen.grids_spacing)
-        )
-    }
-
-    private val iconsAdapter: IconsAdapter by lazy {
-        IconsAdapter()
-    }
-
+    private val iconsAdapter: IconsAdapter by lazy { IconsAdapter() }
     private val icons: ArrayList<Icon> = ArrayList()
 
     internal var animateIcons: Boolean = true
@@ -51,6 +41,12 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         isSaveEnabled = true
         isNestedScrollingEnabled = false
         layoutManager = LayoutManager(context, context.integer(R.integer.icons_columns_count))
+        addItemDecoration(
+            GridSpacingItemDecoration(
+                context.integer(R.integer.icons_columns_count),
+                context.dimenPixelSize(R.dimen.grids_spacing)
+            )
+        )
         adapter = iconsAdapter
     }
 
@@ -65,9 +61,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         val maxSize = if (newIcons.size <= expectedIcons) newIcons.size else expectedIcons
         icons.clear()
         icons.addAll(newIcons.subList(0, maxSize))
-        removeItemDecoration(decoration)
         iconsAdapter.icons = icons
-        addItemDecoration(decoration)
         if (icons.isNotEmpty()) visible()
     }
 

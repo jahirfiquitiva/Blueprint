@@ -123,7 +123,7 @@ class HomeAdapter(
         section: Int,
         expanded: Boolean
     ) {
-        if (section <= ICONS_PREVIEW_SECTION) {
+        if (section < OVERVIEW_SECTION) {
             (holder?.itemView as? ViewGroup)?.children?.forEach { it.gone() }
         } else {
             (holder as? SectionHeaderViewHolder)?.let {

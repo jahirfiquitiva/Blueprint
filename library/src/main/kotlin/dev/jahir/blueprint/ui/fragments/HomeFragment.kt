@@ -28,6 +28,7 @@ import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
+import dev.jahir.frames.extensions.views.setMarginBottom
 import dev.jahir.frames.extensions.views.setPaddingBottom
 import dev.jahir.kuper.extensions.hasStoragePermission
 
@@ -89,7 +90,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         recyclerView?.addItemDecoration(HomeGridSpacingItemDecoration(columnsCount, 8.dpToPx))
 
         (activity as? BlueprintActivity)?.bottomNavigation?.let {
-            it.post { view.setPaddingBottom(it.measuredHeight + fabHeight + 16.dpToPx) }
+            it.post {
+                view.setMarginBottom(it.measuredHeight)
+                recyclerView?.setPaddingBottom(fabHeight + 16.dpToPx)
+            }
         }
         (activity as? BlueprintActivity)?.repostCounters()
     }
