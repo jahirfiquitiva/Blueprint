@@ -7,10 +7,13 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import dev.jahir.blueprint.BuildConfig
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
+import dev.jahir.blueprint.data.models.RequestApp
 import dev.jahir.blueprint.data.viewmodels.HomeViewModel
 import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
+import dev.jahir.blueprint.data.viewmodels.RequestsViewModel
 import dev.jahir.blueprint.ui.fragments.ApplyFragment
 import dev.jahir.blueprint.ui.fragments.HomeFragment
 import dev.jahir.blueprint.ui.fragments.IconsCategoriesFragment
@@ -28,6 +31,8 @@ import dev.jahir.kuper.ui.fragments.KuperWallpapersFragment
 
 abstract class BlueprintActivity : FramesActivity() {
 
+    open val isDebug: Boolean = BuildConfig.DEBUG
+
     override val collectionsFragment: CollectionsFragment? = null
     override val favoritesFragment: WallpapersFragment? = null
 
@@ -43,6 +48,7 @@ abstract class BlueprintActivity : FramesActivity() {
     private val homeViewModel: HomeViewModel by lazyViewModel()
     private val iconsViewModel: IconsCategoriesViewModel by lazyViewModel()
     private val templatesViewModel: ComponentsViewModel by lazyViewModel()
+    private val requestsViewModel: RequestsViewModel by lazyViewModel()
 
     private var iconDialog: IconDialog? = null
 
@@ -70,6 +76,9 @@ abstract class BlueprintActivity : FramesActivity() {
             homeViewModel.postIconsCount(iconsViewModel.iconsCount)
         }
 
+        requestsViewModel.observeAppsToRequest(this) { requestFragment.updateItems(it) }
+        requestsViewModel.observeSelectedApps(this) { requestFragment.updateSelectedApps(it) }
+
         homeViewModel.observeCounters(this, homeFragment)
         homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
         homeViewModel.observeHomeItems(this) { homeFragment.updateHomeItems(it) }
@@ -78,6 +87,7 @@ abstract class BlueprintActivity : FramesActivity() {
         loadPreviewIcons()
         loadIconsCategories()
         if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents(this)
+        loadAppsToRequest()
         requestStoragePermission()
     }
 
@@ -90,7 +100,7 @@ abstract class BlueprintActivity : FramesActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.templates -> startActivity(Intent(this, BlueprintKuperActivity::class.java))
-            R.id.select_all -> (currentFragment as? RequestFragment)?.toggleSelectAll()
+            R.id.select_all -> toggleSelectAll()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -101,6 +111,7 @@ abstract class BlueprintActivity : FramesActivity() {
         homeViewModel.destroy(this)
         iconsViewModel.destroy(this)
         templatesViewModel.destroy(this)
+        requestsViewModel.destroy(this)
     }
 
     private fun dismissIconDialog() {
@@ -163,5 +174,18 @@ abstract class BlueprintActivity : FramesActivity() {
         dismissIconDialog()
         iconDialog = IconDialog.create(icon)
         iconDialog?.show(this)
+    }
+
+    internal fun loadAppsToRequest() {
+        requestsViewModel.loadApps(this, isDebug)
+    }
+
+    internal fun changeRequestAppState(app: RequestApp, selected: Boolean) {
+        if (selected) requestsViewModel.selectApp(app)
+        else requestsViewModel.deselectApp(app)
+    }
+
+    private fun toggleSelectAll() {
+        requestsViewModel.toggleSelectAll()
     }
 }

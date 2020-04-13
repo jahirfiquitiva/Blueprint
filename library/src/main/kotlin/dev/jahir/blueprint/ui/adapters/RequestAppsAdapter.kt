@@ -20,6 +20,7 @@ class RequestAppsAdapter(private val onCheckChange: ((requestApp: RequestApp, ch
     var selectedApps: ArrayList<RequestApp> = ArrayList()
         set(value) {
             if (value.isEmpty() && field.isEmpty()) return
+            if (value.isNotEmpty() && value.size < appsToRequest.size) return
             field.clear()
             field.addAll(value)
             notifyDataSetChanged()

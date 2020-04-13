@@ -6,11 +6,11 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
 import dev.jahir.blueprint.data.models.Counter
@@ -32,6 +32,7 @@ import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
+import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.views.findView
 import dev.jahir.frames.extensions.views.setPaddingBottom
 import dev.jahir.kuper.extensions.hasStoragePermission
@@ -70,6 +71,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     }
 
     private var recyclerView: RecyclerView? = null
+    private var quickApplyBtn: ExtendedFloatingActionButton? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -77,7 +79,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         swipeRefreshLayout?.isEnabled = false
 
         recyclerView = view.findViewById(R.id.recycler_view)
-        val quickApplyBtn: AppCompatButton? by view.findView(R.id.quick_apply_btn)
+        quickApplyBtn = view.findViewById(R.id.quick_apply_btn)
         val showQuickApplyBtn = context?.defaultLauncher != null
         (activity as? BlueprintActivity)?.bottomNavigation?.let {
             it.post {
@@ -102,6 +104,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
         (activity as? BlueprintActivity)?.repostCounters()
 
+        // TODO: Support hiding text
+        val canShowText = context?.boolean(R.bool.show_quick_apply_text, true) ?: true
+        val customText = context?.string(R.string.quick_apply_custom_text) ?: ""
+        val defText = context?.string(R.string.quick_apply) ?: ""
+        val actualText =
+            if (canShowText) if (customText.hasContent()) customText else defText
+            else ""
+        quickApplyBtn?.text = actualText
         quickApplyBtn?.animateVisibility(showQuickApplyBtn)
         quickApplyBtn?.setOnClickListener { context?.executeLauncherIntent(context?.defaultLauncher) }
     }

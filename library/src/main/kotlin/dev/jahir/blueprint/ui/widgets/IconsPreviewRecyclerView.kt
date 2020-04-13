@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
+import dev.jahir.blueprint.extensions.createParcel
 import dev.jahir.blueprint.ui.adapters.IconsAdapter
 import dev.jahir.frames.extensions.context.dimenPixelSize
 import dev.jahir.frames.extensions.context.integer
@@ -122,10 +123,8 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         }
 
         companion object {
-            private val CREATOR = object : Parcelable.Creator<SavedState?> {
-                override fun createFromParcel(parcel: Parcel?): SavedState? = SavedState(parcel)
-                override fun newArray(size: Int): Array<SavedState?> = arrayOfNulls(size)
-            }
+            @JvmField
+            val CREATOR = createParcel { SavedState(it) }
         }
     }
 }

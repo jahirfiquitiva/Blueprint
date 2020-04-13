@@ -222,12 +222,14 @@ class RequestsViewModel : ViewModel() {
             -1
         }
         if (index < 0) return
+        if (selectedApps.contains(app)) return
         selectedAppsData.postValue(ArrayList(selectedApps.apply { add(appsToRequest[index]) }))
     }
 
     internal fun deselectApp(app: RequestApp) {
         if (selectedApps.isNullOrEmpty()) return
-        selectedAppsData.postValue(ArrayList(selectedApps.apply { remove(app) }))
+        if (selectedApps.contains(app))
+            selectedAppsData.postValue(ArrayList(selectedApps.apply { remove(app) }))
     }
 
     fun observeAppsToRequest(owner: LifecycleOwner, onUpdated: (ArrayList<RequestApp>) -> Unit) {

@@ -4,15 +4,13 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import dev.jahir.blueprint.BuildConfig
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.RequestApp
-import dev.jahir.blueprint.data.viewmodels.RequestsViewModel
 import dev.jahir.blueprint.extensions.animateVisibility
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.adapters.RequestAppsAdapter
@@ -24,7 +22,6 @@ import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.resources.lighten
 import dev.jahir.frames.extensions.resources.lower
 import dev.jahir.frames.extensions.resources.tint
-import dev.jahir.frames.extensions.utils.lazyViewModel
 import dev.jahir.frames.extensions.utils.postDelayed
 import dev.jahir.frames.extensions.views.attachSwipeRefreshLayout
 import dev.jahir.frames.extensions.views.setPaddingBottom
@@ -36,23 +33,10 @@ class RequestFragment : Fragment(R.layout.fragment_request),
     private val originalItems: ArrayList<RequestApp> = ArrayList()
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
     private var recyclerView: StatefulRecyclerView? = null
-    private var sendRequestBtn: AppCompatButton? = null
+    private var sendRequestBtn: ExtendedFloatingActionButton? = null
 
     private var requestBtnShown: Boolean = false
-
     private val requestAppsAdapter: RequestAppsAdapter by lazy { RequestAppsAdapter(::onCheckChange) }
-    private val requestsViewModel: RequestsViewModel by lazyViewModel()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        requestsViewModel.observeAppsToRequest(this) { updateItems(it) }
-        requestsViewModel.observeSelectedApps(this) { updateSelectedApps(it) }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        requestsViewModel.destroy(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -136,19 +120,18 @@ class RequestFragment : Fragment(R.layout.fragment_request),
         recyclerView?.post { recyclerView?.smoothScrollToPosition(0) }
     }
 
-    private fun updateItems(newItems: ArrayList<RequestApp>, stillLoading: Boolean = false) {
+    internal fun updateItems(newItems: ArrayList<RequestApp>, stillLoading: Boolean = false) {
         this.originalItems.clear()
         this.originalItems.addAll(newItems)
         requestAppsAdapter.appsToRequest = newItems
         if (!stillLoading) stopRefreshing()
     }
 
-    private fun updateSelectedApps(selectedApps: ArrayList<RequestApp>) {
+    internal fun updateSelectedApps(selectedApps: ArrayList<RequestApp>) {
         if (selectedApps.isNotEmpty())
             sendRequestBtn?.text = context?.string(R.string.send_request_x, selectedApps.size)
         sendRequestBtn?.animateVisibility(selectedApps.isNotEmpty())
-        if (selectedApps.size >= requestsViewModel.appsToRequest.size || selectedApps.isEmpty())
-            requestAppsAdapter.selectedApps = selectedApps
+        requestAppsAdapter.selectedApps = selectedApps
     }
 
     override fun modifyDrawable(drawable: Drawable?): Drawable? =
@@ -158,9 +141,8 @@ class RequestFragment : Fragment(R.layout.fragment_request),
             drawable
         }
 
-
     private fun loadData() {
-        requestsViewModel.loadApps(context, BuildConfig.DEBUG)
+        (activity as? BlueprintActivity)?.loadAppsToRequest()
     }
 
     private fun getFilteredItems(
@@ -170,13 +152,8 @@ class RequestFragment : Fragment(R.layout.fragment_request),
         ArrayList(originalItems.filter { it.name.lower().contains(filter.lower()) })
 
     private fun onCheckChange(app: RequestApp, checked: Boolean) {
-        if (checked) requestsViewModel.selectApp(app)
-        else requestsViewModel.deselectApp(app)
+        (activity as? BlueprintActivity)?.changeRequestAppState(app, checked)
         requestAppsAdapter.changeAppState(app, checked)
-    }
-
-    internal fun toggleSelectAll() {
-        requestsViewModel.toggleSelectAll()
     }
 
     companion object {
