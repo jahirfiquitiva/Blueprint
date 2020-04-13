@@ -2,6 +2,7 @@ package dev.jahir.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.WallpaperManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -28,7 +29,7 @@ import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.setMarginBottom
-import dev.jahir.frames.extensions.views.setPaddingBottom
+import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.widgets.StatefulRecyclerView
 import dev.jahir.kuper.extensions.hasStoragePermission
 
@@ -74,9 +75,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
             } ?: return 0
         }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        setupRecyclerViewMargin()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recycler_view)
+        setupRecyclerViewMargin(view)
         recyclerView?.loading = false
         recyclerView?.setFastScrollEnabled(false)
         val columnsCount = 2
@@ -89,14 +96,16 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
         recyclerView?.adapter = adapter
         recyclerView?.addItemDecoration(HomeGridSpacingItemDecoration(columnsCount, 8.dpToPx))
+        (activity as? BlueprintActivity)?.repostCounters()
+    }
 
-        (activity as? BlueprintActivity)?.bottomNavigation?.let {
+    private fun setupRecyclerViewMargin(view: View? = null) {
+        (context as? BaseSystemUIVisibilityActivity<*>)?.bottomNavigation?.let {
             it.post {
-                view.setMarginBottom(it.measuredHeight)
-                recyclerView?.setPaddingBottom(fabHeight + 16.dpToPx)
+                (view ?: getView())?.setMarginBottom(it.measuredHeight)
+                recyclerView?.setupBottomOffset(fabHeight + 16.dpToPx)
             }
         }
-        (activity as? BlueprintActivity)?.repostCounters()
     }
 
     internal fun updateIconsPreview(icons: List<Icon>) {
