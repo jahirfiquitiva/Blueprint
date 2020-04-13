@@ -38,22 +38,22 @@ class HomeAdapter(
     var wallpaper: Drawable? = null
         set(value) {
             field = value
-            safeNotifySectionChanged(0)
+            safeNotifySectionChanged(ICONS_PREVIEW_SECTION)
         }
 
     var iconsPreviewList: ArrayList<Icon> = ArrayList()
         set(value) {
             field.clear()
             field.addAll(value)
-            safeNotifySectionChanged(0)
+            safeNotifySectionChanged(ICONS_PREVIEW_SECTION)
         }
 
     var homeItems: ArrayList<HomeItem> = ArrayList()
         set(value) {
             field.clear()
             field.addAll(value)
-            safeNotifySectionChanged(if (showOverview) 2 else 1)
-            safeNotifySectionChanged(if (showOverview) 3 else 2)
+            safeNotifySectionChanged(MORE_APPS_SECTION - (if (showOverview) 0 else 1))
+            safeNotifySectionChanged(USEFUL_LINKS_SECTION - (if (showOverview) 0 else 1))
         }
 
     private val appItems: ArrayList<HomeItem>
@@ -66,28 +66,28 @@ class HomeAdapter(
         set(value) {
             if (value == field) return
             field = value
-            if (showOverview) safeNotifySectionChanged(1)
+            if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
         }
 
     var wallpapersCount: Int = 0
         set(value) {
             if (value == field) return
             field = value
-            if (showOverview) safeNotifySectionChanged(1)
+            if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
         }
 
     var kustomCount: Int = 0
         set(value) {
             if (value == field) return
             field = value
-            if (showOverview) safeNotifySectionChanged(1)
+            if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
         }
 
     var zooperCount: Int = 0
         set(value) {
             if (value == field) return
             field = value
-            if (showOverview) safeNotifySectionChanged(1)
+            if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
         }
 
     private val counters: List<Counter>
@@ -107,12 +107,13 @@ class HomeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionedViewHolder =
         when (viewType) {
-            0 -> IconsPreviewViewHolder(parent.inflate(R.layout.item_home_icons_preview))
-            1 -> {
+            ICONS_PREVIEW_SECTION -> IconsPreviewViewHolder(parent.inflate(R.layout.item_home_icons_preview))
+            OVERVIEW_SECTION -> {
                 if (showOverview) CounterViewHolder(parent.inflate(R.layout.item_stats))
                 else AppLinkViewHolder(parent.inflate(R.layout.item_home_app_link))
             }
-            2, 3 -> AppLinkViewHolder(parent.inflate(R.layout.item_home_app_link))
+            MORE_APPS_SECTION, USEFUL_LINKS_SECTION ->
+                AppLinkViewHolder(parent.inflate(R.layout.item_home_app_link))
             else -> SectionHeaderViewHolder(parent.inflate(R.layout.item_section_header))
         }
 
@@ -121,20 +122,20 @@ class HomeAdapter(
         section: Int,
         expanded: Boolean
     ) {
-        if (section <= 0) {
+        if (section <= ICONS_PREVIEW_SECTION) {
             (holder?.itemView as? ViewGroup)?.children?.forEach { it.gone() }
         } else {
             (holder as? SectionHeaderViewHolder)?.let {
                 when (section) {
-                    1 -> {
+                    OVERVIEW_SECTION -> {
                         if (showOverview) it.bind(R.string.overview, 0, false)
                         else it.bind(R.string.more_apps, 0, false)
                     }
-                    2 -> {
+                    MORE_APPS_SECTION -> {
                         if (showOverview) it.bind(R.string.more_apps, 0)
                         else it.bind(R.string.useful_links, 0)
                     }
-                    3 -> {
+                    USEFUL_LINKS_SECTION -> {
                         if (showOverview) it.bind(R.string.useful_links, 0)
                         else it.bind("", "")
                     }
@@ -151,7 +152,7 @@ class HomeAdapter(
     ) {
         (holder as? IconsPreviewViewHolder)?.bind(iconsPreviewList, wallpaper, listener)
         (holder as? CounterViewHolder)?.bind(counters.getOrNull(relativePosition), listener)
-        val appItemsSection = if (showOverview) 2 else 1
+        val appItemsSection = OVERVIEW_SECTION + (if (showOverview) 1 else 0)
         (holder as? AppLinkViewHolder)?.bind(
             if (section == appItemsSection) appItems.getOrNull(relativePosition)
             else linkItems.getOrNull(relativePosition),
@@ -161,14 +162,14 @@ class HomeAdapter(
 
     override fun onBindFooterViewHolder(holder: SectionedViewHolder?, section: Int) {}
     override fun getItemCount(section: Int): Int = when (section) {
-        0 -> 1
-        1 -> if (showOverview) counters.size else appItems.size
-        2 -> if (showOverview) appItems.size else linkItems.size
-        3 -> linkItems.size
+        ICONS_PREVIEW_SECTION -> 1
+        OVERVIEW_SECTION -> if (showOverview) counters.size else appItems.size
+        MORE_APPS_SECTION -> if (showOverview) appItems.size else linkItems.size
+        USEFUL_LINKS_SECTION -> linkItems.size
         else -> 0
     }
 
-    override fun getSectionCount(): Int = if (showOverview) 4 else 3
+    override fun getSectionCount(): Int = SECTION_COUNT - (if (showOverview) 0 else 1)
     override fun getItemViewType(section: Int, relativePosition: Int, absolutePosition: Int): Int =
         section
 
@@ -177,5 +178,13 @@ class HomeAdapter(
         section: Int,
         relativePosition: Int,
         absolutePosition: Int
-    ): Int = if (section == 1 && showOverview) 1 else 2
+    ): Int = if (section == OVERVIEW_SECTION && showOverview) 1 else 2
+
+    companion object {
+        private const val SECTION_COUNT = 4
+        private const val ICONS_PREVIEW_SECTION = 0
+        private const val OVERVIEW_SECTION = 1
+        private const val MORE_APPS_SECTION = 2
+        private const val USEFUL_LINKS_SECTION = 3
+    }
 }
