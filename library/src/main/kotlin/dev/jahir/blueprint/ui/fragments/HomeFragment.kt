@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
 import dev.jahir.blueprint.data.models.Counter
@@ -30,6 +29,7 @@ import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.setMarginBottom
 import dev.jahir.frames.extensions.views.setPaddingBottom
+import dev.jahir.frames.ui.widgets.StatefulRecyclerView
 import dev.jahir.kuper.extensions.hasStoragePermission
 
 @SuppressLint("MissingPermission")
@@ -65,7 +65,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         HomeAdapter(context?.boolean(R.bool.show_overview, true) == true, this)
     }
 
-    private var recyclerView: RecyclerView? = null
+    private var recyclerView: StatefulRecyclerView? = null
 
     private val fabHeight: Int
         get() {
@@ -77,7 +77,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView?.isSaveEnabled = true
+        recyclerView?.loading = false
+        recyclerView?.setFastScrollEnabled(false)
         val columnsCount = 2
         val layoutManager =
             GridLayoutManager(context, columnsCount, GridLayoutManager.VERTICAL, false)
