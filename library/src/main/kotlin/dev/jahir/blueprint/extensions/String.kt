@@ -1,5 +1,8 @@
 package dev.jahir.blueprint.extensions
 
+import dev.jahir.frames.extensions.resources.lower
+import java.text.Normalizer
+
 // Icon name formatting
 private const val SPACE = 1
 private const val CAPS = 2
@@ -8,6 +11,13 @@ private const val CAPS_LOCK = 3
 internal fun String.clean() =
     replace("[^\\w\\s]+".toRegex(), " ").trim().replace(" +".toRegex(), " ")
         .replace("\\p{Z}".toRegex(), "_")
+
+internal fun String.safeDrawableName(): String {
+    val text = if (Character.isDigit(get(0))) ("a_$this") else this
+    val normalized = Normalizer.normalize(text, Normalizer.Form.NFKD)
+    val withoutAccents = normalized.replace("[\\p{InCombiningDiacriticalMarks}]", "")
+    return withoutAccents.clean().lower().replace(" ", "_")
+}
 
 /**
  * Kotlin port of the icon names formatting method made by Aidan Follestad (afollestad)
