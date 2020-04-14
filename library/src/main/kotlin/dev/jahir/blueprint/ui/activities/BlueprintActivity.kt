@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import dev.jahir.blueprint.BuildConfig
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
@@ -33,11 +34,13 @@ import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.utils.lazyViewModel
 import dev.jahir.frames.extensions.views.isVisible
 import dev.jahir.frames.extensions.views.setMarginBottom
+import dev.jahir.frames.extensions.views.snackbar
 import dev.jahir.frames.ui.activities.FramesActivity
 import dev.jahir.frames.ui.fragments.CollectionsFragment
 import dev.jahir.frames.ui.fragments.WallpapersFragment
 import dev.jahir.kuper.data.models.Component
 import dev.jahir.kuper.data.viewmodels.ComponentsViewModel
+import dev.jahir.kuper.extensions.hasStoragePermission
 import dev.jahir.kuper.ui.fragments.KuperWallpapersFragment
 
 abstract class BlueprintActivity : FramesActivity() {
@@ -63,6 +66,7 @@ abstract class BlueprintActivity : FramesActivity() {
 
     internal val fabBtn: ExtendedFloatingActionButton? by findView(R.id.fab_btn)
     private var iconDialog: IconDialog? = null
+    private var shouldBuildRequest: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -159,6 +163,7 @@ abstract class BlueprintActivity : FramesActivity() {
     override fun internalOnPermissionsGranted(result: List<PermissionStatus>) {
         super.internalOnPermissionsGranted(result)
         homeFragment.updateWallpaper()
+        if (shouldBuildRequest) buildRequest()
     }
 
     override fun canShowSearch(itemId: Int): Boolean =
@@ -250,11 +255,19 @@ abstract class BlueprintActivity : FramesActivity() {
         when (currentItemId) {
             R.id.home -> executeLauncherIntent(defaultLauncher)
             R.id.request -> {
-                SendIconRequest.sendIconRequest(
-                    this, requestsViewModel.selectedApps, ::onIconRequestResult
-                )
+                shouldBuildRequest = true
+                requestStoragePermission()
             }
         }
+    }
+
+    private fun buildRequest() {
+        shouldBuildRequest = false
+        if (!hasStoragePermission) {
+            snackbar(R.string.permission_denied, Snackbar.LENGTH_LONG, snackbarAnchorId)
+            return
+        }
+        SendIconRequest.sendIconRequest(this, requestsViewModel.selectedApps, ::onIconRequestResult)
     }
 
     override fun onBillingClientReady() {
