@@ -4,7 +4,6 @@
     android:id="@+id/icons_preview_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?colorSurface"
     android:descendantFocusability="blocksDescendants"
     android:foreground="?selectableItemBackground">
 

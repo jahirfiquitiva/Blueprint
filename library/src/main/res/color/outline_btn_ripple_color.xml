@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" tools:ignore="PrivateResource">
+    <item android:alpha="@dimen/mtrl_low_ripple_pressed_alpha" android:color="?colorSecondary" android:state_pressed="true" />
+    <item android:alpha="@dimen/mtrl_low_ripple_focused_alpha" android:color="?colorSecondary" android:state_focused="true" android:state_hovered="true" />
+    <item android:alpha="@dimen/mtrl_low_ripple_focused_alpha" android:color="?colorSecondary" android:state_focused="true" />
+    <item android:alpha="@dimen/mtrl_low_ripple_hovered_alpha" android:color="?colorSecondary" android:state_hovered="true" />
+    <item android:alpha="@dimen/mtrl_low_ripple_default_alpha" android:color="?colorSecondary" />
+</selector>

@@ -18,7 +18,7 @@ open class HomeGridSpacingItemDecoration(
             (parent.adapter as? HomeAdapter)?.getRelativePosition(absolutePosition)
         val relativePosition = actualPosition?.relativePos() ?: -1
         val section = actualPosition?.section() ?: 0
-        if (section == 1 && relativePosition >= 0 && showOverview) {
+        if (section == HomeAdapter.OVERVIEW_SECTION && relativePosition >= 0 && showOverview) {
             val column = relativePosition % spanCount
             outRect.left = spacing - column * spacing / spanCount
             outRect.right = (column + 1) * spacing / spanCount

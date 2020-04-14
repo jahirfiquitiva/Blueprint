@@ -25,13 +25,18 @@ import dev.jahir.blueprint.ui.adapters.HomeAdapter
 import dev.jahir.blueprint.ui.decorations.HomeGridSpacingItemDecoration
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.drawable
+import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
+import dev.jahir.frames.extensions.context.toast
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.setMarginBottom
+import dev.jahir.frames.ui.activities.base.BaseBillingActivity
+import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.PLAY_STORE_LINK_PREFIX
 import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.widgets.StatefulRecyclerView
 import dev.jahir.kuper.extensions.hasStoragePermission
+
 
 @SuppressLint("MissingPermission")
 class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
@@ -163,6 +168,38 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     override fun onAppLinkClicked(url: String, intent: Intent?) {
         super.onAppLinkClicked(url, intent)
         intent?.let { activity?.startActivity(it) } ?: { context?.openLink(url) }()
+    }
+
+    internal fun showDonation(show: Boolean) {
+        adapter.showDonateButton = show
+    }
+
+    override fun onShareClicked() {
+        try {
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(
+                    Intent.EXTRA_TEXT,
+                    context?.string(
+                        R.string.share_text,
+                        context?.getAppName(),
+                        PLAY_STORE_LINK_PREFIX + context?.packageName.orEmpty()
+                    )
+                )
+            }
+            context?.startActivity(
+                Intent.createChooser(
+                    intent,
+                    context?.string(R.string.share).orEmpty()
+                )
+            )
+        } catch (e: Exception) {
+            context?.toast(R.string.error)
+        }
+    }
+
+    override fun onDonateClicked() {
+        (activity as? BaseBillingActivity<*>)?.showInAppPurchasesDialog()
     }
 
     companion object {

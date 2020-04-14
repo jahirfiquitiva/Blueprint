@@ -16,4 +16,21 @@
         <item name="android:focusable">true</item>
     </style>
 
+    <style name="Widget.Blueprint.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/outline_btn_bg_color</item>
+        <item name="rippleColor">@color/outline_btn_ripple_color</item>
+        <item name="iconPadding">8dp</item>
+        <item name="iconTint">?colorSecondary</item>
+        <item name="strokeColor">?colorSecondary</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">?colorSecondary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
 </resources>

@@ -106,8 +106,9 @@ abstract class BlueprintActivity : FramesActivity() {
         homeViewModel.observeCounters(this, homeFragment)
         homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
         homeViewModel.observeHomeItems(this) { homeFragment.updateHomeItems(it) }
-
         homeViewModel.loadHomeItems(this)
+        homeFragment.showDonation(isBillingClientReady)
+
         loadPreviewIcons()
         loadIconsCategories()
         if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents(this)
@@ -256,7 +257,15 @@ abstract class BlueprintActivity : FramesActivity() {
         }
     }
 
+    override fun onBillingClientReady() {
+        super.onBillingClientReady()
+        homeFragment.showDonation(isBillingClientReady)
+    }
+
     private fun onIconRequestResult(success: Boolean) {
         toast(if (success) "Success" else "Error!")
     }
+
+    override val snackbarAnchorId: Int
+        get() = if (fabBtn?.isVisible == true) R.id.fab_btn else R.id.bottom_navigation
 }

@@ -7,4 +7,6 @@ interface HomeItemsListener {
     fun onIconsPreviewClicked() {}
     fun onCounterClicked(counter: Counter) {}
     fun onAppLinkClicked(url: String = "", intent: Intent? = null) {}
+    fun onShareClicked() {}
+    fun onDonateClicked() {}
 }

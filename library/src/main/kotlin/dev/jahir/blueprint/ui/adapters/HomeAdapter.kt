@@ -17,6 +17,7 @@ import dev.jahir.blueprint.data.models.ZooperCounter
 import dev.jahir.blueprint.extensions.safeNotifySectionChanged
 import dev.jahir.blueprint.ui.viewholders.AppLinkViewHolder
 import dev.jahir.blueprint.ui.viewholders.CounterViewHolder
+import dev.jahir.blueprint.ui.viewholders.HomeActionsViewHolder
 import dev.jahir.blueprint.ui.viewholders.IconsPreviewViewHolder
 import dev.jahir.frames.extensions.views.gone
 import dev.jahir.frames.extensions.views.inflate
@@ -27,6 +28,13 @@ class HomeAdapter(
     showOverview: Boolean = true,
     private var listener: HomeItemsListener? = null
 ) : SectionedRecyclerViewAdapter<SectionedViewHolder>() {
+
+    var showDonateButton: Boolean = showOverview
+        set(value) {
+            if (value == field) return
+            field = value
+            safeNotifySectionChanged(ACTIONS_SECTION)
+        }
 
     var showOverview: Boolean = showOverview
         set(value) {
@@ -109,6 +117,7 @@ class HomeAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionedViewHolder =
         when (viewType) {
             ICONS_PREVIEW_SECTION -> IconsPreviewViewHolder(parent.inflate(R.layout.item_home_icons_preview))
+            ACTIONS_SECTION -> HomeActionsViewHolder(parent.inflate(R.layout.item_home_actions))
             OVERVIEW_SECTION -> {
                 if (showOverview) CounterViewHolder(parent.inflate(R.layout.item_stats))
                 else AppLinkViewHolder(parent.inflate(R.layout.item_home_app_link))
@@ -129,8 +138,8 @@ class HomeAdapter(
             (holder as? SectionHeaderViewHolder)?.let {
                 when (section) {
                     OVERVIEW_SECTION -> {
-                        if (showOverview) it.bind(R.string.overview, 0, false)
-                        else it.bind(R.string.more_apps, 0, false)
+                        if (showOverview) it.bind(R.string.overview, 0)
+                        else it.bind(R.string.more_apps, 0)
                     }
                     MORE_APPS_SECTION -> {
                         if (showOverview) it.bind(R.string.more_apps, 0)
@@ -138,8 +147,9 @@ class HomeAdapter(
                     }
                     USEFUL_LINKS_SECTION -> {
                         if (showOverview) it.bind(R.string.useful_links, 0)
-                        else it.bind("", "")
+                        else it.bind("", "", false)
                     }
+                    else -> it.bind(0, 0, section > ACTIONS_SECTION)
                 }
             }
         }
@@ -152,6 +162,7 @@ class HomeAdapter(
         absolutePosition: Int
     ) {
         (holder as? IconsPreviewViewHolder)?.bind(iconsPreviewList, wallpaper, listener)
+        (holder as? HomeActionsViewHolder)?.bind(showDonateButton, listener)
         (holder as? CounterViewHolder)?.bind(counters.getOrNull(relativePosition), listener)
         val appItemsSection = OVERVIEW_SECTION + (if (showOverview) 1 else 0)
         (holder as? AppLinkViewHolder)?.bind(
@@ -164,7 +175,8 @@ class HomeAdapter(
     override fun onBindFooterViewHolder(holder: SectionedViewHolder?, section: Int) {}
     override fun getItemCount(section: Int): Int = when (section) {
         ICONS_PREVIEW_SECTION -> 1
-        OVERVIEW_SECTION -> if (showOverview) counters.size else appItems.size
+        OVERVIEW_SECTION -> if (showOverview) counters.size else 1
+        ACTIONS_SECTION -> if (showOverview) 1 else appItems.size
         MORE_APPS_SECTION -> if (showOverview) appItems.size else linkItems.size
         USEFUL_LINKS_SECTION -> linkItems.size
         else -> 0
@@ -182,10 +194,11 @@ class HomeAdapter(
     ): Int = if (section == OVERVIEW_SECTION && showOverview) 1 else 2
 
     companion object {
-        private const val SECTION_COUNT = 4
+        private const val SECTION_COUNT = 5
         private const val ICONS_PREVIEW_SECTION = 0
-        private const val OVERVIEW_SECTION = 1
-        private const val MORE_APPS_SECTION = 2
-        private const val USEFUL_LINKS_SECTION = 3
+        private const val ACTIONS_SECTION = 1
+        internal const val OVERVIEW_SECTION = 2
+        private const val MORE_APPS_SECTION = 3
+        private const val USEFUL_LINKS_SECTION = 4
     }
 }
