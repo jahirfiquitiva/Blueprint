@@ -13,7 +13,8 @@ import dev.jahir.blueprint.BuildConfig
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.RequestApp
-import dev.jahir.blueprint.data.tasks.SendIconRequest
+import dev.jahir.blueprint.data.requests.RequestCallback
+import dev.jahir.blueprint.data.requests.SendIconRequest
 import dev.jahir.blueprint.data.viewmodels.HomeViewModel
 import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
 import dev.jahir.blueprint.data.viewmodels.RequestsViewModel
@@ -28,7 +29,6 @@ import dev.jahir.blueprint.ui.fragments.dialogs.IconDialog
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.findView
 import dev.jahir.frames.extensions.context.string
-import dev.jahir.frames.extensions.context.toast
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.utils.lazyViewModel
@@ -43,7 +43,7 @@ import dev.jahir.kuper.data.viewmodels.ComponentsViewModel
 import dev.jahir.kuper.extensions.hasStoragePermission
 import dev.jahir.kuper.ui.fragments.KuperWallpapersFragment
 
-abstract class BlueprintActivity : FramesActivity() {
+abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     open val isDebug: Boolean = BuildConfig.DEBUG
 
@@ -267,18 +267,20 @@ abstract class BlueprintActivity : FramesActivity() {
             snackbar(R.string.permission_denied, Snackbar.LENGTH_LONG, snackbarAnchorId)
             return
         }
-        SendIconRequest.sendIconRequest(this, requestsViewModel.selectedApps, ::onIconRequestResult)
+        // TODO: Implement callback methods
+        SendIconRequest.sendIconRequest(this, requestsViewModel.selectedApps, this)
     }
 
     override fun onBillingClientReady() {
         super.onBillingClientReady()
-        homeFragment.showDonation(isBillingClientReady)
-    }
-
-    private fun onIconRequestResult(success: Boolean) {
-        toast(if (success) "Success" else "Error!")
+        homeFragment.showDonation(isBillingClientReady && getInAppPurchasesItemsIds().isNotEmpty())
     }
 
     override val snackbarAnchorId: Int
         get() = if (fabBtn?.isVisible == true) R.id.fab_btn else R.id.bottom_navigation
+
+    override fun onRequestEmailIntent(intent: Intent?) {
+        super.onRequestEmailIntent(intent)
+        startActivity(intent)
+    }
 }

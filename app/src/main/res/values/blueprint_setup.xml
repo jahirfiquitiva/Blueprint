@@ -48,9 +48,16 @@
     <integer name="max_apps_to_request">-1</integer>
     <integer name="time_limit_in_minutes">0</integer>
 
-    <!-- Leave empty to disable. A URL to an Arctic Request Manager server, e.g. https://arcticmanager.com -->
-    <string name="arctic_backend_host" translatable="false"></string>
-
-    <!-- Host must also be filled in first. An app API key from Arctic Request Manager. -->
+    <!--
+        Host must also be filled in first. An app API key from Arctic Request Manager.
+        Get yours at https://arcticmanager.com
+    -->
     <string name="arctic_backend_api_key" translatable="false"></string>
+
+    <!--
+        Do you want to let people send requests via email if upload to Arctic fails?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="default_to_email_if_arctic_fails">false</bool>
 </resources>

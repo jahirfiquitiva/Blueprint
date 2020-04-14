@@ -1,126 +1,62 @@
-package dev.jahir.blueprint.data.tasks
+@file:Suppress("RemoveExplicitTypeArguments")
 
-import android.annotation.SuppressLint
+package dev.jahir.blueprint.data.requests
+
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Environment
-import android.util.Log
-import androidx.annotation.IntDef
+import android.text.Html
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
+import com.google.gson.GsonBuilder
+import dev.jahir.blueprint.BuildConfig
 import dev.jahir.blueprint.R
-import dev.jahir.blueprint.data.BlueprintPreferences
+import dev.jahir.blueprint.data.models.ArcticResponse
 import dev.jahir.blueprint.data.models.RequestApp
+import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestState
+import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestsLeft
+import dev.jahir.blueprint.data.requests.RequestStateManager.getTimeLeft
+import dev.jahir.blueprint.data.requests.RequestStateManager.saveRequestMoment
+import dev.jahir.blueprint.data.requests.RequestStateManager.saveRequestsLeft
 import dev.jahir.blueprint.extensions.clean
 import dev.jahir.blueprint.extensions.safeDrawableName
 import dev.jahir.blueprint.extensions.saveAll
 import dev.jahir.blueprint.extensions.saveIcon
 import dev.jahir.blueprint.extensions.zip
+import dev.jahir.frames.extensions.context.currentVersionCode
+import dev.jahir.frames.extensions.context.currentVersionName
 import dev.jahir.frames.extensions.context.getAppName
-import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.createIfDidNotExist
 import dev.jahir.frames.extensions.resources.deleteEverything
+import dev.jahir.frames.extensions.resources.getUri
 import dev.jahir.frames.extensions.resources.hasContent
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.io.File
+import java.net.URLConnection
 import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Date
+import java.util.Locale
 
 object SendIconRequest {
-    internal const val STATE_UNKNOWN = -1
-    internal const val STATE_NORMAL = 0
-    internal const val STATE_COUNT_LIMITED = 1
-    internal const val STATE_TIME_LIMITED = 2
-
-    @IntDef(STATE_UNKNOWN, STATE_NORMAL, STATE_COUNT_LIMITED, STATE_TIME_LIMITED)
-    @Retention(AnnotationRetention.SOURCE)
-    annotation class State
-
-    interface RequestCallback {
-        fun onRunning() {}
-        fun onStarted() {}
-        fun onFinished(success: Boolean) {}
-        fun onEmpty() {}
-        fun onError(reason: String? = null, e: Throwable? = null) {}
-        fun onLimited(
-            @State reason: Int,
-            requestsLeft: Int,
-            timeLeft: Long,
-            building: Boolean = false
-        ) {
-        }
-    }
-
     private var requestInProgress: Boolean = false
 
-    @SuppressLint("SimpleDateFormat")
-    private fun getTimeLeft(context: Context?): Long {
-        context ?: return -1
-        val savedTime = BlueprintPreferences(context).savedTime
-        if (savedTime < 0) return -1
-        val elapsedTime = System.currentTimeMillis() - savedTime
-        val sdf = SimpleDateFormat("MMM dd,yyyy HH:mm:ss")
-        val timeLeft = context.integer(R.integer.time_limit_in_minutes) - elapsedTime - 500
-        // TODO: Delete log
-        Log.d(
-            "Blueprint",
-            "\nRequest: [ Last: ${sdf.format(Date(savedTime))},\n" +
-                    "Now: ${sdf.format(Date(System.currentTimeMillis()))}," +
-                    "\nTime Left: ~ ${timeLeft / 1000} secs. aprox. ]"
-        )
-        return timeLeft
-    }
-
-    private fun saveRequestsLeft(context: Context?, requestsLeft: Int) {
-        context ?: return
-        BlueprintPreferences(context).maxApps = requestsLeft
-    }
-
-    private fun getRequestsLeft(context: Context?): Int {
-        context ?: return 0
-        val prefs = BlueprintPreferences(context)
-        val requestsLeft = prefs.maxApps
-        return if (requestsLeft > -1) {
-            requestsLeft
-        } else {
-            val requestLimit = context.integer(R.integer.max_apps_to_request, -1)
-            saveRequestsLeft(context, requestLimit)
-            prefs.maxApps
-        }
-    }
-
-    @State
-    internal fun getRequestState(
-        context: Context?,
-        selectedApps: ArrayList<RequestApp>,
-        building: Boolean = false
-    ): Int {
-        context ?: return STATE_UNKNOWN
-        val requestLimit = context.integer(R.integer.max_apps_to_request, -1)
-        val timeLimit = context.integer(R.integer.time_limit_in_minutes, -1)
-        if (requestLimit <= 0 || timeLimit <= 0) return STATE_NORMAL
-        val extra = if (building) 0 else 1
-        val requestsLeft = getRequestsLeft(context)
-        val timeLeft = getTimeLeft(context)
-        return when {
-            (selectedApps.size + extra) > requestsLeft -> {
-                when {
-                    getTimeLeft(context) > 0 -> STATE_TIME_LIMITED
-                    requestsLeft == 0 -> {
-                        saveRequestsLeft(context, -1)
-                        STATE_NORMAL
-                    }
-                    else -> STATE_COUNT_LIMITED
-                }
-            }
-            timeLeft > 0 -> STATE_TIME_LIMITED
-            else -> STATE_NORMAL
-        }
+    private val service by lazy {
+        Retrofit.Builder()
+            .baseUrl("https://arcticmanager.com/")
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            .build().create(ArcticService::class.java)
     }
 
     @Suppress("DEPRECATION")
@@ -145,6 +81,15 @@ object SendIconRequest {
         }
     }
 
+    private fun registerRequestAttempt(context: Context?, selectedAppsCount: Int = -1) {
+        if (selectedAppsCount > 0) {
+            val requestsLeft = getRequestsLeft(context)
+            val amount = requestsLeft - selectedAppsCount
+            saveRequestsLeft(context, if (amount < 0) 0 else amount)
+            if (requestsLeft == 0) saveRequestMoment(context)
+        }
+    }
+
     private suspend fun cleanFiles(context: Context?, everything: Boolean = false) =
         withContext(IO) {
             try {
@@ -159,8 +104,6 @@ object SendIconRequest {
             }
         }
 
-    private suspend fun send(context: Context?) {}
-
     private suspend fun buildTextFiles(
         context: Context?,
         correctList: ArrayList<Pair<String, RequestApp>>,
@@ -168,7 +111,8 @@ object SendIconRequest {
         uploadToArctic: Boolean
     ): Pair<ArrayList<File>, String> = withContext(IO) {
         val requestLocation =
-            getRequestsLocation(context) ?: return@withContext Pair(ArrayList(), "")
+            getRequestsLocation(context)
+                ?: return@withContext Pair<ArrayList<File>, String>(ArrayList<File>(), "")
 
         var xmlSb: StringBuilder? = null
         var amSb: StringBuilder? = null
@@ -183,9 +127,7 @@ object SendIconRequest {
             )
         }
 
-        if (!uploadToArctic) {
-            amSb = StringBuilder("<appmap>")
-        }
+        if (!uploadToArctic) amSb = StringBuilder("<appmap>")
 
         if (!uploadToArctic) {
             trSb = StringBuilder(
@@ -197,9 +139,7 @@ object SendIconRequest {
             )
         }
 
-        if (uploadToArctic) {
-            jsonSb = StringBuilder("{\n\t\"components\": [")
-        }
+        if (uploadToArctic) jsonSb = StringBuilder("{\n\t\"components\": [")
 
         var isFirst = true
         for ((iconName, app) in correctList) {
@@ -244,35 +184,33 @@ object SendIconRequest {
         if (xmlSb != null) {
             xmlSb.append("\n\n</resources>")
             val appfilter = File(requestLocation, "appfilter_$date.xml")
-            if (appfilter.saveAll(xmlSb.toString()))
-                textFiles.add(appfilter)
+            if (appfilter.saveAll(xmlSb.toString())) textFiles.add(appfilter)
         }
 
         if (amSb != null) {
             amSb.append("\n\n</appmap>")
             val appmap = File(requestLocation, "appmap_$date.xml")
-            if (appmap.saveAll(amSb.toString()))
-                textFiles.add(appmap)
+            if (appmap.saveAll(amSb.toString())) textFiles.add(appmap)
         }
 
         if (trSb != null) {
             trSb.append("\n\n</Theme>")
             val themeRes = File(requestLocation, "theme_resources_$date.xml")
-            if (themeRes.saveAll(trSb.toString()))
-                textFiles.add(themeRes)
+            if (themeRes.saveAll(trSb.toString())) textFiles.add(themeRes)
         }
 
         Pair(textFiles, jsonSb?.append("\n\t]\n}")?.toString().orEmpty())
     }
 
-    private suspend fun buildZipFile(date: String, location: File, files: ArrayList<File>): File? {
-        if (files.isEmpty()) return null
-        return try {
-            File(location, "IconRequest-$date.zip").zip(files)
-        } catch (e: Exception) {
-            null
+    private suspend fun buildZipFile(date: String, location: File, files: ArrayList<File>): File? =
+        withContext(IO) {
+            if (files.isEmpty()) return@withContext null
+            try {
+                File(location, "IconRequest-$date.zip").zip(files)
+            } catch (e: Exception) {
+                null
+            }
         }
-    }
 
     private suspend fun zipFiles(
         context: Context?,
@@ -329,8 +267,91 @@ object SendIconRequest {
         emailZipFiles.addAll(textFiles)
 
         val zipFile = buildZipFile(date, requestLocation, emailZipFiles)
-
         Pair(zipFile, jsonContent)
+    }
+
+    private suspend fun uploadToArctic(
+        zipFile: File?,
+        jsonContent: String,
+        apiKey: String
+    ): String {
+        zipFile ?: return "File does not exist!"
+        return withContext(IO) {
+            var fileType = URLConnection.guessContentTypeFromName(zipFile.name)
+            if (fileType == null || !fileType.hasContent()) fileType = "application/zip"
+            val requestBody: RequestBody = RequestBody.create(MediaType.parse(fileType), zipFile)
+            val fileToUpload =
+                MultipartBody.Part.createFormData("archive", zipFile.name, requestBody)
+            val response: ArcticResponse? = try {
+                service.uploadRequest(apiKey, jsonContent, fileToUpload)
+            } catch (e: Exception) {
+                null
+            }
+            val success = response?.status?.contains("success", true) ?: false
+            val errorMessage = response?.error.orEmpty()
+            return@withContext if (!success || errorMessage.hasContent()) {
+                errorMessage
+            } else ""
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun buildEmailIntent(
+        context: Context?,
+        zipFile: File?,
+        selectedApps: ArrayList<RequestApp>,
+        callback: RequestCallback? = null
+    ) {
+        if (context == null || zipFile == null) {
+            callback?.onRequestError()
+            return
+        }
+
+        val email = context.string(R.string.email)
+        val subject = context.string(R.string.email_subject)
+        if (!email.hasContent() || !subject.hasContent()) {
+            callback?.onRequestError()
+            return
+        }
+
+        val sb = StringBuilder()
+        for (i in selectedApps.indices) {
+            if (i > 0) sb.append("<br/><br/>")
+            val app = selectedApps[i]
+            sb.append("Name: <b>${app.name}</b><br/>")
+            sb.append("ComponentInfo: <b>${app.component}</b><br/>")
+            sb.append("Link: https://play.google.com/store/apps/details?id=${app.packageName}<br/>")
+        }
+        
+        sb.append("<br/>Blueprint Version: ${BuildConfig.DASHBOARD_VERSION}")
+        sb.append(
+            "<br/>App Version: ${context.currentVersionCode} " +
+                    "(${context.currentVersionName}) from " +
+                    (context.packageManager?.getInstallerPackageName(context.packageName ?: "")
+                        ?: "Unknown")
+        )
+
+        val body = sb.toString().trim()
+        if (!body.hasContent()) {
+            callback?.onRequestError()
+            return
+        }
+
+        val zipUri = zipFile.getUri(context)
+        val emailIntent = Intent(Intent.ACTION_SEND)
+            .putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+            .putExtra(Intent.EXTRA_SUBJECT, subject)
+            .putExtra(
+                Intent.EXTRA_TEXT,
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                    Html.fromHtml(body, Html.FROM_HTML_MODE_LEGACY)
+                else Html.fromHtml(body)
+            )
+            .putExtra(Intent.EXTRA_STREAM, zipUri)
+            .setType("application/zip")
+
+        registerRequestAttempt(context, selectedApps.size)
+        callback?.onRequestEmailIntent(emailIntent)
     }
 
     fun sendIconRequest(
@@ -338,35 +359,54 @@ object SendIconRequest {
         selectedApps: ArrayList<RequestApp>,
         callback: RequestCallback? = null
     ) {
+        val theCallback = callback ?: object : RequestCallback {}
         if (requestInProgress) {
-            callback?.onRunning()
+            theCallback.onRequestRunning()
             return
         }
         val email: String = activity?.string(R.string.email).orEmpty()
         if (!email.hasContent()) {
-            callback?.onError()
+            theCallback.onRequestError()
             return
         }
         if (selectedApps.isNullOrEmpty()) {
-            callback?.onEmpty()
+            theCallback.onRequestEmpty()
             return
         }
         requestInProgress = true
         activity?.lifecycleScope?.launch {
             val state = getRequestState(activity, selectedApps, true)
-            if (state == STATE_NORMAL) {
-                callback?.onStarted()
-                val emailSubject: String = activity.string(R.string.request_title, "Icons Request")
-                val host = activity.string(R.string.arctic_backend_host)
+            if (state == RequestState.STATE_NORMAL) {
+                theCallback.onRequestStarted()
+
                 val apiKey = activity.string(R.string.arctic_backend_api_key)
-                val uploadToArctic = host.hasContent() && apiKey.hasContent()
+                val uploadToArctic = apiKey.hasContent()
 
                 val (zipFile, jsonContent) = zipFiles(activity, selectedApps, uploadToArctic)
-                // TODO: Submit zipFile to Arctic or build activity intent
-                callback?.onFinished(true)
+                cleanFiles(activity)
+
+                if (uploadToArctic) {
+                    val errorMessage = uploadToArctic(zipFile, jsonContent, apiKey)
+                    val errored = errorMessage.hasContent()
+                    if (errored) theCallback.onRequestError(errorMessage) else theCallback.onRequestFinished(
+                        !errored
+                    )
+                    registerRequestAttempt(activity, selectedApps.size)
+                    cleanFiles(activity, true)
+                } else buildEmailIntent(activity, zipFile, selectedApps, theCallback)
+                requestInProgress = false
             } else {
-                callback?.onLimited(state, getRequestsLeft(activity), getTimeLeft(activity), true)
+                theCallback.onRequestLimited(
+                    state,
+                    getRequestsLeft(activity),
+                    getTimeLeft(activity),
+                    true
+                )
+                requestInProgress = false
             }
-        } ?: { callback?.onError() }()
+        } ?: {
+            theCallback.onRequestError()
+            requestInProgress = false
+        }()
     }
 }
