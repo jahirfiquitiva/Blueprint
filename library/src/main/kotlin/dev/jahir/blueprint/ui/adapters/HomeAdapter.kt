@@ -119,7 +119,7 @@ class HomeAdapter(
             ICONS_PREVIEW_SECTION -> IconsPreviewViewHolder(parent.inflate(R.layout.item_home_icons_preview))
             ACTIONS_SECTION -> HomeActionsViewHolder(parent.inflate(R.layout.item_home_actions))
             OVERVIEW_SECTION -> {
-                if (showOverview) CounterViewHolder(parent.inflate(R.layout.item_stats))
+                if (showOverview) CounterViewHolder(parent.inflate(R.layout.item_counter))
                 else AppLinkViewHolder(parent.inflate(R.layout.item_home_app_link))
             }
             MORE_APPS_SECTION, USEFUL_LINKS_SECTION ->

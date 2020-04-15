@@ -21,6 +21,9 @@
     <string name="send_request">Send request</string>
     <string name="send_request_x">Send request (%1$s)</string>
 
+    <string name="kustom_templates">Kustom Templates</string>
+    <string name="zooper_templates">Zooper Templates</string>
+
     <string name="rate">Rate</string>
     <string name="share">Share</string>
     <string name="share_text">Check out %1$s and let your friends know about it!\nAvailable on Google Play Store at: %2$s</string>

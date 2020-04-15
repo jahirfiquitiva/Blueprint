@@ -7,8 +7,6 @@ import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
 import dev.jahir.blueprint.data.models.Counter
-import dev.jahir.blueprint.data.models.KustomCounter
-import dev.jahir.blueprint.data.models.ZooperCounter
 import dev.jahir.frames.extensions.context.color
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.resolveColor
@@ -34,13 +32,8 @@ class CounterViewHolder(itemView: View) : SectionedViewHolder(itemView) {
                     )
                 )
         )
-        titleView?.text = context.string(counter.title)
-        descriptionView?.text = when (counter) {
-            is KustomCounter, is ZooperCounter -> {
-                context.string(R.string.x_templates, counter.count).lower()
-            }
-            else -> counter.count.toString()
-        }
+        titleView?.text = counter.count.toString()
+        descriptionView?.text = context.string(counter.title).lower()
         itemView.setOnClickListener { listener?.onCounterClicked(counter) }
     }
 }

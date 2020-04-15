@@ -13,7 +13,7 @@ data class WallpapersCounter(override val count: Int = 0) :
     Counter(R.string.wallpapers, R.drawable.ic_wallpapers, count)
 
 data class KustomCounter(override val count: Int = 0) :
-    Counter(R.string.kustom, R.drawable.ic_kustom, count)
+    Counter(R.string.templates, R.drawable.ic_kustom, count)
 
 data class ZooperCounter(override val count: Int = 0) :
-    Counter(R.string.zooper, R.drawable.ic_zooper, count)
+    Counter(R.string.templates, R.drawable.ic_zooper, count)
