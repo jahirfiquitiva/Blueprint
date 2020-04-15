@@ -1,9 +1,9 @@
 package dev.jahir.blueprint.app
 
 import com.github.javiersantos.piracychecker.PiracyChecker
-import dev.jahir.blueprint.ui.activities.BottomNavigationBlueprintActivity
+import dev.jahir.blueprint.ui.activities.DrawerBlueprintActivity
 
-class MainActivity : BottomNavigationBlueprintActivity() {
+class MainActivity : DrawerBlueprintActivity() {
 
     /**
      * These things here have the default values. You can delete the ones you don't want to change

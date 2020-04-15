@@ -66,6 +66,11 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         KuperWallpapersFragment.create(ArrayList(wallpapersViewModel.wallpapers))
     }
 
+    // TODO:
+    internal val isIconsPicker: Boolean
+        get() = false
+    // get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
+
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
     private val iconsCategoriesFragment: IconsCategoriesFragment by lazy { IconsCategoriesFragment() }
     private val applyFragment: ApplyFragment by lazy { ApplyFragment() }
@@ -101,6 +106,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             homeViewModel.postWallpapersCount(it.size)
         }
         templatesViewModel.observe(this) { components ->
+            onTemplatesLoaded(components)
             val kustomCount =
                 components.filter { it.type != Component.Type.ZOOPER && it.type != Component.Type.UNKNOWN }.size
             val zooperCount = components.filter { it.type == Component.Type.ZOOPER }.size
@@ -261,13 +267,11 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                     selectedAppsCount > 0
                 )
             }
-            else -> {
-                fabBtn?.hide()
-            }
+            else -> fabBtn?.hide()
         }
     }
 
-    private fun updateFab(itemId: Int, afterHidden: () -> Unit) {
+    internal fun updateFab(itemId: Int, afterHidden: () -> Unit = {}) {
         if (itemId != currentItemId)
             if (fabBtn?.isVisible == true) {
                 fabBtn?.hide(object : ExtendedFloatingActionButton.OnChangedCallback() {
@@ -399,4 +403,6 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         dismissRequestDialog()
         startActivity(intent)
     }
+
+    open fun onTemplatesLoaded(templates: ArrayList<Component>) {}
 }

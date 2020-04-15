@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!--
+        Do you want the app name and version in the drawer header?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="with_drawer_texts">true</bool>
 
     <!--
         Show a custom image as placeholder while loading icons
