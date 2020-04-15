@@ -76,6 +76,7 @@ class HomeAdapter(
             if (value == field) return
             field = value
             if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
+            if (counters.isNotEmpty()) safeNotifySectionChanged(MORE_APPS_SECTION)
         }
 
     var wallpapersCount: Int = 0
@@ -83,6 +84,7 @@ class HomeAdapter(
             if (value == field) return
             field = value
             if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
+            if (counters.isNotEmpty()) safeNotifySectionChanged(MORE_APPS_SECTION)
         }
 
     var kustomCount: Int = 0
@@ -90,6 +92,7 @@ class HomeAdapter(
             if (value == field) return
             field = value
             if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
+            if (counters.isNotEmpty()) safeNotifySectionChanged(MORE_APPS_SECTION)
         }
 
     var zooperCount: Int = 0
@@ -97,6 +100,7 @@ class HomeAdapter(
             if (value == field) return
             field = value
             if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
+            if (counters.isNotEmpty()) safeNotifySectionChanged(MORE_APPS_SECTION)
         }
 
     private val counters: List<Counter>
@@ -142,14 +146,14 @@ class HomeAdapter(
                         else it.bind(R.string.more_apps, 0, false)
                     }
                     MORE_APPS_SECTION -> {
-                        if (showOverview) it.bind(R.string.more_apps, 0)
-                        else it.bind(R.string.useful_links, 0)
+                        if (showOverview) it.bind(R.string.more_apps, 0, counters.isNotEmpty())
+                        else it.bind(R.string.useful_links, 0, counters.isNotEmpty())
                     }
                     USEFUL_LINKS_SECTION -> {
                         if (showOverview) it.bind(R.string.useful_links, 0)
                         else it.bind("", "", false)
                     }
-                    else -> it.bind(0, 0, section > ACTIONS_SECTION)
+                    else -> it.bind(0, 0, false)
                 }
             }
         }

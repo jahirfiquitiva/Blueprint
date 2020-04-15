@@ -46,7 +46,6 @@
             style="@style/TextStyle.Frames.Caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4sp"
             android:textColor="?colorOnSurface"
             android:textSize="14sp"
             tools:text="Required to use widgets included" />
