@@ -138,8 +138,8 @@ class HomeAdapter(
             (holder as? SectionHeaderViewHolder)?.let {
                 when (section) {
                     OVERVIEW_SECTION -> {
-                        if (showOverview) it.bind(R.string.overview, 0)
-                        else it.bind(R.string.more_apps, 0)
+                        if (showOverview) it.bind(R.string.overview, 0, false)
+                        else it.bind(R.string.more_apps, 0, false)
                     }
                     MORE_APPS_SECTION -> {
                         if (showOverview) it.bind(R.string.more_apps, 0)

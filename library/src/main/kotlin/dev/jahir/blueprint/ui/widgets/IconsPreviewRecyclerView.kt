@@ -44,7 +44,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         addItemDecoration(
             GridSpacingItemDecoration(
                 context.integer(R.integer.icons_columns_count),
-                context.dimenPixelSize(R.dimen.grids_spacing)
+                context.dimenPixelSize(R.dimen.grids_spacing), false
             )
         )
         adapter = iconsAdapter

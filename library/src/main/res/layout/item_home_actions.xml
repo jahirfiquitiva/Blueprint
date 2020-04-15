@@ -10,8 +10,7 @@
     android:gravity="center"
     android:paddingStart="8dp"
     android:paddingTop="16dp"
-    android:paddingEnd="8dp"
-    android:paddingBottom="8dp">
+    android:paddingEnd="8dp">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/share_btn"

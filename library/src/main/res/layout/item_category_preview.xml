@@ -75,8 +75,8 @@
         android:layout_gravity="center_horizontal"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         tools:itemCount="4"
         tools:listitem="@layout/item_icon" />
 
