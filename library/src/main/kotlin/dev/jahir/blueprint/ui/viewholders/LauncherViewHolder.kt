@@ -34,6 +34,7 @@ class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             target {
                 iconView?.setImageDrawable(it)
                 iconView?.colorFilter = if (!isInstalled) colorFilter else null
+                iconView?.alpha = if (isInstalled) 1.0F else 0.8F
             }
         }
         itemView.setOnClickListener { onClick?.invoke(launcher, isInstalled) }
