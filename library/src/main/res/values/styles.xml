@@ -6,7 +6,7 @@
     </style>
 
     <style name="BaseBlueprintTheme.Amoled" parent="BaseFramesTheme.Amoled">
-        <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView</item>
+        <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView.Amoled</item>
     </style>
 
     <style name="Widget.Blueprint.NavigationView" parent="Widget.Frames.NavigationView">
@@ -15,6 +15,8 @@
         <item name="itemShapeFillColor">@color/navigation_item_bg_color</item>
         <item name="android:background">@color/background</item>
     </style>
+
+    <style name="Widget.Blueprint.NavigationView.Amoled" parent="Widget.Blueprint.NavigationView"/>
 
     <style name="Widget.Blueprint.RequestCard" parent="Widget.MaterialComponents.CardView">
         <item name="shapeAppearance">@style/ShapeAppearance.Frames.CardView</item>
