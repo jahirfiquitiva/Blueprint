@@ -17,33 +17,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_header"
     android:layout_width="match_parent"
-    android:layout_height="168dp"
+    android:layout_height="180dp"
     android:background="@drawable/drawer_header"
     android:gravity="bottom"
-    android:minHeight="168dp"
+    android:minHeight="180dp"
     android:orientation="vertical"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/drawer_title"
-        style="@style/TextStyle.Frames.WallpaperTitle"
+        style="@style/TextStyle.Blueprint.DrawerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:fontFamily="sans-serif-medium"
         android:lines="1"
         android:maxLines="1"
-        android:textSize="14sp"
         tools:text="Blueprint" />
 
     <TextView
         android:id="@+id/drawer_subtitle"
-        style="@style/TextStyle.Frames.WallpaperSubtitle"
+        style="@style/TextStyle.Blueprint.DrawerSubtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:fontFamily="sans-serif"
         android:lines="1"
         android:maxLines="1"
-        android:textSize="14sp"
-        tools:text="v 1.0.0" />
+        tools:text="1.0.0" />
 
 </LinearLayout>

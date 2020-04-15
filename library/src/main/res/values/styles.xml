@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="BaseBlueprintTheme" parent="BaseFramesTheme">
+        <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView</item>
+    </style>
+
+    <style name="BaseBlueprintTheme.Amoled" parent="BaseFramesTheme.Amoled">
+        <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView</item>
+    </style>
+
+    <style name="Widget.Blueprint.NavigationView" parent="Widget.Frames.NavigationView">
+        <item name="itemTextColor">@color/navigation_item_text_color</item>
+        <item name="itemIconTint">@color/navigation_item_text_color</item>
+        <item name="itemShapeFillColor">@color/navigation_item_bg_color</item>
+        <item name="android:background">@color/background</item>
+    </style>
+
     <style name="Widget.Blueprint.RequestCard" parent="Widget.MaterialComponents.CardView">
         <item name="shapeAppearance">@style/ShapeAppearance.Frames.CardView</item>
         <item name="cardElevation">0dp</item>
@@ -31,6 +46,22 @@
         <item name="android:textColor">?colorSecondary</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextStyle.Blueprint.DrawerTitle" parent="TextStyle.Frames.WallpaperTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="TextStyle.Blueprint.DrawerSubtitle" parent="TextStyle.Frames.WallpaperSubtitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
     </style>
 
 </resources>

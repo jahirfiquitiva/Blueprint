@@ -59,39 +59,6 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
             navigationView?.layoutParams = params
         }
 
-        val states = arrayOf(
-            intArrayOf(-android.R.attr.state_checked),
-            intArrayOf(android.R.attr.state_checked),
-            intArrayOf()
-        )
-
-        /*
-        val iconColors = intArrayOf(activeIconsColor, accentColor, activeIconsColor)
-        val iconColorsList = ColorStateList(states, iconColors)
-
-        val textColors = intArrayOf(primaryTextColor, accentColor, primaryTextColor)
-        val textColorsList = ColorStateList(states, textColors)
-
-        navigationView?.itemTextColor = textColorsList
-        navigationView?.itemIconTintList = iconColorsList
-
-        val selectedItemBgColor = Color.parseColor(if (usesDarkTheme()) "#202020" else "#e8e8e8")
-        val transparent = Color.parseColor("#00000000")
-
-        val selectedBgDrawable = ColorDrawable(selectedItemBgColor)
-        val normalBgDrawable = ColorDrawable(transparent)
-
-        val bgDrawable = StateListDrawable()
-        bgDrawable.addState(intArrayOf(android.R.attr.state_pressed), selectedBgDrawable)
-        bgDrawable.addState(intArrayOf(android.R.attr.state_checked), selectedBgDrawable)
-        bgDrawable.addState(intArrayOf(android.R.attr.state_focused), selectedBgDrawable)
-        bgDrawable.addState(intArrayOf(android.R.attr.state_activated), selectedBgDrawable)
-        bgDrawable.addState(intArrayOf(), normalBgDrawable)
-
-        navigationView?.itemBackground = bgDrawable
-        navigationView?.invalidate()
-         */
-
         initDrawerItems()
         navigationView?.setNavigationItemSelectedListener(this)
         navigationView?.menu?.findItem(initialItemId)?.isChecked = true
@@ -157,4 +124,6 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
     }
 
     override fun getLayoutRes(): Int = R.layout.activity_drawer
+    override val snackbarAnchorId: Int
+        get() = R.id.fab_btn
 }

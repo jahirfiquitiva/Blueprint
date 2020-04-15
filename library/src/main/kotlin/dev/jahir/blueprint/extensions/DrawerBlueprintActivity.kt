@@ -8,6 +8,7 @@ import android.view.View
 import androidx.annotation.AttrRes
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.ui.activities.DrawerBlueprintActivity
+import dev.jahir.frames.extensions.context.dimenPixelSize
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.findView
 import dev.jahir.frames.extensions.views.setPaddingTop
@@ -17,8 +18,8 @@ import kotlin.math.roundToInt
 @SuppressLint("PrivateResource")
 internal fun DrawerBlueprintActivity.setOptimalDrawerHeaderHeight(headerView: View) {
     val ratio = 9.0 / 16.0
-    val defaultHeaderMinHeight = 168.dpToPx
-    val statusBarHeight = 25.dpToPx
+    val defaultHeaderMinHeight = 180.dpToPx
+    val statusBarHeight = 24.dpToPx
     var height = getOptimalDrawerWidth() * ratio
 
     if (Build.VERSION.SDK_INT >= 21) {
@@ -45,10 +46,8 @@ internal fun DrawerBlueprintActivity.setOptimalDrawerHeaderHeight(headerView: Vi
 internal fun DrawerBlueprintActivity.getOptimalDrawerWidth(): Int {
     var actionBarHeight: Int = getThemeAttributeDimensionSize(R.attr.actionBarSize)
     if (actionBarHeight == 0) {
-        actionBarHeight =
-            resources.getDimensionPixelSize(R.dimen.abc_action_bar_default_height_material)
+        actionBarHeight = dimenPixelSize(R.dimen.abc_action_bar_default_height_material)
     }
-
     val possibleMinDrawerWidth = resources.displayMetrics.widthPixels - actionBarHeight
     return min(possibleMinDrawerWidth, 320.dpToPx)
 }

@@ -405,4 +405,6 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     }
 
     open fun onTemplatesLoaded(templates: ArrayList<Component>) {}
+    override fun defaultTheme(): Int = R.style.BaseBlueprintTheme
+    override fun amoledTheme(): Int = R.style.BaseBlueprintTheme_Amoled
 }
