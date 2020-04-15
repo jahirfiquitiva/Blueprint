@@ -17,6 +17,7 @@ import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.RequestApp
 import dev.jahir.blueprint.data.requests.RequestCallback
 import dev.jahir.blueprint.data.requests.RequestState
+import dev.jahir.blueprint.data.requests.RequestStateManager
 import dev.jahir.blueprint.data.requests.SendIconRequest
 import dev.jahir.blueprint.data.viewmodels.HomeViewModel
 import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
@@ -253,8 +254,13 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         else requestsViewModel.deselectApp(app)
 
     private fun toggleSelectAll() {
-        if (requestsViewModel.toggleSelectAll(this))
-            requestFragment.updateSelectedApps(requestsViewModel.selectedApps)
+        val currentState = RequestStateManager.getRequestState(this, requestsViewModel.selectedApps)
+        if (currentState.state == RequestState.State.TIME_LIMITED) {
+            onRequestLimited(currentState)
+        } else {
+            if (requestsViewModel.toggleSelectAll(this))
+                requestFragment.updateSelectedApps(requestsViewModel.selectedApps)
+        }
     }
 
     private fun updateFabText(itemId: Int = currentItemId) {

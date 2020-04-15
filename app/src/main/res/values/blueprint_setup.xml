@@ -51,8 +51,8 @@
     If the time limit is set to 0 or less, users will be able to request as many times they want,
     with the max apps limit.
     -->
-    <integer name="max_apps_to_request">3</integer>
-    <integer name="time_limit_in_minutes">5</integer>
+    <integer name="max_apps_to_request">-1</integer>
+    <integer name="time_limit_in_minutes">0</integer>
 
     <!--
         Host must also be filled in first. An app API key from Arctic Request Manager.

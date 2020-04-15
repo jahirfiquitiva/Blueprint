@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:orderInCategory="100"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/icons"
+        android:icon="@drawable/ic_icons"
+        android:orderInCategory="200"
+        android:title="@string/icons"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/wallpapers"
+        android:icon="@drawable/ic_wallpapers"
+        android:orderInCategory="300"
+        android:title="@string/wallpapers"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/apply"
+        android:icon="@drawable/ic_apply"
+        android:orderInCategory="400"
+        android:title="@string/apply"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/request"
+        android:icon="@drawable/ic_request"
+        android:orderInCategory="500"
+        android:title="@string/request"
+        app:showAsAction="ifRoom" />
+</menu>
