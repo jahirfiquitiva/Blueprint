@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?><!--suppress CheckTagEmptyBody -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
+    <!--
+        Home actions style ==> Share / Rate / Donate buttons
+        0. Hidden
+        1. Small
+        2. Big
+    -->
+    <integer name="home_actions_style">1</integer>
+
     <!--
         Do you want to show overview in home section?
         True, means yes.

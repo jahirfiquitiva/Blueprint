@@ -140,7 +140,10 @@ class RequestsViewModel : ViewModel() {
         }
     }
 
-    private suspend fun loadAppsToRequest(context: Context?): ArrayList<RequestApp> {
+    private suspend fun loadAppsToRequest(
+        context: Context?,
+        debug: Boolean = true
+    ): ArrayList<RequestApp> {
         if (appsToRequest.isNotEmpty()) return appsToRequest
         context ?: return arrayListOf()
         return withContext(IO) {
@@ -189,10 +192,11 @@ class RequestsViewModel : ViewModel() {
                 }
             }
 
-            Log.d(
-                "Blueprint",
-                "Apps (Installed: ${installedApps.size}, Filtered: $filtered, To be themed: ${installedApps.size - filtered})"
-            )
+            if (debug)
+                Log.d(
+                    "Blueprint",
+                    "Apps (Installed: ${installedApps.size}, Themed: $filtered, Missing: ${installedApps.size - filtered})"
+                )
 
             ArrayList(installedApps.distinctBy { it.packageName }.sortedBy { it.name })
         }
@@ -204,7 +208,7 @@ class RequestsViewModel : ViewModel() {
             val themedComponents = loadThemedComponents(context, debug)
             themedComponentsData.postValue(themedComponents)
             delay(10)
-            val appsToRequest = loadAppsToRequest(context)
+            val appsToRequest = loadAppsToRequest(context, debug)
             appsToRequestData.postValue(appsToRequest)
         }
     }

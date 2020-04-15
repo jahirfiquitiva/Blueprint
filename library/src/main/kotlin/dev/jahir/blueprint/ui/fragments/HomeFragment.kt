@@ -26,6 +26,7 @@ import dev.jahir.blueprint.ui.decorations.HomeGridSpacingItemDecoration
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.getAppName
+import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.context.toast
@@ -68,7 +69,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         }
 
     private val adapter: HomeAdapter by lazy {
-        HomeAdapter(context?.boolean(R.bool.show_overview, true) == true, this)
+        HomeAdapter(
+            context?.integer(R.integer.home_actions_style, 1) ?: 1,
+            context?.boolean(R.bool.show_overview, true) == true, this
+        )
     }
 
     private var recyclerView: StatefulRecyclerView? = null
@@ -98,6 +102,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
 
         adapter.setLayoutManager(layoutManager)
         adapter.wallpaper = rightWallpaper
+        adapter.actionsStyle = context?.integer(R.integer.home_actions_style, 1) ?: 1
         adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
         recyclerView?.adapter = adapter
         recyclerView?.addItemDecoration(HomeGridSpacingItemDecoration(columnsCount, 8.dpToPx))
