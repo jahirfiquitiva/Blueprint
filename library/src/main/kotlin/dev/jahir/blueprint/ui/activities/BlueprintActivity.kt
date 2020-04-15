@@ -32,6 +32,7 @@ import dev.jahir.blueprint.ui.fragments.RequestFragment
 import dev.jahir.blueprint.ui.fragments.dialogs.IconDialog
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.findView
+import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.fragments.cancelable
@@ -185,6 +186,16 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         } catch (e: Exception) {
         }
     }
+
+    override fun getToolbarTitleForItem(itemId: Int): String? =
+        when (itemId) {
+            R.id.home -> getAppName()
+            R.id.icons -> string(R.string.icons)
+            R.id.wallpapers -> string(R.string.wallpapers)
+            R.id.apply -> string(R.string.apply)
+            R.id.request -> string(R.string.request)
+            else -> super.getToolbarTitleForItem(itemId)
+        }
 
     override fun getNextFragment(itemId: Int): Pair<Pair<String?, Fragment?>?, Boolean>? =
         when (itemId) {
