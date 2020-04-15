@@ -56,8 +56,9 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
         ArrayList(originalItems.filter { it.name.lower().contains(filter.lower()) })
 
     private fun onCheckChange(app: RequestApp, checked: Boolean) {
-        (activity as? BlueprintActivity)?.changeRequestAppState(app, checked)
-        requestAppsAdapter.changeAppState(app, checked)
+        if ((activity as? BlueprintActivity)?.changeRequestAppState(app, checked) == true)
+            requestAppsAdapter.changeAppState(app, checked)
+        else requestAppsAdapter.untoggle(app)
     }
 
     companion object {

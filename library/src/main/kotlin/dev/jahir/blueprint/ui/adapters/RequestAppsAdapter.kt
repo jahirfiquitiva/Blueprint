@@ -19,12 +19,22 @@ class RequestAppsAdapter(private val onCheckChange: ((requestApp: RequestApp, ch
 
     var selectedApps: ArrayList<RequestApp> = ArrayList()
         set(value) {
-            if (value.isEmpty() && field.isEmpty()) return
-            if (value.isNotEmpty() && value.size < appsToRequest.size) return
+            // if (value.isEmpty() && field.isEmpty()) return
+            // if (value.isNotEmpty() && value.size < appsToRequest.size) return
             field.clear()
             field.addAll(value)
             notifyDataSetChanged()
         }
+
+    internal fun untoggle(app: RequestApp) {
+        val index = try {
+            appsToRequest.indexOf(app)
+        } catch (e: Exception) {
+            -1
+        }
+        if (index < 0) return
+        notifyItemChanged(index)
+    }
 
     internal fun changeAppState(app: RequestApp, selected: Boolean) {
         val index = try {

@@ -10,7 +10,7 @@ private const val CAPS_LOCK = 3
 
 internal fun String.clean() =
     replace("[^\\w\\s]+".toRegex(), " ").trim().replace(" +".toRegex(), " ")
-        .replace("\\p{Z}".toRegex(), "_")
+        .replace("\\p{Z}".toRegex(), "_").trim()
 
 internal fun String.safeDrawableName(): String {
     val text = if (Character.isDigit(get(0))) ("a_$this") else this

@@ -13,10 +13,7 @@ import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.ArcticResponse
 import dev.jahir.blueprint.data.models.RequestApp
 import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestState
-import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestsLeft
-import dev.jahir.blueprint.data.requests.RequestStateManager.getTimeLeft
-import dev.jahir.blueprint.data.requests.RequestStateManager.saveRequestMoment
-import dev.jahir.blueprint.data.requests.RequestStateManager.saveRequestsLeft
+import dev.jahir.blueprint.data.requests.RequestStateManager.registerRequestAttempt
 import dev.jahir.blueprint.extensions.EmailBuilder
 import dev.jahir.blueprint.extensions.clean
 import dev.jahir.blueprint.extensions.safeDrawableName
@@ -74,15 +71,6 @@ object SendIconRequest {
             return File("$defFolder/${context?.getAppName()?.clean() ?: "Blueprint"}/Requests/")
         } catch (e: Exception) {
             return null
-        }
-    }
-
-    private fun registerRequestAttempt(context: Context?, selectedAppsCount: Int = -1) {
-        if (selectedAppsCount > 0) {
-            val requestsLeft = getRequestsLeft(context)
-            val amount = requestsLeft - selectedAppsCount
-            saveRequestsLeft(context, if (amount < 0) 0 else amount)
-            if (requestsLeft == 0) saveRequestMoment(context)
         }
     }
 
@@ -358,7 +346,7 @@ object SendIconRequest {
         requestInProgress = true
         activity?.lifecycleScope?.launch {
             val state = getRequestState(activity, selectedApps, true)
-            if (state == RequestState.STATE_NORMAL) {
+            if (state.state == RequestState.State.NORMAL) {
                 theCallback.onRequestStarted()
 
                 val apiKey = activity.string(R.string.arctic_backend_api_key)
@@ -370,20 +358,15 @@ object SendIconRequest {
                 if (uploadToArctic) {
                     val errorMessage = uploadToArctic(zipFile, jsonContent, apiKey)
                     val errored = errorMessage.hasContent()
-                    if (errored) theCallback.onRequestError(errorMessage) else theCallback.onRequestFinished(
-                        !errored
-                    )
+                    if (errored) theCallback.onRequestError(errorMessage)
+                    else theCallback.onRequestUploadFinished(!errored)
+
                     registerRequestAttempt(activity, selectedApps.size)
                     cleanFiles(activity, true)
                 } else buildEmailIntent(activity, zipFile, selectedApps, theCallback)
                 requestInProgress = false
             } else {
-                theCallback.onRequestLimited(
-                    state,
-                    getRequestsLeft(activity),
-                    getTimeLeft(activity),
-                    true
-                )
+                theCallback.onRequestLimited(state, true)
                 requestInProgress = false
             }
         } ?: {

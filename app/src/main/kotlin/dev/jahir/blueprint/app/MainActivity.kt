@@ -1,9 +1,9 @@
 package dev.jahir.blueprint.app
 
 import com.github.javiersantos.piracychecker.PiracyChecker
-import dev.jahir.blueprint.ui.activities.BlueprintActivity
+import dev.jahir.blueprint.ui.activities.BottomNavigationBlueprintActivity
 
-class MainActivity : BlueprintActivity() {
+class MainActivity : BottomNavigationBlueprintActivity() {
 
     /**
      * These things here have the default values. You can delete the ones you don't want to change
@@ -14,6 +14,7 @@ class MainActivity : BlueprintActivity() {
     override fun amazonInstallsEnabled(): Boolean = false
     override fun checkLPF(): Boolean = true
     override fun checkStores(): Boolean = true
+    override val isDebug: Boolean = BuildConfig.DEBUG
 
     /**
      * This is your app's license key. Get yours on Google Play Dev Console.

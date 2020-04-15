@@ -12,7 +12,7 @@ interface RequestCallback {
         Log.d("Blueprint", "Request started!")
     }
 
-    fun onRequestFinished(success: Boolean) {
+    fun onRequestUploadFinished(success: Boolean) {
         Log.d("Blueprint", "Request finished! - Success? $success")
     }
 
@@ -24,13 +24,11 @@ interface RequestCallback {
         Log.e("Blueprint", "Request ERROR")
     }
 
-    fun onRequestLimited(
-        state: RequestState,
-        requestsLeft: Int,
-        timeLeft: Long,
-        building: Boolean = false
-    ) {
-        Log.d("Blueprint", "Request limited! Apps left: $requestsLeft - Time left: $timeLeft")
+    fun onRequestLimited(state: RequestState, building: Boolean = false) {
+        Log.d(
+            "Blueprint",
+            "Request limited (${state.state.name})! Apps left: ${state.requestsLeft} - Time left: ${state.timeLeft}"
+        )
     }
 
     fun onRequestEmailIntent(intent: Intent?) {

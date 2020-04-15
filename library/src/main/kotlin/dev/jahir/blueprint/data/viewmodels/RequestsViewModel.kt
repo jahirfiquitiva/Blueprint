@@ -12,12 +12,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.RequestApp
+import dev.jahir.blueprint.data.requests.RequestCallback
+import dev.jahir.blueprint.data.requests.RequestState
+import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestState
 import dev.jahir.blueprint.extensions.InstalledAppsComparator
 import dev.jahir.blueprint.extensions.blueprintFormat
 import dev.jahir.blueprint.extensions.clean
 import dev.jahir.blueprint.extensions.drawableRes
 import dev.jahir.blueprint.extensions.getLocalizedName
 import dev.jahir.frames.extensions.context.getAppName
+import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.context.withXml
 import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.resources.nextOrNull
@@ -29,6 +33,8 @@ import kotlinx.coroutines.withContext
 import org.xmlpull.v1.XmlPullParser
 
 class RequestsViewModel : ViewModel() {
+
+    var requestsCallback: RequestCallback? = null
 
     private val themedComponentsData: MutableLiveData<ArrayList<String>> by lazyMutableLiveData()
     private val themedComponents: ArrayList<String>
@@ -185,7 +191,7 @@ class RequestsViewModel : ViewModel() {
 
             Log.d(
                 "Blueprint",
-                "Loaded ${installedApps.size} total app(s), filtered out $filtered app(s)."
+                "Apps (Installed: ${installedApps.size}, Filtered: $filtered, To be themed: ${installedApps.size - filtered})"
             )
 
             ArrayList(installedApps.distinctBy { it.packageName }.sortedBy { it.name })
@@ -203,35 +209,82 @@ class RequestsViewModel : ViewModel() {
         }
     }
 
-    internal fun toggleSelectAll() {
-        if (selectedApps.size >= appsToRequest.size) deselectAll()
-        else selectAll()
+    internal fun toggleSelectAll(context: Context?): Boolean {
+        val requestLimit = context?.integer(R.integer.max_apps_to_request, -1) ?: -1
+        return if (selectedApps.size >= appsToRequest.size) deselectAll()
+        else if (requestLimit > 0 && selectedApps.size >= requestLimit) deselectAll()
+        else selectAll(context)
     }
 
-    private fun selectAll() {
-        selectedAppsData.postValue(ArrayList(appsToRequest))
+    private fun selectAll(context: Context?): Boolean {
+        val requestLimit = context?.integer(R.integer.max_apps_to_request, -1) ?: -1
+        if (requestLimit == 0) return false
+        if (requestLimit < 0) {
+            selectedAppsData.postValue(ArrayList(appsToRequest))
+            return true
+        }
+        if (requestLimit > 0 && selectedApps.size >= requestLimit) {
+            viewModelScope.launch {
+                delay(50)
+                requestsCallback?.onRequestLimited(RequestState.COUNT_LIMITED())
+            }
+            return false
+        }
+        val notSelectedApps = appsToRequest.filterNot { selectedApps.contains(it) }
+        val requestsLeft = requestLimit - selectedApps.size
+        val maxAppsToAdd =
+            if (requestsLeft >= notSelectedApps.size) notSelectedApps.size else requestsLeft
+        val appsToAdd = notSelectedApps.subList(0, maxAppsToAdd)
+        selectedAppsData.postValue(ArrayList(selectedApps).apply { addAll(appsToAdd) })
+        viewModelScope.launch {
+            delay(50)
+            requestsCallback?.onRequestLimited(RequestState.COUNT_LIMITED())
+        }
+        return true
     }
 
-    private fun deselectAll() {
+    internal fun deselectAll(): Boolean {
         selectedAppsData.postValue(ArrayList())
+        return true
     }
 
-    internal fun selectApp(app: RequestApp) {
-        if (selectedApps.size >= appsToRequest.size) return
+    internal fun selectApp(context: Context?, app: RequestApp?): Boolean {
+        app ?: return false
+        if (selectedApps.size >= appsToRequest.size) return false
+        val requestLimit = context?.integer(R.integer.max_apps_to_request, -1) ?: -1
+        if (requestLimit == 0) return false
+        if (requestLimit > 0 && selectedApps.size >= requestLimit) {
+            viewModelScope.launch {
+                delay(50)
+                requestsCallback?.onRequestLimited(RequestState.COUNT_LIMITED())
+            }
+            return false
+        }
         val index = try {
             appsToRequest.indexOf(app)
         } catch (e: Exception) {
             -1
         }
-        if (index < 0) return
-        if (selectedApps.contains(app)) return
-        selectedAppsData.postValue(ArrayList(selectedApps.apply { add(appsToRequest[index]) }))
+        if (index < 0) return false
+        if (selectedApps.contains(app)) return false
+        val currentState = getRequestState(context, selectedApps)
+        if (currentState.state == RequestState.State.NORMAL) {
+            selectedAppsData.postValue(ArrayList(selectedApps.apply { add(appsToRequest[index]) }))
+            return true
+        } else {
+            viewModelScope.launch {
+                delay(50)
+                requestsCallback?.onRequestLimited(currentState)
+            }
+        }
+        return false
     }
 
-    internal fun deselectApp(app: RequestApp) {
-        if (selectedApps.isNullOrEmpty()) return
+    internal fun deselectApp(app: RequestApp): Boolean {
+        if (selectedApps.isNullOrEmpty()) return false
         if (selectedApps.contains(app))
             selectedAppsData.postValue(ArrayList(selectedApps.apply { remove(app) }))
+        return true
     }
 
     fun observeAppsToRequest(owner: LifecycleOwner, onUpdated: (ArrayList<RequestApp>) -> Unit) {

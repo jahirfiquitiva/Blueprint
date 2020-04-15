@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import dev.jahir.blueprint.BuildConfig
@@ -14,12 +16,14 @@ import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.RequestApp
 import dev.jahir.blueprint.data.requests.RequestCallback
+import dev.jahir.blueprint.data.requests.RequestState
 import dev.jahir.blueprint.data.requests.SendIconRequest
 import dev.jahir.blueprint.data.viewmodels.HomeViewModel
 import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
 import dev.jahir.blueprint.data.viewmodels.RequestsViewModel
 import dev.jahir.blueprint.extensions.defaultLauncher
 import dev.jahir.blueprint.extensions.executeLauncherIntent
+import dev.jahir.blueprint.extensions.millisToText
 import dev.jahir.blueprint.extensions.setup
 import dev.jahir.blueprint.ui.fragments.ApplyFragment
 import dev.jahir.blueprint.ui.fragments.HomeFragment
@@ -28,10 +32,17 @@ import dev.jahir.blueprint.ui.fragments.RequestFragment
 import dev.jahir.blueprint.ui.fragments.dialogs.IconDialog
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.findView
+import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.context.string
+import dev.jahir.frames.extensions.fragments.cancelable
+import dev.jahir.frames.extensions.fragments.mdDialog
+import dev.jahir.frames.extensions.fragments.message
+import dev.jahir.frames.extensions.fragments.positiveButton
+import dev.jahir.frames.extensions.fragments.title
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.utils.lazyViewModel
+import dev.jahir.frames.extensions.utils.postDelayed
 import dev.jahir.frames.extensions.views.isVisible
 import dev.jahir.frames.extensions.views.setMarginBottom
 import dev.jahir.frames.extensions.views.snackbar
@@ -42,6 +53,7 @@ import dev.jahir.kuper.data.models.Component
 import dev.jahir.kuper.data.viewmodels.ComponentsViewModel
 import dev.jahir.kuper.extensions.hasStoragePermission
 import dev.jahir.kuper.ui.fragments.KuperWallpapersFragment
+import java.util.concurrent.TimeUnit
 
 abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
@@ -67,6 +79,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     internal val fabBtn: ExtendedFloatingActionButton? by findView(R.id.fab_btn)
     private var iconDialog: IconDialog? = null
     private var shouldBuildRequest: Boolean = false
+
+    private var requestDialog: AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,7 +114,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             homeFragment.updateIconsCount(iconsViewModel.iconsCount)
             homeViewModel.postIconsCount(iconsViewModel.iconsCount)
         }
-
+        requestsViewModel.requestsCallback = this
         requestsViewModel.observeAppsToRequest(this) { requestFragment.updateItems(it) }
         requestsViewModel.observeSelectedApps(this) {
             updateFabText()
@@ -142,6 +156,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     override fun onDestroy() {
         super.onDestroy()
+        dismissRequestDialog()
         dismissIconDialog()
         homeViewModel.destroy(this)
         iconsViewModel.destroy(this)
@@ -153,6 +168,14 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         try {
             iconDialog?.dismiss()
             iconDialog = null
+        } catch (e: Exception) {
+        }
+    }
+
+    private fun dismissRequestDialog() {
+        try {
+            requestDialog?.dismiss()
+            requestDialog = null
         } catch (e: Exception) {
         }
     }
@@ -208,13 +231,13 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         requestsViewModel.loadApps(this, isDebug)
     }
 
-    internal fun changeRequestAppState(app: RequestApp, selected: Boolean) {
-        if (selected) requestsViewModel.selectApp(app)
+    internal fun changeRequestAppState(app: RequestApp, selected: Boolean): Boolean =
+        if (selected) requestsViewModel.selectApp(this, app)
         else requestsViewModel.deselectApp(app)
-    }
 
     private fun toggleSelectAll() {
-        requestsViewModel.toggleSelectAll()
+        if (requestsViewModel.toggleSelectAll(this))
+            requestFragment.updateSelectedApps(requestsViewModel.selectedApps)
     }
 
     private fun updateFabText(itemId: Int = currentItemId) {
@@ -284,10 +307,96 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     override val snackbarAnchorId: Int
         get() = if (fabBtn?.isVisible == true) R.id.fab_btn else R.id.bottom_navigation
 
-    override fun onRequestEmailIntent(intent: Intent?) {
-        super.onRequestEmailIntent(intent)
-        startActivity(intent)
+    private fun showRequestDialog(
+        showOK: Boolean = true,
+        options: MaterialAlertDialogBuilder.() -> MaterialAlertDialogBuilder
+    ) {
+        dismissRequestDialog()
+        requestDialog = mdDialog {
+            options().apply {
+                if (showOK) positiveButton(android.R.string.ok) { it.dismiss() }
+            }
+        }
+        requestDialog?.show()
     }
 
-    // TODO: Implement request callback methods
+    override fun onRequestRunning() {
+        super.onRequestRunning()
+        showRequestDialog {
+            title(R.string.request_in_progress)
+            message(R.string.request_in_progress_content)
+        }
+    }
+
+    override fun onRequestStarted() {
+        super.onRequestStarted()
+        showRequestDialog {
+            message(R.string.building_request_dialog)
+            cancelable(false)
+        }
+    }
+
+    override fun onRequestEmpty() {
+        super.onRequestEmpty()
+        showRequestDialog {
+            title(R.string.no_selected_apps)
+            message(R.string.no_selected_apps_content)
+        }
+    }
+
+    override fun onRequestError(reason: String?, e: Throwable?) {
+        super.onRequestError(reason, e)
+        reason ?: return
+        if (!reason.hasContent()) return
+        showRequestDialog {
+            message(string(R.string.requests_upload_error, reason))
+        }
+    }
+
+    override fun onRequestLimited(state: RequestState, building: Boolean) {
+        super.onRequestLimited(state, building)
+        val content = if (state.state == RequestState.State.TIME_LIMITED) {
+            val preContent = string(
+                R.string.apps_limit_dialog_day,
+                millisToText(TimeUnit.MINUTES.toMillis(integer(R.integer.time_limit_in_minutes).toLong()))
+            )
+
+            val contentExtra = when {
+                TimeUnit.MILLISECONDS.toSeconds(state.timeLeft) >= 60 ->
+                    string(R.string.apps_limit_dialog_day_extra, millisToText(state.timeLeft))
+                else -> string(R.string.apps_limit_dialog_day_extra_sec)
+            }
+            "$preContent $contentExtra"
+        } else {
+            val maxAppsToRequest = integer(R.integer.max_apps_to_request, -1)
+            when (val requestsLeft = state.requestsLeft) {
+                maxAppsToRequest, -1 ->
+                    string(R.string.apps_limit_dialog, maxAppsToRequest.toString())
+                else -> string(R.string.apps_limit_dialog_more, requestsLeft.toString())
+            }
+        }
+        if (!content.hasContent()) return
+        postDelayed(25) {
+            showRequestDialog {
+                title(R.string.request)
+                message(content)
+            }
+        }
+    }
+
+    override fun onRequestUploadFinished(success: Boolean) {
+        super.onRequestUploadFinished(success)
+        requestsViewModel.deselectAll()
+        showRequestDialog {
+            title(R.string.request_upload_success)
+            message(R.string.request_upload_success_content)
+        }
+    }
+
+    override fun onRequestEmailIntent(intent: Intent?) {
+        super.onRequestEmailIntent(intent)
+        requestsViewModel.deselectAll()
+        dismissRequestDialog()
+        startActivity(intent)
+    }
 }

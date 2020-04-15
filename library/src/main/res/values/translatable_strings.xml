@@ -25,21 +25,28 @@
     <string name="share">Share</string>
     <string name="share_text">Check out %1$s and let your friends know about it!\nAvailable on Google Play Store at: %2$s</string>
     <string name="send_email">Send email</string>
+    <string name="send_using">Send using…</string>
 
-    <string name="no_selected_apps_title">No selected apps</string>
+    <string name="request_in_progress">Request in progress</string>
+    <string name="request_in_progress_content">There\'s a request already in progress. Please wait…</string>
+    <string name="building_request_dialog">Building request files…</string>
+    <string name="request_upload_success">Success!</string>
+    <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
+    <string name="no_selected_apps">No selected apps</string>
     <string name="no_selected_apps_content">You did not select any apps to request. Please select a few apps, then tap this button again.</string>
+    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
     <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
     <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
     <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
     <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
     <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
-    <string name="requests_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
-    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
-    <string name="loading_apps_to_request">Loading apps to request…</string>
-    <string name="building_request_dialog">Building request files…</string>
-    <string name="request_upload_success">Success!</string>
-    <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
-    <string name="send_using">Send using…</string>
+
+    <string name="seconds">Seconds</string>
+    <string name="minutes">Minutes</string>
+    <string name="hours">Hours</string>
+    <string name="days">Days</string>
+    <string name="weeks">Weeks</string>
+    <string name="months">Months</string>
 
     <!-- HELP SECTION -->
     <string-array name="questions">
