@@ -8,8 +8,7 @@ import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.adapters.RequestAppsAdapter
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.resources.lower
-import dev.jahir.frames.extensions.views.setMarginBottom
-import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
+import dev.jahir.frames.extensions.views.setPaddingBottom
 import dev.jahir.frames.ui.fragments.base.BaseFramesFragment
 
 class RequestFragment : BaseFramesFragment<RequestApp>() {
@@ -29,9 +28,9 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
     }
 
     override fun setupRecyclerViewMargin(view: View?) {
-        (context as? BaseSystemUIVisibilityActivity<*>)?.bottomNavigation?.let {
+        (context as? BlueprintActivity)?.fabBtn?.let {
             it.post {
-                (view ?: getView())?.setMarginBottom(it.measuredHeight)
+                (view ?: getView())?.setPaddingBottom(it.measuredHeight)
                 recyclerView?.setupBottomOffset(fabHeight + 16.dpToPx)
             }
         }

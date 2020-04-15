@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import dev.jahir.blueprint.R
+import dev.jahir.blueprint.extensions.enableTranslucentStatusBar
 import dev.jahir.blueprint.extensions.getOptimalDrawerWidth
 import dev.jahir.blueprint.extensions.setOptimalDrawerHeaderHeight
 import dev.jahir.frames.extensions.context.boolean
@@ -18,6 +19,7 @@ import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.findView
 import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.context.resolveColor
+import dev.jahir.frames.extensions.views.tint
 import dev.jahir.frames.extensions.views.visibleIf
 import dev.jahir.kuper.data.models.Component
 
@@ -30,12 +32,16 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableTranslucentStatusBar()
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        toggle?.drawerArrowDrawable?.color =
+            resolveColor(R.attr.colorOnPrimary, color(R.color.onPrimary))
         toggle?.let { drawerLayout?.addDrawerListener(it) }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
+        toolbar?.tint()
 
         val header =
             navigationView?.findViewById(R.id.navigation_header) ?: navigationView?.getHeaderView(0)
@@ -88,6 +94,8 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         toggle?.onConfigurationChanged(newConfig)
+        toggle?.drawerArrowDrawable?.color =
+            resolveColor(R.attr.colorOnPrimary, color(R.color.onPrimary))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -96,10 +104,15 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        drawerLayout?.closeDrawer(GravityCompat.START, true)
+        when (item.itemId) {
+            R.id.home, R.id.icons, R.id.wallpapers, R.id.apply, R.id.request ->
+                updateFab(item.itemId)
+            else -> {
+            }
+        }
         val checked = changeFragment(item.itemId)
         if (!checked) onOptionsItemSelected(item)
-        else updateFab(item.itemId)
-        drawerLayout?.closeDrawer(GravityCompat.START, true)
         return checked
     }
 
@@ -123,6 +136,7 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         toggle?.syncState()
     }
 
+    override fun getMenuRes(): Int = R.menu.drawer_toolbar_menu
     override fun getLayoutRes(): Int = R.layout.activity_drawer
     override val snackbarAnchorId: Int
         get() = R.id.fab_btn

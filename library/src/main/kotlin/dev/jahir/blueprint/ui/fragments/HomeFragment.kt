@@ -32,9 +32,9 @@ import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.context.toast
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.setMarginBottom
+import dev.jahir.frames.extensions.views.setPaddingBottom
 import dev.jahir.frames.ui.activities.base.BaseBillingActivity
 import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.PLAY_STORE_LINK_PREFIX
-import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.widgets.StatefulRecyclerView
 import dev.jahir.kuper.extensions.hasStoragePermission
 
@@ -110,9 +110,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     }
 
     private fun setupRecyclerViewMargin(view: View? = null) {
-        (context as? BaseSystemUIVisibilityActivity<*>)?.bottomNavigation?.let {
+        (context as? BlueprintActivity)?.fabBtn?.let {
             it.post {
-                (view ?: getView())?.setMarginBottom(it.measuredHeight)
+                (view ?: getView())?.setPaddingBottom(it.measuredHeight)
                 recyclerView?.setupBottomOffset(fabHeight + 16.dpToPx)
             }
         }

@@ -13,37 +13,46 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_header"
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:background="@drawable/drawer_header"
-    android:gravity="bottom"
-    android:minHeight="180dp"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:minHeight="180dp">
 
-    <TextView
-        android:id="@+id/drawer_title"
-        style="@style/TextStyle.Blueprint.DrawerTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif-medium"
-        android:lines="1"
-        android:maxLines="1"
-        tools:text="Blueprint" />
+        android:layout_gravity="bottom"
+        android:background="@drawable/gradient"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/drawer_subtitle"
-        style="@style/TextStyle.Blueprint.DrawerSubtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif"
-        android:lines="1"
-        android:maxLines="1"
-        tools:text="1.0.0" />
+        <TextView
+            android:id="@+id/drawer_title"
+            style="@style/TextStyle.Blueprint.DrawerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:lines="1"
+            android:maxLines="1"
+            tools:text="Blueprint" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/drawer_subtitle"
+            style="@style/TextStyle.Blueprint.DrawerSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4sp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:lines="1"
+            android:maxLines="1"
+            tools:text="1.0.0" />
+
+    </LinearLayout>
+
+</FrameLayout>

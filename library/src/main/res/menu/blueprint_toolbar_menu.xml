@@ -32,30 +32,23 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/donate"
-        android:icon="@drawable/ic_donate"
-        android:orderInCategory="500"
-        android:title="@string/donate"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/help"
         android:icon="@drawable/ic_help"
-        android:orderInCategory="600"
+        android:orderInCategory="500"
         android:title="@string/help"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/about"
         android:icon="@drawable/ic_details"
-        android:orderInCategory="700"
+        android:orderInCategory="600"
         android:title="@string/about"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"
-        android:orderInCategory="800"
+        android:orderInCategory="700"
         android:title="@string/settings"
         app:showAsAction="never" />
 

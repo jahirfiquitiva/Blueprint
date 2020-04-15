@@ -29,38 +29,34 @@
             android:icon="@drawable/ic_request"
             android:orderInCategory="500"
             android:title="@string/request" />
+        <item
+            android:id="@+id/templates"
+            android:icon="@drawable/ic_widgets"
+            android:orderInCategory="600"
+            android:title="@string/templates"
+            android:visible="false" />
     </group>
 
     <group
         android:id="@+id/second_group"
         android:checkableBehavior="none"
         android:orderInCategory="200">
-
-        <item
-            android:id="@+id/templates"
-            android:orderInCategory="600"
-            android:title="@string/templates" />
-
         <item
             android:id="@+id/changelog"
             android:orderInCategory="700"
             android:title="@string/changelog" />
-
         <item
             android:id="@+id/donate"
             android:orderInCategory="800"
             android:title="@string/donate" />
-
         <item
             android:id="@+id/help"
             android:orderInCategory="900"
             android:title="@string/help" />
-
         <item
             android:id="@+id/about"
             android:orderInCategory="1000"
             android:title="@string/about" />
-
         <item
             android:id="@+id/settings"
             android:orderInCategory="1100"

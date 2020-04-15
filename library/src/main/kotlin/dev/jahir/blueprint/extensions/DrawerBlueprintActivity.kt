@@ -3,17 +3,35 @@ package dev.jahir.blueprint.extensions
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Color
 import android.os.Build
 import android.view.View
+import android.view.WindowManager
 import androidx.annotation.AttrRes
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.ui.activities.DrawerBlueprintActivity
 import dev.jahir.frames.extensions.context.dimenPixelSize
+import dev.jahir.frames.extensions.context.statusBarColor
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.findView
 import dev.jahir.frames.extensions.views.setPaddingTop
 import kotlin.math.min
 import kotlin.math.roundToInt
+
+
+internal fun DrawerBlueprintActivity.enableTranslucentStatusBar(enable: Boolean = true) {
+    if (Build.VERSION.SDK_INT >= 21) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    }
+    val params: WindowManager.LayoutParams = window.attributes
+    if (enable) {
+        params.flags = params.flags and WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS.inv()
+    } else {
+        params.flags = params.flags or WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+    }
+    window.attributes = params
+    if (Build.VERSION.SDK_INT >= 21) statusBarColor = Color.TRANSPARENT
+}
 
 @SuppressLint("PrivateResource")
 internal fun DrawerBlueprintActivity.setOptimalDrawerHeaderHeight(headerView: View) {
