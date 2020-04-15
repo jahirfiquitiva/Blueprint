@@ -15,17 +15,25 @@
         <activity android:name=".ui.activities.BlueprintActivity" />
 
         <activity
+            android:name="dev.jahir.kuper.ui.activities.KuperActivity"
+            android:exported="false" />
+
+        <activity
             android:name="dev.jahir.kuper.ui.activities.KuperSettingsActivity"
             android:exported="false" />
 
         <activity
             android:name=".ui.activities.BlueprintKuperActivity"
-            android:exported="false"
             android:label="@string/templates" />
 
         <activity
             android:name=".ui.activities.IconsCategoryActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ui.activities.HelpActivity"
+            android:exported="false"
+            android:label="@string/help" />
 
         <activity
             android:name=".ui.activities.BlueprintSettingsActivity"

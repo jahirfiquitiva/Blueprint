@@ -3,15 +3,12 @@
 package dev.jahir.blueprint.data.requests
 
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import android.os.Environment
-import android.text.Html
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.GsonBuilder
-import dev.jahir.blueprint.BuildConfig
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.ArcticResponse
 import dev.jahir.blueprint.data.models.RequestApp
@@ -20,13 +17,12 @@ import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestsLeft
 import dev.jahir.blueprint.data.requests.RequestStateManager.getTimeLeft
 import dev.jahir.blueprint.data.requests.RequestStateManager.saveRequestMoment
 import dev.jahir.blueprint.data.requests.RequestStateManager.saveRequestsLeft
+import dev.jahir.blueprint.extensions.EmailBuilder
 import dev.jahir.blueprint.extensions.clean
 import dev.jahir.blueprint.extensions.safeDrawableName
 import dev.jahir.blueprint.extensions.saveAll
 import dev.jahir.blueprint.extensions.saveIcon
 import dev.jahir.blueprint.extensions.zip
-import dev.jahir.frames.extensions.context.currentVersionCode
-import dev.jahir.frames.extensions.context.currentVersionName
 import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.createIfDidNotExist
@@ -322,14 +318,6 @@ object SendIconRequest {
             sb.append("ComponentInfo: <b>${app.component}</b><br/>")
             sb.append("Link: https://play.google.com/store/apps/details?id=${app.packageName}<br/>")
         }
-        
-        sb.append("<br/>Blueprint Version: ${BuildConfig.DASHBOARD_VERSION}")
-        sb.append(
-            "<br/>App Version: ${context.currentVersionCode} " +
-                    "(${context.currentVersionName}) from " +
-                    (context.packageManager?.getInstallerPackageName(context.packageName ?: "")
-                        ?: "Unknown")
-        )
 
         val body = sb.toString().trim()
         if (!body.hasContent()) {
@@ -338,20 +326,14 @@ object SendIconRequest {
         }
 
         val zipUri = zipFile.getUri(context)
-        val emailIntent = Intent(Intent.ACTION_SEND)
-            .putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
-            .putExtra(Intent.EXTRA_SUBJECT, subject)
-            .putExtra(
-                Intent.EXTRA_TEXT,
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                    Html.fromHtml(body, Html.FROM_HTML_MODE_LEGACY)
-                else Html.fromHtml(body)
-            )
-            .putExtra(Intent.EXTRA_STREAM, zipUri)
-            .setType("application/zip")
+
+        val intent = EmailBuilder(email, subject, body).apply {
+            formatAsHtml = true
+            addAttachment(zipUri)
+        }.buildIntent(context)
 
         registerRequestAttempt(context, selectedApps.size)
-        callback?.onRequestEmailIntent(emailIntent)
+        callback?.onRequestEmailIntent(intent)
     }
 
     fun sendIconRequest(

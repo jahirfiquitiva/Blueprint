@@ -131,6 +131,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         when (item.itemId) {
             R.id.templates -> startActivity(Intent(this, BlueprintKuperActivity::class.java))
             R.id.select_all -> toggleSelectAll()
+            R.id.help -> startActivity(Intent(this, HelpActivity::class.java))
             R.id.settings -> {
                 shouldCallSuper = false
                 startActivity(Intent(this, BlueprintSettingsActivity::class.java))

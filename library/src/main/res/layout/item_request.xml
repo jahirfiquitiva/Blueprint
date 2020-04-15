@@ -5,7 +5,8 @@
     android:id="@+id/request_item_card"
     style="@style/Widget.Blueprint.RequestCard"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:minHeight="?listPreferredItemHeight">
 
     <LinearLayout
         android:id="@+id/request_item"
