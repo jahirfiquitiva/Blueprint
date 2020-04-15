@@ -3,7 +3,7 @@
 Blueprint
 ======
 
-![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
+![API](https://img.shields.io/badge/API-21%2B-34bf49.svg)
 [![JitPack](https://jitpack.io/v/com.jahirfiquitiva/Blueprint.svg)](https://jitpack.io/#com.jahirfiquitiva/Blueprint)
 [![Build Status](https://travis-ci.com/jahirfiquitiva/Blueprint.svg?branch=master)](https://travis-ci.com/jahirfiquitiva/Blueprint)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/55f3f196492a4ea88f13da0f219b9125)](https://www.codacy.com/app/jahirfiquitiva/Blueprint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jahirfiquitiva/Blueprint&amp;utm_campaign=Badge_Grade)
@@ -32,23 +32,28 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 
 # Previews
 
-### Setup & Widgets
+### Home / Icons / Apply / Requests
 <p align="center">
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/1.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/2.png" height="350"/>
-</p>
-
-### Wallpapers support (Based on [Frames](https://github.com/jahirfiquitiva/Frames))
-<p align="center">
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/4.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/5.png" height="350"/>
-</p>
-
-### Credits / Settings
-<p align="center">
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/6.png" height="350"/>
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/7.png" height="350"/>
+</p>
+
+### Wallpapers support (Based on [Frames](https://github.com/jahirfiquitiva/Frames)) / Templates support (Based on [Kuper](https://github.com/Kuper))
+<p align="center">
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/5.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/4.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/5.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/8.png" height="350"/>
+</p>
+
+### Help / Credits / Settings / Navigation Drawer
+<p align="center">
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/10.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/12.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/11.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/13.png" height="350"/>
 </p>
 
 ---
@@ -58,6 +63,10 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 - License Checker.
 - Donations.
 - OneSignal notifications ready.
+- In-app icon request tool
+- Support for [Arctic Manager](https://arcticmanager.com/)
+- Apply section with 20 supported launchers. (Other launchers might not support direct apply)
+- Help section, to answer the questions your users have.
 - Support for Zooper templates, Kustom Wallpapers, Widgets, Lockscreens and Komponents.  (Based on [Blueprint](https://github.com/jahirfiquitiva/Blueprint))
 - Cloud based (only) wallpapers.
 - App can work offline.
@@ -70,7 +79,7 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 	- Option to clear app cache.
 - Tablet layouts.
 - Lots of customizations.
-- Works with Android 4.1 and newer.
+- Works with Android 5.0 and newer.
 
 ## Help translating
 :page_facing_up: Help making Blueprint available in more languages. [Click here to go to the translation site](https://crowdin.com/project/Blueprint/invite)
