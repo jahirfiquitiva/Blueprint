@@ -127,11 +127,16 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var shouldCallSuper = true
         when (item.itemId) {
             R.id.templates -> startActivity(Intent(this, BlueprintKuperActivity::class.java))
             R.id.select_all -> toggleSelectAll()
+            R.id.settings -> {
+                shouldCallSuper = false
+                startActivity(Intent(this, BlueprintSettingsActivity::class.java))
+            }
         }
-        return super.onOptionsItemSelected(item)
+        return if (shouldCallSuper) super.onOptionsItemSelected(item) else true
     }
 
     override fun onDestroy() {
@@ -267,13 +272,12 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             snackbar(R.string.permission_denied, Snackbar.LENGTH_LONG, snackbarAnchorId)
             return
         }
-        // TODO: Implement callback methods
         SendIconRequest.sendIconRequest(this, requestsViewModel.selectedApps, this)
     }
 
     override fun onBillingClientReady() {
         super.onBillingClientReady()
-        homeFragment.showDonation(isBillingClientReady && getInAppPurchasesItemsIds().isNotEmpty())
+        homeFragment.showDonation(isBillingClientReady && getDonationItemsIds().isNotEmpty())
     }
 
     override val snackbarAnchorId: Int
@@ -283,4 +287,6 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         super.onRequestEmailIntent(intent)
         startActivity(intent)
     }
+
+    // TODO: Implement request callback methods
 }

@@ -199,7 +199,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     }
 
     override fun onDonateClicked() {
-        (activity as? BaseBillingActivity<*>)?.showInAppPurchasesDialog()
+        (activity as? BaseBillingActivity<*>)?.showDonationsDialog()
     }
 
     companion object {

@@ -11,7 +11,12 @@
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
 
+        <!-- TODO: Delete -->
         <activity android:name=".ui.activities.BlueprintActivity" />
+
+        <activity
+            android:name="dev.jahir.kuper.ui.activities.KuperSettingsActivity"
+            android:exported="false" />
 
         <activity
             android:name=".ui.activities.BlueprintKuperActivity"
@@ -21,6 +26,15 @@
         <activity
             android:name=".ui.activities.IconsCategoryActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ui.activities.BlueprintSettingsActivity"
+            android:label="@string/settings">
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 
