@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Weitere Apps</string>
+    <string name="useful_links">Hilfreiche Links</string>
+    <string name="lni_content">%1$s ist momentan nicht auf deinem Gerät installiert.\nMöchtest du es aus dem Google Play Store installieren?</string>
+    <string name="no_compatible_launcher_title">Dieser Launcher ist NICHT kompatibel</string>
+    <string name="no_compatible_launcher_content">Dieser Lauchner ist mit KEINEM Icon Pack kompatibel und du kannst dieses Icon Pack nicht damit verwenden. Bitte bewerte deshalb das Icon Pack nicht negativ. Es gibt eine Lösung dafür, die du selbst probieren kannst, jedoch muss dafür eine externe App genutzt werden. Möchtest du sie herunterladen?</string>
+    <string name="impossible_open_themes">Themes-App konnte nicht geöffnet werden</string>
+    <string name="themes_app_not_installed">Themes-App ist nicht auf diesem Gerät installiert</string>
+    <string name="coming_soon">Demnächst verfügbar</string>
+    <string name="rate">Bewerten</string>
+    <string name="send_using">Senden mit…</string>
+    <string name="building_request_dialog">Anfrage-Dateien werden erstellt…</string>
+    <string name="request_upload_success">Erfolgreich!</string>
+    <string name="request_upload_success_content">Die Anfrage wurde erfolgreich auf unseren Server hochgeladen.</string>
+    <string name="no_selected_apps_content">Du hast keine App für deine Anfrage ausgewählt. Wähle etwas aus, bevor du den FAB erneut drückst.</string>
+    <string name="requests_upload_error">Es gab einen Fehler beim Upload der angefragten App auf unsere Server.\nUrsache: %1$s\nBitte versuche es später erneut.</string>
+    <string name="apps_limit_dialog">Entschuldigung, aber du darfst nur %1$s Apps für deine Anfrage auswählen.</string>
+    <string name="apps_limit_dialog_more">Entschuldigung, aber du darfst aktuell nur %1$s Apps für deine Anfrage auswählen.</string>
+    <string name="apps_limit_dialog_day">Es tut uns leid, aber Sie dürfen nur alle %1$s Symbole anfragen.</string>
+    <string name="apps_limit_dialog_day_extra">Sie dürfen in %1$s wieder Symbole anfragen.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Sie können in weniger als einer Minute wieder Symbole anfragen.</string>
+    <string name="seconds">Sekunden</string>
+    <string name="minutes">Minuten</string>
+    <string name="hours">Stunden</string>
+    <string name="days">Tage</string>
+    <string name="weeks">Wochen</string>
+    <string name="months">Monate</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Wie verwende ich dieses Icon-Pack?</item>
+        <item>Wie wende ich das Icon-Pack an?</item>
+        <item>Wie kann ich alle enthaltenen Icons anzeigen?</item>
+        <item>Wie kann ich bestimmte Icons durch Alternativen ersetzen?</item>
+        <item>Wie kann ich Icons ohne Theme anfragen?</item>
+        <item>Nach einem Neustart meines Geräts ist das Icon Pack nicht mehr angewendet. Die Icons wurden auf den Standard zurückgesetzt.</item>
+        <item>Warum sind die Icons auf meinem Gerät verpixelt?</item>
+        <item>Ich sehe ein Icon für eine App in den enthaltenen Icons, aber es wird nicht angewendet.</item>
+        <item>Wie kann ich das App-Icon im Launcher ausblenden?</item>
+        <item>Wie öffne ich die App, nachdem das App-Icon im Launcher ausgeblendet wurde?</item>
+        <item>Wie kann ich das App-Icon im Launcher wieder einblenden?</item>
+        <item>Warum benötigt die App die Berechtigung, Inhalte in meinem Speicher zu bearbeiten oder zu löschen?</item>
+        <item>Warum benötigt die App die Berechtigung für vollständigen Netzwerkzugriff?</item>
+        <item>Warum benötigt die App die Berechtigung, Netzwerkverbindungen einzusehen?</item>
+        <item>Warum benötigt die App die Berechtigung zum Festlegen von Hintergrundbildern?</item>
+        <item>Warum benötigt die App die Berechtigung zum Ändern der Größe von Hintergrundbildern?</item>
+        <item>Warum benötigt die App die Berechtigung, den Schlafmodus des Geräts zu verhindern?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Du benötigst einen Launcher mit Support für Icon-Packs. Die Liste der unterstützten Launcher könnte in der App im \"Anwenden\"-Abschnitt oder der Play Store Beschreibung gefunden werden.</item>
+        <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anwenden\" antippen, oder du musst das vierte Icon in der unteren Navigationsleiste antippen. Dort kannst du einen Launcher auswählen, für welchen du die Icons anwenden möchtest. Einige Launcher unterstützen keine automatische Anwendung und du musst dies manuell in den Einstellungen des Launcher tun.</item>
+        <item>Gehe zurück zur Hauptseite der App und klicke auf die Karte mit dem Titel \"Icons\".</item>
+        <item>Abhängig vom Launcher, den du verwendest, musst du entweder lange auf das Icon tippen und auf \"Bearbeiten\" im Pop-up-Menü tippen oder das Icon auf ein \"Bearbeiten\"-Feld ziehen.</item>
+        <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anfragen\" antippen, oder du musst das entsprechende Icon in der unteren Navigationsleiste antippen.</item>
+        <item>Das ist passiert, weil das Icon Pack auf die SD-Karte verschoben wurde. Du solltest es auf dem internen Speicher installieren.</item>
+        <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Du kannst das Problem lösen, indem du die Icon-Größe auf 115 - 120 % erhöhst. Du kannst auch versuchen, einen anderen Launcher zu verwenden.</item>
+        <item>Eine Icon-Anfrage senden.</item>
+        <item>Öffne das Navigationsmenü von der linken Seite oder tippe auf das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Icon ausblenden\".</item>
+        <item>Gehe auf deinen Startbildschirm, erstelle das Widget für die App, welches \"IconRestorer\" heißt, und tippe darauf.</item>
+        <item>Öffne das Navigationsmenü von der linken Seite oder tippe auf das 3-Punkte-Menü und gehe zum Abschnitt \"Einstellungen\". Wähle dort die Option \"Launcher-Icon ausblenden\" ab.</item>
+        <item>Diese wird verwendet, um Daten für Icon-Anfragen speichern zu können, genauso wie für das Speichern der Hintergrundbildern und zur Änderung des Download-Verzeichnisses.</item>
+        <item>Diese wird verwendet, um Hintergrundbilder aus der Cloud herunterladen zu können.</item>
+        <item>Diese wird verwendet, um zu prüfen, ob dein Gerät eine Internet-Verbindung besitzt.</item>
+        <item>Diese wird verwendet, um das Hintergrundbild direkt aus der App heraus anwenden zu können.</item>
+        <item>Diese wird verwendet, um die Größe des Hintergrundbildes an deine Bildschirmauflösung anzupassen.</item>
+        <item>Dies wird von „Muzei Live Wallpaper” benötigt.</item>
+    </string-array>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Lisää sovelluksia</string>
+    <string name="useful_links">Hyödyllisiä linkkejä</string>
+    <string name="impossible_open_themes">Teema sovellus ei aukea</string>
+    <string name="coming_soon">Tulossa pian</string>
+    <string name="rate">Arvostele</string>
+    <string name="send_using">Lähetä käyttäen…</string>
+    <!-- HELP SECTION -->
+</resources>

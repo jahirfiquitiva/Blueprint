@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Περισσότερες εφαρμογές</string>
+    <string name="useful_links">Χρήσιμοι σύνδεσμοι</string>
+    <string name="coming_soon">Προσεχώς</string>
+    <string name="seconds">Δευτερόλεπτα</string>
+    <string name="minutes">Λεπτά</string>
+    <string name="hours">Ώρες</string>
+    <string name="days">Ημέρες</string>
+    <string name="weeks">Εβδομάδες</string>
+    <string name="months">Μήνες</string>
+    <!-- HELP SECTION -->
+</resources>

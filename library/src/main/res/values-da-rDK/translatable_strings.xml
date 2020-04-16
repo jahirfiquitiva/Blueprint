@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Flere apps</string>
+    <string name="useful_links">Brugbare links</string>
+    <string name="lni_content">%1$s er ikke installeret på din enhed.\nVil du hente app\'en fra Google Play Store?</string>
+    <string name="no_compatible_launcher_title">Denne launcher er IKKE kompatibel</string>
+    <string name="no_compatible_launcher_content">Denne launcher er IKKE kompatibel med NOGEN icon packs og du kan derfor ikke bruge denne icon pack med denne launcher. Vær venlig ikke at bedømme denne app negativt på grund af launcherens begrænsning. Der er en løsning som du kan prøve, men det kræver en ekstern app. Vil du downloade denne?</string>
+    <string name="impossible_open_themes">Umuligt at åbne temaer app</string>
+    <string name="coming_soon">Kommer Snart</string>
+    <string name="rate">Bedøm</string>
+    <string name="seconds">Sekunder</string>
+    <string name="minutes">Minutter</string>
+    <string name="hours">Timer</string>
+    <string name="days">Dager</string>
+    <string name="weeks">Uger</string>
+    <string name="months">Måneder</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Hvordan bruger man den ikon Pack?</item>
+        <item>How to apply the Icon Pack?</item>
+        <item>How to see all the included icons?</item>
+        <item>How to replace an icon with an alternative one?</item>
+        <item>How to request unthemed icons?</item>
+        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+        <item>Why do icons look pixelated on my device?</item>
+        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+        <item>How to hide app icon from launcher?</item>
+        <item>How to open the app after app icon is hidden from launcher?</item>
+        <item>How to show app icon in launcher again?</item>
+        <item>Why does the app need permission to modify or delete content of my storage?</item>
+        <item>Why does the app need permission to full network access?</item>
+        <item>Why does the app need permission to view connections?</item>
+        <item>Why does the app need permission to set wallpaper?</item>
+        <item>Why does the app need permission to adjust the wallpaper size?</item>
+        <item>Why does the app need permission to prevent phone from sleeping?</item>
+    </string-array>
+</resources>
