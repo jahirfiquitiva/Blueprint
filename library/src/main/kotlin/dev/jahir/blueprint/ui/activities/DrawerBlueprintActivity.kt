@@ -105,6 +105,7 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         drawerLayout?.closeDrawer(GravityCompat.START, true)
+        if (isIconsPicker && item.itemId != R.id.icons) return false
         when (item.itemId) {
             R.id.home, R.id.icons, R.id.wallpapers, R.id.apply, R.id.request ->
                 updateFab(item.itemId)

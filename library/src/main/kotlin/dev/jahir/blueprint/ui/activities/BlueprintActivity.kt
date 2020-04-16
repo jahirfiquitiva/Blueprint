@@ -22,6 +22,14 @@ import dev.jahir.blueprint.data.requests.SendIconRequest
 import dev.jahir.blueprint.data.viewmodels.HomeViewModel
 import dev.jahir.blueprint.data.viewmodels.IconsCategoriesViewModel
 import dev.jahir.blueprint.data.viewmodels.RequestsViewModel
+import dev.jahir.blueprint.extensions.ADW_ACTION
+import dev.jahir.blueprint.extensions.APPLY_ACTION
+import dev.jahir.blueprint.extensions.ICONS_APPLIER
+import dev.jahir.blueprint.extensions.ICONS_PICKER
+import dev.jahir.blueprint.extensions.IMAGE_PICKER
+import dev.jahir.blueprint.extensions.NOVA_ACTION
+import dev.jahir.blueprint.extensions.TURBO_ACTION
+import dev.jahir.blueprint.extensions.WALLS_PICKER
 import dev.jahir.blueprint.extensions.defaultLauncher
 import dev.jahir.blueprint.extensions.executeLauncherIntent
 import dev.jahir.blueprint.extensions.millisToText
@@ -68,10 +76,22 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         KuperWallpapersFragment.create(ArrayList(wallpapersViewModel.wallpapers))
     }
 
-    // TODO:
+    var pickerKey: Int = 0
+        private set
+        get() {
+            return intent?.let {
+                when (it.action) {
+                    APPLY_ACTION -> ICONS_APPLIER
+                    ADW_ACTION, TURBO_ACTION, NOVA_ACTION -> ICONS_PICKER
+                    Intent.ACTION_PICK, Intent.ACTION_GET_CONTENT -> IMAGE_PICKER
+                    Intent.ACTION_SET_WALLPAPER -> WALLS_PICKER
+                    else -> field
+                }
+            } ?: field
+        }
+
     internal val isIconsPicker: Boolean
-        get() = false
-    // get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
+        get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
 
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
     private val iconsCategoriesFragment: IconsCategoriesFragment by lazy { IconsCategoriesFragment() }
@@ -96,7 +116,10 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             fabBtn?.setMarginBottom((bottomNavigation?.measuredHeight ?: 0) + 16.dpToPx)
         }
         bottomNavigation?.setOnNavigationItemSelectedListener {
-            updateFab(it.itemId) { changeFragment(it.itemId) }
+            updateFab(it.itemId) {
+                if (isIconsPicker && it.itemId != R.id.icons) return@updateFab
+                changeFragment(it.itemId)
+            }
             true
         }
         updateFabText()
@@ -220,8 +243,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         }
 
     override fun getLayoutRes(): Int = R.layout.activity_blueprint
-    override val initialFragmentTag: String = HomeFragment.TAG
-    override val initialItemId: Int = R.id.home
+    override val initialFragmentTag: String =
+        if (isIconsPicker) IconsCategoriesFragment.TAG else HomeFragment.TAG
+    override val initialItemId: Int = if (isIconsPicker) R.id.icons else R.id.home
     override fun getMenuRes(): Int = R.menu.blueprint_toolbar_menu
     override fun shouldLoadCollections(): Boolean = false
     override fun shouldLoadFavorites(): Boolean = false
@@ -286,6 +310,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             }
             else -> fabBtn?.hide()
         }
+        homeFragment.setupRecyclerViewMargin()
+        requestFragment.setupRecyclerViewMargin()
     }
 
     internal fun updateFab(itemId: Int, afterHidden: () -> Unit = {}) {
@@ -424,4 +450,14 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     open fun onTemplatesLoaded(templates: ArrayList<Component>) {}
     override fun defaultTheme(): Int = R.style.BaseBlueprintTheme
     override fun amoledTheme(): Int = R.style.BaseBlueprintTheme_Amoled
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("pickerKey", pickerKey)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        pickerKey = savedInstanceState.getInt("pickerKey", 0)
+    }
 }

@@ -31,10 +31,10 @@ import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.context.toast
 import dev.jahir.frames.extensions.resources.dpToPx
-import dev.jahir.frames.extensions.views.setMarginBottom
 import dev.jahir.frames.extensions.views.setPaddingBottom
 import dev.jahir.frames.ui.activities.base.BaseBillingActivity
 import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.PLAY_STORE_LINK_PREFIX
+import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.widgets.StatefulRecyclerView
 import dev.jahir.kuper.extensions.hasStoragePermission
 
@@ -84,6 +84,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
             } ?: return 0
         }
 
+    private val extraHeight: Int
+        get() = if (fabHeight > 0) 16.dpToPx else 0
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         setupRecyclerViewMargin()
@@ -109,11 +112,13 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         (activity as? BlueprintActivity)?.repostCounters()
     }
 
-    private fun setupRecyclerViewMargin(view: View? = null) {
-        (context as? BlueprintActivity)?.fabBtn?.let {
-            it.post {
-                (view ?: getView())?.setPaddingBottom(it.measuredHeight)
-                recyclerView?.setupBottomOffset(fabHeight + 16.dpToPx)
+    internal fun setupRecyclerViewMargin(view: View? = null) {
+        (view ?: getView())?.let { v ->
+            v.post {
+                val bottomNavigationHeight =
+                    (context as? BaseSystemUIVisibilityActivity<*>)?.bottomNavigation?.measuredHeight
+                        ?: 0
+                v.setPaddingBottom(bottomNavigationHeight + fabHeight + extraHeight)
             }
         }
     }

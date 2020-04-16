@@ -9,6 +9,7 @@ import dev.jahir.blueprint.ui.adapters.RequestAppsAdapter
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.resources.lower
 import dev.jahir.frames.extensions.views.setPaddingBottom
+import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.fragments.base.BaseFramesFragment
 
 class RequestFragment : BaseFramesFragment<RequestApp>() {
@@ -17,6 +18,9 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
 
     private val fabHeight: Int
         get() = (activity as? BlueprintActivity)?.fabBtn?.measuredHeight ?: 0
+
+    private val extraHeight: Int
+        get() = if (fabHeight > 0) 16.dpToPx else 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,10 +32,13 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
     }
 
     override fun setupRecyclerViewMargin(view: View?) {
-        (context as? BlueprintActivity)?.fabBtn?.let {
-            it.post {
-                (view ?: getView())?.setPaddingBottom(it.measuredHeight)
-                recyclerView?.setupBottomOffset(fabHeight + 16.dpToPx)
+        (view ?: getView())?.let { v ->
+            v.post {
+                val bottomNavigationHeight =
+                    (context as? BaseSystemUIVisibilityActivity<*>)?.bottomNavigation?.measuredHeight
+                        ?: 0
+                v.setPaddingBottom(bottomNavigationHeight)
+                recyclerView?.setupBottomOffset(fabHeight + extraHeight)
             }
         }
     }
