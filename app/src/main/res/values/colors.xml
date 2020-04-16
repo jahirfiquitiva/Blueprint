@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Theme Independent Colors -->
+    <color name="wallpaper_overlay">#1a000000</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewer_bars_colors">#80000000</color>
+    <color name="dividers">#1f000000</color>
+
+    <!-- Light Theme Colors -->
+
+    <color name="primary">#ffffff</color>
+    <color name="primaryDark">#fafafa</color>
+    <color name="onPrimary">#de000000</color>
+
+    <color name="accent">#3881fa</color>
+    <color name="onAccent">#ffffff</color>
+
+    <color name="surface">#ffffff</color>
+    <color name="onSurface">#de000000</color>
+    <color name="onSurfaceVariant">#8a000000</color>
+
+    <color name="background">#fafafa</color>
+    <color name="onBackground">#de000000</color>
+
+    <!-- Dark Theme Colors -->
+
+    <color name="darkThemePrimary">#212121</color>
+    <color name="darkThemePrimaryDark">#000000</color>
+    <color name="darkThemeOnPrimary">#ffffff</color>
+
+    <color name="darkThemeAccent">#ff3f80</color>
+    <color name="darkThemeOnAccent">#ffffff</color>
+
+    <color name="darkThemeSurface">#424242</color>
+    <color name="darkThemeOnSurface">#ffffff</color>
+    <color name="darkThemeOnSurfaceVariant">#b3ffffff</color>
+
+    <color name="darkThemeBackground">#303030</color>
+    <color name="darkThemeOnBackground">#b3ffffff</color>
+
+    <!-- Amoled Theme Colors -->
+
+    <color name="amoledThemePrimary">#000000</color>
+    <color name="amoledThemePrimaryDark">#000000</color>
+    <color name="amoledThemeOnPrimary">#ffffff</color>
+
+    <color name="amoledThemeAccent">#64ffda</color>
+    <color name="amoledThemeOnAccent">#de000000</color>
+
+    <color name="amoledThemeSurface">#212121</color>
+    <color name="amoledThemeOnSurface">#ffffff</color>
+    <color name="amoledThemeBackground">#101010</color>
+
+    <color name="amoledThemeOnSurfaceVariant">@color/darkThemeOnSurfaceVariant</color>
+    <color name="amoledThemeOnBackground">@color/darkThemeOnBackground</color>
+
+</resources>

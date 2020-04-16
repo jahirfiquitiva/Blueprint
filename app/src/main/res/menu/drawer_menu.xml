@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/first_group"
+        android:checkableBehavior="single"
+        android:orderInCategory="100">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home"
+            android:orderInCategory="100"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/icons"
+            android:icon="@drawable/ic_icons"
+            android:orderInCategory="200"
+            android:title="@string/icons" />
+        <item
+            android:id="@+id/wallpapers"
+            android:icon="@drawable/ic_wallpapers"
+            android:orderInCategory="300"
+            android:title="@string/wallpapers" />
+        <item
+            android:id="@+id/apply"
+            android:icon="@drawable/ic_apply"
+            android:orderInCategory="400"
+            android:title="@string/apply" />
+        <item
+            android:id="@+id/request"
+            android:icon="@drawable/ic_request"
+            android:orderInCategory="500"
+            android:title="@string/request" />
+        <item
+            android:id="@+id/templates"
+            android:icon="@drawable/ic_widgets"
+            android:orderInCategory="600"
+            android:title="@string/templates"
+            android:visible="false" />
+    </group>
+
+    <group
+        android:id="@+id/second_group"
+        android:checkableBehavior="none"
+        android:orderInCategory="200">
+        <item
+            android:id="@+id/changelog"
+            android:orderInCategory="700"
+            android:title="@string/changelog" />
+        <item
+            android:id="@+id/donate"
+            android:orderInCategory="800"
+            android:title="@string/donate" />
+        <item
+            android:id="@+id/help"
+            android:orderInCategory="900"
+            android:title="@string/help" />
+        <item
+            android:id="@+id/about"
+            android:orderInCategory="1000"
+            android:title="@string/about" />
+        <item
+            android:id="@+id/settings"
+            android:orderInCategory="1100"
+            android:title="@string/settings" />
+    </group>
+</menu>

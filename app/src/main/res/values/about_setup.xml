@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation,MissingTranslation">
+    <string-array name="credits_photos" formatted="false" tools:ignore="TypographyDashes">
+        <item>https://lh3.googleusercontent.com/-0mdcClKXlgM/AAAAAAAAAAI/AAAAAAAAAAA/xgdLWeAg7pM/s120-c/photo.jpg</item>
+        <item>https://ssl.gstatic.com/images/branding/product/2x/avatar_square_grey_512dp.png</item>
+    </string-array>
+
+    <string-array name="credits_titles">
+        <item>Your Name</item>
+        <item>Another Name</item>
+    </string-array>
+
+    <string-array name="credits_descriptions">
+        <item>Details of first credited person</item>
+        <item>Details of another credited person</item>
+    </string-array>
+
+    <string-array name="credits_buttons">
+        <item>Google+|Instagram</item>
+        <item>Facebook|Website|Twitter</item>
+    </string-array>
+
+    <string-array name="credits_links">
+        <item>https://www.google.com/+JahirFiquitivaR|http://instagram.com/jahirfiquitiva</item>
+        <item>https://facebook.com/|https://jahir.dev/|https://twitter.com/jahirfiquitiva</item>
+    </string-array>
+</resources>

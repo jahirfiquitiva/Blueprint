@@ -1,0 +1,25 @@
+requestInfoReplyComment: >
+  I would appreciate it if you could provide us with more info about this issue/pr!
+
+requestInfoLabelToAdd: "Status: Needs Info"
+
+newPRWelcomeComment: >
+  Thanks so much for opening your first PR here :smiley:. Please be sure to check the [contribution guidelines](../tree/sample/.github/CONTRIBUTING.md)! :wink:
+
+firstPRMergeComment: >
+  Congrats on merging your first pull request here! :tada: How awesome!
+
+newIssueWelcomeComment: >
+  Thanks for opening your first issue here :smiley:! Please be sure to follow the issue template and check the [contribution guidelines](../tree/sample/.github/CONTRIBUTING.md) :wink: (otherwise the issue will be ignored :confused:).
+
+sentimentBotToxicityThreshold: .7
+
+sentimentBotReplyComment: >
+  Please be sure to review the [code of conduct](../tree/sample/.github/CODE_OF_CONDUCT.md) and be respectful of other users. cc/ @jahirfiquitiva
+
+lockThreads:
+  toxicityThreshold: .7
+  numComments: 2
+  setTimeInHours: 48
+  replyComment: >
+    This thread is being locked due to exceeding the toxicity minimums. cc/ @jahirfiquitiva

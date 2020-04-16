@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress CheckTagEmptyBody -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--
+    Do you want notifications to be enabled for all your users?
+    True means yes
+    False means no
+    -->
+    <bool name="notifications_enabled_by_default">true</bool>
+
+    <!--
+    Do you want animations to be enabled for all your users?
+    True means yes
+    False means no
+    -->
+    <bool name="animations_enabled_by_default">true</bool>
+
+    <!-- Privacy Policy link or url -->
+    <string name="privacy_policy_link">""</string>
+
+    <!-- Terms and Conditions link or url -->
+    <string name="terms_conditions_link">""</string>
+
+    <!--
+    Do you want to show your app and the dashboard versions in settings?
+    True means yes
+    False means no
+    -->
+    <bool name="show_versions_in_settings">true</bool>
+
+    <!--
+    Which theme do you want set as default?
+    0. Light
+    1. Dark
+    2. Follow system
+    -->
+    <integer name="default_theme">2</integer>
+
+    <!--
+    Do you want AMOLED theme to be enabled by default? (Requires dark theme or system dark theme enabled)
+    True means yes
+    False means no
+    -->
+    <bool name="amoled_theme_enabled_by_default">false</bool>
+
+    <!-- These are your donation items. Only put their ids here -->
+    <string-array name="donation_items">
+        <item></item>
+    </string-array>
+
+</resources>

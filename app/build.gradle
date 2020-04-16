@@ -1,0 +1,99 @@
+// TODO: Remove comment marks to enable
+/*
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+
+    dependencies {
+        classpath Plugins.oneSignal
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+*/
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = defaultConfig.applicationId + "-v${variant.versionName}-${variant.name}.apk"
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds true
+        disable 'MissingTranslation', 'GoogleAppIndexingWarning'
+    }
+
+    compileSdkVersion Versions.targetSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        manifestPlaceholders = [
+                onesignal_app_id               : OneSignal.appId,
+                onesignal_google_project_number: OneSignal.googleProjectNumber
+        ]
+        applicationId MyApp.appId
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode MyApp.version
+        versionName MyApp.versionName
+        vectorDrawables.useSupportLibrary = true
+        proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+        consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources false
+            proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/core_debug.kotlin_module'
+        pickFirst 'META-INF/core_release.kotlin_module'
+        pickFirst 'META-INF/library_debug.kotlin_module'
+        pickFirst 'META-INF/library_release.kotlin_module'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':library')
+    // TODO: Remove comment marks to enable
+    // implementation Libs.oneSignal
+}
