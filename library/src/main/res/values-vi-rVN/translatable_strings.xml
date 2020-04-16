@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Ứng dụng khác</string>
+    <string name="useful_links">Liên kết hữu ích</string>
+    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn.\nBạn có muốn cài đặt nó từ Cửa hàng Play?</string>
+    <string name="no_compatible_launcher_title">Trình khởi chạy này không tương thích</string>
+    <string name="no_compatible_launcher_content">Trình khởi chạy này không tương thích với bất kỳ bộ biểu tượng nào, vì thế bạn không thể áp dụng bộ biểu tượng này. Vui lòng đừng đánh tiêu cực bộ biểu tượng vì lý do này. Có một cách khác bạn có thể thử, nhưng nó yêu cầu một ứng dụng phụ. Bạn muốn tải nó?</string>
+    <string name="impossible_open_themes">Không thể mở ứng dụng chủ đề</string>
+    <string name="themes_app_not_installed">Ứng dụng chủ đề chưa được cài đặt trên thiết bị</string>
+    <string name="coming_soon">Sắp có</string>
+    <string name="rate">Đánh giá</string>
+    <string name="send_using">Gửi bằng…</string>
+    <string name="building_request_dialog">Đang tạo tệp yêu cầu…</string>
+    <string name="request_upload_success">Thành công!</string>
+    <string name="request_upload_success_content">Yêu cầu đã được đưa lên máy chủ.</string>
+    <string name="no_selected_apps_content">Bạn chưa chọn ứng dụng nào để yêu cầu. Vui lòng chọn một vài ứng dụng, sau đó ấn lại nút.</string>
+    <string name="requests_upload_error">Có lỗi xảy ra trong quá trình đưa ứng dụng đã yêu cầu tới máy chủ.\nReason: %1$s\nVui lòng thử lại sau.</string>
+    <string name="apps_limit_dialog">Xin lỗi, nhưng bạn chỉ được phép chọn tối đa %1$s ứng dụng để yêu cầu.</string>
+    <string name="apps_limit_dialog_more">Xin lỗi, nhưng bạn chỉ được phép yêu cầu %1$s ứng dụng vào lúc này.</string>
+    <string name="apps_limit_dialog_day">Xin lỗi, nhưng bạn chỉ có thể yêu cầu thêm biểu tượng mỗi %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong ít phút nữa.</string>
+    <string name="seconds">Giây</string>
+    <string name="minutes">Phút</string>
+    <string name="hours">Giờ</string>
+    <string name="days">Ngày</string>
+    <string name="weeks">Tuần</string>
+    <string name="months">Tháng</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Làm sao để sử dụng bộ biểu tượng?</item>
+        <item>Làm sao để áp dụng bộ biểu tượng?</item>
+        <item>Làm sao để xem tất cả các biểu tượng có sẵn?</item>
+        <item>Làm sao để thay thế biểu tượng bằng một cái khác?</item>
+        <item>Làm sao để yêu cầu thêm biểu tượng?</item>
+        <item>Sau khi khởi động lại thiết bị, bộ biểu tượng đã áp dụng biến mất. Các biểu tượng trở về mặc định.</item>
+        <item>Tại sao một vài biểu tượng mờ và không rõ trên thiết bị?</item>
+        <item>Có biểu tượng phù hợp dành cho ứng dụng X, nhưng biểu tượng không được áp dụng.</item>
+        <item>Làm sao để ẩn biểu tượng ứng dụng khỏi trình khởi chạy?</item>
+        <item>Làm sao để mở lại ứng dụng sau khi ẩn biểu tượng khỏi trình khởi chạy?</item>
+        <item>Làm sao để bật lại biểu tượng trong trình khởi chạy?</item>
+        <item>Tại sao ứng dụng cần quyền để sửa đổi và xóa bộ nhớ?</item>
+        <item>Tại sao ứng dụng cần quyền truy cập vào mạng?</item>
+        <item>Tại sao ứng dụng cần quyền để xem các kết nối?</item>
+        <item>Tại sao ứng dụng cần quyền để đặt hình nền?</item>
+        <item>Tại sao ứng dụng cần quyền để thay đổi kích thước hình nền?</item>
+        <item>Tại sao ứng dụng cần quyền để chặn thiết bị khỏi chế độ ngủ?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Bạn cần một trình khởi chạy hỗ trợ các bộ biểu tượng. Danh sách các trình khởi chạy được hỗ trợ có thể được tìm thấy trong ứng dụng ở phần \"Áp dụng\", hoặc mô tả ứng dụng tại CH Play.</item>
+        <item>Tùy thuộc vào điều hướng của ứng dụng, bạn cần phải trượt ngăn kéo từ bên trái, ở phần \"Áp dụng\", hoặc chọn ô biểu tượng thứ 4 tại thanh điều hướng phía dưới. Ở đó bạn có thể chọn trình khởi chạy bạn muốn áp dụng biểu tượng. Một vài trình khởi chạy không hỗ trợ áp dụng tự động nên bạn phải áp dụng thông qua cài đặt của trình khởi chạy.</item>
+        <item>Trở về lại mục chính của ứng dụng và ấn vào phần \"Biểu tượng\".</item>
+        <item>Tùy thuộc vào trình khởi chạy mà bạn đang sử dụng, bạn cần phải ấn giữ vào biểu tượng và chọn \"Chỉnh sửa\" từ trình đơn bật lên, hoặc nhấn giữ vào biểu tượng và di chuyển nó đến hộp \"Chỉnh sửa\".</item>
+        <item>Tùy thuộc vào loại điều hướng của ứng dụng, bạn cần phải trượt ngăn kéo từ bên trái, đi đến phần \"Yêu cầu\", hoặc chọn biểu tượng từ thanh điều hướng phía dưới.</item>
+        <item>Nó xảy ra bởi vì bộ biểu tượng bị lưu tại bộ nhớ ngoài ví dụ như thẻ nhớ, bạn nên cài ở bộ nhớ trong.</item>
+        <item>Vấn đề có thể xảy ra đối với trình khởi chạy mà bạn đang sử dụng, khi xử lý độ phân giải lớn. Bạn có thể sửa nó bằng cách tăng kích cỡ biểu tượng từ 115 – 120%. Hoặc thử sử dụng một trình khởi chạy khác.</item>
+        <item>Gửi yêu cầu thêm biểu tượng.</item>
+        <item>Trượt ngăn kéo từ bên trái, hoặc ấn vào biểu tượng 3 nút và đi đến phần \"Cài đặt\". Sau đó chọn \"Ẩn biểu tượng khỏi trình khởi chạy\".</item>
+        <item>Đi đến màn hình chính, tạo một tiện ích con cho ứng dụng có tên là \"Khôi phục biểu tượng/IconRestorer\" và ấn vào nó.</item>
+        <item>Trượt ngăn kéo từ bên trái, hoặc ấn vào biểu tượng 3 nút và đi đến phần \"Cài đặt\". Sau đó bỏ chọn \"Ẩn biểu tượng khỏi trình khởi chạy\".</item>
+        <item>Nó cần để có thể ghi dữ liệu yêu cầu biểu tượng, cũng như lưu hình nền, và có thể thay đổi vị trí tải xuống hình nền.</item>
+        <item>Nó cần để có thể tải hình nền từ đám mây và lưu chúng.</item>
+        <item>Nó cần để có thể kiểm tra xem thiết bị có kết nối mạng hay không.</item>
+        <item>Nó cần để có thể áp dụng hình nền trực tiếp từ ứng dụng.</item>
+        <item>Nó cần để có thể chỉnh sửa kích thước hình nền dựa trên độ phân giải màn hình.</item>
+        <item>Nó cần cho Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>
