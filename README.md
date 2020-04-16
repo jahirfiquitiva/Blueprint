@@ -67,7 +67,7 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 - Support for [Arctic Manager](https://arcticmanager.com/)
 - Apply section with 20 supported launchers. (Other launchers might not support direct apply)
 - Help section, to answer the questions your users have.
-- Support for Zooper templates, Kustom Wallpapers, Widgets, Lockscreens and Komponents.  (Based on [Kuper](https://github.com/jahirfiquitiva/Kuper))
+- Support for Zooper templates, Kustom Wallpapers, Widgets, Lockscreens and Komponents.
 - Cloud based (only) wallpapers.
 - App can work offline.
 - Wallpapers can be applied and downloaded.
