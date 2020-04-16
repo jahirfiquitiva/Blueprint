@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">المزيد من التطبيقات</string>
+    <string name="useful_links">روابط مفيدة</string>
+    <string name="lni_content">%1$s غير مثبت حالياً على جهازك.\nهل تود تثبيته من متجر Google Play؟</string>
+    <string name="no_compatible_launcher_title">هذا المشغل غير متوافق</string>
+    <string name="no_compatible_launcher_content">هذا المشغل غير متوافق مع أي حزمة أيقونات ولذلك لا يمكنك استعمال حزمة الأيقونات هذه مع هذا المشغل. يرجى عدم تقييم حزمة الأيقونات سلبياً لهذا السبب. هنالك حل يمكنك تجربته بنفسك، لكنه يتطلب استعمال تطبيق خارجي. هل تود تحميله؟</string>
+    <string name="impossible_open_themes">من المستحيل فتح تطبيق التنسيقات</string>
+    <string name="themes_app_not_installed">تطبيق التنسيقات غير مثبت على هذا الجهاز</string>
+    <string name="coming_soon">قريباً</string>
+    <string name="rate">تقييم</string>
+    <string name="send_using">إرسال بواسطة…</string>
+    <string name="building_request_dialog">جار بناء ملفات الطلب…</string>
+    <string name="request_upload_success">تم بنجاح!</string>
+    <string name="request_upload_success_content">تم رفع الطلب إلى خادمنا بنجاح.</string>
+    <string name="no_selected_apps_content">لم تقم بتحديد أي تطبيقات للطلب. يرجى تحديد بعض التطبيقات، ثم اضغط على هذا الزر مرة أخرى.</string>
+    <string name="requests_upload_error">حدث خطأ في رفع طلب التطبيقات إلى خوادمنا.\nالسبب: %1$s\nيرجى المحاولة مرة أخرى لاحقاً.</string>
+    <string name="apps_limit_dialog">عذراً، لكن يسمح لك بتحديد %1$s تطبيقات فقط للطلب.</string>
+    <string name="apps_limit_dialog_more">عذراً، لكن يسمح لك بطلب %1$s تطبيقات أخرى حالياً.</string>
+    <string name="apps_limit_dialog_day">عذراً، لكن يسمح لك بطلب أيقونات كل %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">سيكون بإمكانك طلب الأيقونات مرة أخرى، بعد %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">سيكون بإمكانك طلب الأيقونات مرة أخرى، بعد أقل من دقيقة.</string>
+    <string name="seconds">ثواني</string>
+    <string name="minutes">دقائق</string>
+    <string name="hours">ساعات</string>
+    <string name="days">أيام</string>
+    <string name="weeks">أسابيع</string>
+    <string name="months">أشهر</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>كيف أستعمل حزمة الأيقونات؟</item>
+        <item>كيف أقوم بتطبيق حزمة الأيقونات؟</item>
+        <item>كيف يمكنني رؤية جميع الأيقونات المضمنة؟</item>
+        <item>كيف يمكنني استبدال أيقونة بأيقونة بديلة؟</item>
+        <item>كيف يمكن طلب تطبيقات ليس لها أيقونة؟</item>
+        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
+        <item>Why do icons look pixelated on my device?</item>
+        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
+        <item>How to hide app icon from launcher?</item>
+        <item>How to open the app after app icon is hidden from launcher?</item>
+        <item>How to show app icon in launcher again?</item>
+        <item>Why does the app need permission to modify or delete content of my storage?</item>
+        <item>Why does the app need permission to full network access?</item>
+        <item>Why does the app need permission to view connections?</item>
+        <item>Why does the app need permission to set wallpaper?</item>
+        <item>Why does the app need permission to adjust the wallpaper size?</item>
+        <item>لماذا يحتاج التطبيق إلى صلاحية منع الهاتف من النوم؟</item>
+    </string-array>
+    <string-array name="answers">
+        <item>أنت تحتاج إلى مشغل يدعم حزم الأيقونات. يمكنك العثور على قائمة المشغلات المدعومة في قسم \"تطبيق\" في التطبيق، أو في وصف متجر Play.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
+        <item>اذهب إلى القسم الرئيسي للتطبيق ثم اضغط على الزر ذو العنوان \"الأيقونات\".</item>
+        <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
+        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
+        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
+        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>إرسال طلب أيقونات.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then check the \"Hide icon from launcher\" option.</item>
+        <item>Go to your home screen, then create a widget for the app which name is \"IconRestorer\" and tap it.</item>
+        <item>Slide the NavigationDrawer from the left, or tap the 3-dot menu button and go to \"Settings\" section. Then uncheck the \"Hide icon from launcher\" option.</item>
+        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
+        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
+        <item>It\'s needed to be able to check if your device has internet connection.</item>
+        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
+        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
+        <item>It\'s needed by Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>
