@@ -92,8 +92,9 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':library')
+    implementation(Libs.blueprint) {
+        transitive = true
+    }
     // TODO: Remove comment marks to enable
     // implementation Libs.oneSignal
 }
