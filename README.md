@@ -7,7 +7,7 @@ Blueprint
 [![JitPack](https://jitpack.io/v/com.jahirfiquitiva/Blueprint.svg)](https://jitpack.io/#com.jahirfiquitiva/Blueprint)
 [![Build Status](https://travis-ci.com/jahirfiquitiva/Blueprint.svg?branch=master)](https://travis-ci.com/jahirfiquitiva/Blueprint)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/55f3f196492a4ea88f13da0f219b9125)](https://www.codacy.com/app/jahirfiquitiva/Blueprint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jahirfiquitiva/Blueprint&amp;utm_campaign=Badge_Grade)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/Blueprint/localized.svg)](https://crowdin.com/project/Blueprint/invite)
+[![Crowdin](https://badges.crowdin.net/blueprint/localized.svg)](https://crowdin.com/project/blueprint)
 
 Free, feature-rich, easily customizable Android dashboard for icon packs
 
