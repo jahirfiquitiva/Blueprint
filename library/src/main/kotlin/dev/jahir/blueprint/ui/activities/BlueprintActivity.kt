@@ -116,11 +116,11 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             fabBtn?.setMarginBottom((bottomNavigation?.measuredHeight ?: 0) + 16.dpToPx)
         }
         bottomNavigation?.setOnNavigationItemSelectedListener {
-            updateFab(it.itemId) {
-                if (isIconsPicker && it.itemId != R.id.icons) return@updateFab
-                changeFragment(it.itemId)
+            if (isIconsPicker && it.itemId != R.id.icons) false
+            else {
+                updateFab(it.itemId) { changeFragment(it.itemId) }
+                true
             }
-            true
         }
         updateFabText()
         fabBtn?.setOnClickListener { onFabClick() }
@@ -163,6 +163,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents(this)
         loadAppsToRequest()
         requestStoragePermission()
+
+        if (isIconsPicker && currentItemId != R.id.icons)
+            bottomNavigation?.setSelectedItemId(R.id.icons, true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -246,7 +249,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     override val initialFragmentTag: String =
         if (isIconsPicker) IconsCategoriesFragment.TAG else HomeFragment.TAG
     override val initialItemId: Int = if (isIconsPicker) R.id.icons else R.id.home
-    override fun getMenuRes(): Int = R.menu.blueprint_toolbar_menu
+    override fun getMenuRes(): Int =
+        if (isIconsPicker) R.menu.toolbar_menu_simple else R.menu.blueprint_toolbar_menu
+
     override fun shouldLoadCollections(): Boolean = false
     override fun shouldLoadFavorites(): Boolean = false
 

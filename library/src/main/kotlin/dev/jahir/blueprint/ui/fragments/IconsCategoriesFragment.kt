@@ -6,6 +6,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.IconsCategory
+import dev.jahir.blueprint.extensions.pickIcon
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.activities.IconsCategoryActivity
 import dev.jahir.blueprint.ui.adapters.IconsCategoriesAdapter
@@ -57,14 +58,29 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
     }
 
     private fun onOpenCategory(category: IconsCategory) {
-        context?.startActivity(
+        val pickerKey = (activity as? BlueprintActivity)?.pickerKey ?: 0
+        startActivityForResult(
             Intent(context, IconsCategoryActivity::class.java).apply {
                 putExtra(IconsCategoryActivity.CATEGORY_KEY, category)
-            })
+                putExtra(IconsCategoryActivity.PICKER_KEY, pickerKey)
+            }, if (pickerKey != 0) 55 else 54
+        )
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 55) {
+            activity?.let {
+                it.setResult(resultCode, data)
+                it.finish()
+            }
+        }
     }
 
     private fun onIconClick(icon: Icon) {
-        (activity as? BlueprintActivity)?.showIconDialog(icon)
+        val pickerKey = (activity as? BlueprintActivity)?.pickerKey ?: 0
+        if (pickerKey != 0) activity?.pickIcon(icon, pickerKey)
+        else (activity as? BlueprintActivity)?.showIconDialog(icon)
     }
 
     companion object {

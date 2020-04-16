@@ -8,6 +8,7 @@ import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.IconsCategory
+import dev.jahir.blueprint.extensions.pickIcon
 import dev.jahir.blueprint.ui.adapters.IconsAdapter
 import dev.jahir.blueprint.ui.fragments.dialogs.IconDialog
 import dev.jahir.frames.data.Preferences
@@ -26,11 +27,12 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
 
     override val preferences: Preferences by lazy { Preferences(this) }
 
+    private var pickerKey: Int = 0
     private var category: IconsCategory? = null
     private var iconDialog: IconDialog? = null
 
     private val iconsAdapter: IconsAdapter by lazy {
-        IconsAdapter(false, ::showIconDialog).apply {
+        IconsAdapter(false, ::onIconClick).apply {
             icons = ArrayList(category?.getIcons().orEmpty())
         }
     }
@@ -38,6 +40,7 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_icons_category)
+        pickerKey = intent?.getIntExtra(PICKER_KEY, 0) ?: 0
         category = intent?.getParcelableExtra(CATEGORY_KEY)
         if (category == null) {
             finish()
@@ -84,6 +87,12 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
         }
     }
 
+    private fun onIconClick(icon: Icon?) {
+        icon ?: return
+        if (pickerKey != 0) pickIcon(icon, pickerKey)
+        else showIconDialog(icon)
+    }
+
     private fun showIconDialog(icon: Icon?) {
         icon ?: return
         dismissIconDialog()
@@ -116,5 +125,6 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
 
     companion object {
         internal const val CATEGORY_KEY = "category"
+        internal const val PICKER_KEY = "picker_key"
     }
 }
