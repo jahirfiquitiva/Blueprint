@@ -170,6 +170,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val created = super.onCreateOptionsMenu(menu)
+        menu?.findItem(R.id.templates)?.isVisible = templatesViewModel.components.isNotEmpty()
         menu?.findItem(R.id.select_all)?.isVisible = currentItemId == R.id.request
         return created
     }
@@ -452,7 +453,10 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         startActivity(intent)
     }
 
-    open fun onTemplatesLoaded(templates: ArrayList<Component>) {}
+    open fun onTemplatesLoaded(templates: ArrayList<Component>) {
+        invalidateOptionsMenu()
+    }
+
     override fun defaultTheme(): Int = R.style.BaseBlueprintTheme
     override fun amoledTheme(): Int = R.style.BaseBlueprintTheme_Amoled
 

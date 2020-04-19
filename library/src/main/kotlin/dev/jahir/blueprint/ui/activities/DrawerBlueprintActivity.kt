@@ -67,7 +67,11 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
 
         initDrawerItems()
         navigationView?.setNavigationItemSelectedListener(this)
-        navigationView?.menu?.findItem(initialItemId)?.isChecked = true
+
+        if (isIconsPicker && currentItemId != R.id.icons) {
+            navigationView?.menu?.findItem(R.id.icons)?.isChecked = true
+            lockDrawer()
+        } else navigationView?.menu?.findItem(initialItemId)?.isChecked = true
     }
 
     private fun initDrawerItems() {
