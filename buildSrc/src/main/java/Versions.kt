@@ -16,5 +16,5 @@ object Versions {
     const val buildTools = "29.0.3"
 
     // Blueprint
-    const val blueprint = "2.0.0"
+    const val blueprint = "2.0.1"
 }
