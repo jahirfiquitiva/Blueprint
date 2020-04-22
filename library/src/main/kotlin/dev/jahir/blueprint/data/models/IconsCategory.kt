@@ -36,7 +36,7 @@ data class IconsCategory(
 
     fun setIcons(newIcons: ArrayList<Icon>) {
         icons.clear()
-        icons.addAll(ArrayList(newIcons.distinctBy { it.resId }))
+        icons.addAll(newIcons)
     }
 
     fun getIcons(): ArrayList<Icon> = ArrayList(icons.distinctBy { it.resId })
@@ -45,7 +45,6 @@ data class IconsCategory(
 
     fun addIcon(icon: Icon) {
         icons.add(icon)
-        setIcons(icons)
     }
 
     fun getIconsForPreview(context: Context? = null, shuffle: Boolean = false): ArrayList<Icon> {

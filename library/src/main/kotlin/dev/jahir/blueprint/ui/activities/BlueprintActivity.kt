@@ -265,7 +265,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     }
 
     internal fun loadIconsCategories() {
-        iconsViewModel.loadIconsCategories(this)
+        iconsViewModel.loadIconsCategories()
     }
 
     internal fun showIconDialog(icon: Icon?) {
@@ -316,8 +316,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             }
             else -> fabBtn?.hide()
         }
-        homeFragment.setupRecyclerViewMargin()
-        requestFragment.setupRecyclerViewMargin()
+        homeFragment.setupContentBottomOffset()
+        requestFragment.setupContentBottomOffset()
     }
 
     internal fun updateFab(itemId: Int, afterHidden: () -> Unit = {}) {

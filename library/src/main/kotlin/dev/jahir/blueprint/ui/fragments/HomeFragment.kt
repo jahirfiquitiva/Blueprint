@@ -89,13 +89,13 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        setupRecyclerViewMargin()
+        setupContentBottomOffset()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recycler_view)
-        setupRecyclerViewMargin(view)
+        setupContentBottomOffset(view)
         recyclerView?.loading = false
         recyclerView?.setFastScrollEnabled(false)
         val columnsCount = 2
@@ -112,7 +112,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         (activity as? BlueprintActivity)?.repostCounters()
     }
 
-    internal fun setupRecyclerViewMargin(view: View? = null) {
+    internal fun setupContentBottomOffset(view: View? = null) {
         (view ?: getView())?.let { v ->
             v.post {
                 val bottomNavigationHeight =

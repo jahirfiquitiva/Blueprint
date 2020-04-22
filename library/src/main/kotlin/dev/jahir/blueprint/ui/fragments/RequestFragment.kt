@@ -31,7 +31,7 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
         loadData()
     }
 
-    override fun setupRecyclerViewMargin(view: View?) {
+    override fun setupContentBottomOffset(view: View?) {
         (view ?: getView())?.let { v ->
             v.post {
                 val bottomNavigationHeight =

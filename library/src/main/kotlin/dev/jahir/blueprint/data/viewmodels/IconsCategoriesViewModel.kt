@@ -1,11 +1,10 @@
 package dev.jahir.blueprint.data.viewmodels
 
-import android.content.Context
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
@@ -19,13 +18,16 @@ import dev.jahir.frames.extensions.context.stringArray
 import dev.jahir.frames.extensions.context.withXml
 import dev.jahir.frames.extensions.resources.getAttributeValue
 import dev.jahir.frames.extensions.resources.nextOrNull
+import dev.jahir.frames.extensions.utils.context
 import dev.jahir.frames.extensions.utils.lazyMutableLiveData
+import dev.jahir.frames.extensions.utils.tryToObserve
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.xmlpull.v1.XmlPullParser
 
-class IconsCategoriesViewModel : ViewModel() {
+@Suppress("MemberVisibilityCanBePrivate")
+class IconsCategoriesViewModel(application: Application) : AndroidViewModel(application) {
 
     private val iconsCategoriesData: MutableLiveData<ArrayList<IconsCategory>> by lazyMutableLiveData()
     val iconsCategories: ArrayList<IconsCategory>
@@ -38,10 +40,9 @@ class IconsCategoriesViewModel : ViewModel() {
             return icons.distinctBy { it.resId }.size
         }
 
-    private suspend fun loadCategoriesFromDrawable(context: Context?): ArrayList<IconsCategory> {
+    private suspend fun loadCategoriesFromDrawable(): ArrayList<IconsCategory> {
         if (iconsCategories.isNotEmpty()) return ArrayList(iconsCategories)
         val categories: ArrayList<IconsCategory> = ArrayList()
-        context ?: return categories
         return withContext(IO) {
             context.withXml(R.xml.drawable) { parser ->
                 var event: Int? = parser.eventType
@@ -67,9 +68,7 @@ class IconsCategoriesViewModel : ViewModel() {
                                         )
                                     } else {
                                         reportIconNotFound(
-                                            iconName,
-                                            "drawable.xml",
-                                            context.getAppName()
+                                            iconName, "drawable.xml", context.getAppName()
                                         )
                                     }
                                 }
@@ -85,9 +84,8 @@ class IconsCategoriesViewModel : ViewModel() {
         }
     }
 
-    private suspend fun loadCategoriesFromIconPack(context: Context?): ArrayList<IconsCategory> {
+    private suspend fun loadCategoriesFromIconPack(): ArrayList<IconsCategory> {
         val categories: ArrayList<IconsCategory> = ArrayList()
-        context ?: return categories
         return withContext(IO) {
             context.stringArray(R.array.icon_filters).forEach { filter ->
                 try {
@@ -115,19 +113,18 @@ class IconsCategoriesViewModel : ViewModel() {
         }
     }
 
-    fun loadIconsCategories(context: Context?) {
-        context ?: return
+    fun loadIconsCategories() {
         val readFromDrawable = context.boolean(R.bool.xml_drawable_enabled)
         viewModelScope.launch {
             val categories =
-                if (readFromDrawable) loadCategoriesFromDrawable(context)
-                else loadCategoriesFromIconPack(context)
+                if (readFromDrawable) loadCategoriesFromDrawable()
+                else loadCategoriesFromIconPack()
             iconsCategoriesData.postValue(categories)
         }
     }
 
     fun observe(owner: LifecycleOwner, onUpdated: (ArrayList<IconsCategory>) -> Unit) {
-        iconsCategoriesData.observe(owner, Observer(onUpdated))
+        iconsCategoriesData.tryToObserve(owner, onUpdated)
     }
 
     fun destroy(owner: LifecycleOwner) {
@@ -135,9 +132,7 @@ class IconsCategoriesViewModel : ViewModel() {
     }
 
     private fun reportIconNotFound(
-        iconName: String,
-        fileName: String,
-        appName: String? = "Blueprint"
+        iconName: String, fileName: String, appName: String? = "Blueprint"
     ) {
         Log.e(appName, "Could NOT find icon '$iconName' listed in '$fileName'")
     }
