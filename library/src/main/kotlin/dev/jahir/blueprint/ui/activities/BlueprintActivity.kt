@@ -155,7 +155,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         homeViewModel.observeCounters(this, homeFragment)
         homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
         homeViewModel.observeHomeItems(this) { homeFragment.updateHomeItems(it) }
-        homeViewModel.loadHomeItems(this)
+        homeViewModel.loadHomeItems()
         homeFragment.showDonation(isBillingClientReady)
 
         loadPreviewIcons()
@@ -261,7 +261,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     }
 
     internal fun loadPreviewIcons(force: Boolean = false) {
-        homeViewModel.loadPreviewIcons(this, force)
+        homeViewModel.loadPreviewIcons(force)
     }
 
     internal fun loadIconsCategories() {
@@ -276,11 +276,11 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     }
 
     internal fun loadAppsToRequest() {
-        requestsViewModel.loadApps(this, isDebug)
+        requestsViewModel.loadApps(isDebug)
     }
 
     internal fun changeRequestAppState(app: RequestApp, selected: Boolean): Boolean =
-        if (selected) requestsViewModel.selectApp(this, app)
+        if (selected) requestsViewModel.selectApp(app)
         else requestsViewModel.deselectApp(app)
 
     private fun toggleSelectAll() {
@@ -288,7 +288,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         if (currentState.state == RequestState.State.TIME_LIMITED) {
             onRequestLimited(currentState)
         } else {
-            if (requestsViewModel.toggleSelectAll(this))
+            if (requestsViewModel.toggleSelectAll())
                 requestFragment.updateSelectedApps(requestsViewModel.selectedApps)
         }
     }

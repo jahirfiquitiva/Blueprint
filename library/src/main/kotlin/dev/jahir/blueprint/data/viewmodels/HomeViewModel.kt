@@ -1,11 +1,10 @@
 package dev.jahir.blueprint.data.viewmodels
 
-import android.content.Context
+import android.app.Application
 import android.content.Intent
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.HomeItem
 import dev.jahir.blueprint.data.models.Icon
@@ -15,11 +14,13 @@ import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.stringArray
 import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.resources.lower
+import dev.jahir.frames.extensions.utils.context
 import dev.jahir.frames.extensions.utils.lazyMutableLiveData
+import dev.jahir.frames.extensions.utils.tryToObserve
 import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.PLAY_STORE_LINK_PREFIX
 import dev.jahir.kuper.extensions.isAppInstalled
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val iconsPreviewData: MutableLiveData<List<Icon>> by lazyMutableLiveData()
     val iconsPreviewList: List<Icon>
@@ -34,8 +35,7 @@ class HomeViewModel : ViewModel() {
     private val kustomCountData: MutableLiveData<Int> by lazyMutableLiveData()
     private val zooperCountData: MutableLiveData<Int> by lazyMutableLiveData()
 
-    fun loadPreviewIcons(context: Context?, force: Boolean = false) {
-        context ?: return
+    fun loadPreviewIcons(force: Boolean = false) {
         if (iconsPreviewList.isEmpty() || force) {
             val nextIcons = ArrayList<Icon>()
             context.stringArray(R.array.icons_preview).filter { it.hasContent() }.forEach {
@@ -45,8 +45,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun loadHomeItems(context: Context?) {
-        context ?: return
+    fun loadHomeItems() {
         val list = ArrayList<HomeItem>()
         val titles = context.stringArray(R.array.home_list_titles).filter { it.hasContent() }
         val descriptions =
@@ -89,11 +88,11 @@ class HomeViewModel : ViewModel() {
     }
 
     fun observeIconsPreviewList(owner: LifecycleOwner, onUpdated: (List<Icon>) -> Unit) {
-        iconsPreviewData.observe(owner, Observer { onUpdated(it) })
+        iconsPreviewData.tryToObserve(owner, onUpdated)
     }
 
     fun observeHomeItems(owner: LifecycleOwner, onUpdated: (List<HomeItem>) -> Unit) {
-        homeItemsData.observe(owner, Observer(onUpdated))
+        homeItemsData.tryToObserve(owner, onUpdated)
     }
 
     fun postIconsCount(count: Int? = 0) {
@@ -114,22 +113,22 @@ class HomeViewModel : ViewModel() {
 
     private fun observeIconsCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
         onUpdated(iconsCountData.value ?: 0)
-        iconsCountData.observe(owner, Observer(onUpdated))
+        iconsCountData.tryToObserve(owner, onUpdated)
     }
 
     private fun observeWallpapersCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
         onUpdated(wallpapersCountData.value ?: 0)
-        wallpapersCountData.observe(owner, Observer(onUpdated))
+        wallpapersCountData.tryToObserve(owner, onUpdated)
     }
 
     private fun observeKustomCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
         onUpdated(kustomCountData.value ?: 0)
-        kustomCountData.observe(owner, Observer(onUpdated))
+        kustomCountData.tryToObserve(owner, onUpdated)
     }
 
     private fun observeZooperCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
         onUpdated(zooperCountData.value ?: 0)
-        zooperCountData.observe(owner, Observer(onUpdated))
+        zooperCountData.tryToObserve(owner, onUpdated)
     }
 
     fun observeCounters(owner: LifecycleOwner, fragment: HomeFragment? = null) {

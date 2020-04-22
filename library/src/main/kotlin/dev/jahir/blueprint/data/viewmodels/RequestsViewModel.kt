@@ -1,14 +1,13 @@
 package dev.jahir.blueprint.data.viewmodels
 
-import android.content.Context
+import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.RequestApp
@@ -25,14 +24,16 @@ import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.context.withXml
 import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.resources.nextOrNull
+import dev.jahir.frames.extensions.utils.context
 import dev.jahir.frames.extensions.utils.lazyMutableLiveData
+import dev.jahir.frames.extensions.utils.tryToObserve
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.xmlpull.v1.XmlPullParser
 
-class RequestsViewModel : ViewModel() {
+class RequestsViewModel(application: Application) : AndroidViewModel(application) {
 
     var requestsCallback: RequestCallback? = null
 
@@ -49,7 +50,6 @@ class RequestsViewModel : ViewModel() {
         get() = ArrayList(selectedAppsData.value.orEmpty())
 
     private fun getComponentInAppFilter(
-        context: Context?,
         parser: XmlPullParser?,
         debug: Boolean = false,
         onSuccess: ((String) -> Unit)? = null
@@ -65,15 +65,15 @@ class RequestsViewModel : ViewModel() {
                     && !actualComponent.endsWith("/")) {
                     if (debug) {
                         if (drawable.hasContent()) {
-                            val res = context?.drawableRes(drawable) ?: 0
+                            val res = context.drawableRes(drawable)
                             if (res == 0)
                                 Log.w(
-                                    context?.getAppName() ?: "Blueprint",
+                                    context.getAppName(),
                                     "Drawable \"$drawable\" NOT found for component: \"$actualComponent\""
                                 )
                         } else {
                             Log.w(
-                                context?.getAppName() ?: "Blueprint",
+                                context.getAppName(),
                                 "No drawable found for component: \"$actualComponent\""
                             )
                         }
@@ -82,7 +82,7 @@ class RequestsViewModel : ViewModel() {
                 } else {
                     if (debug)
                         Log.w(
-                            context?.getAppName() ?: "Blueprint",
+                            context.getAppName(),
                             "Found invalid component: \"$actualComponent\""
                         )
                 }
@@ -90,18 +90,14 @@ class RequestsViewModel : ViewModel() {
         } catch (e: Exception) {
             if (debug)
                 Log.e(
-                    context?.getAppName() ?: "Blueprint",
+                    context.getAppName(),
                     "Error adding parsed appfilter item! Due to Exception: ${e.message}"
                 )
         }
     }
 
-    private suspend fun loadThemedComponents(
-        context: Context?,
-        debug: Boolean = false
-    ): ArrayList<String> {
+    private suspend fun loadThemedComponents(debug: Boolean = false): ArrayList<String> {
         if (themedComponents.isNotEmpty()) return themedComponents
-        context ?: return arrayListOf()
         return withContext(IO) {
             val themedComponents = ArrayList<String>()
             val componentsCount = ArrayList<Pair<String, Int>>()
@@ -110,7 +106,7 @@ class RequestsViewModel : ViewModel() {
                 while (eventType != XmlPullParser.END_DOCUMENT) {
                     if (eventType == XmlPullParser.START_TAG) {
                         if (parser.name == "item") {
-                            getComponentInAppFilter(context, parser, debug) { component ->
+                            getComponentInAppFilter(parser, debug) { component ->
                                 themedComponents.add(component)
                                 val count =
                                     (componentsCount.find { it.first == component }?.second
@@ -140,12 +136,8 @@ class RequestsViewModel : ViewModel() {
         }
     }
 
-    private suspend fun loadAppsToRequest(
-        context: Context?,
-        debug: Boolean = true
-    ): ArrayList<RequestApp> {
+    private suspend fun loadAppsToRequest(debug: Boolean = true): ArrayList<RequestApp> {
         if (appsToRequest.isNotEmpty()) return appsToRequest
-        context ?: return arrayListOf()
         return withContext(IO) {
             val installedApps = ArrayList<RequestApp>()
 
@@ -202,26 +194,25 @@ class RequestsViewModel : ViewModel() {
         }
     }
 
-    fun loadApps(context: Context?, debug: Boolean = false) {
-        context ?: return
+    fun loadApps(debug: Boolean = false) {
         viewModelScope.launch {
-            val themedComponents = loadThemedComponents(context, debug)
+            val themedComponents = loadThemedComponents(debug)
             themedComponentsData.postValue(themedComponents)
             delay(10)
-            val appsToRequest = loadAppsToRequest(context, debug)
+            val appsToRequest = loadAppsToRequest(debug)
             appsToRequestData.postValue(appsToRequest)
         }
     }
 
-    internal fun toggleSelectAll(context: Context?): Boolean {
-        val requestLimit = context?.integer(R.integer.max_apps_to_request, -1) ?: -1
+    internal fun toggleSelectAll(): Boolean {
+        val requestLimit = context.integer(R.integer.max_apps_to_request, -1)
         return if (selectedApps.size >= appsToRequest.size) deselectAll()
         else if (requestLimit > 0 && selectedApps.size >= requestLimit) deselectAll()
-        else selectAll(context)
+        else selectAll()
     }
 
-    private fun selectAll(context: Context?): Boolean {
-        val requestLimit = context?.integer(R.integer.max_apps_to_request, -1) ?: -1
+    private fun selectAll(): Boolean {
+        val requestLimit = context.integer(R.integer.max_apps_to_request, -1)
         if (requestLimit == 0) return false
         if (requestLimit < 0) {
             selectedAppsData.postValue(ArrayList(appsToRequest))
@@ -252,10 +243,10 @@ class RequestsViewModel : ViewModel() {
         return true
     }
 
-    internal fun selectApp(context: Context?, app: RequestApp?): Boolean {
+    internal fun selectApp(app: RequestApp?): Boolean {
         app ?: return false
         if (selectedApps.size >= appsToRequest.size) return false
-        val requestLimit = context?.integer(R.integer.max_apps_to_request, -1) ?: -1
+        val requestLimit = context.integer(R.integer.max_apps_to_request, -1)
         if (requestLimit == 0) return false
         if (requestLimit > 0 && selectedApps.size >= requestLimit) {
             viewModelScope.launch {
@@ -292,11 +283,11 @@ class RequestsViewModel : ViewModel() {
     }
 
     fun observeAppsToRequest(owner: LifecycleOwner, onUpdated: (ArrayList<RequestApp>) -> Unit) {
-        appsToRequestData.observe(owner, Observer(onUpdated))
+        appsToRequestData.tryToObserve(owner, onUpdated)
     }
 
     fun observeSelectedApps(owner: LifecycleOwner, onUpdated: (ArrayList<RequestApp>) -> Unit) {
-        selectedAppsData.observe(owner, Observer(onUpdated))
+        selectedAppsData.tryToObserve(owner, onUpdated)
     }
 
     fun destroy(owner: LifecycleOwner) {
