@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Mais aplicações</string>
+    <string name="useful_links">Links úteis</string>
+    <string name="coming_soon">Brevemente</string>
+    <string name="rate">Classificar</string>
+    <string name="send_using">Enviar via…</string>
+    <string name="request_upload_success">Sucesso!</string>
+    <string name="seconds">Segundos</string>
+    <string name="minutes">Minutos</string>
+    <string name="hours">Horas</string>
+    <string name="days">Dias</string>
+    <string name="weeks">Semanas</string>
+    <string name="months">Meses</string>
+    <!-- HELP SECTION -->
+</resources>

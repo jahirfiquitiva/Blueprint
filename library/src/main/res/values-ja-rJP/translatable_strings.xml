@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">他のアプリ</string>
+    <string name="useful_links">関連リンク</string>
+    <string name="lni_content">%1$sは現在インストールされていません。\nGoogle Play ストアからインストールしますか？</string>
+    <string name="no_compatible_launcher_title">このランチャーはアイコンパックに対応していません</string>
+    <string name="no_compatible_launcher_content">このランチャーはどのアイコンパックとも対応していないため、使用することはできません。 このため、アイコンパックをマイナスに評価しないでください。 試すことができる解決策がありますが、それは外部のアプリの使用を必要とします。 ダウンロードしますか？</string>
+    <string name="impossible_open_themes">テーマアプリを開けません</string>
+    <string name="themes_app_not_installed">テーマアプリはこのデバイスにインストールされていません</string>
+    <string name="coming_soon">Coming soon</string>
+    <string name="rate">評価する</string>
+    <string name="send_using">送信に使用するアプリ</string>
+    <string name="building_request_dialog">リクエストファイルを構築中…</string>
+    <string name="request_upload_success">成功しました。</string>
+    <string name="request_upload_success_content">リクエストは成功にアップロードされました。</string>
+    <string name="no_selected_apps_content">リクエストするアプリが選択されていません。 いくつかのアプリを選択してから、もう一度タップしてください。</string>
+    <string name="requests_upload_error">Es gab einen Fehler beim Upload der angefragten App auf unsere Server.\nUrsache: %1$s\nBitte versuche es später erneut.</string>
+    <string name="apps_limit_dialog">申し訳ありませんが、%1$sつのアプリをリクエストすることしかできません。</string>
+    <string name="apps_limit_dialog_more">申し訳ありませんが、現在もう%1$sつのアプリをリクエストすることしかできません。</string>
+    <string name="apps_limit_dialog_day">申し訳ありませんが、%1$sごとにリクエストすることしかできません。</string>
+    <string name="apps_limit_dialog_day_extra">%1$s後で再度リクエストすることができます。</string>
+    <string name="apps_limit_dialog_day_extra_sec">1分も経たないうちに再度リクエストすることができます。</string>
+    <string name="seconds">秒</string>
+    <string name="minutes">分</string>
+    <string name="hours">時間</string>
+    <string name="days">日々</string>
+    <string name="weeks">週間</string>
+    <string name="months">ヶ月間</string>
+</resources>

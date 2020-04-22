@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Ứng dụng khác</string>
+    <string name="useful_links">Liên kết hữu ích</string>
+    <string name="lni_content">%1$s hiện tại không được cài đặt trên thiết bị của bạn.\nBạn có muốn cài đặt nó từ Cửa hàng Play?</string>
+    <string name="no_compatible_launcher_title">Trình khởi chạy này không tương thích</string>
+    <string name="no_compatible_launcher_content">Trình khởi chạy này không tương thích với bất kỳ bộ biểu tượng nào, vì thế bạn không thể áp dụng bộ biểu tượng này. Vui lòng đừng đánh tiêu cực bộ biểu tượng vì lý do này. Có một cách khác bạn có thể thử, nhưng nó yêu cầu một ứng dụng phụ. Bạn muốn tải nó?</string>
+    <string name="impossible_open_themes">Không thể mở ứng dụng chủ đề</string>
+    <string name="themes_app_not_installed">Ứng dụng chủ đề chưa được cài đặt trên thiết bị</string>
+    <string name="coming_soon">Sắp có</string>
+    <string name="rate">Đánh giá</string>
+    <string name="send_using">Gửi bằng…</string>
+    <string name="building_request_dialog">Đang tạo tệp yêu cầu…</string>
+    <string name="request_upload_success">Thành công!</string>
+    <string name="request_upload_success_content">Yêu cầu đã được đưa lên máy chủ.</string>
+    <string name="no_selected_apps_content">Bạn chưa chọn ứng dụng nào để yêu cầu. Vui lòng chọn một vài ứng dụng, sau đó ấn lại nút.</string>
+    <string name="requests_upload_error">Có lỗi xảy ra trong quá trình đưa ứng dụng đã yêu cầu tới máy chủ.\nReason: %1$s\nVui lòng thử lại sau.</string>
+    <string name="apps_limit_dialog">Xin lỗi, nhưng bạn chỉ được phép chọn tối đa %1$s ứng dụng để yêu cầu.</string>
+    <string name="apps_limit_dialog_more">Xin lỗi, nhưng bạn chỉ được phép yêu cầu %1$s ứng dụng vào lúc này.</string>
+    <string name="apps_limit_dialog_day">Xin lỗi, nhưng bạn chỉ có thể yêu cầu thêm biểu tượng mỗi %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Bạn sẽ được phép yêu cầu thêm biểu tượng, trong ít phút nữa.</string>
+    <string name="seconds">Giây</string>
+    <string name="minutes">Phút</string>
+    <string name="hours">Giờ</string>
+    <string name="days">Ngày</string>
+    <string name="weeks">Tuần</string>
+    <string name="months">Tháng</string>
+</resources>

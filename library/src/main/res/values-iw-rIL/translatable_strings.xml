@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">עוד אפליקציות</string>
+    <string name="useful_links">קישורים שימושיים</string>
+    <string name="lni_content">%1$s לא מותקן כרגע על מכשירך. \nהאם תרצה להתקין את זה מחנות Google Play?</string>
+    <string name="no_compatible_launcher_title">משגר יישומים זה אינו נתמך</string>
+    <string name="no_compatible_launcher_content">הלאנצ\'ר הזה אינו נתמך עם שום חבילות אייקונים ולכן אתה לא יכול להשתמש בחבילת האייקונים עם הלאנצ\'ר הזה. אנא אל תדרג את חבילת האייקונים הזה שלילית בגלל הסיבה הזו. ישנו פתרון שבאפשרותך לנסות בעצמך, אבל זה דורש אפליקציה חיצונית. האם אתה רוצה להוריד אותה?</string>
+    <string name="impossible_open_themes">לא ניתן לפתוח את אפליקציית ערכות הנושא</string>
+    <string name="themes_app_not_installed">אפליקציית ערכות הנושא אינה מותקנת על המכשיר הזה</string>
+    <string name="coming_soon">יגיע בקרוב</string>
+    <string name="rate">דרג</string>
+    <string name="send_using">שלח באמצעות…</string>
+    <string name="building_request_dialog">בונה קבצי בקשה…</string>
+    <string name="request_upload_success">הצלחה!</string>
+    <string name="request_upload_success_content">הבקשה הועלתה לשרת שלנו בהצלחה.</string>
+    <string name="no_selected_apps_content">אתה לא בחרת שום אפליקציות לבקשה. אנא בחר כמה אפליקציות ולאחר מכן הקש שוב על כפתור זה.</string>
+    <string name="requests_upload_error">הייתה שגיאה בהעלת אפליקציות לבקשה בשרתים שלנו.\nסיבה:%1$s\nאנא נסה שנית מאוחר יותר.</string>
+    <string name="apps_limit_dialog">מצטערים, אבל אתה רשאי לבחור רק %1$s אפליקציות לבקשה.</string>
+    <string name="apps_limit_dialog_more">מצטערים, אבל אתה ראשי לבקש רק עוד %1$s אפליקציות כרגע.</string>
+    <string name="apps_limit_dialog_day">מצטערים, אבל אתה יכול לבקש אייקונים כל %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">אתה תוכל לבקש אייקונים שוב, בעוד %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">אתה תוכל לבקש אייקונים שוב, תוך פחות מדקה.</string>
+    <string name="seconds">שניות</string>
+    <string name="minutes">דקות</string>
+    <string name="hours">שעות</string>
+    <string name="days">ימים</string>
+    <string name="weeks">שבועות</string>
+    <string name="months">חודשים</string>
+</resources>

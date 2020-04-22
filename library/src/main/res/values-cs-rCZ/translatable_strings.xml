@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Další aplikace</string>
+    <string name="useful_links">Užitečné odkazy</string>
+    <string name="lni_content">%1$s není v současné době nainstalován na vašem zařízení.\nChtěli byste jej nainstalovat z Obchodu Play?</string>
+    <string name="no_compatible_launcher_title">Tento launcher není kompatibilní</string>
+    <string name="no_compatible_launcher_content">Tento launcher NENÍ kompatibilní s ANY sadami ikon, a proto nelze použít tento balíček ikon s tímto launcherem. Z tohoto důvodu prosím neohodnoťte balíček ikon negativně. Existuje řešení, které můžete vyzkoušet pro sebe, ale vyžaduje to použití externí aplikace. Chcete ho stáhnout?</string>
+    <string name="impossible_open_themes">Nelze otevřít témata</string>
+    <string name="themes_app_not_installed">Témata nejsou nainstalována na tomto zařízení</string>
+    <string name="coming_soon">Již brzy</string>
+    <string name="rate">Hodnotit</string>
+    <string name="send_using">Odeslat pomocí…</string>
+    <string name="building_request_dialog">Vytváření potřebných souborů…</string>
+    <string name="request_upload_success">Úspěch!</string>
+    <string name="request_upload_success_content">Požadavek byl úspěšně nahrán na náš server.</string>
+    <string name="no_selected_apps_content">Nevybral jste žádné aplikace pro odeslání. Prosíme vyberte několik aplikací a poté znovu klikněte na toto tlačítko.</string>
+    <string name="requests_upload_error">Došlo k chybě při odesílání požadovaných aplikací na naše servery. \nReason: %1$s\nProsíme, zkuste to znovu později.</string>
+    <string name="apps_limit_dialog">Omlouváme se, ale můžete vybrat maximálně %1$s aplikací.</string>
+    <string name="apps_limit_dialog_more">Omlouváme se, ale prozatím můžete požádat maximálně o %1$s aplikací.</string>
+    <string name="apps_limit_dialog_day">Omlouváme se, ale o aplikace můžete požádat každých %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Budete moci znovu požádat o aplikace za %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Budete moci znovu požádat o aplikace za méně než minutu.</string>
+    <string name="seconds">Sekundy</string>
+    <string name="minutes">Minuty</string>
+    <string name="hours">Hodiny</string>
+    <string name="days">Dny</string>
+    <string name="weeks">Týdny</string>
+    <string name="months">Měsíce</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Więcej aplikacji</string>
+    <string name="useful_links">Przydatne linki</string>
+    <string name="lni_content">%1$s nie jest zainstalowany na urządzeniu.\nCzy chcesz zainstalować go ze Sklepu Google Play?</string>
+    <string name="no_compatible_launcher_title">Ten launcher NIE jest kompatybilny</string>
+    <string name="no_compatible_launcher_content">Ten launcher NIE jest kompatybilny z ŻADNĄ paczką ikon, a w związku z tym nie możesz użyć tej paczki ikon na tym launcherze. Proszę, nie oceniaj paczki ikon negatywnie z tego powodu. Istnieje rozwiązanie, które możesz samemu wypróbować, ale wymaga to innej aplikacji. Czy chcesz ją pobrać?</string>
+    <string name="impossible_open_themes">Nie można otworzyć aplikacji motywów</string>
+    <string name="themes_app_not_installed">Aplikacja motywów nie jest zainstalowana na tym urządzeniu</string>
+    <string name="coming_soon">Dostępne wkrótce</string>
+    <string name="rate">Oceń</string>
+    <string name="send_using">Wyślij za pomocą…</string>
+    <string name="building_request_dialog">Tworzenie plików prośby o dodanie ikon…</string>
+    <string name="request_upload_success">Sukces!</string>
+    <string name="request_upload_success_content">Prośba została pomyślnie wysłana na nasz serwer.</string>
+    <string name="no_selected_apps_content">Nie wybrałeś aplikacji do wysłania prośby. Zaznacz kilka z nich i kliknij ten przycisk ponownie.</string>
+    <string name="requests_upload_error">Wystąpił błąd podczas wysyłania prośby na nasze serwery.\nPowód: %1$s\nSpróbuj ponownie później.</string>
+    <string name="apps_limit_dialog">Przepraszamy, ale możesz dodać tylko %1$s aplikacji do swojej prośby.</string>
+    <string name="apps_limit_dialog_more">Przepraszamy, ale chwilowo możesz wysłać prośbę tylko o %1$s ikon.</string>
+    <string name="apps_limit_dialog_day">Przepraszamy, ale możesz żądać ikony każdego %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Będziesz mógł wysłać prośbę o dodanie ikon ponownie za mniej niż minutę.</string>
+    <string name="seconds">Sekundy</string>
+    <string name="minutes">Minuty</string>
+    <string name="hours">Godziny</string>
+    <string name="days">Dni</string>
+    <string name="weeks">Tygodnie</string>
+    <string name="months">Miesiące</string>
+</resources>
