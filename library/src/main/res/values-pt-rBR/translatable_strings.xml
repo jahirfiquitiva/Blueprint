@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Mais apps</string>
+    <string name="useful_links">Links Úteis</string>
+    <string name="lni_content">%1$s atualmente não está instalado no seu dispositivo. \nGostaria de instalá-lo?</string>
+    <string name="no_compatible_launcher_title">Este launcher NÃO é compatível</string>
+    <string name="no_compatible_launcher_content">Este launcher NÃO é compatível com NENHUM Pacote de ícones e, portanto, você não pode usar este pacote de ícones com este launcher. Por favor, não classifique o pacote de ícones negativamente por esse motivo. Existe uma solução que você pode tentar por si mesmo, mas requer o uso de um aplicativo externo. Gostaria de baixá-lo?</string>
+    <string name="impossible_open_themes">Impossível abrir o app de temas</string>
+    <string name="themes_app_not_installed">O aplicativo Temas não está instalado neste dispositivo</string>
+    <string name="coming_soon">Em breve</string>
+    <string name="rate">Avaliação</string>
+    <string name="send_using">Enviar usando…</string>
+    <string name="building_request_dialog">Building request files…</string>
+    <string name="request_upload_success">Sucesso!</string>
+    <string name="request_upload_success_content">A solicitação foi enviada ao nosso servidor com sucesso</string>
+    <string name="no_selected_apps_content">Você não selecionou nenhum aplicativo para solicitar. Selecione alguns aplicativos e, em seguida, toque neste botão novamente.</string>
+    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
+    <string name="apps_limit_dialog">Desculpe, mas você só pode solicitar %1$s aplicativos.</string>
+    <string name="apps_limit_dialog_more">Desculpe, mas você só pode solicitar mais %1$s apps.</string>
+    <string name="apps_limit_dialog_day">Desculpe, mas você só pode solicitar ícones a cada %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Você será capaz de solicitar ícones novamente em %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Você será capaz de solicitar ícones de novo em menos de um minuto.</string>
+    <string name="seconds">Segundos</string>
+    <string name="minutes">Minutos</string>
+    <string name="hours">Horas</string>
+    <string name="days">Dias</string>
+    <string name="weeks">Semanas</string>
+    <string name="months">Meses</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">更多应用</string>
+    <string name="useful_links">友情链接</string>
+    <string name="lni_content">您的设备目前尚未安装 %1$s。\n您希望前往 Google Play 商店安装它吗？</string>
+    <string name="no_compatible_launcher_title">该启动器不兼容</string>
+    <string name="no_compatible_launcher_content">该启动器不兼容任何图标包，因此您无法在该启动器上应用此图标包。恳请您不要因为这种原因而给我们差评。您可以尝试可行的解决方法，但需要安装额外的应用。您希望下载该应用吗？</string>
+    <string name="impossible_open_themes">无法打开主题应用程序</string>
+    <string name="themes_app_not_installed">此设备尚未安装主题应用程序</string>
+    <string name="coming_soon">即将到来</string>
+    <string name="rate">评分</string>
+    <string name="send_using">通过以下应用发送</string>
+    <string name="building_request_dialog">正在生成申请文件…</string>
+    <string name="request_upload_success">申请成功！</string>
+    <string name="request_upload_success_content">该请求已成功上传到我们的服务器。</string>
+    <string name="no_selected_apps_content">您没有选择要请求的任何应用程序。请选择几个应用程序, 然后再次点击此按钮。</string>
+    <string name="requests_upload_error">有一项错误要求上传至我们的服务器。 \n原因: %1$s\n请稍待片刻再试一次。</string>
+    <string name="apps_limit_dialog">很抱歉，您只被允许选择 %1$s 个应用程序来申请适配。</string>
+    <string name="apps_limit_dialog_more">很抱歉，您目前只被允许再选择另外 %1$s 个应用程序来申请适配。</string>
+    <string name="apps_limit_dialog_day">很抱歉，您只被允许每%1$s申请一次图标。</string>
+    <string name="apps_limit_dialog_day_extra">您将能够在%1$s后再次申请图标。</string>
+    <string name="apps_limit_dialog_day_extra_sec">您将能够在不到一分钟后再次申请适配。</string>
+    <string name="seconds">秒</string>
+    <string name="minutes">分钟</string>
+    <string name="hours">小时</string>
+    <string name="days">天</string>
+    <string name="weeks">周</string>
+    <string name="months">月</string>
+</resources>

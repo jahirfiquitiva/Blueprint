@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Plus d\'applications</string>
+    <string name="useful_links">Liens utiles</string>
+    <string name="lni_content">%1$s n\'est actuellement pas installée sur votre appareil.\nVoulez-vous l\'installer depuis le Play Store ?</string>
+    <string name="no_compatible_launcher_title">Ce launcher n\'est PAS compatible</string>
+    <string name="no_compatible_launcher_content">Ce launcher n\'est PAS compatible avec les Packs d\'icônes et par conséquent, vous ne pouvez pas utiliser ce pack d\'icônes avec ce launcher. Veuillez ne pas noter ce pack d\'icônes négativement pour ce motif. Il existe une solution que vous pouvez essayer par vous-même, mais elle nécessite l\'utilisation d\'une application externe. Souhaitez vous la télécharger?</string>
+    <string name="impossible_open_themes">Impossible d\'ouvrir l\'application de thèmes</string>
+    <string name="themes_app_not_installed">L\'application de thèmes n\'est pas installée sur cet appareil</string>
+    <string name="coming_soon">Prochainement</string>
+    <string name="rate">Évaluer</string>
+    <string name="send_using">Envoyer avec…</string>
+    <string name="building_request_dialog">Création de la demande d\'icônes…</string>
+    <string name="request_upload_success">Succès !</string>
+    <string name="request_upload_success_content">La demande a été téléchargée sur notre serveur avec succès.</string>
+    <string name="no_selected_apps_content">Vous n\'avez sélectionné aucune application pour votre demande. Veuillez sélectionner quelques applications, puis appuyez à nouveau sur ce bouton.</string>
+    <string name="requests_upload_error">Il y a eu une erreur lors de l\'envoie des applications demandées sur nos serveurs. \nRaison : %1$s\nMerci de réessayer plus tard.</string>
+    <string name="apps_limit_dialog">Désolé, mais vous êtes autorisé à sélectionner uniquement %1$s applications pour votre demande.</string>
+    <string name="apps_limit_dialog_more">Désolé, mais vous êtes autorisé à demander uniquement %1$s applications pour l\'instant.</string>
+    <string name="apps_limit_dialog_day">Désolé, mais vous êtes autorisé à demander des icônes chaque %1$s uniquement.</string>
+    <string name="apps_limit_dialog_day_extra">Vous serez en mesure de demander à nouveau des icônes, dans %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Vous serez en mesure de demander à nouveau des icônes, dans moins d\'une minute.</string>
+    <string name="seconds">Secondes</string>
+    <string name="minutes">Minutes</string>
+    <string name="hours">Heures</string>
+    <string name="days">Jours</string>
+    <string name="weeks">Semaines</string>
+    <string name="months">Mois</string>
+</resources>

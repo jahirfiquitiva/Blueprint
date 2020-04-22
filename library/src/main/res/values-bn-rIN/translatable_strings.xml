@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">আরো অ্যাপ সমূহ</string>
+    <string name="useful_links">দরকারী লিংকসমূহ</string>
+    <string name="lni_content">%1$s এ মুহূর্তে আপনার ডিভাইসে ইন্সটল করা নেই।\n আপনি কি এটি প্লে স্টোর থেকে ইন্সটল করতে চান?</string>
+    <string name="no_compatible_launcher_title">এই লঞ্চারটি উপযুক্ত নয়</string>
+    <string name="no_compatible_launcher_content">এই লঞ্চারটি কোনো আইকন প্যাকের উপযুক্ত নয় তাই আপনি এই লঞ্চারে এই আইকন প্যাক ব্যবহার করতে পারবেন না । এই কারণের জন্যে দয়া করে আইকন প্যাক-কে নেতিবাচক রেট দিবেন না । আপনি নিজের জন্যে সমাধান ব্যবহার করতে পারেন, কিন্তু এতে আলাদা অ্যাপ এর প্রয়োজন । আপনি কি এই অ্যাপ ডাউনলোড করতে চান ?</string>
+    <string name="impossible_open_themes">থিম অ্যাপ চালু করা সম্ভব নয়</string>
+    <string name="themes_app_not_installed">থিম অ্যাপ এই ডিভাইসটিতে ইনস্টল করা নেই</string>
+    <string name="coming_soon">শীঘ্রই আসছে</string>
+    <string name="rate">মূল্যায়ন করুন</string>
+    <string name="send_using">ব্যবহার করে প্রেরণ করুন…</string>
+    <string name="building_request_dialog">অনুরোধ ফাইল তৈরি করা হচ্ছে…</string>
+    <string name="request_upload_success">সফল হয়েছে!</string>
+    <string name="request_upload_success_content">অনুরোধ সফলভাবে আমাদের সার্ভারে আপলোড করা হয়েছে।</string>
+    <string name="no_selected_apps_content">আপনি অনুরোধ করতে কোন অ্যাপ নির্বাচন করেননি। দয়া করে কিছু অ্যাপস নির্বাচন করুন, এরপর আবার এই বোতামে ট্যাপ করুন।</string>
+    <string name="requests_upload_error">একটি ত্রুটি ঘটে গেল যখন অনুরোধ করা অ্যাপ সমূহ আপলোড করা হচ্ছিল আমাদের সার্ভারে ।\nকারণ: %1$s\nদয়া করে পরে চেষ্টা করবেন ।</string>
+    <string name="apps_limit_dialog">দুঃখিত, কিন্তু আপনাকে শুধু অনুরোধ %1$s টি অ্যাপস নির্বাচন করতে অনুমতি দেওয়া হয়।</string>
+    <string name="apps_limit_dialog_more">দুঃখিত, কিন্তু আপনি এখন শুধু %1$s টি অ্যাপ অনুরোধ করতে পারেন ।</string>
+    <string name="apps_limit_dialog_day">দুঃখিত, কিন্তু আপনি আইকন অনুরোধ করতে পারেন প্রতি %1$s দিন অন্তর ।</string>
+    <string name="apps_limit_dialog_day_extra">আপনি আবার আইকন অনুরোধ করতে পারবেন %1$s দিনের মধ্যে ।</string>
+    <string name="apps_limit_dialog_day_extra_sec">আপনি এক মিনিটের কম সময়ের মধ্যে আবার আইকন অনুরোধ দিতে সক্ষম হবেন।.</string>
+    <string name="seconds">সেকেন্ড</string>
+    <string name="minutes">মিনিট</string>
+    <string name="hours">ঘন্টা</string>
+    <string name="days">দিন</string>
+    <string name="weeks">সপ্তাহ</string>
+    <string name="months">মাস</string>
+</resources>

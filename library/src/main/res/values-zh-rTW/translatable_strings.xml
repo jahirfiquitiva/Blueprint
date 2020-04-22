@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">更多應用程式</string>
+    <string name="useful_links">相關連結</string>
+    <string name="lni_content">%1$s 當前未安裝在您的設備上。\n您想從 google play 商店安裝它嗎？</string>
+    <string name="no_compatible_launcher_title">此啟動器不相容</string>
+    <string name="no_compatible_launcher_content">此啟動器與任何圖示包均不相容, 因此不能將此圖示包與此啟動器一起使用。請不要因為這個原因而對圖示包給予負面評價。若您願意嘗試, 有一個解決方案，但需要使用一個外部應用程式. 你想下載它嗎？</string>
+    <string name="impossible_open_themes">無法打開主題應用程式</string>
+    <string name="themes_app_not_installed">此設備中未安裝主題應用程式</string>
+    <string name="coming_soon">即將推出</string>
+    <string name="rate">評價</string>
+    <string name="send_using">透過以下應用程式傳送：</string>
+    <string name="building_request_dialog">正在生成請求檔..。</string>
+    <string name="request_upload_success">操作成功！</string>
+    <string name="request_upload_success_content">請求已成功上載到我們的伺服器。</string>
+    <string name="no_selected_apps_content">您尚未選取要任何需求的應用程式。請選擇幾個應用程式, 然後再次點擊此按鈕。</string>
+    <string name="requests_upload_error">上傳請求的應用程式到我們的伺服器時出現錯誤。\n原因：%1$s\n 請稍後再試。</string>
+    <string name="apps_limit_dialog">對不起, 您只允許選擇 %1$s 個應用程式來進行請求。</string>
+    <string name="apps_limit_dialog_more">對不起, 您只允許選擇 %1$s 個應用程式來進行請求。</string>
+    <string name="apps_limit_dialog_day">對不起, 您每 %1$s 只能請求一些示。</string>
+    <string name="apps_limit_dialog_day_extra">在 %1$s 後, 您將能夠再次請求圖示。</string>
+    <string name="apps_limit_dialog_day_extra_sec">不到一分鐘後，您將能夠再次請求圖示。</string>
+    <string name="seconds">秒</string>
+    <string name="minutes">分</string>
+    <string name="hours">小時</string>
+    <string name="days">天</string>
+    <string name="weeks">週</string>
+    <string name="months">月</string>
+</resources>

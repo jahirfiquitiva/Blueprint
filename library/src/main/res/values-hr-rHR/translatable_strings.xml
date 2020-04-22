@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Još aplikacija</string>
+    <string name="useful_links">Korisne poveznice</string>
+    <string name="lni_content">%1$s trenutno nije instaliran na vašem uređaju.\nŽelite li instalirati sa Play Trgovine?</string>
+    <string name="no_compatible_launcher_title">Ovaj pokretač NIJE Podržan</string>
+    <string name="no_compatible_launcher_content">Launcher นี้ไม่สามารถใช้ได้กับ Icon Packs ใด ๆ ดังนั้นคุณจึงไม่สามารถใช้ไอคอนแพ็คนี้กับ Launcher นี้ได้ โปรดอย่าให้คะแนนไอคอนแพ็คเป็นลบด้วยเหตุนี้ มีโซลูชันที่คุณสามารถลองใช้ด้วยตัวเอง แต่ต้องใช้แอปภายนอก คุณต้องการดาวน์โหลดหรือไม่?</string>
+    <string name="impossible_open_themes">Nije moguće otvoriti aplikaciju tema</string>
+    <string name="themes_app_not_installed">Teme nisu instalirane na ovom uređaju</string>
+    <string name="coming_soon">Ubrzo dolazi</string>
+    <string name="rate">Ocijeni</string>
+    <string name="send_using">Pošalji koristeći…</string>
+    <string name="building_request_dialog">Stvaranje datoteke zahtjeva…</string>
+    <string name="request_upload_success">Uspjeh!</string>
+    <string name="request_upload_success_content">Zahtjev je uspješno učitan na naš poslužitelj.</string>
+    <string name="no_selected_apps_content">Niste odabrali nijednu aplikaciju za zahtjev. Molimo odaberite neke aplikacije, pa zatim ponovno dodirnite ovaj gumb.</string>
+    <string name="requests_upload_error">Dogodila se greška prilikom učitavanja uploadanja aplikacija za zahtjev na naše servere.\nRazlog: %1$s\nMolim pokušaj ponovno kasnije.</string>
+    <string name="apps_limit_dialog">Žao nam je, ali dopušteno vam je odabrati %1$s aplikacija za zahtjev.</string>
+    <string name="apps_limit_dialog_more">Žao nam je, ali dopušteno vam je odabrati još %1$s aplikacija za zahtjev.</string>
+    <string name="apps_limit_dialog_day">Žao nam je, ali dopušteno vam je zahtjevati ikone svakih %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Bit ćete u mogućnosti zahtjevati ikone opet za %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Bit ćete u mogućnosti zahtjevati ikone opet, za manje od minute.</string>
+    <string name="seconds">Sekunde</string>
+    <string name="minutes">Minute</string>
+    <string name="hours">Sati</string>
+    <string name="days">Dana</string>
+    <string name="weeks">Tjedana</string>
+    <string name="months">Mjeseci</string>
+</resources>

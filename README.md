@@ -63,7 +63,7 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 - License Checker.
 - Donations.
 - OneSignal notifications ready.
-- Support for adaptive icon packs (Additional improvements coming soon!)
+- Support for adaptive icon packs
 - In-app icon request tool
 - Premium Icon Requests (Coming soon!)
 - Support for [Arctic Manager](https://arcticmanager.com/)

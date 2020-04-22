@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Больше приложений</string>
+    <string name="useful_links">Полезные ссылки</string>
+    <string name="lni_content">%1$s в настоящее время не установлен на вашем устройства. \nХотите установить его из магазина Google Play?</string>
+    <string name="no_compatible_launcher_title">Данный лаунчер НЕ совместим</string>
+    <string name="no_compatible_launcher_content">Этот лаунчер не совместим с любым набором значков и, следовательно, вы не сможите использовать этот набор значков с этим лаунчером. Пожалуйста, не ставьте набору плохую оценку по этой причине. Вы можете попробовать воспользоваться внешним приложением. Хотите скачать его?</string>
+    <string name="impossible_open_themes">Невозможно открыть темы приложения</string>
+    <string name="themes_app_not_installed">Приложение тем не установлено на этом устройстве</string>
+    <string name="coming_soon">Скоро</string>
+    <string name="rate">Оценить</string>
+    <string name="send_using">Отправить с помощью…</string>
+    <string name="building_request_dialog">Подготовка файлов запроса…</string>
+    <string name="request_upload_success">Успешно!</string>
+    <string name="request_upload_success_content">Запрос успешно был загружен на наш сервер.</string>
+    <string name="no_selected_apps_content">Вы не выбрали ни одного приложения для запроса. Пожалуйста, выберите несколько приложений, а затем нажмите эту кнопку снова.</string>
+    <string name="requests_upload_error">Произошел сбой при загрузке списка приложений на наши сервера.\nПричина: %1$s\nПопробуйте еще раз позднее.</string>
+    <string name="apps_limit_dialog">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+    <string name="apps_limit_dialog_more">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+    <string name="apps_limit_dialog_day">Извините, но вам разрешено выбрать только %1$s приложений для запроса.</string>
+    <string name="apps_limit_dialog_day_extra">Вы сможете снова отправить запрос через %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Вы сможете снова отправить запрос меньше чем через минуту.</string>
+    <string name="seconds">Секунд</string>
+    <string name="minutes">Минут</string>
+    <string name="hours">Часов</string>
+    <string name="days">Дней</string>
+    <string name="weeks">Недель</string>
+    <string name="months">Месяцев</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">More apps</string>
+    <string name="useful_links">Tautan yang bermanfaat</string>
+    <string name="lni_content">%1$s saat ini tidak terpasang pada perangkat Anda.\nApakah anda ingin memasangnya dari Google Play Store?</string>
+    <string name="no_compatible_launcher_title">Peluncur ini TIDAK Cocok</string>
+    <string name="no_compatible_launcher_content">Launcher ini TIDAK kompatibel dengan Pak Ikon APAPUN dan karena itu Anda tidak dapat menggunakan Pak Ikon dengan launcher ini. Mohon tidak menilai pak ikon secara negatif karena alasan ini. Ada solusi yang dapat Anda coba sendiri, namun, itu membutuhkan aplikasi eksternal. Apakah Anda ingin mengunduhnya?</string>
+    <string name="impossible_open_themes">Tidak mungkin untuk membuka tema aplikasi</string>
+    <string name="themes_app_not_installed">Tema aplikasi tidak terpasang di perangkat ini</string>
+    <string name="coming_soon">Segera hadir</string>
+    <string name="rate">Nilai</string>
+    <string name="send_using">Kirim menggunakan…</string>
+    <string name="building_request_dialog">Membangun permintaan berkas…</string>
+    <string name="request_upload_success">Berhasil!</string>
+    <string name="request_upload_success_content">Permintaan telah berhasil diunggah ke server kami.</string>
+    <string name="no_selected_apps_content">Anda tidak memilih aplikasi apapun untuk meminta. Mohon pilih beberapa aplikasi, lalu tekan tombol ini lagi.</string>
+    <string name="requests_upload_error">Ada kesalahan ketika mengunggah aplikasi untuk meminta ke server kami.\nAlasan: %1$s\nMohon coba lagi nanti.</string>
+    <string name="apps_limit_dialog">Maaf, tapi anda hanya diizinkan untuk memilih %1$s aplikasi untuk meminta.</string>
+    <string name="apps_limit_dialog_more">Maaf, tapi anda hanya diizinkan untuk meminta %1$s lebih banyak aplikasi untuk sekarang.</string>
+    <string name="apps_limit_dialog_day">Maaf, tapi anda hanya diizinkan untuk meminta ikon setiap %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Anda akan bisa meminta ikon lagi, di %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Anda akan bisa meminta ikon lagi, dalam waktu kurang dari satu menit.</string>
+    <string name="seconds">Detik</string>
+    <string name="minutes">Menit</string>
+    <string name="hours">Jam</string>
+    <string name="days">Hari</string>
+    <string name="weeks">Minggu</string>
+    <string name="months">Bulan</string>
+</resources>
