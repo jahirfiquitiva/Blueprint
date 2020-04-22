@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <version>1</version>
+
+    <category title="Latest" />
+
+    <category title="System" />
+    <item drawable="an_icon" />
+    <item drawable="andy" />
+    <item drawable="another_icon" />
+    <item drawable="icon_one" />
+    <item drawable="icon_with_a_long_name" />
+    <item drawable="icons_everywhere" />
+    <item drawable="second_icon" />
+    <item drawable="this_is_an_icon" />
+
+    <category title="Google Apps" />
+    <item drawable="an_icon" />
+    <item drawable="andy" />
+    <item drawable="another_icon" />
+    <item drawable="icon_one" />
+    <item drawable="icon_with_a_long_name" />
+    <item drawable="icons_everywhere" />
+    <item drawable="second_icon" />
+    <item drawable="this_is_an_icon" />
+
+    <category title="Games" />
+    <item drawable="a_better_camera" />
+    <item drawable="adaway" />
+    <item drawable="adobe_creative_cloud" />
+    <item drawable="afterfocus" />
+
+    <category title="Drawers" />
+    <item drawable="a_better_camera" />
+    <item drawable="aa" />
+    <item drawable="acdisplay" />
+    <item drawable="afterlight" />
+    <item drawable="airdroid" />
+    <item drawable="alarmpad" />
+
+    <category title="All" />
+    <item drawable="an_icon" />
+    <item drawable="andy" />
+    <item drawable="another_icon" />
+    <item drawable="icon_one" />
+    <item drawable="icon_with_a_long_name" />
+    <item drawable="icons_everywhere" />
+    <item drawable="second_icon" />
+    <item drawable="this_is_an_icon" />
+
+</resources>
