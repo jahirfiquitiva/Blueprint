@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Theme version="1">
+    <Label value="Blueprint" />
+    <Wallpaper image="wallpaper_01" />
+    <LockScreenWallpaper image="wallpaper_02" />
+    <ThemePreview image="preview1" />
+    <ThemePreviewWork image="preview1" />
+    <ThemePreviewMenu image="preview1" />
+    <DockMenuAppIcon selector="drawer" />
+
+    <!-- Contacts App -->
+    <AppIcon
+        name="com.android.contacts/com.android.contacts.DialtactsContactsEntryActivity"
+        image="people" />
+
+</Theme>

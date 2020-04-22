@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<theme>
+    <version>1.0</version>
+    <themeName>Blueprint</themeName>
+    <themeInfo>Free, feature-rich, easily customizable Android dashboard for icon packs</themeInfo>
+    <preview img1="preview1" />
+    <preview img2="preview2" />
+</theme>
