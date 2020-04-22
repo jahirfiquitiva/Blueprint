@@ -17,4 +17,7 @@ object Versions {
 
     // Kuper
     const val kuper = "2.1.3"
+
+    // Adaptive Icons
+    const val adaptiveIcons = "a0884c7"
 }

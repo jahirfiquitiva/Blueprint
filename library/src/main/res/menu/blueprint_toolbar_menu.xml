@@ -11,44 +11,51 @@
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
+        android:id="@+id/icons_shape"
+        android:icon="@drawable/ic_shape"
+        android:orderInCategory="200"
+        android:title="@string/icon_shape"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/select_all"
         android:icon="@drawable/ic_select_all"
-        android:orderInCategory="200"
+        android:orderInCategory="300"
         android:title="@string/select_all"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/templates"
         android:icon="@drawable/ic_widgets"
-        android:orderInCategory="300"
+        android:orderInCategory="400"
         android:title="@string/templates"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/changelog"
         android:icon="@drawable/ic_changelog"
-        android:orderInCategory="400"
+        android:orderInCategory="500"
         android:title="@string/changelog"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/help"
         android:icon="@drawable/ic_help"
-        android:orderInCategory="500"
+        android:orderInCategory="600"
         android:title="@string/help"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/about"
         android:icon="@drawable/ic_details"
-        android:orderInCategory="600"
+        android:orderInCategory="700"
         android:title="@string/about"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"
-        android:orderInCategory="700"
+        android:orderInCategory="800"
         android:title="@string/settings"
         app:showAsAction="never" />
 

@@ -57,6 +57,10 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
         iconsCategoriesAdapter.categories = items
     }
 
+    internal fun notifyShapeChange() {
+        iconsCategoriesAdapter.notifyDataSetChanged()
+    }
+
     private fun onOpenCategory(category: IconsCategory) {
         val pickerKey = (activity as? BlueprintActivity)?.pickerKey ?: 0
         startActivityForResult(

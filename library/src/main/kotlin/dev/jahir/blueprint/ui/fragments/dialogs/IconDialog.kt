@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.palette.graphics.Palette
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
+import dev.jahir.blueprint.extensions.asAdaptive
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.fragments.mdDialog
@@ -42,9 +43,8 @@ class IconDialog : DialogFragment() {
 
     private fun onDialogShown() {
         icon?.let { icon ->
-
             val bitmap = try {
-                context?.drawable(icon.resId)?.asBitmap()
+                context?.drawable(icon.resId)?.asAdaptive(context)?.asBitmap()
             } catch (e: Exception) {
                 null
             }

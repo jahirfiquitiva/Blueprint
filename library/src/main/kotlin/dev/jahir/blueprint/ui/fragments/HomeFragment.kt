@@ -19,9 +19,11 @@ import dev.jahir.blueprint.data.models.KustomCounter
 import dev.jahir.blueprint.data.models.WallpapersCounter
 import dev.jahir.blueprint.data.models.ZooperCounter
 import dev.jahir.blueprint.extensions.defaultLauncher
+import dev.jahir.blueprint.extensions.safeNotifySectionChanged
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.activities.BlueprintKuperActivity
 import dev.jahir.blueprint.ui.adapters.HomeAdapter
+import dev.jahir.blueprint.ui.adapters.HomeAdapter.Companion.ICONS_PREVIEW_SECTION
 import dev.jahir.blueprint.ui.decorations.HomeGridSpacingItemDecoration
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.drawable
@@ -121,6 +123,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
                 v.setPaddingBottom(bottomNavigationHeight + fabHeight + extraHeight)
             }
         }
+    }
+
+    internal fun notifyShapeChange() {
+        adapter.safeNotifySectionChanged(ICONS_PREVIEW_SECTION)
     }
 
     internal fun updateIconsPreview(icons: List<Icon>) {

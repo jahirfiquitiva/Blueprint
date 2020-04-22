@@ -1,6 +1,7 @@
 package dev.jahir.blueprint.ui.activities
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,6 +13,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.snackbar.Snackbar
 import dev.jahir.blueprint.BuildConfig
 import dev.jahir.blueprint.R
+import dev.jahir.blueprint.data.BlueprintPreferences
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.RequestApp
 import dev.jahir.blueprint.data.requests.RequestCallback
@@ -47,6 +49,7 @@ import dev.jahir.frames.extensions.fragments.cancelable
 import dev.jahir.frames.extensions.fragments.mdDialog
 import dev.jahir.frames.extensions.fragments.message
 import dev.jahir.frames.extensions.fragments.positiveButton
+import dev.jahir.frames.extensions.fragments.singleChoiceItems
 import dev.jahir.frames.extensions.fragments.title
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.resources.hasContent
@@ -107,6 +110,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     private var shouldBuildRequest: Boolean = false
 
     private var requestDialog: AlertDialog? = null
+    private var iconsShapePickerDialog: AlertDialog? = null
+    private val blueprintPrefs: BlueprintPreferences by lazy { BlueprintPreferences(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -170,14 +175,18 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         val created = super.onCreateOptionsMenu(menu)
         menu?.findItem(R.id.templates)?.isVisible = templatesViewModel.components.isNotEmpty()
         menu?.findItem(R.id.select_all)?.isVisible = currentItemId == R.id.request
+        menu?.findItem(R.id.icons_shape)?.isVisible =
+            currentItemId == R.id.icons && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                    && boolean(R.bool.includes_adaptive_icons)
         return created
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var shouldCallSuper = true
         when (item.itemId) {
-            R.id.templates -> startActivity(Intent(this, BlueprintKuperActivity::class.java))
+            R.id.icons_shape -> showIconsShapePickerDialog()
             R.id.select_all -> toggleSelectAll()
+            R.id.templates -> startActivity(Intent(this, BlueprintKuperActivity::class.java))
             R.id.help -> startActivity(Intent(this, HelpActivity::class.java))
             R.id.settings -> {
                 shouldCallSuper = false
@@ -187,8 +196,14 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         return if (shouldCallSuper) super.onOptionsItemSelected(item) else true
     }
 
+    override fun onResume() {
+        super.onResume()
+        notifyIconShapeChanged()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+        dismissIconsShapesDialog()
         dismissRequestDialog()
         dismissIconDialog()
         homeViewModel.destroy(this)
@@ -209,6 +224,14 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         try {
             requestDialog?.dismiss()
             requestDialog = null
+        } catch (e: Exception) {
+        }
+    }
+
+    private fun dismissIconsShapesDialog() {
+        try {
+            iconsShapePickerDialog?.dismiss()
+            iconsShapePickerDialog = null
         } catch (e: Exception) {
         }
     }
@@ -264,6 +287,32 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     internal fun loadIconsCategories() {
         iconsViewModel.loadIconsCategories()
+    }
+
+    private fun showIconsShapePickerDialog() {
+        dismissIconsShapesDialog()
+        iconsShapePickerDialog = mdDialog {
+            title(R.string.icon_shape)
+            singleChoiceItems(R.array.icon_shapes_options, blueprintPrefs.iconShape) { _, _ -> }
+            positiveButton(android.R.string.ok) {
+                val listView = (it as? AlertDialog)?.listView
+                if ((listView?.checkedItemCount ?: 0) > 0) {
+                    val prevOption = blueprintPrefs.iconShape
+                    val selectedOption = listView?.checkedItemPosition ?: -1
+                    if (selectedOption != prevOption) {
+                        blueprintPrefs.iconShape = selectedOption
+                        notifyIconShapeChanged()
+                    }
+                }
+                it.dismiss()
+            }
+        }
+        iconsShapePickerDialog?.show()
+    }
+
+    private fun notifyIconShapeChanged() {
+        iconsCategoriesFragment.notifyShapeChange()
+        homeFragment.notifyShapeChange()
     }
 
     internal fun showIconDialog(icon: Icon?) {

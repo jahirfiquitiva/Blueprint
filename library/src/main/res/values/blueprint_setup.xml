@@ -28,6 +28,11 @@
     -->
     <bool name="xml_drawable_enabled">false</bool>
 
+    <!--
+        Set to true if your icon pack includes adaptive icons. false otherwise
+    -->
+    <bool name="includes_adaptive_icons">false</bool>
+
     <!-- Icon Pack designer/owner e-mail -->
     <string name="email">someone@email.com</string>
 

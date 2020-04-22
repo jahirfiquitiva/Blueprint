@@ -204,7 +204,7 @@ class HomeAdapter(
 
     companion object {
         private const val SECTION_COUNT = 5
-        private const val ICONS_PREVIEW_SECTION = 0
+        internal const val ICONS_PREVIEW_SECTION = 0
         private const val ACTIONS_SECTION = 1
         internal const val OVERVIEW_SECTION = 2
         private const val MORE_APPS_SECTION = 3

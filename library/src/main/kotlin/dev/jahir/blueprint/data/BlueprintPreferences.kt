@@ -13,8 +13,13 @@ class BlueprintPreferences(context: Context) : Preferences(context) {
         get() = prefs.getInt(MAX_APPS, -1)
         set(value) = prefsEditor.putInt(MAX_APPS, value).apply()
 
+    var iconShape: Int
+        get() = prefs.getInt(ICON_SHAPE, 0)
+        set(value) = prefsEditor.putInt(ICON_SHAPE, value).apply()
+
     companion object {
         private const val KEY_SAVED_TIME_MILLIS = "saved_time_millis"
         private const val MAX_APPS = "apps_to_request"
+        private const val ICON_SHAPE = "icon_shape"
     }
 }

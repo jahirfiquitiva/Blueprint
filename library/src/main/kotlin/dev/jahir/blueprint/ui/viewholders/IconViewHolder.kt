@@ -4,27 +4,25 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
-import coil.api.load
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
+import dev.jahir.blueprint.extensions.asAdaptive
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.preferences
-import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.views.context
 import dev.jahir.frames.extensions.views.findView
+
 
 class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
 
     private val iconView: AppCompatImageView? by itemView.findView(R.id.icon)
 
     fun bind(icon: Icon, animate: Boolean = true, onClick: ((Icon) -> Unit)? = null) {
-        iconView?.load(icon.resId) {
-            placeholder(context.drawable(context.string(R.string.icons_placeholder)))
-            error(context.drawable(context.string(R.string.icons_placeholder)))
-            crossfade(context.preferences.animationsEnabled)
-            target { setIconDrawable(it, context.preferences.animationsEnabled && animate) }
-        }
+        setIconDrawable(
+            context.drawable(icon.resId),
+            context.preferences.animationsEnabled && animate
+        )
         onClick?.let {
             itemView.setOnClickListener { onClick.invoke(icon) }
         } ?: {
@@ -49,7 +47,7 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
             scaleX = 0F
             scaleY = 0F
             alpha = 0F
-            setImageDrawable(drawable)
+            setImageDrawable(drawable?.asAdaptive(context))
             if (animate) {
                 animate().scaleX(1F)
                     .scaleY(1F)
