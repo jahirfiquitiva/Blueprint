@@ -7,6 +7,7 @@ import dev.jahir.frames.extensions.context.color
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.resolveColor
 import dev.jahir.frames.extensions.resources.tint
+import dev.jahir.frames.extensions.views.isVisible
 
 internal fun ExtendedFloatingActionButton.setup(
     text: String,
@@ -18,5 +19,11 @@ internal fun ExtendedFloatingActionButton.setup(
     this.icon = context.drawable(icon)
         ?.tint(context.resolveColor(R.attr.colorOnSecondary, context.color(R.color.onAccent)))
     invalidate()
-    if (show) show() else hide()
+    post {
+        if (show) {
+            if (shouldShrink) shrink()
+            else extend()
+            if (!isVisible) show()
+        } else hide()
+    }
 }

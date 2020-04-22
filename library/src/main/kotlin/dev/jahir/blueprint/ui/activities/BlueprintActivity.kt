@@ -344,13 +344,13 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         when (itemId) {
             R.id.home -> {
                 // TODO: Enable
-                // val canShowText = boolean(R.bool.show_quick_apply_text, true)
+                val canShowText = boolean(R.bool.show_quick_apply_text, true)
                 val customText = string(R.string.quick_apply_custom_text)
                 val defText = string(R.string.quick_apply)
                 fabBtn?.setup(
                     if (customText.hasContent()) customText else defText,
                     R.drawable.ic_apply,
-                    defaultLauncher != null // , !canShowText
+                    defaultLauncher != null , !canShowText
                 )
             }
             R.id.request -> {
