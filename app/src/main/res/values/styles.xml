@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Learn how to setup this file at:
+        https://github.com/jahirfiquitiva/Frames/wiki/Setting-custom-styles
+    -->
+    <style name="MyApp" />
+
+    <!--
+        Splash screen theme follow device's theme
+        You can change the parent to any of these:
+        - Frames.SplashScreen
+        - Frames.SplashScreen.Amoled
+    -->
+    <style name="MyApp.SplashScreen" parent="Frames.SplashScreen">
+        <item name="customFontBold">@font/manrope_bold_fam</item>
+        <item name="customFontNormal">@font/manrope_normal_fam</item>
+    </style>
+
+    <!-- Don't change the parent style -->
+    <style name="MyApp.Default" parent="Blueprint.Default">
+        <item name="bottomNavigationStyle">@style/MyApp.BottomNavigationView</item>
+        <item name="customFontBold">@font/manrope_bold_fam</item>
+        <item name="customFontNormal">@font/manrope_normal_fam</item>
+    </style>
+
+    <!-- Don't change the parent style -->
+    <style name="MyApp.Default.Amoled" parent="Blueprint.Default.Amoled">
+        <item name="bottomNavigationStyle">@style/MyApp.BottomNavigationView</item>
+        <item name="customFontBold">@font/manrope_bold_fam</item>
+        <item name="customFontNormal">@font/manrope_normal_fam</item>
+    </style>
+
+    <!-- Don't change the parent style -->
+    <style name="MyApp.BottomNavigationView" parent="Widget.Blueprint.BottomNavigationView">
+        <!--
+            Switch bottom navigation labels visibility style
+            You can use any of there:
+            - auto
+            - labeled
+            - unlabeled
+            - selected
+            Learn more: https://developer.android.com/reference/com/google/android/material/bottomnavigation/LabelVisibilityMode
+        -->
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
+</resources>

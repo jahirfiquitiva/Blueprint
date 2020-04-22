@@ -7,7 +7,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
-import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -111,7 +110,6 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bottomNavigation?.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
         bottomNavigation?.post {
             fabBtn?.setMarginBottom((bottomNavigation?.measuredHeight ?: 0) + 16.dpToPx)
         }

@@ -34,4 +34,7 @@ class MainActivity : BottomNavigationBlueprintActivity() {
         // return if (BuildConfig.DEBUG) null
         // else super.getLicenseChecker()
     }
+
+    override fun defaultTheme(): Int = R.style.MyApp_Default
+    override fun amoledTheme(): Int = R.style.MyApp_Default_Amoled
 }
