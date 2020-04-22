@@ -3,6 +3,9 @@
 
     <!-- Make sure to put at least 8 icons -->
     <string-array name="icons_preview">
+        <item>adaptive_one</item>
+        <item>adaptive_two</item>
+        <item>adaptive_three</item>
         <item>amber_circle</item>
         <item>amber_rectangle</item>
         <item>amber_square</item>
@@ -24,6 +27,7 @@
     <!-- Make sure the filters names are the same as the other arrays -->
     <string-array name="icon_filters">
         <item>all</item>
+        <item>adaptive</item>
         <item>amber</item>
         <item>blue</item>
         <item>purple</item>
@@ -46,6 +50,12 @@
         <item>red_circle</item>
         <item>red_rectangle</item>
         <item>red_square</item>
+    </string-array>
+
+    <string-array name="adaptive">
+        <item>adaptive_one</item>
+        <item>adaptive_two</item>
+        <item>adaptive_three</item>
     </string-array>
 
     <string-array name="amber">

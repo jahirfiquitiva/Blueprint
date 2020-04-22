@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><!--suppress CheckTagEmptyBody -->
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+
+    <!--
+        Do you want to show a custom logo in toolbar?
+        Create a new drawable and put its name here (without extension)
+        Note: it will only be shown in the main section
+    -->
+    <string name="toolbar_logo"></string>
 
     <!--
     Do you want notifications to be enabled for all your users?

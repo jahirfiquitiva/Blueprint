@@ -15,7 +15,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/BaseFramesSplashScreenTheme"
+        android:theme="@style/MyApp.SplashScreen"
         tools:ignore="UnusedAttribute">
 
         <activity

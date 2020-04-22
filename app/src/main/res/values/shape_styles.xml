@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Learn more about Shape Theming and what you can do at:
+        https://material.io/develop/android/theming/shape/
+        Important: do NOT change the style names, just the attributes/properties
+    -->
+
+    <style name="ShapeAppearance.Frames.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/small_components_corner_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Frames.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/medium_components_corner_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Frames.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/large_components_corner_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Frames.CardView" parent="ShapeAppearance.Frames.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/cards_corner_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Blueprint.IconsPreview" parent="ShapeAppearance.Frames.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
+</resources>
