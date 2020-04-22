@@ -457,8 +457,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         invalidateOptionsMenu()
     }
 
-    override fun defaultTheme(): Int = R.style.BaseBlueprintTheme
-    override fun amoledTheme(): Int = R.style.BaseBlueprintTheme_Amoled
+    override fun defaultTheme(): Int = R.style.Blueprint_Default
+    override fun amoledTheme(): Int = R.style.Blueprint_Default_Amoled
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt("pickerKey", pickerKey)

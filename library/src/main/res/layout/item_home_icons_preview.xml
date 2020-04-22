@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/icons_preview_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/transparent"
     android:descendantFocusability="blocksDescendants"
-    android:foreground="?selectableItemBackground">
+    android:foreground="?selectableItemBackground"
+    app:cardBackgroundColor="@color/transparent"
+    app:cardElevation="0dp"
+    app:cardMaxElevation="0dp"
+    app:cardPreventCornerOverlap="false"
+    app:shapeAppearanceOverlay="@style/ShapeAppearance.Blueprint.IconsPreview">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/wallpaper"
         android:layout_width="match_parent"
         android:layout_height="228dp"
@@ -15,6 +22,7 @@
         android:clickable="false"
         android:focusable="false"
         android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Blueprint.IconsPreview"
         tools:ignore="ContentDescription" />
 
     <dev.jahir.blueprint.ui.widgets.IconsPreviewRecyclerView
@@ -29,4 +37,4 @@
         android:padding="16dp"
         android:visibility="gone" />
 
-</FrameLayout>
+</com.google.android.material.card.MaterialCardView>

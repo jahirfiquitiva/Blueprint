@@ -61,7 +61,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         val maxSize = if (newIcons.size <= expectedIcons) newIcons.size else expectedIcons
         icons.clear()
         icons.addAll(newIcons.subList(0, maxSize))
-        iconsAdapter.icons = icons
+        iconsAdapter.submitList(icons)
         if (icons.isNotEmpty()) visible()
     }
 

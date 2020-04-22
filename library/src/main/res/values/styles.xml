@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="BaseBlueprintTheme" parent="BaseFramesTheme">
+    <style name="Blueprint.Default" parent="Frames.Default">
         <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView</item>
     </style>
 
-    <style name="BaseBlueprintTheme.Amoled" parent="BaseFramesTheme.Amoled">
+    <style name="Blueprint.Default.Amoled" parent="Frames.Default.Amoled">
         <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView.Amoled</item>
     </style>
 

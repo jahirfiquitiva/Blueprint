@@ -57,7 +57,7 @@ class HelpActivity : BaseSearchableActivity<Preferences>() {
         recyclerView?.addItemDecoration(
             GridDividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         )
-        recyclerView?.adapter = adapter.apply { items = helpItems }
+        recyclerView?.adapter = adapter.apply { submitList(helpItems) }
         recyclerView?.setHasFixedSize(true)
     }
 
@@ -75,13 +75,12 @@ class HelpActivity : BaseSearchableActivity<Preferences>() {
     override fun internalDoSearch(filter: String, closed: Boolean) {
         super.internalDoSearch(filter, closed)
         if (filter.hasContent() && !closed) {
-            adapter.items =
-                ArrayList(ArrayList(helpItems).filter {
-                    it.first.lower().contains(filter.lower()) || it.second.lower()
-                        .contains(filter.lower())
-                })
+            adapter.submitList(ArrayList(ArrayList(helpItems).filter {
+                it.first.lower().contains(filter.lower()) || it.second.lower()
+                    .contains(filter.lower())
+            }))
         } else {
-            adapter.items = helpItems
+            adapter.submitList(helpItems)
         }
     }
 }

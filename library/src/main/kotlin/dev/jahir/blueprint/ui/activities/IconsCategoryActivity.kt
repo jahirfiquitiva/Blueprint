@@ -33,7 +33,7 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
 
     private val iconsAdapter: IconsAdapter by lazy {
         IconsAdapter(false, ::onIconClick).apply {
-            icons = ArrayList(category?.getIcons().orEmpty())
+            submitList(ArrayList(category?.getIcons().orEmpty()))
         }
     }
 
@@ -116,10 +116,13 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
     override fun internalDoSearch(filter: String, closed: Boolean) {
         super.internalDoSearch(filter, closed)
         if (filter.hasContent() && !closed) {
-            iconsAdapter.icons = ArrayList(
-                category?.getIcons().orEmpty().filter { it.name.lower().contains(filter.lower()) })
+            iconsAdapter.submitList(
+                ArrayList(
+                    category?.getIcons().orEmpty()
+                        .filter { it.name.lower().contains(filter.lower()) })
+            )
         } else {
-            iconsAdapter.icons = ArrayList(category?.getIcons().orEmpty())
+            iconsAdapter.submitList(ArrayList(category?.getIcons().orEmpty()))
         }
     }
 
