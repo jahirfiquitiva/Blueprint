@@ -160,7 +160,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
         loadPreviewIcons()
         loadIconsCategories()
-        if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents(this)
+        if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents()
         loadAppsToRequest()
         requestStoragePermission()
 

@@ -36,4 +36,5 @@ class BlueprintKuperActivity : KuperActivity() {
 
     override val initialFragmentTag: String = "RequiredAppsFragment"
     override val initialItemId: Int = R.id.setup
+    override fun shouldShowToolbarLogo(itemId: Int): Boolean = false
 }
