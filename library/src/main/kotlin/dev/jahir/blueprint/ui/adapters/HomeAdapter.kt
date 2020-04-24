@@ -27,7 +27,7 @@ import dev.jahir.frames.ui.viewholders.SectionHeaderViewHolder
 class HomeAdapter(
     actionsStyle: Int = 1,
     showOverview: Boolean = true,
-    private var listener: HomeItemsListener? = null
+    private val listener: HomeItemsListener? = null
 ) : SectionedRecyclerViewAdapter<SectionedViewHolder>() {
 
     var actionsStyle: Int = actionsStyle
@@ -58,7 +58,7 @@ class HomeAdapter(
         set(value) {
             if (field != null) return
             field = value
-            safeNotifySectionChanged(ICONS_PREVIEW_SECTION)
+            notifyDataSetChanged()
         }
 
     var iconsPreviewList: ArrayList<Icon> = ArrayList()
