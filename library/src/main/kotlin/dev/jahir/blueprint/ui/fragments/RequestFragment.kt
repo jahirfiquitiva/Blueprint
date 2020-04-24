@@ -47,8 +47,8 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
         requestAppsAdapter.appsToRequest = items
     }
 
-    internal fun updateSelectedApps(selectedApps: ArrayList<RequestApp>) {
-        requestAppsAdapter.selectedApps = selectedApps
+    internal fun updateSelectedApps(selectedApps: ArrayList<RequestApp>?) {
+        requestAppsAdapter.selectedApps = ArrayList(selectedApps.orEmpty())
     }
 
     override fun loadData() {

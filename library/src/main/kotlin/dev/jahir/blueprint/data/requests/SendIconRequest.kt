@@ -326,7 +326,7 @@ object SendIconRequest {
 
     fun sendIconRequest(
         activity: FragmentActivity?,
-        selectedApps: ArrayList<RequestApp>,
+        selectedApps: ArrayList<RequestApp>?,
         callback: RequestCallback? = null
     ) {
         val theCallback = callback ?: object : RequestCallback {}

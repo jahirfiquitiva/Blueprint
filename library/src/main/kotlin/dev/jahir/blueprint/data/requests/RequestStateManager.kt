@@ -57,7 +57,7 @@ internal object RequestStateManager {
 
     internal fun getRequestState(
         context: Context?,
-        selectedApps: ArrayList<RequestApp>,
+        selectedApps: ArrayList<RequestApp>?,
         building: Boolean = false
     ): RequestState {
         context ?: return RequestState.UNKNOWN()
@@ -66,7 +66,7 @@ internal object RequestStateManager {
         val extra = if (building) 0 else 1
         val requestsLeft = getRequestsLeft(context)
         val timeLeft = getTimeLeft(context)
-        if ((selectedApps.size + extra) > requestsLeft) {
+        if ((selectedApps.orEmpty().size + extra) > requestsLeft) {
             return when {
                 timeLeft > 0 -> RequestState.TIME_LIMITED(timeLeft)
                 requestsLeft == 0 -> {

@@ -95,15 +95,15 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     val isIconsPicker: Boolean
         get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
 
-    private val homeFragment: HomeFragment by lazy { HomeFragment() }
+    open val homeFragment: HomeFragment? by lazy { HomeFragment() }
     private val iconsCategoriesFragment: IconsCategoriesFragment by lazy { IconsCategoriesFragment() }
     private val applyFragment: ApplyFragment by lazy { ApplyFragment() }
-    private val requestFragment: RequestFragment by lazy { RequestFragment() }
+    open val requestFragment: RequestFragment? by lazy { RequestFragment() }
 
-    private val homeViewModel: HomeViewModel by lazyViewModel()
+    open val homeViewModel: HomeViewModel? by lazyViewModel()
     private val iconsViewModel: IconsCategoriesViewModel by lazyViewModel()
     private val templatesViewModel: ComponentsViewModel by lazyViewModel()
-    private val requestsViewModel: RequestsViewModel by lazyViewModel()
+    open val requestsViewModel: RequestsViewModel? by lazyViewModel()
 
     internal val fabBtn: ExtendedFloatingActionButton? by findView(R.id.fab_btn)
     private var iconDialog: IconDialog? = null
@@ -127,36 +127,36 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
         wallpapersViewModel.observeWallpapers(this) {
             wallpapersFragment?.updateItems(ArrayList(it))
-            homeFragment.updateWallpapersCount(it.size)
-            homeViewModel.postWallpapersCount(it.size)
+            homeFragment?.updateWallpapersCount(it.size)
+            homeViewModel?.postWallpapersCount(it.size)
         }
         templatesViewModel.observe(this) { components ->
             onTemplatesLoaded(components)
             val kustomCount =
                 components.filter { it.type != Component.Type.ZOOPER && it.type != Component.Type.UNKNOWN }.size
             val zooperCount = components.filter { it.type == Component.Type.ZOOPER }.size
-            homeFragment.updateKustomCount(kustomCount)
-            homeViewModel.postKustomCount(kustomCount)
-            homeFragment.updateZooperCount(zooperCount)
-            homeViewModel.postZooperCount(zooperCount)
+            homeFragment?.updateKustomCount(kustomCount)
+            homeViewModel?.postKustomCount(kustomCount)
+            homeFragment?.updateZooperCount(zooperCount)
+            homeViewModel?.postZooperCount(zooperCount)
         }
         iconsViewModel.observe(this) {
             iconsCategoriesFragment.updateItems(it)
-            homeFragment.updateIconsCount(iconsViewModel.iconsCount)
-            homeViewModel.postIconsCount(iconsViewModel.iconsCount)
+            homeFragment?.updateIconsCount(iconsViewModel.iconsCount)
+            homeViewModel?.postIconsCount(iconsViewModel.iconsCount)
         }
-        requestsViewModel.requestsCallback = this
-        requestsViewModel.observeAppsToRequest(this) { requestFragment.updateItems(it) }
-        requestsViewModel.observeSelectedApps(this) {
+        requestsViewModel?.requestsCallback = this
+        requestsViewModel?.observeAppsToRequest(this) { requestFragment?.updateItems(it) }
+        requestsViewModel?.observeSelectedApps(this) {
             updateFabText()
-            requestFragment.updateSelectedApps(it)
+            requestFragment?.updateSelectedApps(it)
         }
 
-        homeViewModel.observeCounters(this, homeFragment)
-        homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
-        homeViewModel.observeHomeItems(this) { homeFragment.updateHomeItems(it) }
-        homeViewModel.loadHomeItems()
-        homeFragment.showDonation(isBillingClientReady && getDonationItemsIds().isNotEmpty())
+        homeViewModel?.observeCounters(this, homeFragment)
+        homeViewModel?.observeIconsPreviewList(this) { homeFragment?.updateIconsPreview(it) }
+        homeViewModel?.observeHomeItems(this) { homeFragment?.updateHomeItems(it) }
+        homeViewModel?.loadHomeItems()
+        homeFragment?.showDonation(isBillingClientReady && getDonationItemsIds().isNotEmpty())
 
         loadPreviewIcons()
         loadIconsCategories()
@@ -209,10 +209,10 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         dismissIconsShapesDialog()
         dismissRequestDialog()
         dismissIconDialog()
-        homeViewModel.destroy(this)
+        homeViewModel?.destroy(this)
         iconsViewModel.destroy(this)
         templatesViewModel.destroy(this)
-        requestsViewModel.destroy(this)
+        requestsViewModel?.destroy(this)
     }
 
     private fun dismissIconDialog() {
@@ -260,7 +260,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     override fun internalOnPermissionsGranted(result: List<PermissionStatus>) {
         super.internalOnPermissionsGranted(result)
-        homeFragment.updateWallpaper()
+        homeFragment?.updateWallpaper()
         if (shouldBuildRequest) buildRequest()
     }
 
@@ -281,11 +281,11 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     override fun shouldLoadFavorites(): Boolean = false
 
     internal fun repostCounters() {
-        homeViewModel.repostCounters()
+        homeViewModel?.repostCounters()
     }
 
     internal fun loadPreviewIcons(force: Boolean = false) {
-        homeViewModel.loadPreviewIcons(force)
+        homeViewModel?.loadPreviewIcons(force)
     }
 
     internal fun loadIconsCategories() {
@@ -315,7 +315,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     private fun notifyIconShapeChanged() {
         iconsCategoriesFragment.notifyShapeChange()
-        homeFragment.notifyShapeChange()
+        homeFragment?.notifyShapeChange()
     }
 
     internal fun showIconDialog(icon: Icon?) {
@@ -326,20 +326,24 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     }
 
     internal fun loadAppsToRequest() {
-        requestsViewModel.loadApps(isDebug)
+        requestsViewModel?.loadApps(isDebug)
     }
 
-    internal fun changeRequestAppState(app: RequestApp, selected: Boolean): Boolean =
-        if (selected) requestsViewModel.selectApp(app)
-        else requestsViewModel.deselectApp(app)
+    internal fun changeRequestAppState(app: RequestApp, selected: Boolean): Boolean {
+        return requestsViewModel?.let {
+            return@let if (selected) it.selectApp(app) else it.deselectApp(app)
+        } ?: false
+    }
+
 
     private fun toggleSelectAll() {
-        val currentState = RequestStateManager.getRequestState(this, requestsViewModel.selectedApps)
+        val currentState =
+            RequestStateManager.getRequestState(this, requestsViewModel?.selectedApps)
         if (currentState.state == RequestState.State.TIME_LIMITED) {
             onRequestLimited(currentState)
         } else {
-            if (requestsViewModel.toggleSelectAll())
-                requestFragment.updateSelectedApps(requestsViewModel.selectedApps)
+            if (requestsViewModel?.toggleSelectAll() == true)
+                requestFragment?.updateSelectedApps(requestsViewModel?.selectedApps)
         }
     }
 
@@ -357,7 +361,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                 )
             }
             R.id.request -> {
-                val selectedAppsCount = requestsViewModel.selectedApps.size
+                val selectedAppsCount = requestsViewModel?.selectedApps?.size ?: 0
                 fabBtn?.setup(
                     string(R.string.send_request_x, selectedAppsCount),
                     R.drawable.ic_send_request,
@@ -369,9 +373,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         bottomNavigation?.post {
             fabBtn?.setMarginBottom((bottomNavigation?.measuredHeight ?: 0) + 16.dpToPx)
         }
-        homeFragment.setupContentBottomOffset()
+        homeFragment?.setupContentBottomOffset()
         iconsCategoriesFragment.setupContentBottomOffset()
-        requestFragment.setupContentBottomOffset()
+        requestFragment?.setupContentBottomOffset()
     }
 
     internal fun updateFab(itemId: Int, afterHidden: () -> Unit = {}) {
@@ -403,12 +407,12 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             snackbar(R.string.permission_denied, Snackbar.LENGTH_LONG, snackbarAnchorId)
             return
         }
-        SendIconRequest.sendIconRequest(this, requestsViewModel.selectedApps, this)
+        SendIconRequest.sendIconRequest(this, requestsViewModel?.selectedApps, this)
     }
 
     override fun onBillingClientReady() {
         super.onBillingClientReady()
-        homeFragment.showDonation(isBillingClientReady && getDonationItemsIds().isNotEmpty())
+        homeFragment?.showDonation(isBillingClientReady && getDonationItemsIds().isNotEmpty())
     }
 
     override val snackbarAnchorId: Int
@@ -493,7 +497,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     override fun onRequestUploadFinished(success: Boolean) {
         super.onRequestUploadFinished(success)
-        requestsViewModel.deselectAll()
+        requestsViewModel?.deselectAll()
         showRequestDialog {
             title(R.string.request_upload_success)
             message(R.string.request_upload_success_content)
@@ -502,7 +506,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     override fun onRequestEmailIntent(intent: Intent?) {
         super.onRequestEmailIntent(intent)
-        requestsViewModel.deselectAll()
+        requestsViewModel?.deselectAll()
         dismissRequestDialog()
         startActivity(intent)
     }
