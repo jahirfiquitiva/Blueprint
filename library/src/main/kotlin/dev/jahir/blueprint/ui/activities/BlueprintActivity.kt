@@ -122,9 +122,6 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                 true
             }
         }
-        bottomNavigation?.post {
-            fabBtn?.setMarginBottom((bottomNavigation?.measuredHeight ?: 0) + 16.dpToPx)
-        }
         updateFabText()
         fabBtn?.setOnClickListener { onFabClick() }
 
@@ -199,6 +196,12 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     override fun onResume() {
         super.onResume()
         notifyIconShapeChanged()
+        updateFabText()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        updateFabText()
     }
 
     override fun onDestroy() {
@@ -362,6 +365,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                 )
             }
             else -> fabBtn?.hide()
+        }
+        bottomNavigation?.post {
+            fabBtn?.setMarginBottom((bottomNavigation?.measuredHeight ?: 0) + 16.dpToPx)
         }
         homeFragment.setupContentBottomOffset()
         iconsCategoriesFragment.setupContentBottomOffset()
