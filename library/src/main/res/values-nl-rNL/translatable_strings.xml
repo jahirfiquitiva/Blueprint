@@ -55,10 +55,10 @@
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>Hoe gebruik je de icon pack?</item>
-        <item>Hoe gebruik je de icon pack?</item>
-        <item>Hoe zie ik alle bijbehorende iconen?</item>
+        <item>Hoe kan ik de icon pack toepassen?</item>
+        <item>Hoe bekijk ik alle inbegrepen iconen?</item>
         <item>Hoe vervang ik een icon met een alternatief?</item>
-        <item>Hoe vraag je om niet gethematiseerde iconen?</item>
+        <item>Hoe stuur je een verzoek voor niet gethematiseerde iconen?</item>
         <item>Na het opnieuw opstarten van mijn toestel is het icon pack niet meer toegepast. De iconen werden teruggezet naar de systeemstandaard.</item>
         <item>Waarom zijn de pixels zo duidelijk zichtbaar bij de iconen?</item>
         <item>Ik kan een icoon zien voor een app in de lijst, maar het wordt niet toegepast.</item>
@@ -77,7 +77,7 @@
         <item>Afhankelijk van het navigatietype van de app moet je ofwel de navigatielade vanaf links schuiven, en ga naar de \"Request\" sectie, of kies de icon uit de onderste navigatiebalk.</item>
         <item>Het gebeurde omdat het icoon pakket naar de SD-kaart is verplaatst, je moet het installeren in de interne opslag.</item>
         <item>Het probleem zou kunnen komen door de launcher die je gebruikt moeite heeft bij het verwerken van grote resolutie. Je kunt dit herstellen door de icon grootte te verhogen tot 115 tot 120%. Of probeer een andere launcher.</item>
-        <item>Stuur een icoon aanvraag.</item>
+        <item>Stuur een icoon verzoek.</item>
         <item>Het is nodig om iconen verzoek gegevens en bestanden te schrijven, evenals het opslaan van achtergronden, en om de downloadlocatie van achtergronden te kunnen wijzigen.</item>
         <item>Het is nodig om achtergronden te kunnen laden uit de cloud en ze te downloaden.</item>
         <item>Het is nodig om te kunnen controleren of je apparaat internetverbinding heeft.</item>
