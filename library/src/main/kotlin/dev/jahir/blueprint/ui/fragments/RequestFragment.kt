@@ -68,6 +68,6 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
     }
 
     companion object {
-        internal const val TAG = "requests_fragment"
+        const val TAG = "requests_fragment"
     }
 }

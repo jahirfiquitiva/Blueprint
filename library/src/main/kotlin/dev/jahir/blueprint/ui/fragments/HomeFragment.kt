@@ -221,6 +221,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     }
 
     companion object {
-        internal const val TAG = "home_fragment"
+        const val TAG = "home_fragment"
     }
 }

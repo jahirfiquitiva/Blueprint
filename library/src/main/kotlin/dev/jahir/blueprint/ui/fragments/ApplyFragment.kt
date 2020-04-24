@@ -58,6 +58,6 @@ class ApplyFragment : BaseFramesFragment<Pair<Launcher, Boolean>>() {
     }
 
     companion object {
-        internal const val TAG = "apply_fragment"
+        const val TAG = "apply_fragment"
     }
 }

@@ -117,6 +117,6 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
     }
 
     companion object {
-        internal const val TAG = "icons_categories_fragment"
+        const val TAG = "icons_categories_fragment"
     }
 }
