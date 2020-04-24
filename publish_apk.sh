@@ -20,6 +20,7 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 
     changes="$(echo "$tagInfo" | jq --compact-output ".body")"
     changes=$(echo ${changes} | cut -d "\"" -f 2)
+    defaultChanges="$changes"
     changes=$(echo "${changes//\"\r\n\"/$ln}")
     changes=$(echo "${changes//'\r\n'/$ln}")
     changes=$(echo "${changes//\\r\\n/$ln}")
@@ -50,21 +51,24 @@ if [ "$TRAVIS_PULL_REQUEST" = false ]; then
 
       if [[ ! -z "$url" && "$url" != " " && "$url" != "null" ]]; then
         printf "\nAPK url: $url"
-        message=$"*New ${repoName} update available now!*${ln}*Version:*${ln}${tab}${releaseName}${ln}*Changes:*${ln}${changes}"
-        btns=$"{\"inline_keyboard\":[[{\"text\":\"How To Update\",\"url\":\"https://github.com/${TRAVIS_REPO_SLUG}/wiki/How-to-update\"}],[{\"text\":\"Download sample\",\"url\":\"${url}\"}],[{\"text\":\"Donate\",\"url\":\"https://jahir.dev/donate\"}]]}"
+        message=$"*New ${repoName} update available! (${releaseName})* 🚀${ln}${ln}*Changes:*${ln}${changes}"
+        btns=$"{\"inline_keyboard\":[[{\"text\":\"How to update\",\"url\":\"https://github.com/${TRAVIS_REPO_SLUG}/wiki/How-to-update\"}],[{\"text\":\"Download sample APK\",\"url\":\"${url}\"}],[{\"text\":\"Donate\",\"url\":\"https://jahir.dev/donate\"}]]}"
 
-        printf "\n\nSending message to Telegram channel\n"
-        echo "Message: ${message}"
-        printf "\n\n"
-        echo "Buttons: ${btns}"
-        printf "\n\n"
-
+        printf "\n\nSending message to Telegram channel…\n"
         telegramUrl="https://api.telegram.org/bot${TEL_BOT_KEY}/sendMessage?chat_id=@JFsDashSupport&text=${message}&parse_mode=Markdown&reply_markup=${btns}"
         echo "Telegram url: ${telegramUrl}"
         printf "\n\n"
         curl -g "${telegramUrl}"
 
-        curl -XPOST -H "Content-type: application/json" -d '{ "repo": "'"$repoName"'", "tag": "'"$releaseName"'", "token": "'"$NOTIFIER_KEY"'", "apk": "'"$url"'" }' 'https://jfs-dash-bot.herokuapp.com/api/updates/notify'
+        printf "\n\nSending message to Discord channel…\n"
+        messageBody="**Changes:**\n$defaultChanges"
+        messageBody+="\n\n**Useful links:**"
+        messageBody+="\n* [How to update?](https://github.com/jahirfiquitiva/$repoName/wiki/How-to-update)"
+        messageBody+="\n* [Download sample APK]("
+        messageBody+="$url"
+        messageBody+=")\n* [Donate & support future development](https://jahir.dev/donate)"
+        echo $messageBody
+        curl -X POST -H 'Content-Type: application/json' -d '{ "embeds": [{ "title": "**New update available! ('"$releaseName"')** 🚀", "description": "'"$messageBody"'", "color": 15844367 }] }' $UPDATE_DISCORD_WEBHOOK
 
         printf "\n\nFinished uploading APK(s) and sending notifications\n"
       else
