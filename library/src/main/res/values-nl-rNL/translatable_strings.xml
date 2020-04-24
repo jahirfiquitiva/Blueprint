@@ -71,10 +71,10 @@
     </string-array>
     <string-array name="answers">
         <item>Je hebt een launcher nodig die icon packs aanvaard. De lijst van compatibele launchers kan je vinden in de \"toevoegen\" sectie, of in de Play Store beschrijving.</item>
-        <item>Afhankelijk van het navigatietype van de app moet u ofwel de navigatielade van links schuiven, en ga naar de \"Apply\" sectie, of kies het 4de icoon uit de onderste navigatiebalk. Vanaf daar kun je een launcher kiezen waar je de iconen aan wilt toevoegen. Sommige launchers zijn geen voorstander van automatisch toepassen en je moet dit handmatig doen via hun instellingen.</item>
+        <item>Afhankelijk van het navigatietype van de app moet je ofwel de navigatielade van links schuiven, en ga naar de \"Apply\" sectie, of kies het 4de icoon uit de onderste navigatiebalk. Vanaf daar kun je een launcher kiezen waar je de iconen aan wilt toevoegen. Sommige launchers zijn geen voorstander van automatisch toepassen en je moet dit handmatig doen via hun instellingen.</item>
         <item>Ga terug naar de hoofdsectie van de app en druk op de tegel met de titel \"Icons\".</item>
         <item>Afhankelijk van de launcher die je gebruikt, moet je ofwel de icon lang aanraken en \"Edit\" selecteren in het pop-up menu, of tik lang op het pictogram en verplaats het naar het vak \"Edit\".</item>
-        <item>Afhankelijk van het navigatietype van de app moet je ofwel de navigatielade vanaf links schuiven, en ga naar de \"Requests\" sectie, of kies de icon uit de onderste navigatiebalk.</item>
+        <item>Afhankelijk van het navigatietype van de app moet je ofwel de navigatielade vanaf links schuiven, en ga naar de \"Request\" sectie, of kies de icon uit de onderste navigatiebalk.</item>
         <item>Het gebeurde omdat het icoon pakket naar de SD-kaart is verplaatst, je moet het installeren in de interne opslag.</item>
         <item>Het probleem zou kunnen komen door de launcher die je gebruikt moeite heeft bij het verwerken van grote resolutie. Je kunt dit herstellen door de icon grootte te verhogen tot 115 tot 120%. Of probeer een andere launcher.</item>
         <item>Stuur een icoon aanvraag.</item>
