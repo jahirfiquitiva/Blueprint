@@ -82,7 +82,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     private val fabHeight: Int
         get() {
             (activity as? BlueprintActivity)?.let {
-                return if (it.defaultLauncher == null) 0 else it.fabBtn?.measuredHeight ?: 0
+                return if (it.initialItemId == R.id.home && it.defaultLauncher != null)
+                    it.fabBtn?.measuredHeight ?: 0
+                else 0
             } ?: return 0
         }
 

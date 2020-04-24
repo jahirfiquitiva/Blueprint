@@ -92,7 +92,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             } ?: field
         }
 
-    internal val isIconsPicker: Boolean
+    val isIconsPicker: Boolean
         get() = (pickerKey == ICONS_PICKER || pickerKey == IMAGE_PICKER || pickerKey == ICONS_APPLIER)
 
     private val homeFragment: HomeFragment by lazy { HomeFragment() }

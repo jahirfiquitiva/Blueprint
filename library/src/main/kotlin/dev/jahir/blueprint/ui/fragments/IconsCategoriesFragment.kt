@@ -4,14 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.IconsCategory
+import dev.jahir.blueprint.extensions.defaultLauncher
 import dev.jahir.blueprint.extensions.pickIcon
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.activities.IconsCategoryActivity
 import dev.jahir.blueprint.ui.adapters.IconsCategoriesAdapter
+import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.resources.lower
+import dev.jahir.frames.extensions.views.setPaddingBottom
+import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.fragments.base.BaseFramesFragment
 
 class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
@@ -20,6 +25,18 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
         IconsCategoriesAdapter(::onOpenCategory, ::onIconClick)
     }
 
+    private val fabHeight: Int
+        get() {
+            (activity as? BlueprintActivity)?.let {
+                return if (it.initialItemId == R.id.icons && it.defaultLauncher != null)
+                    it.fabBtn?.measuredHeight ?: 0
+                else 0
+            } ?: return 0
+        }
+
+    private val extraHeight: Int
+        get() = if (fabHeight > 0) 16.dpToPx else 0
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView?.layoutManager =
@@ -27,6 +44,18 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
         recyclerView?.adapter = iconsCategoriesAdapter
         recyclerView?.setHasFixedSize(true)
         loadData()
+    }
+
+    override fun setupContentBottomOffset(view: View?) {
+        (view ?: getView())?.let { v ->
+            v.post {
+                val bottomNavigationHeight =
+                    (context as? BaseSystemUIVisibilityActivity<*>)?.bottomNavigation?.measuredHeight
+                        ?: 0
+                v.setPaddingBottom(bottomNavigationHeight)
+                recyclerView?.setupBottomOffset(fabHeight + extraHeight)
+            }
+        }
     }
 
     override fun loadData() {
