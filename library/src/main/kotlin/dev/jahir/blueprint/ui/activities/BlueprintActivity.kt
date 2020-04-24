@@ -159,7 +159,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         homeViewModel.observeIconsPreviewList(this) { homeFragment.updateIconsPreview(it) }
         homeViewModel.observeHomeItems(this) { homeFragment.updateHomeItems(it) }
         homeViewModel.loadHomeItems()
-        homeFragment.showDonation(isBillingClientReady)
+        homeFragment.showDonation(isBillingClientReady && getDonationItemsIds().isNotEmpty())
 
         loadPreviewIcons()
         loadIconsCategories()
