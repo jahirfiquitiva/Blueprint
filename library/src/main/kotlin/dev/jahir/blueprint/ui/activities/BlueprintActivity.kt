@@ -115,15 +115,15 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bottomNavigation?.post {
-            fabBtn?.setMarginBottom((bottomNavigation?.measuredHeight ?: 0) + 16.dpToPx)
-        }
         bottomNavigation?.setOnNavigationItemSelectedListener {
             if (isIconsPicker && it.itemId != R.id.icons) false
             else {
                 updateFab(it.itemId) { changeFragment(it.itemId) }
                 true
             }
+        }
+        bottomNavigation?.post {
+            fabBtn?.setMarginBottom((bottomNavigation?.measuredHeight ?: 0) + 16.dpToPx)
         }
         updateFabText()
         fabBtn?.setOnClickListener { onFabClick() }
