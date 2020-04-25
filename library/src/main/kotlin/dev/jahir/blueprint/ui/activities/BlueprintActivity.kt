@@ -118,11 +118,10 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         bottomNavigation?.setOnNavigationItemSelectedListener {
             if (isIconsPicker && it.itemId != R.id.icons) false
             else {
-                updateFab(it.itemId) { changeFragment(it.itemId) }
+                updateFab(it.itemId, true) { changeFragment(it.itemId) }
                 true
             }
         }
-        updateFabText()
         fabBtn?.setOnClickListener { onFabClick() }
 
         wallpapersViewModel.observeWallpapers(this) {
@@ -196,12 +195,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     override fun onResume() {
         super.onResume()
         notifyIconShapeChanged()
-        updateFabText()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        updateFabText()
+        updateFab(force = true)
     }
 
     override fun onDestroy() {
@@ -378,8 +372,12 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         requestFragment?.setupContentBottomOffset()
     }
 
-    internal fun updateFab(itemId: Int, afterHidden: () -> Unit = {}) {
-        if (itemId != currentItemId)
+    internal fun updateFab(
+        itemId: Int = currentItemId,
+        force: Boolean = false,
+        afterHidden: () -> Unit = {}
+    ) {
+        if (itemId != currentItemId || force) {
             if (fabBtn?.isVisible == true) {
                 fabBtn?.hide(object : ExtendedFloatingActionButton.OnChangedCallback() {
                     override fun onHidden(extendedFab: ExtendedFloatingActionButton?) {
@@ -388,12 +386,13 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                     }
                 })
             } else updateFabText(itemId)
+        }
         afterHidden()
     }
 
     private fun onFabClick() {
         when (currentItemId) {
-            R.id.home -> executeLauncherIntent(defaultLauncher)
+            initialItemId -> executeLauncherIntent(defaultLauncher)
             R.id.request -> {
                 shouldBuildRequest = true
                 requestStoragePermission()
