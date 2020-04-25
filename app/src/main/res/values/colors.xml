@@ -15,6 +15,10 @@
     <color name="background">#fafafa</color>
     <color name="onBackground">#de000000</color>
 
+    <color name="snackbarBackgroundColor">#424242</color>
+    <color name="snackbarTextColor">#ffffff</color>
+    <color name="snackbarButtonColor">#88b3fc</color>
+
     <!-- Dark Theme Colors -->
     <color name="darkThemePrimary">#212121</color>
     <color name="darkThemePrimaryDark">#000000</color>
@@ -30,6 +34,10 @@
     <color name="darkThemeBackground">#303030</color>
     <color name="darkThemeOnBackground">#b3ffffff</color>
 
+    <color name="darkThemeSnackbarBackgroundColor">#ffffff</color>
+    <color name="darkThemeSnackbarTextColor">#de000000</color>
+    <color name="darkThemeSnackbarButtonColor">#cc3266</color>
+
     <!-- Amoled Theme Colors -->
     <color name="amoledThemePrimary">#000000</color>
     <color name="amoledThemePrimaryDark">#000000</color>
@@ -44,5 +52,9 @@
 
     <color name="amoledThemeOnSurfaceVariant">@color/darkThemeOnSurfaceVariant</color>
     <color name="amoledThemeOnBackground">@color/darkThemeOnBackground</color>
+
+    <color name="amoledThemeSnackbarBackgroundColor">#ffffff</color>
+    <color name="amoledThemeSnackbarTextColor">#de000000</color>
+    <color name="amoledThemeSnackbarButtonColor">#3c9983</color>
 
 </resources>
