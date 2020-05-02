@@ -34,26 +34,26 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 
 ### Home / Icons / Apply / Requests
 <p align="center">
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/1.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/2.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/4.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/1.png?maxAge=0" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/2.png?maxAge=0" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png?maxAge=0" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/4.png?maxAge=0" height="350"/>
 </p>
 
 ### Wallpapers support (Based on [Frames](https://github.com/jahirfiquitiva/Frames)) / Templates support (Based on [Kuper](https://github.com/Kuper))
 <p align="center">
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png?maxAge=0" height="350"/>
 <img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/4.png" height="350"/>
 <img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/5.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/6.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/6.png?maxAge=0" height="350"/>
 </p>
 
 ### Help / Credits / Settings / Navigation Drawer
 <p align="center">
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/7.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/8.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/9.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/10.png" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/7.png?maxAge=0" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/8.png?maxAge=0" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/9.png?maxAge=0" height="350"/>
+<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/10.png?maxAge=0" height="350"/>
 </p>
 
 ---
