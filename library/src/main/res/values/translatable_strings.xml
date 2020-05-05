@@ -3,61 +3,57 @@
     <string name="home">Home</string>
     <string name="icons">Icons</string>
     <string name="request">Request</string>
-    <string name="overview">Overview</string>
-    <string name="more_apps">More apps</string>
-    <string name="useful_links">Useful links</string>
+    <string name="overview">Summary</string>
+    <string name="more_apps">More Apps</string>
+    <string name="useful_links">Links</string>
     <string name="select_all">Select All</string>
     <string name="help">Help</string>
-    <string name="x_icons">%1$s icons</string>
-    <string name="search_icons">Search icons…</string>
-
-    <string name="lni_content">%1$s is currently not installed on your device.\nWould you like to install it from the Google Play Store?</string>
-    <string name="no_compatible_launcher_title">This launcher is NOT Compatible</string>
-    <string name="no_compatible_launcher_content">This launcher is NOT compatible with ANY Icon Packs and therefore you cannot use this icon pack with this launcher. Please do not rate the icon pack negatively for this reason. There is a solution that you can try for yourself, but it requires the use of an external app. Would you like to download it?</string>
-    <string name="impossible_open_themes">Impossible to open themes app</string>
-    <string name="themes_app_not_installed">Themes app is not installed in this device</string>
-    <string name="coming_soon">Coming soon</string>
-    <string name="quick_apply">Quick Apply</string>
-    <string name="send_request">Send request</string>
-    <string name="send_request_x">Send request (%1$s)</string>
-
+    <string name="x_icons">%1$s Icons</string>
+    <string name="search_icons">Search Icons</string>
+    <string name="search_apps">Search Apps</string>
+    <string name="search_launchers">Search Launchers</string>
+    <string name="lni_content">“%1$s” isn’t installed. Do you want to get it from Google Play?</string>
+    <string name="no_compatible_launcher_title">Launcher Incompatible</string>
+    <string name="no_compatible_launcher_content">“Google Now Launcher” doesn’t support icon packs unless paired with “Awesome Shortcuts.” Install the latter?</string>
+    <string name="impossible_open_themes">Can’t Open App</string>
+    <string name="themes_app_not_installed">“Themes” isn’t installed.</string>
+    <string name="coming_soon">Coming soon.</string>
+    <string name="quick_apply">Apply to Home</string>
+    <string name="request_x_icons">Request %1$s Icons</string>
+    <string name="request_icon">Request Icon</string>
+    <string name="request_none">Request Icon(s)</string>
     <string name="kustom_templates">Kustom Templates</string>
     <string name="zooper_templates">Zooper Templates</string>
-
     <string name="rate">Rate</string>
     <string name="share">Share</string>
-    <string name="share_text">Check out %1$s and let your friends know about it!\nAvailable on Google Play Store at: %2$s</string>
-    <string name="send_email">Send email</string>
-    <string name="send_using">Send using…</string>
-
-    <string name="request_in_progress">Request in progress</string>
-    <string name="request_in_progress_content">There\'s a request already in progress. Please wait…</string>
-    <string name="building_request_dialog">Building request files…</string>
-    <string name="request_upload_success">Success!</string>
-    <string name="request_upload_success_content">The request has been uploaded to our server successfully.</string>
-    <string name="no_selected_apps">No selected apps</string>
-    <string name="no_selected_apps_content">You did not select any apps to request. Please select a few apps, then tap this button again.</string>
-    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
-    <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
-    <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
-    <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
-    <string name="apps_limit_dialog_day_extra">You will be able to request icons again, in %1$s.</string>
-    <string name="apps_limit_dialog_day_extra_sec">You will be able to request icons again, in less than a minute.</string>
-
+    <string name="share_text">Get %1$s on Google Play: %2$s.</string>
+    <string name="send_email">Send Email</string>
+    <string name="send_using">Send With:</string>
+    <string name="request_in_progress">Sending Request</string>
+    <string name="request_in_progress_content">A request is already being sent.</string>
+    <string name="building_request_dialog">Preparing request...</string>
+    <string name="request_upload_success_content">Request sent.</string>
+    <string name="no_selected_apps">No Apps Selected</string>
+    <string name="no_selected_apps_content">Select apps to send a request.</string>
+    <string name="apps_limit_dialog">Select %1$s apps or fewer.</string>
+    <string name="apps_limit_dialog_more">Select %1$s apps or fewer.</string>
+    <string name="apps_limit_dialog_day">You may only send requests every %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">You may send a request in %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">You may send a request in less than a minute.</string>
     <string name="seconds">Seconds</string>
     <string name="minutes">Minutes</string>
     <string name="hours">Hours</string>
     <string name="days">Days</string>
     <string name="weeks">Weeks</string>
     <string name="months">Months</string>
-
     <string name="icon_shape">Icon Shape</string>
-    <string name="icon_shape_system">Follow system</string>
+    <string name="icon_shape_system">Set by System</string>
     <string name="icon_shape_circle">Circle</string>
     <string name="icon_shape_squircle">Squircle</string>
     <string name="icon_shape_rounded_square">Rounded Square</string>
     <string name="icon_shape_square">Square</string>
     <string name="icon_shape_teardrop">Teardrop</string>
+    <string name="requests_upload_error">Something went wrong. Error name: “%1$s”.</string>
 
     <!-- HELP SECTION -->
     <string-array name="questions">
