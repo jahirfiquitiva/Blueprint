@@ -268,8 +268,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         R.id.icons -> string(R.string.search_icons)
         R.id.request -> string(R.string.search_apps)
         R.id.apply -> string(R.string.search_launchers)
-        R.id.wallpapers -> string(dev.jahir.frames.R.string.search_wallpapers)
-        else -> string(dev.jahir.frames.R.string.search_x)
+        R.id.wallpapers -> string(R.string.search_wallpapers)
+        else -> string(R.string.search_x)
     }
 
     override fun getLayoutRes(): Int = R.layout.activity_blueprint
