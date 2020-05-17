@@ -159,8 +159,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
         loadIconsCategories()
         if (isIconsPicker) {
-            if (currentItemId != R.id.icons)
-                bottomNavigation?.setSelectedItemId(R.id.icons, true)
+            if (currentItemId != R.id.icons) selectNavigationItem(R.id.icons)
         } else {
             loadPreviewIcons()
             if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents()
