@@ -264,6 +264,14 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             else -> super.canShowSearch(itemId)
         }
 
+    override fun getSearchHint(itemId: Int): String = when (itemId) {
+        R.id.icons -> string(R.string.search_icons)
+        R.id.request -> string(R.string.search_apps)
+        R.id.apply -> string(R.string.search_launchers)
+        R.id.wallpapers -> string(R.string.search_wallpapers)
+        else -> string(R.string.search_x)
+    }
+
     override fun getLayoutRes(): Int = R.layout.activity_blueprint
     override val initialFragmentTag: String =
         if (isIconsPicker) IconsCategoriesFragment.TAG else HomeFragment.TAG
@@ -357,7 +365,11 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             R.id.request -> {
                 val selectedAppsCount = requestsViewModel?.selectedApps?.size ?: 0
                 fabBtn?.setup(
-                    string(R.string.send_request_x, selectedAppsCount),
+                    string( when (selectedAppsCount) {
+                        0 -> R.string.request_none
+                        1 -> R.string.request_icon
+                        else ->  R.string.request_x_icons
+                    }, selectedAppsCount),
                     R.drawable.ic_send_request,
                     selectedAppsCount > 0
                 )
@@ -498,7 +510,6 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         super.onRequestUploadFinished(success)
         requestsViewModel?.deselectAll()
         showRequestDialog {
-            title(R.string.request_upload_success)
             message(R.string.request_upload_success_content)
         }
     }
