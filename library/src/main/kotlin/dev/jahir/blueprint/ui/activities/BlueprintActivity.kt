@@ -169,6 +169,10 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         }
     }
 
+    internal open fun selectNavigationItem(itemId: Int) {
+        bottomNavigation?.setSelectedItemId(itemId, true)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val created = super.onCreateOptionsMenu(menu)
         menu?.findItem(R.id.templates)?.isVisible = templatesViewModel.components.isNotEmpty()

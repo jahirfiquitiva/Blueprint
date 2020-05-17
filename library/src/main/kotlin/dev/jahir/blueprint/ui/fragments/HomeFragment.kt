@@ -168,12 +168,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         super.onCounterClicked(counter)
         when (counter) {
             is IconsCounter -> {
-                (activity as? BlueprintActivity)?.bottomNavigation
-                    ?.setSelectedItemId(R.id.icons, true)
+                (activity as? BlueprintActivity)?.selectNavigationItem(R.id.icons)
             }
             is WallpapersCounter -> {
-                (activity as? BlueprintActivity)?.bottomNavigation
-                    ?.setSelectedItemId(R.id.wallpapers, true)
+                (activity as? BlueprintActivity)?.selectNavigationItem(R.id.wallpapers)
             }
             is KustomCounter, is ZooperCounter -> {
                 (activity as? BlueprintActivity)?.let {

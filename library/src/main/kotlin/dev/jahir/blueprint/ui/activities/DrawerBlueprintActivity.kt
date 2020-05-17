@@ -69,9 +69,9 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         navigationView?.setNavigationItemSelectedListener(this)
 
         if (isIconsPicker && currentItemId != R.id.icons) {
-            navigationView?.menu?.findItem(R.id.icons)?.isChecked = true
+            selectNavigationItem(R.id.icons)
             lockDrawer()
-        } else navigationView?.menu?.findItem(initialItemId)?.isChecked = true
+        } else selectNavigationItem(initialItemId)
     }
 
     private fun initDrawerItems() {
@@ -105,6 +105,14 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle?.onOptionsItemSelected(item) == true) return true
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun selectNavigationItem(itemId: Int) {
+        super.selectNavigationItem(itemId)
+        navigationView?.menu?.findItem(itemId)?.let {
+            onNavigationItemSelected(it)
+            navigationView?.setCheckedItem(it)
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
