@@ -5,7 +5,9 @@ import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import dev.jahir.blueprint.R
+import dev.jahir.blueprint.data.models.DefHomeItem
 import dev.jahir.blueprint.data.models.HomeItem
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.extensions.drawableRes
@@ -19,6 +21,9 @@ import dev.jahir.frames.extensions.utils.lazyMutableLiveData
 import dev.jahir.frames.extensions.utils.tryToObserve
 import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.PLAY_STORE_LINK_PREFIX
 import dev.jahir.kuper.extensions.isAppInstalled
+import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -45,7 +50,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun loadHomeItems() {
+    private suspend fun internalLoadHomeItems(): ArrayList<HomeItem> = withContext(Default) {
         val list = ArrayList<HomeItem>()
         val titles = context.stringArray(R.array.home_list_titles).filter { it.hasContent() }
         val descriptions =
@@ -54,37 +59,50 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val urls = context.stringArray(R.array.home_list_links).filter { it.hasContent() }
         if (titles.size == descriptions.size && descriptions.size == icons.size
             && icons.size == urls.size) {
-            for (i in titles.indices) {
-                if (list.size >= 6) break
-                val url = urls[i]
-                val isAnApp =
-                    url.lower().startsWith(PLAY_STORE_LINK_PREFIX) ||
-                            url.lower().startsWith("market://details?id=")
-                var isInstalled = false
-                var intent: Intent? = null
-                if (isAnApp) {
-                    val packageName = url.substring(url.lastIndexOf("="))
-                    isInstalled = context.isAppInstalled(packageName)
-                    intent = context.packageManager.getLaunchIntentForPackage(packageName)
-                }
-
-                list.add(
-                    HomeItem(
-                        titles[i],
-                        descriptions[i],
-                        urls[i],
-                        context.drawable(icons[i]),
-                        if (isAnApp)
+            val defaultItems =
+                titles.mapIndexed { i, s -> DefHomeItem(s, descriptions[i], icons[i], urls[i]) }
+                    .distinctBy { it.url }
+                    .map {
+                        val isAnApp =
+                            it.url.lower().startsWith(PLAY_STORE_LINK_PREFIX) ||
+                                    it.url.lower().startsWith("market://details?id=")
+                        var isInstalled = false
+                        var intent: Intent? = null
+                        if (isAnApp) {
+                            try {
+                                val packageName = it.url.substring(it.url.lastIndexOf("=") + 1)
+                                isInstalled = context.isAppInstalled(packageName)
+                                intent =
+                                    context.packageManager.getLaunchIntentForPackage(packageName)
+                            } catch (e: Exception) {
+                            }
+                        }
+                        val openIcon = if (isAnApp)
                             if (isInstalled) R.drawable.ic_open_app else R.drawable.ic_download
-                        else R.drawable.ic_open_app,
-                        isAnApp,
-                        isInstalled,
-                        intent
-                    )
-                )
-            }
+                        else R.drawable.ic_open_app
+                        HomeItem(
+                            it.title,
+                            it.desc,
+                            it.url,
+                            context.drawable(it.icon),
+                            openIcon,
+                            isAnApp,
+                            isInstalled,
+                            intent
+                        )
+                    }
+            list.clear()
+            list.addAll(defaultItems)
         }
-        homeItemsData.postValue(list)
+        val maxSize = if (list.size > 6) 6 else list.size
+        return@withContext ArrayList(list.subList(0, maxSize))
+    }
+
+    fun loadHomeItems() {
+        viewModelScope.launch {
+            val items = internalLoadHomeItems()
+            homeItemsData.postValue(items)
+        }
     }
 
     fun observeIconsPreviewList(owner: LifecycleOwner, onUpdated: (List<Icon>) -> Unit) {

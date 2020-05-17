@@ -19,11 +19,9 @@ import dev.jahir.blueprint.data.models.KustomCounter
 import dev.jahir.blueprint.data.models.WallpapersCounter
 import dev.jahir.blueprint.data.models.ZooperCounter
 import dev.jahir.blueprint.extensions.defaultLauncher
-import dev.jahir.blueprint.extensions.safeNotifySectionChanged
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.activities.BlueprintKuperActivity
 import dev.jahir.blueprint.ui.adapters.HomeAdapter
-import dev.jahir.blueprint.ui.adapters.HomeAdapter.Companion.ICONS_PREVIEW_SECTION
 import dev.jahir.blueprint.ui.decorations.HomeGridSpacingItemDecoration
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.drawable
@@ -128,35 +126,43 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     }
 
     internal fun notifyShapeChange() {
-        adapter.safeNotifySectionChanged(ICONS_PREVIEW_SECTION)
+        adapter.notifyDataSetChanged()
+        setupContentBottomOffset()
     }
 
     internal fun updateIconsPreview(icons: List<Icon>) {
         adapter.iconsPreviewList = ArrayList(icons)
+        setupContentBottomOffset()
     }
 
     internal fun updateHomeItems(items: List<HomeItem>) {
         adapter.homeItems = ArrayList(items)
+        setupContentBottomOffset()
     }
 
     internal fun updateWallpaper() {
         adapter.wallpaper = rightWallpaper
+        setupContentBottomOffset()
     }
 
     internal fun updateIconsCount(count: Int) {
         adapter.iconsCount = count
+        setupContentBottomOffset()
     }
 
     internal fun updateWallpapersCount(count: Int) {
         adapter.wallpapersCount = count
+        setupContentBottomOffset()
     }
 
     internal fun updateKustomCount(count: Int) {
         adapter.kustomCount = count
+        setupContentBottomOffset()
     }
 
     internal fun updateZooperCount(count: Int) {
         adapter.zooperCount = count
+        setupContentBottomOffset()
     }
 
     override fun onIconsPreviewClicked() {

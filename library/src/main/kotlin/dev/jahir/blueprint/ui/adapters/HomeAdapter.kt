@@ -14,7 +14,6 @@ import dev.jahir.blueprint.data.models.IconsCounter
 import dev.jahir.blueprint.data.models.KustomCounter
 import dev.jahir.blueprint.data.models.WallpapersCounter
 import dev.jahir.blueprint.data.models.ZooperCounter
-import dev.jahir.blueprint.extensions.safeNotifySectionChanged
 import dev.jahir.blueprint.ui.viewholders.AppLinkViewHolder
 import dev.jahir.blueprint.ui.viewholders.CounterViewHolder
 import dev.jahir.blueprint.ui.viewholders.HomeActionsViewHolder
@@ -44,7 +43,7 @@ class HomeAdapter(
         set(value) {
             if (value == field) return
             field = value
-            safeNotifySectionChanged(ACTIONS_SECTION)
+            notifyDataSetChanged()
         }
 
     var showOverview: Boolean = showOverview
@@ -65,15 +64,14 @@ class HomeAdapter(
         set(value) {
             field.clear()
             field.addAll(value)
-            safeNotifySectionChanged(ICONS_PREVIEW_SECTION)
+            notifyDataSetChanged()
         }
 
     var homeItems: ArrayList<HomeItem> = ArrayList()
         set(value) {
             field.clear()
             field.addAll(value)
-            safeNotifySectionChanged(MORE_APPS_SECTION - (if (showOverview) 0 else 1))
-            safeNotifySectionChanged(USEFUL_LINKS_SECTION - (if (showOverview) 0 else 1))
+            notifyDataSetChanged()
         }
 
     private val appItems: ArrayList<HomeItem>
@@ -86,32 +84,28 @@ class HomeAdapter(
         set(value) {
             if (value == field) return
             field = value
-            if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
-            if (counters.isNotEmpty()) safeNotifySectionChanged(MORE_APPS_SECTION)
+            notifyDataSetChanged()
         }
 
     var wallpapersCount: Int = 0
         set(value) {
             if (value == field) return
             field = value
-            if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
-            if (counters.isNotEmpty()) safeNotifySectionChanged(MORE_APPS_SECTION)
+            notifyDataSetChanged()
         }
 
     var kustomCount: Int = 0
         set(value) {
             if (value == field) return
             field = value
-            if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
-            if (counters.isNotEmpty()) safeNotifySectionChanged(MORE_APPS_SECTION)
+            notifyDataSetChanged()
         }
 
     var zooperCount: Int = 0
         set(value) {
             if (value == field) return
             field = value
-            if (showOverview) safeNotifySectionChanged(OVERVIEW_SECTION)
-            if (counters.isNotEmpty()) safeNotifySectionChanged(MORE_APPS_SECTION)
+            notifyDataSetChanged()
         }
 
     private val counters: List<Counter>
