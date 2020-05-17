@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.adapters
 
+import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.jahir.blueprint.R
@@ -10,7 +11,7 @@ import dev.jahir.frames.extensions.views.inflate
 
 class IconsCategoriesAdapter(
     private val onOpenCategory: ((IconsCategory) -> Unit)? = null,
-    private val onIconClick: ((Icon) -> Unit)? = null
+    private val onIconClick: ((Icon, Drawable?) -> Unit)? = null
 ) : RecyclerView.Adapter<IconsCategoryPreviewViewHolder>() {
 
     var categories: ArrayList<IconsCategory> = ArrayList()

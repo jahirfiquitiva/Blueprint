@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.viewholders
 
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
@@ -35,7 +36,7 @@ class IconsCategoryPreviewViewHolder(itemView: View) : RecyclerView.ViewHolder(i
         category: IconsCategory,
         showDivider: Boolean = true,
         onOpenCategory: ((IconsCategory) -> Unit)? = null,
-        onIconClick: ((Icon) -> Unit)? = null
+        onIconClick: ((Icon, Drawable?) -> Unit)? = null
     ) {
         dividerView?.visibleIf(showDivider)
         categoryTitleView?.text = category.title

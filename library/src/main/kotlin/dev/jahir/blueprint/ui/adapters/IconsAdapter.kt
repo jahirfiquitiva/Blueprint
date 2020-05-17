@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.adapters
 
+import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.jahir.blueprint.R
@@ -9,7 +10,7 @@ import dev.jahir.frames.extensions.views.inflate
 
 class IconsAdapter(
     var animate: Boolean = true,
-    var onClick: ((Icon) -> Unit)? = null
+    var onClick: ((Icon, Drawable?) -> Unit)? = null
 ) : RecyclerView.Adapter<IconViewHolder>() {
 
     var icons: ArrayList<Icon> = ArrayList()

@@ -18,17 +18,12 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
 
     private val iconView: AppCompatImageView? by itemView.findView(R.id.icon)
 
-    fun bind(icon: Icon, animate: Boolean = true, onClick: ((Icon) -> Unit)? = null) {
-        setIconDrawable(
-            context.drawable(icon.resId),
-            context.preferences.animationsEnabled && animate
-        )
-        onClick?.let {
-            itemView.setOnClickListener { onClick.invoke(icon) }
-        } ?: {
+    fun bind(icon: Icon, animate: Boolean = true, onClick: ((Icon, Drawable?) -> Unit)? = null) {
+        setIconDrawable(icon, context.preferences.animationsEnabled && animate, onClick)
+        if (onClick == null) {
             iconView?.disableClick()
             itemView.disableClick()
-        }()
+        }
     }
 
     private fun View.disableClick() {
@@ -42,12 +37,18 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
         }
     }
 
-    private fun setIconDrawable(drawable: Drawable?, animate: Boolean) {
+    private fun setIconDrawable(
+        icon: Icon,
+        animate: Boolean,
+        onClick: ((Icon, Drawable?) -> Unit)? = null
+    ) {
         iconView?.apply {
             scaleX = 0F
             scaleY = 0F
             alpha = 0F
-            setImageDrawable(drawable?.asAdaptive(context))
+            val actualDrawable = context.drawable(icon.resId)?.asAdaptive(context)
+            setImageDrawable(actualDrawable)
+            itemView.setOnClickListener { onClick?.invoke(icon, actualDrawable) }
             if (animate) {
                 animate().scaleX(1F)
                     .scaleY(1F)

@@ -1,6 +1,7 @@
 package dev.jahir.blueprint.ui.fragments
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -110,9 +111,9 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
         }
     }
 
-    private fun onIconClick(icon: Icon) {
+    private fun onIconClick(icon: Icon, drawable: Drawable?) {
         val pickerKey = (activity as? BlueprintActivity)?.pickerKey ?: 0
-        if (pickerKey != 0) activity?.pickIcon(icon, pickerKey)
+        if (pickerKey != 0) activity?.pickIcon(icon, drawable, pickerKey)
         else (activity as? BlueprintActivity)?.showIconDialog(icon)
     }
 

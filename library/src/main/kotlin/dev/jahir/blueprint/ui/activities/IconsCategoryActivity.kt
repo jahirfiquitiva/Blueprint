@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.activities
 
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -99,9 +100,9 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
         }
     }
 
-    private fun onIconClick(icon: Icon?) {
+    private fun onIconClick(icon: Icon?, drawable: Drawable?) {
         icon ?: return
-        if (pickerKey != 0) pickIcon(icon, pickerKey)
+        if (pickerKey != 0) pickIcon(icon, drawable, pickerKey)
         else showIconDialog(icon)
     }
 

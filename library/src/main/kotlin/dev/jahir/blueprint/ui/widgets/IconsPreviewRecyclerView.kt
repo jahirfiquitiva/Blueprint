@@ -3,6 +3,7 @@ package dev.jahir.blueprint.ui.widgets
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Rect
+import android.graphics.drawable.Drawable
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.AttributeSet
@@ -50,7 +51,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         adapter = iconsAdapter
     }
 
-    internal fun setOnIconClickListener(onClick: ((Icon) -> Unit)? = null) {
+    internal fun setOnIconClickListener(onClick: ((Icon, Drawable?) -> Unit)? = null) {
         iconsAdapter.onClick = onClick
         iconsAdapter.notifyDataSetChanged()
     }

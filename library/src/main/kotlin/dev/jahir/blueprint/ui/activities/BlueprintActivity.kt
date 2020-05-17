@@ -157,14 +157,16 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         homeViewModel?.loadHomeItems()
         homeFragment?.showDonation(isBillingClientReady && getDonationItemsIds().isNotEmpty())
 
-        loadPreviewIcons()
         loadIconsCategories()
-        if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents()
-        loadAppsToRequest()
-        requestStoragePermission()
-
-        if (isIconsPicker && currentItemId != R.id.icons)
-            bottomNavigation?.setSelectedItemId(R.id.icons, true)
+        if (isIconsPicker) {
+            if (currentItemId != R.id.icons)
+                bottomNavigation?.setSelectedItemId(R.id.icons, true)
+        } else {
+            loadPreviewIcons()
+            if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents()
+            loadAppsToRequest()
+            requestStoragePermission()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -365,11 +367,13 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             R.id.request -> {
                 val selectedAppsCount = requestsViewModel?.selectedApps?.size ?: 0
                 fabBtn?.setup(
-                    string( when (selectedAppsCount) {
-                        0 -> R.string.request_none
-                        1 -> R.string.request_icon
-                        else ->  R.string.request_x_icons
-                    }, selectedAppsCount),
+                    string(
+                        when (selectedAppsCount) {
+                            0 -> R.string.request_none
+                            1 -> R.string.request_icon
+                            else -> R.string.request_x_icons
+                        }, selectedAppsCount
+                    ),
                     R.drawable.ic_send_request,
                     selectedAppsCount > 0
                 )

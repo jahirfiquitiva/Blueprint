@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import androidx.fragment.app.FragmentActivity
 import dev.jahir.blueprint.data.models.Icon
@@ -13,11 +14,12 @@ import dev.jahir.blueprint.ui.activities.IconsCategoryActivity.Companion.PICKER_
 import dev.jahir.frames.extensions.context.drawable
 
 @Suppress("DEPRECATION")
-internal fun FragmentActivity.pickIcon(icon: Icon, pickerKey: Int) {
+internal fun FragmentActivity.pickIcon(icon: Icon, drawable: Drawable?, pickerKey: Int) {
     val intent = Intent()
     val bitmap: Bitmap? = try {
-        val drawable = drawable(icon.resId) as? BitmapDrawable
-        drawable?.bitmap ?: BitmapFactory.decodeResource(resources, icon.resId)
+        (drawable as? BitmapDrawable)?.bitmap
+            ?: (drawable(icon.resId)?.asAdaptive(this) as? BitmapDrawable)?.bitmap
+            ?: BitmapFactory.decodeResource(resources, icon.resId)
     } catch (e: Exception) {
         null
     }
@@ -46,10 +48,6 @@ internal fun FragmentActivity.pickIcon(icon: Icon, pickerKey: Int) {
         setResult(RESULT_OK, intent.apply { putExtra(PICKER_KEY, pickerKey) })
     } else {
         setResult(RESULT_CANCELED, intent)
-    }
-    try {
-        bitmap?.let { if (!it.isRecycled) it.recycle() }
-    } catch (e: Exception) {
     }
     finish()
 }
