@@ -37,6 +37,7 @@ fun Context.executeLauncherIntent(launcher: Launcher?) {
         Launcher.LUCID -> executeLucidLauncherIntent()
         Launcher.NIAGARA -> executeNiagaraLauncherIntent()
         Launcher.NOVA -> executeNovaLauncherIntent()
+        Launcher.ONEPLUS -> executeOnePlusLauncherIntent()
         Launcher.POSIDON -> executePosidonLauncherIntent()
         Launcher.SMART -> executeSmartLauncherIntent()
         Launcher.SMART_PRO -> executeSmartLauncherProIntent()
@@ -237,6 +238,14 @@ private fun Context.executeNovaLauncherIntent() {
             putExtra("com.teslacoilsw.launcher.extra.ICON_THEME_TYPE", "GO")
             putExtra("com.teslacoilsw.launcher.extra.ICON_THEME_PACKAGE", packageName)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
+}
+
+private fun Context.executeOnePlusLauncherIntent() {
+    attemptApply {
+        Intent().apply {
+            component = ComponentName("net.oneplus.launcher", "net.oneplus.launcher.IconPackSelectorActivity")
         }
     }
 }
