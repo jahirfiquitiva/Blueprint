@@ -22,6 +22,7 @@
     android:minHeight="180dp">
 
     <LinearLayout
+        android:id="@+id/drawer_texts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

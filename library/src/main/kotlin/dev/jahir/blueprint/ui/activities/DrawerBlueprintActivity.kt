@@ -3,6 +3,7 @@ package dev.jahir.blueprint.ui.activities
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -51,13 +52,14 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         headerDrawable?.let { header?.background = it }
             ?: header?.setBackgroundColor(resolveColor(R.attr.colorAccent, color(R.color.accent)))
 
+        val drawerTexts: View? = header?.findViewById(R.id.drawer_texts)
+        drawerTexts?.visibleIf(boolean(R.bool.with_drawer_texts))
+
         val drawerTitle: TextView? = header?.findViewById(R.id.drawer_title)
         drawerTitle?.text = getAppName()
-        drawerTitle?.visibleIf(boolean(R.bool.with_drawer_texts))
 
         val drawerSubtitle: TextView? = header?.findViewById(R.id.drawer_subtitle)
         drawerSubtitle?.text = currentVersionName
-        drawerSubtitle?.visibleIf(boolean(R.bool.with_drawer_texts))
 
         navigationView?.post {
             val params = navigationView?.layoutParams as? DrawerLayout.LayoutParams
