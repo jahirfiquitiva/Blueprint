@@ -65,6 +65,7 @@ enum class Launcher(
     LUCID("lucid", "Lucid Launcher", arrayOf("com.powerpoint45.launcher"), R.drawable.ic_lucid),
     NIAGARA("niagara", "Niagara Launcher", arrayOf("bitpit.launcher"), R.drawable.ic_niagara),
     NOVA("nova", "Nova Launcher", arrayOf("com.teslacoilsw.launcher"), R.drawable.ic_nova),
+    ONEPLUS("oneplus", "OnePlus Launcher", arrayOf("net.oneplus.launcher"), R.drawable.ic_oneplus),
     PIXEL(
         "pixel",
         "Pixel Launcher",
