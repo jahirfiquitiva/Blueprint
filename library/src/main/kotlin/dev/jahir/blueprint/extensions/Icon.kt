@@ -18,7 +18,7 @@ internal fun FragmentActivity.pickIcon(icon: Icon, drawable: Drawable?, pickerKe
     val intent = Intent()
     val bitmap: Bitmap? = try {
         (drawable as? BitmapDrawable)?.bitmap
-            ?: (drawable(icon.resId)?.asAdaptive(this) as? BitmapDrawable)?.bitmap
+            ?: (drawable(icon.resId)?.asAdaptive(this)?.first as? BitmapDrawable)?.bitmap
             ?: BitmapFactory.decodeResource(resources, icon.resId)
     } catch (e: Exception) {
         null

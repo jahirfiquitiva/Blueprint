@@ -14,6 +14,8 @@ import androidx.palette.graphics.Palette
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.extensions.asAdaptive
+import dev.jahir.blueprint.ui.viewholders.IconViewHolder.Companion.ICON_ANIMATION_DELAY
+import dev.jahir.blueprint.ui.viewholders.IconViewHolder.Companion.ICON_ANIMATION_DURATION
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.fragments.mdDialog
@@ -44,16 +46,19 @@ class IconDialog : DialogFragment() {
     private fun onDialogShown() {
         icon?.let { icon ->
             val bitmap = try {
-                context?.drawable(icon.resId)?.asAdaptive(context)?.asBitmap()
+                context?.drawable(icon.resId)?.asAdaptive(context)?.first?.asBitmap()
             } catch (e: Exception) {
                 null
             }
             bitmap?.let {
                 setIconBitmap(bitmap)
-                Palette.from(it)
-                    .generate { palette ->
-                        setButtonColor(palette?.bestSwatch)
-                    }
+                try {
+                    Palette.from(it)
+                        .generate { palette ->
+                            setButtonColor(palette?.bestSwatch)
+                        }
+                } catch (e: Exception) {
+                }
             } ?: { dismiss() }()
         }
     }
@@ -71,8 +76,8 @@ class IconDialog : DialogFragment() {
                 animate().scaleX(1F)
                     .scaleY(1F)
                     .alpha(1F)
-                    .setStartDelay(50)
-                    .setDuration(250)
+                    .setStartDelay(ICON_ANIMATION_DELAY)
+                    .setDuration(ICON_ANIMATION_DURATION)
                     .start()
             } else {
                 scaleX = 1F

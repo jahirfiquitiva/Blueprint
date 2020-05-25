@@ -172,6 +172,11 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         bottomNavigation?.setSelectedItemId(itemId, true)
     }
 
+    override fun onBackPressed() {
+        if (currentItemId != initialItemId) selectNavigationItem(initialItemId)
+        else super.onBackPressed()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val created = super.onCreateOptionsMenu(menu)
         menu?.findItem(R.id.templates)?.isVisible = templatesViewModel.components.isNotEmpty()

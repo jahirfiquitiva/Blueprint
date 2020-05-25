@@ -47,8 +47,8 @@ private fun AdaptiveIcon.setRightPath(context: Context? = null) {
     } else setPath(pathOption)
 }
 
-internal fun Drawable.asAdaptive(context: Context? = null): Drawable? {
-    context ?: return this
+internal fun Drawable.asAdaptive(context: Context? = null): Pair<Drawable?, Boolean> {
+    context ?: return Pair(this, false)
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         (this as? AdaptiveIconDrawable)?.let { ad ->
             return@let try {
@@ -57,10 +57,10 @@ internal fun Drawable.asAdaptive(context: Context? = null): Drawable? {
                     setBackground(ad.background)
                     setRightPath(context)
                 }.render()
-                BitmapDrawable(context.resources, bitmap)
+                Pair(BitmapDrawable(context.resources, bitmap), true)
             } catch (e: Exception) {
-                this
+                Pair(this, true)
             }
-        } ?: this
-    } else this
+        } ?: Pair(this, false)
+    } else Pair(this, false)
 }

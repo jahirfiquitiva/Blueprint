@@ -9,6 +9,7 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.jahir.blueprint.R
@@ -41,6 +42,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
     init {
         isSaveEnabled = true
         isNestedScrollingEnabled = false
+        itemAnimator = DefaultItemAnimator()
         layoutManager = LayoutManager(context, context.integer(R.integer.icons_columns_count))
         addItemDecoration(
             GridSpacingItemDecoration(

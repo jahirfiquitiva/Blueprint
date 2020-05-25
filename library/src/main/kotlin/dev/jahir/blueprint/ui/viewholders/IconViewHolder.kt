@@ -4,15 +4,19 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.view.setPadding
+import coil.annotation.ExperimentalCoilApi
+import coil.api.load
+import coil.transition.Transition
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.extensions.asAdaptive
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.preferences
+import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.context
 import dev.jahir.frames.extensions.views.findView
-
 
 class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
 
@@ -32,35 +36,42 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
         isLongClickable = false
         isFocusable = false
         isEnabled = false
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            isContextClickable = false
-        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) isContextClickable = false
     }
 
+    @ExperimentalCoilApi
     private fun setIconDrawable(
         icon: Icon,
         animate: Boolean,
         onClick: ((Icon, Drawable?) -> Unit)? = null
     ) {
+        val (iconDrawable, isAdaptive) =
+            context.drawable(icon.resId)?.asAdaptive(context) ?: Pair(null, false)
         iconView?.apply {
-            scaleX = 0F
-            scaleY = 0F
-            alpha = 0F
-            val actualDrawable = context.drawable(icon.resId)?.asAdaptive(context)
-            setImageDrawable(actualDrawable)
-            itemView.setOnClickListener { onClick?.invoke(icon, actualDrawable) }
             if (animate) {
+                scaleX = 0F
+                scaleY = 0F
+                alpha = 0F
+                setImageDrawable(iconDrawable)
                 animate().scaleX(1F)
                     .scaleY(1F)
                     .alpha(1F)
-                    .setStartDelay(75)
-                    .setDuration(200)
+                    .setStartDelay(ICON_ANIMATION_DELAY)
+                    .setDuration(ICON_ANIMATION_DURATION)
                     .start()
             } else {
-                scaleX = 1F
-                scaleY = 1F
-                alpha = 1F
+                iconView?.load(iconDrawable) {
+                    transition(Transition.NONE)
+                    crossfade(false)
+                }
             }
         }
+        iconView?.setPadding(if (isAdaptive) 10.dpToPx else 6.dpToPx)
+        itemView.setOnClickListener { onClick?.invoke(icon, iconDrawable) }
+    }
+
+    companion object {
+        internal const val ICON_ANIMATION_DELAY: Long = 50L
+        internal const val ICON_ANIMATION_DURATION: Long = 250L
     }
 }
