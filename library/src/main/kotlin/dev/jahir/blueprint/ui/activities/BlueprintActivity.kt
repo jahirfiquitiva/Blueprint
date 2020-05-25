@@ -162,7 +162,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             if (currentItemId != R.id.icons) selectNavigationItem(R.id.icons)
         } else {
             loadPreviewIcons()
-            if (boolean(R.bool.show_overview)) templatesViewModel.loadComponents()
+            templatesViewModel.loadComponents()
             loadAppsToRequest()
             requestStoragePermission()
         }
