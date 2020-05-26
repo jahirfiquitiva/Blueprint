@@ -11,7 +11,7 @@ Any HTML comment will be stripped when the markdown is rendered, so you don't ne
 - [ ] I have verified that I am using the latest version.
 
 ### Device/App info:
- - Kuper Version: `?`
+ - Blueprint Version: `?`
  - Android version: `?`
  - Device Manufacturer: `?`
  - Device Name: `?`
