@@ -27,4 +27,9 @@ class IconsAdapter(
         holder.bind(icons[position], animate, onClick)
 
     override fun getItemCount(): Int = icons.size
+
+    override fun onViewRecycled(holder: IconViewHolder) {
+        super.onViewRecycled(holder)
+        if (!animate) holder.unbind()
+    }
 }

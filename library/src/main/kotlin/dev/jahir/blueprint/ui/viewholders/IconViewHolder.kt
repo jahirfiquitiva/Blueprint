@@ -5,9 +5,7 @@ import android.os.Build
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.setPadding
-import coil.annotation.ExperimentalCoilApi
 import coil.api.load
-import coil.transition.Transition
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
@@ -39,7 +37,10 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) isContextClickable = false
     }
 
-    @ExperimentalCoilApi
+    fun unbind() {
+        iconView?.setImageDrawable(null)
+    }
+
     private fun setIconDrawable(
         icon: Icon,
         animate: Boolean,
@@ -59,12 +60,7 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
                     .setStartDelay(ICON_ANIMATION_DELAY)
                     .setDuration(ICON_ANIMATION_DURATION)
                     .start()
-            } else {
-                iconView?.load(iconDrawable) {
-                    transition(Transition.NONE)
-                    crossfade(false)
-                }
-            }
+            } else iconView?.load(iconDrawable)
         }
         iconView?.setPadding(if (isAdaptive) 10.dpToPx else 6.dpToPx)
         itemView.setOnClickListener { onClick?.invoke(icon, iconDrawable) }
