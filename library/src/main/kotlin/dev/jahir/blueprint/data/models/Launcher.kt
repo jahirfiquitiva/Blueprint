@@ -82,6 +82,12 @@ enum class Launcher(
         R.drawable.ic_smart_pro
     ),
     SOLO("solo", "Solo Launcher", arrayOf("home.solo.launcher.free"), R.drawable.ic_solo),
+    SQUARE(
+        "square",
+        "Square Home Launcher",
+        arrayOf("com.ss.squarehome2"),
+        R.drawable.ic_square_home
+    ),
     TSF("tsf", "TSF Launcher", arrayOf("com.tsf.shell"), R.drawable.ic_tsf);
 
     val cleanAppName: String

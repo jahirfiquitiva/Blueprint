@@ -42,6 +42,7 @@ fun Context.executeLauncherIntent(launcher: Launcher?) {
         Launcher.SMART -> executeSmartLauncherIntent()
         Launcher.SMART_PRO -> executeSmartLauncherProIntent()
         Launcher.SOLO -> executeSoloLauncherIntent()
+        Launcher.SQUARE -> executeSquareHomeIntent()
         Launcher.TSF -> executeTsfLauncherIntent()
         else -> showLauncherApplyError()
     }
@@ -245,7 +246,10 @@ private fun Context.executeNovaLauncherIntent() {
 private fun Context.executeOnePlusLauncherIntent() {
     attemptApply {
         Intent().apply {
-            component = ComponentName("net.oneplus.launcher", "net.oneplus.launcher.IconPackSelectorActivity")
+            component = ComponentName(
+                "net.oneplus.launcher",
+                "net.oneplus.launcher.IconPackSelectorActivity"
+            )
         }
     }
 }
@@ -282,6 +286,16 @@ private fun Context.executeSoloLauncherIntent() {
             solo.putExtra("EXTRA_PACKAGENAME", packageName)
             solo.putExtra("EXTRA_THEMENAME", getAppName())
             sendBroadcast(solo)
+        }
+    }
+}
+
+private fun Context.executeSquareHomeIntent() {
+    attemptApply {
+        Intent("com.ss.squarehome2.ACTION_APPLY_ICONPACK").apply {
+            component =
+                ComponentName.unflattenFromString("com.ss.squarehome2/.ApplyThemeActivity")
+            putExtra("com.ss.squarehome2.EXTRA_ICONPACK", packageName)
         }
     }
 }
