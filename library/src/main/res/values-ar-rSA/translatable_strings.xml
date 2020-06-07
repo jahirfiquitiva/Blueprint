@@ -4,7 +4,7 @@
     <string name="icons">الأيقونات</string>
     <string name="request">طلب</string>
     <string name="overview">الخلاصة</string>
-    <string name="more_apps">More Apps</string>
+    <string name="more_apps">المزيد من التطبيقات</string>
     <string name="useful_links">الروابط</string>
     <string name="select_all">تحديد الكل</string>
     <string name="help">مساعدة</string>
@@ -14,11 +14,11 @@
     <string name="search_launchers">البحث في المشغلات</string>
     <string name="lni_content">\"%1$s\" ليس مثبتاً. هل تريد الحصول عليه من Google Play؟</string>
     <string name="no_compatible_launcher_title">المشغل غير متوافق</string>
-    <string name="no_compatible_launcher_content">“Google Now Launcher” doesn’t support icon packs unless paired with “Awesome Shortcuts.” Install the latter?؟</string>
+    <string name="no_compatible_launcher_content">\"Google Now Launcher\" لا يدعم حزم الأيقونات بدون \"Awesome Shortcuts\". هل تريد تثبيته؟</string>
     <string name="impossible_open_themes">لا يمكن فتح التطبيق</string>
-    <string name="themes_app_not_installed">“Temas” no está instalado.</string>
+    <string name="themes_app_not_installed">\"Themes\" ليس مثبتاً.</string>
     <string name="coming_soon">قريباً.</string>
-    <string name="quick_apply">Apply to Home</string>
+    <string name="quick_apply">تطبيق على الشاشة الرئيسية</string>
     <string name="request_x_icons">طلب %1$s أيقونات</string>
     <string name="request_icon">طلب أيقونة</string>
     <string name="request_none">طلب أيقونات</string>
@@ -26,7 +26,7 @@
     <string name="zooper_templates">قوالب Zooper</string>
     <string name="rate">تقييم</string>
     <string name="share">مشاركة</string>
-    <string name="share_text">Get %1$s on Google Play: %2$s.</string>
+    <string name="share_text">تحميل %1$s من Google Play هنا: %2$s.</string>
     <string name="send_email">إرسال بريد إلكتروني</string>
     <string name="send_using">إرسال باستخدام:</string>
     <string name="request_in_progress">جار إرسال الطلب</string>
@@ -38,8 +38,8 @@
     <string name="apps_limit_dialog">قم بتحديد %1$s تطبيقات أو أقل.</string>
     <string name="apps_limit_dialog_more">قم بتحديد %1$s تطبيقات أو أقل.</string>
     <string name="apps_limit_dialog_day">يمكنك إرسال طلبات فقط كل %1$s.</string>
-    <string name="apps_limit_dialog_day_extra">يمكنك إرسال طلب في %1$s.</string>
-    <string name="apps_limit_dialog_day_extra_sec">يمكنك إرسال طلب في أقل من دقيقة.</string>
+    <string name="apps_limit_dialog_day_extra">يمكنك إرسال طلب بعد %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">يمكنك إرسال طلب بعد أقل من دقيقة.</string>
     <string name="seconds">ثواني</string>
     <string name="minutes">دقائق</string>
     <string name="hours">ساعات</string>
