@@ -8,7 +8,7 @@ object Versions {
 
     // OneSignal
     const val oneSignalPlugin = "0.12.7"
-    const val oneSignal = "3.14.0"
+    const val oneSignal = "3.14.1"
 
     // App
     const val minSdk = 21
@@ -16,5 +16,5 @@ object Versions {
     const val buildTools = "29.0.3"
 
     // Blueprint
-    const val blueprint = "2.1.1"
+    const val blueprint = "2.1.2"
 }
