@@ -8,7 +8,7 @@ object Versions {
 
     // OneSignal
     const val oneSignalPlugin = "0.12.7"
-    const val oneSignal = "3.14.0"
+    const val oneSignal = "3.14.1"
 
     // App
     const val minSdk = 21
@@ -16,7 +16,7 @@ object Versions {
     const val buildTools = "29.0.3"
 
     // Kuper
-    const val kuper = "2.2.1"
+    const val kuper = "2.2.2"
 
     // Adaptive Icons
     const val adaptiveIcons = "a0884c7"
