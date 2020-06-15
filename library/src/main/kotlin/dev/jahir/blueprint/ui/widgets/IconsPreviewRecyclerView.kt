@@ -42,6 +42,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
     init {
         isSaveEnabled = true
         isNestedScrollingEnabled = false
+        setHasFixedSize(true)
         itemAnimator = DefaultItemAnimator()
         layoutManager = LayoutManager(context, context.integer(R.integer.icons_columns_count))
         addItemDecoration(

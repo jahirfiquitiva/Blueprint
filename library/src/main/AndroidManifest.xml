@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
 
-        <!-- TODO: Delete -->
-        <activity android:name=".ui.activities.BlueprintActivity" />
+        <activity
+            android:name="dev.jahir.frames.ui.activities.MuzeiSettingsActivity"
+            android:exported="false"
+            tools:replace="android:exported" />
 
         <activity
             android:name="dev.jahir.kuper.ui.activities.KuperActivity"
@@ -24,6 +26,7 @@
 
         <activity
             android:name=".ui.activities.BlueprintKuperActivity"
+            android:exported="false"
             android:label="@string/templates" />
 
         <activity

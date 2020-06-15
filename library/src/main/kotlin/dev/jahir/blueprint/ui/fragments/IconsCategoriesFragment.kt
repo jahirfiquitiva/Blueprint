@@ -41,7 +41,9 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView?.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false).apply {
+                isItemPrefetchEnabled = true
+            }
         recyclerView?.adapter = iconsCategoriesAdapter
         recyclerView?.setHasFixedSize(true)
         loadData()

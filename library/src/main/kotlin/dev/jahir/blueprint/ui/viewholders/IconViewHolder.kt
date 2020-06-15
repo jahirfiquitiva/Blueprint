@@ -5,7 +5,6 @@ import android.os.Build
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.setPadding
-import coil.api.load
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
@@ -22,10 +21,6 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
 
     fun bind(icon: Icon, animate: Boolean = true, onClick: ((Icon, Drawable?) -> Unit)? = null) {
         setIconDrawable(icon, context.preferences.animationsEnabled && animate, onClick)
-        if (onClick == null) {
-            iconView?.disableClick()
-            itemView.disableClick()
-        }
     }
 
     private fun View.disableClick() {
@@ -53,17 +48,22 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
                 scaleX = 0F
                 scaleY = 0F
                 alpha = 0F
-                setImageDrawable(iconDrawable)
+            }
+            setImageDrawable(iconDrawable)
+            if (animate) {
                 animate().scaleX(1F)
                     .scaleY(1F)
                     .alpha(1F)
                     .setStartDelay(ICON_ANIMATION_DELAY)
                     .setDuration(ICON_ANIMATION_DURATION)
                     .start()
-            } else iconView?.load(iconDrawable)
+            }
         }
         iconView?.setPadding(if (isAdaptive) 10.dpToPx else 6.dpToPx)
-        itemView.setOnClickListener { onClick?.invoke(icon, iconDrawable) }
+        if (onClick == null) {
+            iconView?.disableClick()
+            itemView.disableClick()
+        } else itemView.setOnClickListener { onClick.invoke(icon, iconDrawable) }
     }
 
     companion object {

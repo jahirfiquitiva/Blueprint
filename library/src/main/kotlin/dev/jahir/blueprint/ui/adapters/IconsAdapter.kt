@@ -13,6 +13,10 @@ class IconsAdapter(
     var onClick: ((Icon, Drawable?) -> Unit)? = null
 ) : RecyclerView.Adapter<IconViewHolder>() {
 
+    init {
+        setHasStableIds(true)
+    }
+
     var icons: ArrayList<Icon> = ArrayList()
         set(value) {
             field.clear()
@@ -32,4 +36,6 @@ class IconsAdapter(
         super.onViewRecycled(holder)
         if (!animate) holder.unbind()
     }
+
+    override fun getItemId(position: Int): Long = icons[position].resId.hashCode().toLong()
 }
