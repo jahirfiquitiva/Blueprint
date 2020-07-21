@@ -19,12 +19,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            outputFileName = defaultConfig.applicationId + "-v${variant.versionName}-${variant.name}.apk"
-        }
-    }
-
     lintOptions {
         abortOnError false
         checkReleaseBuilds true
@@ -44,6 +38,7 @@ android {
         targetSdkVersion Versions.targetSdk
         versionCode MyApp.version
         versionName MyApp.versionName
+        setProperty("archivesBaseName", applicationId + "-" versionName)
         vectorDrawables.useSupportLibrary = true
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
