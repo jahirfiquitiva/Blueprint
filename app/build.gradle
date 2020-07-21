@@ -47,7 +47,7 @@ android {
         targetSdkVersion Versions.targetSdk
         versionCode Blueprint.version
         versionName Blueprint.versionName
-        setProperty("archivesBaseName", applicationId + "-" versionName)
+        setProperty("archivesBaseName", applicationId + "-" + versionName)
         vectorDrawables.useSupportLibrary = true
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
