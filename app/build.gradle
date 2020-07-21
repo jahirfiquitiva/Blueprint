@@ -70,7 +70,14 @@ android {
     }
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        main {
+            java.srcDirs += 'src/main/kotlin'
+
+            res.srcDirs += [
+                    'src/main/res-icons',
+                    'src/main/res-icons-adaptive'
+            ]
+        }
     }
 
     packagingOptions {
@@ -85,9 +92,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
+
 }
 
 dependencies {

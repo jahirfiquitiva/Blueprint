@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
+
+    <!-- TODO: The item names below should match your own icons file names without extension -->
+
+    <string-array name="adaptive">
+        <item>adaptive_one</item>
+        <item>adaptive_two</item>
+        <item>adaptive_three</item>
+    </string-array>
+
+</resources>
