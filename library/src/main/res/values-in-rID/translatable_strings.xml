@@ -14,7 +14,7 @@
     <string name="search_launchers">Cari peluncur</string>
     <string name="lni_content">%1$s tidak terpasang. Apakah anda ingin mendapatkannya di Google Play?</string>
     <string name="no_compatible_launcher_title">Peluncur tidak kompatibel</string>
-    <string name="no_compatible_launcher_content">“Peluncur Google Now\" tidak mendukung paket ikon kecuali dipasangkan dengan “Awesome Shortcuts.” instal nanti?</string>
+    <string name="no_compatible_launcher_content">“Peluncur Google Now\" tidak mendukung paket ikon kecuali dipasangkan dengan “Awesome Shortcuts.” pasang nanti?</string>
     <string name="impossible_open_themes">Tidak dapat membuka Aplikasi</string>
     <string name="themes_app_not_installed">“Tema” tidak terpasang.</string>
     <string name="coming_soon">Segera hadir.</string>
@@ -64,7 +64,7 @@
         <item>Setelah memulai ulang perangkat saya, paket ikon tidak diterapkan lagi. Ikon dikembalikan seperti semula.</item>
         <item>Mengapa ikon terlihat pecah pada perangkat saya?</item>
         <item>Saya bisa melihat ikon untuk aplikasi X dalam ikon yang disertakan, namun ikon tidak diterapkan.</item>
-        <item>Mengapa aplikasi perlu izin untuk mengubah atau menghapus konten di penyimpanan saya?</item>
+        <item>Mengapa aplikasi perlu izin untuk mengubah atau menghapus isi di penyimpanan saya?</item>
         <item>Mengapa aplikasi perlu izin untuk mengakses jaringan?</item>
         <item>Mengapa aplikasi perlu izin untuk mengecek koneksi?</item>
         <item>Mengapa aplikasi perlu izin untuk mengatur wallpaper?</item>
