@@ -73,10 +73,10 @@
     </string-array>
     <string-array name="answers">
         <item>Anda butuh peluncur dengan dukungan paket ikon. Daftar peluncur yang mendukung dapat ditemukan dalam aplikasi di bagian \"Terapkan\", atau deskripsi Play Store.</item>
-        <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Terapkan\", atau pilih ikon ke-4 dari bilah navigasi bawah. Dari sana Anda dapat memilih peluncur yang ingin Anda terapkan. Beberapa peluncur tidak mendukung terapkan otomatis dan Anda harus melakukannya secara manual melalui pengaturan.</item>
+        <item>Tergantung dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Terapkan\", atau pilih ikon ke-4 dari bilah navigasi bawah. Dari sana Anda dapat memilih peluncur yang ingin Anda terapkan. Beberapa peluncur tidak mendukung terapkan otomatis dan Anda harus melakukannya secara manual melalui menu pengaturan pada Peluncur Anda.</item>
         <item>Kembali ke bagian utama aplikasi dan tekan ubin berjudul \"Ikon\".</item>
-        <item>Sesuai dengan peluncur yang Anda gunakan, Anda perlu menekan lama ikon dan pilih \"Edit\" dari menu pop-up, atau tekan lama ikon dan pindahkan ke kotak \"Edit\".</item>
-        <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Meminta\", atau pilih ikon dari bilah navigasi bawah.</item>
+        <item>Tergantung dengan peluncur yang Anda gunakan, Anda perlu menekan lama ikon dan pilih \"Edit\" dari menu pop-up, atau tekan lama ikon dan pindahkan ke kotak \"Edit\".</item>
+        <item>Tergantung dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Meminta\", atau pilih ikon dari bilah navigasi bawah.</item>
         <item>Itu terjadi karena paket ikon telah dipindahkan ke Kartu SD, Anda perlu memasangnya di penyimpanan internal.</item>
         <item>Masalah mungkin datang dari peluncur yang sedang Anda gunakan, ketika menangani resolusi besar. Anda dapat memperbaikinya dengan meningkatkan ukuran ikon menjadi 115% - 120%. Atau coba gunakan peluncur lain.</item>
         <item>Kirim sebuah permintaan ikon.</item>
