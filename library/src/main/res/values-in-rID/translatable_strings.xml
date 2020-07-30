@@ -78,13 +78,13 @@
         <item>Sesuai dengan peluncur yang Anda gunakan, Anda perlu menekan lama ikon dan pilih \"Edit\" dari menu pop-up, atau tekan lama ikon dan pindahkan ke kotak \"Edit\".</item>
         <item>Sesuai dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Meminta\", atau pilih ikon dari bilah navigasi bawah.</item>
         <item>Itu terjadi karena paket ikon telah dipindahkan ke Kartu SD, Anda perlu memasangnya di penyimpanan internal.</item>
-        <item>Masalah mungkin datang dengan peluncur yang sedang Anda gunakan, ketika menangani resolusi besar. Anda dapat memperbaikinya dengan meningkatkan ukuran ikon menjadi 115% - 120%. Atau mencoba menggunakan peluncur lain.</item>
+        <item>Masalah mungkin datang dari peluncur yang sedang Anda gunakan, ketika menangani resolusi besar. Anda dapat memperbaikinya dengan meningkatkan ukuran ikon menjadi 115% - 120%. Atau coba gunakan peluncur lain.</item>
         <item>Kirim sebuah permintaan ikon.</item>
         <item>Tindakan ini diperlukan untuk mencatat data dan berkas permintaan ikon, begitu juga untuk menyimpan wallpaper, serta agar dapat mengubah lokasi unduhan wallpaper.</item>
         <item>Tindakan ini diperlukan agar dapat memuat wallpaper dari cloud dan mengunduhnya.</item>
         <item>Tindakan ini diperlukan agar dapat memeriksa apakah perangkat anda memiliki koneksi internet.</item>
         <item>Tindakan ini diperlukan agar dapat menerapkan wallpaper langsung dari aplikasi.</item>
         <item>Tindakan ini diperlukan agar dapat menyesuaikan dimensi wallpaper berdasarkan resolusi layar perangkat anda.</item>
-        <item>Itu diperlukan oleh Muzei Live Wallpaper.</item>
+        <item>Itu dibutuhkan oleh Muzei Live Wallpaper.</item>
     </string-array>
 </resources>
