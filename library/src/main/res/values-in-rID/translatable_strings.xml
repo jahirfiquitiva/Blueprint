@@ -49,7 +49,7 @@
     <string name="icon_shape">Bentuk Ikon</string>
     <string name="icon_shape_system">Diatur oleh Sistem</string>
     <string name="icon_shape_circle">Lingkaran</string>
-    <string name="icon_shape_squircle">Persegi membulat</string>
+    <string name="icon_shape_squircle">Persegi bundar</string>
     <string name="icon_shape_rounded_square">Kotak Membulat</string>
     <string name="icon_shape_square">Persegi</string>
     <string name="icon_shape_teardrop">Tetesan Air</string>
