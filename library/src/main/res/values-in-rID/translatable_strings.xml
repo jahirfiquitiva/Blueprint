@@ -22,7 +22,7 @@
     <string name="request_x_icons">Memesan %1$s Ikon</string>
     <string name="request_icon">Pesan Ikon</string>
     <string name="request_none">Pesan Ikon(semua)</string>
-    <string name="kustom_templates">Personalisasi Template</string>
+    <string name="kustom_templates">Kustom Template</string>
     <string name="zooper_templates">Zooper Template</string>
     <string name="rate">Nilai</string>
     <string name="share">Bagikan</string>
@@ -44,7 +44,7 @@
     <string name="minutes">Menit</string>
     <string name="hours">Jam</string>
     <string name="days">Hari</string>
-    <string name="weeks">Minggu</string>
+    <string name="weeks">Pekan</string>
     <string name="months">Bulan</string>
     <string name="icon_shape">Bentuk Ikon</string>
     <string name="icon_shape_system">Diatur oleh Sistem</string>
@@ -60,7 +60,7 @@
         <item>Bagaimana cara menerapkan Paket Ikon?</item>
         <item>Bagaimana cara melihat semua ikon yang disertakan?</item>
         <item>Bagaimana cara mengganti ikon dengan alternatif ikon lain?</item>
-        <item>Bagaimana cara meminta ikon yang tidak ada tema?</item>
+        <item>Bagaimana cara meminta ikon yang tidak ada?</item>
         <item>Setelah memulai ulang perangkat saya, paket ikon tidak diterapkan lagi. Ikon dikembalikan seperti semula.</item>
         <item>Mengapa ikon terlihat pecah pada perangkat saya?</item>
         <item>Saya bisa melihat ikon untuk aplikasi X dalam ikon yang disertakan, namun ikon tidak diterapkan.</item>
