@@ -52,7 +52,7 @@
     <string name="icon_shape_squircle">Persegi bundar</string>
     <string name="icon_shape_rounded_square">Kotak Membulat</string>
     <string name="icon_shape_square">Persegi</string>
-    <string name="icon_shape_teardrop">Tetesan Air</string>
+    <string name="icon_shape_teardrop">Butiran Air</string>
     <string name="requests_upload_error">Ada sesuatu yang salah. Error: “%1$s”.</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
