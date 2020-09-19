@@ -11,9 +11,9 @@
     <string name="x_icons">Ikony: %1$s</string>
     <string name="search_icons">Hledat ikony</string>
     <string name="search_apps">Hledat aplikace</string>
-    <string name="search_launchers">Hledat spouštěče</string>
+    <string name="search_launchers">Hledat launchery</string>
     <string name="lni_content">Aplikace “%1$s” není nainstalována. Chcete ji nainstalovat z Obchodu Play?</string>
-    <string name="no_compatible_launcher_title">Spouštěč není kompatibilní</string>
+    <string name="no_compatible_launcher_title">Launcher není kompatibilní</string>
     <string name="no_compatible_launcher_content">\"Spouštěč Google Now\" nepodporuje balíčky ikon, pokud není spárován s \"Awesome Shortcuts\". Nainstalovat jiný?</string>
     <string name="impossible_open_themes">Aplikaci nelze otevřít</string>
     <string name="themes_app_not_installed">“Motivy” nejsou nainstalovány.</string>
