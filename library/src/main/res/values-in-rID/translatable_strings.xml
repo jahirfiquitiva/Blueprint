@@ -9,10 +9,10 @@
     <string name="select_all">Pilih Semua</string>
     <string name="help">Bantuan</string>
     <string name="x_icons">%1$s Ikon</string>
-    <string name="search_icons">Cari ikon</string>
-    <string name="search_apps">Cari aplikasi</string>
-    <string name="search_launchers">Cari peluncur</string>
-    <string name="lni_content">%1$s tidak terpasang. Apakah anda ingin mendapatkannya di Google Play?</string>
+    <string name="search_icons">Cari Ikon</string>
+    <string name="search_apps">Cari Aplikasi</string>
+    <string name="search_launchers">Cari Peluncur</string>
+    <string name="lni_content">%1$s tidak terpasang. Apakah Anda ingin mendapatkannya di Google Play?</string>
     <string name="no_compatible_launcher_title">Peluncur tidak kompatibel</string>
     <string name="no_compatible_launcher_content">“Peluncur Google Now\" tidak mendukung paket ikon kecuali dipasangkan dengan “Awesome Shortcuts.” pasang nanti?</string>
     <string name="impossible_open_themes">Tidak dapat membuka Aplikasi</string>
