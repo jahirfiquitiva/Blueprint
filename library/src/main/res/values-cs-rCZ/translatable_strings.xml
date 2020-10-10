@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="home">Domů</string>
-    <string name="icons">Ikony</string>
+    <string name="home">Home</string>
+    <string name="icons">Icons</string>
     <string name="request">Požadavek</string>
     <string name="overview">Souhrn</string>
     <string name="more_apps">Další aplikace</string>
