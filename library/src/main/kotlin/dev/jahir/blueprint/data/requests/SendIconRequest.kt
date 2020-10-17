@@ -292,7 +292,7 @@ object SendIconRequest {
         }
 
         val email = context.string(R.string.email)
-        val subject = context.string(R.string.email_subject)
+        val subject = context.string(R.string.request_title)
         if (!email.hasContent() || !subject.hasContent()) {
             callback?.onRequestError()
             return
