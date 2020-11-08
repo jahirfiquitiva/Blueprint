@@ -16,6 +16,7 @@ import dev.jahir.frames.extensions.resources.hasContent
 @DrawableRes
 fun Context.getAppIconResId(pkg: String): Int = getAppInfo(pkg)?.icon ?: 0
 
+@Suppress("USELESS_ELVIS")
 fun Context.getAppIcon(pkg: String): Drawable? {
     if (!pkg.hasContent()) return null
     return try {

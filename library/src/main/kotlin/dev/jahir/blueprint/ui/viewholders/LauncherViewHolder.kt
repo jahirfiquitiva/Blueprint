@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
+import coil.load
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Launcher
 import dev.jahir.blueprint.extensions.bnwFilter

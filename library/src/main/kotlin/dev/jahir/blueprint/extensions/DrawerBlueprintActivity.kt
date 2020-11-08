@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package dev.jahir.blueprint.extensions
 
 import android.annotation.SuppressLint
