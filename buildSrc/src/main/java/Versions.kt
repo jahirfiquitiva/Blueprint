@@ -2,19 +2,18 @@
 
 object Versions {
     // Plugins
-    const val gradle = "4.0.0"
-    const val kotlin = "1.3.72"
-    const val jitpack = "2.1"
+    const val gradle = "4.1.0"
+    const val kotlin = "1.4.10"
 
     // OneSignal
-    const val oneSignalPlugin = "0.12.7"
-    const val oneSignal = "3.14.1"
+    const val oneSignalPlugin = "0.12.9"
+    const val oneSignal = "3.15.4"
 
     // App
     const val minSdk = 21
-    const val targetSdk = 29
+    const val targetSdk = 30
     const val buildTools = "29.0.3"
 
     // Blueprint
-    const val blueprint = "2.1.2"
+    const val blueprint = "2.1.4"
 }
