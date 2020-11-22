@@ -30,8 +30,7 @@ internal class EmailBuilder(
     private var attachment: Uri? = null
 
     fun addAttachment(uri: Uri?) {
-        uri ?: return
-        attachment = uri
+        attachment = uri ?: return
     }
 
     /**
@@ -82,6 +81,7 @@ internal class EmailBuilder(
         return intent
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     fun buildIntent(context: Context): Intent? {
         var resultIntent: Intent? = null
         val intent = getIntent(context)
