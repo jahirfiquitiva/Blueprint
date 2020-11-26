@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="home">Home</string>
+    <string name="home">主页</string>
     <string name="icons">图标</string>
-    <string name="request">Request</string>
+    <string name="request">申请</string>
     <string name="overview">概要</string>
     <string name="more_apps">更多应用</string>
     <string name="useful_links">网址</string>
-    <string name="select_all"></string>
-    <string name="help">查看用户引导</string>
+    <string name="select_all">全选</string>
+    <string name="help">帮助</string>
     <string name="x_icons">%1$s 图标</string>
     <string name="search_icons">搜索图标</string>
     <string name="search_apps">搜索应用程序</string>
     <string name="search_launchers">搜索启动器</string>
     <string name="lni_content">\"%1$s\" 尚未安装。您想要从 Google Play 获取吗？</string>
-    <string name="no_compatible_launcher_title">浏览器不兼容</string>
+    <string name="no_compatible_launcher_title">不兼容该启动器</string>
     <string name="no_compatible_launcher_content">“Google Now Launcher”不支持图标包，除非与“Awesome Shortcuts”配对。安装后台吗？</string>
     <string name="impossible_open_themes">无法打开应用程序</string>
     <string name="themes_app_not_installed">“主题”没有安装。</string>
@@ -23,7 +23,7 @@
     <string name="request_icon">请求图标</string>
     <string name="request_none">请求图标</string>
     <string name="kustom_templates">Kustom模板</string>
-    <string name="zooper_templates">资源管理器的模板</string>
+    <string name="zooper_templates">Zooper模板</string>
     <string name="rate">评分</string>
     <string name="share">分享</string>
     <string name="share_text">在 Google Play 上获得 %1$s ： %2$s。</string>
