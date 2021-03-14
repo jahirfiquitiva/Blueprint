@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="home">Home</string>
     <string name="icons">Symbole</string>
-    <string name="request">Anfrage</string>
+    <string name="request">Anfragen</string>
     <string name="overview">Zusammenfassung</string>
     <string name="more_apps">Weitere Apps</string>
     <string name="useful_links">Links</string>
@@ -10,8 +10,8 @@
     <string name="help">Hilfe</string>
     <string name="x_icons">%1$s Icons</string>
     <string name="search_icons">Icons durchsuchen</string>
-    <string name="search_apps">Apps suchen</string>
-    <string name="search_launchers">Launcher suchen</string>
+    <string name="search_apps">Apps durchsuchen</string>
+    <string name="search_launchers">Launcher durchsuchen</string>
     <string name="lni_content">“%1$s” ist nicht installiert. Möchten Sie es von Google Play herunterladen?</string>
     <string name="no_compatible_launcher_title">Launcher inkompatibel</string>
     <string name="no_compatible_launcher_content">„Google Now Launcher“ unterstützt keine Icon-Packs, es sei denn gepaart mit „tollen Shortcuts“. Wollen sie letzteres Installieren?</string>
