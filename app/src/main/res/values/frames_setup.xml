@@ -11,6 +11,9 @@
     -->
     <bool name="allow_immediate_downloads">true</bool>
 
+    <!-- Choose whether you want users to download wallpapers using Wi-Fi only by default -->
+    <bool name="downloads_on_wifi_only_enabled_by_default">true</bool>
+
     <!-- Choose whether you want colored tiles by default -->
     <bool name="enable_colored_tiles">false</bool>
 
