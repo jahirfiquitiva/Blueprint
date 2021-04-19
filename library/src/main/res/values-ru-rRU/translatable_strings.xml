@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="home">Главная страница</string>
     <string name="icons">图标</string>
-    <string name="request">Запрос</string>
+    <string name="request">Запросить</string>
     <string name="overview">Краткое описание</string>
     <string name="more_apps">Больше приложений</string>
     <string name="useful_links">Ссылки</string>

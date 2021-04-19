@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="home">ホーム</string>
-    <string name="icons">アイコン</string>
+    <string name="home">Home</string>
+    <string name="icons">Icons</string>
     <string name="request">リクエスト</string>
     <string name="overview">概要</string>
     <string name="more_apps">他のアプリ</string>
