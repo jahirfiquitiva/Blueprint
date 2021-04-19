@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Versions.targetSdk
+    buildToolsVersion Versions.buildTools
 
     lintOptions {
         abortOnError false
@@ -79,4 +80,11 @@ dependencies {
     api Libs.dependencies
 }
 
+ext {
+    PUBLISH_GROUP_ID = 'dev.jahir'
+    PUBLISH_VERSION = Blueprint.version
+    PUBLISH_ARTIFACT_ID = 'Blueprint'
+}
+
 apply from: '../lib-artifacts.gradle'
+apply from: "${rootProject.projectDir}/scripts/publish-mavencentral.gradle"

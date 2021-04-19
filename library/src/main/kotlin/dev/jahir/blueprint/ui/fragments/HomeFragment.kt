@@ -1,7 +1,6 @@
 package dev.jahir.blueprint.ui.fragments
 
 import android.annotation.SuppressLint
-import android.app.WallpaperManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -36,21 +35,14 @@ import dev.jahir.frames.ui.activities.base.BaseBillingActivity
 import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.PLAY_STORE_LINK_PREFIX
 import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.widgets.StatefulRecyclerView
-import dev.jahir.kuper.extensions.hasStoragePermission
+import dev.jahir.kuper.extensions.userWallpaper
 
 
 @SuppressLint("MissingPermission")
 class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
 
     private val wallpaper: Drawable?
-        get() = activity?.let {
-            try {
-                val wm = WallpaperManager.getInstance(it)
-                if (it.hasStoragePermission) wm?.fastDrawable else null
-            } catch (e: Exception) {
-                null
-            }
-        }
+        get() = activity?.userWallpaper
 
     private val staticWallpaper: Drawable?
         get() = activity?.let {
