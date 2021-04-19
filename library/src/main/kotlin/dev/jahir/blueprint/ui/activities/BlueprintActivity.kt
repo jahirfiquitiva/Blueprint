@@ -426,10 +426,6 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     private fun buildRequest() {
         shouldBuildRequest = false
-        if (!hasStoragePermission) {
-            snackbar(R.string.permission_denied, Snackbar.LENGTH_LONG, snackbarAnchorId)
-            return
-        }
         SendIconRequest.sendIconRequest(this, requestsViewModel?.selectedApps, this)
     }
 

@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.fragments
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -8,6 +9,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.fondesa.kpermissions.PermissionStatus
+import com.fondesa.kpermissions.extension.permissionsBuilder
+import com.google.android.material.snackbar.Snackbar
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
 import dev.jahir.blueprint.data.models.Counter
@@ -22,6 +26,7 @@ import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.activities.BlueprintKuperActivity
 import dev.jahir.blueprint.ui.adapters.HomeAdapter
 import dev.jahir.blueprint.ui.decorations.HomeGridSpacingItemDecoration
+import dev.jahir.frames.data.listeners.BasePermissionRequestListener
 import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.getAppName
@@ -29,10 +34,13 @@ import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.context.openLink
 import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.context.toast
+import dev.jahir.frames.extensions.fragments.string
 import dev.jahir.frames.extensions.resources.dpToPx
 import dev.jahir.frames.extensions.views.setPaddingBottom
+import dev.jahir.frames.extensions.views.snackbar
 import dev.jahir.frames.ui.activities.base.BaseBillingActivity
 import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.PLAY_STORE_LINK_PREFIX
+import dev.jahir.frames.ui.activities.base.BaseStoragePermissionRequestActivity
 import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.widgets.StatefulRecyclerView
 import dev.jahir.kuper.extensions.userWallpaper
@@ -81,9 +89,42 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     private val extraHeight: Int
         get() = if (fabHeight > 0) 16.dpToPx else 0
 
+    private fun requestStoragePermission() {
+        permissionsBuilder(Manifest.permission.READ_EXTERNAL_STORAGE)
+            .build()
+            .apply {
+                addListener(object : BasePermissionRequestListener {
+                    override fun onPermissionsGranted(result: List<PermissionStatus>) {
+                        super.onPermissionsGranted(result)
+                        adapter.wallpaper = wallpaper
+                    }
+
+                    override fun onPermissionsShouldShowRationale(result: List<PermissionStatus>) {
+                        super.onPermissionsShouldShowRationale(result)
+                        showPermissionRationale()
+                    }
+                })
+            }
+            .send()
+    }
+
+    private fun showPermissionRationale() {
+        snackbar(
+            string(R.string.permission_request, context?.getAppName()),
+            Snackbar.LENGTH_INDEFINITE,
+            (activity as? BaseStoragePermissionRequestActivity<*>)?.snackbarAnchorId ?: 0
+        ) {
+            setAction(android.R.string.ok) {
+                requestStoragePermission()
+                dismiss()
+            }
+        }
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         setupContentBottomOffset()
+        requestStoragePermission()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
