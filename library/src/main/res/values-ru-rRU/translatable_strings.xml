@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="home">Главная страница</string>
-    <string name="icons">图标</string>
+    <string name="icons">Иконки</string>
     <string name="request">Запросить</string>
     <string name="overview">Краткое описание</string>
     <string name="more_apps">Больше приложений</string>
@@ -9,7 +9,7 @@
     <string name="select_all">Выделить все</string>
     <string name="help">Помощь</string>
     <string name="x_icons">%1$s иконок</string>
-    <string name="search_icons">Поиск Иконок</string>
+    <string name="search_icons">Поиск иконок</string>
     <string name="search_apps">Искать приложения</string>
     <string name="search_launchers">Поиск лаунчера</string>
     <string name="lni_content">“%1$s” не установлен. Хотите установить его из Google Play?</string>
@@ -18,7 +18,7 @@
     <string name="impossible_open_themes">Не удалось открыть приложение</string>
     <string name="themes_app_not_installed">«Темы» не установлены.</string>
     <string name="coming_soon">Скоро.</string>
-    <string name="quick_apply">Применить к Главному экрану</string>
+    <string name="quick_apply">Применить</string>
     <string name="request_x_icons">Запросить %1$s иконок</string>
     <string name="request_icon">Запросить иконку</string>
     <string name="request_none">Запросить иконку(ки)</string>
