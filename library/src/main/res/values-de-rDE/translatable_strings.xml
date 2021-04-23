@@ -18,11 +18,11 @@
     <string name="impossible_open_themes">Kann App nicht öffnen</string>
     <string name="themes_app_not_installed">„Themes“ ist nicht installiert.</string>
     <string name="coming_soon">Demnächst verfügbar.</string>
-    <string name="quick_apply">Auf Home anwenden</string>
+    <string name="quick_apply">Auf Startseite anwenden</string>
     <string name="request_x_icons">%1$s Icons anfordern</string>
     <string name="request_icon">Icon anfordern</string>
     <string name="request_none">Icon(s) anfordern</string>
-    <string name="kustom_templates">Kustom Vorlagen</string>
+    <string name="kustom_templates">Benutzerdefinierte Vorlagen</string>
     <string name="zooper_templates">Zooper Vorlagen</string>
     <string name="rate">Bewerten</string>
     <string name="share">Teilen</string>
