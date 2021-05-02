@@ -52,6 +52,12 @@ object SendIconRequest {
             .build().create(ArcticService::class.java)
     }
 
+    private fun getRequestsLocationPath(basePath: File?, context: Context?): String? {
+        basePath ?: return null
+        context ?: return null
+        return "$basePath/${context.getAppName().clean()}/Requests/"
+    }
+
     @Suppress("DEPRECATION")
     private fun getRequestsLocation(context: Context?): File? {
         try {
@@ -64,11 +70,18 @@ object SendIconRequest {
             } catch (e: Exception) {
                 null
             }
-            val appStorage = context?.getExternalFilesDir(null)
-            val defFolder =
-                if (appStorage?.absolutePath?.contains(context.packageName) == true) externalStorage
-                else appStorage
-            return File("$defFolder/${context?.getAppName()?.clean() ?: "Blueprint"}/Requests/")
+            val appStorage = context?.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
+            val cacheDir = context?.cacheDir
+
+            val possibleLocations: ArrayList<String?> = arrayListOf()
+            possibleLocations.add(getRequestsLocationPath(externalStorage, context))
+            possibleLocations.add(getRequestsLocationPath(appStorage, context))
+            possibleLocations.add(getRequestsLocationPath(cacheDir, context))
+
+            val possibleFolders = possibleLocations.map { it?.let { File(it) } }
+            return possibleFolders.firstOrNull {
+                it?.let { it.exists() && it.isDirectory && it.canWrite() } ?: false
+            }
         } catch (e: Exception) {
             return null
         }
@@ -221,7 +234,7 @@ object SendIconRequest {
             val inList = iconsNames.find { it.first.equals(iconName, true) }
             if (inList != null) correctIconName += "_${inList.second}"
 
-            val iconFile: File? = File(
+            val iconFile = File(
                 requestLocation,
                 if (uploadToArctic) "${app.packageName}.png" else "$correctIconName.png"
             )
@@ -287,7 +300,7 @@ object SendIconRequest {
         callback: RequestCallback? = null
     ) {
         if (context == null || zipFile == null) {
-            callback?.onRequestError()
+            callback?.onRequestError("Files not found")
             return
         }
 

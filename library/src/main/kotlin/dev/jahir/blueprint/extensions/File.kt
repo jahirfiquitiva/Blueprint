@@ -10,11 +10,14 @@ import java.util.zip.ZipOutputStream
 
 internal fun File.saveIcon(icon: Bitmap?): Boolean {
     icon ?: return false
-    val os: FileOutputStream? = FileOutputStream(this)
+    val os = FileOutputStream(this)
     try {
-        os?.use { icon.compress(Bitmap.CompressFormat.PNG, 100, it) }
+        os.use { icon.compress(Bitmap.CompressFormat.PNG, 100, it) }
     } catch (e: Exception) {
         return false
+    } finally {
+        os.close()
+        os.flush()
     }
     return true
 }
@@ -24,11 +27,14 @@ internal fun File.saveAll(content: String?): Boolean =
 
 internal fun File.saveAll(content: ByteArray?): Boolean {
     content ?: return false
-    val os: FileOutputStream? = FileOutputStream(this)
+    val os = FileOutputStream(this)
     try {
-        os?.use { it.write(content) }
+        os.use { it.write(content) }
     } catch (e: Exception) {
         return false
+    } finally {
+        os.close()
+        os.flush()
     }
     return true
 }
