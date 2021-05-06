@@ -1,7 +1,6 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set('sources')
     if (project.plugins.findPlugin("com.android.library")) {
@@ -13,16 +12,13 @@ task androidSourcesJar(type: Jar) {
     }
 }
 
-
 artifacts {
     archives androidSourcesJar
     archives javadocJar
 }
 
-
 group = PUBLISH_GROUP_ID
 version = PUBLISH_VERSION
-
 
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
@@ -30,7 +26,6 @@ ext["signing.secretKeyRingFile"] = ''
 ext["ossrhUsername"] = ''
 ext["ossrhPassword"] = ''
 ext["sonatypeStagingProfileId"] = ''
-
 
 File secretPropsFile = project.rootProject.file('local.properties')
 if (secretPropsFile.exists()) {
@@ -48,76 +43,75 @@ if (secretPropsFile.exists()) {
     ext["sonatypeStagingProfileId"] = System.getenv('SONATYPE_STAGING_PROFILE_ID')
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId PUBLISH_GROUP_ID
+                artifactId PUBLISH_ARTIFACT_ID
+                version PUBLISH_VERSION
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId PUBLISH_GROUP_ID
-            artifactId PUBLISH_ARTIFACT_ID
-            version PUBLISH_VERSION
+                if (project.plugins.findPlugin("com.android.library")) {
+                    artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+                } else {
+                    artifact("$buildDir/libs/${project.getName()}-${version}.jar")
+                }
 
+                artifact androidSourcesJar
 
-            if (project.plugins.findPlugin("com.android.library")) {
-                artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
-            } else {
-                artifact("$buildDir/libs/${project.getName()}-${version}.jar")
-            }
-
-
-            artifact androidSourcesJar
-
-
-            pom {
-                name = PUBLISH_ARTIFACT_ID
-                description = 'Android library for Zooper & Kustom widgets packs'
-                url = 'https://github.com/jahirfiquitiva/Blueprint'
-                licenses {
-                    license {
-                        name = 'License'
-                        url = 'https://github.com/jahirfiquitiva/Blueprint/blob/sample/LICENSE.md'
+                pom {
+                    name = PUBLISH_ARTIFACT_ID
+                    description = 'Android library for icons packs'
+                    url = 'https://github.com/jahirfiquitiva/Blueprint'
+                    licenses {
+                        license {
+                            name = 'License'
+                            url = 'https://github.com/jahirfiquitiva/Blueprint/blob/sample/LICENSE.md'
+                        }
                     }
-                }
-                developers {
-                    developer {
-                        id = 'jahirfiquitiva'
-                        name = 'Jahir Fiquitiva'
-                        email = 'hola@jahir.dev'
+                    developers {
+                        developer {
+                            id = 'jahirfiquitiva'
+                            name = 'Jahir Fiquitiva'
+                            email = 'hola@jahir.dev'
+                        }
+                        // Other devs...
                     }
-                    // Other devs...
-                }
-                scm {
-                    connection = 'scm:git:github.com/jahirfiquitiva/Blueprint.git'
-                    developerConnection = 'scm:git:ssh://github.com/jahirfiquitiva/Blueprint.git'
-                    url = 'https://github.com/jahirfiquitiva/Blueprint/tree/master'
-                }
-                withXml {
-                    def dependenciesNode = asNode().appendNode('dependencies')
+                    scm {
+                        connection = 'scm:git:github.com/jahirfiquitiva/Blueprint.git'
+                        developerConnection = 'scm:git:ssh://github.com/jahirfiquitiva/Blueprint.git'
+                        url = 'https://github.com/jahirfiquitiva/Blueprint/tree/master'
+                    }
+                    withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
 
-
-                    project.configurations.implementation.allDependencies.each {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', it.group)
-                        dependencyNode.appendNode('artifactId', it.name)
-                        dependencyNode.appendNode('version', it.version)
+                        project.configurations.implementation.allDependencies.each {
+                            if (it == null) return
+                            if (it.group == null) return
+                            if (it.name == null) return
+                            if (it.name == 'unspecified') return
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                        }
                     }
                 }
             }
         }
-    }
-    repositories {
-        maven {
-            name = "sonatype"
-            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+        repositories {
+            maven {
+                name = "sonatype"
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
 
-
-            credentials {
-                username ossrhUsername
-                password ossrhPassword
+                credentials {
+                    username ossrhUsername
+                    password ossrhPassword
+                }
             }
         }
     }
 }
-
 
 nexusPublishing {
     repositories {
@@ -131,7 +125,6 @@ nexusPublishing {
         }
     }
 }
-
 
 signing {
     sign publishing.publications

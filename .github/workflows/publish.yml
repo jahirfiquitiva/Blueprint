@@ -28,11 +28,11 @@ jobs:
           sudo bash -c "echo '$GPG_KEY_CONTENTS' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
         # Builds the release artifacts of the library
       - name: Release build
-        run: ./gradlew :library:assembleRelease
+        run: ./gradlew clean :library:assembleRelease --full-stacktrace
 
         # Generates other artifacts (javadocJar is optional)
       - name: Source jar
-        run: ./gradlew androidSourcesJar javadocJar
+        run: ./gradlew androidSourcesJar sourcesJar javadocJar
 
         # Runs upload, and then closes & releases the repository
       - name: Publish to MavenCentral
