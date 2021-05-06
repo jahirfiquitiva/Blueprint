@@ -82,8 +82,8 @@ dependencies {
 
 ext {
     PUBLISH_GROUP_ID = 'dev.jahir'
-    PUBLISH_VERSION = Blueprint.version
     PUBLISH_ARTIFACT_ID = 'Blueprint'
+    PUBLISH_VERSION = Blueprint.versionName
 }
 
 apply from: '../lib-artifacts.gradle'
