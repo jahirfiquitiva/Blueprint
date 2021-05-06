@@ -4,7 +4,6 @@ plugins {
 
 repositories {
     google()
-    jcenter()
     mavenCentral()
     maven(url = "https://jitpack.io")
     maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
