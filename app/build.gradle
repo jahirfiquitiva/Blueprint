@@ -25,8 +25,10 @@ android {
             keyPassword 'frames'
             storeFile file('frames.jks')
             storePassword 'frames'
-            v1SigningEnabled true
-            v2SigningEnabled true
+            enableV1Signing true
+            enableV2Signing true
+            enableV3Signing true
+            enableV4Signing true
         }
     }
 
