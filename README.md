@@ -4,7 +4,7 @@ Blueprint
 ======
 
 ![API](https://img.shields.io/badge/API-21%2B-34bf49.svg)
-[![JitPack](https://jitpack.io/v/com.jahirfiquitiva/Blueprint.svg)](https://jitpack.io/#com.jahirfiquitiva/Blueprint)
+[![GitHub Release](https://img.shields.io/github/v/release/jahirfiquitiva/Blueprint?label=Blueprint&sort=semver)](https://github.com/jahirfiquitiva/Blueprint/releases/latest)
 [![Build Status](https://travis-ci.com/jahirfiquitiva/Blueprint.svg?branch=master)](https://travis-ci.com/jahirfiquitiva/Blueprint)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/55f3f196492a4ea88f13da0f219b9125)](https://www.codacy.com/app/jahirfiquitiva/Blueprint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jahirfiquitiva/Blueprint&amp;utm_campaign=Badge_Grade)
 [![Crowdin](https://badges.crowdin.net/blueprint/localized.svg)](https://crowdin.com/project/blueprint)
@@ -92,9 +92,9 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 ---
 
 # Including in your project
-Blueprint is available via JitPack, so getting it as simple as adding it as a dependency, like this:
+Blueprint is available via Maven, so getting it as simple as adding it as a dependency, like this:
 
-1. Add JitPack repository to your root `build.gradle` file
+1. Add `MavenCentral` and `Jitpack` to your root `build.gradle` file
 ```gradle
 allprojects {
     repositories {
@@ -111,7 +111,7 @@ dependencies {
     }
 }
 ```
-where `{latest version}` corresponds to published version in   [![JitPack](https://jitpack.io/v/dev.jahir/Blueprint.svg)](https://jitpack.io/#dev.jahir/Blueprint)
+where `{latest version}` corresponds to published version in   [![GitHub Release](https://img.shields.io/github/v/release/jahirfiquitiva/Blueprint?label=Blueprint&sort=semver)](https://github.com/jahirfiquitiva/Blueprint/releases/latest)
 
 ## How to implement
 :page_with_curl: Everything you need to know can be found in the **[Wiki Docs](https://github.com/jahirfiquitiva/Blueprint/wiki/)**
