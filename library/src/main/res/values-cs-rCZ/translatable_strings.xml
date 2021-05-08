@@ -72,7 +72,7 @@
         <item>Proč aplikace potřebuje oprávnění zabránit telefonu přejít do režimu spánku?</item>
     </string-array>
     <string-array name="answers">
-        <item>Potřebujete spouštěč s podporou balíčků ikon. Seznam podporovaných spouštěčů naleznete v sekci \"Použít\", nebo v popisu aplikace v Obchodě Play.</item>
+        <item>Potřebujete launcher s podporou balíčků ikon. Seznam podporovaných launcherů naleznete v sekci \"Použít\" nebo v popisu aplikace v Obchodě Play.</item>
         <item>V závislosti na typu navigace aplikace je třeba buď vysunout navigační panel zleva a přejít k části \"Použít\" nebo zvolit 4. ikonu v dolním navigačním panelu. Odtud můžete vybrat spouštěč, ve kterém chcete tento balíček ikon použít. Některé spouštěče nepodporují automatické nastavení ikon a je nutné to vykonat ručně prostřednictvím jejich nastavení.</item>
         <item>Přejděte zpátky do hlavní sekce aplikace a klikněte na tlačítko s názvem \"Ikony\".</item>
         <item>V závislosti na spouštěči, který používáte, buď musíte dlouze přidržet ikonu a zvolit \"Upravit\" z vyskakovacího menu, nebo dlouze přidržet ikonu a přesunout ji do políčka \"Upravit\".</item>
