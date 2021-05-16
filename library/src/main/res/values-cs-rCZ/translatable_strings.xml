@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="home">Domovská stránka</string>
+    <string name="home">Domů</string>
     <string name="icons">Ikony</string>
-    <string name="request">Request</string>
-    <string name="overview">Summary</string>
-    <string name="more_apps">Více aplikací</string>
-    <string name="useful_links">odkaz</string>
-    <string name="select_all">Select All</string>
-    <string name="help">Help</string>
-    <string name="x_icons">%1$s Icons</string>
-    <string name="search_icons">Search Icons</string>
-    <string name="search_apps">Search Apps</string>
-    <string name="search_launchers">Search Launchers</string>
-    <string name="lni_content">“%1$s” isn’t installed. Do you want to get it from Google Play?</string>
-    <string name="no_compatible_launcher_title">Launcher Incompatible</string>
-    <string name="no_compatible_launcher_content">“Google Now Launcher” doesn’t support icon packs unless paired with “Awesome Shortcuts.” Install the latter?</string>
-    <string name="impossible_open_themes">Can’t Open App</string>
-    <string name="themes_app_not_installed">“Themes” isn’t installed.</string>
+    <string name="request">Požadavek</string>
+    <string name="overview">Souhrn</string>
+    <string name="more_apps">Další aplikace</string>
+    <string name="useful_links">Odkazy</string>
+    <string name="select_all">Vybrat vše</string>
+    <string name="help">Nápověda</string>
+    <string name="x_icons">Ikony: %1$s</string>
+    <string name="search_icons">Hledat ikony</string>
+    <string name="search_apps">Hledat aplikace</string>
+    <string name="search_launchers">Hledat launchery</string>
+    <string name="lni_content">Aplikace “%1$s” není nainstalována. Chcete ji nainstalovat z Obchodu Play?</string>
+    <string name="no_compatible_launcher_title">Launcher není kompatibilní</string>
+    <string name="no_compatible_launcher_content">\"Google Now Launcher\" nepodporuje balíčky ikon, pokud není spojen s \"Awesome Shortcuts\". Chcete nainstalovat tuto aplikaci?</string>
+    <string name="impossible_open_themes">Aplikaci nelze otevřít</string>
+    <string name="themes_app_not_installed">“Motivy” nejsou nainstalovány.</string>
     <string name="coming_soon">Již brzy.</string>
-    <string name="quick_apply">Apply to Home</string>
+    <string name="quick_apply">Použít na plochu</string>
     <string name="request_x_icons">Požadavek na ikony: %1$s</string>
     <string name="request_icon">Požadavek na ikonu</string>
     <string name="request_none">Požadavek na ikonu(y)</string>
@@ -30,10 +30,10 @@
     <string name="send_email">Odeslat e-mail</string>
     <string name="send_using">Odeslat pomocí:</string>
     <string name="request_in_progress">Odesílání požadavku</string>
-    <string name="request_in_progress_content">Požadavek byl již odesílán.</string>
+    <string name="request_in_progress_content">Požadavek se již odesílá.</string>
     <string name="building_request_dialog">Příprava požadavku...</string>
     <string name="request_upload_success_content">Požadavek odeslán.</string>
-    <string name="no_selected_apps">Nebyla vybrána žádná aplikace</string>
+    <string name="no_selected_apps">Žádné vybrané aplikace</string>
     <string name="no_selected_apps_content">Vyberte aplikace, o které chcete požádat.</string>
     <string name="apps_limit_dialog">Vyberte %1$s nebo méně aplikací.</string>
     <string name="apps_limit_dialog_more">Vyberte %1$s nebo méně aplikací.</string>
@@ -72,7 +72,7 @@
         <item>Proč aplikace potřebuje oprávnění zabránit telefonu přejít do režimu spánku?</item>
     </string-array>
     <string-array name="answers">
-        <item>Potřebujete spouštěč s podporou balíčků ikon. Seznam podporovaných spouštěčů naleznete v sekci \"Použít\", nebo v popisu aplikace v Obchodě Play.</item>
+        <item>Potřebujete launcher s podporou balíčků ikon. Seznam podporovaných launcherů naleznete v sekci \"Použít\" nebo v popisu aplikace v Obchodě Play.</item>
         <item>V závislosti na typu navigace aplikace je třeba buď vysunout navigační panel zleva a přejít k části \"Použít\" nebo zvolit 4. ikonu v dolním navigačním panelu. Odtud můžete vybrat spouštěč, ve kterém chcete tento balíček ikon použít. Některé spouštěče nepodporují automatické nastavení ikon a je nutné to vykonat ručně prostřednictvím jejich nastavení.</item>
         <item>Přejděte zpátky do hlavní sekce aplikace a klikněte na tlačítko s názvem \"Ikony\".</item>
         <item>V závislosti na spouštěči, který používáte, buď musíte dlouze přidržet ikonu a zvolit \"Upravit\" z vyskakovacího menu, nebo dlouze přidržet ikonu a přesunout ji do políčka \"Upravit\".</item>
@@ -82,9 +82,9 @@
         <item>Poslat požadavek na ikonu.</item>
         <item>Toto oprávnění je nutné k zápisu požadavků na ikony a soubory, jakož i ukládání tapet a možnosti změnit místo pro ukládání stažených tapet.</item>
         <item>Toto oprávnění je nutné pro načtení tapet ze serveru a jejich stažení.</item>
-        <item>Toto oprávnění umožňuje aplikaci zjistit zda je zařízení připojeno k internetu.</item>
+        <item>Toto oprávnění umožňuje aplikaci zjistit, zda je zařízení připojeno k internetu.</item>
         <item>Toto oprávnění umožňuje nastavit tapetu přímo z aplikace.</item>
         <item>Toto oprávnění umožňuje upravit rozměry tapety na základě rozlišení vaší obrazovky.</item>
-        <item>Toto oprávnění je vyžadováno Živou Tapetou Muzei.</item>
+        <item>Toto oprávnění je vyžadováno aplikací Muzei Live Wallpaper.</item>
     </string-array>
 </resources>
