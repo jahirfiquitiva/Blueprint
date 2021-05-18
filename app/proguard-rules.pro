@@ -38,6 +38,12 @@
 -dontwarn okio.**
 -dontwarn javax.annotation.**
 
+-keepclassmembers class * implements android.os.Parcelable {
+    static ** CREATOR;
+}
+-keep public final class * extends android.view.AbsSavedState
+-keepclassmembers public final class * extends android.view.AbsSavedState { *; }
+
 # Retrofit
 -keepattributes Signature, InnerClasses, EnclosingMethod
 -keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
