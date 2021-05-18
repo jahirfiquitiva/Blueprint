@@ -278,14 +278,8 @@
 
         <!-- OneSignal Notifications Service -->
         <!-- TODO: Remove comment marks to enable
-        <service
-            android:name=".NotificationService"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE">
-            <intent-filter>
-                <action android:name="com.onesignal.NotificationExtender" />
-            </intent-filter>
-        </service>
+        <meta-data android:name="com.onesignal.NotificationServiceExtension"
+               android:value="${applicationId}.NotificationServiceExtension" />
         -->
     </application>
 </manifest>
