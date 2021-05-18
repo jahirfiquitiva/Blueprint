@@ -78,7 +78,9 @@ object SendIconRequest {
             possibleLocations.add(getRequestsLocationPath(appStorage, context))
             possibleLocations.add(getRequestsLocationPath(cacheDir, context))
 
-            val possibleFolders = possibleLocations.map { it?.let { File(it) } }
+            val possibleFolders = possibleLocations.map {
+                it?.let { File(it).apply { createIfDidNotExist() } }
+            }
             return possibleFolders.firstOrNull {
                 it?.let { it.exists() && it.isDirectory && it.canWrite() } ?: false
             }
@@ -300,7 +302,7 @@ object SendIconRequest {
         callback: RequestCallback? = null
     ) {
         if (context == null || zipFile == null) {
-            callback?.onRequestError("Files not found")
+            callback?.onRequestError("Unable to save files!")
             return
         }
 
