@@ -89,3 +89,5 @@ proguard/
 /report
 
 app/release
+.project
+.classpath

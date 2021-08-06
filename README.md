@@ -5,9 +5,8 @@ Blueprint
 
 ![API](https://img.shields.io/badge/API-21%2B-34bf49.svg)
 [![GitHub Release](https://img.shields.io/github/v/release/jahirfiquitiva/Blueprint?label=Blueprint&sort=semver)](https://github.com/jahirfiquitiva/Blueprint/releases/latest)
-[![Build Status](https://travis-ci.com/jahirfiquitiva/Blueprint.svg?branch=master)](https://travis-ci.com/jahirfiquitiva/Blueprint)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/55f3f196492a4ea88f13da0f219b9125)](https://www.codacy.com/app/jahirfiquitiva/Blueprint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jahirfiquitiva/Blueprint&amp;utm_campaign=Badge_Grade)
-[![Crowdin](https://badges.crowdin.net/blueprint/localized.svg)](https://crowdin.com/project/blueprint)
+[![Build Status](https://github.com/jahirfiquitiva/Blueprint/actions/workflows/build.yml/badge.svg?branch=sample)](https://github.com/jahirfiquitiva/Blueprint/actions/workflows/build.yml)
+[![Crowdin](https://badges.crowdin.net/blueprint/localized.svg)](https://crowdin.com/project/blueprint/invite)
 
 Free, feature-rich, easily customizable Android dashboard for icon packs
 
