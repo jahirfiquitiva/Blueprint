@@ -6,7 +6,7 @@ Blueprint
 ![API](https://img.shields.io/badge/API-21%2B-34bf49.svg)
 [![GitHub Release](https://img.shields.io/github/v/release/jahirfiquitiva/Blueprint?label=Blueprint&sort=semver)](https://github.com/jahirfiquitiva/Blueprint/releases/latest)
 [![Build Status](https://github.com/jahirfiquitiva/Blueprint/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/jahirfiquitiva/Blueprint/actions/workflows/build.yml)
-[![Crowdin](https://badges.crowdin.net/Blueprint/localized.svg)](https://crowdin.com/project/Blueprint/invite)
+[![Crowdin](https://badges.crowdin.net/blueprint/localized.svg)](https://crowdin.com/project/blueprint/invite)
 
 Free, feature-rich, easily customizable Android dashboard for icon packs
 
