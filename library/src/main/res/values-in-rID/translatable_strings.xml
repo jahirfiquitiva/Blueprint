@@ -46,7 +46,7 @@
     <string name="days">Hari</string>
     <string name="weeks">Pekan</string>
     <string name="months">Bulan</string>
-    <string name="icon_shape">Bentuk Ikon</string>
+    <string name="icon_shape">Icon Shape</string>
     <string name="icon_shape_system">Diatur oleh Sistem</string>
     <string name="icon_shape_circle">Lingkaran</string>
     <string name="icon_shape_squircle">Persegi bundar</string>
