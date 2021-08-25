@@ -2,9 +2,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
     <string name="home">Beranda</string>
     <string name="icons">Ikon</string>
-    <string name="request">Permintaan</string>
-    <string name="overview">Ikhtisar</string>
-    <string name="more_apps">Aplikasi lainnya</string>
+    <string name="request">Request</string>
+    <string name="overview">Summary</string>
+    <string name="more_apps">Lebih banyak aplikasi</string>
     <string name="useful_links">Tautan</string>
     <string name="select_all">Pilih Semua</string>
     <string name="help">Bantuan</string>
