@@ -1,0 +1,103 @@
+name: Report a Bug 🐛
+description: File a bug report
+labels: ["Status: Pending", "Type: Bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        *Thanks for taking the time to fill out this bug report!*
+        
+        ---
+        
+  - type: checkboxes
+    id: requirements
+    attributes:
+      label: Requirements
+      description: "Please make sure you have checked all of the following:"
+      options:
+        - label: I have verified there are no duplicate active or recent bugs, questions, or requests
+          required: true
+  - type: markdown
+    attributes:
+      value: |
+        --- 
+        
+        # App and device information:
+  - type: input
+    id: version
+    attributes:
+      label: Blueprint Version
+      description: What version of Blueprint are you currently using?
+      placeholder: ex. 2.2.4
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android Version
+      description: What version of Android are you currently using?
+      placeholder: ex. 12.0.0
+    validations:
+      required: true
+  - type: input
+    id: manufacturer
+    attributes:
+      label: Device Manufacturer
+      description: What is the manufacturer of your device?
+      placeholder: ex. Samsung, Google
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device Name
+      description: What is the name of your device?
+      placeholder: ex. Pixel 6
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        --- 
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Please describe the bug in detail, clear and concisely.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction Steps
+      description: Please share information on how to reproduce the bug or issue.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Please explain what you consider the expected behavior should be
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or videos
+      description: Please share any screenshots or videos that could help understanding the issue
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Code and/or Logs
+      description: If you have logs for the issue, please share them (Use logcat to get them)
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context or info
+      description: Please share any additional details you consider relevant to solve the issue
+    validations:
+      required: false
