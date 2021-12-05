@@ -14,7 +14,7 @@ data class RequestApp(val name: String, val packageName: String, val component: 
     var icon: Drawable? = null
         private set
 
-    suspend fun loadIcon(context: Context?) {
+    fun loadIcon(context: Context?) {
         context ?: return
         if (icon != null) return
         icon = context.getAppIcon(packageName)

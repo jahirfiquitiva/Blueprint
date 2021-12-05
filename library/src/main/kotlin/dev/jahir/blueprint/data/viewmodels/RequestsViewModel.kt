@@ -178,7 +178,6 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
                         riPkg,
                         component
                     )
-                    app.loadIcon(context)
                     installedApps.add(app)
                     loaded += 1
                 }
@@ -201,6 +200,7 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
             delay(10)
             val appsToRequest = loadAppsToRequest(debug)
             appsToRequestData.postValue(appsToRequest)
+            appsToRequest.forEach { it.loadIcon(context) }
         }
     }
 
