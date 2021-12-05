@@ -19,7 +19,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:exported="true">
 
             <!-- TODO: Do NOT remove the intent-filter tags -->
             <intent-filter>
