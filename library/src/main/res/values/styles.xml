@@ -11,7 +11,7 @@
         <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView.Amoled</item>
     </style>
 
-    <style name="Widget.Blueprint.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+    <style name="Widget.Blueprint.BottomNavigationView" parent="Widget.Frames.BottomNavigationView">
         <item name="itemIconTint">@drawable/bottom_navigation_states</item>
         <item name="itemTextColor">@drawable/bottom_navigation_states</item>
         <item name="labelVisibilityMode">labeled</item>
@@ -73,5 +73,13 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
     </style>
+
+    <style name="MyApp.Default" parent="Blueprint.Default" />
+
+    <style name="MyApp.Default.Amoled" parent="Blueprint.Default.Amoled" />
+
+    <style name="MyApp.Default.MaterialYou" parent="Blueprint.Default.MaterialYou" />
+
+    <style name="MyApp.Default.Amoled.MaterialYou" parent="Blueprint.Default.Amoled.MaterialYou" />
 
 </resources>

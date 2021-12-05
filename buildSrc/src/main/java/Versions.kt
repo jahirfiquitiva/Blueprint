@@ -16,7 +16,7 @@ object Versions {
     const val buildTools = "30.0.2"
 
     // Kuper
-    const val kuper = "2.3.5"
+    const val kuper = "2.3.6"
 
     // Adaptive Icons
     const val adaptiveIcons = "1.0.0"

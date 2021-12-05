@@ -2,21 +2,21 @@
 <resources>
 
     <!-- Don't change the parent style -->
-    <style name="MyApp.Default.MaterialYou" parent="Frames.Default.MaterialYou">
+    <style name="MyApp.Default.MaterialYou" parent="Blueprint.Default.MaterialYou">
         <item name="bottomNavigationStyle">@style/MyApp.BottomNavigationView.MaterialYou</item>
         <item name="customFontBold">@font/manrope_bold_fam</item>
         <item name="customFontNormal">@font/manrope_normal_fam</item>
     </style>
 
     <!-- Don't change the parent style -->
-    <style name="MyApp.Default.Amoled.MaterialYou" parent="Frames.Default.Amoled.MaterialYou">
+    <style name="MyApp.Default.Amoled.MaterialYou" parent="Blueprint.Default.Amoled.MaterialYou">
         <item name="bottomNavigationStyle">@style/MyApp.BottomNavigationView.MaterialYou</item>
         <item name="customFontBold">@font/manrope_bold_fam</item>
         <item name="customFontNormal">@font/manrope_normal_fam</item>
     </style>
 
     <!-- Don't change the parent style -->
-    <style name="MyApp.BottomNavigationView.MaterialYou" parent="Widget.Frames.BottomNavigationView.MaterialYou">
+    <style name="MyApp.BottomNavigationView.MaterialYou" parent="Widget.Blueprint.BottomNavigationView.MaterialYou">
         <!--
             Switch bottom navigation labels visibility style
             You can use any of there:
@@ -26,7 +26,7 @@
             - selected
             Learn more: https://developer.android.com/reference/com/google/android/material/bottomnavigation/LabelVisibilityMode
         -->
-        <item name="labelVisibilityMode">auto</item>
+        <item name="labelVisibilityMode">labeled</item>
     </style>
 
 </resources>

@@ -2,9 +2,11 @@ package dev.jahir.blueprint.ui.viewholders
 
 import android.view.View
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
+import com.google.android.material.button.MaterialButton
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
 import dev.jahir.frames.extensions.context.openLink
+import dev.jahir.frames.extensions.context.preferences
 import dev.jahir.frames.extensions.views.context
 import dev.jahir.frames.extensions.views.findView
 import dev.jahir.frames.extensions.views.gone
@@ -17,6 +19,10 @@ class HomeActionsViewHolder(itemView: View) : SectionedViewHolder(itemView) {
     private val donateBtn: View? by itemView.findView(R.id.donate_btn)
 
     fun bind(showDonate: Boolean, listener: HomeItemsListener? = null) {
+        (shareBtn as? MaterialButton)?.setSupportAllCaps(!context.preferences.useMaterialYou)
+        (rateBtn as? MaterialButton)?.setSupportAllCaps(!context.preferences.useMaterialYou)
+        (donateBtn as? MaterialButton)?.setSupportAllCaps(!context.preferences.useMaterialYou)
+
         shareBtn?.setOnClickListener { listener?.onShareClicked() }
         rateBtn?.setOnClickListener { context.openLink(PLAY_STORE_LINK_PREFIX + context.packageName) }
         if (showDonate) {

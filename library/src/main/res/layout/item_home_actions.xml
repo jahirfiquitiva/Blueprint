@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Donate to me pls"
+        android:text="@string/donate"
         app:icon="@drawable/ic_donate"
         tools:text="Donate to me pls" />
 

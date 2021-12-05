@@ -5,7 +5,7 @@
     <color name="m3_primaryDark">@android:color/system_neutral1_10</color>
     <color name="m3_onPrimary">@android:color/system_neutral1_900</color>
 
-    <color name="m3_accent">@android:color/system_accent1_500</color>
+    <color name="m3_accent">@android:color/system_accent1_600</color>
     <color name="m3_onAccent">@android:color/system_accent1_0</color>
 
     <color name="m3_surface">@android:color/system_neutral2_50</color>
@@ -20,6 +20,11 @@
     <color name="m3_snackbarButtonColor">@android:color/system_accent1_200</color>
 
     <color name="m3_bottomNavActiveIndicator">@android:color/system_neutral2_100</color>
+
+    <color name="m3_secondaryContainer">@android:color/system_accent2_600</color>
+    <color name="m3_onSecondaryContainer">@android:color/system_accent2_0</color>
+    <color name="m3_tertiaryContainer">@android:color/system_accent3_600</color>
+    <color name="m3_onTertiaryContainer">@android:color/system_accent3_0</color>
 
     <!-- Dark Theme Colors -->
     <color name="m3_darkThemePrimary">@android:color/system_neutral1_900</color>
@@ -42,9 +47,14 @@
 
     <color name="m3_darkThemeBottomNavActiveIndicator">@android:color/system_neutral2_700</color>
 
+    <color name="m3_darkThemeSecondaryContainer">@android:color/system_accent2_200</color>
+    <color name="m3_darkThemeOnSecondaryContainer">@android:color/system_accent2_800</color>
+    <color name="m3_darkThemeTertiaryContainer">@android:color/system_accent3_200</color>
+    <color name="m3_darkThemeOnTertiaryContainer">@android:color/system_accent3_800</color>
+
     <!-- Amoled Theme Colors -->
     <color name="m3_amoledThemeAccent">@android:color/system_accent1_200</color>
+    <color name="m3_amoledThemeSurface">@android:color/system_neutral2_900</color>
     <color name="m3_amoledThemeSnackbarButtonColor">@android:color/system_accent1_500</color>
 
-    <color name="m3_amoledThemeBottomNavActiveIndicator">@color/m3_darkThemeBottomNavActiveIndicator</color>
 </resources>
