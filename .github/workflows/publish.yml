@@ -96,7 +96,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: "./app/build/outputs/apk/release/${{ env.apk_file }}"
-          asset_name: "Kuper-${{ env.release_tag }}.apk"
+          asset_name: "Blueprint-${{ env.release_tag }}.apk"
           tag: ${{ env.release_tag }}
           overwrite: true
 
