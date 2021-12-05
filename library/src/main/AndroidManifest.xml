@@ -17,11 +17,13 @@
 
         <activity
             android:name="dev.jahir.kuper.ui.activities.KuperActivity"
-            android:exported="false" />
+            android:exported="false"
+            tools:replace="android:exported" />
 
         <activity
             android:name="dev.jahir.kuper.ui.activities.KuperSettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            tools:replace="android:exported" />
 
         <activity
             android:name=".ui.activities.BlueprintKuperActivity"
@@ -39,6 +41,7 @@
 
         <activity
             android:name=".ui.activities.BlueprintSettingsActivity"
+            android:exported="true"
             android:label="@string/settings">
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />

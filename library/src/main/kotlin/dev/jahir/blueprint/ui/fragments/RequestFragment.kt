@@ -43,7 +43,7 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
         }
     }
 
-    override fun updateItemsInAdapter(items: ArrayList<RequestApp>) {
+    override fun updateItemsInAdapter(items: List<RequestApp>) {
         requestAppsAdapter.appsToRequest = items
     }
 

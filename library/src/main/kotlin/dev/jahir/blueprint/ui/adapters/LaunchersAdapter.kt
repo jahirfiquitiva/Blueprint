@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.ColorFilter
 import android.view.ViewGroup
@@ -17,10 +18,10 @@ class LaunchersAdapter(
 
     private val colorFilter: ColorFilter = bnwFilter
 
-    var launchers: ArrayList<Pair<Launcher, Boolean>> = Launcher.getSupportedLaunchers(context)
+    var launchers: List<Pair<Launcher, Boolean>> = Launcher.getSupportedLaunchers(context)
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
-            field.clear()
-            field.addAll(value)
+            field = value
             notifyDataSetChanged()
         }
 

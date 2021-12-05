@@ -110,7 +110,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
     private class SavedState : BaseSavedState {
         var icons: ArrayList<Icon> = ArrayList()
 
-        internal constructor(superState: Parcelable?) : super(superState)
+        constructor(superState: Parcelable?) : super(superState)
         private constructor(parcel: Parcel?) : super(parcel) {
             icons = ArrayList(parcel?.createTypedArrayList(Icon.CREATOR).orEmpty())
         }

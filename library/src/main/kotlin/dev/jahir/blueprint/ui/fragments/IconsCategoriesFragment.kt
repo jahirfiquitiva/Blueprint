@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -85,10 +86,11 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
         return filteredItems
     }
 
-    override fun updateItemsInAdapter(items: ArrayList<IconsCategory>) {
+    override fun updateItemsInAdapter(items: List<IconsCategory>) {
         iconsCategoriesAdapter.categories = items
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     internal fun notifyShapeChange() {
         iconsCategoriesAdapter.notifyDataSetChanged()
     }

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import dev.jahir.blueprint.BuildConfig
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.BlueprintPreferences
@@ -57,13 +56,11 @@ import dev.jahir.frames.extensions.utils.lazyViewModel
 import dev.jahir.frames.extensions.utils.postDelayed
 import dev.jahir.frames.extensions.views.isVisible
 import dev.jahir.frames.extensions.views.setMarginBottom
-import dev.jahir.frames.extensions.views.snackbar
 import dev.jahir.frames.ui.activities.FramesActivity
 import dev.jahir.frames.ui.fragments.CollectionsFragment
 import dev.jahir.frames.ui.fragments.WallpapersFragment
 import dev.jahir.kuper.data.models.Component
 import dev.jahir.kuper.data.viewmodels.ComponentsViewModel
-import dev.jahir.kuper.extensions.hasStoragePermission
 import dev.jahir.kuper.ui.fragments.KuperWallpapersFragment
 import java.util.concurrent.TimeUnit
 
@@ -177,11 +174,11 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         else super.onBackPressed()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val created = super.onCreateOptionsMenu(menu)
-        menu?.findItem(R.id.templates)?.isVisible = templatesViewModel.components.isNotEmpty()
-        menu?.findItem(R.id.select_all)?.isVisible = currentItemId == R.id.request
-        menu?.findItem(R.id.icons_shape)?.isVisible =
+        menu.findItem(R.id.templates)?.isVisible = templatesViewModel.components.isNotEmpty()
+        menu.findItem(R.id.select_all)?.isVisible = currentItemId == R.id.request
+        menu.findItem(R.id.icons_shape)?.isVisible =
             currentItemId == R.id.icons && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
                     && boolean(R.bool.includes_adaptive_icons)
         return created

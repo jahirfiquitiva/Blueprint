@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.adapters
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,9 +15,10 @@ class IconsCategoriesAdapter(
     private val onIconClick: ((Icon, Drawable?) -> Unit)? = null
 ) : RecyclerView.Adapter<IconsCategoryPreviewViewHolder>() {
 
-    var categories: ArrayList<IconsCategory> = ArrayList()
+    var categories: List<IconsCategory> = listOf()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
-            field = ArrayList(value.filter { it.hasIcons() })
+            field = value.filter { it.hasIcons() }
             notifyDataSetChanged()
         }
 

@@ -48,7 +48,7 @@ class ApplyFragment : BaseFramesFragment<Pair<Launcher, Boolean>>() {
         updateItems(Launcher.getSupportedLaunchers(context))
     }
 
-    override fun updateItemsInAdapter(items: ArrayList<Pair<Launcher, Boolean>>) {
+    override fun updateItemsInAdapter(items: List<Pair<Launcher, Boolean>>) {
         launchersAdapter.launchers = items
     }
 

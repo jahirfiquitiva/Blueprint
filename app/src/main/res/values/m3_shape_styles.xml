@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Learn more about Shape Theming and what you can do at:
+        https://material.io/develop/android/theming/shape/
+        Important: do NOT change the style names, just the attributes/properties
+    -->
+
+    <style name="ShapeAppearance.Frames.SmallComponent.MaterialYou" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/small_components_corner_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Frames.MediumComponent.MaterialYou" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/medium_components_corner_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Frames.LargeComponent.MaterialYou" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/large_components_corner_size</item>
+    </style>
+
+    <style name="ShapeAppearance.Frames.CardView.MaterialYou" parent="ShapeAppearance.Frames.MediumComponent.MaterialYou">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/cards_corner_size</item>
+    </style>
+
+</resources>

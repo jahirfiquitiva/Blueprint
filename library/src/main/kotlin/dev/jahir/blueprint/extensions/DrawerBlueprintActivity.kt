@@ -76,7 +76,7 @@ internal fun Context.getThemeAttributeDimensionSize(@AttrRes attr: Int): Int {
     var a: TypedArray? = null
     try {
         a = theme.obtainStyledAttributes(intArrayOf(attr))
-        return a?.getDimensionPixelSize(0, 0) ?: 0
+        return a.getDimensionPixelSize(0, 0)
     } finally {
         a?.recycle()
     }

@@ -113,9 +113,9 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
         iconDialog?.show(this)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val created = super.onCreateOptionsMenu(menu)
-        menu?.findItem(R.id.icons_shape)?.isVisible =
+        menu.findItem(R.id.icons_shape)?.isVisible =
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && boolean(R.bool.includes_adaptive_icons)
         return created
     }

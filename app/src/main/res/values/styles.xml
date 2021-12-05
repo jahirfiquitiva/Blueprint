@@ -11,6 +11,8 @@
         You can change the parent to any of these:
         - Frames.SplashScreen
         - Frames.SplashScreen.Amoled
+        - Frames.SplashScreen.MaterialYou
+        - Frames.SplashScreen.Amoled.MaterialYou
     -->
     <style name="MyApp.SplashScreen" parent="Frames.SplashScreen">
         <item name="customFontBold">@font/manrope_bold_fam</item>

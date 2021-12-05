@@ -242,8 +242,8 @@ object SendIconRequest {
             )
 
             try {
-                val saved = iconFile?.saveIcon(app.icon?.toBitmap()) == true
-                if (saved) iconFile?.let { emailZipFiles.add(it) }
+                val saved = iconFile.saveIcon(app.icon?.toBitmap())
+                if (saved) iconFile.let { emailZipFiles.add(it) }
 
                 val count =
                     (iconsNames.find { it.first.equals(iconName, true) }?.second ?: 0) + 1

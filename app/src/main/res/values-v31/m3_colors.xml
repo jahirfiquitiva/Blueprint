@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light Theme Colors -->
+    <color name="m3_primary">@android:color/system_neutral1_10</color>
+    <color name="m3_primaryDark">@android:color/system_neutral1_10</color>
+    <color name="m3_onPrimary">@android:color/system_neutral1_900</color>
+
+    <color name="m3_accent">@android:color/system_accent1_500</color>
+    <color name="m3_onAccent">@android:color/system_accent1_0</color>
+
+    <color name="m3_surface">@android:color/system_neutral2_50</color>
+    <color name="m3_onSurface">@android:color/system_neutral2_900</color>
+    <color name="m3_onSurfaceVariant">@android:color/system_neutral2_700</color>
+
+    <color name="m3_background">@android:color/system_neutral1_10</color>
+    <color name="m3_onBackground">@android:color/system_neutral1_900</color>
+
+    <color name="m3_snackbarBackgroundColor">@android:color/system_neutral2_800</color>
+    <color name="m3_snackbarTextColor">@android:color/system_neutral2_50</color>
+    <color name="m3_snackbarButtonColor">@android:color/system_accent1_200</color>
+
+    <color name="m3_bottomNavActiveIndicator">@android:color/system_neutral2_100</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="m3_darkThemePrimary">@android:color/system_neutral1_900</color>
+    <color name="m3_darkThemePrimaryDark">@android:color/system_neutral1_900</color>
+    <color name="m3_darkThemeOnPrimary">@android:color/system_neutral1_100</color>
+
+    <color name="m3_darkThemeAccent">@android:color/system_accent1_200</color>
+    <color name="m3_darkThemeOnAccent">@android:color/system_accent1_800</color>
+
+    <color name="m3_darkThemeSurface">@android:color/system_neutral2_800</color>
+    <color name="m3_darkThemeOnSurface">@android:color/system_neutral2_50</color>
+    <color name="m3_darkThemeOnSurfaceVariant">@android:color/system_neutral2_100</color>
+
+    <color name="m3_darkThemeBackground">@android:color/system_neutral1_900</color>
+    <color name="m3_darkThemeOnBackground">@android:color/system_neutral1_100</color>
+
+    <color name="m3_darkThemeSnackbarBackgroundColor">@android:color/system_neutral2_50</color>
+    <color name="m3_darkThemeSnackbarTextColor">@android:color/system_neutral2_900</color>
+    <color name="m3_darkThemeSnackbarButtonColor">@android:color/system_accent1_500</color>
+
+    <color name="m3_darkThemeBottomNavActiveIndicator">@android:color/system_neutral2_700</color>
+
+    <!-- Amoled Theme Colors -->
+    <color name="m3_amoledThemeAccent">@android:color/system_accent1_200</color>
+    <color name="m3_amoledThemeSnackbarButtonColor">@android:color/system_accent1_500</color>
+
+    <color name="m3_amoledThemeBottomNavActiveIndicator">@color/m3_darkThemeBottomNavActiveIndicator</color>
+</resources>

@@ -54,9 +54,11 @@ internal class EmailBuilder(
             context.packageManager.getInstallerPackageName(context.packageName) ?: "None"
 
         val deviceItems = mutableMapOf(
-            "OS Version" to "${System.getProperty(
-                "os.version"
-            )} (${Build.VERSION.INCREMENTAL})",
+            "OS Version" to "${
+                System.getProperty(
+                    "os.version"
+                )
+            } (${Build.VERSION.INCREMENTAL})",
             "OS API Level" to Build.VERSION.SDK_INT,
             "Device (Manufacturer)" to "${Build.DEVICE} (${Build.MANUFACTURER})",
             "Model (Product)" to "${Build.MODEL} (${Build.PRODUCT})",

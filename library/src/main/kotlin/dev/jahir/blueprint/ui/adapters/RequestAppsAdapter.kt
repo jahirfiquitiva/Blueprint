@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.jahir.blueprint.R
@@ -10,14 +11,15 @@ import dev.jahir.frames.extensions.views.inflate
 class RequestAppsAdapter(private val onCheckChange: ((requestApp: RequestApp, checked: Boolean) -> Unit)? = null) :
     RecyclerView.Adapter<RequestViewHolder>() {
 
-    var appsToRequest: ArrayList<RequestApp> = ArrayList()
+    var appsToRequest: List<RequestApp> = listOf()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
-            field.clear()
-            field.addAll(value)
+            field = value
             notifyDataSetChanged()
         }
 
     var selectedApps: ArrayList<RequestApp> = ArrayList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             // if (value.isEmpty() && field.isEmpty()) return
             // if (value.isNotEmpty() && value.size < appsToRequest.size) return
