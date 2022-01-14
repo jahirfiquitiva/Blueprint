@@ -33,7 +33,7 @@
         <item name="cardBackgroundColor">@color/checkable_card_background</item>
         <item name="cardForegroundColor">@color/checkable_card_foreground</item>
         <item name="strokeWidth">0dp</item>
-        <item name="checkedIcon">@null</item>
+        <item name="checkedIconSize">0dp</item>
         <item name="checkedIconEnabled">false</item>
         <item name="rippleColor">@color/checkable_card_ripple</item>
         <item name="android:clickable">true</item>
