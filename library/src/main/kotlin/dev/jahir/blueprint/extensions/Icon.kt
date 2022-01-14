@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.FragmentActivity
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.ui.activities.IconsCategoryActivity.Companion.PICKER_KEY
@@ -18,7 +19,7 @@ internal fun FragmentActivity.pickIcon(icon: Icon, drawable: Drawable?, pickerKe
     val intent = Intent()
     val bitmap: Bitmap? = try {
         (drawable as? BitmapDrawable)?.bitmap
-            ?: (drawable(icon.resId)?.asAdaptive(this)?.first as? BitmapDrawable)?.bitmap
+            ?: drawable(icon.resId)?.asAdaptive(this)?.first?.toBitmap()
             ?: BitmapFactory.decodeResource(resources, icon.resId)
     } catch (e: Exception) {
         null
