@@ -64,5 +64,5 @@
         Currently, only Arctic Manager is supported: https://arcticmanager.com.
     -->
     <string name="request_manager_backend_api_key" translatable="false"></string>
-    <string name="request_manager_base_url" translatable="false"></string>
+    <string name="request_manager_base_url" translatable="false">https://arcticmanager.com/</string>
 </resources>
