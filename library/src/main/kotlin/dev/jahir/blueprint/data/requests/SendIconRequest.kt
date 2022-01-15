@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.GsonBuilder
 import dev.jahir.blueprint.R
-import dev.jahir.blueprint.data.models.ArcticResponse
+import dev.jahir.blueprint.data.models.RequestManagerResponse
 import dev.jahir.blueprint.data.models.RequestApp
 import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestState
 import dev.jahir.blueprint.data.requests.RequestStateManager.registerRequestAttempt
@@ -43,14 +43,17 @@ import java.util.Locale
 
 object SendIconRequest {
     private var requestInProgress: Boolean = false
+    private var SERVICE: RequestManagerService? = null
 
-    private val service by lazy {
-        Retrofit.Builder()
-            .baseUrl("https://arcticmanager.com/")
+    private fun getService(baseUrl: String) =
+        SERVICE ?: Retrofit.Builder()
+            .baseUrl(baseUrl)
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build().create(ArcticService::class.java)
-    }
+            .build().create(RequestManagerService::class.java)
+            .also {
+                SERVICE = it
+            }
 
     private fun getRequestsLocationPath(basePath: File?, context: Context?): String? {
         basePath ?: return null
@@ -107,7 +110,7 @@ object SendIconRequest {
         context: Context?,
         correctList: ArrayList<Pair<String, RequestApp>>,
         date: String,
-        uploadToArctic: Boolean
+        uploadToRequestManager: Boolean
     ): Pair<ArrayList<File>, String> = withContext(IO) {
         val requestLocation =
             getRequestsLocation(context)
@@ -118,7 +121,7 @@ object SendIconRequest {
         var trSb: StringBuilder? = null
         var jsonSb: StringBuilder? = null
 
-        if (!uploadToArctic) {
+        if (!uploadToRequestManager) {
             xmlSb = StringBuilder(
                 "<resources>\n\t<iconback img1=\"iconback\"/>\n\t<iconmask " +
                         "img1=\"iconmask\"/>\n\t<iconupon img1=\"iconupon\"/>\n\t" +
@@ -126,9 +129,9 @@ object SendIconRequest {
             )
         }
 
-        if (!uploadToArctic) amSb = StringBuilder("<appmap>")
+        if (!uploadToRequestManager) amSb = StringBuilder("<appmap>")
 
-        if (!uploadToArctic) {
+        if (!uploadToRequestManager) {
             trSb = StringBuilder(
                 "<Theme version=\"1\">\n\t<Label value=\"${context?.getAppName()}\"/>\n\t" +
                         "<Wallpaper image=\"wallpaper_01\"/>\n\t<LockScreenWallpaper " +
@@ -138,7 +141,7 @@ object SendIconRequest {
             )
         }
 
-        if (uploadToArctic) jsonSb = StringBuilder("{\n\t\"components\": [")
+        if (uploadToRequestManager) jsonSb = StringBuilder("{\n\t\"components\": [")
 
         var isFirst = true
         for ((iconName, app) in correctList) {
@@ -214,7 +217,7 @@ object SendIconRequest {
     private suspend fun zipFiles(
         context: Context?,
         selectedApps: ArrayList<RequestApp>,
-        uploadToArctic: Boolean
+        uploadToRequestManager: Boolean
     ): Pair<File?, String> = withContext(IO) {
         context ?: return@withContext Pair(null, "")
 
@@ -238,7 +241,7 @@ object SendIconRequest {
 
             val iconFile = File(
                 requestLocation,
-                if (uploadToArctic) "${app.packageName}.png" else "$correctIconName.png"
+                if (uploadToRequestManager) "${app.packageName}.png" else "$correctIconName.png"
             )
 
             try {
@@ -262,17 +265,18 @@ object SendIconRequest {
 
         val date = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date()).clean()
 
-        val (textFiles, jsonContent) = buildTextFiles(context, correctList, date, uploadToArctic)
+        val (textFiles, jsonContent) = buildTextFiles(context, correctList, date, uploadToRequestManager)
         emailZipFiles.addAll(textFiles)
 
         val zipFile = buildZipFile(date, requestLocation, emailZipFiles)
         Pair(zipFile, jsonContent)
     }
 
-    private suspend fun uploadToArctic(
+    private suspend fun uploadToRequestManager(
         zipFile: File?,
         jsonContent: String,
-        apiKey: String
+        apiKey: String,
+        baseUrl: String
     ): String {
         zipFile ?: return "File does not exist!"
         return withContext(IO) {
@@ -281,8 +285,8 @@ object SendIconRequest {
             val requestBody: RequestBody = RequestBody.create(MediaType.parse(fileType), zipFile)
             val fileToUpload =
                 MultipartBody.Part.createFormData("archive", zipFile.name, requestBody)
-            val response: ArcticResponse? = try {
-                service.uploadRequest(apiKey, jsonContent, fileToUpload)
+            val response: RequestManagerResponse? = try {
+                getService(baseUrl).uploadRequest(apiKey, jsonContent, fileToUpload)
             } catch (e: Exception) {
                 null
             }
@@ -364,14 +368,15 @@ object SendIconRequest {
             if (state.state == RequestState.State.NORMAL) {
                 theCallback.onRequestStarted()
 
-                val apiKey = activity.string(R.string.arctic_backend_api_key)
-                val uploadToArctic = apiKey.hasContent()
+                val apiKey = activity.string(R.string.request_manager_backend_api_key)
+                val uploadToRequestManager = apiKey.hasContent()
 
-                val (zipFile, jsonContent) = zipFiles(activity, selectedApps, uploadToArctic)
+                val (zipFile, jsonContent) = zipFiles(activity, selectedApps, uploadToRequestManager)
                 cleanFiles(activity)
 
-                if (uploadToArctic) {
-                    val errorMessage = uploadToArctic(zipFile, jsonContent, apiKey)
+                if (uploadToRequestManager) {
+                    val baseUrl = activity.string(R.string.request_manager_base_url)
+                    val errorMessage = uploadToRequestManager(zipFile, jsonContent, apiKey, baseUrl)
                     val errored = errorMessage.hasContent()
                     if (errored) theCallback.onRequestError(errorMessage)
                     else theCallback.onRequestUploadFinished(!errored)
