@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.GsonBuilder
 import dev.jahir.blueprint.R
-import dev.jahir.blueprint.data.models.RequestManagerResponse
 import dev.jahir.blueprint.data.models.RequestApp
 import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestState
 import dev.jahir.blueprint.data.requests.RequestStateManager.registerRequestAttempt
@@ -32,6 +31,7 @@ import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -277,24 +277,25 @@ object SendIconRequest {
         jsonContent: String,
         apiKey: String,
         baseUrl: String
-    ): String {
-        zipFile ?: return "File does not exist!"
+    ): Pair<Boolean, String?> {
+        zipFile ?: return false to "File does not exist!"
         return withContext(IO) {
             var fileType = URLConnection.guessContentTypeFromName(zipFile.name)
             if (fileType == null || !fileType.hasContent()) fileType = "application/zip"
             val requestBody: RequestBody = RequestBody.create(MediaType.parse(fileType), zipFile)
-            val fileToUpload =
-                MultipartBody.Part.createFormData("archive", zipFile.name, requestBody)
-            val response: RequestManagerResponse? = try {
-                getService(baseUrl).uploadRequest(apiKey, jsonContent, fileToUpload)
+            val fileToUpload = MultipartBody.Part.createFormData("archive", zipFile.name, requestBody)
+            var succeeded = false
+            val message = try {
+                getService(baseUrl).uploadRequest(apiKey, jsonContent, fileToUpload).let {
+                    succeeded = it.status != "error"
+                    it.message
+                }
+            } catch (e: HttpException) {
+                e.message()
             } catch (e: Exception) {
-                null
+                e.message
             }
-            val success = response?.status?.contains("success", true) ?: false
-            val errorMessage = response?.error.orEmpty()
-            return@withContext if (!success || errorMessage.hasContent()) {
-                errorMessage
-            } else ""
+            succeeded to message
         }
     }
 
@@ -376,10 +377,9 @@ object SendIconRequest {
 
                 if (uploadToRequestManager) {
                     val baseUrl = activity.string(R.string.request_manager_base_url)
-                    val errorMessage = uploadToRequestManager(zipFile, jsonContent, apiKey, baseUrl)
-                    val errored = errorMessage.hasContent()
-                    if (errored) theCallback.onRequestError(errorMessage)
-                    else theCallback.onRequestUploadFinished(!errored)
+                    val (succeeded, message) = uploadToRequestManager(zipFile, jsonContent, apiKey, baseUrl)
+                    if (succeeded) theCallback.onRequestUploadFinished(true)
+                    else theCallback.onRequestError(message)
 
                     registerRequestAttempt(activity, selectedApps.size)
                     cleanFiles(activity, true)
