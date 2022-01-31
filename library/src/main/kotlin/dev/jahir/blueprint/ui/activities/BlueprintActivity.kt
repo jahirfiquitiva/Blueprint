@@ -474,7 +474,13 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     override fun onRequestError(reason: String?, e: Throwable?) {
         super.onRequestError(reason, e)
         showRequestDialog {
-            message(string(R.string.requests_upload_error, reason))
+            message(
+                if (reason != null) {
+                    string(R.string.requests_upload_error, reason)
+                } else {
+                    string(R.string.requests_upload_error_unknown)
+                }
+            )
         }
     }
 
