@@ -2,6 +2,7 @@ package dev.jahir.blueprint.data.viewmodels
 
 import android.app.Application
 import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
@@ -63,18 +64,20 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 titles.mapIndexed { i, s -> DefHomeItem(s, descriptions[i], icons[i], urls[i]) }
                     .distinctBy { it.url }
                     .map {
-                        val isAnApp =
-                            it.url.lower().startsWith(PLAY_STORE_LINK_PREFIX) ||
-                                    it.url.lower().startsWith("market://details?id=")
+                        val isMarketUrl = it.url.lower().startsWith("market://details?id=")
+                        val isAnApp = isMarketUrl || it.url.lower().startsWith(PLAY_STORE_LINK_PREFIX)
                         var isInstalled = false
                         var intent: Intent? = null
                         if (isAnApp) {
+                            val packageName = it.url.substring(it.url.lastIndexOf("=") + 1)
                             try {
-                                val packageName = it.url.substring(it.url.lastIndexOf("=") + 1)
                                 isInstalled = context.isAppInstalled(packageName)
                                 intent =
                                     context.packageManager.getLaunchIntentForPackage(packageName)
                             } catch (e: Exception) {
+                            }
+                            if (intent == null && isMarketUrl) {
+                                intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
                             }
                         }
                         val openIcon = if (isAnApp)
