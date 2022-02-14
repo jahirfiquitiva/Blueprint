@@ -60,8 +60,9 @@
     <integer name="time_limit_in_minutes">0</integer>
 
     <!--
-        Host must also be filled in first. An app API key from Arctic Request Manager.
-        Get yours at https://arcticmanager.com
+        The API key and base URL for the icon request manager.
+        Currently, only Arctic Manager is supported: https://arcticmanager.com.
     -->
-    <string name="arctic_backend_api_key" translatable="false"></string>
+    <string name="request_manager_backend_api_key" translatable="false"></string>
+    <string name="request_manager_base_url" translatable="false">https://arcticmanager.com/</string>
 </resources>
