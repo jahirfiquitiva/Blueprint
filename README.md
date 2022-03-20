@@ -90,6 +90,16 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 
 ---
 
+<a target="_blank" href="https://pacificmanager.app">
+<img src="https://pacificmanager.app/content/promo-banner-smaller.png" width="400"/>
+</a>
+
+<a href="https://pacificmanager.app" target="_blank">Pacific Manager</a> takes care of all your icon requests. Quit using the old traditional method of receiving emails from your users, making you sort through hundreds of potentially duplicate requests a day. </i>
+
+<b>Use the code `blueprint` at checkout to get 2 weeks of Pacific Manager for free.</b>
+
+---
+
 # Including in your project
 Blueprint is available via Maven, so getting it as simple as adding it as a dependency, like this:
 
