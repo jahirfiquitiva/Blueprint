@@ -65,7 +65,7 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 - Support for adaptive icon packs (Additional improvements coming soon!)
 - In-app icon request tool
 - Premium Icon Requests (Coming soon!)
-- Support for [Arctic Manager](https://arcticmanager.com/)
+- Support for [Pacific Manager](https://pacificmanager.app/)
 - Apply section with 20 supported launchers. (Other launchers might not support direct apply)
 - Help section, to answer the questions your users have.
 - Support for Zooper templates, Kustom Wallpapers, Widgets, Lockscreens and Komponents.
