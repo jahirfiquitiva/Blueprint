@@ -65,7 +65,7 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 - Support for adaptive icon packs (Additional improvements coming soon!)
 - In-app icon request tool
 - Premium Icon Requests (Coming soon!)
-- Support for [Arctic Manager](https://arcticmanager.com/)
+- Support for [Pacific Manager](https://pacificmanager.app/)
 - Apply section with 20 supported launchers. (Other launchers might not support direct apply)
 - Help section, to answer the questions your users have.
 - Support for Zooper templates, Kustom Wallpapers, Widgets, Lockscreens and Komponents.
@@ -87,6 +87,16 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 
 ## Changelog
 :radio_button: You can find it in the [Releases page](https://github.com/jahirfiquitiva/Blueprint/releases)
+
+---
+
+<a target="_blank" href="https://pacificmanager.app">
+<img src="https://pacificmanager.app/content/promo-banner-smaller.png" width="400"/>
+</a>
+
+<a href="https://pacificmanager.app" target="_blank">Pacific Manager</a> takes care of all your icon requests. Quit using the old traditional method of receiving emails from your users, making you sort through hundreds of potentially duplicate requests a day. </i>
+
+<b>Use the code `blueprint` at checkout to get 2 weeks of Pacific Manager for free.</b>
 
 ---
 
