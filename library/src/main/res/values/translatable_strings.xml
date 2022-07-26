@@ -83,11 +83,11 @@
         <item>This happened because the icon pack has been moved to the SD card. You should move it back to internal storage.</item>
         <item>Your launcher may be incorrectly handling the resolution of the icons. You can fix this by increasing the icon size to 115%–120% or switching to another launcher.</item>
         <item>Please send an icon request.</item>
-        <item>It’s used to create icon request files, save wallpapers, and set the download location for wallpapers.</item>
-        <item>It’s used to load wallpapers from the cloud and download them.</item>
-        <item>It’s used to check if your device is connected to the internet.</item>
-        <item>It’s used to let you apply wallpapers directly from the app.</item>
-        <item>It’s used to adjust the dimensions of wallpapers to match the resolution of your device’s screen.</item>
-        <item>It’s required by Muzei Live Wallpaper.</item>
+        <item>It’s needed to create icon request files, save wallpapers, and set the download location for wallpapers.</item>
+        <item>It’s needed to load wallpapers from the cloud and download them.</item>
+        <item>It’s needed to check if your device is connected to the internet.</item>
+        <item>It’s needed to let you apply wallpapers directly from the app.</item>
+        <item>It’s needed to adjust the dimensions of wallpapers based on the resolution of your device’s screen.</item>
+        <item>It’s needed by Muzei Live Wallpaper.</item>
     </string-array>
 </resources>
