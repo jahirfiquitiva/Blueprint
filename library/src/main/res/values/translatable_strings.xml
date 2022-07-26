@@ -31,7 +31,7 @@
     <string name="send_using">Send With:</string>
     <string name="request_in_progress">Sending Request</string>
     <string name="request_in_progress_content">A request is already being sent.</string>
-    <string name="building_request_dialog">Preparing request...</string>
+    <string name="building_request_dialog">Preparing request…</string>
     <string name="request_upload_success_content">Request sent.</string>
     <string name="no_selected_apps">No Apps Selected</string>
     <string name="no_selected_apps_content">Select apps to send a request.</string>
@@ -58,36 +58,36 @@
 
     <!-- HELP SECTION -->
     <string-array name="questions">
-        <item>How to use the Icon Pack?</item>
-        <item>How to apply the Icon Pack?</item>
+        <item>How to use the icon pack?</item>
+        <item>How to apply the icon pack?</item>
         <item>How to see all the included icons?</item>
         <item>How to replace an icon with an alternative one?</item>
-        <item>How to request unthemed icons?</item>
-        <item>After restarting my device, icon pack is not applied anymore. Icons were restored to default.</item>
-        <item>Why do icons look pixelated on my device?</item>
-        <item>I can see an icon for X app in the included icons, but the icon does not apply.</item>
-        <item>Why does the app need permission to modify or delete content of my storage?</item>
-        <item>Why does the app need permission to full network access?</item>
+        <item>How to request new icons?</item>
+        <item>I’ve restarted my device and the icon pack isn’t applied anymore. The default icons have been restored.</item>
+        <item>Why do the icons look pixelated on my device?</item>
+        <item>I can see an icon for a specific app in the icon list, but it’s not being applied.</item>
+        <item>Why does the app need permission to modify or delete the files on my device?</item>
+        <item>Why does the app need full network access?</item>
         <item>Why does the app need permission to view connections?</item>
-        <item>Why does the app need permission to set wallpaper?</item>
+        <item>Why does the app need permission to set the wallpaper?</item>
         <item>Why does the app need permission to adjust the wallpaper size?</item>
-        <item>Why does the app need permission to prevent phone from sleeping?</item>
+        <item>Why does the app need permission to prevent the device from sleeping?</item>
     </string-array>
 
     <string-array name="answers">
-        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
-        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Apply\" section, or choose 4th icon from the bottom navigation bar. From there you can choose a launcher you want to apply the icons to. Some launchers doesn\'t support auto-applying and you have to do it manually through their settings.</item>
-        <item>Go back to main section of the app and tap the tile titled \"Icons\".</item>
-        <item>Depending on the launcher you\'re using, you either have to long tap the icon and select \"Edit\" from the pop-up menu, or long tap the icon and move it to a \"Edit\" box.</item>
-        <item>Depending on the app\'s navigation type, you need to either slide the navigation drawer from the left, and go to \"Requests\" section, or choose the icon from the bottom navigation bar.</item>
-        <item>It happened because the icon pack was moved to SD Card, you should install it in internal storage.</item>
-        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
-        <item>Send an icon request.</item>
-        <item>It\'s needed to be able write icon requests data and files, as well as saving wallpapers, and being able to change Wallpapers\' download location.</item>
-        <item>It\'s needed to be able to load wallpapers from cloud and download them.</item>
-        <item>It\'s needed to be able to check if your device has internet connection.</item>
-        <item>It\'s needed to be able to apply wallpaper directly from the app.</item>
-        <item>It\'s needed to be able to adjust wallpapers dimensions based on your screen resolution.</item>
-        <item>It\'s needed by Muzei Live Wallpaper.</item>
+        <item>You need a launcher with icon pack support. You’ll find a list of supported launchers in the “Apply” section or in the app’s description on the Play Store.</item>
+        <item>Depending on the app’s navigation type, either slide out the navigation drawer from the left and go to the “Apply” section, or choose “Apply” in the bottom navigation bar. On the “Apply” page, select your launcher. If your launcher isn’t listed, apply the icon pack via the launcher’s settings.</item>
+        <item>On the main page of the app, tap the tile titled “Icons.”</item>
+        <item>Depending on the launcher you’re using, either tap and hold the icon and select “Edit” from the pop-up menu, or tap and hold the icon and drag it to the “Edit” box near the top of the screen.</item>
+        <item>Depending on the app’s navigation type, either slide out the navigation drawer from the left and go to the “Request” section, or choose “Request” in the bottom navigation bar.</item>
+        <item>This happened because the icon pack has been moved to the SD card. You should move it back to internal storage.</item>
+        <item>Your launcher may be incorrectly handling the resolution of the icons. You can fix this by increasing the icon size to 115%–120% or switching to another launcher.</item>
+        <item>Please send an icon request.</item>
+        <item>It’s used to create icon request files, save wallpapers, and set the download location for wallpapers.</item>
+        <item>It’s used to load wallpapers from the cloud and download them.</item>
+        <item>It’s used to check if your device is connected to the internet.</item>
+        <item>It’s used to let you apply wallpapers directly from the app.</item>
+        <item>It’s used to adjust the dimensions of wallpapers to match the resolution of your device’s screen.</item>
+        <item>It’s required by Muzei Live Wallpaper.</item>
     </string-array>
 </resources>

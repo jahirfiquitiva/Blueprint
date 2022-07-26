@@ -49,6 +49,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.activities.BlueprintAboutActivity"
+            android:exported="false"
+            android:label="@string/about" />
+
     </application>
 
     <queries>
