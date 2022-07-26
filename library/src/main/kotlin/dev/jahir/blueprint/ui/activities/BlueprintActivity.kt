@@ -195,6 +195,10 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                 shouldCallSuper = false
                 startActivity(Intent(this, BlueprintSettingsActivity::class.java))
             }
+            R.id.about -> {
+                shouldCallSuper = false
+                startActivity(Intent(this, BlueprintAboutActivity::class.java))
+            }
         }
         return if (shouldCallSuper) super.onOptionsItemSelected(item) else true
     }
