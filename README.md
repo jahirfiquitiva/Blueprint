@@ -33,26 +33,26 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 
 ### Home / Icons / Apply / Requests
 <p align="center">
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/1.png?maxAge=0" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/2.png?maxAge=0" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png?maxAge=0" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/4.png?maxAge=0" height="350"/>
+<img src="/art/1.png" width="162" />
+<img src="/art/2.png" width="162" />
+<img src="/art/3.png" width="162" />
+<img src="/art/4.png" width="162" />
 </p>
 
 ### Wallpapers support (Based on [Frames](https://github.com/jahirfiquitiva/Frames)) / Templates support (Based on [Kuper](https://github.com/Kuper))
 <p align="center">
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png?maxAge=0" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/4.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/5.png" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/6.png?maxAge=0" height="350"/>
+<img src="/art/5.png" width="162" />
+<img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/4.png" width="162" />
+<img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/5.png" width="162" />
+<img src="/art/6.png" width="162" />
 </p>
 
 ### Help / Credits / Settings / Navigation Drawer
 <p align="center">
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/7.png?maxAge=0" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/8.png?maxAge=0" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/9.png?maxAge=0" height="350"/>
-<img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/10.png?maxAge=0" height="350"/>
+<img src="/art/7.png" width="162" />
+<img src="/art/8.png" width="162" />
+<img src="/art/9.png" width="162" />
+<img src="/art/10.png" width="162" />
 </p>
 
 ---
@@ -156,7 +156,7 @@ If you found this app/library helpful and want to thank me, you can:
 - [Alexandre Piveteau](https://github.com/alexandrepiveteau) 💻
 - [Lukas Koller](https://github.com/kollerlukas) 🔌
 - [Patryk Goworowski](https://twitter.com/pgoworowski) 🎨
-- [Lumiq Creative](https://lumiqcreative.com/) 🎨
+- [Patryk Michalik](https://patrykmichalik.com) 💻
 - [Jackson Hayes](https://jacksonhayes.xyz/) 📖
 - [Kevin Aguilar](https://twitter.com/kevttob) 🎨
 - [Anthony Nguyen](https://twitter.com/link6155) 🎨
