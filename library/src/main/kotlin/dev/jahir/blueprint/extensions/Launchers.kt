@@ -35,6 +35,7 @@ fun Context.executeLauncherIntent(launcher: Launcher?) {
         Launcher.LAWNCHAIR -> executeLawnchairIntent()
         Launcher.LINEAGE_OS -> executeLineageOSThemeEngineIntent()
         Launcher.LUCID -> executeLucidLauncherIntent()
+        Launcher.MOTO -> executeMotoLauncherIntent()
         Launcher.NIAGARA -> executeNiagaraLauncherIntent()
         Launcher.NOVA -> executeNovaLauncherIntent()
         Launcher.ONEPLUS -> executeOnePlusLauncherIntent()
@@ -306,6 +307,15 @@ private fun Context.executeTsfLauncherIntent() {
             val tsf = Intent("android.action.MAIN")
             tsf.component = ComponentName("com.tsf.shell", "com.tsf.shelShellActivity")
             sendBroadcast(tsf)
+        }
+    }
+}
+
+private fun Context.executeMotoLauncherIntent() {
+    attemptApply {
+        Intent().apply {
+            component = ComponentName("com.motorola.personalize", "com.motorola.personalize.app.IconPacksActivity")
+            putExtra("package", packageName)
         }
     }
 }
