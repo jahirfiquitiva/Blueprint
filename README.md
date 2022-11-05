@@ -1,4 +1,4 @@
-<img src="./icon/circle.png" width="192" align="right" hspace="20" />
+<img src="./public/circle.png" width="192" align="right" hspace="20" />
 
 # Cicrle-Icon-Pack
 
@@ -70,6 +70,24 @@ This app is shared under the CreativeCommons Attribution-ShareAlike license.
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
+
+## Special thanks 🙌
+
+- [Eduardo Pratti](https://pratti.design/) 🎨
+- [Sherry Sabatine](http://www.ssabatinephotography.com/) 💵
+- [Allan Wang](https://www.allanwang.ca/) 💻
+- [James Fenn](https://theandroidmaster.github.io/) 🔌
+- [Maximilian Keppeler](https://twitter.com/maxKeppeler) 🔌
+- [Sasi Kanth](https://twitter.com/its_sasikanth) 🔌
+- [Alexandre Piveteau](https://github.com/alexandrepiveteau) 💻
+- [Lukas Koller](https://github.com/kollerlukas) 🔌
+- [Patryk Goworowski](https://twitter.com/pgoworowski) 🎨
+- [Lumiq Creative](https://lumiqcreative.com/) 🎨
+- [Jackson Hayes](https://jacksonhayes.xyz/) 📖
+- [Kevin Aguilar](https://twitter.com/kevttob) 🎨
+- [Anthony Nguyen](https://twitter.com/link6155) 🎨
+
+---
 
 ## 🆙 Library source
 
