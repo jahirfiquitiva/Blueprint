@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Hem</string>
+    <string name="icons">Ikoner</string>
+    <string name="request">Förfrågan</string>
+    <string name="overview">Sammanfattning</string>
+    <string name="more_apps">Fler appar</string>
+    <string name="useful_links">Länkar</string>
+    <string name="select_all">Välj alla</string>
+    <string name="help">Hjälp</string>
+    <string name="x_icons">%1$s ikoner</string>
+    <string name="search_icons">Sök ikoner</string>
+    <string name="search_apps">Sök appar</string>
+    <string name="search_launchers">Sök launchers</string>
+    <string name="lni_content">“%1$s” är inte installerat. Vill du hämta den från Google Play?</string>
+    <string name="no_compatible_launcher_title">Launcher Inkompatibel</string>
+    <string name="no_compatible_launcher_content">“Google Now Launcher” stöder inte ikonpaket såvida inte paras ihop med “Grymma genvägar.” Installera senare?</string>
+    <string name="impossible_open_themes">Kan inte öppna appen</string>
+    <string name="themes_app_not_installed">“Teman” är inte installerat.</string>
+    <string name="coming_soon">Kommer snart.</string>
+    <string name="quick_apply">Tillämpa på hem</string>
+    <string name="request_x_icons">Begär %1$s ikoner</string>
+    <string name="request_icon">Begär ikon</string>
+    <string name="request_none">Begär ikon(er)</string>
+    <string name="kustom_templates">Kustom mallar</string>
+    <string name="zooper_templates">Zooper mallar</string>
+    <string name="rate">Rate</string>
+    <string name="share">Dela</string>
+    <string name="share_text">Få %1$s på Google Play: %2$s.</string>
+    <string name="send_email">Skicka E-post</string>
+    <string name="send_using">Skicka med:</string>
+    <string name="request_in_progress">Skickar begäran</string>
+    <string name="request_in_progress_content">En begäran har redan skickats.</string>
+    <string name="building_request_dialog">Förbereder begäran...</string>
+    <string name="request_upload_success_content">Begäran skickad.</string>
+    <string name="no_selected_apps">Inga appar valda</string>
+    <string name="no_selected_apps_content">Välj appar för att skicka en förfrågan.</string>
+    <string name="apps_limit_dialog">Välj %1$s appar eller färre.</string>
+    <string name="apps_limit_dialog_more">Välj %1$s appar eller färre.</string>
+    <string name="apps_limit_dialog_day">Du kan bara skicka förfrågningar varje %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Du kan skicka en förfrågan om %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Du kan skicka en förfrågan på mindre än en minut.</string>
+    <string name="seconds">Sekunder</string>
+    <string name="minutes">Minuter</string>
+    <string name="hours">Timmar</string>
+    <string name="days">Dagar</string>
+    <string name="weeks">Veckor</string>
+    <string name="months">Månader</string>
+    <string name="icon_shape">Ikon Form</string>
+    <string name="icon_shape_system">Inställt av System</string>
+    <string name="icon_shape_circle">Cirkel</string>
+    <string name="icon_shape_squircle">Kvirkel</string>
+    <string name="icon_shape_rounded_square">Avrundad kvadrat</string>
+    <string name="icon_shape_square">Fyrkant</string>
+    <string name="icon_shape_teardrop">Droppe</string>
+    <string name="requests_upload_error">Något gick fel. Felnamn: “%1$s”.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Hur använder man ikonpaketet?</item>
+        <item>Hur applicerar man ikonpaketet?</item>
+        <item>Hur ser du alla inkluderade ikoner?</item>
+        <item>Hur ersätter man en ikon med ett alternativ?</item>
+        <item>Hur man begär ikoner utan tema?</item>
+        <item>Efter att min enhet startats om, används ikonpaketet inte längre. Ikoner återställdes till standard.</item>
+        <item>Varför ser ikoner pixelerade ut på min enhet?</item>
+        <item>Jag kan se en ikon för X-appen i de medföljande ikonerna, men ikonen gäller inte.</item>
+        <item>Varför behöver appen behörighet att ändra eller ta bort innehållet i min lagring?</item>
+        <item>Varför behöver appen behörighet till full nätverksåtkomst?</item>
+        <item>Varför behöver appen behörighet till full nätverksåtkomst?</item>
+        <item>Varför behöver appen tillstånd för att ställa in bakgrundsbild?</item>
+        <item>Varför behöver appen behörighet för att justera bakgrundsstorleken?</item>
+        <item>Varför behöver appen behörighet för att hindra telefonen från att sova?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Du behöver en launcher med stöd för ikonpaket Listan över launchers som stöds kan hittas i appen i avsnittet \"Tillämpa\" eller Play Store beskrivning.</item>
+        <item>Beroende på appens navigationstyp måste du antingen skjuta navigeringslådan från vänster, och gå till \"Tillämpa\" avsnitt, eller välj 4: e ikonen från nedre navigeringsfältet. Därifrån kan du välja en launcher som du vill använda ikonerna till. Vissa launchers stöder inte automatisk tillämpning och du måste göra det manuellt genom sina inställningar.</item>
+        <item>Gå tillbaka till huvuddelen av appen och tryck på rutan med rubriken \"Icons\".</item>
+        <item>Beroende på vilken launcher du använder, måste du antingen långtrycka på ikonen och välja \"Redigera\" från popup-menyn, eller långtryck på ikonen och flytta den till en \"Redigera\" ruta.</item>
+        <item>Beroende på appens navigationstyp måste du antingen skjuta navigeringslådan från vänster, och gå till avsnittet \"Begäran\" eller välj ikonen från nedre navigeringsfältet.</item>
+        <item>Det hände eftersom ikonpaketet flyttades till SD-kort, du bör installera det i intern lagring.</item>
+        <item>Problemet kan komma med den launcher du använder, när du hanterar stor upplösning. Du kan fixa det genom att öka ikonstorleken till 115 – 120%. Eller prova att använda en annan launcher.</item>
+        <item>Skicka en ikonbegäran.</item>
+        <item>Det behövs för att kunna skriva ikon begär data och filer, samt spara bakgrundsbilder, och att kunna ändra bakgrundsbilder nedladdningsplats.</item>
+        <item>Det behövs för att kunna ladda tapeter från molnet och ladda ner dem.</item>
+        <item>Det behövs för att kunna kontrollera om din enhet har internetanslutning.</item>
+        <item>Det behövs för att kunna applicera bakgrundsbild direkt från appen.</item>
+        <item>Det behövs för att kunna justera bakgrundsbilder dimensioner baserat på din skärmupplösning.</item>
+        <item>Det behövs av Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

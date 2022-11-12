@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Home</string>
+    <string name="icons">Icons</string>
+    <string name="request">Request</string>
+    <string name="overview">Summary</string>
+    <string name="more_apps">More Apps</string>
+    <string name="useful_links">Links</string>
+    <string name="select_all">Select All</string>
+    <string name="help">Help</string>
+    <string name="x_icons">%1$s Icons</string>
+    <string name="search_icons">Search Icons</string>
+    <string name="search_apps">Search Apps</string>
+    <string name="search_launchers">Search Launchers</string>
+    <string name="lni_content">“%1$s” isn’t installed. Do you want to get it from Google Play?</string>
+    <string name="no_compatible_launcher_title">Launcher Incompatible</string>
+    <string name="no_compatible_launcher_content">“Google Now Launcher” doesn’t support icon packs unless paired with “Awesome Shortcuts.” Install the latter?</string>
+    <string name="impossible_open_themes">Can’t Open App</string>
+    <string name="themes_app_not_installed">“Themes” isn’t installed.</string>
+    <string name="coming_soon">Coming soon.</string>
+    <string name="quick_apply">Apply to Home</string>
+    <string name="request_x_icons">Request %1$s Icons</string>
+    <string name="request_icon">Request Icon</string>
+    <string name="request_none">Request Icon(s)</string>
+    <string name="kustom_templates">Kustom Templates</string>
+    <string name="zooper_templates">Zooper Templates</string>
+    <string name="rate">Rate</string>
+    <string name="share">Share</string>
+    <string name="share_text">Get %1$s on Google Play: %2$s.</string>
+    <string name="send_email">Send Email</string>
+    <string name="send_using">Send With:</string>
+    <string name="request_in_progress">Sending Request</string>
+    <string name="request_in_progress_content">A request is already being sent.</string>
+    <string name="building_request_dialog">Preparing request…</string>
+    <string name="request_upload_success_content">Request sent.</string>
+    <string name="no_selected_apps">No Apps Selected</string>
+    <string name="no_selected_apps_content">Select apps to send a request.</string>
+    <string name="apps_limit_dialog">Select %1$s apps or fewer.</string>
+    <string name="apps_limit_dialog_more">Select %1$s apps or fewer.</string>
+    <string name="apps_limit_dialog_day">You may only send requests every %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">You may send a request in %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">You may send a request in less than a minute.</string>
+    <string name="seconds">Seconds</string>
+    <string name="minutes">Minutes</string>
+    <string name="hours">Hours</string>
+    <string name="days">Days</string>
+    <string name="weeks">Weeks</string>
+    <string name="months">Months</string>
+    <string name="icon_shape">Icon Shape</string>
+    <string name="icon_shape_system">Set by System</string>
+    <string name="icon_shape_circle">Circle</string>
+    <string name="icon_shape_squircle">Squircle</string>
+    <string name="icon_shape_rounded_square">Rounded Square</string>
+    <string name="icon_shape_square">Square</string>
+    <string name="icon_shape_teardrop">Teardrop</string>
+    <string name="requests_upload_error">Something went wrong. Error name: “%1$s”.</string>
+    <string name="requests_upload_error_unknown">Something went wrong.</string>
+
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>How to use the icon pack?</item>
+        <item>How to apply the icon pack?</item>
+        <item>How to see all the included icons?</item>
+        <item>How to replace an icon with an alternative one?</item>
+        <item>How to request new icons?</item>
+        <item>I’ve restarted my device and the icon pack isn’t applied anymore. The default icons have been restored.</item>
+        <item>Why do the icons look pixelated on my device?</item>
+        <item>I can see an icon for a specific app in the icon list, but it’s not being applied.</item>
+        <item>Why does the app need permission to modify or delete the files on my device?</item>
+        <item>Why does the app need full network access?</item>
+        <item>Why does the app need permission to view connections?</item>
+        <item>Why does the app need permission to set the wallpaper?</item>
+        <item>Why does the app need permission to adjust the wallpaper size?</item>
+        <item>Why does the app need permission to prevent the device from sleeping?</item>
+    </string-array>
+
+    <string-array name="answers">
+        <item>You need a launcher with icon pack support. You’ll find a list of supported launchers in the “Apply” section or in the app’s description on the Play Store.</item>
+        <item>Depending on the app’s navigation type, either slide out the navigation drawer from the left and go to the “Apply” section, or choose “Apply” in the bottom navigation bar. On the “Apply” page, select your launcher. If your launcher isn’t listed, apply the icon pack via the launcher’s settings.</item>
+        <item>On the main page of the app, tap the tile titled “Icons.”</item>
+        <item>Depending on the launcher you’re using, either tap and hold the icon and select “Edit” from the pop-up menu, or tap and hold the icon and drag it to the “Edit” box near the top of the screen.</item>
+        <item>Depending on the app’s navigation type, either slide out the navigation drawer from the left and go to the “Request” section, or choose “Request” in the bottom navigation bar.</item>
+        <item>This happened because the icon pack has been moved to the SD card. You should move it back to internal storage.</item>
+        <item>Your launcher may be incorrectly handling the resolution of the icons. You can fix this by increasing the icon size to 115%–120% or switching to another launcher.</item>
+        <item>Please send an icon request.</item>
+        <item>It’s needed to create icon request files, save wallpapers, and set the download location for wallpapers.</item>
+        <item>It’s needed to load wallpapers from the cloud and download them.</item>
+        <item>It’s needed to check if your device is connected to the internet.</item>
+        <item>It’s needed to let you apply wallpapers directly from the app.</item>
+        <item>It’s needed to adjust the dimensions of wallpapers based on the resolution of your device’s screen.</item>
+        <item>It’s needed by Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

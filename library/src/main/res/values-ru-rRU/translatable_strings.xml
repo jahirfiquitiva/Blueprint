@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Главная страница</string>
+    <string name="icons">Иконки</string>
+    <string name="request">Запросить</string>
+    <string name="overview">Краткое описание</string>
+    <string name="more_apps">Больше приложений</string>
+    <string name="useful_links">Ссылки</string>
+    <string name="select_all">Выделить все</string>
+    <string name="help">Помощь</string>
+    <string name="x_icons">%1$s иконок</string>
+    <string name="search_icons">Поиск иконок</string>
+    <string name="search_apps">Искать приложения</string>
+    <string name="search_launchers">Поиск лаунчера</string>
+    <string name="lni_content">“%1$s” не установлен. Хотите установить его из Google Play?</string>
+    <string name="no_compatible_launcher_title">Браузер несовместим</string>
+    <string name="no_compatible_launcher_content">«Google Now Launcher» не поддерживает наборы значков, пока не будет связан с «Awesome Shortcuts». Установить?</string>
+    <string name="impossible_open_themes">Не удалось открыть приложение</string>
+    <string name="themes_app_not_installed">«Темы» не установлены.</string>
+    <string name="coming_soon">Скоро.</string>
+    <string name="quick_apply">Применить</string>
+    <string name="request_x_icons">Запросить %1$s иконок</string>
+    <string name="request_icon">Запросить иконку</string>
+    <string name="request_none">Запросить иконку(ки)</string>
+    <string name="kustom_templates">Шаблоны Kustom</string>
+    <string name="zooper_templates">Шаблоны Zooper</string>
+    <string name="rate">Оценить</string>
+    <string name="share">Поделиться</string>
+    <string name="share_text">Получить %1$s в Google Play: %2$s.</string>
+    <string name="send_email">Отправить E-mail</string>
+    <string name="send_using">Отправить через:</string>
+    <string name="request_in_progress">Отправка запроса</string>
+    <string name="request_in_progress_content">Запрос уже отправлен.</string>
+    <string name="building_request_dialog">Отправка запроса...</string>
+    <string name="request_upload_success_content">Запрос отправлен.</string>
+    <string name="no_selected_apps">Нет выбранных приложений</string>
+    <string name="no_selected_apps_content">Выберите приложения для отправки запроса.</string>
+    <string name="apps_limit_dialog">Выберите %1$s приложений или меньше.</string>
+    <string name="apps_limit_dialog_more">Выберите %1$s приложений или меньше.</string>
+    <string name="apps_limit_dialog_day">Вы можете отправлять запросы только каждые %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Вы можете отправить запрос через %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Вы можете отправить запрос менее чем через минуту.</string>
+    <string name="seconds">Секунд</string>
+    <string name="minutes">Минут</string>
+    <string name="hours">Часов</string>
+    <string name="days">Дней</string>
+    <string name="weeks">Недель</string>
+    <string name="months">Месяцев</string>
+    <string name="icon_shape">Форма иконок</string>
+    <string name="icon_shape_system">Задано системой</string>
+    <string name="icon_shape_circle">Круг</string>
+    <string name="icon_shape_squircle">Округлый квадрат</string>
+    <string name="icon_shape_rounded_square">Закруглённый квадрат</string>
+    <string name="icon_shape_square">Квадрат</string>
+    <string name="icon_shape_teardrop">Капля</string>
+    <string name="requests_upload_error">Что-то пошло не так. Ошибка: “%1$s”.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Как использовать набор значков?</item>
+        <item>Как применить набор значков?</item>
+        <item>Как просмотреть все имеющиеся иконки?</item>
+        <item>Как заменить значок альтернативным?</item>
+        <item>Как запросить отсутствующие иконки?</item>
+        <item>После перезагрузки моего устройства, значки больше не применяется. Иконки были восстановлены до значения по умолчанию.</item>
+        <item>Почему иконки выглядят пикселизированными на моем устройстве?</item>
+        <item>Я вижу иконку для приложения N в паке, но иконка не применяется.</item>
+        <item>Почему приложению нужно разрешение чтобы изменять или удалять данные на моём устройстве?</item>
+        <item>Почему приложению требуется разрешение на полный доступ к сети?</item>
+        <item>Почему приложению требуется разрешение на просмотр подключений?</item>
+        <item>Почему приложению требуется разрешение на установку обоев?</item>
+        <item>Почему приложению требуется разрешение на изменение размеров обоев?</item>
+        <item>Почему приложению нужно разрешение на запрет спящего режима?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Требуется лаунчер с поддержкой паков значков. Список поддерживаемых лаунчеров приведен в приложении в разделе \"Применить\" или на странице приложения в Google Play.</item>
+        <item>В зависимости от типа навигации в приложении, вам нужно либо вызвать панель навигации свайпом с левой стороны экрана и перейти к разделу «Применить» или выбрать 4-ый значок из нижней панели навигации. Там вы сможете выбрать лаунчер для которого необходимо применить пак значков. Некоторые лаунчеры не поддерживает автоматического применения, и вам придется делать это вручную, через их настройки.</item>
+        <item>Вернитесь в главный раздел и нажмите на кнопку по названием \"Значки\".</item>
+        <item>В зависимости от используемого лаунчера, вам нужно либо долго удержать палец на значке и выбрать \"Изменить\" из выпадающего меню, или долго удержать палец на значке и переместить его в поле \"Изменить\".</item>
+        <item>В зависимости от типа навигационного меню, вам нужно, либо вызвать панель навигации свайпом слева направо и перейти к разделу «Запросы», или выбрать значок из нижней панели навигации.</item>
+        <item>Это произошло из-за того, что набор значков был перенесен на SD-карту. Вы должны установить его во внутреннюю память.</item>
+        <item>Эта проблема может возникнуть из-за лаунчера, который вы используете, а также высокого разрешения экрана устройства. Вы можете исправить это увеличив размер значков в настройках лаунчера до 115 - 120%. Или попробовать использовать другой лаунчер.</item>
+        <item>Отправить запрос.</item>
+        <item>Разрешение требуется для того чтобы записывать данные запросов иконок и файлы, а также сохранять обои и изменять путь их сохранения по умолчанию.</item>
+        <item>Разрешение требуется для того чтобы загружать обои с сервера и скачивать их на устройство.</item>
+        <item>Необходимо убедиться, что ваше устройство подключено к Интернету.</item>
+        <item>Разрешение требуется для того чтобы устанавливать и применять обои прямо из приложения.</item>
+        <item>Необходимо иметь возможность регулировать размеры обоев в зависимости от разрешения экрана.</item>
+        <item>Это необходимо для Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

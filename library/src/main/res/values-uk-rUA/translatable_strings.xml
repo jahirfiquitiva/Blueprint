@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Інші програми</string>
+    <string name="useful_links">Корисні посилання</string>
+    <string name="lni_content">%1$s ще не інстальовано на вашому пристрої.\nВи б хотіли встановити його з магазину Google Play?</string>
+    <string name="no_compatible_launcher_title">Цей лаунчер є не сумісним</string>
+    <string name="impossible_open_themes">Неможливо відкрити програму з темами</string>
+    <string name="themes_app_not_installed">Програма з темами не інстальована на цим пристрої</string>
+    <string name="coming_soon">Незабаром</string>
+    <string name="rate">Оцінити</string>
+    <string name="send_using">Надіслати через…</string>
+    <string name="building_request_dialog">Створення файлів запиту…</string>
+    <string name="request_upload_success">Успішно!</string>
+    <string name="request_upload_success_content">Запит був успішно завантажений на наш сервер.</string>
+    <string name="no_selected_apps_content">Не було позначено жадней програми для запиту. Виберіть кілька застосунків, а потім натисніть цю кнопку ще раз.</string>
+    <string name="requests_upload_error">Помилка під час завантаження програм для запиту на наші сервери.\nПричина: %1$s\nБудь ласка, спробуйте ще раз пізніше.</string>
+    <string name="apps_limit_dialog">Вибачте, але ви можете вибрати тільки %1$s програм для запиту.</string>
+    <string name="apps_limit_dialog_more">Вибачте, але ви можете вибрати тільки %1$s програм для запиту.</string>
+    <string name="apps_limit_dialog_day">Вибачте, але ви можете робити запит на іконки тільки кожні %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Ви зможете зробити запит іконок знову за %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Ви зможете зробити запит іконок знову менш ніж за хвилину.</string>
+    <string name="seconds">Секунди</string>
+    <string name="minutes">Хвилини</string>
+    <string name="hours">Години</string>
+    <string name="days">Дні</string>
+    <string name="weeks">Тижні</string>
+    <string name="months">Місяці</string>
+</resources>

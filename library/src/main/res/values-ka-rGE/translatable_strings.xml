@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">მეტი აპლიკაციები</string>
+    <string name="useful_links">საჭირო ბმულები</string>
+    <string name="no_compatible_launcher_title">ეს ლაუნჩერი არ არის თავსებადი</string>
+    <string name="impossible_open_themes">შეუძლებელია თემების აპლიკაციის გახსნა</string>
+    <string name="themes_app_not_installed">თემების აპლიკაცია არ არის ინსტალირებული მოწყობილობაში</string>
+    <string name="coming_soon">მალე</string>
+    <string name="rate">შეფასება</string>
+    <string name="send_using">გაგზავნე…</string>
+    <string name="building_request_dialog">მოთხოვნის ფაილების მომზადება…</string>
+    <string name="request_upload_success">წარმატება!</string>
+    <string name="request_upload_success_content">მოთხოვნა წარმატებით აიტვირთა სერვერზე.</string>
+    <string name="no_selected_apps_content">თქვენ არ აგირჩევიათ არცერთი აპლიკაცია. გთხოვთ აირჩიოთ რამოდენიმე აპლიკაცია და ჩემდეგ დააჭირეთ ისევ ღილაკს.</string>
+    <string name="apps_limit_dialog">უკაცრავად, მაგრამ თქვენ ნება დართეთ %1$s მხოლოდ აპლიკაციების მოთხოვნას.</string>
+    <string name="apps_limit_dialog_day">ბოდიშს გიხდით, მაგრამ თქვენ უფლება გაქვთ იკონების მოითხოვნის ყოველ %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">რამოდენიმე ხნის შემდეგ ისევ შეძლებთ იკონების მოთხოვნის გაგზავნას.</string>
+    <string name="seconds">წამები</string>
+    <string name="minutes">წუთები</string>
+    <string name="hours">საათები</string>
+    <string name="days">დღეები</string>
+    <string name="weeks">კვირა</string>
+    <string name="months">თვეები</string>
+</resources>

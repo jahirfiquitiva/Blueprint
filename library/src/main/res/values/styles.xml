@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Blueprint.Default" parent="Frames.Default">
+        <item name="bottomNavigationStyle">@style/Widget.Blueprint.BottomNavigationView</item>
+        <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView</item>
+    </style>
+
+    <style name="Blueprint.Default.Amoled" parent="Frames.Default.Amoled">
+        <item name="bottomNavigationStyle">@style/Widget.Blueprint.BottomNavigationView</item>
+        <item name="navigationViewStyle">@style/Widget.Blueprint.NavigationView.Amoled</item>
+    </style>
+
+    <style name="Widget.Blueprint.BottomNavigationView" parent="Widget.Frames.BottomNavigationView">
+        <item name="itemIconTint">@drawable/bottom_navigation_states</item>
+        <item name="itemTextColor">@drawable/bottom_navigation_states</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
+    <style name="Widget.Blueprint.NavigationView" parent="Widget.Frames.NavigationView">
+        <item name="itemTextColor">@color/navigation_item_text_color</item>
+        <item name="itemIconTint">@color/navigation_item_text_color</item>
+        <item name="itemShapeFillColor">@color/navigation_item_bg_color</item>
+        <item name="android:background">@color/background</item>
+    </style>
+
+    <style name="Widget.Blueprint.NavigationView.Amoled" parent="Widget.Blueprint.NavigationView" />
+
+    <style name="Widget.Blueprint.RequestCard" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">@style/ShapeAppearance.Frames.CardView</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardBackgroundColor">@color/checkable_card_background</item>
+        <item name="cardForegroundColor">@color/checkable_card_foreground</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="checkedIconSize">0dp</item>
+        <item name="checkedIconEnabled">false</item>
+        <item name="rippleColor">@color/checkable_card_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:checkable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Widget.Blueprint.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/outline_btn_bg_color</item>
+        <item name="rippleColor">@color/outline_btn_ripple_color</item>
+        <item name="iconPadding">8dp</item>
+        <item name="iconTint">?colorSecondary</item>
+        <item name="strokeColor">?colorSecondary</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">?colorSecondary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextStyle.Blueprint.DrawerTitle" parent="TextStyle.Frames.WallpaperTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="TextStyle.Blueprint.DrawerSubtitle" parent="TextStyle.Frames.WallpaperSubtitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="MyApp.Default" parent="Blueprint.Default" />
+
+    <style name="MyApp.Default.Amoled" parent="Blueprint.Default.Amoled" />
+
+    <style name="MyApp.Default.MaterialYou" parent="Blueprint.Default.MaterialYou" />
+
+    <style name="MyApp.Default.Amoled.MaterialYou" parent="Blueprint.Default.Amoled.MaterialYou" />
+
+</resources>

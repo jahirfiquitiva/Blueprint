@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="home">Home</string>
+    <string name="icons">Icons</string>
+    <string name="request">Request</string>
+    <string name="overview">Overview</string>
+    <string name="more_apps">Meer apps</string>
+    <string name="useful_links">Nuttige links</string>
+    <string name="select_all">Selecteer alles</string>
+    <string name="help">Help</string>
+    <string name="x_icons">%1$s icons</string>
+    <string name="search_icons">Search icons…</string>
+    <string name="lni_content">%1$s is momenteel niet geïnstalleerd op je apparaat.\nWil je het installeren vanuit de Google Play Store?</string>
+    <string name="no_compatible_launcher_title">Deze launcher is NIET compatibel</string>
+    <string name="no_compatible_launcher_content">Deze launcher is niet compatibel met alle beschikbare Icon Packs en dus is dit icon pack niet te gebruiken met deze launcher. Beoordeel alsjeblieft deze icon pack hierom niet negatief. Er is een oplossing die je zelf kunt proberen, maar het vereist het gebruik van een externe app. Wil je deze downloaden?</string>
+    <string name="impossible_open_themes">Onmogelijk om themes app te openen</string>
+    <string name="themes_app_not_installed">Themes app is niet geïnstalleerd op dit apparaat</string>
+    <string name="coming_soon">Binnenkort beschikbaar</string>
+    <string name="quick_apply">Quick Apply</string>
+    <string name="send_request">Send request</string>
+    <string name="send_request_x">Send request (%1$s)</string>
+    <string name="kustom_templates">Kustom Templates</string>
+    <string name="zooper_templates">Zooper Templates</string>
+    <string name="rate">Rate</string>
+    <string name="share">Share</string>
+    <string name="share_text">Check out %1$s and let your friends know about it!\nAvailable on Google Play Store at: %2$s</string>
+    <string name="send_email">Send email</string>
+    <string name="send_using">Verzenden met…</string>
+    <string name="request_in_progress">Verzoek in behandeling</string>
+    <string name="request_in_progress_content">Er is al een verzoek in behandeling. Een ogenblik geduld…</string>
+    <string name="building_request_dialog">Verzoek bestanden aan het maken…</string>
+    <string name="request_upload_success">Gelukt!</string>
+    <string name="request_upload_success_content">Het verzoek is succesvol geüpload naar onze server.</string>
+    <string name="no_selected_apps">Geen geselecteerde apps</string>
+    <string name="no_selected_apps_content">Je hebt geen apps geselecteerd. Selecteer er eerst een paar en druk dan weer op deze knop.</string>
+    <string name="requests_upload_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+    <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
+    <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
+    <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Het is weer mogelijk om iconen aan te vragen in %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Het is weer mogelijk om iconen aan te vragen in minder dan één minuut.</string>
+    <string name="seconds">Seconds</string>
+    <string name="minutes">Minutes</string>
+    <string name="hours">Hours</string>
+    <string name="days">Dagen</string>
+    <string name="weeks">Weken</string>
+    <string name="months">Maanden</string>
+    <string name="icon_shape">Icon Shape</string>
+    <string name="icon_shape_system">Follow system</string>
+    <string name="icon_shape_circle">Cirkel</string>
+    <string name="icon_shape_squircle">Squircle</string>
+    <string name="icon_shape_rounded_square">Rounded Square</string>
+    <string name="icon_shape_square">Vierkant</string>
+    <string name="icon_shape_teardrop">Teardrop</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Hoe gebruik je de icon pack?</item>
+        <item>Hoe kan ik de icon pack toepassen?</item>
+        <item>Hoe bekijk ik alle inbegrepen iconen?</item>
+        <item>Hoe vervang ik een icon met een alternatief?</item>
+        <item>Hoe stuur je een verzoek voor niet gethematiseerde iconen?</item>
+        <item>Na het opnieuw opstarten van mijn toestel is het icon pack niet meer toegepast. De iconen werden teruggezet naar de systeemstandaard.</item>
+        <item>Waarom zijn de pixels zo duidelijk zichtbaar bij de iconen?</item>
+        <item>Ik kan een icoon zien voor een app in de lijst, maar het wordt niet toegepast.</item>
+        <item>Waarom heeft de app toestemming nodig om content te wijzigen of verwijderen van mijn opslag?</item>
+        <item>Waarom heeft de app volledige netwerktoegang nodig?</item>
+        <item>Waarom heeft de app toestemming nodig om verbindingen te bekijken?</item>
+        <item>Waarom heeft de app toestemming nodig om een achtergrond in te stellen?</item>
+        <item>Waarom heeft de app toestemming nodig om de grootte van de achtergrond aan te passen?</item>
+        <item>Waarom heeft de app toestemming nodig om te voorkomen dat de telefoon in slaapmodus gaat?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Je hebt een launcher nodig die icon packs aanvaard. De lijst van compatibele launchers kan je vinden in de \"toevoegen\" sectie, of in de Play Store beschrijving.</item>
+        <item>Afhankelijk van het navigatietype van de app moet je ofwel de navigatielade van links schuiven, en ga naar de \"Apply\" sectie, of kies het 4de icoon uit de onderste navigatiebalk. Vanaf daar kun je een launcher kiezen waar je de iconen aan wilt toevoegen. Sommige launchers zijn geen voorstander van automatisch toepassen en je moet dit handmatig doen via hun instellingen.</item>
+        <item>Ga terug naar de hoofdsectie van de app en druk op de tegel met de titel \"Icons\".</item>
+        <item>Afhankelijk van de launcher die je gebruikt, moet je ofwel de icon lang aanraken en \"Edit\" selecteren in het pop-up menu, of tik lang op het pictogram en verplaats het naar het vak \"Edit\".</item>
+        <item>Afhankelijk van het navigatietype van de app moet je ofwel de navigatielade vanaf links schuiven, en ga naar de \"Request\" sectie, of kies de icon uit de onderste navigatiebalk.</item>
+        <item>Het gebeurde omdat het icoon pakket naar de SD-kaart is verplaatst, je moet het installeren in de interne opslag.</item>
+        <item>Het probleem zou kunnen komen door de launcher die je gebruikt moeite heeft bij het verwerken van grote resolutie. Je kunt dit herstellen door de icon grootte te verhogen tot 115 tot 120%. Of probeer een andere launcher.</item>
+        <item>Stuur een icoon verzoek.</item>
+        <item>Het is nodig om iconen verzoek gegevens en bestanden te schrijven, evenals het opslaan van achtergronden, en om de downloadlocatie van achtergronden te kunnen wijzigen.</item>
+        <item>Het is nodig om achtergronden te kunnen laden uit de cloud en ze te downloaden.</item>
+        <item>Het is nodig om te kunnen controleren of je apparaat internetverbinding heeft.</item>
+        <item>Het is nodig om een achtergrond direct vanuit de app toe te kunnen passen.</item>
+        <item>Het is nodig om de afmetingen van achtergronden aan te passen op basis van je schermresolutie.</item>
+        <item>Het is nodig voor Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

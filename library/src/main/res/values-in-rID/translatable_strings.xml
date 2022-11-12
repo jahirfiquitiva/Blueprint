@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Beranda</string>
+    <string name="icons">Ikon</string>
+    <string name="request">Request</string>
+    <string name="overview">Summary</string>
+    <string name="more_apps">Lebih banyak aplikasi</string>
+    <string name="useful_links">Tautan</string>
+    <string name="select_all">Pilih Semua</string>
+    <string name="help">Bantuan</string>
+    <string name="x_icons">%1$s Ikon</string>
+    <string name="search_icons">Cari Ikon</string>
+    <string name="search_apps">Cari Aplikasi</string>
+    <string name="search_launchers">Cari Peluncur</string>
+    <string name="lni_content">%1$s tidak terpasang. Apakah Anda ingin mendapatkannya di Google Play?</string>
+    <string name="no_compatible_launcher_title">Peluncur tidak kompatibel</string>
+    <string name="no_compatible_launcher_content">“Peluncur Google Now\" tidak mendukung paket ikon kecuali dipasangkan dengan “Awesome Shortcuts.” pasang nanti?</string>
+    <string name="impossible_open_themes">Tidak dapat membuka Aplikasi</string>
+    <string name="themes_app_not_installed">“Tema” tidak terpasang.</string>
+    <string name="coming_soon">Segera hadir.</string>
+    <string name="quick_apply">Terapkan ke Beranda</string>
+    <string name="request_x_icons">Memesan %1$s Ikon</string>
+    <string name="request_icon">Pesan Ikon</string>
+    <string name="request_none">Pesan Ikon(semua)</string>
+    <string name="kustom_templates">Kustom Template</string>
+    <string name="zooper_templates">Zooper Template</string>
+    <string name="rate">Nilai</string>
+    <string name="share">Bagikan</string>
+    <string name="share_text">Dapatkan %1$s di Google Play: %2$s.</string>
+    <string name="send_email">Kirim Email</string>
+    <string name="send_using">Kirim dengan:</string>
+    <string name="request_in_progress">Mengirim permintaan</string>
+    <string name="request_in_progress_content">Permintaan sudah dikirim.</string>
+    <string name="building_request_dialog">Menyiapkan pesanan...</string>
+    <string name="request_upload_success_content">Permintaan terkirim.</string>
+    <string name="no_selected_apps">Tidak ada aplikasi yang dipilih</string>
+    <string name="no_selected_apps_content">Pilih aplikasi untuk mengirim permintaan.</string>
+    <string name="apps_limit_dialog">Pilih %1$s aplikasi atau lebih sedikit.</string>
+    <string name="apps_limit_dialog_more">Pilih %1$s aplikasi atau lebih sedikit.</string>
+    <string name="apps_limit_dialog_day">Anda hanya dapat mengirim permintaan setiap %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Anda dapat mengirim permintaan dalam %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Anda dapat mengirim permintaan dalam waktu kurang dari satu menit.</string>
+    <string name="seconds">Detik</string>
+    <string name="minutes">Menit</string>
+    <string name="hours">Jam</string>
+    <string name="days">Hari</string>
+    <string name="weeks">Pekan</string>
+    <string name="months">Bulan</string>
+    <string name="icon_shape">Icon Shape</string>
+    <string name="icon_shape_system">Diatur oleh Sistem</string>
+    <string name="icon_shape_circle">Lingkaran</string>
+    <string name="icon_shape_squircle">Persegi bundar</string>
+    <string name="icon_shape_rounded_square">Kotak Membulat</string>
+    <string name="icon_shape_square">Persegi</string>
+    <string name="icon_shape_teardrop">Butiran Air</string>
+    <string name="requests_upload_error">Ada sesuatu yang salah. Error: “%1$s”.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Bagaimana cara menggunakan Paket Ikon?</item>
+        <item>Bagaimana cara menerapkan Paket Ikon?</item>
+        <item>Bagaimana cara melihat semua ikon yang disertakan?</item>
+        <item>Bagaimana cara mengganti ikon dengan alternatif ikon lain?</item>
+        <item>Bagaimana cara meminta ikon yang tidak ada?</item>
+        <item>Setelah memulai ulang perangkat saya, paket ikon tidak diterapkan lagi. Ikon dikembalikan seperti semula.</item>
+        <item>Mengapa ikon terlihat pecah pada perangkat saya?</item>
+        <item>Saya bisa melihat ikon untuk aplikasi X dalam ikon yang disertakan, namun ikon tidak diterapkan.</item>
+        <item>Mengapa aplikasi perlu izin untuk mengubah atau menghapus isi di penyimpanan saya?</item>
+        <item>Mengapa aplikasi perlu izin untuk mengakses jaringan?</item>
+        <item>Mengapa aplikasi perlu izin untuk mengecek koneksi?</item>
+        <item>Mengapa aplikasi perlu izin untuk mengatur wallpaper?</item>
+        <item>Mengapa aplikasi perlu izin untuk menyesuaikan ukuran wallpaper?</item>
+        <item>Mengapa aplikasi perlu izin untuk mencegah telepon tertidur?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Anda butuh peluncur dengan dukungan paket ikon. Daftar peluncur yang mendukung dapat ditemukan dalam aplikasi di bagian \"Terapkan\", atau deskripsi Play Store.</item>
+        <item>Tergantung dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Terapkan\", atau pilih ikon ke-4 dari bilah navigasi bawah. Dari sana Anda dapat memilih peluncur yang ingin Anda terapkan. Beberapa peluncur tidak mendukung terapkan otomatis dan Anda harus melakukannya secara manual melalui menu pengaturan pada Peluncur Anda.</item>
+        <item>Kembali ke bagian utama aplikasi dan tekan ubin berjudul \"Ikon\".</item>
+        <item>Tergantung dengan peluncur yang Anda gunakan, Anda perlu menekan lama ikon dan pilih \"Edit\" dari menu pop-up, atau tekan lama ikon dan pindahkan ke kotak \"Edit\".</item>
+        <item>Tergantung dengan tipe navigasi aplikasi, Anda perlu menggeser kotak navigasi dari kiri, dan menuju bagian \"Meminta\", atau pilih ikon dari bilah navigasi bawah.</item>
+        <item>Itu terjadi karena paket ikon telah dipindahkan ke Kartu SD, Anda perlu memasangnya di penyimpanan internal.</item>
+        <item>Masalah mungkin datang dari peluncur yang sedang Anda gunakan, ketika menangani resolusi besar. Anda dapat memperbaikinya dengan meningkatkan ukuran ikon menjadi 115% - 120%. Atau coba gunakan peluncur lain.</item>
+        <item>Kirim sebuah permintaan ikon.</item>
+        <item>Tindakan ini diperlukan untuk mencatat data dan berkas permintaan ikon, begitu juga untuk menyimpan wallpaper, serta agar dapat mengubah lokasi unduhan wallpaper.</item>
+        <item>Tindakan ini diperlukan agar dapat memuat wallpaper dari cloud dan mengunduhnya.</item>
+        <item>Tindakan ini diperlukan agar dapat memeriksa apakah perangkat anda memiliki koneksi internet.</item>
+        <item>Tindakan ini diperlukan agar dapat menerapkan wallpaper langsung dari aplikasi.</item>
+        <item>Tindakan ini diperlukan agar dapat menyesuaikan dimensi wallpaper berdasarkan resolusi layar perangkat anda.</item>
+        <item>Itu dibutuhkan oleh Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

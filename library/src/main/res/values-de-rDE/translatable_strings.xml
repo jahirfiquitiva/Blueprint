@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Home</string>
+    <string name="icons">Symbole</string>
+    <string name="request">Anfragen</string>
+    <string name="overview">Zusammenfassung</string>
+    <string name="more_apps">Weitere Apps</string>
+    <string name="useful_links">Links</string>
+    <string name="select_all">Alles auswählen</string>
+    <string name="help">Hilfe</string>
+    <string name="x_icons">%1$s Icons</string>
+    <string name="search_icons">Icons durchsuchen</string>
+    <string name="search_apps">Apps durchsuchen</string>
+    <string name="search_launchers">Launcher durchsuchen</string>
+    <string name="lni_content">“%1$s” ist nicht installiert. Möchten Sie es von Google Play herunterladen?</string>
+    <string name="no_compatible_launcher_title">Launcher inkompatibel</string>
+    <string name="no_compatible_launcher_content">„Google Now Launcher“ unterstützt keine Icon-Packs, es sei denn „Awesome Shortcuts“ ist installiert. Wollen sie jetzt Installieren?</string>
+    <string name="impossible_open_themes">Kann App nicht öffnen</string>
+    <string name="themes_app_not_installed">„Themes“ ist nicht installiert.</string>
+    <string name="coming_soon">Demnächst verfügbar.</string>
+    <string name="quick_apply">Auf Startseite anwenden</string>
+    <string name="request_x_icons">%1$s Icons anfordern</string>
+    <string name="request_icon">Icon anfordern</string>
+    <string name="request_none">Icon(s) anfordern</string>
+    <string name="kustom_templates">Benutzerdefinierte Vorlagen</string>
+    <string name="zooper_templates">Zooper Vorlagen</string>
+    <string name="rate">Bewerten</string>
+    <string name="share">Teilen</string>
+    <string name="share_text">Holen Sie sich %1$s auf Google Play: %2$s.</string>
+    <string name="send_email">E-Mail senden</string>
+    <string name="send_using">Senden mit:</string>
+    <string name="request_in_progress">Anfrage senden</string>
+    <string name="request_in_progress_content">Eine Anfrage wurde bereits gesendet.</string>
+    <string name="building_request_dialog">Anfrage wird vorbereitet...</string>
+    <string name="request_upload_success_content">Anfrage versendet.</string>
+    <string name="no_selected_apps">Keine Apps ausgewählt</string>
+    <string name="no_selected_apps_content">Wähle Apps für eine Anfrage aus.</string>
+    <string name="apps_limit_dialog">Wähle %1$s Apps oder weniger.</string>
+    <string name="apps_limit_dialog_more">Wähle %1$s Apps oder weniger aus.</string>
+    <string name="apps_limit_dialog_day">Sie können nur alle %1$s Anfragen senden.</string>
+    <string name="apps_limit_dialog_day_extra">Sie können eine Anfrage in %1$s senden.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Sie können eine Anfrage in weniger als einer Minute senden.</string>
+    <string name="seconds">Sekunden</string>
+    <string name="minutes">Minuten</string>
+    <string name="hours">Stunden</string>
+    <string name="days">Tage</string>
+    <string name="weeks">Wochen</string>
+    <string name="months">Monate</string>
+    <string name="icon_shape">Icon-Form</string>
+    <string name="icon_shape_system">Vom System festgelegt</string>
+    <string name="icon_shape_circle">Kreis</string>
+    <string name="icon_shape_squircle">Squircle</string>
+    <string name="icon_shape_rounded_square">Abgerundetes Viereck</string>
+    <string name="icon_shape_square">Viereck</string>
+    <string name="icon_shape_teardrop">Träne</string>
+    <string name="requests_upload_error">Das hat nicht geklappt. Error Name: \"%1$s\".</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Wie verwende ich dieses Icon-Pack?</item>
+        <item>Wie wende ich das Icon-Pack an?</item>
+        <item>Wie kann ich alle enthaltenen Icons anzeigen?</item>
+        <item>Wie kann ich bestimmte Icons durch Alternativen ersetzen?</item>
+        <item>Wie kann ich Icons ohne Theme anfragen?</item>
+        <item>Nach einem Neustart meines Geräts ist das Icon Pack nicht mehr angewendet. Die Icons wurden auf den Standard zurückgesetzt.</item>
+        <item>Warum sind die Icons auf meinem Gerät verpixelt?</item>
+        <item>Ich sehe ein Icon für eine App in den enthaltenen Icons, aber es wird nicht angewendet.</item>
+        <item>Wieso braucht die App die Berechtigung, um meinen Speicher anzupassen oder zu löschen?</item>
+        <item>Wieso braucht die App die Berechtigung zu vollem Zugang zum Netzwerk?</item>
+        <item>Wieso braucht die App die Berechtigung, Verbindungen anzuzeigen?</item>
+        <item>Wieso braucht die App die Berechtigung ein Hintergrundbild festzulegen?</item>
+        <item>Wieso braucht die App die Berechtigung die Hintergrundbildgröße zu verändern?</item>
+        <item>Wieso braucht die App die Berechtigung das Telefon am Ausschalten zu hindern?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Du benötigst einen Launcher mit Support für Icon-Packs. Die Liste der unterstützten Launcher könnte in der App im \"Anwenden\"-Abschnitt oder der Play Store Beschreibung gefunden werden.</item>
+        <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anwenden\" antippen, oder du musst das vierte Icon in der unteren Navigationsleiste antippen. Dort kannst du einen Launcher auswählen, für welchen du die Icons anwenden möchtest. Einige Launcher unterstützen keine automatische Anwendung und du musst dies manuell in den Einstellungen des Launcher tun.</item>
+        <item>Gehe zurück zur Hauptseite der App und klicke auf die Karte mit dem Titel \"Icons\".</item>
+        <item>Abhängig vom Launcher, den du verwendest, musst du entweder lange auf das Icon tippen und auf \"Bearbeiten\" im Pop-up-Menü tippen oder das Icon auf ein \"Bearbeiten\"-Feld ziehen.</item>
+        <item>Abhängig von der Art der Navigation der App musst du entweder von der linken Seite das Navigationsmenü öffnen und den Abschnitt \"Anfragen\" antippen, oder du musst das entsprechende Icon in der unteren Navigationsleiste antippen.</item>
+        <item>Das ist passiert, weil das Icon Pack auf die SD-Karte verschoben wurde. Du solltest es auf dem internen Speicher installieren.</item>
+        <item>Dieses Problem wird durch den Launcher bedingt und dessen Handhabung bei hohen Auflösungen. Du kannst das Problem lösen, indem du die Icon-Größe auf 115 - 120 % erhöhst. Du kannst auch versuchen, einen anderen Launcher zu verwenden.</item>
+        <item>Eine Icon-Anfrage senden.</item>
+        <item>Diese wird verwendet, um Daten für Icon-Anfragen speichern zu können, genauso wie für das Speichern der Hintergrundbildern und zur Änderung des Download-Verzeichnisses.</item>
+        <item>Diese wird verwendet, um Hintergrundbilder aus der Cloud herunterladen zu können.</item>
+        <item>Diese wird verwendet, um zu prüfen, ob dein Gerät eine Internet-Verbindung besitzt.</item>
+        <item>Diese wird verwendet, um das Hintergrundbild direkt aus der App heraus anwenden zu können.</item>
+        <item>Diese wird verwendet, um die Größe des Hintergrundbildes an deine Bildschirmauflösung anzupassen.</item>
+        <item>Dies wird von „Muzei Live Wallpaper” benötigt.</item>
+    </string-array>
+</resources>

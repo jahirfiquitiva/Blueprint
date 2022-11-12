@@ -1,0 +1,70 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="dev.jahir.blueprint">
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+
+        <activity
+            android:name="dev.jahir.frames.ui.activities.MuzeiSettingsActivity"
+            android:exported="false"
+            tools:replace="android:exported" />
+
+        <activity
+            android:name="dev.jahir.kuper.ui.activities.KuperActivity"
+            android:exported="false"
+            tools:replace="android:exported" />
+
+        <activity
+            android:name="dev.jahir.kuper.ui.activities.KuperSettingsActivity"
+            android:exported="false"
+            tools:replace="android:exported" />
+
+        <activity
+            android:name=".ui.activities.BlueprintKuperActivity"
+            android:exported="false"
+            android:label="@string/templates" />
+
+        <activity
+            android:name=".ui.activities.IconsCategoryActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.activities.HelpActivity"
+            android:exported="false"
+            android:label="@string/help" />
+
+        <activity
+            android:name=".ui.activities.BlueprintSettingsActivity"
+            android:exported="true"
+            android:label="@string/settings">
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.activities.BlueprintAboutActivity"
+            android:exported="false"
+            android:label="@string/about" />
+
+    </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.HOME" />
+        </intent>
+    </queries>
+
+</manifest>

@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation,MissingTranslation">
     <string-array name="credits_photos" formatted="false" tools:ignore="TypographyDashes">
-        <item>https://lh3.googleusercontent.com/-0mdcClKXlgM/AAAAAAAAAAI/AAAAAAAAAAA/xgdLWeAg7pM/s120-c/photo.jpg</item>
-        <item>https://ssl.gstatic.com/images/branding/product/2x/avatar_square_grey_512dp.png</item>
+        <item>https://sh1n3zz-1301864135.cos.ap-guangzhou.myqcloud.com/uploads/2022/10/04/70e0EzWt_-2f1158d4f9be78b9.jpg</item>
+        <item>https://sh1n3zz-1301864135.cos.ap-guangzhou.myqcloud.com/uploads/2022/10/04/NwQunADi_-248cd02eebcddc73.jpg</item>
+        <item>https://sh1n3zz-1301864135.cos.ap-guangzhou.myqcloud.com/uploads/2022/10/30/z4EFoGO5_0bdb0f4ab6d7a8ec8b1d1b23487bc738.jpeg</item>
+        <item>https://sh1n3zz-1301864135.cos.ap-guangzhou.myqcloud.com/uploads/2022/10/10/LSQdkFy1_IMG_20221009_205248.jpg</item>
     </string-array>
 
     <string-array name="credits_titles">
-        <item>Your Name</item>
-        <item>Another Name</item>
+        <item>ChenJ</item>
+        <item>GuoDong</item>
+        <item>Sh1n3zZ</item>
+        <item>Offer Support</item>
     </string-array>
 
     <string-array name="credits_descriptions">
-        <item>Details of first credited person</item>
-        <item>Details of another credited person</item>
+        <item>develop</item>
+        <item>art</item>
+        <item>upload to Google play、cloud services</item>
+        <item>help</item>
     </string-array>
 
     <string-array name="credits_buttons">
-        <item>Google+|Instagram</item>
-        <item>Facebook|Website|Twitter</item>
+        <item>酷安 Coolapk|Github</item>
+        <item>酷安 Coolapk</item>
+        <item>酷安 Coolapk|Github</item>
+        <item>感谢名单</item>
     </string-array>
 
     <string-array name="credits_links">
-        <item>https://www.google.com/+JahirFiquitivaR|http://instagram.com/jahirfiquitiva</item>
-        <item>https://facebook.com/|https://jahir.dev/|https://twitter.com/jahirfiquitiva</item>
+        <item>http://www.coolapk.com/u/3736924|https://github.com/wkshl</item>
+        <item>http://www.coolapk.com/u/1032987</item>
+        <item>http://www.coolapk.com/u/21623507|https://GitHub.com/Sh1n3zZ</item>
+        <item>https://wkshl.github.io/2022/10/10/重圆-IconPack-感谢名单/</item>
     </string-array>
 </resources>

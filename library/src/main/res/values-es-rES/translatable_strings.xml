@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Inicio</string>
+    <string name="icons">Iconos</string>
+    <string name="request">Solicitar</string>
+    <string name="overview">Resumen</string>
+    <string name="more_apps">Más aplicaciones</string>
+    <string name="useful_links">Enlaces</string>
+    <string name="select_all">Seleccionar todo</string>
+    <string name="help">Ayuda</string>
+    <string name="x_icons">%1$s Iconos</string>
+    <string name="search_icons">Buscar iconos</string>
+    <string name="search_apps">Buscar aplicaciones</string>
+    <string name="search_launchers">Buscar launchers</string>
+    <string name="lni_content">“%1$s” no está instalado. ¿Quieres obtenerlo de Google Play?</string>
+    <string name="no_compatible_launcher_title">Launcher no compatible</string>
+    <string name="no_compatible_launcher_content">“Google Now Launcher” no soporta paquetes de iconos a menos que esté emparejado con “Awesome Shortcuts.” ¿Quieres instalarlo?</string>
+    <string name="impossible_open_themes">No se puede abrir la aplicación</string>
+    <string name="themes_app_not_installed">“Temas” no está instalado.</string>
+    <string name="coming_soon">Proximamente.</string>
+    <string name="quick_apply">Aplicar al inicio</string>
+    <string name="request_x_icons">Solicitar %1$s iconos</string>
+    <string name="request_icon">Solicitar icono</string>
+    <string name="request_none">Solicitar icono(s)</string>
+    <string name="kustom_templates">Plantillas Kustom</string>
+    <string name="zooper_templates">Plantillas de Zooper</string>
+    <string name="rate">Calificar</string>
+    <string name="share">Compartir</string>
+    <string name="share_text">Obtén %1$s en Google Play: %2$s.</string>
+    <string name="send_email">Enviar correo</string>
+    <string name="send_using">Enviar con:</string>
+    <string name="request_in_progress">Enviando Solicitud</string>
+    <string name="request_in_progress_content">Ya se está enviando una solicitud.</string>
+    <string name="building_request_dialog">Preparando solicitud...</string>
+    <string name="request_upload_success_content">Solicitud enviada.</string>
+    <string name="no_selected_apps">No hay aplicaciones seleccionadas</string>
+    <string name="no_selected_apps_content">Selecciona aplicaciones para enviar una solicitud.</string>
+    <string name="apps_limit_dialog">Selecciona %1$s aplicaciones o menos.</string>
+    <string name="apps_limit_dialog_more">Selecciona %1$s aplicaciones o menos.</string>
+    <string name="apps_limit_dialog_day">Sólo puedes enviar solicitudes cada %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Puedes enviar una solicitud en %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Puedes enviar una solicitud en menos de un minuto.</string>
+    <string name="seconds">Segundos</string>
+    <string name="minutes">Minutos</string>
+    <string name="hours">Horas</string>
+    <string name="days">Días</string>
+    <string name="weeks">Semanas</string>
+    <string name="months">Meses</string>
+    <string name="icon_shape">Forma de los iconos</string>
+    <string name="icon_shape_system">Definido por el Sistema</string>
+    <string name="icon_shape_circle">Círculo</string>
+    <string name="icon_shape_squircle">Esquinas redondeadas</string>
+    <string name="icon_shape_rounded_square">Cuadrado redondeado</string>
+    <string name="icon_shape_square">Cuadrado</string>
+    <string name="icon_shape_teardrop">Gota</string>
+    <string name="requests_upload_error">Algo salió mal. Nombre del error: “%1$s”.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>¿Cómo utilizar el paquete de iconos?</item>
+        <item>¿Cómo aplicar el paquete de iconos?</item>
+        <item>¿Cómo ver todos los iconos incluidos?</item>
+        <item>¿Cómo reemplazar ciertos iconos con alternativas?</item>
+        <item>¿Cómo solicitar iconos?</item>
+        <item>Después de reiniciar mi dispositivo, el paquete de iconos ya no se aplica. Se restauraron los iconos por defecto.</item>
+        <item>¿Por qué parecen los iconos pixelados en mi dispositivo?</item>
+        <item>Puedo ver un icono de X aplicación en los iconos incluidos, pero el icono no se aplica.</item>
+        <item>¿Por qué la aplicación necesita permiso para modificar o eliminar el contenido de mi almacenamiento?</item>
+        <item>¿Por qué la aplicación necesita permiso para acceder a la red?</item>
+        <item>¿Por qué la aplicación necesita permiso para ver las conexiones?</item>
+        <item>¿Por qué la aplicación necesita permiso para establecer fondos de pantalla?</item>
+        <item>¿Por qué la aplicación necesita permiso para ajustar el tamaño del fondo de pantalla?</item>
+        <item>¿Por qué la aplicación necesita permiso para evitar que el teléfono se suspenda?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Necesitas un launcher con soporte para paquetes de iconos. La lista de launchers compatibles puede encontrarse en la aplicación en la sección \"Aplicar\", o la descripción de Play Store.</item>
+        <item>Dependiendo del tipo de navegación de la aplicación, necesitarás deslizar el panel de la izquierda e ir a la sección \"Aplicar\" o elegir el cuarto ícono de la barra de navegación inferior. Desde allí podrás elegir un launcher al qué aplicar los iconos. Algunos launchers no admiten la aplicación automática y tienes que hacerlo manualmente a través de su configuración.</item>
+        <item>Vuelve a la sección principal de la aplicación y pulse la ficha titulada \"Iconos\".</item>
+        <item>Dependiendo del launcher que usas, mantén presionado el icono y seleccionar \"Editar\" en el menú emergente, o mantén presionado el icono y moverlo a la caja de \"Editar\".</item>
+        <item>Dependiendo del tipo de navegación de la aplicación, necesitarás deslizar el panel de la izquierda e ir a la sección \"Solicitudes\" o elegir el icono de la barra de navegación inferior.</item>
+        <item>Sucedió porque el paquete de iconos se trasladó a la tarjeta SD, se debe instalar en almacenamiento interno.</item>
+        <item>El problema podría venir con el launcher que usas, cuando maneja gran resolución. Puedes solucionarlo mediante el aumento de tamaño de los iconos a 115 – 120%. O trata de usar otro launcher.</item>
+        <item>Envía una solicitud de iconos.</item>
+        <item>Se necesita para poder escribir datos de solicitudes de iconos y archivos, así como para guardar fondos de pantalla y poder cambiar la ubicación de descarga de fondos de pantalla.</item>
+        <item>Se necesita para poder cargar los fondos de pantalla de la nube y descargarlos.</item>
+        <item>Es necesario para poder verificar si tu dispositivo tiene conexión a Internet.</item>
+        <item>Es necesario para poder aplicar el fondo de pantalla directamente desde la aplicación.</item>
+        <item>Es necesario para poder ajustar las dimensiones de los fondos de pantalla en función de la resolución de tu pantalla.</item>
+        <item>Es necesario para Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

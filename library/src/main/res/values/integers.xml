@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="icons_columns_count">4</integer>
+    <integer name="launchers_columns_count">3</integer>
+</resources>

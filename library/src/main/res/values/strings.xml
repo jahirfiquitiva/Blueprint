@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="kustom">Kustom</string>
+    <string name="zooper">Zooper</string>
+
+    <string-array name="icon_shapes_options">
+        <item>@string/icon_shape_system</item>
+        <item>@string/icon_shape_circle</item>
+        <item>@string/icon_shape_squircle</item>
+        <item>@string/icon_shape_rounded_square</item>
+        <item>@string/icon_shape_square</item>
+        <item>@string/icon_shape_teardrop</item>
+    </string-array>
+</resources>

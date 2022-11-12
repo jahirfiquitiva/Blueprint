@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <version title="v1.0.0" />
-    <item text="Initial Changelog" />
-    <item text="Bullet point here" />
-    <item text="More points" />
+    <version title="v不知道几个版本，反正是内测" />
+    <item text="共适配应用约400个左右(包括启动项)" />
+    <item text="优化重圆 Icon Pack图标清晰度" />
+    <item text="修复了部分应用未适配成功的问题" />
     <item text="" /> <!-- this one is empty and therefore ignored -->
 </resources>

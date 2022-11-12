@@ -2,22 +2,36 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
 
     <!-- Make sure to put at least 8 icons -->
+    
     <string-array name="icons_preview">
-        <item>adaptive_one</item>
-        <item>adaptive_two</item>
-        <item>adaptive_three</item>
-        <item>amber_circle</item>
-        <item>amber_rectangle</item>
-        <item>amber_square</item>
-        <item>blue_circle</item>
-        <item>blue_rectangle</item>
-        <item>blue_square</item>
-        <item>purple_circle</item>
-        <item>purple_rectangle</item>
-        <item>purple_square</item>
-        <item>red_circle</item>
-        <item>red_rectangle</item>
-        <item>red_square</item>
+       
+       <item>gmail</item>
+        <item>google_play_store</item>
+        <item>chrome</item>
+        <item>wear_os_by_google</item>
+        <item>maps</item>
+        <item>files_by_google</item>
+        <item>google_one</item>
+        <item>google_podcasts</item>
+        <item>google</item>
+        <item>find_my_device</item>
+        <item>google_play_games</item>
+        <item>lens</item>
+        <item>google_photos</item>
+        <item>google_phone</item>
+        <item>calculator_through</item>
+        <item>flyme_camera</item>
+        <item>flyme_clock</item>
+        <item>miui_contacts_and_dialer</item>
+        <item>flyme_messages</item>
+        <item>flyme_settings</item>
+        
+        <item>genshin1</item>
+        
+        
+        
+       
+        
     </string-array>
 
     <!-- These sections below are for your "Previews" section -->
@@ -26,80 +40,816 @@
 
     <!-- Make sure the filters names are the same as the other arrays -->
     <string-array name="icon_filters">
+        <item>android_aosp_google</item>
+        <item>flyme</item>
+        <item>miui</item>
+        <item>game</item>
+        <item>correspondence</item>
+        <item>audiovisual</item>
+        <item>shortcut</item>
         <item>all</item>
-        <item>adaptive</item>
-        <item>amber</item>
-        <item>blue</item>
-        <item>purple</item>
-        <item>red</item>
-        <item>circles</item>
-        <item>rectangles</item>
-        <item>squares</item>
+        
     </string-array>
+
+    
+    
+    <string-array name="android_aosp_google">
+    
+        <item>gmail</item>
+        <item>google_play_store</item>
+        <item>chrome</item>
+        <item>wear_os_by_google</item>
+        <item>maps</item>
+        <item>files_by_google</item>
+        <item>google_one</item>
+        <item>google_podcasts</item>
+        <item>google</item>
+        <item>find_my_device</item>
+        <item>google_play_games</item>
+        <item>lens</item>
+        <item>google_photos</item>
+        <item>google_phone</item>
+        <item>calculator_through</item>
+        <item>flyme_camera</item>
+        <item>flyme_clock</item>
+        <item>miui_contacts_and_dialer</item>
+        <item>flyme_messages</item>
+        <item>flyme_settings</item>
+        
+        <item>aosp_gallery</item>
+        <item>game_space</item>
+        
+        <item>miui_fm</item>
+        
+    </string-array>
+    
+     <string-array name="flyme">
+     
+        <item>flyme_app_store</item>
+        <item>flyme_camera</item>
+        <item>flyme_clock</item>
+        <item>flyme_email</item>
+        <item>family_guard</item>
+        <item>files</item>
+        <item>gallery</item>
+        <item>game_center</item>
+        <item>mcare</item>
+        <item>meizu_pay</item>
+        <item>flyme_messages</item>
+        <item>flyme_music</item>
+        <item>flyme_notes</item>
+        <item>flyme_phone</item>
+        <item>pedometer</item>
+        <item>flyme_recorder</item>
+        <item>flyme_safe</item>
+        <item>flyme_settings</item>
+        <item>flyme_themes</item>
+        <item>flyme_todolist</item>
+        <item>flyme_toolbox</item>
+        <item>flyme_media_video</item>
+        <item>flyme_weather</item>
+        <item>flyme_migratool</item>
+        <item>aicy_voice</item>
+        <item>flyme_browser</item>
+        <item>flyme_calculator</item>
+        <item>celendar_d</item>
+        <item>celendar_d1</item>
+        <item>celendar_d2</item>
+        <item>celendar_d3</item>
+        <item>celendar_d4</item>
+        <item>celendar_d5</item>
+        
+        <item>flyme_logreport</item>
+        <item>flymebbs</item>
+        <item>flyme_store</item>
+        
+    </string-array>
+    
+    <string-array name="miui">
+    
+        <item>xiaomi_game</item>
+        <item>miui_browser</item>
+        <item>miui_calculator</item>
+        <item>miui_camera</item>
+        <item>miui_clock</item>
+        <item>miui_compass</item>
+        <item>miui_contacts_and_dialer</item>
+        <item>miui_downloads</item>
+        <item>miui_file_manager</item>
+        <item>miui_gallery</item>
+        <item>mi_fitness</item>
+        <item>mi_home</item>
+        <item>mi_mover</item>
+        <item>mi_remote</item>
+        <item>mi_video</item>
+        <item>miui_music</item>
+        <item>miui_notes</item>
+        <item>miui_sim_toolkit</item>
+        <item>miui_scanner</item>
+        <item>miui_recorder</item>
+        <item>miui_security</item>
+        <item>miui_services_feedback</item>
+        <item>miui_settings</item>
+        <item>miui_weather</item>
+        <item>miui_tonghua</item>
+        <item>miui_mms</item>
+        <item>mi_ai</item>
+        <item>miui_getapps</item>
+        <item>mi_pay</item>
+        <item>miui_themes</item>
+        <item>miui_clock1</item>
+        <item>xiaomi_bbs</item>
+        <item>xiaomi_youpin</item>
+        <item>xiaomi_shop</item>
+        <item>xiaomi_tv</item>
+        <item>xiaomi_bbs1</item>
+        <item>miui_fm</item>
+        
+        
+    </string-array>
+    
+    <string-array name="game">
+        <item>happyelements</item>
+        <item>wangzherongyao</item>
+        <item>minecraft</item>
+        <item>hlddz</item>
+        <item>genshin</item>
+        <item>genshin1</item>
+        <item>genshin2</item>
+        <item>game_arknights</item>
+        <item>sky</item>
+        
+    </string-array>
+    
+    <string-array name="correspondence">
+        <item>tencent_weixin</item>
+        <item>coolapk</item>
+        <item>weibo</item>
+        <item>mihoyo_bbs</item>
+        <item>rimet_dingding</item>
+        <item>telegram</item>
+        <item>red_book</item>
+        <item>zhi_hu</item>
+        <item>tencent_qq</item>
+        <item>nekogram_x</item>
+        <item>twitter</item>
+        <item>blued</item>
+        <item>wechat_wk</item>
+        <item>tim</item>
+        
+    </string-array>
+    
+    
+    <string-array name="audiovisual">
+        <item>qq_music</item>
+        <item>bili_bili</item>
+        <item>wang_yi_yun_music</item>
+        <item>douyin</item>
+        <item>twitter</item>
+        <item>apple_music</item>
+        <item>youku</item>
+        <item>kuaishou_lite</item>
+        <item>article_lite</item>
+        <item>bilibili_hd</item>
+        <item>toutiao</item>
+        <item>iqiyi</item>
+        <item>kugou</item>
+        <item>netease_news</item>
+        <item>kuwo_music</item>
+        <item>huya_tv</item>
+        <item>migu_music</item>
+        <item>douyu_tv</item>
+        <item>mangguo_tv</item>
+        <item>kugou_lite</item>
+        <item>net_ease_snailread</item>
+        <item>douyin_lite</item>
+        <item>netease_music_lite</item>
+        
+        
+        
+        
+        
+    </string-array>
+    
+    
+    <string-array name="shortcut">
+        <item>status_bar_toggle_bluetooth_off</item>
+        <item>status_bar_toggle_bluetooth_on</item>
+        <item>status_bar_toggle_data_off</item>
+        <item>status_bar_toggle_data_on</item>
+        <item>status_bar_toggle_flight_mode_off</item>
+        <item>status_bar_toggle_flight_mode_on</item>
+        <item>status_bar_toggle_lock</item>
+        <item>status_bar_toggle_torch_off</item>
+        <item>status_bar_toggle_torch_on</item>
+        <item>status_bar_toggle_wifi_ap_off</item>
+        <item>status_bar_toggle_wifi_ap_on</item>
+        <item>status_bar_toggle_wifi_off</item>
+        <item>status_bar_toggle_wifi_on</item>
+        
+    </string-array>
+    
+    
+    
 
     <string-array name="all">
-        <item>amber_circle</item>
-        <item>amber_rectangle</item>
-        <item>amber_square</item>
-        <item>blue_circle</item>
-        <item>blue_rectangle</item>
-        <item>blue_square</item>
-        <item>purple_circle</item>
-        <item>purple_rectangle</item>
-        <item>purple_square</item>
-        <item>red_circle</item>
-        <item>red_rectangle</item>
-        <item>red_square</item>
+    
+        <item>tencent_weixin</item>
+        <item>wangzherongyao</item>
+        <item>coolapk</item>
+        <item>weibo</item>
+        <item>baidu_netdisk</item>
+        <item>mihoyo_bbs</item>
+        <item>rimet_dingding</item>
+        <item>telegram</item>
+        <item>red_book</item>
+        <item>zhi_hu</item>
+        <item>happyelements</item>
+        <item>wangzherongyao</item>
+         <item>flyme_app_store</item>
+        <item>flyme_camera</item>
+        <item>flyme_clock</item>
+        <item>flyme_email</item>
+        <item>family_guard</item>
+        <item>files</item>
+        <item>gallery</item>
+        <item>game_center</item>
+        <item>mcare</item>
+        <item>meizu_pay</item>
+        <item>flyme_messages</item>
+        <item>flyme_music</item>
+        <item>flyme_notes</item>
+        <item>flyme_phone</item>
+        <item>pedometer</item>
+        <item>flyme_recorder</item>
+        <item>flyme_safe</item>
+        <item>flyme_settings</item>
+        <item>flyme_themes</item>
+        <item>flyme_todolist</item>
+        <item>flyme_toolbox</item>
+        <item>flyme_media_video</item>
+        <item>flyme_weather</item>
+        <item>flyme_migratool</item>
+        <item>aicy_voice</item>
+        <item>flyme_browser</item>
+        <item>flyme_calculator</item>
+        
+        <item>calendar</item>
+        <item>calendar_d</item>
+        
+        <item>calendar_d1</item>
+        <item>calendar_d2</item>
+        <item>calendar_d3</item>
+        <item>calendar_d4</item>
+        <item>calendar_d5</item>
+        <item>calendar_d6</item>
+        <item>calendar_d7</item>
+        <item>calendar_d8</item>
+        <item>calendar_d8</item>
+        <item>calendar_d9</item>
+        <item>calendar_d10</item>
+        <item>calendar_d11</item>
+        <item>calendar_d12</item>
+        <item>calendar_d13</item>
+        <item>calendar_d14</item>
+        <item>calendar_d15</item>
+        <item>calendar_d16</item>
+        <item>calendar_d17</item>
+        <item>calendar_d18</item>
+        <item>calendar_d19</item>
+        <item>calendar_d20</item>
+        <item>calendar_d21</item>
+        <item>calendar_d22</item>
+        <item>calendar_d23</item>
+        <item>calendar_d24</item>
+        <item>calendar_d25</item>
+        <item>calendar_d26</item>
+        <item>calendar_d27</item>
+        <item>calendar_d28</item>
+        <item>calendar_d29</item>
+        <item>calendar_d30</item>
+        <item>calendar_d31</item>
+        
+        <item>flyme_logreport</item>
+        <item>flymebbs</item>
+        <item>gmail</item>
+        <item>google_play_store</item>
+        <item>google_play_games</item>
+        
+        <item>appshare</item>
+        <item>magisk</item>
+        <item>pinduoduo</item>
+        <item>bili_bili</item>
+        <item>wps_office</item>
+        <item>qq_mail</item>
+        <item>qq_music</item>
+        <item>weibo</item>
+        <item>zepp_life</item>
+        <item>woodbox</item>
+        <item>xiaomi_shop</item>
+        <item>baidu</item>
+        <item>baidu_tieba</item>
+        <item>mei_tuan</item>
+        
+        <item>kfc</item>
+        <item>poshmarkinc</item>
+        <item>alicloud</item>
+        <item>amap_gaode</item>
+        <item>chrome</item>
+        <item>facebook</item>
+        <item>gmail</item>
+        <item>idm</item>
+        <item>scene5</item>
+        <item>taptap</item>
+        <item>wallpaper_engine</item>
+        <item>bilibili_comic</item>
+        <item>ecloud</item>
+        <item>brush_assistant</item>
+        <item>dragon_read</item>
+        <item>ice_box</item>
+        <item>clash</item>
+        <item>karaoke_tencent</item>
+        <item>quark</item>
+        <item>xiaomi_youpin</item>
+        <item>xiaomi_bbs</item>
+        <item>socmark</item>
+        <item>hanser_club</item>
+        <item>mg_aide</item>
+        <item>mihoyo_bbs</item>
+        <item>cainiao</item>
+        <item>sd_express</item>
+        <item>kuaidui</item>
+        <item>douyin</item>
+        <item>afdian</item>
+        <item>baidu_input</item>
+        <item>ac_tencebt</item>
+        <item>xt</item>
+        <item>rimet_dingding</item>
+        <item>mt_plus</item>
+        <item>telegram</item>
+        <item>china_yidong</item>
+        <item>china_liantong</item>
+        <item>jd_lite</item>
+        <item>jd_reader</item>
+        <item>jx</item>
+        <item>smzdm</item>
+        <item>shortcutcreator</item>
+        <item>ha_lo</item>
+        <item>red_book</item>
+        <item>qqdownloader</item>
+        <item>happyelements</item>
+        <item>mybustz</item>
+        <item>tb_te</item>
+        <item>superb</item>
+        <item>zhi_hu</item>
+        <item>douban</item>
+        <item>wandoujia</item>
+        <item>mobileticket</item>
+        <item>wang_yi_yun_music</item>
+        <item>qing_zhuo</item>
+        <item>ali_pay</item>
+        <item>black_house</item>
+        <item>xiaomi_tv</item>
+        <item>hykb</item>
+        <item>vipshop</item>
+        <item>jian_ying</item>
+        <item>jing_dong</item>
+        <item>via</item>
+        <item>twitter</item>
+        <item>snapseed</item>
+        <item>nekogram_x</item>
+        <item>minecraft</item>
+        <item>apple_music</item>
+        <item>blued</item>
+        <item>taobao</item>
+        <item>youku</item>
+        <item>zuoyebang</item>
+        <item>kuaishou_lite</item>
+        <item>youchu_yinhang</item>
+        <item>xigua_video</item>
+        <item>zhuanzhuan</item>
+        <item>days_matter</item>
+        <item>es_file_explorer</item>
+        <item>gjzs_r</item>
+        <item>kuai_shou</item>
+        <item>legado_release</item>
+        <item>lightroom</item>
+        <item>math</item>
+        <item>notify_for_mi_band</item>
+        <item>perfect_icon_project</item>
+        <item>photo_editor</item>
+        <item>photomath</item>
+        <item>styles_wallpapers</item>
+        <item>ucmooc</item>
+        
+        <item>miuidock</item>
+        <item>wps_note</item>
+        <item>yi_tian</item>
+        <item>hide_my_applist</item>
+        <item>lottiefiles</item>
+        <item>chuang_yi_widget</item>
+        <item>material_files</item>
+        <item>pptshell</item>
+        
+        <item>aitutu_benchmark</item>
+        <item>anywhere</item>
+        <item>battery_guru</item>
+        <item>edge</item>
+        <item>huawei_health</item>
+        <item>light_start</item>
+        <item>qq_liulanqi</item>
+        <item>rs_tools</item>
+        <item>shizuku</item>
+        <item>ucmobile</item>
+        <item>wifilocating</item>
+        <item>du</item>
+        <item>zheng_qi</item>
+        <item>tencent_game_bbs</item>
+        <item>baidumap</item>
+        <item>baidu_netdisk_youth</item>
+        <item>tencent_cmocmna</item>
+        <item>xunlei</item>
+        <item>xingchengka</item>
+        <item>hlddz</item>
+        
+        <item>xiaomi_bbs1</item>
+        <item>xiaomi_game</item>
+        <item>miui_browser</item>
+        <item>miui_calculator</item>
+        <item>miui_camera</item>
+        <item>miui_clock</item>
+        <item>miui_compass</item>
+        <item>miui_contacts_and_dialer</item>
+        <item>miui_downloads</item>
+        <item>miui_file_manager</item>
+        <item>miui_gallery</item>
+        <item>mi_fitness</item>
+        <item>mi_home</item>
+        <item>mi_mover</item>
+        <item>mi_remote</item>
+        <item>mi_video</item>
+        <item>miui_music</item>
+        <item>miui_notes</item>
+        <item>miui_sim_toolkit</item>
+        <item>miui_scanner</item>
+        <item>miui_recorder</item>
+        <item>miui_security</item>
+        <item>miui_services_feedback</item>
+        <item>miui_settings</item>
+        <item>miui_weather</item>
+        <item>miui_tonghua</item>
+        <item>miui_mms</item>
+        <item>mi_ai</item>
+        <item>miui_getapps</item>
+        <item>mi_pay</item>
+        <item>miui_themes</item>
+        <item>miui_clock1</item>
+        
+        <item>it_home</item>
+        <item>dear_translate</item>
+        
+        <item>genshin</item>
+        <item>genshin1</item>
+        <item>genshin2</item>
+        
+        <item>fusionapp</item>
+        <item>kustom_widget</item>
+        <item>libchecker</item>
+        <item>surfvpn</item>
+        
+        <item>heymelody</item>
+        <item>tencent_token</item>
+        <item>rainpaper</item>
+        <item>salt_music</item>
+        <item>spotify</item>
+        <item>youdao_translator</item>
+        <item>mcdonald_s</item>
+        <item>nutstore</item>
+        <item>wear_os_by_google</item>
+        <item>weibointl</item>
+        <item>xk_video_wallpaer</item>
+        
+        <item>toutiao</item>
+        <item>bilibili_hd</item>
+        <item>article_lite</item>
+        <item>yangcong345</item>
+        <item>googleinstall</item>
+        <item>wuba</item>
+        <item>b612</item>
+        <item>dianping</item>
+        <item>cmvideo</item>
+        <item>pu_kou_dai</item>
+        <item>tencent_wemeet</item>
+        <item>icbc</item>
+        <item>jianshe</item>
+        <item>zjy_ykt</item>
+        <item>unionpay</item>
+        
+        <item>jike</item>
+        <item>qq_lite</item>
+        <item>ac_fun</item>
+        <item>apk_pure</item>
+        <item>greenify</item>
+        <item>iqiyi</item>
+        <item>netease_uu</item>
+        <item>wechat_wk</item>
+        <item>qt_qtl</item>
+        <item>xbrowser</item>
+        <item>mxplayer</item>
+        <item>chelaile</item>
+        <item>caiyun</item>
+        <item>momo</item>
+        <item>didi</item>
+        <item>didi_gsui</item>
+        <item>ticktick</item>
+        <item>maimemo</item>
+        
+        <item>kugou</item>
+        <item>netease_news</item>
+        <item>xichuangzhu</item>
+        <item>tmall</item>
+        <item>tim</item>
+        <item>suning</item>
+        <item>mtxx</item>
+        <item>kuwo_music</item>
+        <item>huya_tv</item>
+        <item>qq_live</item>
+        <item>qq_edu</item>
+        <item>zaker</item>
+        <item>qq_weread</item>
+        <item>xiaoheihe</item>
+        
+        <item>xxt</item>
+        <item>shihuo</item>
+        <item>douban_movie</item>
+        <item>aiwu</item>
+        <item>xichuangzhu</item>
+        <item>brevent</item>
+        <item>kkp</item>
+        <item>lofter</item>
+        <item>bcy</item>
+        <item>hpyd</item>
+        <item>hupu</item>
+        
+        <item>wenshushu</item>
+        <item>awsl</item>
+        <item>qq_secure</item>
+        <item>boohee</item>
+        <item>wisdomtree</item>
+        <item>ppgx</item>
+        <item>huaxiaozhu</item>
+        <item>canva</item>
+        <item>rr_video</item>
+        <item>kugou_ringtone</item>
+        <item>zxw</item>
+        <item>ps_touch</item>
+        <item>douyu_tv</item>
+        <item>migu_music</item>
+        <item>pfyh</item>
+        <item>xingse</item>
+        <item>houmo</item>
+        <item>dingxianggy</item>
+        
+        <item>status_bar_toggle_bluetooth_off</item>
+        <item>status_bar_toggle_bluetooth_on</item>
+        <item>status_bar_toggle_data_off</item>
+        <item>status_bar_toggle_data_on</item>
+        <item>status_bar_toggle_flight_mode_off</item>
+        <item>status_bar_toggle_flight_mode_on</item>
+        <item>status_bar_toggle_lock</item>
+        <item>status_bar_toggle_torch_off</item>
+        <item>status_bar_toggle_torch_on</item>
+        <item>status_bar_toggle_wifi_ap_off</item>
+        <item>status_bar_toggle_wifi_ap_on</item>
+        <item>status_bar_toggle_wifi_off</item>
+        <item>status_bar_toggle_wifi_on</item>
+        
+        <item>forest</item>
+        <item>speedtest</item>
+        <item>bubei</item>
+        <item>ysyy</item>
+        <item>njyh</item>
+        <item>yyzs</item>
+        <item>ali_1688</item>
+        <item>hjtv</item>
+        <item>baidu_translate</item>
+        <item>bankabc</item>
+        <item>ajk</item>
+        <item>bilibili_bluebog</item>
+        <item>wuta</item>
+        <item>bilibilibog</item>
+        <item>see</item>
+        <item>antifraud</item>
+        <item>huya_kiwi</item>
+        <item>instagram</item>
+        <item>microsoft_word</item>
+        
+        <item>hecaiyun</item>
+        <item>cgb</item>
+        <item>ccb</item>
+        <item>tft</item>
+        <item>yzf</item>
+        <item>dkkj</item>
+        <item>zssh</item>
+        <item>universalapp</item>
+        <item>kuaiya</item>
+        <item>g_board</item>
+        <item>mangguo_tv</item>
+        <item>wps_pro</item>
+        <item>kuaikan</item>
+        <item>kugou_lite</item>
+        <item>wang_vpn</item>
+        <item>t3go</item>
+        <item>csdn</item>
+        <item>wifilocating</item>
+        <item>pics_art</item>
+        <item>baidu_wenku</item>
+        
+        <item>zhibo_8</item>
+        <item>vpnhotspot</item>
+        <item>soul</item>
+        <item>zuiyou</item>
+        <item>retouch</item>
+        <item>alibaba_ailabs</item>
+        <item>qls</item>
+        <item>baidu_lite</item>
+        <item>tieba_mini</item>
+        <item>baidu_yike</item>
+        <item>bandcamp</item>
+        <item>bankcomm</item>
+        <item>soushushenqi</item>
+        <item>bocmbci</item>
+        <item>google_translation</item>
+        <item>youtube</item>
+        <item>qingyan</item>
+        <item>share_weibo</item>
+        <item>etao</item>
+        
+         <item>maps</item>
+        <item>files_by_google</item>
+        <item>google_one</item>
+        <item>google_podcasts</item>
+        <item>google</item>
+        <item>find_my_device</item>
+        <item>google_play_games</item>
+        <item>lens</item>
+        <item>google_photos</item>
+        <item>google_phone</item>
+        <item>calculator_through</item>
+        <item>flyme_camera</item>
+        <item>flyme_clock</item>
+        <item>miui_contacts_and_dialer</item>
+        <item>flyme_messages</item>
+        <item>flyme_settings</item>
+        <item>github</item>
+        
+        <item>maoyan</item>
+        <item>tencent_map</item>
+        <item>tencent_news</item>
+        <item>qgame</item>
+        <item>netease_mail</item>
+        <item>net_ease_snailread</item>
+        <item>kine_master</item>
+        <item>douyin_lite</item>
+        <item>wf</item>
+        <item>dmkj</item>
+        
+        <item>hikerview</item>
+        <item>fb</item>
+        <item>xiaoyuansouti</item>
+        <item>aijiasuclient</item>
+        <item>google_keep</item>
+        <item>bqg</item>
+        <item>huawei_zepp</item>
+        <item>boss_zhipin</item>
+        <item>xiachufang</item>
+        <item>netease_music_lite</item>
+        <item>tieba_lite</item>
+        
+        <item>gdnx</item>
+        <item>gudong</item>
+        <item>datong_cd</item>
+        <item>accu_battery</item>
+        <item>efuzhou</item>
+        <item>diyidan</item>
+        <item>duokan</item>
+        <item>monkeybook</item>
+        <item>gh_game</item>
+        <item>gtgj</item>
+        <item>jiakao</item>
+        <item>zhejiang_zheliban</item>
+        <item>miaomiaozhe</item>
+        <item>hfmetro</item>
+        <item>hb_music</item>
+        <item>xuebao</item>
+        <item>baici</item>
+        <item>focus_to_do</item>
+        <item>qq_docs</item>
+        <item>game_arknights</item>
+        
+        <item>aosp_gallery</item>
+        <item>game_space</item>
+        
+        <item>miui_fm</item>
+        
+        <item>ct</item>
+        <item>dongqiudi</item>
+        <item>duitang</item>
+        <item>qbb</item>
+        <item>ttjj</item>
+        <item>yghsh</item>
+        <item>epet</item>
+        <item>eudic</item>
+        <item>mryytl</item>
+        <item>cmcc</item>
+        <item>hicloud_browser</item>
+        <item>yiyan</item>
+        <item>huawei_fans</item>
+        <item>huawei_ai_life</item>
+        <item>cctalk</item>
+        <item>pazq</item>
+        <item>ifanr</item>
+        <item>ifly_input</item>
+        <item>wanshitong</item>
+        <item>camscanner</item>
+        <item>jd_jr</item>
+        <item>jingfen</item>
+        
+        <item>jxedt</item>
+        <item>jxnx</item>
+        <item>cmcc</item>
+        <item>sdclean</item>
+        <item>zlive</item>
+        <item>bdlp</item>
+        <item>luckin_coffee</item>
+        <item>dedao</item>
+        <item>meiyan_camera</item>
+        <item>mercury_router</item>
+        
+        <item>qtradio_qtfm</item>
+        <item>nga_opensource</item>
+        <item>icbc_elife</item>
+        <item>shadowsocks_sr</item>
+        <item>yzc</item>
+        <item>judu</item>
+        <item>tachiyomi</item>
+        <item>shadowsocks_sr</item>
+        <item>qtradio_qtfm</item>
+        <item>pigai</item>
+        <item>firefox</item>
+        <item>nga_opensource</item>
+        <item>mztapp</item>
+        <item>legado</item>
+        <item>judu</item>
+        <item>icbc_elife</item>
+        <item>camera_2</item>
+        <item>youdao_note</item>
+        <item>hq</item>
+        <item>wdsj</item>
+        <item>zhiyuanhui</item>
+        <item>ykb</item>
+        <item>yipiao_12306</item>
+        <item>evernote</item>
+        <item>mi_shop</item>
+        <item>mi_wear</item>
+        <item>ximalaya</item>
+        <item>xuexiaoyi</item>
+        <item>yiban</item>
+        <item>yingyonghui</item>
+        <item>miss_lee</item>
+        <item>jinrixiaoyuan</item>
+        <item>ddian</item>
+        <item>ct</item>
+        <item>wjrj</item>
+        <item>dfhk</item>
+        <item>qianji</item>
+        <item>nbyh</item>
+        <item>netease_mail</item>
+        <item>xfjsq</item>
+        <item>wanmeixy</item>
+        <item>oppo_store</item>
+        <item>tantan</item>
+        <item>pingan_carowner</item>
+        <item>payh</item>
+        <item>mixedit</item>
+        <item>tomatotime</item>
+        <item>pplive</item>
+        <item>eudic</item>
+        <item>qidian</item>
+        <item>qihoo_browser_js</item>
+        <item>cst</item>
+        <item>qq_qcloud</item>
+        <item>sgcc</item>
+        <item>shanbay_sentence</item>
+        <item>taobao_taopiaopiao</item>
+        <item>flypig</item>
+        
+        
+        
+        
+        
     </string-array>
 
-    <string-array name="adaptive">
-        <item>adaptive_one</item>
-        <item>adaptive_two</item>
-        <item>adaptive_three</item>
-    </string-array>
 
-    <string-array name="amber">
-        <item>amber_circle</item>
-        <item>amber_rectangle</item>
-        <item>amber_square</item>
-    </string-array>
-
-    <string-array name="blue">
-        <item>blue_circle</item>
-        <item>blue_rectangle</item>
-        <item>blue_square</item>
-    </string-array>
-
-    <string-array name="purple">
-        <item>purple_circle</item>
-        <item>purple_rectangle</item>
-        <item>purple_square</item>
-    </string-array>
-
-    <string-array name="red">
-        <item>red_circle</item>
-        <item>red_rectangle</item>
-        <item>red_square</item>
-    </string-array>
-
-    <string-array name="circles">
-        <item>amber_circle</item>
-        <item>blue_circle</item>
-        <item>purple_circle</item>
-        <item>red_circle</item>
-    </string-array>
-
-    <string-array name="rectangles">
-        <item>amber_rectangle</item>
-        <item>blue_rectangle</item>
-        <item>purple_rectangle</item>
-        <item>red_rectangle</item>
-    </string-array>
-
-    <string-array name="squares">
-        <item>amber_square</item>
-        <item>blue_square</item>
-        <item>purple_square</item>
-        <item>red_square</item>
-    </string-array>
+   
 </resources>

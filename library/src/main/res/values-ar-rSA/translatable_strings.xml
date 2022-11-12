@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">الرئيسية</string>
+    <string name="icons">الأيقونات</string>
+    <string name="request">طلب</string>
+    <string name="overview">الخلاصة</string>
+    <string name="more_apps">المزيد من التطبيقات</string>
+    <string name="useful_links">الروابط</string>
+    <string name="select_all">تحديد الكل</string>
+    <string name="help">مساعدة</string>
+    <string name="x_icons">%1$s أيقونات</string>
+    <string name="search_icons">البحث في الأيقونات</string>
+    <string name="search_apps">البحث في التطبيقات</string>
+    <string name="search_launchers">البحث في المشغلات</string>
+    <string name="lni_content">\"%1$s\" ليس مثبتاً. هل تريد الحصول عليه من Google Play؟</string>
+    <string name="no_compatible_launcher_title">المشغل غير متوافق</string>
+    <string name="no_compatible_launcher_content">\"Google Now Launcher\" لا يدعم حزم الأيقونات بدون \"Awesome Shortcuts\". هل تريد تثبيته؟</string>
+    <string name="impossible_open_themes">لا يمكن فتح التطبيق</string>
+    <string name="themes_app_not_installed">\"Themes\" ليس مثبتاً.</string>
+    <string name="coming_soon">قريباً.</string>
+    <string name="quick_apply">تطبيق على الشاشة الرئيسية</string>
+    <string name="request_x_icons">طلب %1$s أيقونات</string>
+    <string name="request_icon">طلب أيقونة</string>
+    <string name="request_none">طلب أيقونات</string>
+    <string name="kustom_templates">قوالب Kustom</string>
+    <string name="zooper_templates">قوالب Zooper</string>
+    <string name="rate">تقييم</string>
+    <string name="share">مشاركة</string>
+    <string name="share_text">تحميل %1$s من Google Play هنا: %2$s.</string>
+    <string name="send_email">إرسال بريد إلكتروني</string>
+    <string name="send_using">إرسال باستخدام:</string>
+    <string name="request_in_progress">جار إرسال الطلب</string>
+    <string name="request_in_progress_content">هناك طلب يتم إرساله بالفعل.</string>
+    <string name="building_request_dialog">جار إعداد الطلب...</string>
+    <string name="request_upload_success_content">تم إرسال الطلب.</string>
+    <string name="no_selected_apps">لم يتم تحديد تطبيقات</string>
+    <string name="no_selected_apps_content">حدد التطبيقات لإرسال طلب.</string>
+    <string name="apps_limit_dialog">قم بتحديد %1$s تطبيقات أو أقل.</string>
+    <string name="apps_limit_dialog_more">قم بتحديد %1$s تطبيقات أو أقل.</string>
+    <string name="apps_limit_dialog_day">يمكنك إرسال طلبات فقط كل %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">يمكنك إرسال طلب بعد %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">يمكنك إرسال طلب بعد أقل من دقيقة.</string>
+    <string name="seconds">ثواني</string>
+    <string name="minutes">دقائق</string>
+    <string name="hours">ساعات</string>
+    <string name="days">أيام</string>
+    <string name="weeks">أسابيع</string>
+    <string name="months">أشهر</string>
+    <string name="icon_shape">شكل الأيقونات</string>
+    <string name="icon_shape_system">تعيين بواسطة النظام</string>
+    <string name="icon_shape_circle">دائرة</string>
+    <string name="icon_shape_squircle">مربع دائري</string>
+    <string name="icon_shape_rounded_square">مربع مستدير الزوايا</string>
+    <string name="icon_shape_square">مربع</string>
+    <string name="icon_shape_teardrop">دمعة</string>
+    <string name="requests_upload_error">حدث خطأ ما. اسم الخطأ: \"%1$s\".</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>كيف أستخدم حزمة الأيقونات؟</item>
+        <item>كيف أقوم بتطبيق حزمة الأيقونات؟</item>
+        <item>كيف يمكنني رؤية جميع الأيقونات المضمنة؟</item>
+        <item>كيف يمكنني استبدال أيقونة بأيقونة بديلة؟</item>
+        <item>كيف يمكن طلب تطبيقات ليس لها أيقونات؟</item>
+        <item>بعد إعادة تشغيل جهازي، لم تعد حزمة الأيقونات مطبقة. وتم استعادة الأيقونات الافتراضية.</item>
+        <item>لماذا تبدو الأيقونات متقطعة على هاتفي؟</item>
+        <item>أستطيع رؤية أيقونة تطبيق ما في قائمة الأيقونات، لكن الأيقونة لا يتم تطبيقها.</item>
+        <item>لماذا يحتاج التطبيق إلى صلاحية تعديل أو حذف المحتوى على وحدة التخزين الخاصة بي؟</item>
+        <item>لماذا يحتاج التطبيق إلى صلاحية الوصول الكامل إلى الشبكة؟</item>
+        <item>لماذا يحتاج التطبيق إلى صلاحية عرض الاتصالات؟</item>
+        <item>لماذا يحتاج التطبيق إلى صلاحية تعيين الخلفية؟</item>
+        <item>لماذا يحتاج التطبيق إلى صلاحية ضبط حجم الخلفية؟</item>
+        <item>لماذا يحتاج التطبيق إلى صلاحية منع الهاتف من النوم؟</item>
+    </string-array>
+    <string-array name="answers">
+        <item>أنت تحتاج إلى مشغل يدعم حزم الأيقونات. يمكنك العثور على قائمة المشغلات المدعومة في قسم \"تطبيق\" في التطبيق، أو في وصف متجر Play.</item>
+        <item>اعتماداً على نوع التنقل في التطبيق، فأنت تحتاج إلى سحب درج التنقل من اليمين، والذهاب إلى قسم \"تطبيق\"، أو اختيار الأيقونة الرابعة من شريط التنقل السفلي. من هناك سيمكنك اختيار المشغل الذي تريد تطبيق الأيقونات عليه. بعض المشغلات لا تدعم التطبيق تلقائياً وسيتعين عليك القيام بذلك يدوياً من خلال إعداداتها.</item>
+        <item>اذهب إلى القسم الرئيسي للتطبيق ثم اضغط على الزر ذو العنوان \"الأيقونات\".</item>
+        <item>اعتماداً على المشغل الذي تستخدمه، فعليك إما الضغط مطولاً على الأيقونة واختيار \"تعديل\" من القائمة المنبثقة، أو الضغط مطولاً على الأيقونة وسحبها إلى صندوق \"تعديل\".</item>
+        <item>اعتماداً على نوع التنقل في التطبيق، فأنت تحتاج إلى سحب درج التنقل من اليمين، والذهاب إلى قسم \"الطلبات\"، أو اختيار الأيقونة من شريط التنقل السفلي.</item>
+        <item>حدث ذلك لأن حزمة الأيقونات هذه قد تم نقلها إلى بطاقة SD، يجب عليك تثبيتها في الذاكرة الداخلية.</item>
+        <item>قد تكون المشكلة بسبب المشغل الذي تستخدمه، عند التعامل مع الدقة العالية. يمكنك إصلاحها عن طريق زيادة حجم الأيقونة إلى 115 – 120%. أو حاول استخدام مشغل آخر.</item>
+        <item>إرسال طلب أيقونات.</item>
+        <item>يحتاج إليها التطبيق ليتمكن من كتابة بيانات وملفات طلبات الأيقونات، إضافة إلى حفظ الخلفيات، والتمكن من تغيير موقع تحميل الخلفيات.</item>
+        <item>يحتاج إليها التطبيق ليتمكن من عرض الخلفيات من السحابة وتحميلها.</item>
+        <item>يحتاج إليها التطبيق ليتحقق من ما إذا كان لدى هاتفك اتصال بالإنترنت.</item>
+        <item>يحتاج إليها التطبيق ليتمكن من تطبيق الخلفية مباشرة من التطبيق.</item>
+        <item>يحتاج إليها التطبيق ليتمكن من ضبط أبعاد الخلفيات بناءاً على دقة الشاشة الخاصة بك.</item>
+        <item>يحتاج إليها تطبيق Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

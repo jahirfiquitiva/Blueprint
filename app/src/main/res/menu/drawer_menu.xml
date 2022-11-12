@@ -61,5 +61,6 @@
             android:id="@+id/settings"
             android:orderInCategory="1100"
             android:title="@string/settings" />
+            
     </group>
 </menu>

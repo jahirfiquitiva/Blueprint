@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:paddingStart="8dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="8dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/share_btn"
+        style="@style/Widget.Blueprint.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/share"
+        app:icon="@drawable/ic_share" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rate_btn"
+        style="@style/Widget.Blueprint.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/rate"
+        app:icon="@drawable/ic_rate" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/donate_btn"
+        style="@style/Widget.Blueprint.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/donate"
+        app:icon="@drawable/ic_donate"
+        tools:text="Donate to me pls" />
+
+</LinearLayout>

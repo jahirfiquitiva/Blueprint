@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:paddingStart="8dp"
+    android:paddingTop="12dp"
+    android:paddingEnd="8dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/share_btn"
+        style="@style/Widget.Frames.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/share"
+        android:textColor="?colorSecondary"
+        app:drawableTint="?colorSecondary"
+        app:drawableTopCompat="@drawable/ic_share" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rate_btn"
+        style="@style/Widget.Frames.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/rate"
+        android:textColor="?colorSecondary"
+        app:drawableTint="?colorSecondary"
+        app:drawableTopCompat="@drawable/ic_rate" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/donate_btn"
+        style="@style/Widget.Frames.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/donate"
+        android:textColor="?colorSecondary"
+        app:drawableTint="?colorSecondary"
+        app:drawableTopCompat="@drawable/ic_donate" />
+
+</LinearLayout>

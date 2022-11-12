@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/icons_preview_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:descendantFocusability="blocksDescendants"
+    android:foreground="?selectableItemBackground"
+    app:cardBackgroundColor="@color/transparent"
+    app:cardElevation="0dp"
+    app:cardMaxElevation="0dp"
+    app:cardPreventCornerOverlap="false"
+    app:shapeAppearanceOverlay="@style/ShapeAppearance.Blueprint.IconsPreview">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:layout_gravity="center"
+        android:clickable="false"
+        android:focusable="false"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Blueprint.IconsPreview"
+        tools:ignore="ContentDescription" />
+
+    <dev.jahir.blueprint.ui.widgets.IconsPreviewRecyclerView
+        android:id="@+id/icons_preview_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:clickable="false"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:focusable="false"
+        android:padding="16dp"
+        android:visibility="gone" />
+
+</com.google.android.material.card.MaterialCardView>

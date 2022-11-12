@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">主页</string>
+    <string name="icons">图标</string>
+    <string name="request">申请</string>
+    <string name="overview">概要</string>
+    <string name="more_apps">更多应用</string>
+    <string name="useful_links">网址</string>
+    <string name="select_all">全选</string>
+    <string name="help">帮助</string>
+    <string name="x_icons">%1$s 图标</string>
+    <string name="search_icons">搜索图标</string>
+    <string name="search_apps">搜索应用程序</string>
+    <string name="search_launchers">搜索启动器</string>
+    <string name="lni_content">\"%1$s\" 尚未安装。您想要从 Google Play 获取吗？</string>
+    <string name="no_compatible_launcher_title">不兼容该启动器</string>
+    <string name="no_compatible_launcher_content">“Google Now Launcher”不支持图标包，除非与“Awesome Shortcuts”配对。安装后台吗？</string>
+    <string name="impossible_open_themes">无法打开应用程序</string>
+    <string name="themes_app_not_installed">“主题”没有安装。</string>
+    <string name="coming_soon">即将到来.</string>
+    <string name="quick_apply">应用到首页</string>
+    <string name="request_x_icons">请求 %1$s 图标</string>
+    <string name="request_icon">请求图标</string>
+    <string name="request_none">请求图标</string>
+    <string name="kustom_templates">Kustom模板</string>
+    <string name="zooper_templates">Zooper模板</string>
+    <string name="rate">评分</string>
+    <string name="share">分享</string>
+    <string name="share_text">在 Google Play 上获得 %1$s ： %2$s。</string>
+    <string name="send_email">发送电子邮件</string>
+    <string name="send_using">发送方式</string>
+    <string name="request_in_progress">发送请求</string>
+    <string name="request_in_progress_content">请求已经发送。</string>
+    <string name="building_request_dialog">正在准备资源...</string>
+    <string name="request_upload_success_content">已发送请求。</string>
+    <string name="no_selected_apps">没有选定应用程序。</string>
+    <string name="no_selected_apps_content">选择要发送请求的应用。</string>
+    <string name="apps_limit_dialog">选择 %1$s 个应用或更少的应用。</string>
+    <string name="apps_limit_dialog_more">选择 %1$s 个应用或更少的应用。</string>
+    <string name="apps_limit_dialog_day">您只能发送每 %1$s的请求。</string>
+    <string name="apps_limit_dialog_day_extra">您可以在 %1$s 中发送请求。</string>
+    <string name="apps_limit_dialog_day_extra_sec">您可以在不到一分钟的时间内发送请求。</string>
+    <string name="seconds">秒</string>
+    <string name="minutes">分钟</string>
+    <string name="hours">小时</string>
+    <string name="days">天</string>
+    <string name="weeks">周</string>
+    <string name="months">月</string>
+    <string name="icon_shape">图标形状</string>
+    <string name="icon_shape_system">跟随系统设置</string>
+    <string name="icon_shape_circle">圆形</string>
+    <string name="icon_shape_squircle">方形</string>
+    <string name="icon_shape_rounded_square">圆角方形</string>
+    <string name="icon_shape_square">正方形</string>
+    <string name="icon_shape_teardrop">泪珠</string>
+    <string name="requests_upload_error">出错了。错误名称：“%1$s”。</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>如何使用图标包？</item>
+        <item>如何应用图标包？</item>
+        <item>如何查看所有包含的图标？</item>
+        <item>如何使用备选图标来替换某个图标？</item>
+        <item>如何申请未适配程序的图标？</item>
+        <item>重启我的设备后，图标包未被应用且恢复到了默认状态。</item>
+        <item>为什么图标在我的设备上显示效果不好（失真）？</item>
+        <item>我在图标包里可以看到某个应用，但它并没有被自动应用。</item>
+        <item>为什么此应用程序需要修改或删除设备内容的权限？</item>
+        <item>为什么该应用程序需要完全的网络访问权限？</item>
+        <item>为什么该应用程序需要检查连接的权限？</item>
+        <item>为什么该应用程序需要设定壁纸的权限？</item>
+        <item>为什么该应用程序需要调整壁纸大小的权限？</item>
+        <item>为什么该应用程序需要保持设备唤醒状态的权限？</item>
+    </string-array>
+    <string-array name="answers">
+        <item>你需要一个支持图标包的启动器。可以在本应用程序的 “应用图标” 页面中，或者 Play 商店的描述中找到受支持的启动器列表，</item>
+        <item>根据应用程序的导航方式类型，你需要从左侧滑调出导航抽屉并前往 “应用图标” 页面，或者通过点击底部导航栏的第4个图标。在那里你可以选择一个启动器来应用图标包。一些启动器不支持自动应用图标包，因此你需要在那样的启动器设定中手动应用。</item>
+        <item>回到本应用的主页并点击标题为 “图标” 的磁贴。</item>
+        <item>根据你所使用的启动器，你需要通过长按某个图标，在弹出菜单中选择 “编辑” ，或者长按某个图标拖拽至“编辑”框中。</item>
+        <item>根据应用程序的导航方式类型，你需要从左侧滑调出导航抽屉，前往 “申请图标适配” 页面，或从底部导航栏前往。</item>
+        <item>当图标包被移动到 SD 卡中时会发生这种情况，您应当把图标包程序安装在内置存储器中。</item>
+        <item>这个问题可能与您当前使用的启动器处理高分辨率的方式有关。您可以通过调整图标大小至 115 - 120% 的方式来解决这个问题。或者换一个启动器。</item>
+        <item>发送图标适配请求。</item>
+        <item>需要能够写入图标适配申请的数据和文件，以及保存壁纸，以及能够改变壁纸下载路径。</item>
+        <item>需要能够从云加载墙纸并下载它们。</item>
+        <item>需要能够检查您的设备是否具有互联网连接。</item>
+        <item>需要能够从应用程序中直接应用壁纸。</item>
+        <item>需要能够根据您设备的屏幕分辨率来调整壁纸尺寸。</item>
+        <item>这是 Muzei 动态壁纸所需要的。</item>
+    </string-array>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Home</string>
+    <string name="icons">Icons</string>
+    <string name="request">リクエスト</string>
+    <string name="overview">概要</string>
+    <string name="more_apps">他のアプリ</string>
+    <string name="useful_links">リンク</string>
+    <string name="select_all">すべて選択</string>
+    <string name="help">ヘルプ</string>
+    <string name="x_icons">%1$s アイコン</string>
+    <string name="search_icons">アイコンを検索</string>
+    <string name="search_apps">アプリを検索</string>
+    <string name="search_launchers">ランチャーを検索</string>
+    <string name="lni_content">“%1$s”がインストールされていません。Google Playからダウンロードしますか？</string>
+    <string name="no_compatible_launcher_title">ランチャーの互換性がありません</string>
+    <string name="no_compatible_launcher_content">「Google Now Launcher」は、「Awesome Shortcuts」とペアリングしない限り、アイコンパックをサポートしていません。後者をインストールしますか？</string>
+    <string name="impossible_open_themes">アプリを開くことができません</string>
+    <string name="themes_app_not_installed">「テーマ」がインストールされていません。</string>
+    <string name="coming_soon">近日公開</string>
+    <string name="quick_apply">ホームに適用</string>
+    <string name="request_x_icons">%1$s 個のアイコンをリクエスト</string>
+    <string name="request_icon">アイコンをリクエスト</string>
+    <string name="request_none">アイコンをリクエスト</string>
+    <string name="kustom_templates">Kustom のテンプレート</string>
+    <string name="zooper_templates">Zooperのテンプレート</string>
+    <string name="rate">評価する</string>
+    <string name="share">共有</string>
+    <string name="share_text">Google Playで %1$s をダウンロード: %2$s.</string>
+    <string name="send_email">メール送信</string>
+    <string name="send_using">送信:</string>
+    <string name="request_in_progress">リクエストを送信中</string>
+    <string name="request_in_progress_content">リクエストは既に送信されています。</string>
+    <string name="building_request_dialog">リクエストを準備しています...</string>
+    <string name="request_upload_success_content">リクエストを送信しました。</string>
+    <string name="no_selected_apps">アプリが選択されていません</string>
+    <string name="no_selected_apps_content">リクエストを送信するアプリを選択します。</string>
+    <string name="apps_limit_dialog">%1$s 個以下のアプリを選択してください。</string>
+    <string name="apps_limit_dialog_more">%1$s 個以下のアプリを選択してください。</string>
+    <string name="apps_limit_dialog_day">%1$sごとにのみリクエストを送信できます。</string>
+    <string name="apps_limit_dialog_day_extra">%1$s でリクエストを送信できます。</string>
+    <string name="apps_limit_dialog_day_extra_sec">1分以内にリクエストを送信できます。</string>
+    <string name="seconds">秒</string>
+    <string name="minutes">分</string>
+    <string name="hours">時間</string>
+    <string name="days">日々</string>
+    <string name="weeks">週間</string>
+    <string name="months">ヶ月間</string>
+    <string name="icon_shape">アイコンの形</string>
+    <string name="icon_shape_system">システムの既定</string>
+    <string name="icon_shape_circle">円</string>
+    <string name="icon_shape_squircle">角丸</string>
+    <string name="icon_shape_rounded_square">角丸の四角形</string>
+    <string name="icon_shape_square">四角</string>
+    <string name="icon_shape_teardrop">涙形</string>
+    <string name="requests_upload_error">エラーが発生しました。エラー名：“%1$s”。</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>アイコンパックの使い方は？</item>
+        <item>アイコンパックを適用する方法は？</item>
+        <item>アイコンパック内のすべてのアイコンを表示する方法は？</item>
+        <item>アイコンを別のアイコンに置き換える方法は？</item>
+        <item>対応していないアイコンをリクエスト方法は？</item>
+        <item>デバイスを再起動した後、アイコンパックが適用されなくなりました。 アイコンはデフォルトに復元されました。</item>
+        <item>Why do icons look pixelated on my device?</item>
+        <item>Ⅹアプリのアイコンがありますが、アプリには適用されません。</item>
+        <item>ストレージの内容を変更または削除する権限が必要な理由は何ですか?</item>
+        <item>なぜこのアプリはネットワークにフルアクセスする権限が必要なのでしょうか?</item>
+        <item>なぜこのアプリは接続を表示する権限が必要なのですか？</item>
+        <item>なぜこのアプリは壁紙を設定する権限が必要なのですか？</item>
+        <item>なぜこのアプリは壁紙のサイズを調整するための権限が必要なのですか?</item>
+        <item>なぜこのアプリは携帯電話のスリープを防ぐための権限が必要なのですか？</item>
+    </string-array>
+    <string-array name="answers">
+        <item>アイコンパックをサポートするランチャーが必要です。 サポートされているランチャーのリストは、「適用」セクションまたは Play ストアの説明のアプリにあります。</item>
+        <item>アプリのナビゲーションタイプに応じて、ナビゲーションパネルを左からスライドさせて「適用」セクションに移動するか、下部のナビゲーションバーから4番目のアイコンを選択します。 そこからアイコンを適用したいランチャーを選ぶことができます。 一部のランチャーは自動適用をサポートしていないため、ランチャー設定に手動で適用する必要があります。</item>
+        <item>アプリのメインセクションに戻り、「アイコン」をタップします。</item>
+        <item>使用しているランチャーに応じて、アイコンを長押ししてポップアップメニューから「編集」を選択するか、アイコンを長押しして [編集] ボックスに移動する必要があります。</item>
+        <item>アプリのナビゲーションタイプに応じて、ナビゲーションパネルを左からスライドさせて「リクエスト」セクションに移動するか、下部のナビゲーションバーから5番目のアイコンを選択します。</item>
+        <item>これは、アイコンパックがSDカードに移動されたために発生しました。内部ストレージにインストールする必要があります。</item>
+        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>アイコンリクエストを送信します。</item>
+        <item>アイコンのリクエストデータやファイルの書き込み、壁紙の保存、壁紙のダウンロード場所の変更ができるようにする必要があります。</item>
+        <item>クラウドから壁紙を読み込んでダウンロードできるようにする必要があります。</item>
+        <item>デバイスがインターネットに接続されているかどうかを確認する必要があります。</item>
+        <item>アプリから直接壁紙を適用できるようにする必要があります。</item>
+        <item>画面の解像度に基づいて壁紙のサイズを調整できるようにする必要があります。</item>
+        <item>Muzei Live Wallpaper に必要です。</item>
+    </string-array>
+</resources>

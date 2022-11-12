@@ -5,5 +5,493 @@
     <item
         class="com.android.contacts.DialtactsContactsEntryActivity"
         name="people" />
+    <item
+		class="com.tencent.mobileqq.activity.SplashActivity"
+		name="tencent_qq"/>
+        <!-- WeChat -->
+	<item
+		class="com.tencent.mm.ui.LauncherUI"
+		name="tencent_weixin"/>
+    <!-- 酷安 -->
+	<item
+		class="com.coolapk.market.view.main.MainActivity"
+		name="coolapk"/>
+        <!-- App分享 -->
+	<item
+		class="info.muge.appshare.view.launch.LaunchActivity"
+		neme="appshare"/>
+        <!-- Magisk -->
+	<item
+		class="com.topjohnwu.magisk.ui.MainActivity"
+		name="magisk"/>
+        <!-- 拼多多 -->
+	<item
+		class="com.xunmeng.pinduoduo.ui.activity.MainFrameActivity"
+		name="pinduoduo"/>
+        <!-- 哔哩哔哩 -->
+	<item
+		class="tv.danmaku.bili.MainActivityV2"
+		name="bili_bili"/>
+        <!-- WPS Office -->
+	<item
+		class="cn.wps.moffice.documentmanager.PreStartActivity"
+		name="wps_office"/>
+        <!-- QQ邮箱 -->
+	<item
+		class="com.tencent.qqmail.launcher.desktop.LauncherActivity"
+		name="qq_mail"/>
+        <!-- QQ音乐 -->
+	<item
+		class="com.tencent.qqmusic.activity.AppStarterActivity"
+		name="qq_music"/>
+        <!-- Weibo -->
+	<item
+		class="com.sina.weibo.SplashActivity"
+		name="weibo"/>
+        <!-- Zepp Life -->
+	<item
+		class="com.xiaomi.hm.health.activity.StartUpActivity"
+		name="zepp_life"/>
+        <!-- 一个木函 -->
+	<item
+		class="com.One.WoodenLetter.LetterActivity"
+		name="woodbox"/>
+        <!-- 小米商城 -->
+	<item
+		class="com.xiaomi.shop.activity.MainTabActivity"
+		name="xiaomi_shop"/>
+        <!-- 百度 -->
+	<item
+		class="com.baidu.searchbox.SplashActivity"
+		name="baidu"/>
+        	<!-- 百度网盘 -->
+	<item
+		class="com.baidu.netdisk.ui.DefaultMainActivity"
+		name="baidu_netdisk"/>
+        <!-- 百度贴吧 -->
+	<item
+		class="com.baidu.tieba.tblauncher.MainTabActivity"
+		name="baidu_tieba"/>
+        <!-- 美团外卖 -->
+	<item
+		class="com.sankuai.meituan.takeoutnew.ui.page.boot.WelcomeActivity"
+		name="meituan"/>
+        <!-- 肯德基 -->
+	<item
+		class="com.yum.brandkfc.SplashAct"
+		name="kfc"/>
+        	<!-- 闲鱼 -->
+	<item
+		class="com.taobao.fleamarket.home.activity.InitActivity"
+		name="poshmarkinc"/>
+        <!-- 阿里云盘 -->
+	<item
+		class="com.alicloud.databox.biz.splash.SplashActivity"
+		name="alicloud"/>
+        <!-- 高德地图 -->
+	<item
+		class="com.autonavi.map.activity.SplashActivity"
+		name="amap_gaode"/>
+        	<!-- Chrome -->
+	<item
+		class="com.google.android.apps.chrome.Main"
+		name="chrome"/>
+        <!-- Facebook -->
+	<item
+		class="com.facebook.katana.LoginActivity"
+		name="facebook"/>
+        <!-- Gmail -->
+	<item
+		class="com.google.android.gm.ConversationListActivityGmail"
+		name="gmail"/>
+        	<!-- Google Play Games -->
+	<item
+		class="com.google.android.gms.games.ui.destination.main.MainActivity"
+		name="google_play_games"/>
+        	<!-- Google Play Store -->
+	<item
+		class="com.android.vending.AssetBrowserActivity"
+		name="google_play_store"/>
+        <!-- IDM -->
+	<item
+		class="idm.internet.download.manager.MainActivity"
+		name="idm"/>
+        <!-- Scene5 -->
+	<item
+		class="com.omarea.vtools.activities.ActivityMain"
+		name="scene5"/>
+        <!-- TapTap -->
+	<item
+		class="com.play.taptap.ui.SplashAct"
+		name="taptap"/>
+        <!-- Wallpaper Engine -->
+	<item
+		class="io.wallpaperengine.weclient.BrowseActivity"
+		name="wallpaper_engine"/>
+        <!-- 哔哩哔哩漫画 -->
+	<item
+		class="com.bilibili.comic.splash.view.activity.SplashActivity"
+		name="bilibili_comic"/>
+        	<!-- 天翼云盘 -->
+	<item
+		class="com.cn21.ecloud.activity.login.StartActivity"
+		name="ecloud"/>
+        <!-- 搞机助手 -->
+	<item
+		class="com.projectkr.shell.SplashActivity"
+		name="brush_assistant"/>
+        <!-- 番茄免费小说 -->
+	<item
+		class="com.dragon.read.pages.splash.SplashActivity"
+		name="dragon_read"/>
+        <!-- Ice Box -->
+	<item
+		class="com.catchingnow.icebox.activity.mainActivity.MainAppActivity"
+		name="ice_box"/>
+        <!-- Clash For Android -->
+	<item
+		class="com.github.kr328.clash.MainActivity"
+		name="clash"/>
+        <!-- 全民K歌 -->
+	<item
+		class="com.tencent.karaoke.module.splash.ui.SplashBaseActivity"
+		name="karaoke_tencent"/>
+        <!-- 夸克 -->
+	<item
+		class="com.ucpro.MainActivity"
+		name="quark"/>
+        	<!-- 小米有品 -->
+	<item
+		class="com.xiaomi.youpin.activity.SplashActivity"
+		name="xiaomi_youpin"/>
+        <!-- 小米社区 -->
+	<item
+		class="com.xiaomi.mi.launch.LaunchActivity"
+		name="xiaomi_bbs"/>
+        	<!-- 手机性能排行 -->
+	<item
+		class="com.nasoft.socmark.ui.MainActivity"
+		name="socmark"/>
+        <!-- 毛怪俱乐部 -->
+	<item
+		class="com.hanser.club.MainActivity"
+		name="hanser_club"/>
+        <!-- 毛怪助手 -->
+	<item
+		class="net.fusionapp.core.WelcomeActivity"
+		name="mg_aide"/>
+        <!-- 米游社 -->
+	<item
+		class="com.mihoyo.hyperion.ui.SplashActivity"
+		name="mihoyo_bbs"/>
+        <!-- 菜鸟 -->
+	<item
+		class="com.cainiao.wireless.homepage.view.activity.WelcomeActivity"
+		name="cainiao"/>
+        <!-- 顺丰速运 -->
+	<item
+		class="com.sf.activity.MainActivity"
+		name="sd_express"/>
+        	<!-- 快对 -->
+	<item
+		class="com.kuaiduizuoye.scan.activity.init.InitActivity"
+		name="kuaidui"/>
+        <!-- 抖音 -->
+	<item
+		class="com.ss.android.ugc.aweme.splash.SplashActivity"
+		name="douyin"/>
+        <!-- 爱发电 -->
+	<item
+		class="net.afdian.afdian.activity.InitialActivity"
+		name="afdian"/>
+        <!-- 百度输入法 -->
+	<item
+		class="com.baidu.input.ImeAppMainActivity"
+		name="baidu_input"/>
+        <!-- 腾讯动漫 -->
+	<item
+		class="com.qq.ac.android.splash.SplashActivity"
+		name="ac_tencebt"/>
+        <!-- 醒图 -->
+	<item
+		class="com.xt.retouch.uilauncher.LaunchActivity"
+		name="xt"/>
+        <!-- 钉钉 -->
+	<item
+		class="com.alibaba.android.rimet.biz.LaunchHomeActivity"
+		name="rimet_dingding"/>
+        <!-- MT Manager -->
+	<item
+		class="bin.mt.plus.Main"
+		name="mt_plus"/>
+        <!-- Telegram -->
+	<item
+		class="org.telegram.messenger.DefaultIcon"
+		name="telegram"/>
+        <!-- 中国移动 -->
+	<item
+		class="com.mc10086.cmcc.base.StartPageActivity"
+		name="china_yidong"/>
+        	<!-- 中国联通 -->
+	<item
+		class="com.sinovatech.unicom.basic.ui.activity.WelcomeClient"
+		name="china_liantong"/>
+        <!-- 京东极速版 -->
+	<item
+		class="com.jd.jdlite.MainActivity"
+		name="jd_lite"/>
+        <!-- 京东读书 -->
+	<item
+		class="com.jingdong.app.reader.logo.JdLogoActivity"
+		name="jd_reader"/>
+        <!-- 京喜 -->
+	<item
+		class="com.jd.pingou.MainActivity"
+		name="jx"/>
+        <!-- 什么值得买 -->
+	<item
+		class="com.smzdm.client.android.app.WelComeActivity"
+		name="smzdm"/>
+        <!-- 创建快捷方式 -->
+	<item
+		class="com.x7890.shortcutcreator.AppListActivity"
+		name="shortcutcreator"/>
+        	<!-- 哈啰 -->
+	<item
+		class="com.hellobike.atlas.business.portal.PortalActivity"
+		name="ha_lo"/>
+        <!-- 小红书 -->
+	<item
+		class="com.xingin.xhs.index.v2.IndexActivityV2"
+		name="red_book"/>
+        <!-- 应用宝 -->
+	<item
+		class="com.tencent.pangu.link.SplashActivity"
+		name="qqdownloader"/>
+        <!-- 开心消消乐 -->
+	<item
+		class="com.happyelements.hellolua.MainActivity"
+		name="happyelements"/>
+        <!-- 掌上公交 -->
+	<item
+		class="com.mygolbs.mybus.LoginActivity"
+		name="mybustz"/>
+        <!-- 淘特 -->
+	<item
+		class="com.taobao.ltao.maintab.MainFrameActivity"
+		name="tb_te"/>
+        <!-- 皮皮虾 -->
+	<item
+		class="com.sup.android.base.MainActivity"
+		name="superb"/>
+        <!-- 知乎 -->
+	<item
+		class="com.zhihu.android.app.ui.activity.LauncherActivity"
+		name="zhi_hu"/>
+   
+        <!-- 豆瓣 -->
+	<item
+		class="com.douban.frodo.activity.SplashActivity"
+		name="douban"/>
+        <!-- 豌豆荚 -->
+	<item
+		class="com.pp.assistant.activity.PPMainActivity"
+		name="wandoujia"/>
+        <!-- 铁路12306 -->
+	<item
+		class="com.MobileTicket.ui.activity.WelcomeGuideActivity"
+		name="mobileticket"/>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- 游戏中心 -->
+	<item
+		class="com.xiaomi.gamecenter.ui.MainTabActivity"
+		name="xiaomi_game"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    <!-- 王者荣耀 -->
+	<item
+		class="com.tencent.tmgp.sgame.SGameActivity"
+		name="wangzherongyao"/>
+        
+        
+        
+        
+        
+        
+        
+        <!--flyme App Store -->
+	<item
+		class="com.meizu.flyme.appcenter.activitys.AppMainActivity"
+		name="flyme_app_store"/>
+        <!-- Camera -->
+	<item
+		class="com.meizu.media.camera.CameraLauncher"
+		name="flyme_camera"/>
+        <!-- Clock -->
+	<item
+		class="com.meizu.flyme.alarmclock.DeskClock"
+		name="flyme_clock"/>
+        <!-- Email -->
+	<item
+		class="com.android.email.activity.EmailActivity"
+		name="flyme_email"/>
+        <!-- Family Guard -->
+	<item
+		class="com.meizu.familyguard.alias.compat.FamilyGuardActivityLauncher"
+		name="family_guard"/>
+        <!-- Files -->
+	<item
+		class="com.meizu.flyme.filemanager.activity.HomeActivity"
+		name="files"/>
+        <!-- Gallery -->
+	<item
+		class="com.meizu.media.gallery.GalleryActivity"
+		name="gallery"/>
+        <!-- Game Center -->
+	<item
+		class="com.meizu.flyme.gamecenter.activity.GameMainActivity"
+		name="game_center"/>
+        	<!-- MCare -->
+	<item
+		class="com.meizu.mcare.ui.MainActivity"
+		name="mcare"/>
+        <!-- Meizu Pay -->
+	<item
+		class="com.meizu.mznfcpay.homepage.HomeActivity"
+		name="meizu_pay"/>
+        <!-- Messages -->
+	<item
+		class="com.android.mms.ui.ConversationList"
+		name="flyme_messages"/>
+        	<!-- Music -->
+	<item
+		class="com.meizu.media.music.MusicActivity"
+		name="flymr_music"/>
+        <!-- Notes -->
+	<item
+		class="com.meizu.flyme.notepaper.app.NotePaperActivity"
+		name="flyme_notes"/>
+        	<!-- Phone -->
+	<item
+		class="com.android.dialer.DialtactsActivity"
+		name="flyme_phone"/>
+        	<!-- Pedometer -->
+	<item
+		class="com.meizu.net.pedometer.ui.PedometerMainActivitys"
+		name="pedometer"/>
+        <!-- Recorder -->
+	<item
+		class="com.android.soundrecorder.MzRecorderActivity"
+		name="flyme_recorder"/>
+        	<!-- Security -->
+	<item
+		class="com.meizu.safe.SecurityMainActivity"
+		name="flyme_safe"/>
+        <!-- Settings -->
+	<item
+		class="com.android.settings.Settings"
+		name="flyme_settings"/>
+        <!-- Themes -->
+	<item
+		class="com.meizu.customizecenter.frame.activity.CustomizeCenterActivity"
+		name="flyme_themes"/>
+        <!-- TodoList -->
+	<item
+		class="com.meizu.todolist.ui.TodoListActivity"
+		name="flyme_todolist"/>
+        <!-- Toolbox -->
+	<item
+		class="com.meizu.flyme.toolbox.activity.ToolBoxActivity"
+		name="flyme_toolbox"/>
+        <!-- Videos -->
+	<item
+		class="com.meizu.media.video.VideoMainActivity"
+		name="flyme_media_video"/>
+        <!-- Weather -->
+	<item
+		class="com.hy.weather.mz.modules.home.WeatherMainActivity"
+		name="flyme_weather"/>
+        <!-- Migratool -->
+	<item
+		class="com.meizu.datamigration.capture.DataMigrationActivity"
+		name="flyme_migratool"/>
+        <!-- Aicy Voice -->
+	<item
+		class="com.meizu.voiceassistant.MainActivity"
+		name="aicy_voice"/>
+        <!-- Browser -->
+	<item
+		class="com.android.browser.BrowserActivity"
+		name="flyme_browser"/>
+        <!-- Calculator -->
+	<item
+		class="com.meizu.flyme.calculator.Calculator"
+		name="flyme_calculator"/>
+        	<!-- Calendar -->
+	<item
+		class="com.meizu.flyme.calendar.AllInOneActivity"
+		name="calendar"/>
+        <!-- 魅族社区 -->
+	<item
+		class="com.meizu.flyme.flymebbs.ui.LoadingActivity"
+		name="flymebbs"/>
+        <!-- Log Report -->
+	<item
+		class="com.meizu.logreport.ui.activity.LogReportMainActivity"
+		name="flyme_logreport"/>
+        <!-- Meizu Store -->
+	<item
+		class="com.meizu.store.newhome.NewHomeActivity"
+		name="meizu_store"/>
 
 </appmap>

@@ -1,0 +1,91 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'com.google.devtools.ksp'
+
+android {
+    compileSdkVersion Versions.targetSdk
+    buildToolsVersion Versions.buildTools
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds true
+        warningsAsErrors true
+        disable 'MissingTranslation',
+                'GoogleAppIndexingWarning',
+                'UnusedResources',
+                'ContentDescription',
+                'RtlSymmetry',
+                'RtlHardcoded',
+                'RtlEnabled'
+    }
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Blueprint.version
+        versionName Blueprint.versionName
+        vectorDrawables.useSupportLibrary true
+        proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+        consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+            arg("room.incremental", "true")
+            arg("room.expandProjection", "true")
+        }
+    }
+
+    buildTypes {
+        buildTypes.each {
+            it.buildConfigField("String", "DASHBOARD_NAME", "\"Blueprint\"")
+            it.buildConfigField("String", "DASHBOARD_VERSION", "\"$Blueprint.versionName\"")
+        }
+        release {
+            minifyEnabled false
+            proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    packagingOptions {
+        resources {
+            pickFirsts += [
+                    'META-INF/core_debug.kotlin_module',
+                    'META-INF/core_release.kotlin_module',
+                    'META-INF/library_debug.kotlin_module',
+                    'META-INF/library_release.kotlin_module'
+            ]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api(Libs.kuper) {
+        transitive = true
+    }
+    api Libs.dependencies
+}
+
+ext {
+    PUBLISH_GROUP_ID = 'dev.jahir'
+    PUBLISH_ARTIFACT_ID = 'Blueprint'
+    PUBLISH_VERSION = Blueprint.versionName
+}
+
+apply from: '../lib-artifacts.gradle'
+apply from: "${rootProject.projectDir}/scripts/publish-mavencentral.gradle"

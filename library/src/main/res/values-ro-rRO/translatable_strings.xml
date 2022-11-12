@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Mai multe aplicații</string>
+    <string name="useful_links">Link-uri utile</string>
+    <string name="lni_content">%1$s nu este instalat.\nDescarc din Play Store?</string>
+    <string name="no_compatible_launcher_title">Acest ecran principal NU este compatbil</string>
+    <string name="coming_soon">În curând</string>
+    <string name="rate">Evaluează</string>
+    <string name="seconds">Secunde</string>
+    <string name="minutes">Minute</string>
+    <string name="hours">Ore</string>
+    <string name="days">Zile</string>
+    <string name="weeks">Săptămâni</string>
+    <string name="months">Luni</string>
+</resources>

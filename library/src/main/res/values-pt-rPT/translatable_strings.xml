@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Início</string>
+    <string name="icons">Ícones</string>
+    <string name="request">Pedir</string>
+    <string name="overview">Resumo</string>
+    <string name="more_apps">Mais aplicações</string>
+    <string name="useful_links">Links</string>
+    <string name="select_all">Selecionar todos</string>
+    <string name="help">Ajuda</string>
+    <string name="x_icons">%1$s Ícones</string>
+    <string name="search_icons">Pesquisar ícones</string>
+    <string name="search_apps">Pesquisar aplicações</string>
+    <string name="search_launchers">Pesquisar launchers</string>
+    <string name="lni_content">“%1$s” não instalada. Queres fazer o download do Google Play?</string>
+    <string name="no_compatible_launcher_title">Launcher incompatível</string>
+    <string name="no_compatible_launcher_content">“Google Now Launcher” não suporta packs de ícones. Mas podes fazê-lo utilizado uma app “Awesome Shortcuts.” Queres instalar?</string>
+    <string name="impossible_open_themes">Impossível abrir a app</string>
+    <string name="themes_app_not_installed">“Temas” não está instalado.</string>
+    <string name="coming_soon">Brevemente.</string>
+    <string name="quick_apply">Aplicar</string>
+    <string name="request_x_icons">Pedir %1$s ícones</string>
+    <string name="request_icon">Pedir ícone</string>
+    <string name="request_none">Pedir ícone(s)</string>
+    <string name="kustom_templates">Kustom Templates</string>
+    <string name="zooper_templates">Zooper Templates</string>
+    <string name="rate">Classificar</string>
+    <string name="share">Partilhar</string>
+    <string name="share_text">Transferir %1$s do Google Play: %2$s.</string>
+    <string name="send_email">Enviar email</string>
+    <string name="send_using">Enviar com:</string>
+    <string name="request_in_progress">A enviar o pedido</string>
+    <string name="request_in_progress_content">Um pedido já foi enviado.</string>
+    <string name="building_request_dialog">A preparar o pedido...</string>
+    <string name="request_upload_success_content">Pedido enviado.</string>
+    <string name="no_selected_apps">Sem apps selecionadas</string>
+    <string name="no_selected_apps_content">Selecionar apps para enviar o pedido.</string>
+    <string name="apps_limit_dialog">Selecionar %1$s apps ou menos.</string>
+    <string name="apps_limit_dialog_more">Selecionar %1$s apps ou menos.</string>
+    <string name="apps_limit_dialog_day">Só pode enviar pedidos a cada %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Pode enviar um pedido em %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Pode enviar um pedido em menos de um minuto.</string>
+    <string name="seconds">Segundos</string>
+    <string name="minutes">Minutos</string>
+    <string name="hours">Horas</string>
+    <string name="days">Dias</string>
+    <string name="weeks">Semanas</string>
+    <string name="months">Meses</string>
+    <string name="icon_shape">Forma do ícone</string>
+    <string name="icon_shape_system">Definido pelo sistema</string>
+    <string name="icon_shape_circle">Círculo</string>
+    <string name="icon_shape_squircle">Squircle</string>
+    <string name="icon_shape_rounded_square">Quadrado redondo</string>
+    <string name="icon_shape_square">Quadrado</string>
+    <string name="icon_shape_teardrop">Lágrima</string>
+    <string name="requests_upload_error">Algo correu mal. Nome do erro: “%1$s”.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Como usar o pack de ícones?</item>
+        <item>Como aplicar o pack de ícones?</item>
+        <item>Como ver todos os ícones incluídos?</item>
+        <item>Como substituir um ícone por outro?</item>
+        <item>Como fazer um pedido de ícones?</item>
+        <item>Depois de reiniciar o meu dispositivo o pack de ícones deixou de estar aplicado. Os ícones voltaram a ser os predefinidos.</item>
+        <item>Porque razão os ícones tem um aspecto pixelado no meu dispositivo?</item>
+        <item>Posso ver um ícone para X app nos ícones incluídos, mas o ícone não se aplica.</item>
+        <item>Porque razão a aplicação necessita de permissão para modificar ou eliminar conteúdo da minha memória interna?</item>
+        <item>Porque razão a aplicação necessita de permissão para aceder à rede?</item>
+        <item>Porque razão a aplicação necessita de permissão para ver coneções?</item>
+        <item>Porque razão precisa a aplicação de permissão para mudar o wallpaper?</item>
+        <item>Porque razão necessita a aplicação de permissão para ajustar o tamanho do wallpaper?</item>
+        <item>Porque razão precisa a aplicação de permissão para impedir o telefone de bloquear?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Precisa de um launcher com suporte para packs de ícones. A lista de launchers suportados pode ser encontrada na secção de \"Aplicar\", ou na descrição na Play Store.</item>
+        <item>Dependendo do tipo de navegação da aplicação, é preciso deslizar a gaveta de navegação para a esquerda e ir para a seção \"Aplicar\" ou escolher o 4º ícone na barra de navegação inferior. A partir daí, pode escolher um launcher ao qual deseja aplicar os ícones. Alguns launchers não suportam a aplicação automática e sendo assim, deve fazer a aplicação manualmente nas configurações.</item>
+        <item>Voltar para a secção principal da aplicação e clicar em \"Ícones\".</item>
+        <item>Dependendo do launcher que está a utilizar, pode ter de pressionar o ícone e selecionar \"Editar\" no menu pop-up, ou então pressionar o ícone e movê-lo para a box de \"Editar\".</item>
+        <item>Dependendo do tipo de navegação da aplicação, é precisa deslizar a gaveta de apps da esquerda e ir para a secção \"Pedidos\", ou escolha o ícone na barra de navegação inferior.</item>
+        <item>Acontece porque o pack de ícones foi movido para o cartão SD. O pack de ícones deve ser instalado na memória interna.</item>
+        <item>O problema deve ser do launcher que está a usar, quando usada uma resolução elevada. Isto pode ser corrigido aumentando o tamanho dos ícones para 115-120%. Ou então tente utilizar outro launcher.</item>
+        <item>Enviar um pedido de ícone.</item>
+        <item>É necessário permissão para gravar dados e arquivos de pedidos de ícones, bem como salvar wallpapers e ser capaz de alterar o local de download dos wallpapers.</item>
+        <item>É necessário ser capaz de carregar wallpapers da nuvem e fazer o seu download.</item>
+        <item>É necessário poder verificar se o seu dispositivo tem ligação à internet.</item>
+        <item>É necessário poder aplicar wallpapers diretamente da aplicação.</item>
+        <item>É necessário ajustar as dimensões do wallpapers com base na resolução do seu ecrã.</item>
+        <item>É necessário para Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

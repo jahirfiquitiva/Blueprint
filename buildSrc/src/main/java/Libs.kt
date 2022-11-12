@@ -1,12 +1,12 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "RemoveExplicitTypeArguments")
 
 object Libs {
-    // Kotlin
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    // Kuper
+    const val kuper = "dev.jahir:Kuper:${Versions.kuper}@aar"
 
-    // Blueprint
-    const val blueprint = "dev.jahir:Blueprint:${Versions.blueprint}@aar"
+    // Adaptive Icons
+    private const val adaptiveIcons =
+        "com.github.sarsamurmu:AdaptiveIconBitmap:${Versions.adaptiveIcons}"
 
-    // OneSignal
-    const val oneSignal = "com.onesignal:OneSignal:${Versions.oneSignal}"
+    val dependencies = arrayOf<String>(adaptiveIcons)
 }

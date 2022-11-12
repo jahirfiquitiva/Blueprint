@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">더 많은 앱들</string>
+    <string name="useful_links">유용한 링크</string>
+    <string name="lni_content">%1$s는 현재 당신의 기기에 설치되어 있지 않습니다.\n앱스토어에서 설치하시겠습니까?</string>
+    <string name="no_compatible_launcher_title">이 런처는 호환되지 않습니다</string>
+    <string name="no_compatible_launcher_content">이 런처는 어떠한 아이콘팩도 적용할 수 없습니다. 이러한 이유로 부정적인 평가를 남기지 말아주세요. 하지만 외부 앱을 이용하여 해결 하는 방법이 있습니다. 다운로드 하시겠습니까?</string>
+    <string name="impossible_open_themes">테마 앱을 열 수 없습니다.</string>
+    <string name="themes_app_not_installed">테마 앱이 기기에 설치되어 있지 않습니다.</string>
+    <string name="coming_soon">공개 임박</string>
+    <string name="rate">평가하기</string>
+    <string name="send_using">전송 시 사용할 앱</string>
+    <string name="building_request_dialog">요청하신 앱의 파일을 생성 중입니다...</string>
+    <string name="request_upload_success">성공!</string>
+    <string name="request_upload_success_content">요청하신 앱 정보가 서버에 정상적으로 업로드 되었습니다.</string>
+    <string name="no_selected_apps_content">요청할 앱을 선택하지 않았습니다. 몇 개의 앱을 선택하고 버튼을 눌러주세요</string>
+    <string name="requests_upload_error">서버에 요청하신 앱을 올리는 중 오류가 발생했습니다.\n원인: %1$s\n다음에 다시 시도해주세요.</string>
+    <string name="apps_limit_dialog">최대 %1$s개의 앱만 선택하실 수 있습니다.</string>
+    <string name="apps_limit_dialog_more">현재 %1$s개의 앱만 요청하실 수 있습니다.</string>
+    <string name="apps_limit_dialog_day">죄송합니다 %1$s일간 요청하실 수 있는 아이콘의 한도가 초과됐습니다.</string>
+    <string name="apps_limit_dialog_day_extra">%1$s뒤, 원하시는 아이콘을 다시 요청하실 수 있습니다.</string>
+    <string name="apps_limit_dialog_day_extra_sec">몇 분 뒤 아이콘을 다시 요청하실 수 있습니다.</string>
+    <string name="seconds">초</string>
+    <string name="minutes">분</string>
+    <string name="hours">시간</string>
+    <string name="days">일</string>
+    <string name="weeks">주</string>
+    <string name="months">월</string>
+</resources>

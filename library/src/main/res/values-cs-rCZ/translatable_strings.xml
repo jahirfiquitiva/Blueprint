@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Domů</string>
+    <string name="icons">Ikony</string>
+    <string name="request">Požadavek</string>
+    <string name="overview">Souhrn</string>
+    <string name="more_apps">Další aplikace</string>
+    <string name="useful_links">Odkazy</string>
+    <string name="select_all">Vybrat vše</string>
+    <string name="help">Nápověda</string>
+    <string name="x_icons">Ikony: %1$s</string>
+    <string name="search_icons">Hledat ikony</string>
+    <string name="search_apps">Hledat aplikace</string>
+    <string name="search_launchers">Hledat launchery</string>
+    <string name="lni_content">Aplikace “%1$s” není nainstalována. Chcete ji nainstalovat z Obchodu Play?</string>
+    <string name="no_compatible_launcher_title">Launcher není kompatibilní</string>
+    <string name="no_compatible_launcher_content">\"Google Now Launcher\" nepodporuje balíčky ikon, pokud není spojen s \"Awesome Shortcuts\". Chcete nainstalovat tuto aplikaci?</string>
+    <string name="impossible_open_themes">Aplikaci nelze otevřít</string>
+    <string name="themes_app_not_installed">“Motivy” nejsou nainstalovány.</string>
+    <string name="coming_soon">Již brzy.</string>
+    <string name="quick_apply">Použít na plochu</string>
+    <string name="request_x_icons">Požadavek na ikony: %1$s</string>
+    <string name="request_icon">Požadavek na ikonu</string>
+    <string name="request_none">Požadavek na ikonu(y)</string>
+    <string name="kustom_templates">Kustom Templates</string>
+    <string name="zooper_templates">Zooper Templates</string>
+    <string name="rate">Ohodnotit</string>
+    <string name="share">Sdílet</string>
+    <string name="share_text">Získejte %1$s v Obchodu Play: %2$s.</string>
+    <string name="send_email">Odeslat e-mail</string>
+    <string name="send_using">Odeslat pomocí:</string>
+    <string name="request_in_progress">Odesílání požadavku</string>
+    <string name="request_in_progress_content">Požadavek se již odesílá.</string>
+    <string name="building_request_dialog">Příprava požadavku...</string>
+    <string name="request_upload_success_content">Požadavek odeslán.</string>
+    <string name="no_selected_apps">Žádné vybrané aplikace</string>
+    <string name="no_selected_apps_content">Vyberte aplikace, o které chcete požádat.</string>
+    <string name="apps_limit_dialog">Vyberte %1$s nebo méně aplikací.</string>
+    <string name="apps_limit_dialog_more">Vyberte %1$s nebo méně aplikací.</string>
+    <string name="apps_limit_dialog_day">Požadavky můžete odesílat pouze každých: %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Požadavek můžete odeslat za: %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Požadavek můžete odeslat za méně než minutu.</string>
+    <string name="seconds">Sekundy</string>
+    <string name="minutes">Minuty</string>
+    <string name="hours">Hodiny</string>
+    <string name="days">Dny</string>
+    <string name="weeks">Týdny</string>
+    <string name="months">Měsíce</string>
+    <string name="icon_shape">Tvar ikon</string>
+    <string name="icon_shape_system">Nastaveno systémem</string>
+    <string name="icon_shape_circle">Kruh</string>
+    <string name="icon_shape_squircle">Superelipsa</string>
+    <string name="icon_shape_rounded_square">Zaoblený čtverec</string>
+    <string name="icon_shape_square">Čtverec</string>
+    <string name="icon_shape_teardrop">Slza</string>
+    <string name="requests_upload_error">Něco se pokazilo. Název chyby je: “%1$s”.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Jak použít tento balíček ikon?</item>
+        <item>Jak nastavit balíček ikon?</item>
+        <item>Jak zobrazit všechny obsažené ikony?</item>
+        <item>Jak nahradit stávající ikony ikonou alternativní?</item>
+        <item>Jak požádat o ikony bez motivu?</item>
+        <item>Po restartování mého zařízení již nebyl balíček ikon nastaven. Ikony byly obnoveny do výchozího stavu.</item>
+        <item>Proč na mém zařízení vypadají ikony rozmazaně?</item>
+        <item>V obsažených ikonách vidím ikonu aplikace X, ale ikona se nenastaví.</item>
+        <item>Proč aplikace potřebuje oprávnění k úpravám nebo odstranění obsahu mého úložiště?</item>
+        <item>Proč aplikace potřebuje oprávnění pro úplný přístup k síti?</item>
+        <item>Proč aplikace potřebuje oprávnění k zobrazení připojení?</item>
+        <item>Proč aplikace potřebuje oprávnění nastavit tapetu?</item>
+        <item>Proč aplikace potřebuje oprávnění k upravení velikosti tapety?</item>
+        <item>Proč aplikace potřebuje oprávnění zabránit telefonu přejít do režimu spánku?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>You need a launcher with icon packs support. The list of supported launchers might be found in the app in the \"Apply\" section, or Play Store description.</item>
+        <item>V závislosti na typu navigace aplikace je třeba buď vysunout navigační panel zleva a přejít k části \"Použít\" nebo zvolit 4. ikonu v dolním navigačním panelu. Odtud můžete vybrat spouštěč, ve kterém chcete tento balíček ikon použít. Některé spouštěče nepodporují automatické nastavení ikon a je nutné to vykonat ručně prostřednictvím jejich nastavení.</item>
+        <item>Přejděte zpátky do hlavní sekce aplikace a klikněte na tlačítko s názvem \"Ikony\".</item>
+        <item>V závislosti na spouštěči, který používáte, buď musíte dlouze přidržet ikonu a zvolit \"Upravit\" z vyskakovacího menu, nebo dlouze přidržet ikonu a přesunout ji do políčka \"Upravit\".</item>
+        <item>V závislosti na typu navigace aplikace musíte vysunout navigační zleva zleva a přejít do části \"Požadavky\" nebo vybrat ikonu z dolního navigačního panelu.</item>
+        <item>K tomu došlo, protože balíček ikon byl přenesena na SD kartu. Měli byste jej umístit do vnitřního úložiště.</item>
+        <item>Při manipulaci s velkým rozlišením může dojít k potížím se spouštěčem, který používáte. Můžete to opravit změnou velikosti ikony na 115 – 120%. Nebo zkuste použít jiný spouštěč.</item>
+        <item>Poslat požadavek na ikonu.</item>
+        <item>Toto oprávnění je nutné k zápisu požadavků na ikony a soubory, jakož i ukládání tapet a možnosti změnit místo pro ukládání stažených tapet.</item>
+        <item>Toto oprávnění je nutné pro načtení tapet ze serveru a jejich stažení.</item>
+        <item>Toto oprávnění umožňuje aplikaci zjistit, zda je zařízení připojeno k internetu.</item>
+        <item>Toto oprávnění umožňuje nastavit tapetu přímo z aplikace.</item>
+        <item>Toto oprávnění umožňuje upravit rozměry tapety na základě rozlišení vaší obrazovky.</item>
+        <item>Toto oprávnění je vyžadováno aplikací Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

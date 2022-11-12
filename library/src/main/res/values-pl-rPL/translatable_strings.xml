@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Home</string>
+    <string name="icons">Ikony</string>
+    <string name="request">Prośba</string>
+    <string name="overview">Podsumowanie</string>
+    <string name="more_apps">Więcej aplikacji</string>
+    <string name="useful_links">Linki</string>
+    <string name="select_all">Wybierz wszystko</string>
+    <string name="help">Pomoc</string>
+    <string name="x_icons">Ilość ikon - %1$s</string>
+    <string name="search_icons">Szukaj ikon</string>
+    <string name="search_apps">Szukaj aplikacji</string>
+    <string name="search_launchers">Szukaj launcherów</string>
+    <string name="lni_content">\"%1$s\" nie jest zainstalowany. Czy chcesz pobrać go z Google Play?</string>
+    <string name="no_compatible_launcher_title">Niekompatybilny launcher</string>
+    <string name="no_compatible_launcher_content">“Google Now Launcher” nie obsługuje pakietów ikon, chyba że sparowano go z \"Awesome Shortcuts\". Zainstalować to ostatnie?</string>
+    <string name="impossible_open_themes">Nie można otworzyć aplikacji</string>
+    <string name="themes_app_not_installed">Szablony nie są zainstalowane.</string>
+    <string name="coming_soon">Dostępne wkrótce.</string>
+    <string name="quick_apply">Zastosuj</string>
+    <string name="request_x_icons">Zażądanych ikon - %1$s</string>
+    <string name="request_icon">Zażądaj ikonę</string>
+    <string name="request_none">Zażądaj ikonę(y)</string>
+    <string name="kustom_templates">Szablony Kustom</string>
+    <string name="zooper_templates">Szablony Zoopera</string>
+    <string name="rate">Oceń</string>
+    <string name="share">Udostępnij</string>
+    <string name="share_text">Zdobądź %1$s w Google Play: %2$s.</string>
+    <string name="send_email">Wyślij e-mail</string>
+    <string name="send_using">Wyślij za pomocą:</string>
+    <string name="request_in_progress">Wysyłam prośbę</string>
+    <string name="request_in_progress_content">Prośba jest aktualnie wysyłana.</string>
+    <string name="building_request_dialog">Przygotowuję prośbę...</string>
+    <string name="request_upload_success_content">Prośba wysłana.</string>
+    <string name="no_selected_apps">Nie wybrano żadnych aplikacji</string>
+    <string name="no_selected_apps_content">Wybierz aplikacje do wysłania żądania.</string>
+    <string name="apps_limit_dialog">Wybierz %1$s aplikacji lub mniej.</string>
+    <string name="apps_limit_dialog_more">Wybierz %1$s aplikacji lub mniej.</string>
+    <string name="apps_limit_dialog_day">Możesz wysyłać prośby tylko co %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Możesz wysłać prośbę za %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Możesz wysłać prośbę za mniej niż minutę.</string>
+    <string name="seconds">Sekundy</string>
+    <string name="minutes">Minuty</string>
+    <string name="hours">Godziny</string>
+    <string name="days">Dni</string>
+    <string name="weeks">Tygodnie</string>
+    <string name="months">Miesiące</string>
+    <string name="icon_shape">Kształt ikon</string>
+    <string name="icon_shape_system">Zgodnie z systemem</string>
+    <string name="icon_shape_circle">Okrąg</string>
+    <string name="icon_shape_squircle">Obły kwadrat</string>
+    <string name="icon_shape_rounded_square">Zaokrąglony kwadrat</string>
+    <string name="icon_shape_square">Kwadrat</string>
+    <string name="icon_shape_teardrop">Łezka</string>
+    <string name="requests_upload_error">Coś poszło nie tak. Kod błędu: %1$s”.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Jak używać paczki ikon?</item>
+        <item>Jak zastosować paczkę ikon?</item>
+        <item>Jak zobaczyć wszystkie zawarte ikony?</item>
+        <item>Jak zastąpić jakąś ikonę ikoną alternatywną?</item>
+        <item>Jak zażądać ikon bez motywu?</item>
+        <item>Po zrestartowaniu mojego urządzenia, paczka ikon już nie jest zastosowana. Ikony zostały przywrócone do domyślnych.</item>
+        <item>Dlaczego ikony na moim urządzeniu są rozmazane?</item>
+        <item>Widzę ikone dla aplikacji X w zawartych ikonach, ale ikona nie jest zastosowana.</item>
+        <item>Czemu aplikacja wymaga uprawnień, w celu modyfikowania, lub usuwania zawartości mojej pamięci?</item>
+        <item>Dlaczego aplikacja wymaga uprawnienia do pełnego dostępu do sieci?</item>
+        <item>Dlaczego aplikacja wymaga uprawnień do przeglądania połączeń?</item>
+        <item>Dlaczego aplikacja wymaga uprawnień do ustawiania tapety?</item>
+        <item>Dlaczego aplikacja wymaga uprawnień do dostosowywania rozmiaru tapety?</item>
+        <item>Dlaczego aplikacja wymaga uprawnienia do zapobiegania przechodzenia telefonu w stan uśpienia?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Wymagana jest aplikacja ekranu głównego wspierającą paczki ikon. Lista wspieranych launcherów znajduje się w zakładce Zastosuj oraz w opisie aplikacji na Google Play.</item>
+        <item>W zależności od typu nawigacji w aplikacji, konieczne będzie wybranie opcji \"Zastosuj\" w szufladzie nawigacji, bądź dotknięcie czwartej ikony od lewej w dolnym pasku. W tej sekcji możliwe jest wybranie launchera, do którego ma być zastosowana paczka. Niektóre aplikacje ekranu głównego wspierające paczki ikon mogą się nie pojawić w tej sekcji - wtedy paczkę można zastosować manualnie przez panel ustawień ekranu głównego.</item>
+        <item>Na ekranie głównym aplikacji, dotknij płytkę \"Ikony\".</item>
+        <item>W zależności od launchera, konieczne będzie przeciągnięcie ikony aplikacji do przycisku \"Edytuj\" bądź wybranie tej opcji w menu pop-up.</item>
+        <item>W zależności od typu nawigacji, musisz otworzyć szufladę nawigacji z lewej, oraz przejść do \"Prósba o ikony\", lub wybrać ją z dolnego paska nawigacji.</item>
+        <item>Stało się to, ponieważ paczka ikon została przeniesiona na kartę SD(pamięci). Powinienieś zainstalować ją w pamięci wewnętrznej (normalnej).</item>
+        <item>Problem może wynikać z launchera, którego używasz, podczas obsługi dużej rozdzielczości. Możesz to naprawić, zwiększając rozmiar ikony do 115 - 120%. Albo spróbuj użyć innego launchera.</item>
+        <item>Wyślij prośbę o dodanie ikon.</item>
+        <item>To jest wymagane do zapisania tymczasowych plików generowanych na potrzebę wysłania prośby o dodanie ikon, jak i zmiany lokalizacji pobierania tapet.</item>
+        <item>To jest wymagane do pobrania tapet z chmury.</item>
+        <item>To jest wymagane, aby móc sprawdzić czy twoje urządzenie ma połączenie z internetem.</item>
+        <item>To jest wymagane, aby zastosować tapetę bezpośrednio z aplikacji.</item>
+        <item>To jest wymagane, aby móc dostosować wymiary tapety w oparciu o rozdzielczość ekranu.</item>
+        <item>To jest wymagane przez Muzei Live Wallpaper.</item>
+    </string-array>
+</resources>

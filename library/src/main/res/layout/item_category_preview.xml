@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/divider_layout"
+            layout="@layout/item_divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_title"
+                style="@style/TextStyle.Frames.Subtitle2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="?colorSecondary"
+                app:firstBaselineToTopHeight="36sp"
+                app:lastBaselineToBottomHeight="20sp"
+                tools:text="Subheader" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_count"
+                style="@style/TextStyle.Frames.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:firstBaselineToTopHeight="36sp"
+                app:lastBaselineToBottomHeight="20sp"
+                tools:text="@string/x_icons" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/category_open_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="?actionBarItemBackground"
+                android:scaleType="centerInside"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@drawable/ic_open_category" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <dev.jahir.blueprint.ui.widgets.IconsPreviewRecyclerView
+        android:id="@+id/category_icons_preview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_icon" />
+
+</LinearLayout>

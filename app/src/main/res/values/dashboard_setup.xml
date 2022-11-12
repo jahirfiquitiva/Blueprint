@@ -23,7 +23,7 @@
     <bool name="animations_enabled_by_default">true</bool>
 
     <!-- Privacy Policy link or url -->
-    <string name="privacy_policy_link">""</string>
+    <string name="privacy_policy_link">"https://sites.google.com/view/cicrleiconpack/"</string>
 
     <!-- Terms and Conditions link or url -->
     <string name="terms_conditions_link">""</string>

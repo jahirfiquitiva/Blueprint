@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress CheckTagEmptyBody -->
+<resources>
+
+    <!-- Make sure to put at least 8 icons -->
+    <string-array name="icons_preview">
+        <item></item>
+    </string-array>
+
+    <!-- These sections below are for your "Previews" section -->
+    <!-- These names should match YOUR actual icon names
+    	 the names used below are just for sampling purposes -->
+
+    <!-- Make sure the filters names are the same as the other arrays -->
+    <string-array name="icon_filters">
+        <item></item>
+    </string-array>
+</resources>

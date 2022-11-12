@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Још апликација</string>
+    <string name="useful_links">Корисни линкови</string>
+    <string name="lni_content">%1$s тренутно није инсталиран на вашем уређају.\nДа ли бисте желели да га инсталирате са Google Play Store-а?</string>
+    <string name="no_compatible_launcher_title">Лаунчер није компатибилан</string>
+    <string name="no_compatible_launcher_content">Овај лаунчер није компатибилан ни са једним пакетом иконица и зато не можете користити овај пакет са овим лаунчером. Молимо вас немојте оцењивати пакет лошом оценом због тога. Постоји решење које можете покушати, али захтева коришћење екстерне апликације. Да ли бисте желели да је скинете?</string>
+    <string name="impossible_open_themes">Немогуће отвори апликацију тема</string>
+    <string name="themes_app_not_installed">Апликација теме није инсталирана на овом уређају</string>
+    <string name="coming_soon">Ускоро доступно</string>
+    <string name="rate">Оцени</string>
+    <string name="building_request_dialog">Креирање захтевног фајла…</string>
+    <string name="request_upload_success">Успешно!</string>
+    <string name="request_upload_success_content">Захтев није успешно отпремљен на наш сервер.</string>
+    <string name="no_selected_apps_content">Нисте изабрали ни једну апликацију за request. Изаберите неке апликације, а затим тапните поново на ово дугме.</string>
+    <string name="requests_upload_error">Догодила се грешка приликом аплоудовања апликација за request.\nРазлог: %1$s\nМолимо покушајте касније</string>
+    <string name="apps_limit_dialog">Извини, али дозвољено је да изабереш само %1$s апликације за request.</string>
+    <string name="apps_limit_dialog_more">Извини, али дозвољено је да изабереш само %1$s више апликације за сад.</string>
+    <string name="apps_limit_dialog_day">Извините, али је дозвољено да тражите иконице тек на сваких %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Моћи ћете да потражите иконице поново за %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Моћи ћете да тражите иконице поново за мање од једног минута.</string>
+    <string name="seconds">Секунде</string>
+    <string name="minutes">Минути</string>
+    <string name="hours">Сати</string>
+    <string name="days">Дани</string>
+    <string name="weeks">Недеље</string>
+    <string name="months">Месеци</string>
+    <!-- HELP SECTION -->
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!--
+        Do you want the app name and version in the drawer header?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="with_drawer_texts">true</bool>
+
+    <!--
+        Show a custom image as placeholder while loading icons
+        Use drawable name without extensions
+    -->
+    <string name="icons_placeholder"></string>
+
+    <!--
+        Set a drawable name in case you want to use a static picture for icons preview.
+        Leave empty if you don't want to use a static one.
+        Set the bool below to true if you want your static picture to be set by default, instead
+        of user's wallpaper. Otherwise, leave it as false.
+    -->
+    <string name="static_icons_preview_picture"></string>
+    <bool name="static_icons_preview_picture_by_default">false</bool>
+
+    <!--
+        Do you want the app to read the icons from res/xml/drawable.xml ? (true)
+        Or do you prefer the icons to be loaded from res/values/icon_pack.xml ? (false)
+    -->
+    <bool name="xml_drawable_enabled">false</bool>
+
+    <!--
+        Set to true if your icon pack includes adaptive icons. false otherwise
+    -->
+    <bool name="includes_adaptive_icons">false</bool>
+
+    <!-- Icon Pack designer/owner e-mail -->
+    <string name="email">someone@email.com</string>
+
+    <!-- Mail subjects for simple e-mail and requests e-mail -->
+    <string name="email_subject">Blueprint</string>
+    <string name="request_title">Blueprint Icon Request</string>
+
+    <!--
+    1. Set the max amount of apps to request.
+    2. Limit requests to 1 every X minutes.
+    Replace X with the number of minutes you want.
+    60 means 1 request every 1 hour.
+    1440 means 1 request per day.
+    10080 means 1 request per week.
+    40320 means 1 request per month.
+    App Limit:
+    If the apps limit is 0, users won't be able to request anything.
+    If the apps limit is -1, users can request as many times they want, and
+    as many apps they want.
+    Time limit:
+    If the time limit is set to 0 or less, users will be able to request as many times they want,
+    with the max apps limit.
+    -->
+    <integer name="max_apps_to_request">-1</integer>
+    <integer name="time_limit_in_minutes">0</integer>
+
+    <!--
+        The API key and base URL for the icon request manager.
+        Currently, only Pacific Manager is supported: https://pacificmanager.app.
+    -->
+    <string name="request_manager_backend_api_key" translatable="false"></string>
+    <string name="request_manager_base_url" translatable="false">https://pacificmanager.app/</string>
+</resources>

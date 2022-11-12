@@ -5,7 +5,7 @@
     <color name="primaryDark">#fafafa</color>
     <color name="onPrimary">#de000000</color>
 
-    <color name="accent">#3881fa</color>
+    <color name="accent">#ff93c0f2</color>
     <color name="onAccent">#ffffff</color>
 
     <color name="surface">#ffffff</color>
@@ -24,7 +24,7 @@
     <color name="darkThemePrimaryDark">#000000</color>
     <color name="darkThemeOnPrimary">#ffffff</color>
 
-    <color name="darkThemeAccent">#ff3f80</color>
+    <color name="darkThemeAccent">#5880C8</color>
     <color name="darkThemeOnAccent">#ffffff</color>
 
     <color name="darkThemeSurface">#424242</color>
@@ -36,7 +36,7 @@
 
     <color name="darkThemeSnackbarBackgroundColor">#ffffff</color>
     <color name="darkThemeSnackbarTextColor">#de000000</color>
-    <color name="darkThemeSnackbarButtonColor">#cc3266</color>
+    <color name="darkThemeSnackbarButtonColor">#80A8D8</color>
 
     <!-- Amoled Theme Colors -->
     <color name="amoledThemePrimary">#000000</color>

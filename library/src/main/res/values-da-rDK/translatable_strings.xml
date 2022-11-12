@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">Flere apps</string>
+    <string name="useful_links">Brugbare links</string>
+    <string name="lni_content">%1$s er ikke installeret på din enhed.\nVil du hente app\'en fra Google Play Store?</string>
+    <string name="no_compatible_launcher_title">Denne launcher er IKKE kompatibel</string>
+    <string name="no_compatible_launcher_content">Denne launcher er IKKE kompatibel med NOGEN icon packs og du kan derfor ikke bruge denne icon pack med denne launcher. Vær venlig ikke at bedømme denne app negativt på grund af launcherens begrænsning. Der er en løsning som du kan prøve, men det kræver en ekstern app. Vil du downloade denne?</string>
+    <string name="impossible_open_themes">Umuligt at åbne temaer app</string>
+    <string name="coming_soon">Kommer Snart</string>
+    <string name="rate">Bedøm</string>
+    <string name="seconds">Sekunder</string>
+    <string name="minutes">Minutter</string>
+    <string name="hours">Timer</string>
+    <string name="days">Dager</string>
+    <string name="weeks">Uger</string>
+    <string name="months">Måneder</string>
+</resources>

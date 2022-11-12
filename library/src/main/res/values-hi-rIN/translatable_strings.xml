@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="more_apps">अधिक अप्प्स</string>
+    <string name="useful_links">उपयोगी कड़ियां</string>
+    <string name="lni_content">%1$s वर्तमान में आपके डिवाइस पर स्थापित नहीं है. \n क्या आप इसे गूगल प्ले स्टोर से इंस्टॉल करना पसंद करते हैं?</string>
+    <string name="no_compatible_launcher_title">इस लांचर संगत नहीं है</string>
+    <string name="no_compatible_launcher_content">इस लांचर किसी भी आइकन पैक के साथ संगत नहीं है और इसलिए आप इस लांचर के साथ इस आइकन पैक का उपयोग नहीं कर सकते. कृपया इस कारण के लिए आइकन पैक दर नहीं है । वहां एक समाधान है कि आप अपने आप के लिए कोशिश कर सकते हैं, लेकिन यह एक बाहरी अनुप्रयोग के उपयोग की आवश्यकता है । क्या आप इसे डाउनलोड करना चाहेंगे?</string>
+    <string name="impossible_open_themes">थीम्स एप्लिकेशन को खोलने के लिए असंभव</string>
+    <string name="themes_app_not_installed">विषयवस्तु अनुप्रयोग इस डिवाइस में स्थापित नहीं है</string>
+    <string name="coming_soon">जल्द आ रहा है</string>
+    <string name="rate">मूल्यांकन करें</string>
+    <string name="send_using">उपयोग कर भेजें…</string>
+    <string name="building_request_dialog">भवन अनुरोध फ़ाइलें…</string>
+    <string name="request_upload_success">सफलता!</string>
+    <string name="request_upload_success_content">अनुरोध हमारे सर्वर पर सफलतापूर्वक अपलोड किया गया है ।</string>
+    <string name="no_selected_apps_content">आप अनुरोध करने के लिए किसी भी अनुप्रयोग का चयन नहीं किया । कृपया कुछ ऐप्लिकेशन चुनें, फिर इस बटन को फिर से टैप करें.</string>
+    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
+    <string name="apps_limit_dialog">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
+    <string name="apps_limit_dialog_more">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
+    <string name="apps_limit_dialog_day">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
+    <string name="apps_limit_dialog_day_extra">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
+    <string name="apps_limit_dialog_day_extra_sec">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
+    <string name="seconds">सेकंड्स</string>
+    <string name="minutes">मिनट</string>
+    <string name="hours">घंटे</string>
+    <string name="days">दिन</string>
+    <string name="weeks">सप्ताह</string>
+    <string name="months">महीने</string>
+</resources>
