@@ -6,6 +6,8 @@
 <a target="_blank" href="https://github.com/wkshl/Cicrle-Icon-Pack"><img src="https://img.shields.io/github/last-commit/wkshl/Cicrle-Icon-Pack" /></a>
 <a target="_blank" href="https://github.com/wkshl/Cicrle-Icon-Pack"><img src="https://img.shields.io/github/v/release/wkshl/Cicrle-Icon-Pack" /></a>
 <a target="_blank" href="https://github.com/wkshl/Cicrle-Icon-Pack"><img src="https://img.shields.io/github/sponsors/wkshl?label=GitHub%20Sponsors" /></a>
+<a target="_blank" href="https://github.com/wkshl/Cicrle-Icon-Pack/actions/workflows/build.yml">
+<img src="https://github.com/wkshl/Cicrle-Icon-Pack/actions/workflows/build.yml/badge.svg?branch=sample" /></a>
 
 This is a beautiful icon pack for Android.<br>
 *This icon pack is powered by [Blueprint](https://github.com/jahirfiquitiva/Blueprint).
