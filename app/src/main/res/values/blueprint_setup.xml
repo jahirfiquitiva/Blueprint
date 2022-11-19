@@ -34,7 +34,7 @@
     <bool name="includes_adaptive_icons">true</bool>
 
     <!-- Icon Pack designer/owner e-mail -->
-    <string name="email">2825765449@qq.com</string>
+    <string name="email">chen@canteam.cn</string>
 
     <!-- Mail subjects for simple e-mail and requests e-mail -->
     <string name="email_subject">重圆 Cicler</string>

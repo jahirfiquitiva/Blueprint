@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <version title="v不知道几个版本，反正是内测" />
-    <item text="共适配应用约400个左右(包括启动项)" />
-    <item text="优化重圆 Icon Pack图标清晰度" />
-    <item text="修复了部分应用未适配成功的问题" />
-    <item text="" /> <!-- this one is empty and therefore ignored -->
+    <version title="1.0.1" />
+    <item text="(1） 适配了Color OS 、 Samsung系统应用." />
+    <item text="(2)  更改了反馈邮箱." />
+    <item text="(3)  替换了Flyme 系统App 时钟" />
+    <item text="(4)  修复 百度网盘、AcFun、即刻、薄荷健康 未适配成功问题" /> 
+    <item text="(5)  修复drawable方面问题"/>
+    
+    <!-- this one is empty and therefore ignored -->
 </resources>

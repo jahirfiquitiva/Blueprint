@@ -2103,6 +2103,36 @@
     <item 
         component="ComponentInfo{com.taobao.trip/com.alipay.mobile.quinox.LauncherActivity}" 
         drawable="flypig" />
+        
+        <!-- 中国移动江苏 -->
+	<item
+		component="ComponentInfo{com.jsmcc/com.jsmcc.ui.WelcomeActivity}"
+		drawable="cmcc"/>
+        <!-- 百度网盘 -->
+	<item
+		component="ComponentInfo{com.baidu.netdisk/com.baidu.netdisk.ui.OPLauncherActivity}"
+		drawable="baidu_netdisk"/>
+    	<!-- AcFun -->
+	<item
+		component="ComponentInfo{tv.acfundanmaku.video/tv.acfun.core.module.splash.SplashActivity}"
+		drawable="ac_fun"/>
+        <!-- MX Player Pro -->
+	<item
+		component="ComponentInfo{com.mxtech.videoplayer.ad/com.mxtech.videoplayer.pro.ActivityWelcomeMX}"
+		drawable="mxplayer"/>
+        <!-- 即刻 -->
+	<item
+		component="ComponentInfo{com.ruguoapp.jike/com.ruguoapp.jike.standard}"
+		drawable="jike"/>
+        <!-- 虎扑 -->
+	<item
+		component="ComponentInfo{com.hupu.games/com.hupu.games.launcher.StartUpActivity}"
+		drawable="hupu"/>
+        <!-- 薄荷健康 -->
+	<item
+		component="ComponentInfo{com.boohee.one/com.boohee.one.app.home.ui.activity.SplashActivity}"
+		drawable="boohee"/>
+        
    
 
 
@@ -2164,6 +2194,11 @@
     <item 
         component="ComponentInfo{com.hypergryph.arknights/com.u8.sdk.U8UnityContext}" 
         drawable="game_arknights" />
+        
+        <!-- 英雄联盟手游 -->
+	<item
+		component="ComponentInfo{com.tencent.lolm/com.tencent.lolm.lgame}"
+		drawable="lolm"/>
         
         
         
@@ -2441,6 +2476,11 @@
       <calendar
 		component="ComponentInfo{com.google.android.calendar/com.android.calendar.AllInOneActivity}"
 		prefix="calendar_d"/>
+        <!-- Color Calendar -->
+      <calendar
+		component="ComponentInfo{com.coloros.calendar/com.android.calendar.AllInOneActivity}"
+		prefix="calendar_d"/>
+        
         
      <!-- ==============Calendar=================================================== -->
 
@@ -2626,6 +2666,272 @@
 	<item
 		component="ComponentInfo{com.android.fmradio/com.android.fmradio.FmMainActivity}"
 		drawable="miui_fm"/>
+        
+        
+        
+        
+        <!-- ==============One Plus、Color=================================================== -->
+        
+        
+        
+        <!-- App Market -->
+	<item
+		component="ComponentInfo{com.heytap.market/com.heytap.market.activity.MainActivity}"
+		drawable="color_app_market"/>
+        <!-- Breeno -->
+	<item
+		component="ComponentInfo{com.heytap.speechassist/com.heytap.speechassist.launcher.SpeechAssistMainActivity}"
+		drawable="breeno"/>
+        <!-- Breeno Shortcuts -->
+	<item
+		component="ComponentInfo{com.coloros.shortcuts/com.coloros.shortcuts.ui.MainActivity}"
+		drawable="breeno_shortcuts"/>
+        <!-- Browser -->
+	<item
+		component="ComponentInfo{com.heytap.browser/com.android.browser.BrowserActivity}"
+		drawable="color_browser"/>
+        <!-- Calculator -->
+	<item
+		component="ComponentInfo{com.coloros.calculator/com.android.calculator2.Calculator}"
+		drawable="color_calculator"/>
+        
+        
+        <!-- Camera -->
+	<item
+		component="ComponentInfo{com.oplus.camera/com.oplus.camera.Camera}"
+		drawable="color_camera"/>
+        <!-- Clock -->
+	<item
+		component="ComponentInfo{com.coloros.alarmclock/com.oplus.alarmclock.AlarmClock}"
+		drawable="color_clock"/>
+
+	<!-- Clone Phone -->
+	<item
+		component="ComponentInfo{com.coloros.backuprestore/com.oplus.phoneclone.PhoneCloneMainActivity}"
+		drawable="color_clone_phone"/>
+
+	<!-- Compass -->
+	<item
+		component="ComponentInfo{com.coloros.compass2/com.coloros.compass.flat.FlatCompass}"
+		drawable="color_compass"/>
+
+	<!-- Contacts -->
+	<item
+		component="ComponentInfo{com.android.contacts/com.android.contacts.DialtactsActivityAlias}"
+		drawable="color_contacts"/>
+        <!-- Health -->
+	<item
+		component="ComponentInfo{com.heytap.health/com.heytap.health.oobe.LaunchActivity}"
+		drawable="color_health"/>
+        
+        
+        
+        
+        
+
+	<!-- HeyTap Cloud -->
+	<item
+		component="ComponentInfo{com.heytap.cloud/com.heytap.cloud.home.ui.CloudLauncherActivity}"
+		drawable="heytap_cloud"/>
+        
+        
+        
+        
+
+	<!-- Mail -->
+	<item
+		component="ComponentInfo{com.android.email/com.android.email.login.activity.WelcomeActivity}"
+		drawable="color_mail"/>
+        <!-- My Files -->
+	<item
+		component="ComponentInfo{com.coloros.filemanager/com.oplus.filemanager.main.ui.MainActivity}"
+		drawable="my_files"/>
+
+	<!-- My OnePlus -->
+	<item
+		component="ComponentInfo{com.heytap.vip/com.platform.usercenter.vip.UCVIPMainActivity}"
+		drawable="my_oneplus"/>
+        <!-- Notes -->
+	<item
+		component="ComponentInfo{com.coloros.note/com.nearme.note.main.MainActivity}"
+		drawable="color_notes"/>
+
+	<!-- Phone Manager -->
+	<item
+		component="ComponentInfo{com.coloros.phonemanager/com.coloros.phonemanager.FakeActivity}"
+		drawable="phone_manager"/>
+        <!-- Photos -->
+	<item
+		component="ComponentInfo{com.coloros.gallery3d/com.coloros.gallery3d.app.MainActivity}"
+		drawable="color_photos"/>
+        <!-- Recorder -->
+	<item
+		component="ComponentInfo{com.coloros.soundrecorder/oplus.multimedia.soundrecorder.filebrowser.BrowseFile}"
+		drawable="color_recorder"/>
+
+	<!-- SIM Toolkit -->
+	<item
+		component="ComponentInfo{com.android.stk/com.android.stk.OplusStkLauncherActivity1}"
+		drawable="color_sim_toolkit"/>
+        <!-- Theme Store -->
+	<item
+		component="ComponentInfo{com.heytap.themestore/com.nearme.themespace.activities.ThemeActivity}"
+		drawable="color_theme"/>
+        <!-- Videos -->
+	<item
+		component="ComponentInfo{com.heytap.yoli/com.heytap.yoli.icon_org}"
+		drawable="color_videos"/>
+        <!-- Weather -->
+	<item
+		component="ComponentInfo{com.coloros.weather2/com.oplus.weather.main.view.WeatherMainActivity}"
+		drawable="color_weather"/>
+        <!-- Zen Mode -->
+	<item
+		component="ComponentInfo{com.oneplus.brickmode/com.oneplus.brickmode.activity.MainControlActivity}"
+		drawable="zen_mode"/>
+
+	<!-- 一加社区 -->
+	<item
+		component="ComponentInfo{com.oneplus.bbs/com.oneplus.bbs.ui.activity.WelcomeActivity}"
+		drawable="oneplus_bbs"/>
+        
+        <!-- 阅读 -->
+	<item
+		component="ComponentInfo{com.heytap.reader/com.chaozh.iReader.ui.activity.WelcomeActivity}"
+		drawable="color_read"/>
+
+	<!-- 音乐 -->
+	<item
+		component="ComponentInfo{com.heytap.music/com.allsaints.music.ui.splash.SplashActivity}"
+		drawable="color_music"/>
+        
+        
+       <!-- ============== samsung =================================================== -->
+        
+        <!-- Contacts -->
+	<item
+		component="ComponentInfo{com.samsung.android.app.contacts/com.samsung.android.contacts.contactslist.PeopleActivity}"
+		drawable="sec_contacts"/>
+
+	<!-- Clock -->
+	<item
+		component="ComponentInfo{com.sec.android.app.clockpackage/com.sec.android.app.clockpackage.ClockPackage}"
+		drawable="sec_clock"/>
+        
+        <!-- Finder -->
+	<item
+		component="ComponentInfo{com.samsung.android.app.galaxyfinder/com.samsung.android.app.galaxyfinder.GalaxyFinderMainLauncher}"
+		drawable="sec_finder"/>
+
+	<!-- Galaxy Store -->
+	<item
+		component="ComponentInfo{com.sec.android.app.samsungapps/com.sec.android.app.samsungapps.SamsungAppsMainActivity}"
+		drawable="sec_store"/>
+        
+        <!-- Galaxy Themes -->
+	<item
+		component="ComponentInfo{com.samsung.android.themestore/com.samsung.android.themestore.activity.Launcher}"
+		drawable="sec_theme"/>
+
+	<!-- Galaxy Wearable -->
+	<item
+		component="ComponentInfo{com.samsung.android.app.watchmanager/com.samsung.android.app.watchmanager.setupwizard.SetupWizardWelcomeActivity}"
+		drawable="sec_wear"/>
+        
+        <!-- Gallery -->
+	<item
+		component="ComponentInfo{com.sec.android.gallery3d/com.samsung.android.gallery.app.activity.GalleryActivity}"
+		drawable="gallery"/>
+
+	<!-- Game Launcher -->
+	<item
+		component="ComponentInfo{com.samsung.android.game.gamehome/com.samsung.android.game.gamehome.activity.StartActivity}"
+		drawable="sec_game"/>
+
+	<!-- Game Plugins -->
+	<item
+		component="ComponentInfo{com.samsung.android.game.gamelab/com.samsung.android.game.gamelab.ui.StartActivity}"
+		drawable="sec_game_plugins"/>
+        
+        <!-- Good Lock -->
+	<item
+		component="ComponentInfo{com.samsung.android.goodlock/com.samsung.android.goodlock.presentation.view.LaunchActivity}"
+		drawable="sec_good_lock"/>
+
+	<!-- Good Guardians -->
+	<item
+		component="ComponentInfo{com.android.samsung.utilityapp/com.android.samsung.utilityapp.app.presentation.welcomepage.WelcomeActivity}"
+		drawable="sec_good_guardians"/>
+        
+        <!-- My Files -->
+	<item
+		component="ComponentInfo{com.sec.android.app.myfiles/com.sec.android.app.myfiles.external.ui.MainActivity}"
+		drawable="my_files"/>
+        
+        <!-- One Hand Operation -->
+	<item
+		component="ComponentInfo{com.samsung.android.sidegesturepad/com.samsung.android.sidegesturepad.settings.SGPSettingsActivity}"
+		drawable="one_hand_operation"/>
+
+    	<!-- Phone -->
+	<item
+		component="ComponentInfo{com.samsung.android.dialer/com.samsung.android.dialer.DialtactsActivity}"
+		drawable="sec_phone"/>
+        
+    	<!-- Radio -->
+	<item
+		component="ComponentInfo{com.sec.android.app.fm/com.sec.android.app.fm.MainActivity}"
+		drawable="sec_fm"/>
+
+    	<!-- Reminder -->
+	<item
+		component="ComponentInfo{com.samsung.android.app.reminder/com.samsung.android.app.reminder.ui.LaunchMainActivity}"
+		drawable="sec_reminder"/>
+        
+        <!-- Samsung Internet -->
+	<item
+		component="ComponentInfo{com.sec.android.app.sbrowser/com.sec.android.app.sbrowser.SBrowserMainActivity}"
+		drawable="sec_internet"/>
+        
+        	<!-- Samsung Members -->
+	<item
+		component="ComponentInfo{com.samsung.android.voc/com.samsung.android.voc.LauncherActivity}"
+		drawable="sec_members"/>
+
+	<!-- Samsung Health -->
+	<item
+		component="ComponentInfo{com.sec.android.app.shealth/com.samsung.android.app.shealth.home.HomeMainActivity}"
+		drawable="sec_health"/>
+        
+        <!-- Samsung Notes -->
+	<item
+		component="ComponentInfo{com.samsung.android.app.notes/com.samsung.android.app.notes.memolist.MemoListActivity}"
+		drawable="sec_notes"/>
+
+	<!-- Sound Assistant -->
+	<item
+		component="ComponentInfo{com.samsung.android.soundassistant/com.sec.android.soundassistant.activities.MainActivity}"
+		drawable="sound_assistant"/>
+        
+        <!-- Theme Park -->
+	<item
+		component="ComponentInfo{com.samsung.android.themedesigner/com.samsung.android.themedesigner.SplashActivity}"
+		drawable="sec_theme_park"/>
+
+	<!-- Tips -->
+	<item
+		component="ComponentInfo{com.samsung.android.app.tips/com.samsung.android.app.tips.TipsMainActivity}"
+		drawable="sec_tips"/>
+        
+        <!-- Voice Recorder -->
+	<item
+		component="ComponentInfo{com.sec.android.app.voicenote/com.sec.android.app.voicenote.main.VNMainActivity}"
+		drawable="voice_recorder"/>
+
+	<!-- Weather -->
+	<item
+		component="ComponentInfo{com.sec.android.daemonapp/com.samsung.android.weather.app.AppLauncherActivity}"
+		drawable="sec_weather"/>
         
         
         

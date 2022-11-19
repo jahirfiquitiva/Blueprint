@@ -5,7 +5,7 @@
     
     <string-array name="icons_preview">
        
-       <item>gmail</item>
+        <item>gmail</item>
         <item>google_play_store</item>
         <item>chrome</item>
         <item>wear_os_by_google</item>
@@ -43,6 +43,7 @@
         <item>android_aosp_google</item>
         <item>flyme</item>
         <item>miui</item>
+        <item>color</item>
         <item>game</item>
         <item>correspondence</item>
         <item>audiovisual</item>
@@ -168,6 +169,37 @@
         
     </string-array>
     
+     <string-array name="color">
+     
+        <item>color_app_market</item>
+        <item>breeno</item>
+        <item>breeno_shortcuts</item>
+        <item>color_browser</item>
+        <item>color_calculator</item>
+        <item>color_camera</item>
+        <item>color_clock</item>
+        <item>color_clone_phone</item>
+        <item>color_compass</item>
+        <item>color_contacts</item>
+        <item>color_health</item>
+        <item>color_mail</item>
+        <item>my_files</item>
+        <item>my_oneplus</item>
+        <item>color_notes</item>
+        <item>phone_manager</item>
+        <item>color_photos</item>
+        <item>color_recorder</item>
+        <item>color_sim_toolkit</item>
+        <item>color_theme</item>
+        <item>color_videos</item>
+        <item>color_weather</item>
+        <item>zen_mode</item>
+        <item>oneplus_bbs</item>
+        <item>color_read</item>
+        <item>color_music</item>
+     
+     </string-array>
+    
     <string-array name="game">
         <item>happyelements</item>
         <item>wangzherongyao</item>
@@ -178,6 +210,7 @@
         <item>genshin2</item>
         <item>game_arknights</item>
         <item>sky</item>
+        <item>lolm</item>
         
     </string-array>
     
@@ -843,6 +876,35 @@
         <item>shanbay_sentence</item>
         <item>taobao_taopiaopiao</item>
         <item>flypig</item>
+        
+        <item>lolm</item>
+        
+        <item>color_app_market</item>
+        <item>breeno</item>
+        <item>breeno_shortcuts</item>
+        <item>color_browser</item>
+        <item>color_calculator</item>
+        <item>color_camera</item>
+        <item>color_clock</item>
+        <item>color_clone_phone</item>
+        <item>color_compass</item>
+        <item>color_contacts</item>
+        <item>color_health</item>
+        <item>color_mail</item>
+        <item>my_files</item>
+        <item>my_oneplus</item>
+        <item>color_notes</item>
+        <item>phone_manager</item>
+        <item>color_photos</item>
+        <item>color_recorder</item>
+        <item>color_sim_toolkit</item>
+        <item>color_theme</item>
+        <item>color_videos</item>
+        <item>color_weather</item>
+        <item>zen_mode</item>
+        <item>oneplus_bbs</item>
+        <item>color_read</item>
+        <item>color_music</item>
         
         
         
