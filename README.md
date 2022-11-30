@@ -6,11 +6,9 @@ Blueprint-Simple
 ![API](https://img.shields.io/badge/API-21%2B-34bf49.svg)
 [![GitHub Release](https://img.shields.io/github/v/release/jahirfiquitiva/Blueprint?label=Blueprint&sort=semver)](https://github.com/jahirfiquitiva/Blueprint/releases/latest)
 
-Blueprint without Wallpapers and other modules.
+Blueprint without Wallpapers and other modules.Only icons here.
 
-Only icons here.
-
-And support Privacy Policy pop up when first use, which is useful in China if you want to release on app stores.
+Support Privacy Policy pop up when first use, which is useful in China if you want to release on app stores.
 
 # Features:
 - privacy Policy pop up.
