@@ -112,7 +112,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bottomNavigation?.setOnNavigationItemSelectedListener {
+        bottomNavigation?.setOnItemSelectedListener {
             if (isIconsPicker && it.itemId != R.id.icons) false
             else {
                 updateFab(it.itemId, true) { changeFragment(it.itemId) }
