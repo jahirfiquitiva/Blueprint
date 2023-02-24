@@ -37,6 +37,8 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
 
     var requestsCallback: RequestCallback? = null
 
+    private val componentInfoPrefixLength = "ComponentInfo{".length
+
     private val themedComponentsData: MutableLiveData<ArrayList<String>> by lazyMutableLiveData()
     private val themedComponents: ArrayList<String>
         get() = ArrayList(themedComponentsData.value.orEmpty())
@@ -60,7 +62,7 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
             val drawable = parser.getAttributeValue(null, "drawable").orEmpty()
 
             if (component.hasContent() && !component.startsWith(":")) {
-                val actualComponent = component.substring(14, component.length - 1)
+                val actualComponent = component.substring(componentInfoPrefixLength, component.length - 1)
                 if (actualComponent.hasContent() && !actualComponent.startsWith("/")
                     && !actualComponent.endsWith("/")) {
                     if (debug) {
@@ -143,7 +145,7 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
 
             val packagesList = try {
                 context.packageManager.queryIntentActivities(
-                    Intent("android.intent.action.MAIN").addCategory("android.intent.category.LAUNCHER"),
+                    Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER),
                     PackageManager.GET_RESOLVED_FILTER
                 )
             } catch (e: Exception) {
