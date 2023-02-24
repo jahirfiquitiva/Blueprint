@@ -20,7 +20,6 @@ import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.IconsCounter
 import dev.jahir.blueprint.data.models.KustomCounter
 import dev.jahir.blueprint.data.models.WallpapersCounter
-import dev.jahir.blueprint.data.models.ZooperCounter
 import dev.jahir.blueprint.extensions.defaultLauncher
 import dev.jahir.blueprint.ui.activities.BlueprintActivity
 import dev.jahir.blueprint.ui.activities.BlueprintKuperActivity
@@ -40,11 +39,10 @@ import dev.jahir.frames.extensions.views.setPaddingBottom
 import dev.jahir.frames.extensions.views.snackbar
 import dev.jahir.frames.ui.activities.base.BaseBillingActivity
 import dev.jahir.frames.ui.activities.base.BaseLicenseCheckerActivity.Companion.PLAY_STORE_LINK_PREFIX
-import dev.jahir.frames.ui.activities.base.BaseStoragePermissionRequestActivity
+import dev.jahir.frames.ui.activities.base.BasePermissionsRequestActivity
 import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.widgets.StatefulRecyclerView
 import dev.jahir.kuper.extensions.userWallpaper
-
 
 @SuppressLint("MissingPermission")
 class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
@@ -112,7 +110,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         snackbar(
             string(R.string.permission_request, context?.getAppName()),
             Snackbar.LENGTH_INDEFINITE,
-            (activity as? BaseStoragePermissionRequestActivity<*>)?.snackbarAnchorId ?: 0
+            (activity as? BasePermissionsRequestActivity<*>)?.snackbarAnchorId ?: 0
         ) {
             setAction(android.R.string.ok) {
                 requestStoragePermission()
@@ -158,6 +156,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     internal fun notifyShapeChange() {
         adapter.notifyDataSetChanged()
         setupContentBottomOffset()
@@ -193,11 +192,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         setupContentBottomOffset()
     }
 
-    internal fun updateZooperCount(count: Int) {
-        adapter.zooperCount = count
-        setupContentBottomOffset()
-    }
-
     override fun onIconsPreviewClicked() {
         super.onIconsPreviewClicked()
         (activity as? BlueprintActivity)?.loadPreviewIcons(true)
@@ -212,7 +206,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
             is WallpapersCounter -> {
                 (activity as? BlueprintActivity)?.selectNavigationItem(R.id.wallpapers)
             }
-            is KustomCounter, is ZooperCounter -> {
+            is KustomCounter -> {
                 (activity as? BlueprintActivity)?.let {
                     it.startActivity(Intent(it, BlueprintKuperActivity::class.java))
                 }
@@ -222,7 +216,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
 
     override fun onAppLinkClicked(url: String, intent: Intent?) {
         super.onAppLinkClicked(url, intent)
-        intent?.let { activity?.startActivity(it) } ?: { context?.openLink(url) }()
+        intent?.let { activity?.startActivity(it) } ?: context?.openLink(url)
     }
 
     internal fun showDonation(show: Boolean) {

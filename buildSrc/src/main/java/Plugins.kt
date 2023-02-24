@@ -7,10 +7,6 @@ object Plugins {
     // Kotlin
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 
-    // OneSignal
-    const val oneSignal =
-        "gradle.plugin.com.onesignal:onesignal-gradle-plugin:${Versions.oneSignalPlugin}"
-
     // Sonatype
     const val sonatype =
         "io.github.gradle-nexus:publish-plugin:${Versions.sonatype}"

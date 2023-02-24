@@ -131,15 +131,15 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         return checked
     }
 
-    override fun onBackPressed() {
+    override fun onSafeBackPressed() {
         val isDrawerOpen = drawerLayout?.isDrawerOpen(GravityCompat.START) ?: false
         if (!isIconsPicker) {
             when {
                 isDrawerOpen -> drawerLayout?.closeDrawer(GravityCompat.START, true)
-                else -> super.onBackPressed()
+                else -> super.onSafeBackPressed()
             }
         } else {
-            super.onBackPressed()
+            super.onSafeBackPressed()
         }
     }
 

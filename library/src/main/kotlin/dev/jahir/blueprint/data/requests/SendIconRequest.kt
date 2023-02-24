@@ -29,8 +29,10 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -282,7 +284,7 @@ object SendIconRequest {
         return withContext(IO) {
             var fileType = URLConnection.guessContentTypeFromName(zipFile.name)
             if (fileType == null || !fileType.hasContent()) fileType = "application/zip"
-            val requestBody: RequestBody = RequestBody.create(MediaType.parse(fileType), zipFile)
+            val requestBody: RequestBody = zipFile.asRequestBody(fileType.toMediaTypeOrNull())
             val fileToUpload = MultipartBody.Part.createFormData("archive", zipFile.name, requestBody)
             var succeeded = false
             val message = try {

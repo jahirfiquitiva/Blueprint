@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.activities
 
+import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -7,7 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.fondesa.kpermissions.PermissionStatus
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import dev.jahir.blueprint.BuildConfig
@@ -128,13 +128,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         }
         templatesViewModel.observe(this) { components ->
             onTemplatesLoaded(components)
-            val kustomCount =
-                components.filter { it.type != Component.Type.ZOOPER && it.type != Component.Type.UNKNOWN }.size
-            val zooperCount = components.filter { it.type == Component.Type.ZOOPER }.size
+            val kustomCount = components.filter { it.type != Component.Type.UNKNOWN }.size
             homeFragment?.updateKustomCount(kustomCount)
             homeViewModel?.postKustomCount(kustomCount)
-            homeFragment?.updateZooperCount(zooperCount)
-            homeViewModel?.postZooperCount(zooperCount)
         }
         iconsViewModel.observe(this) {
             iconsCategoriesFragment.updateItems(it)
@@ -169,9 +165,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         bottomNavigation?.setSelectedItemId(itemId, true)
     }
 
-    override fun onBackPressed() {
+    override fun onSafeBackPressed() {
         if (currentItemId != initialItemId) selectNavigationItem(initialItemId)
-        else super.onBackPressed()
+        else super.onSafeBackPressed()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -224,7 +220,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         try {
             iconDialog?.dismiss()
             iconDialog = null
-        } catch (e: Exception) {
+        } catch (_: Exception) {
         }
     }
 
@@ -232,7 +228,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         try {
             requestDialog?.dismiss()
             requestDialog = null
-        } catch (e: Exception) {
+        } catch (_: Exception) {
         }
     }
 
@@ -240,7 +236,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         try {
             iconsShapePickerDialog?.dismiss()
             iconsShapePickerDialog = null
-        } catch (e: Exception) {
+        } catch (_: Exception) {
         }
     }
 
@@ -263,10 +259,12 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             else -> super.getNextFragment(itemId)
         }
 
-    override fun internalOnPermissionsGranted(result: List<PermissionStatus>) {
-        super.internalOnPermissionsGranted(result)
-        homeFragment?.updateWallpaper()
-        if (shouldBuildRequest) buildRequest()
+    override fun internalOnPermissionsGranted(permission: String?) {
+        super.internalOnPermissionsGranted(permission)
+        if (permission == Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+            homeFragment?.updateWallpaper()
+            if (shouldBuildRequest) buildRequest()
+        }
     }
 
     override fun canShowSearch(itemId: Int): Boolean =
