@@ -47,6 +47,7 @@ import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.fragments.cancelable
 import dev.jahir.frames.extensions.fragments.mdDialog
 import dev.jahir.frames.extensions.fragments.message
+import dev.jahir.frames.extensions.fragments.negativeButton
 import dev.jahir.frames.extensions.fragments.positiveButton
 import dev.jahir.frames.extensions.fragments.singleChoiceItems
 import dev.jahir.frames.extensions.fragments.title
@@ -425,7 +426,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     private fun buildRequest() {
         shouldBuildRequest = false
-        SendIconRequest.sendIconRequest(this, requestsViewModel?.selectedApps, this)
+        showConsentDisclaimer {
+            SendIconRequest.sendIconRequest(this, requestsViewModel?.selectedApps, this)
+        }
     }
 
     override fun onBillingClientReady() {
@@ -534,6 +537,21 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
 
     open fun onTemplatesLoaded(templates: ArrayList<Component>) {
         invalidateOptionsMenu()
+    }
+
+    internal fun showConsentDisclaimer(onConsentAccepted: () -> Unit = { }) {
+        if (blueprintPrefs.iconsRequestConsentAccepted) onConsentAccepted()
+        else {
+            mdDialog {
+                title(R.string.icon_request_consent_title)
+                message(R.string.icon_request_consent)
+                positiveButton(R.string.icon_request_consent_accept) {
+                    blueprintPrefs.iconsRequestConsentAccepted = true
+                    onConsentAccepted()
+                }
+                negativeButton(R.string.icon_request_consent_deny)
+            }
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

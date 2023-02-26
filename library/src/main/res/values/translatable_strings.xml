@@ -55,6 +55,10 @@
     <string name="icon_shape_teardrop">Teardrop</string>
     <string name="requests_upload_error">Something went wrong. Error name: “%1$s”.</string>
     <string name="requests_upload_error_unknown">Something went wrong.</string>
+    <string name="icon_request_consent_title">Consent requirement</string>
+    <string name="icon_request_consent_accept">Accept</string>
+    <string name="icon_request_consent_deny">Deny</string>
+    <string name="icon_request_consent">%1$s collects information about the installed apps and your device details, such as screen dimensions and Android version. This data will be used to design new icons and provide the best possible experience. For additional information, please check the Privacy Policy in the app\'s settings.</string>
 
     <!-- HELP SECTION -->
     <string-array name="questions">

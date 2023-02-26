@@ -17,9 +17,14 @@ class BlueprintPreferences(context: Context) : Preferences(context) {
         get() = prefs.getInt(ICON_SHAPE, 0)
         set(value) = prefsEditor.putInt(ICON_SHAPE, value).apply()
 
+    var iconsRequestConsentAccepted: Boolean
+        get() = prefs.getBoolean(ICONS_REQUEST_CONSENT_ACCEPTED, false)
+        set(value) = prefsEditor.putBoolean(ICONS_REQUEST_CONSENT_ACCEPTED, value).apply()
+
     companion object {
         private const val KEY_SAVED_TIME_MILLIS = "saved_time_millis"
         private const val MAX_APPS = "apps_to_request"
         private const val ICON_SHAPE = "icon_shape"
+        private const val ICONS_REQUEST_CONSENT_ACCEPTED = "icons_request_consent_accepted"
     }
 }

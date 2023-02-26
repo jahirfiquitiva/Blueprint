@@ -48,7 +48,8 @@ enum class Launcher(
             "ch.deletescape.lawnchair.plah",
             "ch.deletescape.lawnchair",
             "ch.deletescape.lawnchair.ci",
-            "ch.deletescape.lawnchair.dev"
+            "ch.deletescape.lawnchair.dev",
+            "app.lawnchair"
         ),
         R.drawable.ic_lawnchair
     ),

@@ -31,6 +31,11 @@ class RequestFragment : BaseFramesFragment<RequestApp>() {
         loadData()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (isVisible) (activity as? BlueprintActivity)?.showConsentDisclaimer()
+    }
+
     override fun setupContentBottomOffset(view: View?) {
         (view ?: getView())?.let { v ->
             v.post {
