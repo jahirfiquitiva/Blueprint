@@ -48,6 +48,7 @@ import dev.jahir.frames.extensions.fragments.cancelable
 import dev.jahir.frames.extensions.fragments.mdDialog
 import dev.jahir.frames.extensions.fragments.message
 import dev.jahir.frames.extensions.fragments.negativeButton
+import dev.jahir.frames.extensions.fragments.neutralButton
 import dev.jahir.frames.extensions.fragments.positiveButton
 import dev.jahir.frames.extensions.fragments.singleChoiceItems
 import dev.jahir.frames.extensions.fragments.title
@@ -260,7 +261,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             else -> super.getNextFragment(itemId)
         }
 
-    override fun internalOnPermissionsGranted(permission: String?) {
+    override fun internalOnPermissionsGranted(permission: String) {
         super.internalOnPermissionsGranted(permission)
         if (permission == Manifest.permission.WRITE_EXTERNAL_STORAGE) {
             homeFragment?.updateWallpaper()
@@ -544,13 +545,13 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         else {
             mdDialog {
                 title(R.string.icon_request_consent_title)
-                message(R.string.icon_request_consent)
+                message(string(R.string.icon_request_consent, context.getAppName()))
                 positiveButton(R.string.icon_request_consent_accept) {
                     blueprintPrefs.iconsRequestConsentAccepted = true
                     onConsentAccepted()
                 }
-                negativeButton(R.string.icon_request_consent_deny)
-            }
+                neutralButton(R.string.icon_request_consent_deny)
+            }.show()
         }
     }
 
