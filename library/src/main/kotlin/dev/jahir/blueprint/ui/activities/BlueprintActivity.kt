@@ -47,7 +47,6 @@ import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.fragments.cancelable
 import dev.jahir.frames.extensions.fragments.mdDialog
 import dev.jahir.frames.extensions.fragments.message
-import dev.jahir.frames.extensions.fragments.negativeButton
 import dev.jahir.frames.extensions.fragments.neutralButton
 import dev.jahir.frames.extensions.fragments.positiveButton
 import dev.jahir.frames.extensions.fragments.singleChoiceItems

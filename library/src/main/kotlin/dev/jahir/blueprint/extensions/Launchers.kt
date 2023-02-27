@@ -314,7 +314,10 @@ private fun Context.executeTsfLauncherIntent() {
 private fun Context.executeMotoLauncherIntent() {
     attemptApply {
         Intent().apply {
-            component = ComponentName("com.motorola.personalize", "com.motorola.personalize.app.IconPacksActivity")
+            component = ComponentName(
+                "com.motorola.personalize",
+                "com.motorola.personalize.app.IconPacksActivity"
+            )
             putExtra("package", packageName)
         }
     }
