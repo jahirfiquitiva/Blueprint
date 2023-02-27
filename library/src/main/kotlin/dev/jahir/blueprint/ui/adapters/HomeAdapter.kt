@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.adapters
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.core.view.children
@@ -13,7 +14,6 @@ import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.IconsCounter
 import dev.jahir.blueprint.data.models.KustomCounter
 import dev.jahir.blueprint.data.models.WallpapersCounter
-import dev.jahir.blueprint.data.models.ZooperCounter
 import dev.jahir.blueprint.ui.viewholders.AppLinkViewHolder
 import dev.jahir.blueprint.ui.viewholders.CounterViewHolder
 import dev.jahir.blueprint.ui.viewholders.HomeActionsViewHolder
@@ -30,6 +30,7 @@ class HomeAdapter(
 ) : SectionedRecyclerViewAdapter<SectionedViewHolder>() {
 
     var actionsStyle: Int = actionsStyle
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             if (value == field) return
             field = value
@@ -40,6 +41,7 @@ class HomeAdapter(
         get() = actionsStyle > 0
 
     var showDonateButton: Boolean = showOverview
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             if (value == field) return
             field = value
@@ -47,6 +49,7 @@ class HomeAdapter(
         }
 
     var showOverview: Boolean = showOverview
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             if (value == field) return
             field = value
@@ -54,6 +57,7 @@ class HomeAdapter(
         }
 
     var wallpaper: Drawable? = null
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             if (field != null) return
             field = value
@@ -61,6 +65,7 @@ class HomeAdapter(
         }
 
     var iconsPreviewList: ArrayList<Icon> = ArrayList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field.clear()
             field.addAll(value)
@@ -68,6 +73,7 @@ class HomeAdapter(
         }
 
     var homeItems: ArrayList<HomeItem> = ArrayList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field.clear()
             field.addAll(value)
@@ -81,6 +87,7 @@ class HomeAdapter(
         get() = ArrayList(homeItems.filter { !it.isAnApp })
 
     var iconsCount: Int = 0
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             if (value == field) return
             field = value
@@ -88,6 +95,7 @@ class HomeAdapter(
         }
 
     var wallpapersCount: Int = 0
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             if (value == field) return
             field = value
@@ -95,13 +103,7 @@ class HomeAdapter(
         }
 
     var kustomCount: Int = 0
-        set(value) {
-            if (value == field) return
-            field = value
-            notifyDataSetChanged()
-        }
-
-    var zooperCount: Int = 0
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             if (value == field) return
             field = value
@@ -114,7 +116,6 @@ class HomeAdapter(
                 IconsCounter(iconsCount),
                 WallpapersCounter(wallpapersCount),
                 KustomCounter(kustomCount),
-                ZooperCounter(zooperCount)
             ).filter { it.count > 0 }
         } else listOf()
 

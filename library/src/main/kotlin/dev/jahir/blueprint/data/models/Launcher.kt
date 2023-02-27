@@ -48,7 +48,8 @@ enum class Launcher(
             "ch.deletescape.lawnchair.plah",
             "ch.deletescape.lawnchair",
             "ch.deletescape.lawnchair.ci",
-            "ch.deletescape.lawnchair.dev"
+            "ch.deletescape.lawnchair.dev",
+            "app.lawnchair"
         ),
         R.drawable.ic_lawnchair
     ),
@@ -63,11 +64,13 @@ enum class Launcher(
         R.drawable.ic_lineageos_theme_engine
     ),
     LUCID("lucid", "Lucid Launcher", arrayOf("com.powerpoint45.launcher"), R.drawable.ic_lucid),
-    MOTO("moto", "Moto Launcher", arrayOf(
-        "com.motorola.launcher3",
-        "com.motorola.personalize",
-        "com.motorola.moto.overlay.personalizelauncher",
-    ), R.drawable.ic_moto),
+    MOTO(
+        "moto", "Moto Launcher", arrayOf(
+            "com.motorola.launcher3",
+            "com.motorola.personalize",
+            "com.motorola.moto.overlay.personalizelauncher",
+        ), R.drawable.ic_moto
+    ),
     NIAGARA("niagara", "Niagara Launcher", arrayOf("bitpit.launcher"), R.drawable.ic_niagara),
     NOVA("nova", "Nova Launcher", arrayOf("com.teslacoilsw.launcher"), R.drawable.ic_nova),
     ONEPLUS("oneplus", "OnePlus Launcher", arrayOf("net.oneplus.launcher"), R.drawable.ic_oneplus),

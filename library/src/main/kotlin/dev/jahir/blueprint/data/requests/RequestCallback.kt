@@ -4,24 +4,14 @@ import android.content.Intent
 import android.util.Log
 
 interface RequestCallback {
-    fun onRequestRunning() {
-        Log.d("Blueprint", "Request in progress!")
-    }
-
-    fun onRequestStarted() {
-        Log.d("Blueprint", "Request started!")
-    }
-
-    fun onRequestUploadFinished(success: Boolean) {
-        Log.d("Blueprint", "Request finished! - Success? $success")
-    }
-
-    fun onRequestEmpty() {
-        Log.w("Blueprint", "Nothing to request")
-    }
+    fun onRequestRunning() {}
+    fun onRequestStarted() {}
+    fun onRequestUploadFinished(success: Boolean) {}
+    fun onRequestEmpty() {}
+    fun onRequestEmailIntent(intent: Intent?) {}
 
     fun onRequestError(reason: String? = null, e: Throwable? = null) {
-        Log.e("Blueprint", "Request ERROR")
+        e?.printStackTrace()
     }
 
     fun onRequestLimited(state: RequestState, building: Boolean = false) {
@@ -29,9 +19,5 @@ interface RequestCallback {
             "Blueprint",
             "Request limited (${state.state.name})! Apps left: ${state.requestsLeft} - Time left: ${state.timeLeft}"
         )
-    }
-
-    fun onRequestEmailIntent(intent: Intent?) {
-        Log.d("Blueprint", "Should send request via email!")
     }
 }

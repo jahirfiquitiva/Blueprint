@@ -29,17 +29,14 @@ import kotlinx.coroutines.withContext
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val iconsPreviewData: MutableLiveData<List<Icon>> by lazyMutableLiveData()
-    val iconsPreviewList: List<Icon>
+    private val iconsPreviewList: List<Icon>
         get() = iconsPreviewData.value.orEmpty()
 
     private val homeItemsData: MutableLiveData<List<HomeItem>> by lazyMutableLiveData()
-    val homeItems: List<HomeItem>
-        get() = homeItemsData.value.orEmpty()
 
     private val iconsCountData: MutableLiveData<Int> by lazyMutableLiveData()
     private val wallpapersCountData: MutableLiveData<Int> by lazyMutableLiveData()
     private val kustomCountData: MutableLiveData<Int> by lazyMutableLiveData()
-    private val zooperCountData: MutableLiveData<Int> by lazyMutableLiveData()
 
     fun loadPreviewIcons(force: Boolean = false) {
         if (iconsPreviewList.isEmpty() || force) {
@@ -65,7 +62,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     .distinctBy { it.url }
                     .map {
                         val isMarketUrl = it.url.lower().startsWith("market://details?id=")
-                        val isAnApp = isMarketUrl || it.url.lower().startsWith(PLAY_STORE_LINK_PREFIX)
+                        val isAnApp =
+                            isMarketUrl || it.url.lower().startsWith(PLAY_STORE_LINK_PREFIX)
                         var isInstalled = false
                         var intent: Intent? = null
                         if (isAnApp) {
@@ -74,10 +72,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                                 isInstalled = context.isAppInstalled(packageName)
                                 intent =
                                     context.packageManager.getLaunchIntentForPackage(packageName)
-                            } catch (e: Exception) {
+                            } catch (_: Exception) {
                             }
                             if (intent == null && isMarketUrl) {
-                                intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+                                intent =
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("market://details?id=$packageName")
+                                    )
                             }
                         }
                         val openIcon = if (isAnApp)
@@ -128,10 +130,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         kustomCountData.postValue(count)
     }
 
-    fun postZooperCount(count: Int? = 0) {
-        zooperCountData.postValue(count)
-    }
-
     private fun observeIconsCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
         onUpdated(iconsCountData.value ?: 0)
         iconsCountData.tryToObserve(owner, onUpdated)
@@ -147,23 +145,16 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         kustomCountData.tryToObserve(owner, onUpdated)
     }
 
-    private fun observeZooperCount(owner: LifecycleOwner, onUpdated: (Int) -> Unit) {
-        onUpdated(zooperCountData.value ?: 0)
-        zooperCountData.tryToObserve(owner, onUpdated)
-    }
-
     fun observeCounters(owner: LifecycleOwner, fragment: HomeFragment? = null) {
         observeIconsCount(owner) { fragment?.updateIconsCount(it) }
         observeWallpapersCount(owner) { fragment?.updateWallpapersCount(it) }
         observeKustomCount(owner) { fragment?.updateKustomCount(it) }
-        observeZooperCount(owner) { fragment?.updateZooperCount(it) }
     }
 
     fun repostCounters() {
         iconsCountData.postValue(iconsCountData.value ?: 0)
         wallpapersCountData.postValue(wallpapersCountData.value ?: 0)
         kustomCountData.postValue(kustomCountData.value ?: 0)
-        zooperCountData.postValue(zooperCountData.value ?: 0)
     }
 
     fun destroy(owner: LifecycleOwner) {
@@ -172,6 +163,5 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         iconsCountData.removeObservers(owner)
         wallpapersCountData.removeObservers(owner)
         kustomCountData.removeObservers(owner)
-        zooperCountData.removeObservers(owner)
     }
 }

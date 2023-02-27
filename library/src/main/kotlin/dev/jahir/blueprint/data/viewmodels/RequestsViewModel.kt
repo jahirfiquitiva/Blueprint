@@ -62,7 +62,8 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
             val drawable = parser.getAttributeValue(null, "drawable").orEmpty()
 
             if (component.hasContent() && !component.startsWith(":")) {
-                val actualComponent = component.substring(componentInfoPrefixLength, component.length - 1)
+                val actualComponent =
+                    component.substring(componentInfoPrefixLength, component.length - 1)
                 if (actualComponent.hasContent() && !actualComponent.startsWith("/")
                     && !actualComponent.endsWith("/")) {
                     if (debug) {

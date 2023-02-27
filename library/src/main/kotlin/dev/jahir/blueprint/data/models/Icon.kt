@@ -12,9 +12,9 @@ data class Icon(val name: String, @DrawableRes val resId: Int) : Parcelable, Com
         parcelIn.readInt()
     )
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.writeString(name)
-        dest?.writeInt(resId)
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(name)
+        dest.writeInt(resId)
     }
 
     override fun describeContents(): Int = 0

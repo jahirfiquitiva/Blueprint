@@ -52,6 +52,7 @@
             android:clickable="false"
             android:focusable="false"
             android:padding="8dp"
+            app:buttonIconTint="@color/checkbox_check_tint"
             app:buttonTint="@color/checkbox_button_tint"
             app:useMaterialThemeColors="true" />
 

@@ -22,9 +22,9 @@ data class IconsCategory(
         ArrayList<Icon>().apply { parcelIn.readTypedList(this, Icon.CREATOR) }
     )
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.writeString(title)
-        dest?.writeTypedList(icons)
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(title)
+        dest.writeTypedList(icons)
     }
 
     override fun describeContents(): Int = 0

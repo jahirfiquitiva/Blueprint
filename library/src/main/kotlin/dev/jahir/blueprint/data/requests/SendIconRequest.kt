@@ -28,9 +28,10 @@ import dev.jahir.frames.extensions.resources.hasContent
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -102,7 +103,7 @@ object SendIconRequest {
                         it.delete()
                     }
                 }
-            } catch (e: Exception) {
+            } catch (_: Exception) {
             }
         }
 
@@ -265,7 +266,8 @@ object SendIconRequest {
 
         val date = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date()).clean()
 
-        val (textFiles, jsonContent) = buildTextFiles(context, correctList, date, uploadToRequestManager)
+        val (textFiles, jsonContent) =
+            buildTextFiles(context, correctList, date, uploadToRequestManager)
         emailZipFiles.addAll(textFiles)
 
         val zipFile = buildZipFile(date, requestLocation, emailZipFiles)
@@ -282,8 +284,9 @@ object SendIconRequest {
         return withContext(IO) {
             var fileType = URLConnection.guessContentTypeFromName(zipFile.name)
             if (fileType == null || !fileType.hasContent()) fileType = "application/zip"
-            val requestBody: RequestBody = RequestBody.create(MediaType.parse(fileType), zipFile)
-            val fileToUpload = MultipartBody.Part.createFormData("archive", zipFile.name, requestBody)
+            val requestBody: RequestBody = zipFile.asRequestBody(fileType.toMediaTypeOrNull())
+            val fileToUpload =
+                MultipartBody.Part.createFormData("archive", zipFile.name, requestBody)
             var succeeded = false
             val message = try {
                 getService(baseUrl).uploadRequest(apiKey, jsonContent, fileToUpload).let {
@@ -372,12 +375,14 @@ object SendIconRequest {
                 val apiKey = activity.string(R.string.request_manager_backend_api_key)
                 val uploadToRequestManager = apiKey.hasContent()
 
-                val (zipFile, jsonContent) = zipFiles(activity, selectedApps, uploadToRequestManager)
+                val (zipFile, jsonContent) =
+                    zipFiles(activity, selectedApps, uploadToRequestManager)
                 cleanFiles(activity)
 
                 if (uploadToRequestManager) {
                     val baseUrl = activity.string(R.string.request_manager_base_url)
-                    val (succeeded, message) = uploadToRequestManager(zipFile, jsonContent, apiKey, baseUrl)
+                    val (succeeded, message) =
+                        uploadToRequestManager(zipFile, jsonContent, apiKey, baseUrl)
                     if (succeeded) theCallback.onRequestUploadFinished(true)
                     else theCallback.onRequestError(message)
 
@@ -389,9 +394,9 @@ object SendIconRequest {
                 theCallback.onRequestLimited(state, true)
                 requestInProgress = false
             }
-        } ?: {
+        } ?: run {
             theCallback.onRequestError()
             requestInProgress = false
-        }()
+        }
     }
 }

@@ -18,6 +18,7 @@
     <string name="impossible_open_themes">Can’t Open App</string>
     <string name="themes_app_not_installed">“Themes” isn’t installed.</string>
     <string name="coming_soon">Coming soon.</string>
+    <string name="direct_apply_not_supported">%1$s does not support applying icons directly. Please try to apply %2$s manually from the launcher settings.</string>
     <string name="quick_apply">Apply to Home</string>
     <string name="request_x_icons">Request %1$s Icons</string>
     <string name="request_icon">Request Icon</string>
@@ -55,6 +56,10 @@
     <string name="icon_shape_teardrop">Teardrop</string>
     <string name="requests_upload_error">Something went wrong. Error name: “%1$s”.</string>
     <string name="requests_upload_error_unknown">Something went wrong.</string>
+    <string name="icon_request_consent_title">Consent requirement</string>
+    <string name="icon_request_consent_accept">Accept</string>
+    <string name="icon_request_consent_deny">Deny</string>
+    <string name="icon_request_consent">%1$s collects information about the installed apps and your device details, such as screen dimensions and Android version. This data will be used to design new icons and provide the best possible experience. For additional information, please check the Privacy Policy in the app\'s settings.</string>
 
     <!-- HELP SECTION -->
     <string-array name="questions">
