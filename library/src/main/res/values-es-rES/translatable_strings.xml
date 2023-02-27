@@ -54,6 +54,10 @@
     <string name="icon_shape_square">Cuadrado</string>
     <string name="icon_shape_teardrop">Gota</string>
     <string name="requests_upload_error">Algo salió mal. Nombre del error: “%1$s”.</string>
+    <string name="icon_request_consent_title">Requisito de consentimiento</string>
+    <string name="icon_request_consent_accept">Aceptar</string>
+    <string name="icon_request_consent_deny">Denegar</string>
+    <string name="icon_request_consent">%1$s recopila información de las aplicaciones instaladas y detalles de tu dispositivo, tales como dimensiones de pantalla y versión de Android. Estos datos serán usados para diseñar nuevos íconos y proveer la mejor experiencia posible. Para información adicional, por favor revisa la Política de Privacidad en la configuración de la aplicación.</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>¿Cómo utilizar el paquete de iconos?</item>
