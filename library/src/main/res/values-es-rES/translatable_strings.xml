@@ -18,6 +18,7 @@
     <string name="impossible_open_themes">No se puede abrir la aplicación</string>
     <string name="themes_app_not_installed">“Temas” no está instalado.</string>
     <string name="coming_soon">Proximamente.</string>
+    <string name="direct_apply_not_supported">%1$s no soporta aplicar íconos directamente. Por favor intenta aplicar %2$s manualmente desde la configuración del launcher.</string>
     <string name="quick_apply">Aplicar al inicio</string>
     <string name="request_x_icons">Solicitar %1$s iconos</string>
     <string name="request_icon">Solicitar icono</string>

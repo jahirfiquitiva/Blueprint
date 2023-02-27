@@ -72,13 +72,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                                 isInstalled = context.isAppInstalled(packageName)
                                 intent =
                                     context.packageManager.getLaunchIntentForPackage(packageName)
-                            } catch (e: Exception) {
+                            } catch (_: Exception) {
                             }
                             if (intent == null && isMarketUrl) {
-                                intent = Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("market://details?id=$packageName")
-                                )
+                                intent =
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("market://details?id=$packageName")
+                                    )
                             }
                         }
                         val openIcon = if (isAnApp)

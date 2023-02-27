@@ -18,6 +18,7 @@
     <string name="impossible_open_themes">Can’t Open App</string>
     <string name="themes_app_not_installed">“Themes” isn’t installed.</string>
     <string name="coming_soon">Coming soon.</string>
+    <string name="direct_apply_not_supported">%1$s does not support applying icons directly. Please try to apply %2$s manually from the launcher settings.</string>
     <string name="quick_apply">Apply to Home</string>
     <string name="request_x_icons">Request %1$s Icons</string>
     <string name="request_icon">Request Icon</string>
