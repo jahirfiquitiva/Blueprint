@@ -18,6 +18,7 @@
     <string name="impossible_open_themes">Impossibile Aprire L\'app</string>
     <string name="themes_app_not_installed">“Temi” non è installato.</string>
     <string name="coming_soon">Prossimamente.</string>
+    <string name="direct_apply_not_supported">%1$s non supporta l\'applicazione diretta delle icone. Si prega di provare ad applicare manualmente %2$s dalle impostazioni del launcher.</string>
     <string name="quick_apply">Applica alla Home</string>
     <string name="request_x_icons">Richiedi %1$s Icone</string>
     <string name="request_icon">Richiedi Icona</string>
@@ -54,6 +55,11 @@
     <string name="icon_shape_square">Quadrato</string>
     <string name="icon_shape_teardrop">Goccia</string>
     <string name="requests_upload_error">Qualcosa è andato storto. Nome errore: \"%1$s\".</string>
+    <string name="requests_upload_error_unknown">Qualcosa non ha funzionato.</string>
+    <string name="icon_request_consent_title">Obbligo di consenso</string>
+    <string name="icon_request_consent_accept">Accetta</string>
+    <string name="icon_request_consent_deny">Rifiuta</string>
+    <string name="icon_request_consent">%1$s raccoglie informazioni sulle app installate e sui dettagli del dispositivo, come le dimensioni dello schermo e la versione Android. Questi dati saranno utilizzati per progettare nuove icone e fornire la migliore esperienza possibile. Per ulteriori informazioni, controlla l\'Informativa sulla privacy nelle impostazioni dell\'app.</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>Come usare l\'Icon Pack?</item>
