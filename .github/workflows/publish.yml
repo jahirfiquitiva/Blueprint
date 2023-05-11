@@ -49,7 +49,7 @@ jobs:
 
   apk:
     name: Build apk, upload to release and notify Discord
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v2
