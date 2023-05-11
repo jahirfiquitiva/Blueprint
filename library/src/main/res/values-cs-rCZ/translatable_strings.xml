@@ -11,13 +11,14 @@
     <string name="x_icons">Ikony: %1$s</string>
     <string name="search_icons">Hledat ikony</string>
     <string name="search_apps">Hledat aplikace</string>
-    <string name="search_launchers">Hledat launchery</string>
+    <string name="search_launchers">Hledat spouštěče</string>
     <string name="lni_content">Aplikace “%1$s” není nainstalována. Chcete ji nainstalovat z Obchodu Play?</string>
-    <string name="no_compatible_launcher_title">Launcher není kompatibilní</string>
-    <string name="no_compatible_launcher_content">\"Google Now Launcher\" nepodporuje balíčky ikon, pokud není spojen s \"Awesome Shortcuts\". Chcete nainstalovat tuto aplikaci?</string>
+    <string name="no_compatible_launcher_title">Spouštěč není kompatibilní</string>
+    <string name="no_compatible_launcher_content">\"Spouštěč Google Now\" nepodporuje balíčky ikon, pokud není spárován s \"Awesome Shortcuts\". Nainstalovat jiný?</string>
     <string name="impossible_open_themes">Aplikaci nelze otevřít</string>
     <string name="themes_app_not_installed">“Motivy” nejsou nainstalovány.</string>
     <string name="coming_soon">Již brzy.</string>
+    <string name="direct_apply_not_supported">%1$s nepodporuje přímé použití ikon. Zkuste prosím použít %2$s ručně v nastavení spouštěče.</string>
     <string name="quick_apply">Použít na plochu</string>
     <string name="request_x_icons">Požadavek na ikony: %1$s</string>
     <string name="request_icon">Požadavek na ikonu</string>
@@ -54,6 +55,11 @@
     <string name="icon_shape_square">Čtverec</string>
     <string name="icon_shape_teardrop">Slza</string>
     <string name="requests_upload_error">Něco se pokazilo. Název chyby je: “%1$s”.</string>
+    <string name="requests_upload_error_unknown">Něco se pokazilo.</string>
+    <string name="icon_request_consent_title">Požadavek souhlasu</string>
+    <string name="icon_request_consent_accept">Přijmout</string>
+    <string name="icon_request_consent_deny">Zamítnout</string>
+    <string name="icon_request_consent">%1$s shromažďuje informace o nainstalovaných aplikacích a údaje o vašem zařízení, jako jsou rozměry obrazovky a verze systému Android. Tyto údaje budou použity k návrhu nových ikon a k zajištění co nejlepšího zážitku. Další informace najdete v Zásadách ochrany osobních údajů v nastavení aplikace.</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>Jak použít tento balíček ikon?</item>
