@@ -33,6 +33,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
     private val icons: ArrayList<Icon> = ArrayList()
 
     internal var animateIcons: Boolean = true
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             iconsAdapter.animate = value
@@ -48,12 +49,13 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         addItemDecoration(
             GridSpacingItemDecoration(
                 context.integer(R.integer.icons_columns_count),
-                context.dimenPixelSize(R.dimen.grids_spacing), false
+                context.dimenPixelSize(dev.jahir.frames.R.dimen.grids_spacing), false
             )
         )
         adapter = iconsAdapter
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     internal fun setOnIconClickListener(onClick: ((Icon, Drawable?) -> Unit)? = null) {
         iconsAdapter.onClick = onClick
         iconsAdapter.notifyDataSetChanged()
@@ -69,7 +71,7 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         if (icons.isNotEmpty()) visible()
     }
 
-    override fun onSaveInstanceState(): Parcelable? {
+    override fun onSaveInstanceState(): Parcelable {
         val superState = super.onSaveInstanceState()
         val myState = SavedState(superState)
         myState.icons = icons

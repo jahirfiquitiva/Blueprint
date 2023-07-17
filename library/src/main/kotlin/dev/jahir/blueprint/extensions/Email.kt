@@ -95,7 +95,7 @@ internal class EmailBuilder(
             }
             resultIntent = Intent.createChooser(intent, context.string(R.string.send_using))
         } ?: run {
-            context.toast(R.string.error)
+            context.toast(dev.jahir.frames.R.string.error)
         }
         return resultIntent
     }

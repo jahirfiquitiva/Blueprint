@@ -192,6 +192,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                 shouldCallSuper = false
                 startActivity(Intent(this, BlueprintSettingsActivity::class.java))
             }
+
             R.id.about -> {
                 shouldCallSuper = false
                 startActivity(Intent(this, BlueprintAboutActivity::class.java))
@@ -245,8 +246,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         when (itemId) {
             R.id.home -> getAppName()
             R.id.icons -> string(R.string.icons)
-            R.id.wallpapers -> string(R.string.wallpapers)
-            R.id.apply -> string(R.string.apply)
+            R.id.wallpapers -> string(dev.jahir.frames.R.string.wallpapers)
+            R.id.apply -> string(dev.jahir.frames.R.string.apply)
             R.id.request -> string(R.string.request)
             else -> super.getToolbarTitleForItem(itemId)
         }
@@ -278,8 +279,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         R.id.icons -> string(R.string.search_icons)
         R.id.request -> string(R.string.search_apps)
         R.id.apply -> string(R.string.search_launchers)
-        R.id.wallpapers -> string(R.string.search_wallpapers)
-        else -> string(R.string.search_x)
+        R.id.wallpapers -> string(dev.jahir.frames.R.string.search_wallpapers)
+        else -> string(dev.jahir.frames.R.string.search_x)
     }
 
     override fun getLayoutRes(): Int = R.layout.activity_blueprint
@@ -287,7 +288,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         if (isIconsPicker) IconsCategoriesFragment.TAG else HomeFragment.TAG
     override val initialItemId: Int = if (isIconsPicker) R.id.icons else R.id.home
     override fun getMenuRes(): Int =
-        if (isIconsPicker) R.menu.toolbar_menu_simple else R.menu.blueprint_toolbar_menu
+        if (isIconsPicker) dev.jahir.frames.R.menu.toolbar_menu_simple
+        else R.menu.blueprint_toolbar_menu
 
     override fun shouldLoadCollections(): Boolean = false
     override fun shouldLoadFavorites(): Boolean = false
@@ -367,11 +369,12 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                 val defText = string(R.string.quick_apply)
                 fabBtn?.setup(
                     if (customText.hasContent()) customText else defText,
-                    R.drawable.ic_apply,
+                    dev.jahir.frames.R.drawable.ic_apply,
                     defaultLauncher != null,
                     !canShowText
                 )
             }
+
             R.id.request -> {
                 val selectedAppsCount = requestsViewModel?.selectedApps?.size ?: 0
                 fabBtn?.setup(
@@ -386,6 +389,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
                     selectedAppsCount > 0
                 )
             }
+
             else -> fabBtn?.hide()
         }
         bottomNavigation?.post {
@@ -500,6 +504,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             val contentExtra = when {
                 TimeUnit.MILLISECONDS.toSeconds(state.timeLeft) >= 60 ->
                     string(R.string.apps_limit_dialog_day_extra, millisToText(state.timeLeft))
+
                 else -> string(R.string.apps_limit_dialog_day_extra_sec)
             }
             "$preContent $contentExtra"
@@ -508,6 +513,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             when (val requestsLeft = state.requestsLeft) {
                 maxAppsToRequest, -1 ->
                     string(R.string.apps_limit_dialog, maxAppsToRequest.toString())
+
                 else -> string(R.string.apps_limit_dialog_more, requestsLeft.toString())
             }
         }

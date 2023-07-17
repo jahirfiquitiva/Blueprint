@@ -84,7 +84,7 @@ private fun Context.showLauncherApplyError(
 ) {
     try {
         mdDialog {
-            title(R.string.error)
+            title(dev.jahir.frames.R.string.error)
             message(
                 customContent ?: launcher?.cleanAppName?.let {
                     string(R.string.direct_apply_not_supported, it, getAppName())
@@ -210,18 +210,21 @@ private fun Context.executeLineageOSThemeEngineIntent() {
                         "org.cyanogenmod.theme.chooser.ChooserActivity"
                     )
                 }
+
                 isAppInstalled("org.cyanogenmod.theme.chooser2") -> {
                     component = ComponentName(
                         "org.cyanogenmod.theme.chooser2",
                         "org.cyanogenmod.theme.chooser2.ChooserActivity"
                     )
                 }
+
                 isAppInstalled("com.cyngn.theme.chooser") -> {
                     component = ComponentName(
                         "com.cyngn.theme.chooser",
                         "com.cyngn.theme.chooser.ChooserActivity"
                     )
                 }
+
                 else -> themesAppInstalled = false
             }
             if (themesAppInstalled) putExtra("pkgName", packageName)
@@ -339,7 +342,8 @@ private fun Context.executeMotoLauncherIntent() {
 internal val Context.defaultLauncher: Launcher?
     get() = try {
         val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
-        val resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
+        val resolveInfo =
+            packageManager.resolveActivityCompat(intent, PackageManager.MATCH_DEFAULT_ONLY)
         val launcherPackage = resolveInfo?.activityInfo?.packageName
         Launcher.getSupportedLaunchers(this)
             .filter { it.first.isActuallySupported }

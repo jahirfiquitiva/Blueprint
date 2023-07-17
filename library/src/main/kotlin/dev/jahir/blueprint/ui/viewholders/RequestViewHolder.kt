@@ -19,7 +19,6 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val checkboxView: AppCompatCheckBox? by itemView.findView(R.id.checkbox)
     private val textView: TextView? by itemView.findView(R.id.name)
 
-    @Suppress("DEPRECATION")
     fun bind(
         requestApp: RequestApp?,
         checked: Boolean,
@@ -31,7 +30,10 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         checkboxView?.isChecked = checked
         checkboxView?.isClickable = false
         val color =
-            context.resolveColor(if (checked) R.attr.colorAccent else android.R.attr.textColorPrimary)
+            context.resolveColor(
+                if (checked) com.google.android.material.R.attr.colorAccent
+                else android.R.attr.textColorPrimary
+            )
         textView?.text = requestApp?.name
         textView?.setTextColor(color)
         cardView?.isCheckable = true

@@ -1,11 +1,13 @@
 package dev.jahir.blueprint.extensions
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.annotation.DrawableRes
 import dev.jahir.blueprint.R
 import dev.jahir.frames.extensions.resources.lower
 import java.util.concurrent.TimeUnit
 
+@SuppressLint("DiscouragedApi")
 @DrawableRes
 fun Context.drawableRes(name: String): Int =
     try {
@@ -17,7 +19,7 @@ fun Context.drawableRes(name: String): Int =
 internal fun Context.getLocalizedName(packageName: String, defaultName: String): String {
     var appName: String? = null
     try {
-        val appInfo = packageManager.getApplicationInfo(
+        val appInfo = packageManager.getApplicationInfoCompat(
             packageName, android.content.pm.PackageManager.GET_META_DATA
         )
         try {
@@ -28,10 +30,10 @@ internal fun Context.getLocalizedName(packageName: String, defaultName: String):
             configuration.setLocale(java.util.Locale("en-US"))
             appName =
                 altCntxt.createConfigurationContext(configuration).getString(appInfo.labelRes)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
         }
         if (appName == null) appName = packageManager.getApplicationLabel(appInfo).toString()
-    } catch (e: Exception) {
+    } catch (_: Exception) {
     }
     return appName ?: defaultName
 }
@@ -41,17 +43,22 @@ internal fun Context.millisToText(millis: Long): String =
         TimeUnit.MILLISECONDS.toSeconds(millis) < 60 ->
             (TimeUnit.MILLISECONDS.toSeconds(millis)
                 .toString() + " " + getString(R.string.seconds).lower())
+
         TimeUnit.MILLISECONDS.toMinutes(millis) < 60 ->
             (TimeUnit.MILLISECONDS.toMinutes(millis)
                 .toString() + " " + getString(R.string.minutes).lower())
+
         TimeUnit.MILLISECONDS.toHours(millis) < 24 ->
             (TimeUnit.MILLISECONDS.toHours(millis)
                 .toString() + " " + getString(R.string.hours).lower())
+
         TimeUnit.MILLISECONDS.toDays(millis) < 7 ->
             (TimeUnit.MILLISECONDS.toDays(millis)
                 .toString() + " " + getString(R.string.days)).lower()
+
         millis.toWeeks() < 4 ->
             (millis.toWeeks().toString() + " " + getString(R.string.weeks).lower())
+
         else -> (millis.toMonths().toString() + " " + getString(R.string.months).lower())
     }
 

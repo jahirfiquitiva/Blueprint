@@ -83,7 +83,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                             }
                         }
                         val openIcon = if (isAnApp)
-                            if (isInstalled) R.drawable.ic_open_app else R.drawable.ic_download
+                            if (isInstalled) R.drawable.ic_open_app else dev.jahir.frames.R.drawable.ic_download
                         else R.drawable.ic_open_app
                         HomeItem(
                             it.title,

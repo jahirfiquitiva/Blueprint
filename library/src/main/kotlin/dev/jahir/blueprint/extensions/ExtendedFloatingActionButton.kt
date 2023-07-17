@@ -2,7 +2,6 @@ package dev.jahir.blueprint.extensions
 
 import androidx.annotation.DrawableRes
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import dev.jahir.blueprint.R
 import dev.jahir.frames.extensions.context.color
 import dev.jahir.frames.extensions.context.drawable
 import dev.jahir.frames.extensions.context.resolveColor
@@ -17,7 +16,12 @@ internal fun ExtendedFloatingActionButton.setup(
 ) {
     this.text = text
     this.icon = context.drawable(icon)
-        ?.tint(context.resolveColor(R.attr.colorOnSecondary, context.color(R.color.onAccent)))
+        ?.tint(
+            context.resolveColor(
+                com.google.android.material.R.attr.colorOnSecondary,
+                context.color(dev.jahir.frames.R.color.onAccent)
+            )
+        )
     invalidate()
     post {
         if (show) {

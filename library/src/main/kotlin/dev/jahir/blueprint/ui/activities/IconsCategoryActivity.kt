@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.activities
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -29,6 +30,7 @@ import dev.jahir.frames.extensions.fragments.singleChoiceItems
 import dev.jahir.frames.extensions.fragments.title
 import dev.jahir.frames.extensions.resources.hasContent
 import dev.jahir.frames.extensions.resources.lower
+import dev.jahir.frames.extensions.utils.parcelable
 import dev.jahir.frames.extensions.views.tint
 import dev.jahir.frames.ui.activities.base.BaseSearchableActivity
 import dev.jahir.frames.ui.decorations.GridSpacingItemDecoration
@@ -54,7 +56,7 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_icons_category)
         pickerKey = intent?.getIntExtra(PICKER_KEY, 0) ?: 0
-        category = intent?.getParcelableExtra(CATEGORY_KEY)
+        category = intent?.parcelable(CATEGORY_KEY)
         if (category == null) {
             finish()
             return
@@ -85,7 +87,7 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
                 integer(
                     R.integer.icons_columns_count,
                     4
-                ), dimenPixelSize(R.dimen.grids_spacing)
+                ), dimenPixelSize(dev.jahir.frames.R.dimen.grids_spacing)
             )
         )
         recyclerView?.adapter = iconsAdapter
@@ -154,6 +156,7 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun showIconsShapePickerDialog() {
         dismissIconsShapesDialog()
         iconsShapePickerDialog = mdDialog {

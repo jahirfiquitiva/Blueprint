@@ -32,7 +32,8 @@ class BlueprintKuperActivity : KuperActivity() {
     }
 
     override fun getMenuRes(): Int = R.menu.templates_toolbar_menu
-    override fun getToolbarTitleForItem(itemId: Int): String? = string(R.string.templates)
+    override fun getToolbarTitleForItem(itemId: Int): String =
+        string(dev.jahir.kuper.R.string.templates)
 
     override val initialFragmentTag: String = "RequiredAppsFragment"
     override val initialItemId: Int = R.id.setup

@@ -16,7 +16,6 @@ fun getDefaultAppIcon(): Drawable? {
     return Resources.getSystem().getAppIcon(android.R.mipmap.sym_def_app_icon)
 }
 
-@Suppress("USELESS_ELVIS")
 fun Context.getAppIcon(pkg: String): Drawable? {
     if (!pkg.hasContent()) return null
     var icon: Drawable? = null
@@ -58,13 +57,12 @@ private fun Resources.getAppIcon(iconId: Int): Drawable? {
     }
 }
 
-private fun Context.getAppInfo(pkg: String): ApplicationInfo? {
-    return try {
-        packageManager.getApplicationInfo(pkg, 0)
+private fun Context.getAppInfo(pkg: String): ApplicationInfo? =
+    try {
+        packageManager.getApplicationInfoCompat(pkg, 0)
     } catch (e: Exception) {
         null
     }
-}
 
 private fun Context.getResources(ai: ApplicationInfo): Resources? {
     return try {

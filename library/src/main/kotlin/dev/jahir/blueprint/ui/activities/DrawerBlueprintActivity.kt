@@ -35,9 +35,18 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         super.onCreate(savedInstanceState)
         enableTranslucentStatusBar()
 
-        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            dev.jahir.frames.R.string.open,
+            dev.jahir.frames.R.string.close
+        )
         toggle?.drawerArrowDrawable?.color =
-            resolveColor(R.attr.colorOnPrimary, color(R.color.onPrimary))
+            resolveColor(
+                com.google.android.material.R.attr.colorOnPrimary,
+                color(dev.jahir.frames.R.color.onPrimary)
+            )
         toggle?.let { drawerLayout?.addDrawerListener(it) }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -50,7 +59,12 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
 
         val headerDrawable = drawable(R.drawable.drawer_header)
         headerDrawable?.let { header?.background = it }
-            ?: header?.setBackgroundColor(resolveColor(R.attr.colorAccent, color(R.color.accent)))
+            ?: header?.setBackgroundColor(
+                resolveColor(
+                    com.google.android.material.R.attr.colorAccent,
+                    color(dev.jahir.frames.R.color.accent)
+                )
+            )
 
         val drawerTexts: View? = header?.findViewById(R.id.drawer_texts)
         drawerTexts?.visibleIf(boolean(R.bool.with_drawer_texts))
@@ -101,7 +115,10 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         super.onConfigurationChanged(newConfig)
         toggle?.onConfigurationChanged(newConfig)
         toggle?.drawerArrowDrawable?.color =
-            resolveColor(R.attr.colorOnPrimary, color(R.color.onPrimary))
+            resolveColor(
+                com.google.android.material.R.attr.colorOnPrimary,
+                color(dev.jahir.frames.R.color.onPrimary)
+            )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -123,6 +140,7 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         when (item.itemId) {
             R.id.home, R.id.icons, R.id.wallpapers, R.id.apply, R.id.request ->
                 updateFab(item.itemId, true)
+
             else -> {
             }
         }

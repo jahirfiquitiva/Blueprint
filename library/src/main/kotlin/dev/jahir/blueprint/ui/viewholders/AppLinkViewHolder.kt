@@ -31,7 +31,10 @@ class AppLinkViewHolder(itemView: View) : SectionedViewHolder(itemView) {
         item.openIcon?.let {
             openIcon?.setImageDrawable(
                 context.drawable(it)?.tint(
-                    context.resolveColor(R.attr.colorOnSurface, context.color(R.color.onSurface))
+                    context.resolveColor(
+                        com.google.android.material.R.attr.colorOnSurface,
+                        context.color(dev.jahir.frames.R.color.onSurface)
+                    )
                 )
             )
         } ?: openIcon?.gone()

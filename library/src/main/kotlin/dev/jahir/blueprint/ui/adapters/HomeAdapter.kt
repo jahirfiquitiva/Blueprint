@@ -134,10 +134,12 @@ class HomeAdapter(
                         else R.layout.item_home_actions_big
                     )
                 )
+
             OVERVIEW_SECTION -> CounterViewHolder(parent.inflate(R.layout.item_counter))
             MORE_APPS_SECTION, USEFUL_LINKS_SECTION ->
                 AppLinkViewHolder(parent.inflate(R.layout.item_home_app_link))
-            else -> SectionHeaderViewHolder(parent.inflate(R.layout.item_section_header))
+
+            else -> SectionHeaderViewHolder(parent.inflate(dev.jahir.frames.R.layout.item_section_header))
         }
 
     override fun onBindHeaderViewHolder(
@@ -154,6 +156,7 @@ class HomeAdapter(
                     MORE_APPS_SECTION -> it.bind(R.string.more_apps, 0, counters.isNotEmpty())
                     USEFUL_LINKS_SECTION ->
                         it.bind(R.string.useful_links, 0, showOverview || appItems.isNotEmpty())
+
                     else -> it.bind(0, 0, false)
                 }
             }

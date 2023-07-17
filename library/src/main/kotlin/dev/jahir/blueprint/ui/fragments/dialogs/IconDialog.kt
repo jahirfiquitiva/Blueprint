@@ -37,7 +37,7 @@ class IconDialog : DialogFragment() {
         dialog = requireContext().mdDialog {
             title(icon?.name ?: context.getAppName())
             view(R.layout.item_dialog_icon)
-            positiveButton(R.string.close) { dismiss() }
+            positiveButton(dev.jahir.frames.R.string.close) { dismiss() }
         }
         dialog?.setOnShowListener { onDialogShown() }
         return dialog!!

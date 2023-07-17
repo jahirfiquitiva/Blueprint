@@ -108,7 +108,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
 
     private fun showPermissionRationale() {
         snackbar(
-            string(R.string.permission_request, context?.getAppName()),
+            string(dev.jahir.frames.R.string.permission_request, context?.getAppName()),
             Snackbar.LENGTH_INDEFINITE,
             (activity as? BasePermissionsRequestActivity<*>)?.snackbarAnchorId ?: 0
         ) {
@@ -203,9 +203,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
             is IconsCounter -> {
                 (activity as? BlueprintActivity)?.selectNavigationItem(R.id.icons)
             }
+
             is WallpapersCounter -> {
                 (activity as? BlueprintActivity)?.selectNavigationItem(R.id.wallpapers)
             }
+
             is KustomCounter -> {
                 (activity as? BlueprintActivity)?.let {
                     it.startActivity(Intent(it, BlueprintKuperActivity::class.java))
@@ -243,7 +245,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
                 )
             )
         } catch (e: Exception) {
-            context?.toast(R.string.error)
+            context?.toast(dev.jahir.frames.R.string.error)
         }
     }
 

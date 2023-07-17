@@ -10,7 +10,7 @@ data class IconsCounter(override val count: Int = 0) :
     Counter(R.string.icons, R.drawable.ic_icons, count)
 
 data class WallpapersCounter(override val count: Int = 0) :
-    Counter(R.string.wallpapers, R.drawable.ic_wallpapers, count)
+    Counter(dev.jahir.frames.R.string.wallpapers, dev.jahir.frames.R.drawable.ic_wallpapers, count)
 
 data class KustomCounter(override val count: Int = 0) :
-    Counter(R.string.templates, R.drawable.ic_kustom, count)
+    Counter(dev.jahir.kuper.R.string.templates, dev.jahir.kuper.R.drawable.ic_kustom, count)

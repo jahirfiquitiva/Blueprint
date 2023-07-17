@@ -49,8 +49,8 @@ class IconsCategoryPreviewViewHolder(itemView: View) : RecyclerView.ViewHolder(i
                 context.drawable(R.drawable.ic_open_category)
                     ?.tint(
                         context.resolveColor(
-                            R.attr.colorOnSurface,
-                            context.color(R.color.onSurface)
+                            com.google.android.material.R.attr.colorOnSurface,
+                            context.color(dev.jahir.frames.R.color.onSurface)
                         )
                     )
             )
