@@ -33,7 +33,7 @@ internal fun FragmentActivity.pickIcon(icon: Icon, drawable: Drawable?, pickerKe
                     if (bitmap.isRecycled) bitmap
                     else bitmap.copy(bitmap.config, false)
                 )
-            } catch (e: Exception) {
+            } catch (_: Exception) {
             }
             val iconRes = Intent.ShortcutIconResource.fromContext(this, icon.resId)
             intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconRes)

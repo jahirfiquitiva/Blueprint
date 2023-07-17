@@ -17,6 +17,7 @@ import dev.jahir.frames.extensions.views.setPaddingTop
 import kotlin.math.min
 import kotlin.math.roundToInt
 
+@Suppress("DEPRECATION")
 internal fun DrawerBlueprintActivity.enableTranslucentStatusBar(enable: Boolean = true) {
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     val params: WindowManager.LayoutParams = window.attributes

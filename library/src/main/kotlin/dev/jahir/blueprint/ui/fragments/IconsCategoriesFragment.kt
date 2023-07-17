@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
@@ -22,6 +23,14 @@ import dev.jahir.frames.ui.activities.base.BaseSystemUIVisibilityActivity
 import dev.jahir.frames.ui.fragments.base.BaseFramesFragment
 
 class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
+
+    private val pickIconIntentLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            activity?.let {
+                it.setResult(result.resultCode, result.data)
+                it.finish()
+            }
+        }
 
     private val iconsCategoriesAdapter: IconsCategoriesAdapter by lazy {
         IconsCategoriesAdapter(::onOpenCategory, ::onIconClick)
@@ -97,22 +106,12 @@ class IconsCategoriesFragment : BaseFramesFragment<IconsCategory>() {
 
     private fun onOpenCategory(category: IconsCategory) {
         val pickerKey = (activity as? BlueprintActivity)?.pickerKey ?: 0
-        startActivityForResult(
-            Intent(context, IconsCategoryActivity::class.java).apply {
-                putExtra(IconsCategoryActivity.CATEGORY_KEY, category)
-                putExtra(IconsCategoryActivity.PICKER_KEY, pickerKey)
-            }, if (pickerKey != 0) 55 else 54
-        )
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 55) {
-            activity?.let {
-                it.setResult(resultCode, data)
-                it.finish()
-            }
+        val pickIconIntent = Intent(context, IconsCategoryActivity::class.java).apply {
+            putExtra(IconsCategoryActivity.CATEGORY_KEY, category)
+            putExtra(IconsCategoryActivity.PICKER_KEY, pickerKey)
         }
+        if (pickerKey != 0) pickIconIntentLauncher.launch(pickIconIntent)
+        else startActivity(pickIconIntent)
     }
 
     private fun onIconClick(icon: Icon, drawable: Drawable?) {
