@@ -18,6 +18,7 @@
     <string name="impossible_open_themes">Tidak dapat membuka Aplikasi</string>
     <string name="themes_app_not_installed">“Tema” tidak terpasang.</string>
     <string name="coming_soon">Segera hadir.</string>
+    <string name="direct_apply_not_supported">%1$s tidak mendukung penerapan ikon secara langsung. Silahkan coba terapkan %2$s manual dari setelan peluncur.</string>
     <string name="quick_apply">Terapkan ke Beranda</string>
     <string name="request_x_icons">Memesan %1$s Ikon</string>
     <string name="request_icon">Pesan Ikon</string>
@@ -54,6 +55,11 @@
     <string name="icon_shape_square">Persegi</string>
     <string name="icon_shape_teardrop">Butiran Air</string>
     <string name="requests_upload_error">Ada sesuatu yang salah. Error: “%1$s”.</string>
+    <string name="requests_upload_error_unknown">Terjadi suatu kesalahan.</string>
+    <string name="icon_request_consent_title">Izin persyaratan</string>
+    <string name="icon_request_consent_accept">Terima</string>
+    <string name="icon_request_consent_deny">Tolak</string>
+    <string name="icon_request_consent">%1$s mengumpulkan informasi tentang aplikasi yang terinstal dan detail perangkat anda, seperti dimensi layar dan versi Android. Data ini akan digunakan untuk merancang ikon baru dan memberikan pengalaman terbaik. Untuk informasi tambahan, silahkan periksa Kebijakan Privasi di pengaturan aplikasi.</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>Bagaimana cara menggunakan Paket Ikon?</item>
