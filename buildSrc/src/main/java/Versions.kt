@@ -2,9 +2,9 @@
 
 object Versions {
     // Plugins
-    const val gradle = "8.0.1"
+    const val gradle = "8.1.0"
     const val kotlin = "1.9.0"
-    const val ksp = "$kotlin-1.0.11"
+    const val ksp = "$kotlin-1.0.12"
 
     // OneSignal
     const val oneSignal = "4.8.6"
@@ -15,5 +15,5 @@ object Versions {
     const val buildTools = "33.0.2"
 
     // Blueprint
-    const val blueprint = "2.3.6"
+    const val blueprint = "2.3.7"
 }
