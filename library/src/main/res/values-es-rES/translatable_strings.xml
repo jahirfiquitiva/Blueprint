@@ -55,7 +55,7 @@
     <string name="icon_shape_square">Cuadrado</string>
     <string name="icon_shape_teardrop">Gota</string>
     <string name="requests_upload_error">Algo salió mal. Nombre del error: “%1$s”.</string>
-    <string name="requests_upload_error_unknown">.</string>
+    <string name="requests_upload_error_unknown">Algo salió mal.</string>
     <string name="icon_request_consent_title">Requisito de consentimiento</string>
     <string name="icon_request_consent_accept">Aceptar</string>
     <string name="icon_request_consent_deny">Denegar</string>
