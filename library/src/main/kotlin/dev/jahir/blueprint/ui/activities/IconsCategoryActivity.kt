@@ -98,7 +98,7 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
         try {
             iconDialog?.dismiss()
             iconDialog = null
-        } catch (e: Exception) {
+        } catch (_: Exception) {
         }
     }
 
