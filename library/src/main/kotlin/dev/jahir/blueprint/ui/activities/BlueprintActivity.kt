@@ -116,7 +116,10 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         bottomNavigation?.setOnItemSelectedListener {
             if (isIconsPicker && it.itemId != R.id.icons) false
             else {
-                updateFab(it.itemId, true) { changeFragment(it.itemId) }
+                updateFab(it.itemId, true) {
+                    val fragmentChanged = changeFragment(it.itemId)
+                    enableOnBackPressedCallback(fragmentChanged && isBackPressedCallbackEnabled())
+                }
                 true
             }
         }
@@ -166,9 +169,9 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         bottomNavigation?.setSelectedItemId(itemId, true)
     }
 
-    override fun onSafeBackPressed() {
+    override fun handleOnBackPressed() {
         if (currentItemId != initialItemId) selectNavigationItem(initialItemId)
-        else super.onSafeBackPressed()
+        else super.handleOnBackPressed()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
