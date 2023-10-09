@@ -18,6 +18,7 @@
     <string name="impossible_open_themes">Nie można otworzyć aplikacji</string>
     <string name="themes_app_not_installed">Szablony nie są zainstalowane.</string>
     <string name="coming_soon">Dostępne wkrótce.</string>
+    <string name="direct_apply_not_supported">%1$s nie obsługuje bezpośredniego stosowania ikon. Proszę spróbować zastosować %2$s ręcznie w ustawieniach launchera.</string>
     <string name="quick_apply">Zastosuj</string>
     <string name="request_x_icons">Zażądanych ikon - %1$s</string>
     <string name="request_icon">Zażądaj ikonę</string>
@@ -54,6 +55,11 @@
     <string name="icon_shape_square">Kwadrat</string>
     <string name="icon_shape_teardrop">Łezka</string>
     <string name="requests_upload_error">Coś poszło nie tak. Kod błędu: %1$s”.</string>
+    <string name="requests_upload_error_unknown">Coś poszło nie tak.</string>
+    <string name="icon_request_consent_title">Wymagana zgoda</string>
+    <string name="icon_request_consent_accept">Akceptuj</string>
+    <string name="icon_request_consent_deny">Odrzuć</string>
+    <string name="icon_request_consent">%1$s zbiera informacje o zainstalowanych aplikacjach oraz szczegóły Twojego urządzenia, takie jak wymiary ekranu i wersja systemu Android. Dane te zostaną wykorzystane do projektowania nowych ikon i zapewnienia najlepszych doświadczeń. Dodatkowe informacje można znaleźć w Polityce Prywatności w ustawieniach aplikacji.</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>Jak używać paczki ikon?</item>
