@@ -10,9 +10,6 @@ android {
         disable 'MissingTranslation', 'GoogleAppIndexingWarning'
     }
 
-    compileSdkVersion Versions.targetSdk
-    buildToolsVersion Versions.buildTools
-
     namespace MyApp.appId
     defaultConfig {
         buildConfigField("String", "ONESIGNAL_APP_ID", "\"$OneSignal.appId\"")
@@ -22,6 +19,7 @@ android {
         ]
         applicationId MyApp.appId
         minSdkVersion Versions.minSdk
+        compileSdk Versions.targetSdk
         targetSdkVersion Versions.targetSdk
         versionCode MyApp.version
         versionName MyApp.versionName
