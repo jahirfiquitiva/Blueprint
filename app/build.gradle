@@ -23,9 +23,6 @@ android {
         disable 'MissingTranslation', 'GoogleAppIndexingWarning'
     }
 
-    compileSdkVersion Versions.targetSdk
-    buildToolsVersion Versions.buildTools
-
     namespace Blueprint.appId
     defaultConfig {
         buildConfigField("String", "ONESIGNAL_APP_ID", "\"$OneSignal.appId\"")
@@ -35,6 +32,7 @@ android {
         ]
         applicationId Blueprint.appId
         minSdkVersion Versions.minSdk
+        compileSdk Versions.targetSdk
         targetSdkVersion Versions.targetSdk
         versionCode Blueprint.version
         versionName Blueprint.versionName
