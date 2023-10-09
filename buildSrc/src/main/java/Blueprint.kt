@@ -2,6 +2,6 @@
 
 object Blueprint {
     const val appId = "dev.jahir.blueprint.app"
-    const val version = 237
-    const val versionName = "2.3.7"
+    const val version = 239
+    const val versionName = "2.3.9"
 }
