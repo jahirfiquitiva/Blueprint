@@ -35,13 +35,25 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         super.onCreate(savedInstanceState)
         enableTranslucentStatusBar()
 
-        toggle = ActionBarDrawerToggle(
+        toggle = object : ActionBarDrawerToggle(
             this,
             drawerLayout,
             toolbar,
             dev.jahir.frames.R.string.open,
             dev.jahir.frames.R.string.close
-        )
+        ) {
+            override fun onDrawerOpened(drawerView: View) {
+                super.onDrawerOpened(drawerView)
+                enableOnBackPressedCallback(true)
+            }
+
+            override fun onDrawerClosed(view: View) {
+                super.onDrawerClosed(view)
+                enableOnBackPressedCallback(isBackPressedCallbackEnabled())
+            }
+        };
+
+
         toggle?.drawerArrowDrawable?.color =
             resolveColor(
                 com.google.android.material.R.attr.colorOnPrimary,
@@ -54,7 +66,8 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         toolbar?.tint()
 
         val header =
-            navigationView?.findViewById(R.id.navigation_header) ?: navigationView?.getHeaderView(0)
+            navigationView?.findViewById(R.id.navigation_header)
+                ?: navigationView?.getHeaderView(0)
         header?.let { setOptimalDrawerHeaderHeight(it) }
 
         val headerDrawable = drawable(R.drawable.drawer_header)
@@ -72,7 +85,8 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         val drawerTitle: TextView? = header?.findViewById(R.id.drawer_title)
         drawerTitle?.text = getAppName()
 
-        val drawerSubtitle: TextView? = header?.findViewById(R.id.drawer_subtitle)
+        val drawerSubtitle: TextView? =
+            header?.findViewById(R.id.drawer_subtitle)
         drawerSubtitle?.text = currentVersionName
 
         navigationView?.post {
@@ -103,7 +117,8 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
 
     override fun onTemplatesLoaded(templates: ArrayList<Component>) {
         super.onTemplatesLoaded(templates)
-        navigationView?.menu?.findItem(R.id.templates)?.isVisible = templates.isNotEmpty()
+        navigationView?.menu?.findItem(R.id.templates)?.isVisible =
+            templates.isNotEmpty()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -145,20 +160,31 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
             }
         }
         val checked = changeFragment(item.itemId)
+        enableOnBackPressedCallback(checked && isBackPressedCallbackEnabled())
         if (!checked) onOptionsItemSelected(item)
         return checked
     }
 
-    override fun onSafeBackPressed() {
+    override fun handleOnBackPressed() {
         val isDrawerOpen = drawerLayout?.isDrawerOpen(GravityCompat.START) ?: false
         if (!isIconsPicker) {
             when {
                 isDrawerOpen -> drawerLayout?.closeDrawer(GravityCompat.START, true)
-                else -> super.onSafeBackPressed()
+                else -> super.handleOnBackPressed()
             }
         } else {
-            super.onSafeBackPressed()
+            super.handleOnBackPressed()
         }
+    }
+
+    override fun isBackPressedCallbackEnabled(): Boolean {
+        val isDrawerOpen = drawerLayout?.isDrawerOpen(GravityCompat.START) ?: false
+        return if (!isIconsPicker) {
+            when {
+                isDrawerOpen -> false
+                else -> super.isBackPressedCallbackEnabled()
+            }
+        } else super.isBackPressedCallbackEnabled()
     }
 
     private fun lockDrawer() {
