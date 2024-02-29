@@ -151,7 +151,7 @@ If you found this app/library helpful and want to thank me, you can:
 ## Special thanks 🙌
 
 - [Eduardo Pratti](https://pratti.design/) 🎨
-- [Sherry Sabatine](http://www.ssabatinephotography.com/) 💵
+- [Sherry Sabatine](https://www.photography-by-sherry.com/) 💵
 - [Allan Wang](https://www.allanwang.ca/) 💻
 - [James Fenn](https://theandroidmaster.github.io/) 🔌
 - [Maximilian Keppeler](https://twitter.com/maxKeppeler) 🔌
