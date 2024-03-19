@@ -1,13 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Αρχική</string>
+    <string name="icons">Εικονίδια</string>
+    <string name="request">Αίτημα</string>
+    <string name="overview">Περίληψη</string>
     <string name="more_apps">Περισσότερες εφαρμογές</string>
     <string name="useful_links">Χρήσιμοι σύνδεσμοι</string>
+    <string name="select_all">Επιλογή ολων</string>
+    <string name="help">Βοήθεια</string>
+    <string name="x_icons">%1$s Εικονίδια</string>
+    <string name="search_icons">Αναζήτηση Εικονιδίων</string>
+    <string name="search_apps">Αναζήτηση Εφαρμογών</string>
+    <string name="search_launchers">Αναζήτηση Launcher</string>
+    <string name="lni_content">“%1$s” δεν είναι εγκατεστημένο. Θέλετε να το αποκτήσετε από το Google Play;</string>
+    <string name="no_compatible_launcher_title">Μη συμβατός Launcher</string>
+    <string name="no_compatible_launcher_content">Ο “Google Now Launcher” δεν υποστηρίζει πακέτα εικονιδίων, εκτός αν χρησιμοποιείται σε συνδυασμό με το “Awesome Shortcuts.” Επιθυμείτε να το εγκαταστήσετε;</string>
+    <string name="impossible_open_themes">Αδυναμία Εκκίνησης Εφαρμογής</string>
+    <string name="themes_app_not_installed">Το \"Themes\" δεν είναι εγκατεστημένο.</string>
     <string name="coming_soon">Προσεχώς</string>
+    <string name="direct_apply_not_supported">Το %1$s δεν υποστηρίζει την άμεση εφαρμογή εικονιδίων. Παρακαλώ δοκιμάστε να εφαρμόσετε το %2$s χειροκίνητα από τις ρυθμίσεις του launcher.</string>
+    <string name="quick_apply">Εφαρμογή στην Αρχική</string>
+    <string name="request_x_icons">Αίτημα %1$s εικονιδίων</string>
+    <string name="request_icon">Αίτημα εικονιδίων</string>
+    <string name="request_none">Αίτημα εικονιδίων</string>
+    <string name="kustom_templates">Πρότυπα Kustom</string>
+    <string name="zooper_templates">Πρότυπα Zooper</string>
+    <string name="rate">Αξιολογήστε</string>
+    <string name="share">Μοιραστείτε</string>
+    <string name="share_text">Αποκτήστε %1$s στο Google Play: %2$s.</string>
+    <string name="send_email">Αποστολή Email</string>
+    <string name="send_using">Αποστολή με:</string>
+    <string name="request_in_progress">Αποστολή Αιτήματος</string>
+    <string name="request_in_progress_content">Ένα αίτημα έχει ήδη αποσταλεί.</string>
+    <string name="building_request_dialog">Ετοιμάζετε το αίτημα…</string>
+    <string name="request_upload_success_content">Το αίτημα στάλθηκε.</string>
+    <string name="no_selected_apps">Δεν επιλέχθηκαν εφαρμογές</string>
+    <string name="no_selected_apps_content">Επιλέξτε εφαρμογές για να στείλετε ένα αίτημα.</string>
+    <string name="apps_limit_dialog">Επιλέξτε %1$s εφαρμογές ή λιγότερες.</string>
+    <string name="apps_limit_dialog_more">Επιλέξτε %1$s εφαρμογές ή λιγότερες.</string>
+    <string name="apps_limit_dialog_day">Μπορείτε να στείλετε αιτήματα μόνο κάθε %1$s.</string>
+    <string name="apps_limit_dialog_day_extra">Μπορείτε να στείλετε ένα αίτημα στο %1$s.</string>
+    <string name="apps_limit_dialog_day_extra_sec">Μπορείτε να στείλετε ένα αίτημα σε λιγότερο από ένα λεπτό.</string>
     <string name="seconds">Δευτερόλεπτα</string>
     <string name="minutes">Λεπτά</string>
     <string name="hours">Ώρες</string>
     <string name="days">Ημέρες</string>
     <string name="weeks">Εβδομάδες</string>
     <string name="months">Μήνες</string>
+    <string name="icon_shape">Σχήμα Εικονιδίων</string>
+    <string name="icon_shape_system">Καθορισμός από το Σύστημα</string>
+    <string name="icon_shape_circle">Κύκλος</string>
+    <string name="icon_shape_squircle">Στρογγ. τετράγωνο</string>
+    <string name="icon_shape_rounded_square">Στρογγυλ. τετράγωνο</string>
+    <string name="icon_shape_square">Τετράγωνο</string>
+    <string name="icon_shape_teardrop">Σχήμα δάκρυ</string>
+    <string name="requests_upload_error">Κάτι πήγε στραβά. Όνομα σφάλματος: “%1$s”.</string>
+    <string name="requests_upload_error_unknown">Κάτι πήγε στραβά.</string>
+    <string name="icon_request_consent_title">Απαίτηση συναίνεσης</string>
+    <string name="icon_request_consent_accept">Αποδοχή</string>
+    <string name="icon_request_consent_deny">Απόρριψη</string>
+    <string name="icon_request_consent">Το %1$s συλλέγει πληροφορίες σχετικά με τις εγκατεστημένες εφαρμογές και τα στοιχεία της συσκευής σας, όπως διαστάσεις οθόνης και έκδοση Android. Αυτά τα δεδομένα θα χρησιμοποιηθούν για το σχεδιασμό νέων εικονιδίων και την παροχή της καλύτερης δυνατής εμπειρίας. Για περισσότερες πληροφορίες, παρακαλώ ελέγξτε την Πολιτική Απορρήτου στις ρυθμίσεις της εφαρμογής.</string>
     <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Πώς να χρησιμοποιήσετε το πακέτο εικονιδίων;</item>
+        <item>Πώς να εφαρμόσω το πακέτο εικονιδίων;</item>
+        <item>Πώς να δω όλα τα συμπεριλαμβανόμενα εικονίδια;</item>
+        <item>Πώς να αντικαταστήσω ένα εικονίδιο με ένα άλλο;</item>
+        <item>Πώς να ζητήσετε νέα εικονίδια;</item>
+        <item>Έχω κάνει επανεκκίνηση τη συσκευή μου και το πακέτο εικονιδίων δεν εφαρμόζεται πλέον. Τα προεπιλεγμένα εικονίδια έχουν αποκατασταθεί.</item>
+        <item>Γιατί τα εικονίδια φαίνονται σε κακή ανάλυση στη συσκευή μου;</item>
+        <item>Μπορώ να δω ένα εικονίδιο για μια συγκεκριμένη εφαρμογή στη λίστα εικονιδίων, αλλά δεν εφαρμόζεται.</item>
+        <item>Γιατί η εφαρμογή χρειάζεται άδεια για να τροποποιήσει ή να διαγράψει τα αρχεία στη συσκευή μου;</item>
+        <item>Γιατί η εφαρμογή χρειάζεται πλήρη πρόσβαση στο δίκτυο;</item>
+        <item>Γιατί η εφαρμογή χρειάζεται άδεια για να βλέπει τις συνδέσεις;</item>
+        <item>Γιατί η εφαρμογή χρειάζεται άδεια για να ορίσει την ταπετσαρία;</item>
+        <item>Γιατί η εφαρμογή χρειάζεται άδεια για να ρυθμίσει το μέγεθος της ταπετσαρίας;</item>
+        <item>Γιατί η εφαρμογή χρειάζεται άδεια για να μην κλείσει η συσκευή;</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Χρειάζεστε έναν launcher με υποστήριξη πακέτου εικονιδίων. Θα βρείτε μια λίστα με τους υποστηριζόμενους launcher στην ενότητα \"Εφαρμογή\" ή στην περιγραφή της εφαρμογής στο Play Store.</item>
+        <item>Ανάλογα με τον τύπο πλοήγησης της εφαρμογής, είτε σύρετε το συρτάρι πλοήγησης από τα αριστερά και μεταβείτε στην ενότητα \"Εφαρμογή\", ή επιλέξτε “Εφαρμογή” στην κάτω μπάρα πλοήγησης. Στη σελίδα \"Εφαρμογή\", επιλέξτε τον launcher. Αν ο launcher σας δεν εμφανίζεται, εφαρμόστε το πακέτο εικονιδίων μέσω των ρυθμίσεων του launcher.</item>
+        <item>Στην κεντρική σελίδα της εφαρμογής, πατήστε το κουμπί με τίτλο \"Εικονίδια\".</item>
+        <item>Ανάλογα με τον launcher που χρησιμοποιείτε, είτε πατήστε παρατεταμένα το εικονίδιο και επιλέξτε «Επεξεργασία» από το αναδυόμενο μενού, ή πατήστε παρατεταμένα το εικονίδιο και σύρετέ το στο πλαίσιο \"Επεξεργασία\" κοντά στο πάνω μέρος της οθόνης.</item>
+        <item>Ανάλογα με τον τύπο πλοήγησης της εφαρμογής, είτε σύρετε το συρτάρι πλοήγησης από τα αριστερά και μεταβείτε στην ενότητα \"Αίτηση\", ή επιλέξτε “Αίτηση” στην κάτω μπάρα πλοήγησης.</item>
+        <item>Αυτό συνέβη επειδή το πακέτο εικονιδίων μεταφέρθηκε στην κάρτα SD. Θα πρέπει να το επιστρέψετε στον εσωτερικό αποθηκευτικό χώρο.</item>
+        <item>Ο launcher σας μπορεί να χειρίζεται εσφαλμένα την ανάλυση των εικονιδίων. Μπορείτε να το διορθώσετε αυξάνοντας το μέγεθος του εικονιδίου σε 115%–120% ή χρησιμοποιήστε άλλο launcher.</item>
+        <item>Παρακαλώ στείλτε ένα αίτημα εικονιδίου.</item>
+        <item>Χρειάζεται να δημιουργήσετε αρχεία αιτήματος εικονιδίων, να αποθηκεύσετε ταπετσαρίες, και να ρυθμίσετε τη θέση λήψης για τις ταπετσαρίες.</item>
+        <item>Είναι απαραίτητο να φορτώσετε ταπετσαρίες από το σύννεφο και να τις κατεβάσετε.</item>
+        <item>Χρειάζεται να ελέγξετε αν η συσκευή σας είναι συνδεδεμένη στο διαδίκτυο.</item>
+        <item>Χρειάζεται να σας αφήσει να εφαρμόσετε ταπετσαρίες απευθείας από την εφαρμογή.</item>
+        <item>Χρειάζεται να ρυθμίσετε τις διαστάσεις των ταπετσαριών με βάση την ανάλυση της οθόνης της συσκευής σας.</item>
+        <item>Είναι απαραίτητο από Muzei Live Wallpaper.</item>
+    </string-array>
 </resources>
