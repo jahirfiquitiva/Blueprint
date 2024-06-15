@@ -24,6 +24,7 @@ enum class Launcher(
     ),
     ADW("adw", "ADW Launcher", arrayOf("org.adw.launcher"), R.drawable.ic_adw),
     ADW_EX("adwex", "ADW Ex Launcher", arrayOf("org.adwfreak.launcher"), R.drawable.ic_adw_ex),
+    AIO("aio", "AIO Launcher", arrayOf("ru.execbit.aiolauncher"), R.drawable.ic_aio),
     APEX("apex", "Apex Launcher", arrayOf("com.anddoes.launcher"), R.drawable.ic_apex),
     GO("go", "Go Launcher", arrayOf("com.gau.go.launcherex"), R.drawable.ic_go),
     GOOGLE_NOW(
