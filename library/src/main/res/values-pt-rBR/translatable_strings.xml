@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="home">Início</string>
+    <string name="icons">Ícones</string>
+    <string name="request">Solicitação</string>
+    <string name="overview">Summary</string>
     <string name="more_apps">Mais apps</string>
     <string name="useful_links">Links Úteis</string>
+    <string name="select_all">Selecionar tud</string>
+    <string name="help">Tutoriais</string>
+    <string name="x_icons">Ícone do %1$s</string>
+    <string name="search_icons">Buscar ícones</string>
+    <string name="search_apps">Pesquisar aplicativos</string>
+    <string name="search_launchers">Search Launchers</string>
     <string name="lni_content">%1$s atualmente não está instalado no seu dispositivo. \nGostaria de instalá-lo?</string>
     <string name="no_compatible_launcher_title">Este launcher NÃO é compatível</string>
     <string name="no_compatible_launcher_content">Este launcher NÃO é compatível com NENHUM Pacote de ícones e, portanto, você não pode usar este pacote de ícones com este launcher. Por favor, não classifique o pacote de ícones negativamente por esse motivo. Existe uma solução que você pode tentar por si mesmo, mas requer o uso de um aplicativo externo. Gostaria de baixá-lo?</string>
     <string name="impossible_open_themes">Impossível abrir o app de temas</string>
     <string name="themes_app_not_installed">O aplicativo Temas não está instalado neste dispositivo</string>
     <string name="coming_soon">Em breve</string>
+    <string name="direct_apply_not_supported">%1$s não suporta a aplicação de ícones diretamente. Por favor, tente aplicar %2$s manualmente a partir das configurações do launcher.</string>
+    <string name="quick_apply">Inscreva-se em casa</string>
+    <string name="request_x_icons">Pedido %1$s Ícones</string>
+    <string name="request_icon">Ícone de solicitação</string>
+    <string name="request_none">Solicitar ícone (s)</string>
+    <string name="kustom_templates">Kustom Templates</string>
+    <string name="zooper_templates">Zooper Templates</string>
     <string name="rate">Avaliação</string>
+    <string name="share">Compartilhado</string>
+    <string name="share_text">Obtenha %1$s no Google Play: %2$s.</string>
+    <string name="send_email">Enviar email</string>
     <string name="send_using">Enviar usando…</string>
+    <string name="request_in_progress">Enviando pedido</string>
+    <string name="request_in_progress_content">Uma solicitação já está sendo enviada.</string>
     <string name="building_request_dialog">Building request files…</string>
-    <string name="request_upload_success">Sucesso!</string>
     <string name="request_upload_success_content">A solicitação foi enviada ao nosso servidor com sucesso</string>
+    <string name="no_selected_apps">Nenhum aplicativo selecionado</string>
     <string name="no_selected_apps_content">Você não selecionou nenhum aplicativo para solicitar. Selecione alguns aplicativos e, em seguida, toque neste botão novamente.</string>
-    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
     <string name="apps_limit_dialog">Desculpe, mas você só pode solicitar %1$s aplicativos.</string>
     <string name="apps_limit_dialog_more">Desculpe, mas você só pode solicitar mais %1$s apps.</string>
     <string name="apps_limit_dialog_day">Desculpe, mas você só pode solicitar ícones a cada %1$s.</string>
@@ -26,4 +47,50 @@
     <string name="days">Dias</string>
     <string name="weeks">Semanas</string>
     <string name="months">Meses</string>
+    <string name="icon_shape">Forma de ícone</string>
+    <string name="icon_shape_system">Definido pelo sistema</string>
+    <string name="icon_shape_circle">Círculo</string>
+    <string name="icon_shape_squircle">Quadrado redondo</string>
+    <string name="icon_shape_rounded_square">Quadrado arredondado</string>
+    <string name="icon_shape_square">Quadrado</string>
+    <string name="icon_shape_teardrop">Lágrima</string>
+    <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
+    <string name="requests_upload_error_unknown">Houve algum problema.</string>
+    <string name="icon_request_consent_title">Consentimento requisitado</string>
+    <string name="icon_request_consent_accept">Aceitar</string>
+    <string name="icon_request_consent_deny">Negar</string>
+    <string name="icon_request_consent">%1$s coleta informações sobre os aplicativos instalados e os detalhes do seu dispositivo, como dimensões da tela e versão do Android. Estes dados serão usados para projetar novos ícones e fornecer a melhor experiência possível. Para obter informações adicionais, verifique a Política de Privacidade nas configurações do aplicativo.</string>
+    <!-- HELP SECTION -->
+    <string-array name="questions">
+        <item>Como usar o pacote de ícones?</item>
+        <item>Como aplicar o pacote de ícones?</item>
+        <item>Como ver todos os ícones incluídos?</item>
+        <item>Como substituir um ícone com um alternativo?</item>
+        <item>Como solicitar novos ícones?</item>
+        <item>Eu reiniciei o meu dispositivo e o pacote de ícones não é mais aplicado. Os ícones padrão foram restaurados.</item>
+        <item>Por que os ícones parecem pixelados no meu dispositivo?</item>
+        <item>Posso ver um ícone para um aplicativo específico na lista de ícones, mas ele não está sendo aplicado.</item>
+        <item>Por que o aplicativo precisa de permissão para modificar ou excluir os arquivos no meu dispositivo?</item>
+        <item>Por que o aplicativo precisa ter acesso total à rede?</item>
+        <item>Por que o aplicativo precisa de permissão para visualizar as conexões?</item>
+        <item>Por que o app precisa de permissão para definir o papel de parede?</item>
+        <item>Por que o aplicativo precisa de permissão para ajustar o tamanho do papel de parede?</item>
+        <item>Por que o app precisa de permissão para impedir a suspensão do dispositivo?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>Você precisa de um launcher com suporte ao pacote de ícones. Você encontrará uma lista de launchers suportados na seção \"Aplicar\" ou na descrição do aplicativo na Play Store.</item>
+        <item>Dependendo do tipo de navegação do aplicativo, qualquer deslize pela gaveta de navegação da esquerda e vá para a seção \"Aplicar\", ou escolha \"Aplicar\" na barra de navegação inferior. Na página \"Aplicar\", selecione seu launcher. Se seu launcher não estiver listado, aplique o pacote de ícones nas configurações do launcher.</item>
+        <item>Na página principal do aplicativo, toque no botão intitulado \"Ícones\".</item>
+        <item>Dependendo do launcher que você estiver usando, toque e segure o ícone e selecione \"Editar\" no menu pop-up, ou toque e segure o ícone e arraste-o para a caixa \"Editar\" perto do topo da tela.</item>
+        <item>Dependendo do tipo de navegação do aplicativo, qualquer painel desliza pela gaveta de navegação da esquerda e vá para a seção \"Pedido\", ou escolha \"Solicitar\" na barra de navegação inferior.</item>
+        <item>Isto aconteceu porque o pacote de ícones foi movido para o cartão SD. Você deve movê-lo de volta para o armazenamento interno.</item>
+        <item>Seu launcher pode estar com a resolução incorreta dos ícones. Você pode corrigir isso aumentando o tamanho do ícone para 115%-120% ou mudando para outro launcher.</item>
+        <item>Por favor, envie uma solicitação de ícone.</item>
+        <item>É necessário criar arquivos de solicitação de ícone, salvar papéis de parede e definir o local de download para papéis de parede.</item>
+        <item>É necessário carregar papéis de parede da nuvem e baixá-los.</item>
+        <item>É necessário verificar se seu dispositivo está conectado à internet.</item>
+        <item>É necessário permitir que você aplique papéis de parede diretamente do aplicativo.</item>
+        <item>É necessário ajustar as dimensões dos papéis de parede com base na resolução da tela do seu dispositivo.</item>
+        <item>É necessário por Muzei Live Wallpaper.</item>
+    </string-array>
 </resources>
