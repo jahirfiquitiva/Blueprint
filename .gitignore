@@ -91,3 +91,4 @@ proguard/
 app/release
 .project
 .classpath
+.kotlin
