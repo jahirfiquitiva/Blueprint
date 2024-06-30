@@ -28,6 +28,7 @@ fun Context.executeLauncherIntent(launcher: Launcher?) {
         Launcher.ACTION -> executeActionLauncherIntent()
         Launcher.ADW -> executeAdwLauncherIntent()
         Launcher.ADW_EX -> executeAdwEXLauncherIntent()
+        Launcher.AIO -> executeAioLauncherIntent()
         Launcher.APEX -> executeApexLauncherIntent()
         Launcher.GO -> executeGoLauncherIntent()
         Launcher.HOLO -> executeHoloLauncherIntent()
@@ -131,6 +132,14 @@ private fun Context.executeAdwEXLauncherIntent() {
         Intent("org.adwfreak.launcher.SET_THEME").apply {
             putExtra("org.adwfreak.launcher.theme.NAME", packageName)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
+}
+
+private fun Context.executeAioLauncherIntent() {
+    attemptApply(Launcher.AIO) {
+        Intent("ru.execbit.aiolauncher.APPLY_ICONS", null).apply {
+            putExtra("packageName", packageName)
         }
     }
 }
