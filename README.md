@@ -65,7 +65,6 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 - OneSignal notifications ready.
 - Support for adaptive icon packs
 - In-app icon request tool
-- Premium Icon Requests (Coming soon!)
 - Support for [Pacific Manager](https://pacificmanager.app/)
 - Apply section with 20 supported launchers. (Other launchers might not support direct apply)
 - Help section, to answer the questions your users have.
