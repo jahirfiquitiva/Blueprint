@@ -83,6 +83,7 @@ enum class Launcher(
         false
     ),
     POSIDON("posidon", "Posidon Launcher", arrayOf("posidon.launcher"), R.drawable.ic_posidon),
+    PROJECTIVY("projectivy", "Projectivy Launcher", arrayOf("com.spocky.projengmenu"), R.drawable.ic_projectivy),
     SMART("smart", "Smart Launcher", arrayOf("ginlemon.flowerfree"), R.drawable.ic_smart),
     SMART_PRO(
         "smartpro",

@@ -42,6 +42,7 @@ fun Context.executeLauncherIntent(launcher: Launcher?) {
         Launcher.NOVA -> executeNovaLauncherIntent()
         Launcher.ONEPLUS -> executeOnePlusLauncherIntent()
         Launcher.POSIDON -> executePosidonLauncherIntent()
+        Launcher.PROJECTIVY -> executeProjectivyLauncherIntent()
         Launcher.SMART -> executeSmartLauncherIntent()
         Launcher.SMART_PRO -> executeSmartLauncherProIntent()
         Launcher.SOLO -> executeSoloLauncherIntent()
@@ -285,6 +286,16 @@ private fun Context.executePosidonLauncherIntent() {
         Intent(Intent.ACTION_MAIN).apply {
             component = ComponentName("posidon.launcher", "posidon.launcher.external.ApplyIcons")
             putExtra("iconpack", packageName)
+        }
+    }
+}
+
+private fun Context.executeProjectivyLauncherIntent() {
+    attemptApply(Launcher.PROJECTIVY) {
+        Intent("com.spocky.projengmenu.APPLY_ICONPACK").apply {
+            `package` = "com.spocky.projengmenu"
+            putExtra("com.spocky.projengmenu.extra.ICONPACK_PACKAGENAME", packageName)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
     }
 }

@@ -28,6 +28,7 @@ import dev.jahir.blueprint.extensions.ICONS_APPLIER
 import dev.jahir.blueprint.extensions.ICONS_PICKER
 import dev.jahir.blueprint.extensions.IMAGE_PICKER
 import dev.jahir.blueprint.extensions.NOVA_ACTION
+import dev.jahir.blueprint.extensions.PROJECTIVY_ACTION
 import dev.jahir.blueprint.extensions.TURBO_ACTION
 import dev.jahir.blueprint.extensions.WALLS_PICKER
 import dev.jahir.blueprint.extensions.defaultLauncher
@@ -82,7 +83,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             return intent?.let {
                 when (it.action) {
                     APPLY_ACTION -> ICONS_APPLIER
-                    ADW_ACTION, TURBO_ACTION, NOVA_ACTION -> ICONS_PICKER
+                    ADW_ACTION, TURBO_ACTION, NOVA_ACTION, PROJECTIVY_ACTION -> ICONS_PICKER
                     Intent.ACTION_PICK, Intent.ACTION_GET_CONTENT -> IMAGE_PICKER
                     Intent.ACTION_SET_WALLPAPER -> WALLS_PICKER
                     else -> field

@@ -2,6 +2,7 @@ package dev.jahir.blueprint.extensions
 
 // Intent related stuff
 const val REQUEST_CODE = "request_code"
+const val PROJECTIVY_ACTION = "com.spocky.projengmenu.icons.ACTION_PICK_ICON"
 const val ADW_ACTION = "org.adw.launcher.icons.ACTION_PICK_ICON"
 const val TURBO_ACTION = "com.phonemetra.turbo.launcher.icons.ACTION_PICK_ICON"
 const val NOVA_ACTION = "com.novalauncher.THEME"
