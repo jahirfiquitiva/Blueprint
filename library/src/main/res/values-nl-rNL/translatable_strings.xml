@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
     <string name="home">Home</string>
     <string name="icons">Icons</string>
     <string name="request">Request</string>
@@ -10,15 +10,19 @@
     <string name="help">Help</string>
     <string name="x_icons">%1$s icons</string>
     <string name="search_icons">Search icons…</string>
+    <string name="search_apps">Zoek apps</string>
+    <string name="search_launchers">Zoekstarters</string>
     <string name="lni_content">%1$s is momenteel niet geïnstalleerd op je apparaat.\nWil je het installeren vanuit de Google Play Store?</string>
     <string name="no_compatible_launcher_title">Deze launcher is NIET compatibel</string>
     <string name="no_compatible_launcher_content">Deze launcher is niet compatibel met alle beschikbare Icon Packs en dus is dit icon pack niet te gebruiken met deze launcher. Beoordeel alsjeblieft deze icon pack hierom niet negatief. Er is een oplossing die je zelf kunt proberen, maar het vereist het gebruik van een externe app. Wil je deze downloaden?</string>
     <string name="impossible_open_themes">Onmogelijk om themes app te openen</string>
     <string name="themes_app_not_installed">Themes app is niet geïnstalleerd op dit apparaat</string>
     <string name="coming_soon">Binnenkort beschikbaar</string>
+    <string name="direct_apply_not_supported">%1$s ondersteunt het rechtstreeks toepassen van pictogrammen niet. Probeer %2$s handmatig toe te passen vanuit de opstartinstellingen.</string>
     <string name="quick_apply">Quick Apply</string>
-    <string name="send_request">Send request</string>
-    <string name="send_request_x">Send request (%1$s)</string>
+    <string name="request_x_icons">Verzoek %1$s Pictogrammen</string>
+    <string name="request_icon">Verzoek icoon</string>
+    <string name="request_none">Verzoek Icoon(en)</string>
     <string name="kustom_templates">Kustom Templates</string>
     <string name="zooper_templates">Zooper Templates</string>
     <string name="rate">Rate</string>
@@ -29,11 +33,9 @@
     <string name="request_in_progress">Verzoek in behandeling</string>
     <string name="request_in_progress_content">Er is al een verzoek in behandeling. Een ogenblik geduld…</string>
     <string name="building_request_dialog">Verzoek bestanden aan het maken…</string>
-    <string name="request_upload_success">Gelukt!</string>
     <string name="request_upload_success_content">Het verzoek is succesvol geüpload naar onze server.</string>
     <string name="no_selected_apps">Geen geselecteerde apps</string>
     <string name="no_selected_apps_content">Je hebt geen apps geselecteerd. Selecteer er eerst een paar en druk dan weer op deze knop.</string>
-    <string name="requests_upload_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
     <string name="apps_limit_dialog">Sorry, but you are only allowed to select %1$s apps to request.</string>
     <string name="apps_limit_dialog_more">Sorry, but you are only allowed to request %1$s more apps for now.</string>
     <string name="apps_limit_dialog_day">Sorry, but you are only allowed to request icons every %1$s.</string>
@@ -52,6 +54,12 @@
     <string name="icon_shape_rounded_square">Rounded Square</string>
     <string name="icon_shape_square">Vierkant</string>
     <string name="icon_shape_teardrop">Teardrop</string>
+    <string name="requests_upload_error">There was an error loading apps to request.\nReason: %1$s\nPlease try again later.</string>
+    <string name="requests_upload_error_unknown">Er ging iets mis.</string>
+    <string name="icon_request_consent_title">Vereiste toestemming</string>
+    <string name="icon_request_consent_accept">Accepteren</string>
+    <string name="icon_request_consent_deny">Afwijzen</string>
+    <string name="icon_request_consent">%1$s verzamelt informatie over de geïnstalleerde apps en uw apparaatgegevens, zoals schermafmetingen en Android-versie. Deze gegevens worden gebruikt om nieuwe pictogrammen te ontwerpen en de best mogelijke ervaring te bieden. Raadpleeg voor meer informatie het privacybeleid in de instellingen van de app.</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>Hoe gebruik je de icon pack?</item>
