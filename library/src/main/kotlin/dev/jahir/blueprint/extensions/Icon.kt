@@ -31,7 +31,7 @@ internal fun FragmentActivity.pickIcon(icon: Icon, drawable: Drawable?, pickerKe
                 intent.putExtra(
                     "icon",
                     if (bitmap.isRecycled) bitmap
-                    else bitmap.copy(bitmap.config, false)
+                    else bitmap.config?.let { config -> bitmap.copy(config, false) } ?: bitmap
                 )
             } catch (_: Exception) {
             }

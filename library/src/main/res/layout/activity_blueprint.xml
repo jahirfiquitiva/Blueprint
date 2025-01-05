@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:clipChildren="false"
         android:transitionName="appbar"
+        android:fitsSystemWindows="true"
         tools:ignore="UnusedAttribute">
 
         <androidx.appcompat.widget.Toolbar
