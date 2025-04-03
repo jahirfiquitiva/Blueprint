@@ -30,6 +30,7 @@ fun Context.executeLauncherIntent(launcher: Launcher?) {
         Launcher.ADW_EX -> executeAdwEXLauncherIntent()
         Launcher.AIO -> executeAioLauncherIntent()
         Launcher.APEX -> executeApexLauncherIntent()
+        Launcher.GIP -> executeGIPIntent()
         Launcher.GO -> executeGoLauncherIntent()
         Launcher.HOLO -> executeHoloLauncherIntent()
         Launcher.HOLO_ICS -> executeHoloLauncherICSIntent()
@@ -150,6 +151,19 @@ private fun Context.executeApexLauncherIntent() {
         Intent("com.anddoes.launcher.SET_THEME").apply {
             putExtra("com.anddoes.launcher.THEME_PACKAGE_NAME", packageName)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    }
+}
+
+private fun Context.executeGIPIntent() {
+    attemptApply(Launcher.GIP) {
+        Intent("com.richardluo.globalIconPack.APPLY_ICON_PACK").apply {
+            component = ComponentName(
+                "com.richardluo.globalIconPack",
+                "com.richardluo.globalIconPack.ui.MainActivity"
+            )
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            putExtra("packageName", packageName)
         }
     }
 }
