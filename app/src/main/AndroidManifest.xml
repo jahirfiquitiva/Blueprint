@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="dev.jahir.blueprint.app">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Permission required for donations. Remove it if you don't use it -->
     <uses-permission android:name="com.android.vending.BILLING" />
