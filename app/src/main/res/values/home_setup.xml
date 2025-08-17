@@ -16,6 +16,13 @@
     <bool name="show_overview">true</bool>
 
     <!--
+        Show menu (changelog, help, about, settings) in home page.
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="show_menu_in_home_page">false</bool>
+
+    <!--
         Do you want the quick apply button to show its text?
         True, means yes.
         False, means no.

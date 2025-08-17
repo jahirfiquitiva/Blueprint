@@ -10,6 +10,7 @@ import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.listeners.HomeItemsListener
 import dev.jahir.blueprint.data.models.Counter
 import dev.jahir.blueprint.data.models.HomeItem
+import dev.jahir.blueprint.data.models.HomeMenuItem
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.data.models.IconsCounter
 import dev.jahir.blueprint.data.models.KustomCounter
@@ -18,6 +19,7 @@ import dev.jahir.blueprint.ui.viewholders.AppLinkViewHolder
 import dev.jahir.blueprint.ui.viewholders.CounterViewHolder
 import dev.jahir.blueprint.ui.viewholders.HomeActionsViewHolder
 import dev.jahir.blueprint.ui.viewholders.IconsPreviewViewHolder
+import dev.jahir.blueprint.ui.viewholders.MenuItemViewHolder
 import dev.jahir.frames.extensions.views.gone
 import dev.jahir.frames.extensions.views.inflate
 import dev.jahir.frames.ui.viewholders.SectionHeaderViewHolder
@@ -26,6 +28,7 @@ import dev.jahir.frames.ui.viewholders.SectionHeaderViewHolder
 class HomeAdapter(
     actionsStyle: Int = 1,
     showOverview: Boolean = true,
+    showMenu: Boolean = false,
     private val listener: HomeItemsListener? = null
 ) : SectionedRecyclerViewAdapter<SectionedViewHolder>() {
 
@@ -49,6 +52,14 @@ class HomeAdapter(
         }
 
     var showOverview: Boolean = showOverview
+        @SuppressLint("NotifyDataSetChanged")
+        set(value) {
+            if (value == field) return
+            field = value
+            notifyDataSetChanged()
+        }
+
+    var showMenu: Boolean = showMenu
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             if (value == field) return
@@ -119,6 +130,31 @@ class HomeAdapter(
             ).filter { it.count > 0 }
         } else listOf()
 
+    private val menu by lazy {
+        arrayOf(
+            HomeMenuItem(
+                R.id.changelog,
+                dev.jahir.frames.R.string.changelog,
+                dev.jahir.frames.R.drawable.ic_changelog
+            ),
+            HomeMenuItem(
+                R.id.help,
+                R.string.help,
+                R.drawable.ic_help
+            ),
+            HomeMenuItem(
+                R.id.about,
+                dev.jahir.frames.R.string.about,
+                dev.jahir.frames.R.drawable.ic_details
+            ),
+            HomeMenuItem(
+                R.id.settings,
+                dev.jahir.frames.R.string.settings,
+                dev.jahir.frames.R.drawable.ic_settings
+            )
+        )
+    }
+
     init {
         shouldShowFooters(false)
         shouldShowHeadersForEmptySections(false)
@@ -139,6 +175,8 @@ class HomeAdapter(
             MORE_APPS_SECTION, USEFUL_LINKS_SECTION ->
                 AppLinkViewHolder(parent.inflate(R.layout.item_home_app_link))
 
+            MENU_SECTION -> MenuItemViewHolder(parent.inflate(R.layout.item_home_menu_item))
+
             else -> SectionHeaderViewHolder(parent.inflate(dev.jahir.frames.R.layout.item_section_header))
         }
 
@@ -156,6 +194,8 @@ class HomeAdapter(
                     MORE_APPS_SECTION -> it.bind(R.string.more_apps, 0, counters.isNotEmpty())
                     USEFUL_LINKS_SECTION ->
                         it.bind(R.string.useful_links, 0, showOverview || appItems.isNotEmpty())
+
+                    MENU_SECTION -> it.bind(R.string.menu, 0, true)
 
                     else -> it.bind(0, 0, false)
                 }
@@ -176,6 +216,7 @@ class HomeAdapter(
             if (section == MORE_APPS_SECTION) appItems.getOrNull(relativePosition)
             else linkItems.getOrNull(relativePosition), listener
         )
+        (holder as? MenuItemViewHolder)?.bind(menu.getOrNull(relativePosition), listener)
     }
 
     override fun onBindFooterViewHolder(holder: SectionedViewHolder?, section: Int) {}
@@ -185,10 +226,11 @@ class HomeAdapter(
         OVERVIEW_SECTION -> if (showOverview) counters.size else 0
         MORE_APPS_SECTION -> appItems.size
         USEFUL_LINKS_SECTION -> linkItems.size
+        MENU_SECTION -> menu.size
         else -> 0
     }
 
-    override fun getSectionCount(): Int = SECTION_COUNT
+    override fun getSectionCount(): Int = if (showMenu) SECTION_COUNT else SECTION_COUNT - 1
 
     override fun getItemViewType(section: Int, relativePosition: Int, absolutePosition: Int): Int =
         section
@@ -198,14 +240,18 @@ class HomeAdapter(
         section: Int,
         relativePosition: Int,
         absolutePosition: Int
-    ): Int = if (section == OVERVIEW_SECTION && showOverview) 1 else 2
+    ): Int =
+        if (section == OVERVIEW_SECTION && showOverview) 1
+        else if (section == MENU_SECTION) 1
+        else 2
 
     companion object {
-        private const val SECTION_COUNT = 5
+        private const val SECTION_COUNT = 6
         internal const val ICONS_PREVIEW_SECTION = 0
         private const val ACTIONS_SECTION = 1
         internal const val OVERVIEW_SECTION = 2
         private const val MORE_APPS_SECTION = 3
         private const val USEFUL_LINKS_SECTION = 4
+        private const val MENU_SECTION = 5
     }
 }

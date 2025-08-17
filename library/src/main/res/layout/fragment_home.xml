@@ -7,4 +7,5 @@
     android:clipToPadding="false"
     android:overScrollMode="ifContentScrolls"
     android:splitMotionEvents="false"
+    android:layout_marginBottom="12dp"
     app:fastScrollEnabled="false" />

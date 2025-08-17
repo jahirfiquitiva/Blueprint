@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.fondesa.kpermissions.PermissionStatus
@@ -69,7 +70,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
     private val adapter: HomeAdapter by lazy {
         HomeAdapter(
             context?.integer(R.integer.home_actions_style, 1) ?: 1,
-            context?.boolean(R.bool.show_overview, true) == true, this
+            context?.boolean(R.bool.show_overview, true) == true,
+            context?.boolean(R.bool.show_menu_in_home_page, false) == true,
+            this
         )
     }
 
@@ -140,6 +143,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
         adapter.wallpaper = rightWallpaper
         adapter.actionsStyle = context?.integer(R.integer.home_actions_style, 1) ?: 1
         adapter.showOverview = context?.boolean(R.bool.show_overview, true) == true
+        adapter.showMenu = context?.boolean(R.bool.show_menu_in_home_page, false) == true
         recyclerView?.adapter = adapter
         recyclerView?.addItemDecoration(HomeGridSpacingItemDecoration(columnsCount, 8.dpToPx))
         (activity as? BlueprintActivity)?.repostCounters()
@@ -251,6 +255,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeItemsListener {
 
     override fun onDonateClicked() {
         (activity as? BaseBillingActivity<*>)?.showDonationsDialog()
+    }
+
+    override fun onMenuItemClicked(@IdRes menuItemId: Int) {
+        (activity as? BlueprintActivity)?.clickMenuItem(menuItemId)
     }
 
     companion object {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="4dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/home_item_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/text_btn_bg_color"
+        android:elevation="0dp"
+        android:minWidth="56dp"
+        android:minHeight="48dp"
+        android:stateListAnimator="@animator/mtrl_btn_unelevated_state_list_anim"
+        android:textAlignment="viewStart"
+        android:textColor="?colorOnSurface"
+        android:paddingStart="16dp"
+        app:iconTint="?colorOnSurface"
+        app:iconPadding="16dp"
+        app:elevation="0dp"
+        app:rippleColor="@color/text_btn_ripple_color"
+        tools:text="Button" />
+</LinearLayout>

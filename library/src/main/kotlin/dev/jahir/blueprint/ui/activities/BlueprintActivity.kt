@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -112,6 +113,8 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
     private var iconsShapePickerDialog: AlertDialog? = null
     private val blueprintPrefs: BlueprintPreferences by lazy { BlueprintPreferences(this) }
 
+    private var internalMenu: Menu? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bottomNavigation?.setOnItemSelectedListener {
@@ -182,6 +185,7 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
         menu.findItem(R.id.icons_shape)?.isVisible =
             currentItemId == R.id.icons && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
                     && boolean(R.bool.includes_adaptive_icons)
+        this.internalMenu = menu
         return created
     }
 
@@ -203,6 +207,10 @@ abstract class BlueprintActivity : FramesActivity(), RequestCallback {
             }
         }
         return if (shouldCallSuper) super.onOptionsItemSelected(item) else true
+    }
+
+    internal fun clickMenuItem(@IdRes itemId: Int) {
+        internalMenu?.findItem(itemId)?.let { onOptionsItemSelected(it) }
     }
 
     override fun onResume() {
