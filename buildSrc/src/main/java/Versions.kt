@@ -2,10 +2,10 @@
 
 object Versions {
     // Plugins
-    const val gradle = "8.10.0"
-    const val kotlin = "2.1.21"
+    const val gradle = "8.12.0"
+    const val kotlin = "2.2.0"
     const val sonatype = "2.0.0"
-    const val ksp = "$kotlin-2.0.1"
+    const val ksp = "$kotlin-2.0.2"
 
     // OneSignal
     const val oneSignal = "4.8.12"
@@ -16,7 +16,7 @@ object Versions {
     const val buildTools = "36.0.0"
 
     // Kuper
-    const val kuper = "2.5.5"
+    const val kuper = "2.6.0"
 
     // Adaptive Icons
     const val adaptiveIcons = "1.0.2"
