@@ -23,6 +23,20 @@
     <bool name="static_icons_preview_picture_by_default">false</bool>
 
     <!--
+        Do you want to sort your icons alphabetically in the icons grid list?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="sort_icons_alphabetically">true</bool>
+
+    <!--
+        Do you want to show the icon/app name under the icons in the icons grid list?
+        True, means yes.
+        False, means no.
+    -->
+    <bool name="icon_name_in_grid_list">false</bool>
+
+    <!--
         Do you want the app to read the icons from res/xml/drawable.xml ? (true)
         Or do you prefer the icons to be loaded from res/values/icon_pack.xml ? (false)
     -->
