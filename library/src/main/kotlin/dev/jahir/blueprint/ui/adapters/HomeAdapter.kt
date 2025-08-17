@@ -195,7 +195,7 @@ class HomeAdapter(
                     USEFUL_LINKS_SECTION ->
                         it.bind(R.string.useful_links, 0, showOverview || appItems.isNotEmpty())
 
-                    MENU_SECTION -> it.bind(R.string.menu, 0, true)
+                    MENU_SECTION -> it.bind(R.string.menu, 0, showMenu)
 
                     else -> it.bind(0, 0, false)
                 }
