@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress CheckTagEmptyBody -->
 <resources>
     <!--    Set to 'true' if your app requires Kolorette. 'false' otherwise. -->
     <bool name="kolorette_required">false</bool>
@@ -11,4 +12,7 @@
 
     <!--    A brief description of the pack contents -->
     <string name="kustom_pack_description">Cool Kustom komponents, wallpapers and widgets.</string>
+
+    <!--    A custom color to be used instead of the user's wallpaper -->
+    <color name="kuper_preview_background"></color>
 </resources>

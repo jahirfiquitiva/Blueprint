@@ -47,6 +47,15 @@ jobs:
           SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
           SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
 
+      - name: Manual MavenCentral Upload
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/dev.jahir'
+          method: 'POST'
+          bearerToken: ${{ secrets.OSSRH_TOKEN }}
+          timeout: 10000
+          preventFailureOnNoResponse: 'true'
+
   apk:
     name: Build apk, upload to release and notify Discord
     runs-on: ubuntu-latest
