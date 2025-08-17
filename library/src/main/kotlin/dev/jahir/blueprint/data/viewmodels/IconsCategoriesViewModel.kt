@@ -29,6 +29,10 @@ import org.xmlpull.v1.XmlPullParser
 @Suppress("MemberVisibilityCanBePrivate")
 class IconsCategoriesViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val shouldSortIcons: Boolean by lazy {
+        context.boolean(R.bool.sort_icons_alphabetically)
+    }
+
     private val iconsCategoriesData: MutableLiveData<ArrayList<IconsCategory>> by lazyMutableLiveData()
     val iconsCategories: ArrayList<IconsCategory>
         get() = ArrayList(iconsCategoriesData.value.orEmpty())
@@ -47,23 +51,30 @@ class IconsCategoriesViewModel(application: Application) : AndroidViewModel(appl
             context.withXml(R.xml.drawable) { parser ->
                 var event: Int? = parser.eventType
                 var category: IconsCategory? = null
+                val icons = ArrayList<Icon>()
                 while (event != null && event != XmlPullParser.END_DOCUMENT) {
                     when (event) {
                         XmlPullParser.START_TAG -> {
                             val tag = parser.name
                             if (tag == "category") {
-                                if (category != null && category.hasIcons())
+                                val filteredIcons =
+                                    ArrayList(icons.distinctBy { it.name }
+                                        .sortedBy { if (shouldSortIcons) it.name else null })
+                                if (category != null && filteredIcons.isNotEmpty()) {
+                                    category.setIcons(filteredIcons)
                                     categories.add(category)
+                                }
                                 category = IconsCategory(
                                     parser.getAttributeValue("title").orEmpty().clean()
                                         .blueprintFormat()
                                 )
+                                icons.clear()
                             } else if (tag == "item") {
                                 if (category != null) {
                                     val iconName = parser.getAttributeValue("drawable").orEmpty()
                                     val iconRes = context.drawableRes(iconName)
                                     if (iconRes != 0) {
-                                        category.addIcon(
+                                        icons.add(
                                             Icon(iconName.clean().blueprintFormat(), iconRes)
                                         )
                                     } else {
@@ -77,8 +88,12 @@ class IconsCategoriesViewModel(application: Application) : AndroidViewModel(appl
                     }
                     event = parser.nextOrNull()
                 }
-                if (category != null && category.hasIcons())
+                val filteredIcons = ArrayList(icons.distinctBy { it.name }
+                    .sortedBy { if (shouldSortIcons) it.name else null })
+                if (category != null && filteredIcons.isNotEmpty()) {
+                    category.setIcons(filteredIcons)
                     categories.add(category)
+                }
             }
             categories
         }
@@ -100,7 +115,8 @@ class IconsCategoriesViewModel(application: Application) : AndroidViewModel(appl
                             reportIconNotFound(iconName, "icon_pack.xml", context.getAppName())
                         }
                     }
-                    val filteredIcons = ArrayList(icons.distinctBy { it.name }.sortedBy { it.name })
+                    val filteredIcons = ArrayList(icons.distinctBy { it.name }
+                        .sortedBy { if (shouldSortIcons) it.name else null })
                     if (filteredIcons.isNotEmpty()) {
                         val category = IconsCategory(filter.clean().blueprintFormat())
                         category.setIcons(filteredIcons)

@@ -49,4 +49,33 @@
     <item drawable="second_icon" />
     <item drawable="this_is_an_icon" />
 
+    <category title="Adaptive" />
+    <item drawable="adaptive_one" />
+    <item drawable="adaptive_two" />
+    <item drawable="adaptive_three" />
+
+    <category title="Shapes" />
+    <item drawable="amber_circle" />
+    <item drawable="amber_rectangle" />
+    <item drawable="amber_square" />
+    <item drawable="blue_circle" />
+    <item drawable="blue_rectangle" />
+    <item drawable="blue_square" />
+    <item drawable="purple_circle" />
+    <item drawable="purple_rectangle" />
+    <item drawable="purple_square" />
+    <item drawable="red_circle" />
+    <item drawable="red_rectangle" />
+    <item drawable="red_square" />
+
+    <category title="Amber" />
+    <item drawable="amber_circle" />
+    <item drawable="amber_rectangle" />
+    <item drawable="amber_square" />
+
+    <category title="Blue" />
+    <item drawable="blue_circle" />
+    <item drawable="blue_rectangle" />
+    <item drawable="blue_square" />
+
 </resources>
