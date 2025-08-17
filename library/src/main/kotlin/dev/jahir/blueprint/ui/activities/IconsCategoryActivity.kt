@@ -47,7 +47,7 @@ class IconsCategoryActivity : BaseSearchableActivity<Preferences>() {
     private val blueprintPrefs: BlueprintPreferences by lazy { BlueprintPreferences(this) }
 
     private val iconsAdapter: IconsAdapter by lazy {
-        IconsAdapter(false, ::onIconClick).apply {
+        IconsAdapter(false, ::onIconClick, boolean(R.bool.icon_name_in_grid_list)).apply {
             icons = ArrayList(category?.getIcons().orEmpty())
         }
     }

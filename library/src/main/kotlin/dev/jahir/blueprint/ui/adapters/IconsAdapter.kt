@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.ui.adapters
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,8 @@ import dev.jahir.frames.extensions.views.inflate
 
 class IconsAdapter(
     var animate: Boolean = true,
-    var onClick: ((Icon, Drawable?) -> Unit)? = null
+    var onClick: ((Icon, Drawable?) -> Unit)? = null,
+    val showIconName: Boolean = false,
 ) : RecyclerView.Adapter<IconViewHolder>() {
 
     init {
@@ -18,6 +20,7 @@ class IconsAdapter(
     }
 
     var icons: ArrayList<Icon> = ArrayList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field.clear()
             field.addAll(value)
@@ -25,7 +28,12 @@ class IconsAdapter(
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder =
-        IconViewHolder(parent.inflate(R.layout.item_icon))
+        IconViewHolder(
+            parent.inflate(
+                if (showIconName) R.layout.item_icon_with_name
+                else R.layout.item_icon
+            )
+        )
 
     override fun onBindViewHolder(holder: IconViewHolder, position: Int) =
         holder.bind(icons[position], animate, onClick)

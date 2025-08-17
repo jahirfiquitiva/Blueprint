@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IconsPreviewRecyclerView">
+        <attr name="always_hide_icon_name" format="boolean" />
+    </declare-styleable>
+</resources>

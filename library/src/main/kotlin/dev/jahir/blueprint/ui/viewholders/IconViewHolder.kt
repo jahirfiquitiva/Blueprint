@@ -3,6 +3,7 @@ package dev.jahir.blueprint.ui.viewholders
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.setPadding
 import com.afollestad.sectionedrecyclerview.SectionedViewHolder
@@ -18,6 +19,7 @@ import dev.jahir.frames.extensions.views.findView
 class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
 
     private val iconView: AppCompatImageView? by itemView.findView(R.id.icon)
+    private val iconNameTextView: TextView? by itemView.findView(R.id.icon_name)
 
     fun bind(icon: Icon, animate: Boolean = true, onClick: ((Icon, Drawable?) -> Unit)? = null) {
         setIconDrawable(icon, context.preferences.animationsEnabled && animate, onClick)
@@ -59,6 +61,7 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
                     .start()
             }
         }
+        iconNameTextView?.text = icon.name
         iconView?.setPadding(if (isAdaptive) 10.dpToPx else 6.dpToPx)
         if (onClick == null) {
             iconView?.disableClick()

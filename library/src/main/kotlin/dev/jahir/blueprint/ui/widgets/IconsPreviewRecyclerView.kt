@@ -9,6 +9,7 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Icon
 import dev.jahir.blueprint.extensions.createParcel
 import dev.jahir.blueprint.ui.adapters.IconsAdapter
+import dev.jahir.frames.extensions.context.boolean
 import dev.jahir.frames.extensions.context.dimenPixelSize
 import dev.jahir.frames.extensions.context.integer
 import dev.jahir.frames.extensions.views.visible
@@ -29,7 +31,10 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : RecyclerView(context, attributeSet, defStyleAttr) {
 
-    private val iconsAdapter: IconsAdapter by lazy { IconsAdapter() }
+    private var alwaysHideIconName: Boolean = false
+    private val iconsAdapter: IconsAdapter by lazy {
+        IconsAdapter(showIconName = context.boolean(R.bool.icon_name_in_grid_list) && !alwaysHideIconName)
+    }
     private val icons: ArrayList<Icon> = ArrayList()
 
     internal var animateIcons: Boolean = true
@@ -41,6 +46,17 @@ class IconsPreviewRecyclerView @JvmOverloads constructor(
         }
 
     init {
+        if (attributeSet != null) {
+            context.withStyledAttributes(attributeSet, R.styleable.IconsPreviewRecyclerView) {
+                if (hasValue(R.styleable.IconsPreviewRecyclerView_always_hide_icon_name)) {
+                    alwaysHideIconName =
+                        getBoolean(
+                            R.styleable.IconsPreviewRecyclerView_always_hide_icon_name,
+                            false
+                        )
+                }
+            }
+        }
         isSaveEnabled = true
         isNestedScrollingEnabled = false
         setHasFixedSize(true)
