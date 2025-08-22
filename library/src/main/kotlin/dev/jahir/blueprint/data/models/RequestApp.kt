@@ -14,9 +14,9 @@ data class RequestApp(val name: String, val packageName: String, val component: 
     var icon: Drawable? = null
         private set
 
-    fun loadIcon(context: Context?) {
+    fun loadIcon(context: Context?, preferBanner: Boolean = false) {
         context ?: return
         if (icon != null) return
-        icon = context.getAppIcon(packageName)
+        icon = context.getAppIcon(packageName, preferBanner)
     }
 }

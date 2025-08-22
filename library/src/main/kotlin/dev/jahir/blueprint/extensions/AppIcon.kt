@@ -13,14 +13,19 @@ import dev.jahir.frames.extensions.context.string
 import dev.jahir.frames.extensions.resources.hasContent
 
 fun getDefaultAppIcon(): Drawable? {
-    return Resources.getSystem().getAppIcon(android.R.mipmap.sym_def_app_icon)
+    return Resources.getSystem().getAppDrawable(android.R.mipmap.sym_def_app_icon)
 }
 
-fun Context.getAppIcon(pkg: String): Drawable? {
+fun Context.getAppIcon(pkg: String, preferBanner: Boolean = false): Drawable? {
     if (!pkg.hasContent()) return null
     var icon: Drawable? = null
     try {
-        icon = loadIcon(pkg)
+        // If we should prefer the app's banner, try to get it first so that if it fails we can fallback to the icon
+        if (preferBanner) {
+            icon = loadBanner(pkg)
+            if (icon == null) icon = packageManager.getApplicationBanner(pkg)
+        }
+        if (icon == null) icon = loadIcon(pkg)
         if (icon == null) icon = packageManager.getApplicationIcon(pkg)
     } catch (e: Exception) {
         if (icon == null) icon = drawable(string(R.string.icons_placeholder))
@@ -35,7 +40,7 @@ private fun Context.loadIcon(pkg: String): Drawable? {
         val ai = getAppInfo(pkg)
         if (ai != null) {
             var icon = ai.loadIcon(packageManager)
-            if (icon == null) icon = getResources(ai)?.getAppIcon(ai.icon)
+            if (icon == null) icon = getResources(ai)?.getAppDrawable(ai.icon)
             return icon
         } else null
     } catch (e: Exception) {
@@ -43,7 +48,20 @@ private fun Context.loadIcon(pkg: String): Drawable? {
     }
 }
 
-private fun Resources.getAppIcon(iconId: Int): Drawable? {
+private fun Context.loadBanner(pkg: String): Drawable? {
+    return try {
+        val ai = getAppInfo(pkg)
+        if (ai != null) {
+            var icon = ai.loadBanner(packageManager)
+            if (icon == null) icon = getResources(ai)?.getAppDrawable(ai.banner)
+            return icon
+        } else null
+    } catch (e: Exception) {
+        null
+    }
+}
+
+private fun Resources.getAppDrawable(iconId: Int): Drawable? {
     return try {
         ResourcesCompat.getDrawableForDensity(
             this,

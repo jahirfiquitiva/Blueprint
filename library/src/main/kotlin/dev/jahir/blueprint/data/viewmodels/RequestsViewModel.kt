@@ -18,6 +18,7 @@ import dev.jahir.blueprint.extensions.blueprintFormat
 import dev.jahir.blueprint.extensions.clean
 import dev.jahir.blueprint.extensions.drawableRes
 import dev.jahir.blueprint.extensions.getLocalizedName
+import dev.jahir.blueprint.extensions.isRunningOnTv
 import dev.jahir.blueprint.extensions.queryIntentActivitiesCompat
 import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.context.integer
@@ -203,7 +204,9 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
             delay(10)
             val appsToRequest = loadAppsToRequest(debug)
             appsToRequestData.postValue(appsToRequest)
-            appsToRequest.forEach { it.loadIcon(context) }
+            val preferBannerAppSetting = context.integer(R.integer.prefer_banner_for_icon_request, 0)
+            val preferBanner = preferBannerAppSetting == 2 || (preferBannerAppSetting == 0 && context.isRunningOnTv())
+            appsToRequest.forEach { it.loadIcon(context, preferBanner) }
         }
     }
 

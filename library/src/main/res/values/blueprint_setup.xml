@@ -47,6 +47,15 @@
     -->
     <bool name="includes_adaptive_icons">false</bool>
 
+    <!--
+        Define if your icon pack is dedicated to provide Android Tv banners
+        If so, icons request will send applications banner instead of icon when available.
+        0. Automatically detect if the app is running on a Tv device
+        1. Enforce icons, no matter what is detected
+        2. Enforce banners, no matter what is detected
+    -->
+    <integer name="prefer_banner_for_icon_request">0</integer>
+
     <!-- Icon Pack designer/owner e-mail -->
     <string name="email">someone@email.com</string>
 
