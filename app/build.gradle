@@ -4,38 +4,21 @@ apply plugin: 'kotlin-parcelize'
 apply plugin: 'com.google.devtools.ksp'
 
 android {
-    signingConfigs {
-        release {
-            keyAlias 'frames'
-            keyPassword 'frames'
-            storeFile file('frames.jks')
-            storePassword 'frames'
-            enableV1Signing true
-            enableV2Signing true
-            enableV3Signing true
-            enableV4Signing true
-        }
-    }
-
     lint {
         abortOnError false
         checkReleaseBuilds true
         disable 'MissingTranslation', 'GoogleAppIndexingWarning'
     }
 
-    namespace Blueprint.appId
     defaultConfig {
         buildConfigField("String", "ONESIGNAL_APP_ID", "\"$OneSignal.appId\"")
         manifestPlaceholders = [
                 onesignal_app_id               : OneSignal.appId,
                 onesignal_google_project_number: OneSignal.googleProjectNumber
         ]
-        applicationId Blueprint.appId
         minSdkVersion Versions.minSdk
         compileSdk Versions.targetSdk
         targetSdkVersion Versions.targetSdk
-        versionCode Blueprint.version
-        versionName Blueprint.versionName
         setProperty("archivesBaseName", applicationId + "-" + versionName)
         vectorDrawables.useSupportLibrary = true
         proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
@@ -59,7 +42,6 @@ android {
             shrinkResources false
             proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
             consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
     }
 
@@ -93,8 +75,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':library')
     // TODO: Remove comment marks to enable
     // implementation Libs.oneSignal
 }

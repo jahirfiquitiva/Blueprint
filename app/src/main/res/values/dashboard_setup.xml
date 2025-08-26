@@ -41,7 +41,6 @@
     1. Dark
     2. Follow system
     -->
-    <integer name="default_theme">1</integer>
 
     <!--
     Do you want AMOLED theme to be enabled by default? (Requires dark theme or system dark theme enabled)

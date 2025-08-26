@@ -34,7 +34,6 @@
         True, means yes.
         False, means no.
     -->
-    <bool name="icon_name_in_grid_list">true</bool>
 
     <!--
         Do you want the app to read the icons from res/xml/drawable.xml ? (true)

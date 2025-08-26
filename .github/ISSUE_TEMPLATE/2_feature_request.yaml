@@ -1,0 +1,47 @@
+name: Feature Request 💡
+description: Request a new feature you would like to see as part of the dashboard
+labels: ["Status: Pending", "Type: Feature Request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        *Thanks for taking the time to fill out this feature request!*
+  - type: markdown
+    attributes:
+      value: |
+        --- 
+        
+        # App information:
+  - type: input
+    id: version
+    attributes:
+      label: Blueprint Version
+      description: What version of Blueprint are you currently using?
+      placeholder: ex. 2.2.4
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        --- 
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the feature
+      description: Please describe in detail the feature you are requesting
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe alternatives you have considered
+      description: Please describe alternative solutions or feature you have considered
+    validations:
+      required: false
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context or info
+      description: Add any other context, info, screenshots, videos, etc. about the feature request here
+    validations:
+      required: false
