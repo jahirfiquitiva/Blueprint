@@ -99,3 +99,4 @@ app/release
 
 app/src/main/assets/appfilter.xml
 app/src/main/res/values/icon_pack.xml
+app/src/main/res/xml/appfilter.xml
