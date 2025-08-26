@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!--  testing change 2 -->
+    <!--  ADB TV  -->
+    <item component="ComponentInfo{com.cybercat.adbappcontrol.tv/com.cybercat.adbappcontrol.tv.ui.presentation.StartScreenActivity}" drawable="adb_tv"/>
+    <!--  Button Mapper  -->
+    <item component="ComponentInfo{flar2.homebutton/a.a}" drawable="button_mapper"/>
+    <!--  Downloader  -->
+    <item component="ComponentInfo{com.esaba.downloader/com.esaba.downloader.ui.main.MainActivity}" drawable="downloader"/>
+    <!--  Emby  -->
+    <item component="ComponentInfo{tv.emby.embyatv/tv.emby.embyatv.startup.StartupActivity}" drawable="emby"/>
+    <!--  Eternal TV divine -->
+    <item component="ComponentInfo{com.nathnetwork.eternaltv/com.nathnetwork.eternaltv.SplashVideoActivity}" drawable="eternal_tv_divine"/>
+    <!--  Google Play Store  -->
+    <item component="ComponentInfo{com.android.vending/com.google.android.finsky.tvmainactivity.TvMainActivity}" drawable="google_play_store"/>
+    <!--  IMPlayer  -->
+    <item component="ComponentInfo{com.myiptvonline.implayer/com.myiptvonline.implayer.a}" drawable="implayer"/>
+    <!--  IP Tools  -->
+    <item component="ComponentInfo{com.ddm.iptools/com.ddm.iptools.ui.MainActivity}" drawable="ip_tools"/>
+    <!--  Kodi  -->
+    <item component="ComponentInfo{org.xbmc.kodi/org.xbmc.kodi.Splash}" drawable="kodi"/>
+    <!--  MX Player Pro  -->
+    <item component="ComponentInfo{com.mxtech.videoplayer.pro/com.mxtech.videoplayer.pro.ActivityMediaList}" drawable="mx_player_pro"/>
+    <!--  Premiumize TV  -->
+    <item component="ComponentInfo{me.premiumize.pmtvfire/me.premiumize.pmtvandroid.MainActivity}" drawable="premiumize_tv"/>
+    <!--  Projectivy Launcher  -->
+    <item component="ComponentInfo{com.spocky.projengmenu/com.spocky.projengmenu.ui.home.MainActivity}" drawable="projectivy_launcher"/>
+    <!--  SmartTube  -->
+    <item component="ComponentInfo{com.teamsmart.videomanager.tv/com.liskovsoft.smartyoutubetv2.tv.ui.main.SplashActivity}" drawable="smarttube"/>
+    <!--  SmartTube Beta  -->
+    <item component="ComponentInfo{com.liskovsoft.smarttubetv.beta/com.liskovsoft.smartyoutubetv2.tv.ui.main.SplashActivity}" drawable="smarttube_beta"/>
+
+</resources>
