@@ -1,7 +1,9 @@
-package dev.jahir.blueprint.app
+package dev.projectivy.blueprint.app
 
 import com.github.javiersantos.piracychecker.PiracyChecker
+import dev.projectivy.blueprint.app.R
 import dev.jahir.blueprint.ui.activities.BottomNavigationBlueprintActivity
+import dev.jahir.kuper.BuildConfig
 
 class MainActivity : BottomNavigationBlueprintActivity() {
 

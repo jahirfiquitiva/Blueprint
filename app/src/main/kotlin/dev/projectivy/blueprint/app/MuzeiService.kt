@@ -1,4 +1,4 @@
-package dev.jahir.blueprint.app
+package dev.projectivy.blueprint.app
 
 import dev.jahir.frames.muzei.FramesArtProvider
 
