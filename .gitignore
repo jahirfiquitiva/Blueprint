@@ -97,5 +97,5 @@ app/release
 # my own ignored files
 #############################################################################
 
-app/src/main/res/xml/appfilter.xml
+app/src/main/assets/appfilter.xml
 app/src/main/res/values/icon_pack.xml
