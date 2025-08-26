@@ -14,11 +14,11 @@
             android:icon="@drawable/ic_icons"
             android:orderInCategory="200"
             android:title="@string/icons" />
-        <item
-            android:id="@+id/wallpapers"
-            android:icon="@drawable/ic_wallpapers"
-            android:orderInCategory="300"
-            android:title="@string/wallpapers" />
+<!--        <item-->
+<!--            android:id="@+id/wallpapers"-->
+<!--            android:icon="@drawable/ic_wallpapers"-->
+<!--            android:orderInCategory="300"-->
+<!--            android:title="@string/wallpapers" />-->
         <item
             android:id="@+id/apply"
             android:icon="@drawable/ic_apply"

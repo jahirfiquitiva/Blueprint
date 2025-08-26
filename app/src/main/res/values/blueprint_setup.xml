@@ -34,7 +34,7 @@
         True, means yes.
         False, means no.
     -->
-    <bool name="icon_name_in_grid_list">false</bool>
+    <bool name="icon_name_in_grid_list">true</bool>
 
     <!--
         Do you want the app to read the icons from res/xml/drawable.xml ? (true)
@@ -45,7 +45,7 @@
     <!--
         Set to true if your icon pack includes adaptive icons. false otherwise
     -->
-    <bool name="includes_adaptive_icons">true</bool>
+    <bool name="includes_adaptive_icons">false</bool>
 
     <!-- Icon Pack designer/owner e-mail -->
     <string name="email">someone@email.com</string>

@@ -4,9 +4,18 @@
     <!-- Permission required for donations. Remove it if you don't use it -->
     <uses-permission android:name="com.android.vending.BILLING" />
 
+    <!-- TV/Leanback support -->
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
     <application
         android:name="dev.projectivy.blueprint.app.MyApplication"
         android:allowBackup="true"
+        android:banner="@drawable/tv_banner"
         android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,29 +32,35 @@
             android:exported="true"
             android:label="@string/app_name">
 
-            <!-- TODO: Do NOT remove the intent-filter tags -->
+            <!-- Leanback launcher for TV -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
 
+            <!-- Phone/tablet launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter tools:ignore="GoogleAppIndexingDeepLinkError,GoogleAppIndexingUrlError,
-                GoogleAppIndexingWarning">
-                <action android:name="android.intent.action.VIEW" />
 
+            <!-- Fixed VIEW intent with data to remove lint warning -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="www.yourdomain.com" />
             </intent-filter>
+
+            <!-- Existing intent filters (wallpaper picker, icon packs, launchers, etc.) -->
             <intent-filter>
                 <action android:name="android.intent.action.SET_WALLPAPER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.OPENABLE" />
-
                 <data android:mimeType="image/*" />
             </intent-filter>
             <intent-filter>
@@ -55,11 +70,11 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.PICK" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.OPENABLE" />
             </intent-filter>
-            <!-- ADW Launcher -->
+
+            <!-- Launcher-specific intent filters (ADW, Apex, GO, Nova, Lawnchair, etc.) -->
             <intent-filter>
                 <action android:name="org.adw.launcher.THEMES" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -81,7 +96,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.gau.go.launcherex.theme" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
@@ -92,14 +106,12 @@
             <intent-filter>
                 <action android:name="com.gau.go.launcherex.theme" />
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.THEME_SCENE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <!-- LauncherPro / Holo -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.fede.launcher.THEME_ICONPACK" />
             </intent-filter>
             <!-- Next Launcher -->
@@ -115,12 +127,7 @@
                 <action android:name="com.gtp.nextlauncher.trial.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <!-- Nine Launcher -->
-            <intent-filter>
-                <action android:name="com.gridappsinc.launcher.theme.apk_action" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <!-- Nova Launcher-->
+            <!-- Nova Launcher -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.teslacoilsw.launcher.THEME" />
@@ -138,7 +145,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.lge.launcher2.THEME" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <!-- OnePlus Launcher -->
@@ -158,7 +164,6 @@
                 <action android:name="ginlemon.smartlauncher.BUBBLEICONS" />
                 <action android:name="ginlemon.smartlauncher.CLOCKS" />
                 <action android:name="ginlemon.smartlauncher.CLOCKFONTS" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <!-- Solo Launcher -->
@@ -176,7 +181,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.tsf.shell.themes" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <!-- Turbo Launcher -->
@@ -200,7 +204,6 @@
                 <action android:name="mobi.bbase.ahome.THEME" />
                 <action android:name="com.rogro.GDE.THEME.1" />
                 <action android:name="com.android.dxtop.launcher.THEME" />
-
                 <category android:name="com.fede.launcher.THEME_ICONPACK" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -208,23 +211,25 @@
                 <action android:name="org.adw.launcher.icons.ACTION_PICK_ICON" />
                 <action android:name="mobi.bbase.ahome.THEME" />
                 <action android:name="com.rogro.GDE.THEME.1" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
                 <action android:name="cdproductions.crazyicons.TWO" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <!-- Theme Manager -->
             <intent-filter>
                 <action android:name="com.daeva112.manager.MAIN" />
-
                 <category android:name="com.daeva112.manager.THEME" />
             </intent-filter>
             <intent-filter>
                 <category android:name="android.intent.category.INFO" />
             </intent-filter>
+
+            <!-- Optional TV banner -->
+            <meta-data
+                android:name="com.google.android.tv.banner"
+                android:resource="@drawable/tv_banner" />
         </activity>
 
         <!-- DO NOT REMOVE !!! -->
@@ -260,8 +265,6 @@
         </provider>
 
         <!-- TODO: Remove comment marks to enable Kustom Skins
-        * Remove intent-filter action lines according to your needs.
-		* If you're not going to provide one of the options, remove its respective line.
         <provider
                 android:name="org.kustom.api.Provider"
                 android:authorities="${applicationId}.kustom.provider"
@@ -283,3 +286,5 @@
         -->
     </application>
 </manifest>
+
+
