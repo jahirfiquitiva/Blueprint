@@ -3,6 +3,7 @@ package dev.jahir.blueprint.data.viewmodels
 import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
@@ -140,19 +141,23 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    internal fun getPackagesList(tvPackages: Boolean = false): List<ResolveInfo> {
+        return try {
+            context.packageManager.queryIntentActivitiesCompat(
+                Intent(Intent.ACTION_MAIN).addCategory(if (tvPackages) Intent.CATEGORY_LEANBACK_LAUNCHER else Intent.CATEGORY_LAUNCHER),
+                PackageManager.GET_RESOLVED_FILTER
+            )
+        } catch (e: Exception) {
+            ArrayList()
+        }
+    }
+
     private suspend fun loadAppsToRequest(debug: Boolean = true): ArrayList<RequestApp> {
         if (appsToRequest.isNotEmpty()) return appsToRequest
         return withContext(IO) {
             val installedApps = ArrayList<RequestApp>()
 
-            val packagesList = try {
-                context.packageManager.queryIntentActivitiesCompat(
-                    Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER),
-                    PackageManager.GET_RESOLVED_FILTER
-                )
-            } catch (e: Exception) {
-                ArrayList()
-            }
+            val packagesList = getPackagesList(context.isRunningOnTv())
 
             var loaded = 0
             var filtered = 0
