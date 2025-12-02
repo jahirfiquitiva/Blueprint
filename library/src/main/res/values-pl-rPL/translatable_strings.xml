@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
-    <string name="home">Home</string>
+    <string name="home">Start</string>
     <string name="icons">Ikony</string>
     <string name="request">Prośba</string>
     <string name="overview">Podsumowanie</string>
     <string name="more_apps">Więcej aplikacji</string>
     <string name="useful_links">Linki</string>
+    <string name="menu">Menu</string>
     <string name="select_all">Wybierz wszystko</string>
     <string name="help">Pomoc</string>
     <string name="x_icons">Ilość ikon - %1$s</string>
