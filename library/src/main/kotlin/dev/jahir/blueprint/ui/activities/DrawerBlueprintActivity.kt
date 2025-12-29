@@ -74,7 +74,7 @@ abstract class DrawerBlueprintActivity : BlueprintActivity(),
         headerDrawable?.let { header?.background = it }
             ?: header?.setBackgroundColor(
                 resolveColor(
-                    com.google.android.material.R.attr.colorAccent,
+                    com.google.android.material.R.attr.colorSecondary,
                     color(dev.jahir.frames.R.color.accent)
                 )
             )

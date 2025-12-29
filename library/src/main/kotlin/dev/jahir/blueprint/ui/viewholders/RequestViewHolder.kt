@@ -31,7 +31,7 @@ class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         checkboxView?.isClickable = false
         val color =
             context.resolveColor(
-                if (checked) com.google.android.material.R.attr.colorAccent
+                if (checked) com.google.android.material.R.attr.colorSecondary
                 else android.R.attr.textColorPrimary
             )
         textView?.text = requestApp?.name
