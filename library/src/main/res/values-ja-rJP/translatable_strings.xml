@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
-    <string name="home">Home</string>
+    <string name="home">ホーム</string>
     <string name="icons">Icons</string>
     <string name="request">リクエスト</string>
     <string name="overview">概要</string>
     <string name="more_apps">他のアプリ</string>
     <string name="useful_links">リンク</string>
+    <string name="menu">メニュー</string>
     <string name="select_all">すべて選択</string>
     <string name="help">ヘルプ</string>
     <string name="x_icons">%1$s アイコン</string>
@@ -18,6 +19,7 @@
     <string name="impossible_open_themes">アプリを開くことができません</string>
     <string name="themes_app_not_installed">「テーマ」がインストールされていません。</string>
     <string name="coming_soon">近日公開</string>
+    <string name="direct_apply_not_supported">%1$s は直接的なアイコンの適用をサポートしていません。ランチャー設定から手動で %2$s を適用してみてください。</string>
     <string name="quick_apply">ホームに適用</string>
     <string name="request_x_icons">%1$s 個のアイコンをリクエスト</string>
     <string name="request_icon">アイコンをリクエスト</string>
@@ -54,6 +56,11 @@
     <string name="icon_shape_square">四角</string>
     <string name="icon_shape_teardrop">涙形</string>
     <string name="requests_upload_error">エラーが発生しました。エラー名：“%1$s”。</string>
+    <string name="requests_upload_error_unknown">問題が発生しました。</string>
+    <string name="icon_request_consent_title">同意要件</string>
+    <string name="icon_request_consent_accept">同意する</string>
+    <string name="icon_request_consent_deny">拒否</string>
+    <string name="icon_request_consent">%1$s は、インストールされているアプリや画面サイズ、 Android バージョンなどの端末の詳細情報を収集します。 このデータは、新しいアイコンを設計し、可能な限り最高のエクスペリエンスを提供するために使用されます。 詳細については、アプリの設定でプライバシーポリシーをご確認ください。</string>
     <!-- HELP SECTION -->
     <string-array name="questions">
         <item>アイコンパックの使い方は？</item>
@@ -62,7 +69,7 @@
         <item>アイコンを別のアイコンに置き換える方法は？</item>
         <item>対応していないアイコンをリクエスト方法は？</item>
         <item>デバイスを再起動した後、アイコンパックが適用されなくなりました。 アイコンはデフォルトに復元されました。</item>
-        <item>Why do icons look pixelated on my device?</item>
+        <item>アイコンがデバイスでピクセル化されているように見えるのはなぜですか？</item>
         <item>Ⅹアプリのアイコンがありますが、アプリには適用されません。</item>
         <item>ストレージの内容を変更または削除する権限が必要な理由は何ですか?</item>
         <item>なぜこのアプリはネットワークにフルアクセスする権限が必要なのでしょうか?</item>
@@ -78,7 +85,7 @@
         <item>使用しているランチャーに応じて、アイコンを長押ししてポップアップメニューから「編集」を選択するか、アイコンを長押しして [編集] ボックスに移動する必要があります。</item>
         <item>アプリのナビゲーションタイプに応じて、ナビゲーションパネルを左からスライドさせて「リクエスト」セクションに移動するか、下部のナビゲーションバーから5番目のアイコンを選択します。</item>
         <item>これは、アイコンパックがSDカードに移動されたために発生しました。内部ストレージにインストールする必要があります。</item>
-        <item>The problem might come with the launcher you are using, when handling big resolution. You can fix it by increasing icon size to 115 – 120%. Or try using another launcher.</item>
+        <item>ランチャーがアイコンの解像度を間違って処理している可能性があります。 アイコンサイズを115%~120%にするか、別のランチャーに切り替えることで修正できます。</item>
         <item>アイコンリクエストを送信します。</item>
         <item>アイコンのリクエストデータやファイルの書き込み、壁紙の保存、壁紙のダウンロード場所の変更ができるようにする必要があります。</item>
         <item>クラウドから壁紙を読み込んでダウンロードできるようにする必要があります。</item>
