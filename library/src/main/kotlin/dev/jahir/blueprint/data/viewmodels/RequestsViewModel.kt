@@ -3,6 +3,7 @@ package dev.jahir.blueprint.data.viewmodels
 import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
@@ -18,6 +19,7 @@ import dev.jahir.blueprint.extensions.blueprintFormat
 import dev.jahir.blueprint.extensions.clean
 import dev.jahir.blueprint.extensions.drawableRes
 import dev.jahir.blueprint.extensions.getLocalizedName
+import dev.jahir.blueprint.extensions.isRunningOnTv
 import dev.jahir.blueprint.extensions.queryIntentActivitiesCompat
 import dev.jahir.frames.extensions.context.getAppName
 import dev.jahir.frames.extensions.context.integer
@@ -139,19 +141,23 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    internal fun getPackagesList(tvPackages: Boolean = false): List<ResolveInfo> {
+        return try {
+            context.packageManager.queryIntentActivitiesCompat(
+                Intent(Intent.ACTION_MAIN).addCategory(if (tvPackages) Intent.CATEGORY_LEANBACK_LAUNCHER else Intent.CATEGORY_LAUNCHER),
+                PackageManager.GET_RESOLVED_FILTER
+            )
+        } catch (e: Exception) {
+            ArrayList()
+        }
+    }
+
     private suspend fun loadAppsToRequest(debug: Boolean = true): ArrayList<RequestApp> {
         if (appsToRequest.isNotEmpty()) return appsToRequest
         return withContext(IO) {
             val installedApps = ArrayList<RequestApp>()
 
-            val packagesList = try {
-                context.packageManager.queryIntentActivitiesCompat(
-                    Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER),
-                    PackageManager.GET_RESOLVED_FILTER
-                )
-            } catch (e: Exception) {
-                ArrayList()
-            }
+            val packagesList = getPackagesList(context.isRunningOnTv())
 
             var loaded = 0
             var filtered = 0
@@ -203,7 +209,9 @@ class RequestsViewModel(application: Application) : AndroidViewModel(application
             delay(10)
             val appsToRequest = loadAppsToRequest(debug)
             appsToRequestData.postValue(appsToRequest)
-            appsToRequest.forEach { it.loadIcon(context) }
+            val preferBannerAppSetting = context.integer(R.integer.prefer_banner_for_icon_request, 0)
+            val preferBanner = preferBannerAppSetting == 2 || (preferBannerAppSetting == 0 && context.isRunningOnTv())
+            appsToRequest.forEach { it.loadIcon(context, preferBanner) }
         }
     }
 

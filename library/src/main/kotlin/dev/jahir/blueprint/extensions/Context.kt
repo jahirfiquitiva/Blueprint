@@ -1,7 +1,10 @@
 package dev.jahir.blueprint.extensions
 
 import android.annotation.SuppressLint
+import android.app.UiModeManager
 import android.content.Context
+import android.content.pm.PackageManager
+import android.content.res.Configuration
 import androidx.annotation.DrawableRes
 import dev.jahir.blueprint.R
 import dev.jahir.frames.extensions.resources.lower
@@ -15,6 +18,19 @@ fun Context.drawableRes(name: String): Int =
     } catch (e: Exception) {
         0
     }
+
+fun Context.isRunningOnTv(): Boolean {
+    // Detects if the device is a TV via UiModeManager
+    val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+    val isTvMode = uiModeManager.currentModeType == Configuration.UI_MODE_TYPE_TELEVISION
+
+    // Some TVs might not properly set the UI mode
+    // So we check for the LEANBACK feature and the absence of TOUCHSCREEN
+    val hasTouchscreen = packageManager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)
+    val hasLeanback = packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
+
+    return isTvMode || (hasLeanback && !hasTouchscreen)
+}
 
 internal fun Context.getLocalizedName(packageName: String, defaultName: String): String {
     var appName: String? = null
