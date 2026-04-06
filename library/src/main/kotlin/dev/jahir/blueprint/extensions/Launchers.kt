@@ -49,6 +49,7 @@ fun Context.executeLauncherIntent(launcher: Launcher?) {
         Launcher.SOLO -> executeSoloLauncherIntent()
         Launcher.SQUARE -> executeSquareHomeIntent()
         Launcher.TSF -> executeTsfLauncherIntent()
+        Launcher.YASAN -> executeYasanLauncherIntent()
         else -> showLauncherApplyError()
     }
 }
@@ -357,6 +358,14 @@ private fun Context.executeTsfLauncherIntent() {
             val tsf = Intent("android.action.MAIN")
             tsf.component = ComponentName("com.tsf.shell", "com.tsf.shelShellActivity")
             sendBroadcast(tsf)
+        }
+    }
+}
+
+private fun Context.executeYasanLauncherIntent() {
+    attemptApply(Launcher.YASAN) {
+        Intent("yasan.space.mnml.ai.launcher.APPLY_ICONS").apply {
+            putExtra("packageName", packageName)
         }
     }
 }
