@@ -8,9 +8,9 @@ import android.os.Environment
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
-import com.google.gson.GsonBuilder
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.RequestApp
+import dev.jahir.blueprint.data.models.RequestManagerResponse
 import dev.jahir.blueprint.data.requests.RequestStateManager.getRequestState
 import dev.jahir.blueprint.data.requests.RequestStateManager.registerRequestAttempt
 import dev.jahir.blueprint.extensions.EmailBuilder
@@ -28,14 +28,16 @@ import dev.jahir.frames.extensions.resources.hasContent
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.Headers.Companion.headersOf
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import retrofit2.HttpException
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 import java.io.File
 import java.net.URLConnection
 import java.text.SimpleDateFormat
@@ -44,17 +46,59 @@ import java.util.Locale
 
 object SendIconRequest {
     private var requestInProgress: Boolean = false
-    private var SERVICE: RequestManagerService? = null
+    private val httpClient: OkHttpClient by lazy { OkHttpClient() }
 
-    private fun getService(baseUrl: String) =
-        SERVICE ?: Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build().create(RequestManagerService::class.java)
-            .also {
-                SERVICE = it
-            }
+    /**
+     * Builds the same multipart request the request manager received from the former Retrofit
+     * service, including the headers its scalars converter added to the "apps" part
+     */
+    internal fun buildRequestManagerRequest(
+        baseUrl: String,
+        apiKey: String,
+        apps: String,
+        archive: MultipartBody.Part
+    ): Request {
+        val requestUrl = "${baseUrl.removeSuffix("/")}/v1/request"
+        val appsPart = MultipartBody.Part.create(
+            headersOf(
+                "Content-Disposition", "form-data; name=\"apps\"",
+                "Content-Transfer-Encoding", "binary"
+            ),
+            apps.toRequestBody("text/plain; charset=UTF-8".toMediaType())
+        )
+        val body = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addPart(appsPart)
+            .addPart(archive)
+            .build()
+        return Request.Builder()
+            .url(requestUrl)
+            .header("Accept", "application/json")
+            .header("User-Agent", "afollestad/icon-request")
+            .header("TokenID", apiKey)
+            .post(body)
+            .build()
+    }
+
+    private fun postToRequestManager(
+        baseUrl: String,
+        apiKey: String,
+        apps: String,
+        archive: MultipartBody.Part
+    ): RequestManagerResponse {
+        val request = buildRequestManagerRequest(baseUrl, apiKey, apps, archive)
+        return httpClient.newCall(request).execute().use { response ->
+            // Retrofit's HttpException.message() is the HTTP status text
+            if (!response.isSuccessful) throw RequestManagerException(response.message)
+            val json = JSONObject(response.body?.string().orEmpty())
+            RequestManagerResponse(json.stringOrNull("status"), json.stringOrNull("message"))
+        }
+    }
+
+    private fun JSONObject.stringOrNull(key: String): String? =
+        if (isNull(key)) null else optString(key)
+
+    private class RequestManagerException(message: String) : Exception(message)
 
     private fun getRequestsLocationPath(basePath: File?, context: Context?): String? {
         basePath ?: return null
@@ -289,12 +333,10 @@ object SendIconRequest {
                 MultipartBody.Part.createFormData("archive", zipFile.name, requestBody)
             var succeeded = false
             val message = try {
-                getService(baseUrl).uploadRequest(apiKey, jsonContent, fileToUpload).let {
+                postToRequestManager(baseUrl, apiKey, jsonContent, fileToUpload).let {
                     succeeded = it.status != "error"
                     it.message
                 }
-            } catch (e: HttpException) {
-                e.message()
             } catch (e: Exception) {
                 e.message
             }
