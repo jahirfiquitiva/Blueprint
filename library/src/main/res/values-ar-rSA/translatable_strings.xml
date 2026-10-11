@@ -14,7 +14,6 @@
     <string name="search_launchers">البحث في المشغلات</string>
     <string name="lni_content">\"%1$s\" ليس مثبتاً. هل تريد الحصول عليه من Google Play؟</string>
     <string name="no_compatible_launcher_title">المشغل غير متوافق</string>
-    <string name="no_compatible_launcher_content">\"Google Now Launcher\" لا يدعم حزم الأيقونات بدون \"Awesome Shortcuts\". هل تريد تثبيته؟</string>
     <string name="impossible_open_themes">لا يمكن فتح التطبيق</string>
     <string name="themes_app_not_installed">\"Themes\" ليس مثبتاً.</string>
     <string name="coming_soon">قريباً.</string>

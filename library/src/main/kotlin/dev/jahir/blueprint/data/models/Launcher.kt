@@ -14,7 +14,9 @@ enum class Launcher(
     val appName: String,
     val packageNames: Array<String>,
     @DrawableRes val icon: Int,
-    val isActuallySupported: Boolean = true
+    val isActuallySupported: Boolean = true,
+    // No longer on the Play Store, so it is only listed for people who still have it installed
+    val showOnlyIfInstalled: Boolean = false
 ) {
     ACTION(
         "action",
@@ -22,10 +24,28 @@ enum class Launcher(
         arrayOf("com.actionlauncher.playstore"),
         R.drawable.ic_action
     ),
-    ADW("adw", "ADW Launcher", arrayOf("org.adw.launcher"), R.drawable.ic_adw),
-    ADW_EX("adwex", "ADW Ex Launcher", arrayOf("org.adwfreak.launcher"), R.drawable.ic_adw_ex),
+    ADW(
+        "adw",
+        "ADW Launcher",
+        arrayOf("org.adw.launcher"),
+        R.drawable.ic_adw,
+        showOnlyIfInstalled = true
+    ),
+    ADW_EX(
+        "adwex",
+        "ADW Ex Launcher",
+        arrayOf("org.adwfreak.launcher"),
+        R.drawable.ic_adw_ex,
+        showOnlyIfInstalled = true
+    ),
     AIO("aio", "AIO Launcher", arrayOf("ru.execbit.aiolauncher"), R.drawable.ic_aio),
-    APEX("apex", "Apex Launcher", arrayOf("com.anddoes.launcher"), R.drawable.ic_apex),
+    APEX(
+        "apex",
+        "Apex Launcher",
+        arrayOf("com.anddoes.launcher"),
+        R.drawable.ic_apex,
+        showOnlyIfInstalled = true
+    ),
     GIP("gip", "Global Icon Pack", arrayOf("com.richardluo.globalIconPack"), R.drawable.ic_gip),
     GO("go", "Go Launcher", arrayOf("com.gau.go.launcherex"), R.drawable.ic_go),
     GOOGLE_NOW(
@@ -35,18 +55,26 @@ enum class Launcher(
         R.drawable.ic_google_now,
         false
     ),
-    HOLO("holo", "Holo Launcher", arrayOf("com.mobint.hololauncher"), R.drawable.ic_holo),
+    HOLO(
+        "holo",
+        "Holo Launcher",
+        arrayOf("com.mobint.hololauncher"),
+        R.drawable.ic_holo,
+        showOnlyIfInstalled = true
+    ),
     HOLO_ICS(
         "holoics",
         "Holo Launcher ICS",
         arrayOf("com.mobint.hololauncher.hd"),
-        R.drawable.ic_holo_ics
+        R.drawable.ic_holo_ics,
+        showOnlyIfInstalled = true
     ),
     LG_HOME("lg", "LG Home", arrayOf("com.lge.launcher2"), R.drawable.ic_lg_home),
     LAWNCHAIR(
         "lawnchair",
         "Lawnchair",
         arrayOf(
+            "app.lawnchair.play",
             "ch.deletescape.lawnchair.plah",
             "ch.deletescape.lawnchair",
             "ch.deletescape.lawnchair.ci",
@@ -83,23 +111,42 @@ enum class Launcher(
         R.drawable.ic_pixel,
         false
     ),
-    POSIDON("posidon", "Posidon Launcher", arrayOf("posidon.launcher"), R.drawable.ic_posidon),
+    POSIDON(
+        "posidon",
+        "Posidon Launcher",
+        arrayOf("posidon.launcher"),
+        R.drawable.ic_posidon,
+        showOnlyIfInstalled = true
+    ),
     PROJECTIVY("projectivy", "Projectivy Launcher", arrayOf("com.spocky.projengmenu"), R.drawable.ic_projectivy),
     SMART("smart", "Smart Launcher", arrayOf("ginlemon.flowerfree"), R.drawable.ic_smart),
     SMART_PRO(
         "smartpro",
         "Smart Launcher Pro",
         arrayOf("ginlemon.flowerpro"),
-        R.drawable.ic_smart_pro
+        R.drawable.ic_smart_pro,
+        showOnlyIfInstalled = true
     ),
-    SOLO("solo", "Solo Launcher", arrayOf("home.solo.launcher.free"), R.drawable.ic_solo),
+    SOLO(
+        "solo",
+        "Solo Launcher",
+        arrayOf("home.solo.launcher.free"),
+        R.drawable.ic_solo,
+        showOnlyIfInstalled = true
+    ),
     SQUARE(
         "square",
         "Square Home Launcher",
         arrayOf("com.ss.squarehome2"),
         R.drawable.ic_square_home
     ),
-    TSF("tsf", "TSF Launcher", arrayOf("com.tsf.shell"), R.drawable.ic_tsf);
+    TSF(
+        "tsf",
+        "TSF Launcher",
+        arrayOf("com.tsf.shell"),
+        R.drawable.ic_tsf,
+        showOnlyIfInstalled = true
+    );
 
     val cleanAppName: String
         get() = appName.replace("launcher", "", true).clean().blueprintFormat()
@@ -120,8 +167,9 @@ enum class Launcher(
                 context?.stringArray(R.array.supported_launchers).orEmpty()
             val default = values().sortedBy { it.appName }
                 .filter { def -> actuallySupportedLaunchers.any { sup -> sup == def.key } }
-            val pairs =
-                default.map { Pair(it, it.isInstalled(context)) }.sortedByDescending { it.second }
+            val pairs = default.map { Pair(it, it.isInstalled(context)) }
+                .filter { (launcher, installed) -> installed || !launcher.showOnlyIfInstalled }
+                .sortedByDescending { it.second }
             return ArrayList(pairs)
         }
     }

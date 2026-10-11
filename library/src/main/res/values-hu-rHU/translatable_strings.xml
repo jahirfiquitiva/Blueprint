@@ -12,7 +12,6 @@
     <string name="search_icons">Ikonok keresése…</string>
     <string name="lni_content">%1$s jelenleg nincs telepítve az eszközön. \nSzeretnéd telepíteni a Google Play áruházból?</string>
     <string name="no_compatible_launcher_title">Ez az indító NEM kompatibilis</string>
-    <string name="no_compatible_launcher_content">Ez az indító NEM kompatibilis SEMELYIK ikon csomaggal, ezért nem tudod használni a csomagot ebben az indítóban. Kérlek ne értékeld le az ikon csomagot emiatt. Van egy megoldás, amit ki tudsz próbálni, de ehhez szükséged lesz egy másik alkalmazásra. Szeretnéd letölteni?</string>
     <string name="impossible_open_themes">Nem lehetséges a témák megnyitása. </string>
     <string name="themes_app_not_installed">A témák nincsenek telepítve az eszközre. </string>
     <string name="coming_soon">Hamarosan</string>

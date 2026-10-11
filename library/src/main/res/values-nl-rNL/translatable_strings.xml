@@ -15,7 +15,6 @@
     <string name="search_launchers">Zoekstarters</string>
     <string name="lni_content">%1$s is momenteel niet geïnstalleerd op je apparaat.\nWil je het installeren vanuit de Google Play Store?</string>
     <string name="no_compatible_launcher_title">Deze launcher is NIET compatibel</string>
-    <string name="no_compatible_launcher_content">Deze launcher is niet compatibel met alle beschikbare Icon Packs en dus is dit icon pack niet te gebruiken met deze launcher. Beoordeel alsjeblieft deze icon pack hierom niet negatief. Er is een oplossing die je zelf kunt proberen, maar het vereist het gebruik van een externe app. Wil je deze downloaden?</string>
     <string name="impossible_open_themes">Onmogelijk om themes app te openen</string>
     <string name="themes_app_not_installed">Themes app is niet geïnstalleerd op dit apparaat</string>
     <string name="coming_soon">Binnenkort beschikbaar</string>

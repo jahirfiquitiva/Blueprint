@@ -14,7 +14,6 @@
     <string name="search_launchers">Cerca Launcher</string>
     <string name="lni_content">“%1$s” non è installato. Vuoi scaricarlo da Google Play?</string>
     <string name="no_compatible_launcher_title">Launcher Incompatibile</string>
-    <string name="no_compatible_launcher_content">“Google Now Launcher” non supporta i pacchetti di icone, a meno che non venga usato con “Awesome Shortcuts.” Lo vuoi installare?</string>
     <string name="impossible_open_themes">Impossibile Aprire L\'app</string>
     <string name="themes_app_not_installed">“Temi” non è installato.</string>
     <string name="coming_soon">Prossimamente.</string>

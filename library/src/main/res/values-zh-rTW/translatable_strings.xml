@@ -4,7 +4,6 @@
     <string name="useful_links">相關連結</string>
     <string name="lni_content">%1$s 當前未安裝在您的設備上。\n您想從 google play 商店安裝它嗎？</string>
     <string name="no_compatible_launcher_title">此啟動器不相容</string>
-    <string name="no_compatible_launcher_content">此啟動器與任何圖示包均不相容, 因此不能將此圖示包與此啟動器一起使用。請不要因為這個原因而對圖示包給予負面評價。若您願意嘗試, 有一個解決方案，但需要使用一個外部應用程式. 你想下載它嗎？</string>
     <string name="impossible_open_themes">無法打開主題應用程式</string>
     <string name="themes_app_not_installed">此設備中未安裝主題應用程式</string>
     <string name="coming_soon">即將推出</string>

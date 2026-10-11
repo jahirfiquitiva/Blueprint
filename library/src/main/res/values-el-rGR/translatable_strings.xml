@@ -14,7 +14,6 @@
     <string name="search_launchers">Αναζήτηση Launcher</string>
     <string name="lni_content">“%1$s” δεν είναι εγκατεστημένο. Θέλετε να το αποκτήσετε από το Google Play;</string>
     <string name="no_compatible_launcher_title">Μη συμβατός Launcher</string>
-    <string name="no_compatible_launcher_content">Ο “Google Now Launcher” δεν υποστηρίζει πακέτα εικονιδίων, εκτός αν χρησιμοποιείται σε συνδυασμό με το “Awesome Shortcuts.” Επιθυμείτε να το εγκαταστήσετε;</string>
     <string name="impossible_open_themes">Αδυναμία Εκκίνησης Εφαρμογής</string>
     <string name="themes_app_not_installed">Το \"Themes\" δεν είναι εγκατεστημένο.</string>
     <string name="coming_soon">Προσεχώς</string>

@@ -4,7 +4,6 @@
     <string name="useful_links">उपयोगी कड़ियां</string>
     <string name="lni_content">%1$s वर्तमान में आपके डिवाइस पर स्थापित नहीं है. \n क्या आप इसे गूगल प्ले स्टोर से इंस्टॉल करना पसंद करते हैं?</string>
     <string name="no_compatible_launcher_title">इस लांचर संगत नहीं है</string>
-    <string name="no_compatible_launcher_content">इस लांचर किसी भी आइकन पैक के साथ संगत नहीं है और इसलिए आप इस लांचर के साथ इस आइकन पैक का उपयोग नहीं कर सकते. कृपया इस कारण के लिए आइकन पैक दर नहीं है । वहां एक समाधान है कि आप अपने आप के लिए कोशिश कर सकते हैं, लेकिन यह एक बाहरी अनुप्रयोग के उपयोग की आवश्यकता है । क्या आप इसे डाउनलोड करना चाहेंगे?</string>
     <string name="impossible_open_themes">थीम्स एप्लिकेशन को खोलने के लिए असंभव</string>
     <string name="themes_app_not_installed">विषयवस्तु अनुप्रयोग इस डिवाइस में स्थापित नहीं है</string>
     <string name="coming_soon">जल्द आ रहा है</string>

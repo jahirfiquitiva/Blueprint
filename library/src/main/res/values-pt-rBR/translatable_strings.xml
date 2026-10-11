@@ -15,7 +15,6 @@
     <string name="search_launchers">Search Launchers</string>
     <string name="lni_content">%1$s atualmente não está instalado no seu dispositivo. \nGostaria de instalá-lo?</string>
     <string name="no_compatible_launcher_title">Este launcher NÃO é compatível</string>
-    <string name="no_compatible_launcher_content">Este launcher NÃO é compatível com NENHUM Pacote de ícones e, portanto, você não pode usar este pacote de ícones com este launcher. Por favor, não classifique o pacote de ícones negativamente por esse motivo. Existe uma solução que você pode tentar por si mesmo, mas requer o uso de um aplicativo externo. Gostaria de baixá-lo?</string>
     <string name="impossible_open_themes">Impossível abrir o app de temas</string>
     <string name="themes_app_not_installed">O aplicativo Temas não está instalado neste dispositivo</string>
     <string name="coming_soon">Em breve</string>

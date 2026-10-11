@@ -14,7 +14,6 @@
     <string name="search_launchers">Поиск лаунчера</string>
     <string name="lni_content">“%1$s” не установлен. Хотите установить его из Google Play?</string>
     <string name="no_compatible_launcher_title">Браузер несовместим</string>
-    <string name="no_compatible_launcher_content">«Google Now Launcher» не поддерживает наборы значков, пока не будет связан с «Awesome Shortcuts». Установить?</string>
     <string name="impossible_open_themes">Не удалось открыть приложение</string>
     <string name="themes_app_not_installed">«Темы» не установлены.</string>
     <string name="coming_soon">Скоро.</string>

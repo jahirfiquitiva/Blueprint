@@ -21,7 +21,7 @@ import dev.jahir.kuper.extensions.isAppInstalled
 fun Context.executeLauncherIntent(launcher: Launcher?) {
     launcher ?: return
     if (!launcher.isActuallySupported) {
-        executeIconPacksNotSupportedIntent()
+        showIconPacksNotSupportedDialog(launcher)
         return
     }
     when (launcher) {
@@ -53,15 +53,12 @@ fun Context.executeLauncherIntent(launcher: Launcher?) {
     }
 }
 
-private fun Context.executeIconPacksNotSupportedIntent() {
+private fun Context.showIconPacksNotSupportedDialog(launcher: Launcher) {
     try {
         mdDialog {
             title(R.string.no_compatible_launcher_title)
-            message(R.string.no_compatible_launcher_content)
-            positiveButton(android.R.string.ok) {
-                openLink(PLAY_STORE_LINK_PREFIX + "com.momocode.shortcuts")
-            }
-            negativeButton(android.R.string.cancel)
+            message(getString(R.string.launcher_icon_packs_not_supported, launcher.appName))
+            positiveButton(android.R.string.ok)
         }.show()
     } catch (_: Exception) {
     }

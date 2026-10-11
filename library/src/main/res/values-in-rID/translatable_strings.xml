@@ -14,7 +14,6 @@
     <string name="search_launchers">Cari Peluncur</string>
     <string name="lni_content">%1$s tidak terpasang. Apakah Anda ingin mendapatkannya di Google Play?</string>
     <string name="no_compatible_launcher_title">Peluncur tidak kompatibel</string>
-    <string name="no_compatible_launcher_content">“Peluncur Google Now\" tidak mendukung paket ikon kecuali dipasangkan dengan “Awesome Shortcuts.” pasang nanti?</string>
     <string name="impossible_open_themes">Tidak dapat membuka Aplikasi</string>
     <string name="themes_app_not_installed">“Tema” tidak terpasang.</string>
     <string name="coming_soon">Segera hadir.</string>
