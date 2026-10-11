@@ -4,7 +4,7 @@ package dev.jahir.blueprint.app
 import android.content.Context
 import com.onesignal.OSNotificationReceivedEvent
 import com.onesignal.OneSignal.OSRemoteNotificationReceivedHandler
-import dev.jahir.kuper.app.R
+import dev.jahir.blueprint.app.R
 import dev.jahir.frames.extensions.context.color
 import dev.jahir.frames.extensions.context.hasNotificationsPermission
 import dev.jahir.frames.extensions.context.preferences
@@ -25,6 +25,7 @@ class NotificationServiceExtension : OSRemoteNotificationReceivedHandler {
                 color = context.color(R.color.accent)
                 setSmallIcon(R.drawable.ic_notification)
             }
+        }
         notificationReceivedEvent.complete(mutableNotification)
     }
 }
