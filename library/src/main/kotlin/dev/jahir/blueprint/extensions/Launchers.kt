@@ -96,17 +96,24 @@ private fun Context.showLauncherApplyError(
     }
 }
 
+/**
+ * Starts the [intent] for [launcher]. If it is null or fails, tries [fallbackIntent], and shows
+ * the apply error only when both fail
+ */
 private fun Context.attemptApply(
     launcher: Launcher?,
     customContent: String? = null,
+    fallbackIntent: (() -> Intent?)? = null,
     intent: (() -> Intent?)? = null
 ) {
-    try {
-        intent?.invoke()?.let { startActivity(it) }
-            ?: showLauncherApplyError(launcher, customContent)
-    } catch (e: Exception) {
-        showLauncherApplyError(launcher, customContent)
+    val started = listOfNotNull(intent, fallbackIntent).any { buildIntent ->
+        try {
+            buildIntent()?.let { startActivity(it) } != null
+        } catch (_: Exception) {
+            false
+        }
     }
+    if (!started) showLauncherApplyError(launcher, customContent)
 }
 
 private fun Context.executeActionLauncherIntent() {
@@ -368,14 +375,18 @@ private fun Context.executeYasanLauncherIntent() {
 }
 
 private fun Context.executeMotoLauncherIntent() {
-    attemptApply(Launcher.MOTO) {
-        Intent().apply {
-            component = ComponentName(
-                "com.motorola.personalize",
-                "com.motorola.personalize.app.IconPacksActivity"
-            )
-            putExtra("package", packageName)
-        }
+    val intent = Intent().apply {
+        component = ComponentName(
+            "com.motorola.personalize",
+            "com.motorola.personalize.app.IconPacksActivity"
+        )
+        putExtra("package", packageName)
+    }
+    // Since Android 14, an intent without an action matches none of the target's intent
+    // filters, so newer Moto builds only open this screen with the MAIN action. The intent
+    // without an action stays as the fallback older builds were opened with
+    attemptApply(Launcher.MOTO, fallbackIntent = { intent }) {
+        Intent(intent).setAction(Intent.ACTION_MAIN)
     }
 }
 

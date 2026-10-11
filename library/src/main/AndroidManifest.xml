@@ -65,6 +65,10 @@
         <package android:name="org.kustom.lockscreen" />
         <package android:name="org.kustom.lockscreen.pro" />
         <package android:name="com.arun.themeutil.kolorette" />
+        <!-- Moto's icon packs screen is not a launcher, so it is only visible if listed here -->
+        <package android:name="com.motorola.launcher3" />
+        <package android:name="com.motorola.personalize" />
+        <package android:name="com.motorola.moto.overlay.personalizelauncher" />
 
         <intent>
             <action android:name="android.intent.action.MAIN" />
