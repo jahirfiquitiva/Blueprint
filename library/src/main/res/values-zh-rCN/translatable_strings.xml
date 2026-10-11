@@ -93,4 +93,5 @@
         <item>需要能够根据您设备的屏幕分辨率来调整壁纸尺寸。</item>
         <item>这是 Muzei 动态壁纸所需要的。</item>
     </string-array>
+    <string name="templates">模板</string>
 </resources>

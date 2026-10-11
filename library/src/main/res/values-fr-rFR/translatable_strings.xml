@@ -87,4 +87,5 @@
         <item>C\'est nécessaire pour pouvoir ajuster les dimensions du fond d\'écran en fonction de la résolution de votre écran.</item>
         <item>C\'est nécessaire pour Muzei Live Wallpaper.</item>
     </string-array>
+    <string name="templates">Templates</string>
 </resources>

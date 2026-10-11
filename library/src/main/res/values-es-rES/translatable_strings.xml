@@ -94,4 +94,5 @@
         <item>Es necesario para poder ajustar las dimensiones de los fondos de pantalla en función de la resolución de tu pantalla.</item>
         <item>Es necesario para Muzei Live Wallpaper.</item>
     </string-array>
+    <string name="templates">Plantillas</string>
 </resources>

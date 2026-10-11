@@ -93,4 +93,5 @@
         <item>È necessario per poter regolare la dimensione degli sfondi in base alla risoluzione del tuo schermo.</item>
         <item>È richiesto per Muzei Live Wallpaper.</item>
     </string-array>
+    <string name="templates">Modelli</string>
 </resources>

@@ -26,4 +26,5 @@
     <string name="days">天</string>
     <string name="weeks">週</string>
     <string name="months">月</string>
+    <string name="templates">模板</string>
 </resources>

@@ -94,4 +94,5 @@
         <item>To jest wymagane, aby móc dostosować wymiary tapety w oparciu o rozdzielczość ekranu.</item>
         <item>To jest wymagane przez Muzei Live Wallpaper.</item>
     </string-array>
+    <string name="templates">Szablony</string>
 </resources>

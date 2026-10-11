@@ -87,4 +87,5 @@
         <item>Diese wird verwendet, um die Größe des Hintergrundbildes an deine Bildschirmauflösung anzupassen.</item>
         <item>Dies wird von „Muzei Live Wallpaper” benötigt.</item>
     </string-array>
+    <string name="templates">Vorlagen</string>
 </resources>

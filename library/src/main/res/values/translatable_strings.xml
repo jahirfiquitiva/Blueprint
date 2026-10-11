@@ -96,4 +96,5 @@
         <item>It’s needed to adjust the dimensions of wallpapers based on the resolution of your device’s screen.</item>
         <item>It’s needed by Muzei Live Wallpaper.</item>
     </string-array>
+    <string name="templates">Templates</string>
 </resources>

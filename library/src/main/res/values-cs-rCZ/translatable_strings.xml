@@ -94,4 +94,5 @@
         <item>Toto oprávnění umožňuje upravit rozměry tapety na základě rozlišení vaší obrazovky.</item>
         <item>Toto oprávnění je vyžadováno aplikací Muzei Live Wallpaper.</item>
     </string-array>
+    <string name="templates">Šablony</string>
 </resources>

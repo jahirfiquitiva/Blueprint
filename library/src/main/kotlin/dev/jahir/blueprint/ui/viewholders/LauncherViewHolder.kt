@@ -5,7 +5,9 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
+import coil3.asDrawable
+import coil3.load
+import coil3.request.target
 import dev.jahir.blueprint.R
 import dev.jahir.blueprint.data.models.Launcher
 import dev.jahir.blueprint.extensions.bnwFilter
@@ -32,7 +34,7 @@ class LauncherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         )
         iconView?.load(launcher.icon) {
             target {
-                iconView?.setImageDrawable(it)
+                iconView?.setImageDrawable(it.asDrawable(context.resources))
                 iconView?.colorFilter = if (!isInstalled) colorFilter else null
                 iconView?.alpha = if (isInstalled) 1.0F else 0.8F
             }
