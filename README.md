@@ -40,7 +40,7 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/4.png?maxAge=0" height="350"/>
 </p>
 
-### Wallpapers support (Based on [Frames](https://github.com/jahirfiquitiva/Frames)) / Templates support (Based on [Kuper](https://github.com/Kuper))
+### Wallpapers support (Based on [Frames](https://github.com/jahirfiquitiva/Frames)) / Templates support (Based on [Kuper](https://github.com/jahirfiquitiva/Kuper))
 <p align="center">
 <img src="https://github.com/jahirfiquitiva/Blueprint/raw/master/art/3.png?maxAge=0" height="350"/>
 <img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/4.png" height="350"/>
