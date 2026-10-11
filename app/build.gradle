@@ -1,7 +1,11 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'com.google.devtools.ksp'
+
+// Names the APK "<applicationId>-v<versionName>-<variant>.apk"
+base {
+    archivesName = "${Blueprint.appId}-v${Blueprint.versionName}"
+}
 
 android {
     signingConfigs {
@@ -36,7 +40,6 @@ android {
         targetSdkVersion Versions.targetSdk
         versionCode Blueprint.version
         versionName Blueprint.versionName
-        setProperty("archivesBaseName", applicationId + "-" + versionName)
         vectorDrawables.useSupportLibrary = true
 
         ksp {
@@ -60,10 +63,6 @@ android {
         }
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
     packagingOptions {
         resources {
             pickFirsts += [
@@ -78,10 +77,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = '17'
     }
 
     buildFeatures {

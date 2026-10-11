@@ -2,14 +2,15 @@ group = 'dev.jahir'
 
 // build a jar with source files
 task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
+    from android.sourceSets.main.java.directories
+    from android.sourceSets.main.kotlin.directories
     archiveClassifier.set('sources')
 }
 
 task javadoc(type: Javadoc) {
     failOnError false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    source = android.sourceSets.main.java.directories
+    classpath += project.files(androidComponents.sdkComponents.bootClasspath)
     // classpath += configurations.compile
 }
 

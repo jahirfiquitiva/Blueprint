@@ -12,6 +12,8 @@ buildscript {
 
     dependencies {
         classpath Plugins.android
+        // AGP 9.4 uses Kotlin 2.2 by default, which cannot read the Kotlin 2.4 metadata
+        // in current AndroidX (core 1.18, lifecycle 2.11). Remove once AGP ships 2.3 or newer
         classpath Plugins.kotlin
         classpath Plugins.sonatype
         classpath Plugins.ksp
