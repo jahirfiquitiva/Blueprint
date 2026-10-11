@@ -99,7 +99,13 @@ enum class Launcher(
         arrayOf("com.ss.squarehome2"),
         R.drawable.ic_square_home
     ),
-    TSF("tsf", "TSF Launcher", arrayOf("com.tsf.shell"), R.drawable.ic_tsf);
+    TSF("tsf", "TSF Launcher", arrayOf("com.tsf.shell"), R.drawable.ic_tsf),
+    YASAN(
+        "yasan",
+        "Yasan Launcher",
+        arrayOf("yasan.space.mnml.ai.launcher"),
+        R.drawable.ic_yasan
+    );
 
     val cleanAppName: String
         get() = appName.replace("launcher", "", true).clean().blueprintFormat()
