@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-parcelize'
-apply plugin: 'com.google.devtools.ksp'
 
 android {
     namespace 'dev.jahir.blueprint'
@@ -26,12 +25,6 @@ android {
         versionName Blueprint.versionName
         vectorDrawables.useSupportLibrary true
         consumerProguardFiles 'proguard-rules.pro'
-
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-            arg("room.incremental", "true")
-            arg("room.expandProjection", "true")
-        }
     }
 
     buildTypes {

@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-parcelize'
-apply plugin: 'com.google.devtools.ksp'
 
 // Names the APK "<applicationId>-v<versionName>-<variant>.apk"
 base {
@@ -58,12 +57,6 @@ android {
         versionCode Blueprint.version
         versionName Blueprint.versionName
         vectorDrawables.useSupportLibrary = true
-
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-            arg("room.incremental", "true")
-            arg("room.expandProjection", "true")
-        }
     }
 
     buildTypes {

@@ -16,7 +16,6 @@ buildscript {
         // in current AndroidX (core 1.18, lifecycle 2.11). Remove once AGP ships 2.3 or newer
         classpath Plugins.kotlin
         classpath Plugins.sonatype
-        classpath Plugins.ksp
     }
 }
 
