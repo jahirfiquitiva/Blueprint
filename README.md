@@ -40,7 +40,7 @@ Free, feature-rich, easily customizable Android dashboard for icon packs
 <img src="/art/4.png" width="162" />
 </p>
 
-### Wallpapers support (Based on [Frames](https://github.com/jahirfiquitiva/Frames)) / Templates support (Based on [Kuper](https://github.com/Kuper))
+### Wallpapers support (Based on [Frames](https://github.com/jahirfiquitiva/Frames)) / Templates support (Based on [Kuper](https://github.com/jahirfiquitiva/Kuper))
 <p align="center">
 <img src="/art/5.png" width="162" />
 <img src="https://github.com/jahirfiquitiva/Kuper/raw/master/art/4.png" width="162" />
