@@ -23,16 +23,14 @@
     <string name="request_x_icons">Richiedi %1$s Icone</string>
     <string name="request_icon">Richiedi Icona</string>
     <string name="request_none">Richiedi Icone</string>
-    <string name="kustom_templates">Modelli Di Kustom</string>
-    <string name="zooper_templates">Modelli Zooper</string>
     <string name="rate">Vota</string>
     <string name="share">Condividi</string>
     <string name="share_text">Scarica %1$s da Google Play: %2$s.</string>
-    <string name="send_email">﻿Invia Email</string>
+    <string name="send_email">Invia Email</string>
     <string name="send_using">Invia Con:</string>
     <string name="request_in_progress">Invio richiesta in corso</string>
     <string name="request_in_progress_content">Una richiesta è già in fase di invio.</string>
-    <string name="building_request_dialog">Preparazione della richiesta...</string>
+    <string name="building_request_dialog">Preparazione della richiesta…</string>
     <string name="request_upload_success_content">Richiesta inviata.</string>
     <string name="no_selected_apps">Nessuna App Selezionata</string>
     <string name="no_selected_apps_content">Seleziona le app per inviare una richiesta.</string>
@@ -84,7 +82,7 @@
         <item>A seconda del launcher che stai usando, o devi tenere premuto l\'icona e selezionare \"Modifica\" dal menu a comparsa, o tenere premuto l\'icona per poi spostarla in una casella di \"Modifica\".</item>
         <item>A seconda del tipo di navigazione dell\'applicazione, è necessario far scorrere il NavigationDrawer da sinistra e andare alla sezione \"Richieste\" o scegliere l\'icona dalla barra di navigazione inferiore.</item>
         <item>È successo perché l\'icon pack è stato spostato nella scheda SD, dovresti installarlo nella            memoria interna.</item>
-        <item>Il problema potrebbe provenire dal launcher che stai usando, quando si usa una grande risoluzione. Puoi risolvere il problema aumentando la grandezza delle icone a 115 - 120%.            O prova a usare un altro launcher.</item>
+        <item>Il problema potrebbe provenire dal launcher che stai usando, quando si usa una grande risoluzione. Puoi risolvere il problema aumentando la grandezza delle icone a 115–120%.            O prova a usare un altro launcher.</item>
         <item>Invia una richiesta di icona.</item>
         <item>È necessario per poter compilare le richieste di icone, per salvare e cambiare destinazione del download degli sfondi.</item>
         <item>È necessario per caricare e scaricare gli sfondi dal cloud.</item>

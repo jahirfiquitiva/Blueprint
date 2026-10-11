@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.data.viewmodels
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -99,6 +100,8 @@ class IconsCategoriesViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
+    // Icon packs list their icon arrays by name in icon_filters
+    @SuppressLint("DiscouragedApi")
     private suspend fun loadCategoriesFromIconPack(): ArrayList<IconsCategory> {
         val categories: ArrayList<IconsCategory> = ArrayList()
         return withContext(IO) {

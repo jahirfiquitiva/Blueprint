@@ -11,7 +11,6 @@
     <string name="rate">Đánh giá</string>
     <string name="send_using">Gửi bằng…</string>
     <string name="building_request_dialog">Đang tạo tệp yêu cầu…</string>
-    <string name="request_upload_success">Thành công!</string>
     <string name="request_upload_success_content">Yêu cầu đã được đưa lên máy chủ.</string>
     <string name="no_selected_apps_content">Bạn chưa chọn ứng dụng nào để yêu cầu. Vui lòng chọn một vài ứng dụng, sau đó ấn lại nút.</string>
     <string name="requests_upload_error">Có lỗi xảy ra trong quá trình đưa ứng dụng đã yêu cầu tới máy chủ.\nReason: %1$s\nVui lòng thử lại sau.</string>

@@ -11,7 +11,6 @@
     <string name="rate">मूल्यांकन करें</string>
     <string name="send_using">उपयोग कर भेजें…</string>
     <string name="building_request_dialog">भवन अनुरोध फ़ाइलें…</string>
-    <string name="request_upload_success">सफलता!</string>
     <string name="request_upload_success_content">अनुरोध हमारे सर्वर पर सफलतापूर्वक अपलोड किया गया है ।</string>
     <string name="no_selected_apps_content">आप अनुरोध करने के लिए किसी भी अनुप्रयोग का चयन नहीं किया । कृपया कुछ ऐप्लिकेशन चुनें, फिर इस बटन को फिर से टैप करें.</string>
     <string name="requests_upload_error">There was an error uploading apps to request to our servers.\nReason: %1$s\nPlease try again later.</string>
@@ -19,7 +18,7 @@
     <string name="apps_limit_dialog_more">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
     <string name="apps_limit_dialog_day">क्षमा करें, लेकिन आप केवल अनुरोध करने के लिए %1$s apps का चयन करने की अनुमति है ।</string>
     <string name="apps_limit_dialog_day_extra">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
-    <string name="apps_limit_dialog_day_extra_sec">आप %1$s में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
+    <string name="apps_limit_dialog_day_extra_sec">आप एक मिनट से कम समय में, फिर से चिह्न का अनुरोध करने में सक्षम हो जाएगा ।</string>
     <string name="seconds">सेकंड्स</string>
     <string name="minutes">मिनट</string>
     <string name="hours">घंटे</string>

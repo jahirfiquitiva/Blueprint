@@ -10,7 +10,6 @@
     <string name="coming_soon">Ускоро доступно</string>
     <string name="rate">Оцени</string>
     <string name="building_request_dialog">Креирање захтевног фајла…</string>
-    <string name="request_upload_success">Успешно!</string>
     <string name="request_upload_success_content">Захтев није успешно отпремљен на наш сервер.</string>
     <string name="no_selected_apps_content">Нисте изабрали ни једну апликацију за request. Изаберите неке апликације, а затим тапните поново на ово дугме.</string>
     <string name="requests_upload_error">Догодила се грешка приликом аплоудовања апликација за request.\nРазлог: %1$s\nМолимо покушајте касније</string>

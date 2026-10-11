@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
-    android:background="?selectableItemBackground"
+    android:foreground="?selectableItemBackground"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:gravity="center_vertical"

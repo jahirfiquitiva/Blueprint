@@ -24,8 +24,6 @@
     <string name="request_x_icons">Požadavek na ikony: %1$s</string>
     <string name="request_icon">Požadavek na ikonu</string>
     <string name="request_none">Požadavek na ikonu(y)</string>
-    <string name="kustom_templates">Kustom Templates</string>
-    <string name="zooper_templates">Zooper Templates</string>
     <string name="rate">Ohodnotit</string>
     <string name="share">Sdílet</string>
     <string name="share_text">Získejte %1$s v Obchodu Play: %2$s.</string>
@@ -33,7 +31,7 @@
     <string name="send_using">Odeslat pomocí:</string>
     <string name="request_in_progress">Odesílání požadavku</string>
     <string name="request_in_progress_content">Požadavek se již odesílá.</string>
-    <string name="building_request_dialog">Příprava požadavku...</string>
+    <string name="building_request_dialog">Příprava požadavku…</string>
     <string name="request_upload_success_content">Požadavek odeslán.</string>
     <string name="no_selected_apps">Žádné vybrané aplikace</string>
     <string name="no_selected_apps_content">Vyberte aplikace, o které chcete požádat.</string>

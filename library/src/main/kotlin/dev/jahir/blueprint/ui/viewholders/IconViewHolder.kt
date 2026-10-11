@@ -1,7 +1,6 @@
 package dev.jahir.blueprint.ui.viewholders
 
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
@@ -27,11 +26,12 @@ class IconViewHolder(itemView: View) : SectionedViewHolder(itemView) {
 
     private fun View.disableClick() {
         background = null
+        foreground = null
         isClickable = false
         isLongClickable = false
         isFocusable = false
         isEnabled = false
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) isContextClickable = false
+        isContextClickable = false
     }
 
     fun unbind() {

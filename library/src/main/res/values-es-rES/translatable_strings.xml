@@ -24,8 +24,6 @@
     <string name="request_x_icons">Solicitar %1$s iconos</string>
     <string name="request_icon">Solicitar icono</string>
     <string name="request_none">Solicitar icono(s)</string>
-    <string name="kustom_templates">Plantillas Kustom</string>
-    <string name="zooper_templates">Plantillas de Zooper</string>
     <string name="rate">Calificar</string>
     <string name="share">Compartir</string>
     <string name="share_text">Obtén %1$s en Google Play: %2$s.</string>
@@ -33,7 +31,7 @@
     <string name="send_using">Enviar con:</string>
     <string name="request_in_progress">Enviando Solicitud</string>
     <string name="request_in_progress_content">Ya se está enviando una solicitud.</string>
-    <string name="building_request_dialog">Preparando solicitud...</string>
+    <string name="building_request_dialog">Preparando solicitud…</string>
     <string name="request_upload_success_content">Solicitud enviada.</string>
     <string name="no_selected_apps">No hay aplicaciones seleccionadas</string>
     <string name="no_selected_apps_content">Selecciona aplicaciones para enviar una solicitud.</string>

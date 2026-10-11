@@ -69,9 +69,7 @@ internal class EmailBuilder(
         deviceItems.forEach { (k, v) -> emailBuilder.append("$k: $v$nl") }
 
         val content = if (formatAsHtml) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                Html.fromHtml(emailBuilder.toString(), Html.FROM_HTML_MODE_LEGACY)
-            else Html.fromHtml(emailBuilder.toString())
+            Html.fromHtml(emailBuilder.toString(), Html.FROM_HTML_MODE_LEGACY)
         } else emailBuilder.toString()
 
         intent.putExtra(Intent.EXTRA_TEXT, content)

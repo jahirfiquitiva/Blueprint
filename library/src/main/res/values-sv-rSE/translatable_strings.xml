@@ -22,8 +22,6 @@
     <string name="request_x_icons">Begär %1$s ikoner</string>
     <string name="request_icon">Begär ikon</string>
     <string name="request_none">Begär ikon(er)</string>
-    <string name="kustom_templates">Kustom mallar</string>
-    <string name="zooper_templates">Zooper mallar</string>
     <string name="rate">Rate</string>
     <string name="share">Dela</string>
     <string name="share_text">Få %1$s på Google Play: %2$s.</string>
@@ -31,7 +29,7 @@
     <string name="send_using">Skicka med:</string>
     <string name="request_in_progress">Skickar begäran</string>
     <string name="request_in_progress_content">En begäran har redan skickats.</string>
-    <string name="building_request_dialog">Förbereder begäran...</string>
+    <string name="building_request_dialog">Förbereder begäran…</string>
     <string name="request_upload_success_content">Begäran skickad.</string>
     <string name="no_selected_apps">Inga appar valda</string>
     <string name="no_selected_apps_content">Välj appar för att skicka en förfrågan.</string>

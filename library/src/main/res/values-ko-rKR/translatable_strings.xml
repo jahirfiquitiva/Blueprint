@@ -10,8 +10,7 @@
     <string name="coming_soon">공개 임박</string>
     <string name="rate">평가하기</string>
     <string name="send_using">전송 시 사용할 앱</string>
-    <string name="building_request_dialog">요청하신 앱의 파일을 생성 중입니다...</string>
-    <string name="request_upload_success">성공!</string>
+    <string name="building_request_dialog">요청하신 앱의 파일을 생성 중입니다…</string>
     <string name="request_upload_success_content">요청하신 앱 정보가 서버에 정상적으로 업로드 되었습니다.</string>
     <string name="no_selected_apps_content">요청할 앱을 선택하지 않았습니다. 몇 개의 앱을 선택하고 버튼을 눌러주세요</string>
     <string name="requests_upload_error">서버에 요청하신 앱을 올리는 중 오류가 발생했습니다.\n원인: %1$s\n다음에 다시 시도해주세요.</string>

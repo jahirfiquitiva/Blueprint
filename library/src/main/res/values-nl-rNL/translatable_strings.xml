@@ -24,8 +24,6 @@
     <string name="request_x_icons">Verzoek %1$s Pictogrammen</string>
     <string name="request_icon">Verzoek icoon</string>
     <string name="request_none">Verzoek Icoon(en)</string>
-    <string name="kustom_templates">Kustom Templates</string>
-    <string name="zooper_templates">Zooper Templates</string>
     <string name="rate">Rate</string>
     <string name="share">Share</string>
     <string name="share_text">Check out %1$s and let your friends know about it!\nAvailable on Google Play Store at: %2$s</string>

@@ -11,7 +11,6 @@
     <string name="rate">Ocijeni</string>
     <string name="send_using">Pošalji koristeći…</string>
     <string name="building_request_dialog">Stvaranje datoteke zahtjeva…</string>
-    <string name="request_upload_success">Uspjeh!</string>
     <string name="request_upload_success_content">Zahtjev je uspješno učitan na naš poslužitelj.</string>
     <string name="no_selected_apps_content">Niste odabrali nijednu aplikaciju za zahtjev. Molimo odaberite neke aplikacije, pa zatim ponovno dodirnite ovaj gumb.</string>
     <string name="requests_upload_error">Dogodila se greška prilikom učitavanja uploadanja aplikacija za zahtjev na naše servere.\nRazlog: %1$s\nMolim pokušaj ponovno kasnije.</string>

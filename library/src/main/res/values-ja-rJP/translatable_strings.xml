@@ -24,8 +24,6 @@
     <string name="request_x_icons">%1$s 個のアイコンをリクエスト</string>
     <string name="request_icon">アイコンをリクエスト</string>
     <string name="request_none">アイコンをリクエスト</string>
-    <string name="kustom_templates">Kustom のテンプレート</string>
-    <string name="zooper_templates">Zooperのテンプレート</string>
     <string name="rate">評価する</string>
     <string name="share">共有</string>
     <string name="share_text">Google Playで %1$s をダウンロード: %2$s.</string>
@@ -33,7 +31,7 @@
     <string name="send_using">送信:</string>
     <string name="request_in_progress">リクエストを送信中</string>
     <string name="request_in_progress_content">リクエストは既に送信されています。</string>
-    <string name="building_request_dialog">リクエストを準備しています...</string>
+    <string name="building_request_dialog">リクエストを準備しています…</string>
     <string name="request_upload_success_content">リクエストを送信しました。</string>
     <string name="no_selected_apps">アプリが選択されていません</string>
     <string name="no_selected_apps_content">リクエストを送信するアプリを選択します。</string>

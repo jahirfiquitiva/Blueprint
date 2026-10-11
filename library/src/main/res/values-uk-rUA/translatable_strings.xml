@@ -10,7 +10,6 @@
     <string name="rate">Оцінити</string>
     <string name="send_using">Надіслати через…</string>
     <string name="building_request_dialog">Створення файлів запиту…</string>
-    <string name="request_upload_success">Успішно!</string>
     <string name="request_upload_success_content">Запит був успішно завантажений на наш сервер.</string>
     <string name="no_selected_apps_content">Не було позначено жадней програми для запиту. Виберіть кілька застосунків, а потім натисніть цю кнопку ще раз.</string>
     <string name="requests_upload_error">Помилка під час завантаження програм для запиту на наші сервери.\nПричина: %1$s\nБудь ласка, спробуйте ще раз пізніше.</string>

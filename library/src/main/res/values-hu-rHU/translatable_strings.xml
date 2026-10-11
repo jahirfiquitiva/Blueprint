@@ -17,10 +17,6 @@
     <string name="themes_app_not_installed">A témák nincsenek telepítve az eszközre. </string>
     <string name="coming_soon">Hamarosan</string>
     <string name="quick_apply">Gyors alkalmazás</string>
-    <string name="send_request">Kérelem küldése</string>
-    <string name="send_request_x">Kérelem küldése (%1$s)</string>
-    <string name="kustom_templates">Kustom sablonok</string>
-    <string name="zooper_templates">Zooper sablonok</string>
     <string name="rate">Értékelés</string>
     <string name="share">Megosztás</string>
     <string name="share_text">Nézd meg a(z) %1$s-t és mutasd meg a barátaidnak is!\nElérhatő a Google Play Áruházban itt: %2$s</string>
@@ -29,7 +25,6 @@
     <string name="request_in_progress">Kérés folyamatban</string>
     <string name="request_in_progress_content">Egy kérés már folyamatban van. Kérlek várj…</string>
     <string name="building_request_dialog">Kérés felépítése…</string>
-    <string name="request_upload_success">Siker!</string>
     <string name="request_upload_success_content">A kérelem sikeresen feltöltve a szerverünkre.</string>
     <string name="no_selected_apps">Nincs kiválasztott alkalmazás</string>
     <string name="no_selected_apps_content">Nincs kijelölve aplikáció, kérjük jelöljön ki egy vagy több elemet majd próbálja újra. </string>

@@ -32,6 +32,9 @@ fun Context.isRunningOnTv(): Boolean {
     return isTvMode || (hasLeanback && !hasTouchscreen)
 }
 
+// Reads another app's name in English. It never changes this app's language, so Play's
+// language splits cannot leave it without the strings it needs
+@SuppressLint("AppBundleLocaleChanges")
 internal fun Context.getLocalizedName(packageName: String, defaultName: String): String {
     var appName: String? = null
     try {
@@ -43,7 +46,7 @@ internal fun Context.getLocalizedName(packageName: String, defaultName: String):
             val altCntxt =
                 createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY)
             val configuration = res.configuration
-            configuration.setLocale(java.util.Locale("en-US"))
+            configuration.setLocale(java.util.Locale.US)
             appName =
                 altCntxt.createConfigurationContext(configuration).getString(appInfo.labelRes)
         } catch (_: Exception) {

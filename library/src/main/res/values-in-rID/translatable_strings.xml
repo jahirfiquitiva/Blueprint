@@ -23,8 +23,6 @@
     <string name="request_x_icons">Memesan %1$s Ikon</string>
     <string name="request_icon">Pesan Ikon</string>
     <string name="request_none">Pesan Ikon(semua)</string>
-    <string name="kustom_templates">Kustom Template</string>
-    <string name="zooper_templates">Zooper Template</string>
     <string name="rate">Nilai</string>
     <string name="share">Bagikan</string>
     <string name="share_text">Dapatkan %1$s di Google Play: %2$s.</string>
@@ -32,7 +30,7 @@
     <string name="send_using">Kirim dengan:</string>
     <string name="request_in_progress">Mengirim permintaan</string>
     <string name="request_in_progress_content">Permintaan sudah dikirim.</string>
-    <string name="building_request_dialog">Menyiapkan pesanan...</string>
+    <string name="building_request_dialog">Menyiapkan pesanan…</string>
     <string name="request_upload_success_content">Permintaan terkirim.</string>
     <string name="no_selected_apps">Tidak ada aplikasi yang dipilih</string>
     <string name="no_selected_apps_content">Pilih aplikasi untuk mengirim permintaan.</string>

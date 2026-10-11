@@ -24,8 +24,6 @@
     <string name="request_x_icons">Pedido %1$s Ícones</string>
     <string name="request_icon">Ícone de solicitação</string>
     <string name="request_none">Solicitar ícone (s)</string>
-    <string name="kustom_templates">Kustom Templates</string>
-    <string name="zooper_templates">Zooper Templates</string>
     <string name="rate">Avaliação</string>
     <string name="share">Compartilhado</string>
     <string name="share_text">Obtenha %1$s no Google Play: %2$s.</string>

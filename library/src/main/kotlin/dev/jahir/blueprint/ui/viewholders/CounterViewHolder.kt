@@ -33,7 +33,7 @@ class CounterViewHolder(itemView: View) : SectionedViewHolder(itemView) {
                     )
                 )
         )
-        titleView?.text = counter.count.toString()
+        titleView?.text = "%d".format(counter.count)
         descriptionView?.text = context.string(counter.title).lower()
         itemView.setOnClickListener { listener?.onCounterClicked(counter) }
     }

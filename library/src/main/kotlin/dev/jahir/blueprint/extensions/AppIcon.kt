@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.DisplayMetrics
 import androidx.core.content.res.ResourcesCompat
 import dev.jahir.blueprint.R
@@ -66,8 +65,7 @@ private fun Resources.getAppDrawable(iconId: Int): Drawable? {
         ResourcesCompat.getDrawableForDensity(
             this,
             iconId,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) DisplayMetrics.DENSITY_DEVICE_STABLE
-            else DisplayMetrics.DENSITY_DEFAULT,
+            DisplayMetrics.DENSITY_DEVICE_STABLE,
             null
         )
     } catch (e: Exception) {

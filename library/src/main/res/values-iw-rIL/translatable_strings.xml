@@ -11,7 +11,6 @@
     <string name="rate">דרג</string>
     <string name="send_using">שלח באמצעות…</string>
     <string name="building_request_dialog">בונה קבצי בקשה…</string>
-    <string name="request_upload_success">הצלחה!</string>
     <string name="request_upload_success_content">הבקשה הועלתה לשרת שלנו בהצלחה.</string>
     <string name="no_selected_apps_content">אתה לא בחרת שום אפליקציות לבקשה. אנא בחר כמה אפליקציות ולאחר מכן הקש שוב על כפתור זה.</string>
     <string name="requests_upload_error">הייתה שגיאה בהעלת אפליקציות לבקשה בשרתים שלנו.\nסיבה:%1$s\nאנא נסה שנית מאוחר יותר.</string>

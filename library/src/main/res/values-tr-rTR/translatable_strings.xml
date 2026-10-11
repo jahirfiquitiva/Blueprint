@@ -17,10 +17,6 @@
     <string name="themes_app_not_installed">Themes app is not installed in this device</string>
     <string name="coming_soon">Coming soon</string>
     <string name="quick_apply">Quick Apply</string>
-    <string name="send_request">Send request</string>
-    <string name="send_request_x">Send request (%1$s)</string>
-    <string name="kustom_templates">Kustom Templates</string>
-    <string name="zooper_templates">Zooper Templates</string>
     <string name="rate">Rate</string>
     <string name="share">Paylaş</string>
     <string name="share_text">%1$s simge paketine göz atın ve arkadaşlarınıza bundan bahsedin!\nGoogle Play Store\'da şu adresten ulaşılabilir: %2$s</string>
@@ -29,7 +25,6 @@
     <string name="request_in_progress">İstek işleniyor</string>
     <string name="request_in_progress_content">Halen devam etmekte olan bir talep var. Lütfen bekleyin…</string>
     <string name="building_request_dialog">İstek dosyaları oluşturuluyor…</string>
-    <string name="request_upload_success">Başarılı!</string>
     <string name="request_upload_success_content">İstek başarıyla sunucumuza yüklendi.</string>
     <string name="no_selected_apps">Seçili uygulama yok</string>
     <string name="no_selected_apps_content">İstenecek uygulamaları seçmediniz. Lütfen birkaç uygulama seçin ve ardından bu tuşa tekrar dokunun.</string>

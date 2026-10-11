@@ -25,7 +25,7 @@ open class HomeGridSpacingItemDecoration(
             outRect.right = (column + 1) * spacing / spanCount
 
             val isInFirstRow = relativePosition < spanCount
-            val rowCount = (adapter?.getItemCount(HomeAdapter.OVERVIEW_SECTION) ?: 0) / spanCount
+            val rowCount = adapter.getItemCount(HomeAdapter.OVERVIEW_SECTION) / spanCount
             val currentRow = ((relativePosition + 1) / spanCount) - column
             val isInLastRow = currentRow >= (rowCount - 1)
 

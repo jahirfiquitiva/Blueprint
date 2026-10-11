@@ -1,5 +1,6 @@
 package dev.jahir.blueprint.extensions
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.drawable.AdaptiveIconDrawable
@@ -15,6 +16,8 @@ private fun getPathOption(context: Context? = null): Int {
     return BlueprintPreferences(context).iconShape - 1
 }
 
+// The system icon mask is only reachable by name
+@SuppressLint("DiscouragedApi")
 private fun getSystemAdaptiveIconsPath(): String =
     try {
         val resId = Resources.getSystem().getIdentifier("config_icon_mask", "string", "android")

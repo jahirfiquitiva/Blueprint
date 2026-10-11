@@ -11,7 +11,6 @@
     <string name="rate">মুল্যায়ন করুন</string>
     <string name="send_using">ব্যবহার করে প্রেরণ করুন…</string>
     <string name="building_request_dialog">অনুরোধ ফাইল তৈরি করা হচ্ছে…</string>
-    <string name="request_upload_success">সফল হয়েছে!</string>
     <string name="request_upload_success_content">অনুরোধ সফলভাবে আমাদের সার্ভারে আপলোড করা হয়েছে।.</string>
     <string name="no_selected_apps_content">আপনি অনুরোধ করতে কোন অ্যাপ নির্বাচন করেননি। দয়া করে কিছু অ্যাপস নির্বাচন করুন, এরপর আবার এই বোতামে ট্যাপ করুন।.</string>
     <string name="requests_upload_error">একটি ত্রুটি ঘটে গেল যখন অনুরোধ করা অ্যাপ সমূহ আপলোড করা হচ্ছিল আমাদের সার্ভারে ।\nকারণ: %1$s\nদয়া করে পরে চেষ্টা করবেন ।</string>

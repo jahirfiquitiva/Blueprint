@@ -59,8 +59,11 @@
     <!-- Icon Pack designer/owner e-mail -->
     <string name="email">someone@email.com</string>
 
-    <!-- Mail subjects for simple e-mail and requests e-mail -->
-    <string name="email_subject">Blueprint</string>
+    <!--
+    Mail subjects for the contact e-mail (help screen) and requests e-mail
+    Leave email_subject empty to use "<app name> Support"
+    -->
+    <string name="email_subject"></string>
     <string name="request_title">Blueprint Icon Request</string>
 
     <!--

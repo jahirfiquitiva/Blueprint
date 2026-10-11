@@ -23,8 +23,6 @@
     <string name="request_x_icons">Αίτημα %1$s εικονιδίων</string>
     <string name="request_icon">Αίτημα εικονιδίων</string>
     <string name="request_none">Αίτημα εικονιδίων</string>
-    <string name="kustom_templates">Πρότυπα Kustom</string>
-    <string name="zooper_templates">Πρότυπα Zooper</string>
     <string name="rate">Αξιολογήστε</string>
     <string name="share">Μοιραστείτε</string>
     <string name="share_text">Αποκτήστε %1$s στο Google Play: %2$s.</string>

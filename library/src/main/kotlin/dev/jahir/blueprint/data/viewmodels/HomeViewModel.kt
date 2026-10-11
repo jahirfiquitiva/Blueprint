@@ -2,7 +2,7 @@ package dev.jahir.blueprint.data.viewmodels
 
 import android.app.Application
 import android.content.Intent
-import android.net.Uri
+import androidx.core.net.toUri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
@@ -78,7 +78,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                                 intent =
                                     Intent(
                                         Intent.ACTION_VIEW,
-                                        Uri.parse("market://details?id=$packageName")
+                                        "market://details?id=$packageName".toUri()
                                     )
                             }
                         }

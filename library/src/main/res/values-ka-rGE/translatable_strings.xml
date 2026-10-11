@@ -9,7 +9,6 @@
     <string name="rate">შეფასება</string>
     <string name="send_using">გაგზავნე…</string>
     <string name="building_request_dialog">მოთხოვნის ფაილების მომზადება…</string>
-    <string name="request_upload_success">წარმატება!</string>
     <string name="request_upload_success_content">მოთხოვნა წარმატებით აიტვირთა სერვერზე.</string>
     <string name="no_selected_apps_content">თქვენ არ აგირჩევიათ არცერთი აპლიკაცია. გთხოვთ აირჩიოთ რამოდენიმე აპლიკაცია და ჩემდეგ დააჭირეთ ისევ ღილაკს.</string>
     <string name="apps_limit_dialog">უკაცრავად, მაგრამ თქვენ ნება დართეთ %1$s მხოლოდ აპლიკაციების მოთხოვნას.</string>

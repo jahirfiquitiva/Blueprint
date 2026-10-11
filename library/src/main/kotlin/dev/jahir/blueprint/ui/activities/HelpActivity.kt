@@ -65,7 +65,9 @@ class HelpActivity : BaseSearchableActivity<Preferences>() {
         if (item.itemId == android.R.id.home) finish()
         else if (item.itemId == R.id.contact) {
             val email = string(R.string.email)
-            if (email.hasContent()) sendEmail(email, "${getAppName()} Support")
+            val subject = string(R.string.email_subject).takeIf { it.hasContent() }
+                ?: "${getAppName()} Support"
+            if (email.hasContent()) sendEmail(email, subject)
         }
         return super.onOptionsItemSelected(item)
     }

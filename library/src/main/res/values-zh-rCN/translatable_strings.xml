@@ -23,8 +23,6 @@
     <string name="request_x_icons">请求 %1$s 图标</string>
     <string name="request_icon">请求图标</string>
     <string name="request_none">请求图标</string>
-    <string name="kustom_templates">Kustom模板</string>
-    <string name="zooper_templates">Zooper模板</string>
     <string name="rate">评分</string>
     <string name="share">分享</string>
     <string name="share_text">在 Google Play 上获得 %1$s ： %2$s。</string>
@@ -32,7 +30,7 @@
     <string name="send_using">发送方式</string>
     <string name="request_in_progress">发送请求</string>
     <string name="request_in_progress_content">请求已经发送。</string>
-    <string name="building_request_dialog">正在准备资源...</string>
+    <string name="building_request_dialog">正在准备资源…</string>
     <string name="request_upload_success_content">已发送请求。</string>
     <string name="no_selected_apps">没有选定应用程序。</string>
     <string name="no_selected_apps_content">选择要发送请求的应用。</string>
@@ -84,7 +82,7 @@
         <item>根据你所使用的启动器，你需要通过长按某个图标，在弹出菜单中选择 “编辑” ，或者长按某个图标拖拽至“编辑”框中。</item>
         <item>根据应用程序的导航方式类型，你需要从左侧滑调出导航抽屉，前往 “申请图标适配” 页面，或从底部导航栏前往。</item>
         <item>当图标包被移动到 SD 卡中时会发生这种情况，您应当把图标包程序安装在内置存储器中。</item>
-        <item>这个问题可能与您当前使用的启动器处理高分辨率的方式有关。您可以通过调整图标大小至 115 - 120% 的方式来解决这个问题。或者换一个启动器。</item>
+        <item>这个问题可能与您当前使用的启动器处理高分辨率的方式有关。您可以通过调整图标大小至 115–120% 的方式来解决这个问题。或者换一个启动器。</item>
         <item>发送图标适配请求。</item>
         <item>需要能够写入图标适配申请的数据和文件，以及保存壁纸，以及能够改变壁纸下载路径。</item>
         <item>需要能够从云加载墙纸并下载它们。</item>

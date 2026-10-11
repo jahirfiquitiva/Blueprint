@@ -5,7 +5,6 @@
     android:id="@+id/icons_preview_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/transparent"
     android:descendantFocusability="blocksDescendants"
     android:foreground="?selectableItemBackground"
     app:cardBackgroundColor="@color/transparent"

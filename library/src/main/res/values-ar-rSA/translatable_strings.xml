@@ -22,8 +22,6 @@
     <string name="request_x_icons">طلب %1$s أيقونات</string>
     <string name="request_icon">طلب أيقونة</string>
     <string name="request_none">طلب أيقونات</string>
-    <string name="kustom_templates">قوالب Kustom</string>
-    <string name="zooper_templates">قوالب Zooper</string>
     <string name="rate">تقييم</string>
     <string name="share">مشاركة</string>
     <string name="share_text">تحميل %1$s من Google Play هنا: %2$s.</string>
@@ -31,7 +29,7 @@
     <string name="send_using">إرسال باستخدام:</string>
     <string name="request_in_progress">جار إرسال الطلب</string>
     <string name="request_in_progress_content">هناك طلب يتم إرساله بالفعل.</string>
-    <string name="building_request_dialog">جار إعداد الطلب...</string>
+    <string name="building_request_dialog">جار إعداد الطلب…</string>
     <string name="request_upload_success_content">تم إرسال الطلب.</string>
     <string name="no_selected_apps">لم يتم تحديد تطبيقات</string>
     <string name="no_selected_apps_content">حدد التطبيقات لإرسال طلب.</string>

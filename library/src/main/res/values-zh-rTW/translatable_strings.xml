@@ -11,7 +11,6 @@
     <string name="rate">評價</string>
     <string name="send_using">透過以下應用程式傳送：</string>
     <string name="building_request_dialog">正在生成請求檔..。</string>
-    <string name="request_upload_success">操作成功！</string>
     <string name="request_upload_success_content">請求已成功上載到我們的伺服器。</string>
     <string name="no_selected_apps_content">您尚未選取要任何需求的應用程式。請選擇幾個應用程式, 然後再次點擊此按鈕。</string>
     <string name="requests_upload_error">上傳請求的應用程式到我們的伺服器時出現錯誤。\n原因：%1$s\n 請稍後再試。</string>

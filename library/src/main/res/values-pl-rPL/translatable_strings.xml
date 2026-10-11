@@ -24,8 +24,6 @@
     <string name="request_x_icons">Zażądanych ikon - %1$s</string>
     <string name="request_icon">Zażądaj ikonę</string>
     <string name="request_none">Zażądaj ikonę(y)</string>
-    <string name="kustom_templates">Szablony Kustom</string>
-    <string name="zooper_templates">Szablony Zoopera</string>
     <string name="rate">Oceń</string>
     <string name="share">Udostępnij</string>
     <string name="share_text">Zdobądź %1$s w Google Play: %2$s.</string>
@@ -33,7 +31,7 @@
     <string name="send_using">Wyślij za pomocą:</string>
     <string name="request_in_progress">Wysyłam prośbę</string>
     <string name="request_in_progress_content">Prośba jest aktualnie wysyłana.</string>
-    <string name="building_request_dialog">Przygotowuję prośbę...</string>
+    <string name="building_request_dialog">Przygotowuję prośbę…</string>
     <string name="request_upload_success_content">Prośba wysłana.</string>
     <string name="no_selected_apps">Nie wybrano żadnych aplikacji</string>
     <string name="no_selected_apps_content">Wybierz aplikacje do wysłania żądania.</string>
@@ -85,7 +83,7 @@
         <item>W zależności od launchera, konieczne będzie przeciągnięcie ikony aplikacji do przycisku \"Edytuj\" bądź wybranie tej opcji w menu pop-up.</item>
         <item>W zależności od typu nawigacji, musisz otworzyć szufladę nawigacji z lewej, oraz przejść do \"Prósba o ikony\", lub wybrać ją z dolnego paska nawigacji.</item>
         <item>Stało się to, ponieważ paczka ikon została przeniesiona na kartę SD(pamięci). Powinienieś zainstalować ją w pamięci wewnętrznej (normalnej).</item>
-        <item>Problem może wynikać z launchera, którego używasz, podczas obsługi dużej rozdzielczości. Możesz to naprawić, zwiększając rozmiar ikony do 115 - 120%. Albo spróbuj użyć innego launchera.</item>
+        <item>Problem może wynikać z launchera, którego używasz, podczas obsługi dużej rozdzielczości. Możesz to naprawić, zwiększając rozmiar ikony do 115–120%. Albo spróbuj użyć innego launchera.</item>
         <item>Wyślij prośbę o dodanie ikon.</item>
         <item>To jest wymagane do zapisania tymczasowych plików generowanych na potrzebę wysłania prośby o dodanie ikon, jak i zmiany lokalizacji pobierania tapet.</item>
         <item>To jest wymagane do pobrania tapet z chmury.</item>
