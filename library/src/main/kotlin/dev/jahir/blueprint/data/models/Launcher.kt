@@ -146,6 +146,12 @@ enum class Launcher(
         arrayOf("com.tsf.shell"),
         R.drawable.ic_tsf,
         showOnlyIfInstalled = true
+    ),
+    YASAN(
+        "yasan",
+        "Yasan Launcher",
+        arrayOf("yasan.space.mnml.ai.launcher"),
+        R.drawable.ic_yasan
     );
 
     val cleanAppName: String
