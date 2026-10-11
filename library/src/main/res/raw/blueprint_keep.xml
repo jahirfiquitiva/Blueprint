@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Applied to every app built on Blueprint that shrinks resources.
+Resources loaded by name, which the resource shrinker cannot detect, so all of them are kept:
+- Icons, their arrays and the files in res/xml (appfilter, drawable, appmap, ...),
+  which launchers and Blueprint read by name
+- The launcher settings in values (config_iconpack, manager_nova, default_wallpaper, ...)
+  and the launcher colors in skin_colors.xml
+- kustom_pack_title and kustom_pack_description, which KWGT reads
+- The Play Billing files in raw, which nothing in the app references
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/*,@array/*,@xml/*,@bool/*,@string/default_wallpaper,@string/kustom_pack_*,@raw/com_android_billingclient_*,@color/homescreen_icon_text_color,@color/outline_color,@color/folder_title_color,@color/folder_item_text_color,@color/shadow_large_color,@color/shadow_small_color,@color/drawer_background_color,@color/drawer_tab_text_color,@color/drawer_icon_text_color,@color/drawer_widget_size_color,@color/bubble_text_color,@color/bubble_ring_color,@color/bubble_shadow_color,@color/bubble_background_color,@color/bubble_shader_color,@color/bubble_color,@color/drawer_text_color,@color/desktop_indicator_color" />

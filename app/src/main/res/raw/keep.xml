@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Resources the app loads by name, which the resource shrinker cannot detect.
+Blueprint already keeps icons, res/xml files and launcher settings (see blueprint_keep.xml).
+If your icon pack loads another resource by name, keep it here, e.g.:
+tools:keep="@string/my_resource"
+-->
+<resources xmlns:tools="http://schemas.android.com/tools" />

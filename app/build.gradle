@@ -21,6 +21,23 @@ android {
         }
     }
 
+    androidResources {
+        // Keep only the languages Blueprint, Kuper and Frames are translated to. AndroidX and
+        // Material ship about 100, most of them for strings this app would show in English anyway.
+        // Each region is listed because a language code alone does not keep region folders like
+        // values-zh-rCN
+        localeFilters += [
+                "en", "ar", "bn", "ckb", "cs", "da", "de", "el", "es", "fi", "fr", "hi", "hr", "hu",
+                "in", "it", "iw", "ja", "ka", "ko", "nb", "nl", "no", "pl", "pt", "ro", "ru", "sr",
+                "sv", "ta", "tr", "uk", "vi", "zh",
+                "ar-rEG", "ar-rSA", "bn-rBD", "bn-rIN", "ckb-rIR", "cs-rCZ", "da-rDK", "de-rDE",
+                "el-rGR", "es-rES", "fi-rFI", "fr-rFR", "hi-rIN", "hr-rHR", "hu-rHU", "in-rID",
+                "it-rIT", "iw-rIL", "ja-rJP", "ka-rGE", "ko-rKR", "nl-rNL", "no-rNO", "pl-rPL",
+                "pt-rBR", "pt-rPT", "ro-rRO", "ru-rRU", "sr-rSP", "sv-rSE", "ta-rIN", "tr-rTR",
+                "uk-rUA", "vi-rVN", "zh-rCN", "zh-rTW"
+        ]
+    }
+
     lint {
         abortOnError false
         checkReleaseBuilds true
@@ -57,7 +74,7 @@ android {
             debuggable false
             zipAlignEnabled true
             minifyEnabled true
-            shrinkResources false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
